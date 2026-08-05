@@ -52,6 +52,10 @@ cmake-build-*/
 *.pb.h
 *_pb2.py
 
+# Python bytecode (scripts/ has .py tooling; running it drops these next to the source)
+__pycache__/
+*.py[cod]
+
 # IDE
 .idea/
 .vscode/
