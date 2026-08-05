@@ -1,0 +1,48 @@
+// Build-level per-platform omissions. Always present; empty list for clean builds.
+// This is the shape of build-level artifacts/<build_id>/omissions.json.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message Omissions {
+  string schema_version = 1;
+  string build_id       = 2;
+
+  repeated PlatformOmission omissions = 100;
+}
+
+message PlatformOmission {
+  string platform = 1;             // "windows-x86_64" | "linux-x86_64"
+  Reason reason = 2;
+  string notes  = 3;               // free-text context
+
+  // per-artifact content omissions WITHIN this (build, platform). Records that a
+  // specific content artifact is absent because the build genuinely lacks its source (e.g.
+  // the 2023 baseline ships zero resource/csgo_<lang>.txt localization tables → no
+  // localization.json). This is an ACCEPTABLE, recorded omission — NOT a wholesale platform
+  // omission and NOT a fail-loud — used when the content depot IS in provenance but the
+  // source genuinely wasn't shipped this era. Empty when the platform is omitted wholesale
+  // (that case uses `reason`/`notes` above) or when every artifact was emitted.
+  repeated ContentArtifactOmission content_omissions = 100;
+
+  enum Reason {
+    REASON_UNSPECIFIED   = 0;
+    DEPOT_UNAVAILABLE    = 1;
+    WALKER_LAYOUT_UNKNOWN = 2;
+    BINARY_CORRUPT       = 3;
+    OTHER                = 4;
+    CONTENT_NOT_SHIPPED_THIS_ERA = 5; // source genuinely absent from this build's content depot
+  }
+}
+
+// One content artifact a (build, platform) genuinely lacks. Recorded so
+// ArtifactSetValidator.ValidatePlatformComplete can treat the gap as ACCEPTABLE rather than
+// fail-loud, when the content depot is present in provenance but the source wasn't shipped.
+message ContentArtifactOmission {
+  string artifact = 1;             // the omitted emitted artifact filename, e.g. "localization.json"
+  PlatformOmission.Reason reason = 2; // normally CONTENT_NOT_SHIPPED_THIS_ERA
+  string notes = 3;                // free-text context, e.g. which source family was absent
+}

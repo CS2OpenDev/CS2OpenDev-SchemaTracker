@@ -1,0 +1,97 @@
+# .NET / Visual Studio
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+*.coverage
+*.coveragexml
+artifacts-tmp/
+# MSBuild ArtifactsPath output (host/Directory.Build.props sets ArtifactsPath=host/artifacts).
+# NOT the top-level artifacts/ (committed CS2 schema data) — only the host build output tree.
+/host/artifacts/
+
+# Build-on-demand localization.json — produced every dump but NOT committed (it is
+# ~199 MB/set, 96% of the working tree). Its fingerprint (sha256/size/token_count) is
+# recorded in provenance.localization and it is regenerable via `emit-localization`.
+artifacts/**/localization.json
+
+# CMake / C++
+walker/build/
+walker/build-*/
+walker/build-*.log
+# Per-era walker build scratch: fresh per-era CMake build dirs + resumability meta
+# sidecars. Native exes are NEVER committed. (Also matched by the walker/build-*/ glob
+# above; kept explicit for clarity.)
+walker/build-eras/
+# The native bundle staging dir: era-named walkers + deduped protobuf runtime, produced
+# by scripts/build-era-walkers.{ps1,sh} and shipped via GitHub Releases — never committed.
+natives/
+# The assembled release bundle + zip (scripts/assemble-bundle.ps1 output) — a Release
+# asset, never committed.
+dist/
+CMakeCache.txt
+CMakeFiles/
+cmake-build-*/
+*.o
+*.obj
+*.exe
+*.dll
+*.so
+*.dylib
+*.pdb
+*.ilk
+*.exp
+*.lib
+
+# Protobuf generated output (we ship the .proto sources, not generated code)
+**/generated/
+*.pb.go
+*.pb.cc
+*.pb.h
+*_pb2.py
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local secrets / env
+.env
+.env.local
+*.pat
+*.token
+
+# Local scratch
+scratch/
+.scratch/
+# Manual SteamDB DOM-extraction scratch (console scripts, saved sample pages,
+# extracted per-build JSON awaiting processing). Operator-local, never tracked.
+/temp/
+# Local, machine-specific throwaway driver scripts (D:\ paths, operator-only)
+scripts/_local-*.sh
+
+# Acquired CS2 binaries — large local store (tens of GB per tuple). Never commit:
+# binaries live in the content-addressed cache, not in-repo.
+# Anchored to repo root (leading /) so it does NOT match source dirs like
+# host/src/.../Cache/ — case-insensitive filesystems would otherwise swallow them.
+/cache/
+
+# Walker crash minidumps (written to CWD on access violation)
+*.mdmp
+
+# Windows reserved-name file accidentally created by a >/dev/null redirect
+nul
+
+# extract-commit-cohort.ps1 run log
+extract-commit.log
+
+# transient backfill cohort logs
+era8-cohort*.log
+extract-commit.log

@@ -1,0 +1,24 @@
+# Keep the Docker build context small. docker/Dockerfile only COPYs three things:
+#   dist/docker/host/  natives/linux-x86_64/  data/cs2-assets-inventory.json
+# Everything heavy is excluded here (the committed artifacts alone are multi-GB).
+.git/
+artifacts/
+cache/
+walker/
+host/
+scripts/
+docs/
+tests/
+natives/windows-x86_64/
+# Bare-name .so dev symlinks (libprotobuf.so -> libprotobuf.so.33.4.0) are link-time-only. Created
+# by WSL on the Windows filesystem, they appear to BuildKit's context loader as symlinks it rejects
+# ("invalid file request"). The walker loads the VERSIONED lib (libprotobuf.so.33.4.0) directly via
+# $ORIGIN, so these are unneeded at runtime — keep them out of the build context. (Versioned files
+# like *.so.33.4.0 do NOT match this and are kept.)
+natives/linux-x86_64/*.so
+# Exclude the whole dist/ EXCEPT the published host the image consumes.
+dist/
+!dist/docker/
+**/bin/
+**/obj/
+**/node_modules/

@@ -1,0 +1,505 @@
+# CS2-Schema-Tracker CI
+#
+# Every job here runs on a GitHub-hosted runner (ubuntu-latest / windows-latest). No
+# self-hosted dependency.
+#
+# Scope: build + test on each host-OS so we catch toolchain regressions early, plus
+# the artifacts all-or-nothing gate + storage observability. The
+# forward-capture extract job lives in scheduled-extract.yml, not here.
+
+name: ci
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch: {}
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  # PATH-SCOPED BUILD GATE (why this job exists):
+  # A docs-only, artifacts/-only, or data/-only change should NOT pay for a full
+  # C++ walker + .NET host build on two OSes. This job computes which INPUT AREAS
+  # changed in this push/PR and exposes them as booleans; every downstream job gates
+  # itself on those outputs via `needs: detect-changes` + `if:`. It is cheap
+  # (ubuntu, checkout + one git diff, no toolchain).
+  #
+  # FAIL SAFE — when in doubt, BUILD EVERYTHING. Any case where we cannot trust a
+  # narrow diff (manual dispatch, a new branch / first push / force-push whose
+  # `before` is the all-zero SHA, or a git diff that errors) flips the `everything`
+  # escape hatch true so nothing is skipped on incomplete information. A change to a
+  # GLOBAL build input (global.json, version.json, Directory.Build.props/.targets,
+  # or ci.yml itself) also forces `everything`, because those alter every target.
+  detect-changes:
+    name: detect changed input areas
+    runs-on: ubuntu-latest
+    outputs:
+      host: ${{ steps.detect.outputs.host }}
+      walker: ${{ steps.detect.outputs.walker }}
+      schemas: ${{ steps.detect.outputs.schemas }}
+      artifacts: ${{ steps.detect.outputs.artifacts }}
+      everything: ${{ steps.detect.outputs.everything }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # fetch-depth: 0 so BOTH diff endpoints (base/before .. head) resolve — a
+          # shallow clone would not contain the base commit for a `git diff`.
+          fetch-depth: 0
+
+      - name: Sparse-checkout — drop artifacts/ from the working tree
+        # `git diff --name-only` (below) reads git OBJECTS, not the working tree, so this
+        # job never touches a checked-out file. artifacts/ is committed history (~13 GB,
+        # 43k+ files as of 2026-07) that a plain checkout materializes for nothing — drop
+        # it. Deliberately NOT done via actions/checkout's `sparse-checkout` input: that
+        # input makes the action ALSO pass `--filter=blob:none` to the initial fetch (see
+        # actions/checkout src/git-source-provider.ts), a partial clone that leaves
+        # HISTORICAL blob content missing — which breaks Nerdbank.GitVersioning (it reads
+        # raw blob objects across all of history to compute the version height, with no
+        # lazy-fetch fallback). Applying sparse-checkout as a SEPARATE step, after the
+        # (unfiltered) fetch-depth:0 checkout above already has every object locally,
+        # only trims the WORKING TREE — it can never make an object "missing".
+        # See the artifacts-validation job below for the one job that genuinely needs
+        # the full tree (and is deliberately left unsparse).
+        shell: bash
+        run: git sparse-checkout set --no-cone '/*' '!/artifacts/'
+
+      - name: Compute changed input areas
+        id: detect
+        shell: bash
+        # House style: plain `git diff --name-only` in a bash step (same tool the
+        # artifacts gate already uses) — no third-party change-detection action.
+        run: |
+          set -uo pipefail
+
+          out() { echo "$1=$2" | tee -a "$GITHUB_OUTPUT"; }
+
+          # Escape hatch: mark every area changed and stop. Used for every "cannot
+          # trust a narrow diff" case (fail safe = build everything).
+          all_changed() {
+            echo "ALL-CHANGED ($1) — building everything (fail safe)."
+            out host true
+            out walker true
+            out schemas true
+            out artifacts true
+            out everything true
+            exit 0
+          }
+
+          EVENT='${{ github.event_name }}'
+          echo "event: $EVENT"
+
+          case "$EVENT" in
+            workflow_dispatch)
+              # Manual run — no reliable diff base; build everything.
+              all_changed "workflow_dispatch: manual full run" ;;
+            pull_request)
+              BASE='${{ github.event.pull_request.base.sha }}'
+              HEAD='${{ github.sha }}' ;;
+            push)
+              BASE='${{ github.event.before }}'
+              HEAD='${{ github.sha }}'
+              # An all-zero `before` = new branch / first push / force-push: there is
+              # no meaningful predecessor to diff against, so build everything.
+              case "$BASE" in
+                *[!0]*) : ;;   # contains a non-zero char -> a real base SHA
+                *) all_changed "push with all-zero before (new branch / first push / force-push)" ;;
+              esac ;;
+            *)
+              all_changed "unrecognized event '$EVENT'" ;;
+          esac
+
+          echo "diff range: $BASE..$HEAD"
+          # Guard: if the diff itself errors (unreachable endpoint, etc.), fail safe.
+          if ! CHANGED="$(git diff --name-only "$BASE" "$HEAD" 2>/dev/null)"; then
+            all_changed "git diff $BASE..$HEAD failed to resolve"
+          fi
+          echo "changed files:"
+          echo "$CHANGED"
+
+          has() { printf '%s\n' "$CHANGED" | grep -qE "$1"; }
+
+          host=false; walker=false; schemas=false; artifacts=false; everything=false
+          has '^host/'      && host=true
+          has '^walker/'    && walker=true
+          has '^schemas/'   && schemas=true
+          has '^artifacts/' && artifacts=true
+          # Global build inputs force a full rebuild. Directory.Build.props/.targets
+          # are listed defensively (absent today; harmless — they can't appear in a diff).
+          has '^(global\.json|Directory\.Build\.props|Directory\.Build\.targets|version\.json|\.github/workflows/ci\.yml)$' && everything=true
+
+          out host "$host"
+          out walker "$walker"
+          out schemas "$schemas"
+          out artifacts "$artifacts"
+          out everything "$everything"
+
+  host-build:
+    name: host build + test (${{ matrix.os }})
+    # GATE: build the host when host/ changed, OR schemas/ changed (the host consumes
+    # the proto contract — the schemas->rebuild-BOTH coupling, see walker-build), OR
+    # the everything escape hatch is set.
+    needs: detect-changes
+    if: needs.detect-changes.outputs.host == 'true' || needs.detect-changes.outputs.schemas == 'true' || needs.detect-changes.outputs.everything == 'true'
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # nbgv (Nerdbank.GitVersioning) bakes the provenance git SHA into
+          # the host build via ThisAssembly.GitCommitId. It needs the FULL git
+          # history at build time to resolve the commit id/height — a shallow
+          # clone (the actions/checkout default, fetch-depth: 1) yields a
+          # wrong/empty GitCommitId, stamping a bad SHA into every provenance.json.
+          fetch-depth: 0
+
+      - name: Sparse-checkout — drop artifacts/ from the working tree
+        # The host build+test suite never reads the committed artifacts/ tree (its
+        # contract/golden-file tests build their own throwaway temp fixtures). Applied as
+        # a SEPARATE step (not actions/checkout's `sparse-checkout` input) because that
+        # input also forces a `--filter=blob:none` partial fetch, which breaks nbgv (see
+        # detect-changes job's comment for the full explanation) — this step only trims
+        # the working tree of the ALREADY-fully-fetched checkout above.
+        shell: bash
+        run: git sparse-checkout set --no-cone '/*' '!/artifacts/'
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      # protoc is needed by ProtoTextEmitterTest, which shells out to protoc to
+      # confirm the emitted .proto compiles cleanly. Install a stock protoc per OS
+      # (proto3 is stable across recent versions).
+      - name: Install protoc (Linux)
+        if: runner.os == 'Linux'
+        run: sudo apt-get update && sudo apt-get install -y protobuf-compiler
+
+      - name: Install protoc (Windows)
+        if: runner.os == 'Windows'
+        run: choco install protoc -y
+
+      - name: Restore
+        run: dotnet restore host/Cs2SchemaTracker.sln
+
+      - name: Build
+        run: dotnet build host/Cs2SchemaTracker.sln --configuration Release --no-restore
+
+      - name: Test
+        run: dotnet test host/Cs2SchemaTracker.sln --configuration Release --no-build --verbosity normal
+
+  walker-build:
+    name: walker build + test (${{ matrix.os }})
+    # GATE: build the walker when walker/ changed, OR schemas/ changed, OR everything.
+    # SCHEMAS COUPLING: a schemas/ change rebuilds BOTH host and walker — the .proto
+    # files are the single source of truth both targets generate code from (the host's
+    # descriptor round-trip + the walker's walker_output.proto shape), so a contract
+    # change must re-exercise both toolchains.
+    needs: detect-changes
+    if: needs.detect-changes.outputs.walker == 'true' || needs.detect-changes.outputs.schemas == 'true' || needs.detect-changes.outputs.everything == 'true'
+    # SCOPE (deliberate): this builds ONLY the current-pin walker (the checked-out
+    # walker/CMakeLists.txt against the pinned hl2sdk submodule) as a toolchain
+    # build-sanity gate. It does NOT build all 12 archived per-era walker binaries —
+    # that would need each era's own hl2sdk pin + is an offline re-dump workstream,
+    # not a per-push CI concern. Era-binary correctness is enforced at extract time
+    # by the layout signature gate, not here.
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          submodules: recursive
+          # HL2SDK at walker/third_party/hl2sdk is required to build the
+          # walker. Submodule init is lazy locally (large checkout) but always-on
+          # in CI.
+
+      - name: Sparse-checkout — drop artifacts/ from the working tree
+        # The walker build/tests never read the committed artifacts/ tree (only
+        # data/cs2-assets-inventory.json). Applied as a SEPARATE step (not
+        # actions/checkout's `sparse-checkout` input, which also forces a
+        # `--filter=blob:none` partial fetch — see detect-changes job's comment); this
+        # only trims the working tree of the ALREADY-fully-fetched checkout above, and is
+        # independent of the hl2sdk SUBMODULE's own checkout (a separate git repo).
+        shell: bash
+        run: git sparse-checkout set --no-cone '/*' '!/artifacts/'
+
+      - name: Install protobuf (Linux)
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler libprotobuf-dev
+          protoc --version
+
+      - name: Resolve vcpkg version (cache key)
+        if: runner.os == 'Windows'
+        shell: bash
+        run: echo "VCPKG_VERSION=$("$VCPKG_INSTALLATION_ROOT/vcpkg.exe" version | head -1 | tr -cd 'A-Za-z0-9._-')" >> "$GITHUB_ENV"
+
+      - name: Cache vcpkg binary archives (Windows)
+        if: runner.os == 'Windows'
+        # Persist vcpkg's built package archives across runs. Keyed on the vcpkg
+        # version so a toolchain bump re-populates it; the prefix restore-key lets an
+        # ABI-compatible archive be reused across unrelated ci.yml edits. On a hit the
+        # protobuf install below unpacks the prebuilt archive instead of recompiling.
+        uses: actions/cache@v5
+        with:
+          path: ${{ github.workspace }}/vcpkg-archives
+          key: vcpkg-archives-x64-windows-protobuf-${{ env.VCPKG_VERSION }}
+          restore-keys: |
+            vcpkg-archives-x64-windows-protobuf-
+
+      - name: Install protobuf (Windows)
+        if: runner.os == 'Windows'
+        # vcpkg ships with the windows-latest runner image. Use the bundled copy
+        # to install protobuf (libprotobuf C++ runtime + headers + CMake config +
+        # a MATCHED protoc) in a CMake-discoverable way; CMake picks it up via
+        # CMAKE_TOOLCHAIN_FILE + VCPKG_TARGET_TRIPLET. This mirrors the local
+        # `scripts/bootstrap-windows.ps1 -Stage Protobuf` path so generated
+        # *.pb.h and the linked libprotobuf come from one matched pair (no skew
+        # from mixing a winget protoc with a vcpkg libprotobuf). VCPKG_DEFAULT_BINARY_CACHE
+        # points at the cached archive dir so repeat runs unpack the prebuilt protobuf.
+        shell: pwsh
+        env:
+          VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archives
+        run: |
+          if (-not (Test-Path "$env:VCPKG_INSTALLATION_ROOT")) {
+            Write-Error "vcpkg not found on runner; image changed unexpectedly."
+            exit 1
+          }
+          New-Item -ItemType Directory -Force -Path $env:VCPKG_DEFAULT_BINARY_CACHE | Out-Null
+          & "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe" install protobuf:x64-windows --triplet x64-windows
+          "VCPKG_ROOT=$env:VCPKG_INSTALLATION_ROOT" | Out-File -FilePath $env:GITHUB_ENV -Append
+          "CMAKE_TOOLCHAIN_FILE=$env:VCPKG_INSTALLATION_ROOT\scripts\buildsystems\vcpkg.cmake" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Configure CMake
+        # Windows needs an explicit VS generator (the bare default is NMake, which
+        # requires the Dev Command Prompt). The generator is chosen from the runner's
+        # INSTALLED Visual Studio via vswhere so the build tracks whatever VS the image
+        # ships (2022, 2026, ...) instead of a hardcoded year. The vcpkg toolchain file +
+        # x64-windows triplet make find_package(Protobuf) resolve to the matched vcpkg
+        # protoc + libprotobuf pair installed above. Linux resolves libprotobuf from apt
+        # (libprotobuf-dev) — no toolchain file needed.
+        shell: bash
+        run: |
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            vswhere="/c/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe"
+            vsmajor="$("$vswhere" -latest -products '*' -property installationVersion | cut -d. -f1)"
+            case "$vsmajor" in
+              17) gen="Visual Studio 17 2022";;
+              18) gen="Visual Studio 18 2026";;
+              *)  echo "Unrecognized Visual Studio major version '$vsmajor' from vswhere" >&2; exit 1;;
+            esac
+            echo "Using CMake generator: $gen"
+            cmake -G "$gen" -A x64 \
+                  -DCMAKE_TOOLCHAIN_FILE="${CMAKE_TOOLCHAIN_FILE}" \
+                  -DVCPKG_TARGET_TRIPLET=x64-windows \
+                  -S walker -B walker/build
+          else
+            cmake -S walker -B walker/build -DCMAKE_BUILD_TYPE=Release
+          fi
+
+      - name: Build walker
+        run: cmake --build walker/build --config Release
+
+      - name: Walker tests (ctest)
+        run: ctest --test-dir walker/build --output-on-failure -C Release
+
+  format-check:
+    name: format (C# + C++)
+    # Always runs: a formatting drift in either project is cheap to catch and should never merge.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Sparse-checkout — drop artifacts/ from the working tree
+        # format-check only reads host/ and walker/ source. Applied as a SEPARATE step
+        # (not actions/checkout's `sparse-checkout` input, which also forces a
+        # `--filter=blob:none` partial fetch that breaks nbgv — see detect-changes job's
+        # comment); this only trims the working tree of the already-fetched checkout.
+        shell: bash
+        run: git sparse-checkout set --no-cone '/*' '!/artifacts/'
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: Verify C# formatting (dotnet format --verify-no-changes)
+        # Enforces the .editorconfig C# ruleset (whitespace + style) across the host solution.
+        run: dotnet format host/Cs2SchemaTracker.sln --verify-no-changes --verbosity minimal
+
+      - name: Install pinned clang-format
+        # Pin the EXACT clang-format version the tree was formatted with — clang-format output drifts
+        # between major versions, so an unpinned binary would flag spurious diffs. The pip package
+        # ships the real LLVM clang-format binary.
+        run: pipx install clang-format==19.1.5
+
+      - name: Verify C++ formatting (clang-format --dry-run --Werror)
+        # walker/src + walker/tests, excluding the generated netmsg table. Every file is fully
+        # formatted (no `// clang-format off` guards) — the offset tables keep their byte-offset
+        # comment alignment under formatting via AlignTrailingComments.
+        run: |
+          set -e
+          mapfile -t files < <(find walker/src walker/tests -type f \( -name '*.cpp' -o -name '*.h' \) ! -name 'netmsg_table.generated.inc')
+          clang-format --dry-run --Werror "${files[@]}"
+
+  schemas-compile:
+    name: schemas/*.proto compile
+    # GATE: only when the proto contract itself changed (or everything).
+    needs: detect-changes
+    if: needs.detect-changes.outputs.schemas == 'true' || needs.detect-changes.outputs.everything == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Sparse-checkout — drop artifacts/ from the working tree
+        # This job only compiles schemas/*.proto. Applied as a SEPARATE step (not
+        # actions/checkout's `sparse-checkout` input, which also forces a
+        # `--filter=blob:none` partial fetch — see detect-changes job's comment); this
+        # only trims the working tree of the already-fetched checkout.
+        shell: bash
+        run: git sparse-checkout set --no-cone '/*' '!/artifacts/'
+
+      - name: Install protoc
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y protobuf-compiler
+          protoc --version
+
+      - name: Compile every schemas/*.proto
+        # schemas/ is the public contract; every .proto must compile cleanly.
+        # Pass paths relative to --proto_path so protoc doesn't reject absolute-prefix paths.
+        run: |
+          set -e
+          for f in schemas/*.proto; do
+            echo "::group::protoc $(basename $f)"
+            protoc --proto_path=schemas --descriptor_set_out=/dev/null "schemas/$(basename $f)"
+            echo "::endgroup::"
+          done
+
+  artifacts-validation:
+    name: artifacts/ validation gate
+    # GATE: this job's whole purpose is validating artifacts/ changes, and it builds
+    # the host to do so — so skipping it when artifacts/ did not change is a real
+    # saving. Runs on artifacts OR everything. (Its internal PR-diff-scoped vs
+    # push-whole-tree logic below is unchanged.)
+    needs: detect-changes
+    if: needs.detect-changes.outputs.artifacts == 'true' || needs.detect-changes.outputs.everything == 'true'
+    runs-on: ubuntu-latest
+    # hosted-first. ubuntu-latest carries .NET (via setup-dotnet, pinned by global.json) +
+    # git, which is everything the host `verify-artifacts` subcommand needs.
+    # No self-hosted dep.
+    #
+    # The completeness check lives in the host as the `verify-artifacts` subcommand —
+    # the single source of validation logic. The
+    # validator reads the valid omission-reason enum + platform set straight from
+    # schemas/omissions.proto. This job builds the host once (ubuntu only —
+    # the gate is host-OS agnostic) and invokes the produced cs2-schema-tracker exe.
+    # We build the single host PROJECT (not the whole .sln, which also builds +
+    # would tempt running tests) for speed; the host-build job already exercises
+    # full build+test across both OSes.
+    #
+    # PLATFORM MODEL: there are exactly TWO platforms — windows-x86_64 and
+    # linux-x86_64. (client/server is a per-class `module` tag inside
+    # entity_schema, NOT a directory axis — there is no "four tuples" concept.)
+    # Only windows-x86_64 is produced today; linux is deferred.
+    #
+    # a commit to artifacts/ must be one complete (build, platform) set, or
+    # one complete set across both platforms for one build, with any absent
+    # platform accounted for in that build's omissions.json (absent-means-clean:
+    # a build carries omissions.json ONLY when it has a real omission; a missing
+    # file reads as omissions:[]). This gate FAILS CI (exit non-zero, surfaced
+    # from a non-zero host exit) on a partial cross-platform commit. Unlike storage
+    # (soft), is a HARD gate.
+    #
+    # TRANSITIVE COVERAGE: verify-artifacts is now the single backstop for more
+    # than raw all-or-nothing shape — it also enforces the changelog
+    # predecessor rule and the absent-means-clean omissions policy. So this one job
+    # gates + the omissions convention in one invocation.
+    #
+    # STATE: artifacts/ is now populated (364 committed windows-x86_64 builds), so
+    # the push/dispatch leg below is NO LONGER a no-op — it really validates all
+    # 364 builds on every push (`verify-artifacts --artifacts artifacts` currently
+    # returns 0 violations). REMOTE-GATED LEG: the PR diff-scoped path
+    # (--changed-paths from a base..head git diff) can only be exercised once the
+    # GitHub remote exists and a real PR provides base/head:
+    #   - on PRs we have a base/head and run the diff-scoped check;
+    #   - on push/dispatch we validate the whole artifacts/ working tree (364 builds).
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # Need the PR base commit reachable so the diff-scoped check can
+          # resolve <base>..<head>. fetch-depth: 0 is the simplest guarantee.
+          # Also required by: this job builds the host, and nbgv
+          # (Nerdbank.GitVersioning) needs full history to bake the provenance
+          # git SHA via ThisAssembly.GitCommitId — a shallow clone yields a
+          # wrong/empty GitCommitId.
+          fetch-depth: 0
+          # DELIBERATELY NOT SPARSE (unlike every other job in this file): the
+          # push/dispatch leg below validates EVERY committed build's file presence
+          # (ArtifactSetValidator), which genuinely needs the full artifacts/ tree on
+          # disk — entity_schema.json alone is ~4 GB across all builds and is
+          # presence-checked for every one of them. The PR-diff leg only touches the
+          # changed build(s), but the repo-level predecessor-chain check
+          # (ChangelogPredecessor) still walks every historical build's directory, so a
+          # partial checkout would need per-build footprint files + the schema_evolution/
+          # cumulative artifacts at minimum — not worth the added complexity for a job
+          # already gated to run only when artifacts/ changes (rare).
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: Build host (verify-artifacts)
+        # Build only the host project in Release; the produced exe is named
+        # cs2-schema-tracker (AssemblyName in Cs2SchemaTracker.Host.csproj).
+        # Resolve its path once and export for the gate step. host/Directory.Build.props
+        # sets ArtifactsPath=host/artifacts (the modern MSBuild artifacts-output layout:
+        # host/artifacts/bin/<Project>/<configuration-lowercase>/...), NOT the classic
+        # per-project bin/Release/ — searching the classic path always finds nothing here
+        # (a pre-existing bug this job never surfaced before, since it was always
+        # path-gated off until now).
+        run: |
+          set -e
+          dotnet build host/src/Cs2SchemaTracker.Host/Cs2SchemaTracker.Host.csproj \
+            --configuration Release
+          EXE="$(find host/artifacts/bin/Cs2SchemaTracker.Host/release -name cs2-schema-tracker -type f | head -n1)"
+          if [ -z "$EXE" ]; then
+            echo "host build produced no cs2-schema-tracker exe" >&2
+            exit 1
+          fi
+          chmod +x "$EXE"
+          echo "VERIFY_ARTIFACTS_EXE=$EXE" >> "$GITHUB_ENV"
+
+      - name: Validate all-or-nothing shape of any artifacts/ change
+        # Non-zero host exit fails this step (and the job) — is a HARD gate.
+        run: |
+          set -e
+          if [ "${{ github.event_name }}" = "pull_request" ]; then
+            BASE='${{ github.event.pull_request.base.sha }}'
+            HEAD='${{ github.event.pull_request.head.sha }}'
+            echo "PR mode: gating artifacts/ paths changed between $BASE..$HEAD"
+            CHANGED="$(git diff --name-only "$BASE".."$HEAD" -- artifacts/)"
+            echo "changed artifacts/ paths:"
+            echo "$CHANGED"
+            "$VERIFY_ARTIFACTS_EXE" verify-artifacts --changed-paths "$CHANGED" --inventory data/cs2-assets-inventory.json
+          else
+            echo "push/dispatch mode: validating whole artifacts/ working tree"
+            "$VERIFY_ARTIFACTS_EXE" verify-artifacts --artifacts artifacts --inventory data/cs2-assets-inventory.json
+          fi

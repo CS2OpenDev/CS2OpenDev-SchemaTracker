@@ -1,0 +1,3 @@
+# fixtures are byte-pinned to a SHA-256. They must NOT be line-ending
+# normalized or the committed bytes will drift from the pinned hash.
+resource/*.gameevents -text binary

@@ -1,0 +1,59 @@
+# EOL policy. This file is the authority for line endings on checkout, so a clone
+# with the default core.autocrlf=true behaves identically to one with it off.
+#
+# It mirrors .editorconfig, which mandates LF for source/config and CRLF only for
+# PowerShell. That matters because the C# analyzer enforces .editorconfig's LF rule
+# as a BUILD ERROR (IDE0055): without the rules below, a Windows clone checks .cs
+# out as CRLF and `dotnet build` fails before any code runs. All committed blobs
+# are already LF, so these rules change checkout behaviour only, never content.
+#
+# PRECEDENCE: git applies the LAST matching pattern, so the byte-exact carve-outs
+# at the BOTTOM must stay below the general rules to keep winning for the paths
+# they cover.
+
+# --- source + config: force LF regardless of core.autocrlf --------------------------
+*.cs      text eol=lf
+*.csproj  text eol=lf
+*.sln     text eol=lf
+*.props   text eol=lf
+*.targets text eol=lf
+*.cpp     text eol=lf
+*.cc      text eol=lf
+*.cxx     text eol=lf
+*.c       text eol=lf
+*.h       text eol=lf
+*.hpp     text eol=lf
+*.hxx     text eol=lf
+*.json    text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.proto   text eol=lf
+*.md      text eol=lf
+*.py      text eol=lf
+*.cmake   text eol=lf
+CMakeLists.txt text eol=lf
+
+# Shell scripts must stay LF — bash (and the CI gates that run them) break on CRLF.
+*.sh text eol=lf
+
+# PowerShell stays CRLF to match .editorconfig ([*.{ps1,psm1}] end_of_line = crlf).
+*.ps1  text eol=crlf
+*.psm1 text eol=crlf
+
+# --- byte-exact carve-outs (MUST stay last to win precedence) ------------------------
+
+# Committed artifact sets are byte-exact, deterministic tool output. Never apply EOL
+# conversion or text normalization — the working-tree bytes must always equal the
+# committed blob, on every OS, so a consumer can reproduce + diff them against a fresh
+# extract. Covers the text artifacts (JSON, .proto) AND the binary protos.descriptorset.
+artifacts/** -text
+
+# Test fixtures are compared byte/line-wise against tool output (the RTTI live-capture
+# oracle, the VPK .gameevents corpus). Keep them byte-stable across OSes — no EOL
+# conversion — so the working-tree bytes always equal the committed blob and the
+# comparisons don't break under autocrlf.
+host/tests/**/fixtures/** -text
+
+# The committed SDK-sourced wire descriptor set (a serialized FileDescriptorSet compiled
+# from hl2sdk; see scripts/gen-wire-descriptors.sh) is binary — never EOL-normalize it.
+data/wire_descriptors.pb -text

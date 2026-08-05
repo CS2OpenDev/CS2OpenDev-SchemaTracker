@@ -1,0 +1,17 @@
+# C++ formatting for the walker (walker/src, walker/tests).
+#
+# Derived from the existing Google/2-space style so re-formatting is low-churn. third_party/ (the
+# hl2sdk submodule) and src/netmsg_table.generated.inc (generated) are excluded at invocation, never
+# by this file. ColumnLimit: 0 disables line reflow — the walker has intentional wide lines that
+# should not be wrapped. The layout-sensitive headers' hand-aligned offset tables keep their
+# byte-offset DOCUMENTATION under formatting: AlignTrailingComments keeps every trailing `// (V0: N)`
+# comment column-aligned; only cosmetic type-column padding changes. So no `// clang-format off`
+# guards are needed — the files are formatted like the rest. SortIncludes is off (order is deliberate).
+---
+Language: Cpp
+BasedOnStyle: Google
+IndentWidth: 2
+ColumnLimit: 0
+DerivePointerAlignment: false
+PointerAlignment: Left
+SortIncludes: false

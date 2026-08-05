@@ -1,0 +1,387 @@
+# CS2-Schema-Tracker native-bundle release (v1.0.1+)
+#
+# WHAT THIS IS: the heavy release pipeline. It builds ONE SELF-CONTAINED bundle per platform —
+# each carries its OWN .NET runtime (the target needs NO dotnet install) plus
+# natives/<platform>/{era}[.exe] with ALL 11 compile-pin era walkers (+ ONE deduped protobuf
+# runtime + the inventory + a bundle appsettings.json). Two assets are published:
+#   cs2-schema-tracker-<version>-win-x64.zip      (windows-x86_64)
+#   cs2-schema-tracker-<version>-linux-x64.tar.gz (linux-x86_64, exec bits preserved)
+#
+# Each bundle is assembled ON ITS OWN OS inside the per-platform build matrix (a Windows zip
+# cannot carry unix exec bits, so the linux bundle is tarred on the linux leg). A final
+# publish-release job gathers both artifacts and creates the GitHub Release.
+#
+# Everything runs on GitHub-hosted runners (windows-latest + ubuntu-latest); there is no
+# self-hosted dependency. This workflow IS the heavy build (11 era walkers x 2 platforms, each
+# cmake-configured + built + ctest + signature gate) — that cost is expected here; the natives
+# cache + the vcpkg archive cache keep the COMMON case (a host-only change) fast: a host-only
+# push gets a natives cache HIT and skips the entire ~11-walker build on both platforms.
+#
+# It does NOT reimplement the build — it CALLS the validated era-walker builders, then produces
+# each self-contained bundle with the MSBuild Bundle publish profile:
+#   scripts/build-era-walkers.ps1                                  -> natives/windows-x86_64/{era}.exe + DLLs
+#   scripts/build-era-walkers.sh                                   -> natives/linux-x86_64/{era}    + .so
+#   dotnet publish -p:PublishProfile=Bundle -p:RuntimeIdentifier=  -> dist/cs2-schema-tracker-<version>-<rid>.{zip,tar.gz}
+
+name: release
+
+on:
+  # Rebuild + republish whenever a BUILD INPUT of the bundle changes on main. The
+  # path filter is deliberately the set of things that can alter the shipped bytes:
+  # walker/schema source, the host, the inventory (carries the per-era hl2sdk pins +
+  # layout signatures), the version, and the build/assemble scripts + this workflow.
+  push:
+    branches: [main]
+    paths:
+      - 'walker/**'
+      - 'schemas/**'
+      - 'host/**'
+      - 'data/cs2-assets-inventory.json'
+      - 'version.json'
+      - 'scripts/build-era-walkers.ps1'
+      - 'scripts/build-era-walkers.sh'
+      - '.github/workflows/release.yml'
+  workflow_dispatch: {}
+
+# Least privilege at the top; the release job re-grants contents: write for itself.
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  build-walkers:
+    name: build era walkers (${{ matrix.platform }})
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-latest
+            platform: windows-x86_64
+            rid: win-x64
+          - os: ubuntu-latest
+            platform: linux-x86_64
+            rid: linux-x64
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # fetch-depth: 0 — nbgv (Nerdbank.GitVersioning) bakes the provenance git
+          # SHA into the walker/host build via ThisAssembly.GitCommitId and needs the
+          # FULL history to resolve it; a shallow clone stamps a wrong/empty SHA. The
+          # build-era-walkers scripts also read the canonical submodule gitlink via
+          # `git ls-tree HEAD` and check out each era's hl2sdk pin, which needs history.
+          fetch-depth: 0
+          # HL2SDK at walker/third_party/hl2sdk is the walker's only CS2-domain build
+          # input; the scripts check out each era's pin inside it. Always-on in CI.
+          submodules: recursive
+
+      - name: Sparse-checkout — drop artifacts/ from the working tree
+        # Building the 11 era walkers + the self-contained bundle never reads the
+        # committed artifacts/ tree (~13 GB, 43k+ files as of 2026-07) — the bundle
+        # ships natives/ + host + data/cs2-assets-inventory.json only. Applied as a
+        # SEPARATE step (not actions/checkout's `sparse-checkout` input): that input
+        # ALSO forces a `--filter=blob:none` partial fetch, which breaks
+        # Nerdbank.GitVersioning (it reads raw blob objects across all of history with no
+        # lazy-fetch fallback — see ci.yml's detect-changes job for the full writeup).
+        # This step only trims the working tree of the already-fully-fetched checkout
+        # above, and is independent of the hl2sdk SUBMODULE checkout (a separate git repo).
+        shell: bash
+        run: git sparse-checkout set --no-cone '/*' '!/artifacts/'
+
+      # THE "ALL 11 ERAS, CACHED" DECISION.
+      # The era walkers only change when walker/schema/CMake SOURCE or the inventory's
+      # hl2sdk pins change — the inventory hash covers pin changes because eras[].hl2sdkSha
+      # (+ layout signatures) live in data/cs2-assets-inventory.json. So we cache the whole
+      # per-platform natives dir keyed on exactly those inputs. On a HIT (e.g. a host-only
+      # release) we restore the 11 prebuilt walkers + runtime and SKIP every toolchain-setup
+      # and build step below. This step runs BEFORE any toolchain work so a hit costs nothing.
+      - name: Cache natives (11 era walkers + runtime)
+        id: cache-natives
+        uses: actions/cache@v5
+        with:
+          path: natives/${{ matrix.platform }}
+          key: natives-${{ matrix.os }}-${{ hashFiles('walker/**', 'schemas/**', 'scripts/build-era-walkers.*', 'data/cs2-assets-inventory.json') }}
+
+      # ---------------------------------------------------------------------------
+      # .NET SDK + host build (ONLY on a natives cache MISS). build-era-walkers.* call the host
+      # `plan` command for compile-pin era selection — Cli/PlanCommand is the single source of
+      # truth for the era list, so the scripts no longer hand-parse the inventory. A cache HIT
+      # skips the whole walker build below, so this .NET work stays OFF the common fast path.
+      # CS2_HOST_DLL points the scripts at the prebuilt dll so they do not build the host themselves.
+      # ---------------------------------------------------------------------------
+      # Always: the walker build's `plan` target selection needs it on a cache MISS, and the
+      # self-contained bundle publish (below) needs it on EVERY run (incl. a natives cache hit).
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: Build host (for `plan`)
+        if: steps.cache-natives.outputs.cache-hit != 'true'
+        shell: bash
+        run: |
+          # framework-dependent so the dll runs via `dotnet <dll>` on the runner (the csproj defaults
+          # to a self-contained single-file bundle, which is not what we want for the internal plan tool).
+          dotnet build host/src/Cs2SchemaTracker.Host -c Release -p:SelfContained=false -p:PublishSingleFile=false -p:UseAppHost=false -v q --nologo
+          echo "CS2_HOST_DLL=$GITHUB_WORKSPACE/host/artifacts/bin/Cs2SchemaTracker.Host/release/cs2-schema-tracker.dll" >> "$GITHUB_ENV"
+
+      # ---------------------------------------------------------------------------
+      # Windows toolchain + build (ONLY on a natives cache MISS)
+      # ---------------------------------------------------------------------------
+      - name: Resolve vcpkg version (cache key) [Windows]
+        if: runner.os == 'Windows' && steps.cache-natives.outputs.cache-hit != 'true'
+        shell: bash
+        run: echo "VCPKG_VERSION=$("$VCPKG_INSTALLATION_ROOT/vcpkg.exe" version | head -1 | tr -cd 'A-Za-z0-9._-')" >> "$GITHUB_ENV"
+
+      - name: Cache vcpkg binary archives [Windows]
+        if: runner.os == 'Windows' && steps.cache-natives.outputs.cache-hit != 'true'
+        # Same proven pattern + key as ci.yml's walker job, so the x64-windows protobuf
+        # archive built there is reused here (and vice versa). On a hit the vcpkg install
+        # below unpacks the prebuilt archive instead of recompiling protobuf.
+        uses: actions/cache@v5
+        with:
+          path: ${{ github.workspace }}/vcpkg-archives
+          key: vcpkg-archives-x64-windows-protobuf-${{ env.VCPKG_VERSION }}
+          restore-keys: |
+            vcpkg-archives-x64-windows-protobuf-
+
+      - name: Install protobuf (vcpkg) [Windows]
+        if: runner.os == 'Windows' && steps.cache-natives.outputs.cache-hit != 'true'
+        # Mirrors ci.yml: use the runner's bundled vcpkg to install a MATCHED protoc +
+        # libprotobuf pair, then export VCPKG_ROOT so build-era-walkers.ps1 derives the
+        # toolchain from it (the script self-detects the VS generator via vswhere, so we
+        # pass NO -Generator, and defaults the triplet to x64-windows). VCPKG_DEFAULT_BINARY_CACHE
+        # points at the cached archive dir so repeat runs unpack the prebuilt protobuf.
+        shell: pwsh
+        env:
+          VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archives
+        run: |
+          if (-not (Test-Path "$env:VCPKG_INSTALLATION_ROOT")) {
+            Write-Error "vcpkg not found on runner; image changed unexpectedly."
+            exit 1
+          }
+          New-Item -ItemType Directory -Force -Path $env:VCPKG_DEFAULT_BINARY_CACHE | Out-Null
+          & "$env:VCPKG_INSTALLATION_ROOT\vcpkg.exe" install protobuf:x64-windows --triplet x64-windows
+          "VCPKG_ROOT=$env:VCPKG_INSTALLATION_ROOT" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Build 11 era walkers [Windows]
+        if: runner.os == 'Windows' && steps.cache-natives.outputs.cache-hit != 'true'
+        # Reads $env:VCPKG_ROOT, self-detects the VS generator (vswhere), builds all 11
+        # compile-pin era walkers into natives/windows-x86_64/ (each: checkout pin, regen
+        # netmsg table, cmake build, ctest, --print-signature gate, install era exe + deduped
+        # runtime DLLs). Restores the submodule to the canonical pin at the end (finally block).
+        shell: pwsh
+        run: pwsh scripts/build-era-walkers.ps1
+
+      # ---------------------------------------------------------------------------
+      # Linux toolchain + build (ONLY on a natives cache MISS)
+      # ---------------------------------------------------------------------------
+      - name: Install build prerequisites [Linux]
+        if: runner.os == 'Linux' && steps.cache-natives.outputs.cache-hit != 'true'
+        # g++/cmake/make/python3/pkg-config compile the walker + regen the netmsg table;
+        # curl/zip/unzip/tar are required by vcpkg's bootstrap + package extraction. Most are
+        # already on the ubuntu image; install is idempotent + cheap.
+        #
+        # NB (render convars): NO Vulkan/GPU package is needed. Measured: librendersystemvulkan.so
+        # has zero hard Vulkan dependencies (it dlopens Vulkan lazily) and its r_*/r_vulkan_*
+        # convars register in the module's Init->ConVar_Register, INDEPENDENT of whether a Vulkan
+        # device is ever created — a run with no Vulkan driver present produces byte-identical
+        # output to one with lavapipe. So neither this build job nor a linux extract needs a
+        # software rasterizer. (See scheduled-extract.yml for the corrected render-device note.)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y g++ cmake make python3 curl zip unzip tar pkg-config
+
+      - name: Resolve vcpkg version (cache key) [Linux]
+        if: runner.os == 'Linux' && steps.cache-natives.outputs.cache-hit != 'true'
+        shell: bash
+        run: echo "VCPKG_VERSION=$("$VCPKG_INSTALLATION_ROOT/vcpkg" version | head -1 | tr -cd 'A-Za-z0-9._-')" >> "$GITHUB_ENV"
+
+      - name: Cache vcpkg binary archives [Linux]
+        if: runner.os == 'Linux' && steps.cache-natives.outputs.cache-hit != 'true'
+        # Mirror of the Windows vcpkg-archive cache, keyed on the vcpkg version + the
+        # x64-linux-dynamic triplet. NOTE: the FIRST x64-linux-dynamic protobuf build is heavy
+        # (~20-40 min); this archive cache makes every rerun (that still misses the natives
+        # cache) unpack the prebuilt archive instead of recompiling protobuf from source.
+        uses: actions/cache@v5
+        with:
+          path: ${{ github.workspace }}/vcpkg-archives
+          key: vcpkg-archives-x64-linux-dynamic-protobuf-${{ env.VCPKG_VERSION }}
+          restore-keys: |
+            vcpkg-archives-x64-linux-dynamic-protobuf-
+
+      - name: Install protobuf (vcpkg, x64-linux-dynamic) [Linux]
+        if: runner.os == 'Linux' && steps.cache-natives.outputs.cache-hit != 'true'
+        # build-era-walkers.sh REQUIRES vcpkg's DYNAMIC protobuf (triplet x64-linux-dynamic)
+        # so a self-contained libprotobuf.so is bundled next to each era exe and loaded via
+        # $ORIGIN — the portable bundle. Without VCPKG_ROOT the script falls back to apt
+        # protobuf and warns the bundle is NOT portable, which is unacceptable for a release.
+        # We use the runner's bundled vcpkg at $VCPKG_INSTALLATION_ROOT; if a future image's
+        # vcpkg can't install the x64-linux-dynamic triplet, clone + bootstrap ~/vcpkg instead.
+        # VCPKG_DEFAULT_BINARY_CACHE points at the cached archive dir.
+        shell: bash
+        env:
+          VCPKG_DEFAULT_BINARY_CACHE: ${{ github.workspace }}/vcpkg-archives
+        run: |
+          set -e
+          if [ ! -x "$VCPKG_INSTALLATION_ROOT/vcpkg" ]; then
+            echo "vcpkg not found on runner; image changed unexpectedly." >&2
+            exit 1
+          fi
+          mkdir -p "$VCPKG_DEFAULT_BINARY_CACHE"
+          "$VCPKG_INSTALLATION_ROOT/vcpkg" install protobuf:x64-linux-dynamic --triplet x64-linux-dynamic
+          echo "VCPKG_ROOT=$VCPKG_INSTALLATION_ROOT" >> "$GITHUB_ENV"
+
+      - name: Build 11 era walkers [Linux]
+        if: runner.os == 'Linux' && steps.cache-natives.outputs.cache-hit != 'true'
+        # Reads $VCPKG_ROOT + triplet x64-linux-dynamic, builds all 11 compile-pin era walkers
+        # into natives/linux-x86_64/ (each: checkout pin, GCC-compat shims, regen netmsg table,
+        # cmake build, ctest, --print-signature gate + $ORIGIN portability self-check, install
+        # era exe + deduped .so runtime). WBUILD_ERA_ROOT points the per-era build scratch at
+        # a runner-temp dir (native fs, off the workspace). Submodule restored at the end (trap).
+        shell: bash
+        env:
+          WBUILD_ERA_ROOT: ${{ runner.temp }}/wbuild-era
+        run: bash scripts/build-era-walkers.sh
+
+      # ---------------------------------------------------------------------------
+      # Assemble THIS platform's self-contained bundle ON ITS OWN OS (so the linux tar keeps its
+      # exec bits). natives/<platform>/ is present here (freshly built OR cache-restored). The
+      # Bundle profile + bundle.targets verify-natives-gate the platform, stage its natives +
+      # inventory + appsettings next to the self-contained apphost, and package it
+      # (zip on windows, tar.gz on linux). Runs on BOTH a cache hit and a miss.
+      # ---------------------------------------------------------------------------
+      - name: Assemble self-contained bundle (${{ matrix.rid }})
+        shell: bash
+        # No explicit version: the Nerdbank.GitVersioning PackageReference sets MSBuild $(Version) to
+        # the SemVer2 string during the build (needs the full history — fetch-depth: 0 above), and
+        # bundle.targets names the bundle from it. Deterministic from git, so this matches the tag the
+        # publish-release job computes. (nbgv here is the build-time MSBuild task, NOT the global tool.)
+        run: dotnet publish host/src/Cs2SchemaTracker.Host -p:PublishProfile=Bundle -p:RuntimeIdentifier=${{ matrix.rid }}
+
+      # Auto-validate the bundle AT CREATION (no CS2 binary cache needed): extract the just-built
+      # archive and run the SELF-CONTAINED apphost from the extracted tree. Proves (a) the archive
+      # is intact, (b) the apphost runs with NO .NET install, (c) the natives survived packaging
+      # (host verify-natives), (d) [Linux] tar preserved the apphost's exec bit. A bad bundle fails
+      # this leg BEFORE its artifact is uploaded. (The deep byte-reproduce-vs-committed check lives
+      # in the artifacts-validation gate + determinism-sweep, which need the binary cache.)
+      - name: Smoke-test bundle [Windows]
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $zip = Get-ChildItem dist -Filter 'cs2-schema-tracker-*-win-x64.zip' | Select-Object -First 1
+          if (-not $zip) { Write-Error "no win-x64 bundle in dist/"; exit 1 }
+          $smoke = Join-Path $env:RUNNER_TEMP 'bundle-smoke'
+          if (Test-Path $smoke) { Remove-Item -Recurse -Force $smoke }
+          Expand-Archive $zip.FullName -DestinationPath $smoke
+          # Run from INSIDE the extracted bundle with NO --inventory: proves the shipped
+          # data/cs2-assets-inventory.json resolves on its own (the standalone / no-repo case).
+          Push-Location $smoke
+          try {
+            & .\cs2-schema-tracker.exe verify-natives --natives natives --platform windows-x86_64
+            if ($LASTEXITCODE -ne 0) { Write-Error "bundle smoke: verify-natives failed"; exit 1 }
+            & .\cs2-schema-tracker.exe plan --targets compile-pins --platform windows-x86_64 --format tsv | Select-Object -First 1 | Out-Host
+            if ($LASTEXITCODE -ne 0) { Write-Error "bundle smoke: apphost failed to run / inventory not found"; exit 1 }
+          } finally { Pop-Location }
+          Write-Host "bundle smoke OK ($($zip.Name)): self-contained apphost runs, natives complete, inventory resolves standalone."
+
+      - name: Smoke-test bundle [Linux]
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          set -e
+          tgz="$(ls dist/cs2-schema-tracker-*-linux-x64.tar.gz | head -1)"
+          [ -n "$tgz" ] || { echo "no linux-x64 bundle in dist/" >&2; exit 1; }
+          smoke="$RUNNER_TEMP/bundle-smoke"; rm -rf "$smoke"; mkdir -p "$smoke"
+          tar xzf "$tgz" -C "$smoke"
+          # the whole reason we tar instead of zip: the apphost + walkers must extract EXECUTABLE.
+          test -x "$smoke/cs2-schema-tracker" || { echo "bundle smoke: apphost is not executable (tar dropped the exec bit)" >&2; exit 1; }
+          # Run from INSIDE the extracted bundle with NO --inventory: proves the shipped
+          # data/cs2-assets-inventory.json resolves on its own (the standalone / no-repo case).
+          cd "$smoke"
+          ./cs2-schema-tracker verify-natives --natives natives --platform linux-x86_64
+          ./cs2-schema-tracker plan --targets compile-pins --platform linux-x86_64 --format tsv | head -1
+          echo "bundle smoke OK ($(basename "$tgz")): self-contained apphost runs, exec bit preserved, natives complete, inventory resolves standalone."
+
+      - name: Upload bundle artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bundle-${{ matrix.platform }}
+          path: dist/cs2-schema-tracker-*
+          if-no-files-found: error
+          retention-days: 7
+
+  publish-release:
+    name: publish GitHub Release
+    needs: build-walkers
+    # Just gathers both matrix legs' bundle artifacts and cuts the Release — no build, either OS works.
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write   # create the GitHub Release + upload the assets
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # nbgv needs full history to compute the release version/tag.
+          fetch-depth: 0
+
+      - name: Sparse-checkout — drop artifacts/ from the working tree
+        # This job only runs nbgv + downloads/republishes the bundle artifacts already
+        # built by build-walkers — it never touches artifacts/. Applied as a SEPARATE
+        # step (not actions/checkout's `sparse-checkout` input): that input ALSO forces a
+        # `--filter=blob:none` partial fetch, which breaks nbgv itself (the very next
+        # step below runs it) — see ci.yml's detect-changes job for the full writeup.
+        # This step only trims the working tree of the already-fully-fetched checkout.
+        shell: bash
+        run: git sparse-checkout set --no-cone '/*' '!/artifacts/'
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: Compute release version (nbgv)
+        id: version
+        shell: bash
+        # version.json base is 1.0.0; on main (publicReleaseRefSpec ^refs/heads/main$) SemVer2 is
+        # the clean public version. Off main it carries a -<githeight/hash> prerelease suffix — we
+        # mark the Release prerelease in that case. Matches the per-leg version exactly (same nbgv).
+        run: |
+          set -e
+          dotnet tool install --global nbgv
+          export PATH="$HOME/.dotnet/tools:$PATH"
+          V="$(nbgv get-version -v SemVer2)"
+          [ -n "$V" ] || { echo "nbgv produced no version" >&2; exit 1; }
+          case "$V" in *-*) PRE=true;; *) PRE=false;; esac
+          echo "release version: $V (tag v$V, prerelease=$PRE)"
+          echo "version=$V"     >> "$GITHUB_OUTPUT"
+          echo "tag=v$V"        >> "$GITHUB_OUTPUT"
+          echo "prerelease=$PRE" >> "$GITHUB_OUTPUT"
+
+      # Both matrix legs uploaded a bundle-<platform> artifact carrying one archive each; merge
+      # them into dist/ so the release step sees both the .zip and the .tar.gz.
+      - name: Download bundle artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: bundle-*
+          path: dist
+          merge-multiple: true
+
+      - name: Publish GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: ${{ steps.version.outputs.tag }}
+          prerelease: ${{ steps.version.outputs.prerelease }}
+          files: dist/cs2-schema-tracker-*
+          fail_on_unmatched_files: true
+          body: |
+            Self-contained per-platform bundles — each carries its OWN .NET runtime (NO dotnet
+            install needed on the target) plus all 11 compile-pin era walkers for that platform
+            (one deduped protobuf runtime) + the inventory.
+              - win-x64:   cs2-schema-tracker-<version>-win-x64.zip      — run `cs2-schema-tracker.exe --help`
+              - linux-x64: cs2-schema-tracker-<version>-linux-x64.tar.gz — extract, then `./cs2-schema-tracker --help`

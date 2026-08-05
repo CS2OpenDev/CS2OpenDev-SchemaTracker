@@ -1,0 +1,108 @@
+// Game-mode / game-type extraction from CS2 gamemodes.txt
+// (plain-text KV1 inside the content-depot pak01_dir.vpk).
+//
+// Structured messages — NOT a generic KV1 mirror. Only the tables consumers actually
+// join (game types, the game modes nested under them, and the map groups they
+// reference) are surfaced; the rest of gamemodes.txt (exec/cfg references, tool-only
+// blocks) is intentionally out of scope for v1.
+//
+// === gamemodes.txt KV1 shape (the subset we mirror) ===
+// A single top-level wrapper block (conventionally "GameModes++" / "GameModes_Server.txt";
+// we locate it STRUCTURALLY — the first/only top-level block — matching the
+// ItemDefinitionsEmitter / GameEventsEmitter precedent). Its children include:
+//
+//   "GameModes++"
+//   {
+//     "gameTypes"
+//     {
+//       "classic"  { "index" "0"  "gameModes" { "casual" { ... } "competitive" { ... } } }
+//       "gungame"  { "index" "1"  "gameModes" { ... } }
+//       ...
+//     }
+//     "mapgroups"
+//     {
+//       "mg_active" { "displayname" "Active" "maps" { "de_ancient" "" "de_anubis" "" ... } }
+//       ...
+//     }
+//     ...
+//   }
+//
+// Each gameMode block carries scalar metadata (nameID, displayName, descID, maxplayers,
+// exhibitGameType), an integer game_type/game_mode/typeflags surface, a `mapgroupsMP`
+// child whose KEYS are the referenced map-group names, and a `convars` child of
+// name→value scalar overrides.
+//
+// === v1 mapping decisions (mirror item_definitions philosophy) ===
+//   - Structured messages, NOT a generic KV1 mirror. Only the join tables are surfaced.
+//   - RAW values: convar overrides and mapgroup references are carried VERBATIM; no cfg
+//     `exec` resolution, no convar-typing, no inheritance resolution.
+//   - Absent scalar keys ⇒ proto3-default "" / 0 (no sentinel strings; matches gameevents
+//     and item_definitions).
+//   - Only `game_types` is REQUIRED; `map_groups` is optional (absent ⇒ empty repeated).
+//
+// Determinism (host concern, noted here for the contract): every repeated collection is
+// emitted host-side in a deterministic order — game_types / map_groups and the game_modes
+// within a type by id (Ordinal string compare on the verbatim key), convar overrides by
+// name (Ordinal), mapgroup-reference lists in source order de-duplicated then Ordinal-sorted.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message GameModes {
+  string schema_version = 1;       // schemas/ family version
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  // Only `game_types` is required; `map_groups` may be an empty repeated field when the
+  // source carries no top-level mapgroups block.
+  repeated GameType  game_types = 100;
+  repeated MapGroup  map_groups = 101;
+}
+
+message GameType {
+  string id   = 1;                 // gametype key, verbatim (e.g. "classic", "gungame")
+  int32  index = 2;                // numeric "index" when present, else 0
+
+  // The game modes nested under this type's "gameModes" block.
+  repeated GameMode game_modes = 3;
+}
+
+message GameMode {
+  string id            = 1;        // gamemode key, verbatim (e.g. "competitive", "casual")
+  string name_id       = 2;        // "nameID" token
+  string display_name  = 3;        // "displayName" token
+  string description_id = 4;       // "descID" token
+  uint32 max_players   = 5;        // "maxplayers" (0 when absent / non-integer-rejected at parse)
+  string exhibit_game_type = 6;    // "exhibitGameType", verbatim
+
+  // gamemode→gametype/typeflags integer surface. Present only when the source
+  // carries the corresponding integer key; absent ⇒ 0.
+  int32 game_type  = 7;            // "game_type"
+  int32 game_mode  = 8;            // "game_mode"
+  int32 type_flags = 9;            // "typeflags"
+
+  // The referenced map-group names from the "mapgroupsMP" child (its KEYS), de-duplicated
+  // and Ordinal-sorted. Consumers join these against `GameModes.map_groups` by id.
+  repeated string map_groups_mp = 10;
+
+  // Per-mode convar overrides from the "convars" child, name→value VERBATIM (no typing,
+  // no resolution). Emitted as a sorted-by-name list (NOT a proto map) so the JSON order
+  // is deterministic.
+  repeated ConVarOverride convars = 11;
+}
+
+message ConVarOverride {
+  string name  = 1;
+  string value = 2;                // verbatim scalar; "" when the source value is empty
+}
+
+message MapGroup {
+  string id           = 1;         // mapgroup key, verbatim (e.g. "mg_active")
+  string display_name = 2;         // "displayname" token
+  // The map names listed under the "maps" child (its KEYS), de-duplicated and
+  // Ordinal-sorted (the source values are conventionally empty strings).
+  repeated string maps = 3;
+}

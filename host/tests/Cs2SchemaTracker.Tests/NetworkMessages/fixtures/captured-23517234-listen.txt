@@ -1,0 +1,194 @@
+0	CNETMsg_NOP [0]	System
+3	CNETMsg_SplitScreenUser [3]	System
+4	CNETMsg_Tick [4]	Game Engine
+5	CNETMsg_StringCmd [5]	String Command
+6	CNETMsg_SetConVar [6]	String Command
+7	CNETMsg_SignonState [7]	Signon
+8	CNETMsg_SpawnGroup_Load [8]	Spawn Groups
+9	CNETMsg_SpawnGroup_ManifestUpdate [9]	Spawn Groups
+11	CNETMsg_SpawnGroup_SetCreationTick [11]	Spawn Groups
+12	CNETMsg_SpawnGroup_Unload [12]	Spawn Groups
+13	CNETMsg_SpawnGroup_LoadCompleted [13]	Spawn Groups
+15	CNETMsg_DebugOverlay [15]	Game Engine
+16	CBidirMsg_RebroadcastGameEvent [16]	Events
+17	CBidirMsg_RebroadcastSource [17]	Events
+19	CBidirMsg_PredictionEvent [19]	Generic
+20	CCLCMsg_ClientInfo [20]	Signon
+21	CCLCMsg_Move [21]	Move
+22	CCLCMsg_VoiceData [22]	Voice
+23	CCLCMsg_BaselineAck [23]	Game Engine
+25	CCLCMsg_RespondCvarValue [25]	Generic
+27	CCLCMsg_LoadingProgress [27]	Signon
+28	CCLCMsg_SplitPlayerConnect [28]	Signon
+30	CCLCMsg_SplitPlayerDisconnect [30]	Signon
+31	CCLCMsg_ServerStatus [31]	Generic
+33	CCLCMsg_RequestPause [33]	Generic
+34	CCLCMsg_CmdKeyValues [34]	String Command
+35	CCLCMsg_RconServerDetails [35]	Generic
+36	CCLCMsg_HltvReplay [36]	Hltv Replay
+37	CCLCMsg_Diagnostic [37]	Generic
+40	CSVCMsg_ServerInfo [40]	Signon
+41	CSVCMsg_FlattenedSerializer [41]	Signon
+42	CSVCMsg_ClassInfo [42]	Signon
+43	CSVCMsg_SetPause [43]	Generic
+44	CSVCMsg_CreateStringTable [44]	Signon
+45	CSVCMsg_UpdateStringTable [45]	String Table
+46	CSVCMsg_VoiceInit [46]	Signon
+47	CSVCMsg_VoiceData [47]	Voice
+48	CSVCMsg_Print [48]	Generic
+49	CSVCMsg_Sounds [49]	Sounds
+50	CSVCMsg_SetView [50]	Generic
+51	CSVCMsg_ClearAllStringTables [51]	Signon
+52	CSVCMsg_CmdKeyValues [52]	String Command
+54	CSVCMsg_SplitScreen [54]	Signon
+55	CSVCMsg_PacketEntities [55]	Unknown
+56	CSVCMsg_Prefetch [56]	Sounds
+57	CSVCMsg_Menu [57]	Generic
+58	CSVCMsg_GetCvarValue [58]	Generic
+59	CSVCMsg_StopSound [59]	Sounds
+60	CSVCMsg_PeerList [60]	Generic
+61	CSVCMsg_PacketReliable [61]	Generic
+62	CSVCMsg_HLTVStatus [62]	Generic
+63	CSVCMsg_ServerSteamID [63]	Generic
+70	CSVCMsg_FullFrameSplit [70]	Generic
+71	CSVCMsg_RconServerDetails [71]	Generic
+72	CSVCMsg_UserMessage [72]	User Messages
+74	CSVCMsg_HltvReplay [74]	Hltv Replay
+75	CCLCMsg_HltvFixupOperatorTick [75]	Hltv Replay
+76	CSVCMsg_UserCommands [76]	Hltv Replay
+77	CSVCMsg_NextMsgPredicted [77]	Hltv Replay
+101	CUserMessageAchievementEvent [101]	User Messages
+102	CUserMessageCloseCaption [102]	User Messages
+103	CUserMessageCloseCaptionDirect [103]	User Messages
+104	CUserMessageCurrentTimescale [104]	User Messages
+105	CUserMessageDesiredTimescale [105]	User Messages
+106	CUserMessageFade [106]	User Messages
+110	CUserMessageHudMsg [110]	User Messages
+111	CUserMessageHudText [111]	User Messages
+113	CUserMessageColoredText [113]	User Messages
+114	CUserMessageRequestState [114]	User Messages
+115	CUserMessageResetHUD [115]	User Messages
+116	CUserMessageRumble [116]	User Messages
+117	CUserMessageSayText [117]	User Messages
+118	CUserMessageSayText2 [118]	User Messages
+119	CUserMessageSayTextChannel [119]	User Messages
+120	CUserMessageShake [120]	User Messages
+121	CUserMessageShakeDir [121]	User Messages
+122	CUserMessageWaterShake [122]	User Messages
+124	CUserMessageTextMsg [124]	User Messages
+125	CUserMessageScreenTilt [125]	User Messages
+128	CUserMessageVoiceMask [128]	User Messages
+130	CUserMessageSendAudio [130]	User Messages
+131	CUserMessageItemPickup [131]	User Messages
+132	CUserMessageAmmoDenied [132]	User Messages
+134	CUserMessageShowMenu [134]	User Messages
+135	CUserMessageCreditsMsg [135]	User Messages
+137	CEntityMessageScreenOverlay [137]	User Messages
+138	CEntityMessageRemoveAllDecals [138]	User Messages
+139	CEntityMessagePropagateForce [139]	User Messages
+140	CEntityMessageDoSpark [140]	User Messages
+142	CUserMessageCloseCaptionPlaceholder [142]	User Messages
+143	CUserMessageCameraTransition [143]	User Messages
+144	CUserMessageAudioParameter [144]	User Messages
+145	CUserMsg_ParticleManager [145]	User Messages
+146	CUserMsg_HudError [146]	User Messages
+148	CUserMsg_CustomGameEvent [148]	User Messages
+150	CUserMessageHapticsManagerPulse [150]	User Messages
+151	CUserMessageHapticsManagerEffect [151]	User Messages
+153	CUserMessageUpdateCssClasses [153]	User Messages
+154	CUserMessageServerFrameTime [154]	User Messages
+155	CUserMessageLagCompensationError [155]	User Messages
+156	CUserMessageRequestDllStatus [156]	User Messages
+157	CUserMessageRequestUtilAction [157]	User Messages
+160	CUserMessageRequestInventory [160]	User Messages
+162	CUserMessageRequestDiagnostic [162]	User Messages
+165	CUserMessage_NotifyResponseFound [165]	User Messages
+166	CUserMessage_PlayResponseConditional [166]	User Messages
+201	CMsgPlaceDecalEvent [201]	Decals
+202	CMsgClearWorldDecalsEvent [202]	Decals
+203	CMsgClearEntityDecalsEvent [203]	Decals
+204	CMsgClearDecalsForEntityEvent [204]	Decals
+205	CMsgSource1LegacyGameEventList [205]	Signon
+206	CMsgSource1LegacyListenEvents [206]	Signon
+207	CMsgSource1LegacyGameEvent [207]	Events
+208	CMsgSosStartSoundEvent [208]	Sounds
+209	CMsgSosStopSoundEvent [209]	Sounds
+210	CMsgSosSetSoundEventParams [210]	Sounds
+211	CMsgSosSetLibraryStackFields [211]	Sounds
+212	CMsgSosStopSoundEventHash [212]	Sounds
+256	CP2P_TextMessage [256]	Generic
+257	CP2P_Voice [257]	Voice
+258	CP2P_Ping [258]	Generic
+280	CClientMsg_CustomGameEvent [280]	Client Messages
+281	CClientMsg_CustomGameEventBounce [281]	Client Messages
+282	CClientMsg_ClientUIEvent [282]	Client Messages
+286	CClientMsg_ListenForResponseFound [286]	Client Messages
+301	CCSUsrMsg_VGUIMenu [301]	User Messages
+317	CCSUsrMsg_SendAudio [317]	User Messages
+318	CCSUsrMsg_RawAudio [318]	User Messages
+321	CCSUsrMsg_Damage [321]	User Messages
+322	CCSUsrMsg_RadioText [322]	User Messages
+323	CCSUsrMsg_HintText [323]	User Messages
+324	CCSUsrMsg_KeyHintText [324]	User Messages
+325	CCSUsrMsg_ProcessSpottedEntityUpdate [325]	User Messages
+327	CCSUsrMsg_AdjustMoney [327]	User Messages
+330	CCSUsrMsg_KillCam [330]	User Messages
+334	CCSUsrMsg_MatchEndConditions [334]	User Messages
+335	CCSUsrMsg_DisconnectToLobby [335]	User Messages
+336	CCSUsrMsg_PlayerStatsUpdate [336]	User Messages
+345	CCSUsrMsg_CallVoteFailed [345]	User Messages
+346	CCSUsrMsg_VoteStart [346]	User Messages
+347	CCSUsrMsg_VotePass [347]	User Messages
+348	CCSUsrMsg_VoteFailed [348]	User Messages
+349	CCSUsrMsg_VoteSetup [349]	User Messages
+350	CCSUsrMsg_ServerRankRevealAll [350]	User Messages
+351	CCSUsrMsg_SendLastKillerDamageToClient [351]	User Messages
+352	CCSUsrMsg_ServerRankUpdate [352]	User Messages
+361	CCSUsrMsg_SendPlayerItemDrops [361]	User Messages
+362	CCSUsrMsg_RoundBackupFilenames [362]	User Messages
+363	CCSUsrMsg_SendPlayerItemFound [363]	User Messages
+364	CCSUsrMsg_ReportHit [364]	User Messages
+365	CCSUsrMsg_XpUpdate [365]	User Messages
+366	CCSUsrMsg_QuestProgress [366]	User Messages
+367	CCSUsrMsg_ScoreLeaderboardData [367]	User Messages
+368	CCSUsrMsg_PlayerDecalDigitalSignature [368]	User Messages
+369	CCSUsrMsg_WeaponSound [369]	User Messages
+370	CCSUsrMsg_UpdateScreenHealthBar [370]	User Messages
+371	CCSUsrMsg_EntityOutlineHighlight [371]	User Messages
+372	CCSUsrMsg_SSUI [372]	User Messages
+373	CCSUsrMsg_SurvivalStats [373]	User Messages
+374	CCSUsrMsg_DisconnectToLobby [374]	User Messages
+375	CCSUsrMsg_EndOfMatchAllPlayersData [375]	User Messages
+376	CCSUsrMsg_PostRoundDamageReport [376]	User Messages
+379	CCSUsrMsg_RoundEndReportData [379]	User Messages
+380	CCSUsrMsg_CurrentRoundOdds [380]	User Messages
+381	CCSUsrMsg_DeepStats [381]	User Messages
+383	CCSUsrMsg_ShootInfo [383]	User Messages
+387	CCSUsrMsg_RecurringMissionSchema [387]	User Messages
+388	CCSUsrMsg_SendPlayerLoadout [388]	User Messages
+389	CCSUsrMsg_WeaponMagDrop [389]	User Messages
+400	CMsgTEEffectDispatch [400]	Events
+401	CMsgTEArmorRicochet [401]	Events
+402	CMsgTEBeamEntPoint [402]	Events
+403	CMsgTEBeamEnts [403]	Events
+404	CMsgTEBeamPoints [404]	Events
+405	CMsgTEBeamRing [405]	Events
+408	CMsgTEBubbles [408]	Events
+409	CMsgTEBubbleTrail [409]	Events
+410	CMsgTEDecal [410]	Events
+411	CMsgTEWorldDecal [411]	Events
+412	CMsgTEEnergySplash [412]	Events
+413	CMsgTEFizz [413]	Events
+415	CMsgTEGlowSprite [415]	Events
+416	CMsgTEImpact [416]	Events
+417	CMsgTEMuzzleFlash [417]	Events
+418	CMsgTEBloodStream [418]	Events
+419	CMsgTEExplosion [419]	Events
+420	CMsgTEDust [420]	Events
+421	CMsgTELargeFunnel [421]	Events
+422	CMsgTESparks [422]	Events
+423	CMsgTEPhysicsProp [423]	Events
+426	CMsgTESmoke [426]	Events
+452	CMsgTEFireBullets [452]	Events
+453	CMsgPlayerBulletHit [453]	Events
+# TOTAL 193

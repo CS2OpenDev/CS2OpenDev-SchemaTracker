@@ -1,0 +1,221 @@
+# Publish the "latest artifacts" channel
+#
+# WHAT THIS IS: downstream consumers want ONLY the newest build's artifact set, but a
+# clone/submodule of this repo checks out every committed build (12+ GB, 40k+ files,
+# growing forever). This workflow maintains two lightweight consumption channels, both
+# derived from whatever main's newest committed build is:
+#
+#   1. The `latest` BRANCH (git-native; the submodule/clone answer). Its tree holds ONLY
+#      `schemas/`, `data/cs2-assets-inventory.json`, `artifacts/<newest_build>/` (all
+#      platforms committed so far), `artifacts/schema_evolution/<platform>.json` (the
+#      cumulative evolution data — complete files, since downstream field histories fold
+#      the full transition set), and a root `LATEST.json` manifest. Consumers:
+#        git clone --depth 1 --branch latest <repo>            (~one set, not 12 GB)
+#        git submodule add -b latest <repo>; git submodule update --remote --depth 1
+#      HISTORY IS APPENDED, NEVER FORCE-PUSHED: a submodule pins an exact SHA, and a
+#      force-push would eventually garbage-collect old pins into dangling references.
+#      Append-only keeps every past pin fetchable; server-side growth is cheap (the sets
+#      are highly self-similar JSON, so git delta-compresses them — all 379 builds pack
+#      into ~106 MiB) and depth-1 consumers never download the history anyway.
+#
+#   2. A ROLLING RELEASE with the fixed tag `artifacts-latest` (the no-git answer).
+#      Per-platform zips are uploaded with --clobber to STABLE URLs:
+#        https://github.com/<owner>/<repo>/releases/download/artifacts-latest/cs2-artifacts-latest-<platform>.zip
+#      MARKED --latest=false ON PURPOSE: scheduled-extract.yml downloads "the latest
+#      release" (no tag) to get the host bundle published by release.yml — this release
+#      must NEVER become "latest" or forward-capture would download artifact zips instead
+#      of the host and fail. The tag itself is a static anchor (releases need one); the
+#      ASSETS and NOTES are what roll forward — the tag's target commit is meaningless.
+#
+# TRIGGERS — why both push AND dispatch: pushes made with the ambient GITHUB_TOKEN
+# (i.e. scheduled-extract's forward-capture push) DO NOT fire push-event workflows
+# (GitHub's recursive-trigger guard), so scheduled-extract explicitly dispatches this
+# workflow after its push (workflow_dispatch is the documented exception to the guard).
+# The push trigger covers OPERATOR pushes made with personal credentials — local linux
+# re-dumps and historical backfills — which the dispatch path would miss. A backfill of
+# an OLD build re-runs this workflow but recomputes the same newest build id, produces
+# an identical tree, and no-ops (commit-if-diff).
+#
+# "NEWEST" = the numerically largest artifacts/<build_id>/ directory on main. Steam
+# build ids increase monotonically, so no date parsing is needed.
+#
+# CHEAP CHECKOUT: a full checkout of main is 12+ GB. The job does a blob:none partial
+# clone with a sparse cone of just `schemas` + `data` (+ root files), resolves the newest
+# build id from TREE objects alone (`git ls-tree`, no blob fetch), then sparse-adds only
+# `artifacts/<newest>` — fetching ~one set's blobs on demand.
+
+name: publish-latest
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'artifacts/**'
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+  # pushes the `latest` branch and creates/edits the `artifacts-latest` release + assets.
+
+concurrency:
+  # Serialize publishes: two runs racing the latest-branch push or the asset --clobber
+  # would corrupt the channel. No cancel-in-progress — a half-cancelled publish could
+  # leave the release assets from one build and the branch from another.
+  group: publish-latest
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: publish latest branch + rolling release
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: main
+          # blob:none + sparse cone = metadata-only clone; artifact blobs are fetched
+          # on demand by the sparse-checkout add below (one set, not 12 GB).
+          filter: blob:none
+          sparse-checkout: |
+            schemas
+            data
+
+      - name: Resolve newest committed build
+        id: newest
+        shell: bash
+        run: |
+          set -euo pipefail
+          # Tree objects are present under blob:none, so this needs no blob fetch.
+          newest=$(git ls-tree --name-only HEAD artifacts/ \
+                   | sed 's|^artifacts/||' | grep -E '^[0-9]+$' | sort -n | tail -1)
+          if [[ -z "$newest" ]]; then
+            echo "::error::no numeric artifacts/<build_id>/ directories found on main"; exit 1
+          fi
+          echo "newest committed build: $newest"
+          echo "build_id=$newest" >> "$GITHUB_OUTPUT"
+
+      - name: Fetch the newest build's set (sparse add)
+        shell: bash
+        run: |
+          set -euo pipefail
+          # schema_evolution/ rides along (requested by CS2OpenDev-Docs 2026-08-05): the two
+          # cumulative per-platform evolution files are the entire input to downstream
+          # history/rename tooling, and consumers need the COMPLETE files (their field
+          # histories fold the full transition set) — a latest-N slice would not work.
+          git sparse-checkout add "artifacts/${{ steps.newest.outputs.build_id }}" "artifacts/schema_evolution"
+          ls -la "artifacts/${{ steps.newest.outputs.build_id }}" artifacts/schema_evolution
+
+      - name: Assemble manifest
+        id: manifest
+        shell: bash
+        run: |
+          set -euo pipefail
+          build="${{ steps.newest.outputs.build_id }}"
+          # Platforms = the per-platform subdirectories actually committed for this build.
+          # A build can be windows-only for a while (linux re-dumps are operator-run and
+          # land later); the next publish after that push picks the linux dir up.
+          platforms=$(find "artifacts/$build" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort)
+          if [[ -z "$platforms" ]]; then
+            echo "::error::artifacts/$build has no platform directories"; exit 1
+          fi
+          platforms_json=$(printf '%s\n' "$platforms" | jq -R . | jq -cs .)
+          generated=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+          jq -n \
+            --arg build_id "$build" \
+            --argjson platforms "$platforms_json" \
+            --arg source_commit "$GITHUB_SHA" \
+            --arg generated_utc "$generated" \
+            '{build_id: ($build_id|tonumber), platforms: $platforms, source_commit: $source_commit, generated_utc: $generated_utc}' \
+            | tee LATEST.json
+          echo "platforms=$(echo $platforms | tr '\n' ' ')" >> "$GITHUB_OUTPUT"
+
+      - name: Update `latest` branch (append, never force)
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          build="${{ steps.newest.outputs.build_id }}"
+          url="https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          # depth-1 clone of the channel branch (~one set); bootstrap an orphan history
+          # on the very first publish. Appending from a shallow clone is fine — the new
+          # commit's parent already exists on the remote.
+          if git clone --quiet --depth 1 --branch latest "$url" latest-tree 2>/dev/null; then
+            echo "existing latest branch cloned."
+          else
+            echo "no latest branch yet — bootstrapping orphan history."
+            mkdir latest-tree
+            git -C latest-tree init --quiet -b latest
+            git -C latest-tree remote add origin "$url"
+          fi
+          # Replace the tree wholesale (delete-then-copy) so removals on main propagate.
+          find latest-tree -mindepth 1 -maxdepth 1 -not -name .git -exec rm -rf {} +
+          mkdir -p latest-tree/artifacts latest-tree/data
+          cp -r schemas latest-tree/schemas
+          cp data/cs2-assets-inventory.json latest-tree/data/
+          cp -r "artifacts/$build" "latest-tree/artifacts/$build"
+          # Cumulative schema-evolution data at its fixed main path. Fail loud if absent:
+          # downstream consumers (CS2OpenDev-Docs) read these from exactly this path.
+          if [[ ! -d artifacts/schema_evolution ]]; then
+            echo "::error::artifacts/schema_evolution missing on main — evolution files are a published part of the latest channel"; exit 1
+          fi
+          cp -r artifacts/schema_evolution latest-tree/artifacts/schema_evolution
+          cp LATEST.json latest-tree/LATEST.json
+          cat > latest-tree/README.md <<EOF
+          # CS2OpenDev SchemaTracker — latest artifacts channel
+
+          Machine-maintained branch holding ONLY the newest committed build's artifact
+          set (\`artifacts/<build_id>/\`), the cumulative schema-evolution data
+          (\`artifacts/schema_evolution/<platform>.json\`), the artifact schemas
+          (\`schemas/\`), and the assets inventory. Read \`LATEST.json\` for the current
+          build id and platforms. Updated by the publish-latest workflow on every
+          artifact push to main; history is append-only so submodule pins stay
+          resolvable. Full history, docs, and the extraction tool live on
+          [main](../../tree/main).
+          EOF
+          cd latest-tree
+          git config user.name  "austin3459"
+          git config user.email "austin3459@gmail.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "latest branch already reflects build $build — nothing to push."
+          else
+            git commit --quiet -m "latest: build $build (${{ steps.manifest.outputs.platforms }}) from ${GITHUB_SHA:0:8}"
+            git push --quiet origin HEAD:latest
+            echo "pushed latest branch -> build $build"
+          fi
+
+      - name: Upload rolling release zips (fixed tag artifacts-latest)
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          build="${{ steps.newest.outputs.build_id }}"
+          mkdir -p dist
+          # One zip per platform: that platform's set + the build-level sidecar JSONs
+          # (pics-appinfo.json, omissions.json, ...) + schemas + the manifest.
+          for plat in $(find "artifacts/$build" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' | sort); do
+            stage="dist/stage-$plat"
+            mkdir -p "$stage/artifacts/$build"
+            cp -r "artifacts/$build/$plat" "$stage/artifacts/$build/$plat"
+            find "artifacts/$build" -maxdepth 1 -type f -exec cp {} "$stage/artifacts/$build/" \;
+            cp -r schemas "$stage/schemas"
+            cp LATEST.json "$stage/LATEST.json"
+            (cd "$stage" && zip -qr "../cs2-artifacts-latest-$plat.zip" .)
+            rm -rf "$stage"
+          done
+          ls -la dist/*.zip
+          notes="Rolling latest-artifacts channel. Current: build $build (${{ steps.manifest.outputs.platforms }}), published $(date -u +%Y-%m-%dT%H:%M:%SZ) from ${GITHUB_SHA:0:8}.
+
+          Assets are overwritten in place on every publish — the tag is a static anchor, only the assets/notes roll. Stable URLs:
+          \`releases/download/artifacts-latest/cs2-artifacts-latest-<platform>.zip\`"
+          if ! gh release view artifacts-latest --json tagName >/dev/null 2>&1; then
+            # --latest=false is LOAD-BEARING (see header): scheduled-extract downloads the
+            # untagged "latest release" as its host bundle and must keep resolving release.yml's.
+            gh release create artifacts-latest --latest=false \
+              --title "Latest artifact set (rolling)" --notes "$notes"
+          else
+            gh release edit artifacts-latest --latest=false --notes "$notes"
+          fi
+          gh release upload artifacts-latest dist/cs2-artifacts-latest-*.zip --clobber
+          echo "release artifacts-latest now serves build $build"

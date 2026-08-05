@@ -1,0 +1,41 @@
+// ConVar extraction from CS2 ConCommandBase registry
+//
+// Shape matches the existing upstream output (parsed from DumpSource2/convars.txt
+// into convars_schema.json by CS2OpenDev-Docs) so v1 consumers get parity:
+//   name (string), default (string, always present — value rendered as-is, no coercion),
+//   flags (repeated string — e.g. gamedll, cheat, clientdll, developmentonly, archive,
+//   defensive, release), description (string — "<no description>" if empty upstream).
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message ConVars {
+  string schema_version = 1;       // schemas/ family version (e.g. "0.1.0")
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  repeated ConVar convars = 100;
+}
+
+message ConVar {
+  string name        = 1;
+  string default     = 2;          // rendered as-is from the binary; no type coercion
+  repeated string flags = 3;
+  string description = 4;          // "" if the binary carries no description
+
+  // typing + bounds (additive). value_type is the EConVarType enumerator NAME
+  // (e.g. "Bool", "Int32", "Float32", "String", "Color", "Vector3", "Qangle"); "" when
+  // the type is Invalid. min_value / max_value are rendered identically to `default`
+  // (as-is, no coercion) and are "" when the corresponding has_* flag is false.
+  //
+  // Truthful, not guessed: on the 2023 baseline era value_type IS populated but
+  // has_min / has_max are always false (the bound offsets aren't derived in that era).
+  string value_type = 5;
+  bool   has_min    = 6;
+  string min_value  = 7;           // "" when has_min == false
+  bool   has_max    = 8;
+  string max_value  = 9;           // "" when has_max == false
+}

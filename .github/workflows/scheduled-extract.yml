@@ -1,0 +1,424 @@
+# Scheduled CS2 forward-capture extract
+#
+# WHAT THIS IS: the forward-capture job, one leg per platform (windows-x86_64 on
+# windows-latest, linux-x86_64 on ubuntu-latest). On a cron (and on demand) each leg
+# resolves the CURRENT public-branch CS2 build, and — if that build's set for ITS
+# platform is not already committed — acquires it, walks it, emits the complete
+# artifact set + inline changelog, commits the artifact set, tags `build/<id>`
+# (first leg to commit wins the tag), and pushes.
+#
+# NO BUILD HERE (v1.0.1+): this job no longer compiles the walker or the host. It
+# DOWNLOADS the latest GitHub Release bundle published by release.yml (the portable
+# host `dotnet cs2-schema-tracker.dll` + all 11 prebuilt era walkers per platform +
+# the inventory) and RUNS it. So a scheduled "is there a new build?" check now costs
+# ONE anonymous PICS probe + ZERO compilation — the heavy ~11-walker x 2-platform
+# build cost lives in release.yml, amortized across every 6h probe that finds nothing
+# new. This is the efficiency win: the common case (no new build) is a probe, not a build.
+#
+# CHICKEN-AND-EGG: the FIRST scheduled run needs a Release to already exist. release.yml
+# publishes the bundle on the first push to main (and republishes on any bundle-input
+# change), so by the time the cron first fires a bundle is present. If none exists yet,
+# the download step fails loud ("release.yml must publish a bundle first").
+#
+# PLATFORM MATRIX: extraction loads that platform's CS2 binaries into the host
+# process, so the runner OS MUST match the platform (a linux runner cannot walk
+# Windows DLLs and vice versa) — hence one leg per (runner OS, platform) pair.
+# max-parallel: 1 because both legs commit + push to main and must not race; each
+# leg's checkout happens only after the previous leg fully finished (its push
+# included), so the second leg always starts from a tree that already contains the
+# first leg's commit. fail-fast: false so one platform's gate failure (e.g. a
+# class-band trip) never cancels the other platform's capture — the sets are
+# independent per (build, platform), exactly like the operator-run local dumps.
+#
+# SECOND-LEG SPECIFICS (whichever leg commits the same build second):
+#   - the annotated build/<id> tag already exists (fetched at checkout), so that leg
+#     commits WITHOUT -Tag and its tag push is an already-up-to-date no-op;
+#   - `extract --commit` re-emits the build-level pics-appinfo.json with a fresh
+#     capturedUtc (the appinfo BODY is identical — PICS is current-only and both legs
+#     capture the same change number); the committed copy is restored before the
+#     commit so the first leg's artifact is never churned by a timestamp.
+#
+# RENDER DEVICE (r_*/render convars) — NO GPU OR SOFTWARE RASTERIZER NEEDED. The walk Init's
+# the render backend to flush the r_texture_*/r_dx11_*/r_vulkan_*/multigpu_* convars (see
+# walker/src/engine_boot.cpp, deferred render-init). It was first assumed this needed a live
+# device (WARP on windows / lavapipe on linux), but MEASUREMENT proved otherwise: the render
+# convars register in the render module's Init->ConVar_Register, INDEPENDENT of whether a
+# device is created. On linux, librendersystemvulkan.so has no hard Vulkan dependency and a
+# run with NO Vulkan driver present is byte-identical to one with lavapipe. So both runners
+# work as-is — windows-latest and ubuntu-latest — with nothing to install and no env to set.
+# (A D3D11/Vulkan device may still be created as a side effect — WARP is always present on
+# windows; a Vulkan driver, if present, is used on linux — which puts the engine in a
+# frame-update state; the render Init is DEFERRED past the data-subsystem phase precisely so
+# that side effect cannot make a resource load reentrant. Device creation failing is benign.)
+#
+# STEAM AUTH (supersedes the former "no secrets in workflows" rule; owner-approved
+# 2026-07-18): the DLC-gated tools depot 2347779 (Workshop Tools binaries, now part of
+# the walked module set) is NOT visible to anonymous Steam logons, so acquisition needs
+# an AUTHENTICATED account. The account is a DEDICATED low-privilege tooling account
+# (owns nothing beyond CS2; no payment methods; exists only for depot access), and its
+# credentials live in GitHub Actions encrypted secrets — configure STEAM_USERNAME and
+# STEAM_PASSWORD in this repo's Settings -> Secrets and variables -> Actions before the
+# first authenticated run. LEAST EXPOSURE: the secrets are injected as env vars on the
+# resolve + extract steps ONLY (never job-wide, never echoed); the host's DotEnv/auth
+# path reads them from the env and never logs their values. Anonymous PICS remains the
+# probe path's default; logon throttling (~100 rapid logons) is irrelevant at a 6h
+# cadence (a handful of logons/day).
+#
+# CADENCE: mandates DETECTING a new manifest at least every 24h and
+# producing a new artifact set within 6h of detection. cron is every 6h, which both
+# satisfies the 24h detection floor with margin AND bounds detection->artifact well
+# under 6h (a single run detects + extracts + pushes end to end).
+# MEASUREMENT TODO (sentence 2): after the FIRST THREE successful automated
+#   runs that actually produced an artifact set, record the measured median + p95 of
+#   detection->push wall time HERE, and tighten/loosen the 6h target accordingly.
+#   (Left blank until the remote exists and three real runs have landed.)
+#     run 1: <build_id> <detected_utc> <pushed_utc> <elapsed>
+#     run 2: ...
+#     run 3: ...
+#     median=<...> p95=<...>  -> 6h target: <kept | tightened to N | loosened to N>
+#
+# HOSTED-ONLY: windows-latest + ubuntu-latest are hosted runners. No self-hosted dependency.
+
+name: scheduled-extract
+
+on:
+  schedule:
+    - cron: '0 */6 * * *'   # every 6 hours, UTC
+  workflow_dispatch:
+    inputs:
+      build_id:
+        description: 'Explicit Steam build ID to extract (default: latest public branch)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+  # commits + pushes an artifact set and its build/<id> tag.
+  # The ambient GITHUB_TOKEN (persisted by actions/checkout) authorizes the push — no
+  # PAT needed for git. The ONLY repo secrets this workflow consumes are the Steam
+  # tooling-account credentials (secrets.STEAM_USERNAME / secrets.STEAM_PASSWORD; see
+  # the STEAM AUTH header note), scoped to the resolve + extract steps only.
+
+concurrency:
+  # Never let two forward-capture runs race to commit/push the same or adjacent build.
+  group: scheduled-extract
+  cancel-in-progress: false
+
+jobs:
+  forward-capture:
+    name: resolve current build, extract, commit, tag, push (${{ matrix.platform }})
+    runs-on: ${{ matrix.os }} # extraction loads the platform's binaries — runner OS must match (see PLATFORM MATRIX header note).
+    strategy:
+      fail-fast: false  # one platform's gate failure must not cancel the other's capture.
+      max-parallel: 1   # both legs push to main — serialize so the second starts after the first's push.
+      matrix:
+        include:
+          - platform: windows-x86_64
+            os: windows-latest
+          - platform: linux-x86_64
+            os: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # fetch-depth: 0 survives the no-build switch for two reasons:
+          #  (1) nbgv (Nerdbank.GitVersioning) — the BUNDLE host still stamps the provenance
+          #      git SHA via ThisAssembly.GitCommitId; at RUN time it reads the checked-out
+          #      repo's HEAD, and full history is what makes that SHA/height resolve correctly.
+          #  (2) the push carries a coherent parent chain, which needs full history.
+          fetch-depth: 0
+          # NB: `submodules: recursive` is DROPPED on purpose — we no longer build the walker,
+          # so the large hl2sdk submodule is not needed. repoRoot discovery only needs the
+          # top-level walker/CMakeLists.txt sentinel, which is present in the checkout
+          # regardless of whether the submodule is initialized.
+
+      - name: Set up .NET
+        # Still required: every host call runs through the muxer as
+        # `dotnet cs2-schema-tracker.dll` (uniform across both legs — see the bundle step),
+        # so the `dotnet` CLI must be present and version-matched. No compilation happens
+        # here — global.json pins the version so it tracks the host's target framework.
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: Download latest release bundle (prebuilt host + era walkers)
+        # Fetch the newest GitHub Release's bundle for THIS leg's OS (published by release.yml —
+        # a .zip on windows, a .tar.gz on linux) and unpack it UNDER the repo checkout at
+        # dist/bundle (dist/ is gitignored). Unpacking INSIDE the checkout is REQUIRED: the
+        # bundle host discovers the repo root via the sentinel walker/CMakeLists.txt (present
+        # in the checkout regardless of the dropped submodule), so running from within the
+        # checked-out tree is what makes `extract --commit` write into THIS repo's artifacts/.
+        # `gh release download` with no tag targets the LATEST release; GH_TOKEN authorizes it
+        # via the ambient repo token (no PAT/secret).
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference = "Stop"
+          New-Item -ItemType Directory -Force -Path dist/bundle | Out-Null
+          if ($env:RUNNER_OS -eq 'Windows') {
+            Write-Host "downloading latest release bundle (*.zip)..."
+            gh release download --pattern '*.zip' --dir dist --clobber
+            if ($LASTEXITCODE -ne 0) {
+              Write-Error "no GitHub Release with a *.zip bundle asset found — release.yml must publish a bundle first (it publishes on the first push to main)."
+              exit 1
+            }
+            $zip = Get-ChildItem dist -Filter *.zip | Select-Object -First 1
+            if (-not $zip) { Write-Error "release download produced no *.zip in dist/."; exit 1 }
+            Write-Host "unzipping $($zip.Name) -> dist/bundle"
+            Expand-Archive -Path $zip.FullName -DestinationPath dist/bundle -Force
+          } else {
+            Write-Host "downloading latest release bundle (*-linux-x64.tar.gz)..."
+            gh release download --pattern '*-linux-x64.tar.gz' --dir dist --clobber
+            if ($LASTEXITCODE -ne 0) {
+              Write-Error "no GitHub Release with a *-linux-x64.tar.gz bundle asset found — release.yml must publish a bundle first (it publishes on the first push to main)."
+              exit 1
+            }
+            $tgz = Get-ChildItem dist -Filter *-linux-x64.tar.gz | Select-Object -First 1
+            if (-not $tgz) { Write-Error "release download produced no *-linux-x64.tar.gz in dist/."; exit 1 }
+            Write-Host "untarring $($tgz.Name) -> dist/bundle"
+            tar -xzf $tgz.FullName -C dist/bundle
+            if ($LASTEXITCODE -ne 0) { Write-Error "tar extraction failed for $($tgz.Name)"; exit 1 }
+          }
+
+          # Resolve the host dll. Every host call below (and inside commit-dump.ps1) is
+          # `dotnet <dll>` — uniform across legs and bundle flavors: the managed dll ships in
+          # both the portable bundle and the self-contained platform bundles, and the muxer
+          # resolves a self-contained layout's local runtime from the dll's runtimeconfig.
+          $bundle = (Resolve-Path dist/bundle).Path
+          $dll = Join-Path $bundle 'cs2-schema-tracker.dll'
+          if (-not (Test-Path $dll)) { Write-Error "bundle missing cs2-schema-tracker.dll at $dll"; exit 1 }
+          "HOST_DLL=$dll" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+          # Use the bundle's PREBUILT era walkers. The current-era walker is resolved from here
+          # by the host's era selection + the second layout-signature gate — do NOT pin
+          # CS2_WALKER_BIN (a drifted/new layout still fails loud at exit 75, no artifacts).
+          $nativesRoot = Join-Path $bundle 'natives'
+          if (-not (Test-Path $nativesRoot)) { Write-Error "bundle missing natives/ at $nativesRoot"; exit 1 }
+          "CS2_WALKER_ERAS_ROOT=$nativesRoot" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+          # Point the host at the CHECKED-OUT repo's inventory (absolute path), NOT the bundle's
+          # shipped copy — so forward-capture's new-build row append lands in the committed
+          # data/cs2-assets-inventory.json, which commit-dump.ps1 then stages with the artifact set.
+          $inv = Join-Path (Resolve-Path .).Path 'data/cs2-assets-inventory.json'
+          if (-not (Test-Path $inv)) { Write-Error "repo inventory missing at $inv"; exit 1 }
+          "CS2_INVENTORY_PATH=$inv" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+          # Smoke the dotnet-dll invocation + this platform's walkers RIGHT HERE (mirrors
+          # release.yml's bundle smoke) so a bad bundle/runtime pairing fails in THIS step,
+          # not minutes later inside the extract. Cheap: verify-natives reads local files only.
+          & dotnet $dll verify-natives --natives $nativesRoot --platform ${{ matrix.platform }}
+          if ($LASTEXITCODE -ne 0) { Write-Error "bundle smoke failed: verify-natives (${{ matrix.platform }}) via 'dotnet $dll'"; exit 1 }
+
+      - name: Configure git identity
+        # Needed so the commit has an author. Commits as the repo owner so forward-capture
+        # commits stay consistent with the rest of the history (single author).
+        shell: pwsh
+        run: |
+          git config user.name  "austin3459"
+          git config user.email "austin3459@gmail.com"
+
+      - name: Resolve current build + skip-if-already-committed
+        id: resolve
+        # SKIP-IF-COMMITTED STRATEGY (chosen for efficiency):
+        #   Pre-resolve the current build id with a CHEAP anonymous PICS probe
+        #   (`acquire --probe --build latest`) — manifest-level only, NO multi-GB depot pull —
+        #   then no-op when artifacts/<id>/<this leg's platform>/ is already committed. This avoids the
+        #   alternative "run the full extract every time and rely on a byte-identical re-walk
+        #   producing no git diff", which would download the depot + walk on EVERY 6h run even
+        #   when nothing is new (4 wasteful multi-GB pulls/day). The probe answers "is the head a
+        #   new build?" for the cost of one PICS logon. A workflow_dispatch build_id input, when
+        #   given, overrides the probe (extract that specific build on demand); an already-committed
+        #   explicit id is still a no-op by design (forced re-dumps are a local operation).
+        # Steam tooling-account credentials (encrypted secrets; see STEAM AUTH header note).
+        # Step-scoped on purpose (least exposure), never echoed: the host's DotEnv/auth path
+        # reads STEAM_USERNAME / STEAM_PASSWORD from the env and never logs their values.
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $explicit = "${{ github.event.inputs.build_id }}"
+          if ($explicit -and $explicit.Trim() -ne "") {
+            $buildId = $explicit.Trim()
+            Write-Host "workflow_dispatch: explicit build_id=$buildId"
+          } else {
+            Write-Host "probing current public-branch build id (anonymous PICS, no download)..."
+            $probe = & dotnet $env:HOST_DLL acquire --probe --build latest --platform ${{ matrix.platform }} 2>&1
+            $probe | ForEach-Object { Write-Host $_ }
+            if ($LASTEXITCODE -ne 0) {
+              Write-Error "acquire --probe failed (exit $LASTEXITCODE) — could not resolve current build id."
+              exit $LASTEXITCODE
+            }
+            $m = [regex]::Match(($probe -join "`n"), 'build_id=(\d+)')
+            if (-not $m.Success) { Write-Error "could not parse build_id from probe output."; exit 1 }
+            $buildId = $m.Groups[1].Value
+            Write-Host "resolved current build_id=$buildId"
+          }
+
+          # Already committed iff THIS platform's set is on disk (source of truth = artifacts/).
+          # Per-platform on purpose: a windows-committed build still extracts on the linux leg.
+          $marker = "artifacts/$buildId/${{ matrix.platform }}/entity_schema.json"
+          if (Test-Path $marker) {
+            Write-Host "build $buildId is already committed ($marker present) — nothing to do."
+            "is_new=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          } else {
+            Write-Host "build $buildId is NEW (no committed set) — will extract."
+            "is_new=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          }
+          "build_id=$buildId"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "detected_utc=$([DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ'))" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+
+      - name: Capture current PICS appinfo (forward-capture)
+        # The build-level artifacts/<id>/pics-appinfo.json is derived from a PICS appinfo CAPTURE
+        # sidecar that `extract --commit` promotes. PICS is CURRENT-ONLY, so the capture MUST be
+        # taken now, against the head build, or it is gone. This explicit step fetches the current
+        # PICS appinfo (anonymous, NO depot download) and writes the sidecar to the acquire-immune
+        # cache/pics/<id>/<platform>/ — decoupled from the extract auto-acquire's best-effort capture
+        # (which a binary-depot acquire wipe or auth-mode selection could silently drop). FAIL-LOUD:
+        # if the capture fails, the job fails rather than committing a build with NO pics-appinfo.json.
+        if: success() && steps.resolve.outputs.is_new == 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $buildId = "${{ steps.resolve.outputs.build_id }}"
+          Write-Host "capturing current PICS appinfo for build $buildId (anonymous, no download)..."
+          & dotnet $env:HOST_DLL capture-pics --build $buildId --platform ${{ matrix.platform }}
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "capture-pics failed (exit $LASTEXITCODE) for build $buildId — refusing to commit a build without pics-appinfo.json."
+            exit $LASTEXITCODE
+          }
+
+      - name: Extract complete set + inline changelog (--commit)
+        # NB: a custom `if:` drops the implicit success() status check, so we re-add it —
+        # a failed bundle-download or resolve step MUST stop the extract (fail-loud).
+        if: success() && steps.resolve.outputs.is_new == 'true'
+        # A single extract auto-acquires the inputs, walks, emits the COMPLETE
+        # set, and produces changelog.json inline against the immediate committed predecessor
+        # — all promoted atomically into artifacts/<id>/<this leg's platform>/ (
+        # all-or-nothing; fail-loud). NO continue-on-error: any acquire/walk/emit failure
+        # (including the exit-75 layout gate) fails the job and writes NO artifacts.
+        #
+        # --no-localization-changelog: the changelog's optional localization family diffs THIS
+        # build's localization against the PREDECESSOR build's, whose `from` side must be
+        # regenerated from the predecessor's content depot. Steam serves only the CURRENT
+        # build's content, so an ephemeral runner can never re-acquire a predecessor's
+        # content — forward-capture therefore emits the five binary families only (a
+        # contract-valid changelog shape). This build's own localization.json is still produced
+        # + fingerprinted into provenance.localization. Operator-run local re-dumps (with the
+        # content cache present) still produce the full six-family changelog.
+        #
+        # NB: this workflow never invokes `acquire` directly for the extract — the extract's
+        # AUTO-ACQUIRE picks up STEAM_USERNAME / STEAM_PASSWORD from the step env below and
+        # auto-selects authenticated logon on its specific-build acquire path (anonymous Steam
+        # cannot issue manifest request codes for it, and the DLC-gated tools depot 2347779 is
+        # invisible to anonymous logons — see STEAM AUTH header note). No --auth flag to pass
+        # here; there is no direct acquire invocation. Step-scoped secrets, never echoed.
+        env:
+          STEAM_USERNAME: ${{ secrets.STEAM_USERNAME }}
+          STEAM_PASSWORD: ${{ secrets.STEAM_PASSWORD }}
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $buildId = "${{ steps.resolve.outputs.build_id }}"
+          Write-Host "extracting build $buildId (${{ matrix.platform }})..."
+          & dotnet $env:HOST_DLL extract --build $buildId --platform ${{ matrix.platform }} --commit --no-localization-changelog
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "extract failed (exit $LASTEXITCODE) for build $buildId. No artifacts committed."
+            exit $LASTEXITCODE
+          }
+
+      - name: Preserve the committed pics-appinfo.json (second-leg timestamp churn)
+        if: success() && steps.resolve.outputs.is_new == 'true'
+        # See SECOND-LEG SPECIFICS header note: when the OTHER platform already committed this
+        # build, `extract --commit` re-emitted the build-level pics-appinfo.json with only a
+        # fresh capturedUtc. Restore HEAD's copy so the first leg's committed artifact is not
+        # churned by a timestamp. First-leg case: the file is not in HEAD and this is a no-op.
+        shell: pwsh
+        run: |
+          $buildId = "${{ steps.resolve.outputs.build_id }}"
+          $p = "artifacts/$buildId/pics-appinfo.json"
+          git cat-file -e "HEAD:$p" 2>$null
+          if ($LASTEXITCODE -eq 0) {
+            git checkout HEAD -- $p
+            if ($LASTEXITCODE -ne 0) { Write-Error "failed to restore committed $p"; exit 1 }
+            Write-Host "restored committed $p (first platform's capture wins)."
+          } else {
+            Write-Host "$p not committed yet — this leg's capture will be the committed one."
+          }
+          exit 0
+
+      - name: "Commit + tag artifact set"
+        if: success() && steps.resolve.outputs.is_new == 'true'
+        # commit-dump.ps1 verifies set completeness, `git add`s the promoted set (+ build-level
+        # omissions.json), makes the artifact commit (one commit = one complete
+        # (build, platform) set), and writes the annotated build/<id> tag. It NEVER pushes.
+        # -Tag only when build/<id> does not exist yet: the second platform leg of the same
+        # build finds the tag already created (fetched at checkout) and must not fail on it.
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $buildId = "${{ steps.resolve.outputs.build_id }}"
+          git rev-parse -q --verify "refs/tags/build/$buildId" *> $null
+          $tagExists = ($LASTEXITCODE -eq 0)
+          if ($tagExists) {
+            Write-Host "tag build/$buildId already exists (other platform leg committed first) — committing without -Tag."
+            ./scripts/commit-dump.ps1 -Build $buildId -Platform ${{ matrix.platform }}
+          } else {
+            ./scripts/commit-dump.ps1 -Build $buildId -Platform ${{ matrix.platform }} -Tag
+          }
+          if ($LASTEXITCODE -ne 0) { Write-Error "commit-dump.ps1 failed for build $buildId"; exit $LASTEXITCODE }
+
+      - name: Push commit + tag
+        # Guard: only push on main (this workflow is schedule/dispatch-only, both of which run
+        # on main). ONE rebase-retry: max-parallel serializes the legs, but an interleaved
+        # operator push (local re-dump, backfill) can still land between this leg's checkout
+        # and its push — rebase the one artifact commit onto the new tip and retry once.
+        # The tag push is an up-to-date no-op on the leg that did not create build/<id>.
+        if: success() && steps.resolve.outputs.is_new == 'true' && github.ref == 'refs/heads/main'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $buildId = "${{ steps.resolve.outputs.build_id }}"
+          git push origin HEAD:main
+          if ($LASTEXITCODE -ne 0) {
+            Write-Host "push rejected (non-fast-forward?) — rebasing onto current origin/main and retrying once..."
+            git pull --rebase origin main
+            if ($LASTEXITCODE -ne 0) { Write-Error "git pull --rebase failed for build $buildId"; exit $LASTEXITCODE }
+            git push origin HEAD:main
+            if ($LASTEXITCODE -ne 0) { Write-Error "git push (main) failed after rebase retry"; exit $LASTEXITCODE }
+          }
+          git push origin "build/$buildId"
+          if ($LASTEXITCODE -ne 0) { Write-Error "git push (tag build/$buildId) failed"; exit $LASTEXITCODE }
+          Write-Host "pushed build $buildId (+ tag build/$buildId)"
+
+      - name: Refresh latest-artifacts channel
+        # The push above is made with the ambient GITHUB_TOKEN, and GitHub's
+        # recursive-trigger guard suppresses push-event workflows for such pushes — so
+        # publish-latest.yml's `on: push` will NOT fire for forward-capture commits.
+        # workflow_dispatch is the documented exception to that guard, so we dispatch it
+        # explicitly. (Operator pushes with personal credentials — local re-dumps,
+        # backfills — DO fire its push trigger; this step covers only the CI path.
+        # Runs once per leg; publish-latest is concurrency-serialized and recomputes
+        # from main's tip, so the second dispatch just picks up the second platform.)
+        # NON-FATAL ON PURPOSE: the artifact set is already committed + pushed above, so
+        # a failed dispatch must not fail the capture — the channel self-heals on the
+        # next publish (it always recomputes from main's newest committed build).
+        if: success() && steps.resolve.outputs.is_new == 'true' && github.ref == 'refs/heads/main'
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh workflow run publish-latest.yml --ref main
+          if ($LASTEXITCODE -ne 0) {
+            Write-Warning "could not dispatch publish-latest.yml (exit $LASTEXITCODE) — latest channel will refresh on the next artifact push."
+            exit 0
+          }
+          Write-Host "dispatched publish-latest.yml"
+
+      - name: No new build (clean no-op)
+        if: success() && steps.resolve.outputs.is_new != 'true'
+        # a clean exit-0 when the public branch has not advanced. The 6h cron re-checks.
+        shell: pwsh
+        run: |
+          Write-Host "scheduled-extract: current build ${{ steps.resolve.outputs.build_id }} (${{ matrix.platform }}) already committed. No-op (exit 0)."

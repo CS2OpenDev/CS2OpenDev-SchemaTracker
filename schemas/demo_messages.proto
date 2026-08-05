@@ -1,0 +1,51 @@
+// demo_messages — Demo-stream command ID table: integer demo-command-ID -> protobuf message-type
+// name, for the `.dem` replay stream.
+//
+// Source (PER-BUILD, offline RTTI scan): the id->type table is DERIVED, per build, from a static
+// RTTI scan of that build's own engine2 binary — the host locates each `CDemoMessagePB<id, type>`
+// instantiation the build actually links and recovers its registered demo-command ID and proto
+// type name (host/src/Cs2SchemaTracker.Host/NetworkMessages/DemoMessageRttiScanner.cs), reusing
+// the SAME validated MSVC mangle decoder as the CNetMessagePB scan. CS2's .dem container
+// frames each command with one of these ids (e.g. CDemoPacket=7, CDemoFullPacket=13); the table
+// spans the small id-space (0..~18). This mapping exists in NO current source — not the live
+// engine (the demo stream is read by the engine itself, not exposed via a registry) and not the
+// pinned hl2sdk protos — so it is reconstructed statically from the binary's own instantiations.
+//
+// CONSEQUENCE: this table is build-specific — each build carries only the demo commands IT links.
+// It is a CORE binary-derived artifact (always present, NOT content-depot-gated): the engine2
+// binary always carries CDemoMessagePB RTTI. `proto_message_type` cross-references the SAME name
+// the descriptor extraction emits under protos/<file>.proto for this platform.
+//
+// DUAL-ID: a single demo-command ID may legitimately carry two messages (id 15 binds both the
+// spawn-groups command and an HLTV-broadcast variant); both rows are kept, exactly as the
+// table keeps the DisconnectToLobby 335/374 dual. The id-space is flat (no channels): unlike the
+// network protocol, demo commands are a single numbered command stream, so a flat repeated list
+// (not per-channel groups) is the faithful shape.
+//
+// PLATFORM MODEL: one (build_id, platform) artifact set; the ids and type names are stable across
+// platforms — only the RTTI mangle differs (MSVC name-mangling on windows-x86_64, Itanium
+// type_info mangling on linux-x86_64, decoded through a shared decoder so the two cannot drift).
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+// ---- Top-level artifact (demo_messages.json) --------------------------------------------
+
+message DemoMessages {
+  string schema_version = 1;       // schemas/ family version (e.g. "0.4.0")
+  string build_id       = 2;       // Steam build ID
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  repeated DemoMessageEntry messages = 100;
+}
+
+// One integer demo-command-ID -> protobuf-message-type binding. The id-space is flat (no
+// channels); a single id may appear in two entries (the id-15 dual). Sorted by (id, type).
+message DemoMessageEntry {
+  int32  id   = 1;                 // numeric demo-command ID as registered by CDemoMessagePB in engine2
+  string proto_message_type = 2;   // .proto message name (e.g. "CDemoPacket"); cross-references this
+                                   // platform's descriptor set (protos/<file>.proto).
+}
