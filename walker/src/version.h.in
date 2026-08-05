@@ -1,0 +1,9 @@
+// GENERATED FILE — do not edit. Produced by configure_file() from
+// walker/src/version.h.in into <build>/generated/walker_version.h.
+//
+// Single-source release version stamp for the native bundle. The value comes from
+// the CMake variable WALKER_VERSION_VALUE (= WALKER_VERSION_OVERRIDE when the release
+// build passes one, else PROJECT_VERSION). --version prints CS2_WALKER_VERSION.
+#pragma once
+
+#define CS2_WALKER_VERSION "@WALKER_VERSION_VALUE@"

@@ -1,0 +1,95 @@
+// Economy item-definition extraction from CS2 scripts/items/items_game.txt
+// (plain-text KV1 inside pak01_dir.vpk).
+//
+// Structured messages — NOT a generic KV1 mirror. Only the tables consumers actually
+// join (items, prefabs, paint/sticker/music kits, rarities, qualities) are surfaced;
+// the rest of items_game.txt is intentionally out of scope for v1.
+//
+// v1 emits the RAW item + prefab tables. Prefab inheritance is NOT resolved in the
+// artifact — `ItemDefinition.prefab` / `Prefab.prefab` carry the parent reference(s)
+// VERBATIM (space-separated, exactly as the source key reads), and consumers join the
+// items↔prefabs tables themselves. No generic extra_attributes map in v1.
+//
+// All scalar string fields are proto3-default "" when the source key is absent (matches
+// the gameevents precedent — no sentinel strings). The "default" item is kept as a real
+// row with is_default=true / def_index=0.
+//
+// Determinism (host concern, noted here for the contract): every repeated collection is
+// emitted host-side in a deterministic order — def-index tables by numeric def_index,
+// string-id tables (prefabs, rarities, qualities) by Ordinal string compare.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message ItemDefinitions {
+  string schema_version = 1;       // schemas/ family version
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  // Only `items` is required; every other table is optional and may be an empty
+  // repeated field when the source carries no such block.
+  repeated ItemDefinition items              = 100;
+  repeated Prefab          prefabs           = 101;
+  repeated PaintKit        paint_kits        = 102;
+  repeated StickerKit      sticker_kits      = 103;
+  repeated MusicDefinition music_definitions = 104;
+  repeated Rarity          rarities          = 105;
+  repeated Quality         qualities         = 106;
+}
+
+message ItemDefinition {
+  uint32 def_index       = 1;      // "default" row keeps def_index=0 / is_default=true
+  string name            = 2;      // internal token, e.g. "weapon_knife_cord"
+  string classname       = 3;      // "item_class" entity classname; emitted only when
+                                   // present directly on the item block, else ""
+  string name_token      = 4;
+  string description_token = 5;
+  string prefab          = 6;      // VERBATIM space-separated parent ref(s); NOT tokenized,
+                                   // NOT resolved — consumers join against `prefabs`
+  string item_type_name  = 7;
+  string item_slot       = 8;
+  bool   is_default      = 9;
+}
+
+message Prefab {
+  string id              = 1;      // prefab key, verbatim
+  string prefab          = 2;      // verbatim parent chain (space-separated); NOT resolved
+  string classname       = 3;
+  string item_slot       = 4;
+  string name_token      = 5;
+  string item_type_name  = 6;
+}
+
+message PaintKit {
+  uint32 def_index       = 1;
+  string name            = 2;
+  string description_tag = 3;
+}
+
+message StickerKit {
+  uint32 def_index         = 1;
+  string name              = 2;
+  string item_name         = 3;
+  string description_string = 4;
+}
+
+message MusicDefinition {
+  uint32 def_index = 1;
+  string name      = 2;
+  string loc_name  = 3;
+}
+
+message Rarity {
+  string id              = 1;      // rarity key, verbatim
+  uint32 value           = 2;
+  string loc_key         = 3;
+  string loc_key_weapon  = 4;
+}
+
+message Quality {
+  string id    = 1;                // quality key, verbatim
+  uint32 value = 2;
+}

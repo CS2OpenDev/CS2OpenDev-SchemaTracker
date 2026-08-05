@@ -1,0 +1,170 @@
+// Entity schema extraction (classes, structs, enums, fields, KV3 defaults)
+//
+// Shape mirrors what DumpSource2 + SchemaExplorer's cs2_schema.json carries today
+// (top-level revision + classes[] + enums[]) so v1 consumers get parity. Per-(OS, arch)
+// platform separation is new in CS2-Schema-Tracker — the upstream is OS-agnostic.
+//
+// PLATFORM MODEL (v0.2): an artifact set is one (build_id, platform) pair, where
+// `platform` is exactly one of "windows-x86_64" | "linux-x86_64". A single walk per
+// platform loads ALL modules of that per-OS binary depot (client.dll, server.dll,
+// engine2, animgraphlib, ...) and emits their union, with each class/enum tagged by its
+// source `module`. Platform no longer encodes client vs server: the `module` field below
+// is now the client/server/engine discriminator.
+//
+// Class fields carry a recursive `SchemaType` to faithfully represent templates
+// (`CUtlVector<T>`), pointers, fixed arrays, and bitfields exactly as the binary
+// declares them. KV3 default values ride along under each class's metadata
+// list with both the raw KV3 string and a structurally-parsed representation.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+import "google/protobuf/struct.proto";   // for parsed KV3 metadata values (Value)
+
+// ---- Top-level artifact -----------------------------------------------------------------
+
+message EntitySchema {
+  string schema_version = 1;           // CS2-Schema-Tracker schemas/ family version
+  string build_id       = 2;           // Steam build ID
+  string platform       = 3;           // "windows-x86_64" | "linux-x86_64" (client/server live in SchemaClass.module)
+
+  // Mirrored from upstream cs2_schema.json (informational; CS2-Schema-Tracker's own
+  // semver lives in `schema_version` above):
+  string source_revision    = 10;      // Steam changelist as a string (matches upstream "revision")
+
+  repeated SchemaClass classes = 100;
+  repeated SchemaEnum  enums   = 101;
+}
+
+// ---- Classes ----------------------------------------------------------------------------
+
+message SchemaClass {
+  string name   = 1;                   // may contain "::" for nested types
+  string module = 2;                   // client/server/engine discriminator: "client", "server", "engine2", "animgraphlib", ...
+  uint64 size   = 3;                   // byte size of the struct
+  repeated SchemaClassParent parents = 4;
+  repeated SchemaField       fields  = 5;
+  repeated SchemaMetadata    metadata = 6;
+
+  // Struct byte alignment from SchemaClassInfoData_t. Numeric byte boundary (1/2/4/8/16),
+  // NOT a type-name string like SchemaEnum.alignment — class alignment is an alignment
+  // boundary, not an underlying-type name, so the most faithful representation is the raw
+  // alignment value in bytes.
+  uint32 alignment = 7;
+
+  // Raw Source2 class-info flags bitmask, verbatim from SchemaClassInfoData_t. Carried as
+  // opaque bits — consumers decode; this field is NOT an interpreted/decomposed form.
+  uint32 flags = 8;
+
+  // The class's static fields (SchemaClassInfoData_t.m_pStaticFields), reusing SchemaField.
+  // May be empty pending walker support (static-field reachability is being spiked; if it
+  // proves unreachable headless the field is emitted empty, deferred-with-reason).
+  repeated SchemaField static_fields = 9;
+
+  // Second class-flags word (SchemaClassInfoData_t.m_nFlags2), opaque raw bits.
+  // Distinct from `flags` (field 8); often 0.
+  uint32 flags2 = 10;
+
+  // Inheritance-depth counters from SchemaClassInfoData_t.
+  uint32 single_inheritance_depth   = 11;   // m_nSingleInheritanceDepth
+  uint32 multiple_inheritance_depth = 12;   // m_nMultipleInheritanceDepth
+
+  // Projected name vs the C++ name (m_pszProjectName / m_pszCPPName). These distinguish
+  // nested/templated typenames; parity with source2gen / SchemaExplorer.
+  string project_name = 13;
+  string cpp_name     = 14;
+}
+
+message SchemaClassParent {
+  string name   = 1;
+  string module = 2;
+
+  // Base-class subobject byte offset within the derived class
+  // (Source2 SchemaBaseClassInfoData_t.m_nOffset). Needed for multiple-inheritance
+  // layout; the walker already reads it.
+  uint32 offset = 3;
+}
+
+message SchemaField {
+  string name        = 1;
+  int64  offset      = 2;              // byte offset within the struct
+  SchemaType type    = 3;
+  string type_module = 4;              // module hint for declared_class/declared_enum refs; "" otherwise
+
+  // Per-field reflection annotation set, from SchemaClassFieldData_t.m_pMetadata — the same
+  // SchemaMetadata machinery as SchemaClass.metadata / SchemaEnumMember.metadata (so it gets
+  // the raw `value` + structurally-parsed `value_parsed` treatment for free). Carries
+  // MNetworkVar, MNetworkEnable, MNetworkChangeCallback, MNetworkEncoder, MNotSaved,
+  // MKeyValueName, MPropertyFriendlyName, MPropertyDescription, ...
+  repeated SchemaMetadata metadata = 5;
+}
+
+// ---- Types (recursive) ------------------------------------------------------------------
+
+message SchemaType {
+  enum Category {
+    CATEGORY_UNSPECIFIED = 0;
+    BUILTIN              = 1;          // primitive: bool, int32, float32, ...
+    ATOMIC               = 2;          // Valve template type: CUtlVector<T>, CHandle<T>, CUtlString, ...
+    DECLARED_CLASS       = 3;          // ref to another class; carries module + name
+    DECLARED_ENUM        = 4;          // ref to an enum; carries module + name
+    PTR                  = 5;          // pointer (uses inner)
+    FIXED_ARRAY          = 6;          // C array (uses inner + count)
+    BITFIELD             = 7;          // bit-packed (uses count = bit width)
+  }
+
+  Category category = 1;
+  string   name     = 2;               // primitive name, template name, class/enum name
+  string   module   = 3;               // for DECLARED_CLASS / DECLARED_ENUM
+
+  // Template / pointer / array element types. Up to three slots covers every CS2
+  // template depth observed today (e.g. CUtlVector<CHandle<T>>); add more if needed.
+  SchemaType inner  = 10;
+  SchemaType inner2 = 11;
+  SchemaType inner3 = 12;
+
+  uint64 count = 20;                   // FIXED_ARRAY element count; BITFIELD bit width
+}
+
+// ---- Enums ------------------------------------------------------------------------------
+
+message SchemaEnum {
+  string name      = 1;
+  string module    = 2;
+  string alignment = 3;                // underlying type: "uint8_t", "uint32_t", ... (derived type-NAME)
+  repeated SchemaEnumMember members = 4;
+
+  // Raw enum-info flags bits (SchemaEnumInfoData_t.m_nFlags) — opaque; consumers decode.
+  uint32 flags = 5;
+
+  // Underlying-type byte width (SchemaEnumInfoData_t.m_nSize) — the raw numeric width,
+  // distinct from `alignment` above which is the derived type-name string.
+  uint32 size = 6;
+}
+
+message SchemaEnumMember {
+  string name  = 1;
+  int64  value = 2;                    // signed because Valve uses negative values in places
+  repeated SchemaMetadata metadata = 3;
+}
+
+// ---- Metadata (shared by classes and enum members) --------------------------------------
+
+// Reflection metadata attached to a class or enum member. Includes ordinary annotations
+// (MPropertyFriendlyName, MPropertyDescription, ...) and the KV3 class-defaults payload
+// (MGetKV3ClassDefaults —).
+message SchemaMetadata {
+  string name  = 1;                    // e.g. "MGetKV3ClassDefaults", "MPropertyFriendlyName"
+  string value = 2;                    // raw value as the binary carries it (KV3 text, quoted string, ...)
+
+  // Structurally-parsed representation of `value` for entries the host can parse
+  // (notably MGetKV3ClassDefaults). Absent (null Value) when:
+  //   - the metadata's value is not a parseable structured form, OR
+  //   - parsing failed — host then emits the raw `value` only with a parse-failure note
+  //     in registry_audit.json (matches the parity behavior of CS2OpenDev-Docs's
+  // existing value_parsed sidecar).
+  google.protobuf.Value value_parsed = 3;
+}

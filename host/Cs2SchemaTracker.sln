@@ -1,0 +1,27 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.0.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cs2SchemaTracker.Host", "src\Cs2SchemaTracker.Host\Cs2SchemaTracker.Host.csproj", "{A1A1A1A1-B2B2-C3C3-D4D4-E5E5E5E5E5E5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cs2SchemaTracker.Tests", "tests\Cs2SchemaTracker.Tests\Cs2SchemaTracker.Tests.csproj", "{F1F1F1F1-A2A2-B3B3-C4C4-D5D5D5D5D5D5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A1A1A1A1-B2B2-C3C3-D4D4-E5E5E5E5E5E5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A1A1A1A1-B2B2-C3C3-D4D4-E5E5E5E5E5E5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A1A1A1A1-B2B2-C3C3-D4D4-E5E5E5E5E5E5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A1A1A1A1-B2B2-C3C3-D4D4-E5E5E5E5E5E5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1F1F1F1-A2A2-B3B3-C4C4-D5D5D5D5D5D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1F1F1F1-A2A2-B3B3-C4C4-D5D5D5D5D5D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1F1F1F1-A2A2-B3B3-C4C4-D5D5D5D5D5D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1F1F1F1-A2A2-B3B3-C4C4-D5D5D5D5D5D5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

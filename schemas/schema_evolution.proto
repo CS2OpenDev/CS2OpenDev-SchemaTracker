@@ -1,0 +1,190 @@
+// Schema evolution — cumulative whole-history artifact (schema_evolution.json).
+//
+// Emitted by the host `evolution --platform <p> [--artifacts <root>] [--full]` subcommand. It is a
+// SINGLE cumulative file per platform at a FIXED path (NOT under any per-build dir):
+//   artifacts/schema_evolution/<platform>.json
+// A fixed path means there is nothing to move or git-rm build-to-build; git delta-compresses the
+// near-identical successive versions. NOTE: `extract` does NOT write this file — a re-walk pass must
+// be followed by `evolution` to refresh it. The verify-artifacts gate is dormant until the file
+// exists, then requires it to be consistent with the committed chain: platform matches, baseline_build
+// == the floor build, latest_build == the newest committed build, and transition count == builds - 1
+// (a mismatch reports "stale — re-run `evolution`").
+//
+// It is "Layer A" of the Schema Lens: the
+// objective, machine-derivable record of how the C++ entity schema evolved across every in-scope
+// build, computed by diffing consecutive committed entity_schema.json snapshots.
+//
+// FACTS ONLY (the central constraint) — every value here is derivable, deterministically, from the
+// two snapshots being compared and NOTHING else:
+//   - NO rename assertion. A rename is indistinguishable from remove-A + add-B at the schema level,
+//     so a class's remove/add field pairs that share PROVABLE relations are surfaced only as a
+//     neutral PairedEvidence{from,to,signals}; there is no `confidence` and no `rename`. Downstream
+//     promotes evidence to a confirmed rename via its own overlays.
+//   - NO safety verdict. SAFE/LOSSY/BREAKING is consumer-impact policy (an OFFSET_CHANGE is harmless
+//     for a name-keyed decoder, fatal for an offset-keyed one), so it is NOT emitted here. The raw
+//     structural facts (from_type/to_type, from_offset/to_offset, and a builtin byte width when the
+//     type is a known primitive) are emitted; consumers classify.
+//   - NO inferred history chains. field_history carries first/last seen and type_history only; it
+//     does not assemble an alias chain (that requires linking removes to adds — an inference).
+//
+// The artifact is deterministic: every repeated list is Ordinal-sorted, every scalar is
+// culture-invariant, and re-running `evolution` over the same tree is byte-identical. Additionally
+// an incremental refresh (append the newest transition to the prior cumulative) is byte-identical
+// to a full backfill over the same tree.
+//
+// Offsets/sizes/flags are carried as invariant-rendered STRINGS ("" = not applicable), mirroring the
+// changelog idiom and avoiding proto3 scalar-presence ambiguity (0 vs absent). Optionality is
+// carried by MESSAGE-PRESENCE (SchemaType / BuiltinWidth / Reparent / ScalarChange), which the
+// codebase already tests. SchemaType is reused STRUCTURALLY from entity_schema.proto — the artifact
+// never stringifies a type; the canonical rendered string exists only as an internal equality oracle
+// (see host SchemaTypeRenderer).
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+import "entity_schema.proto";   // reuse SchemaType (structured, not stringified)
+
+// ---- Top-level artifact -----------------------------------------------------------------
+
+message SchemaEvolution {
+  string schema_version = 1;             // schemas/ family version (e.g. "0.4.0")
+  string platform       = 2;             // "windows-x86_64" | "linux-x86_64"
+  string baseline_build = 3;             // in-scope floor build id (chain[0]), e.g. "10832117"
+  string latest_build   = 4;             // newest committed build id (chain[^1]) — the build this file sits under
+
+  repeated Transition   transitions   = 5; // one per consecutive committed pair, build-ASCENDING
+  repeated FieldHistory field_history = 6; // per (class_name, field), whole-history — FACTS ONLY
+  repeated EnumHistory  enum_history  = 7; // per enum_name, whole-history
+}
+
+// ---- Per-transition delta ---------------------------------------------------------------
+
+message Transition {
+  string from_build = 1;                 // predecessor build id
+  string to_build   = 2;                 // successor build id
+
+  repeated string     class_added   = 3; // "<module>/<name>" present in to not from (Ordinal-sorted)
+  repeated string     class_removed = 4; // "<module>/<name>" present in from not to (Ordinal-sorted)
+  repeated ClassDelta class_changed = 5; // matched classes whose structure changed (Ordinal by name)
+
+  repeated string    enum_added   = 6;   // "<module>/<name>" (Ordinal-sorted)
+  repeated string    enum_removed = 7;
+  repeated EnumDelta enum_changed = 8;   // Ordinal by name
+}
+
+message ClassDelta {
+  string name = 1;                       // "<module>/<name>"
+
+  repeated FieldOp field_ops = 2;        // Ordinal by (field, kind)
+
+  Reparent     reparent = 3;             // present iff parents[] changed
+  ScalarChange resize   = 4;             // present iff size changed (bytes, invariant string)
+  ScalarChange realign  = 5;             // present iff alignment changed
+  ScalarChange flags    = 6;             // present iff raw class flags bits changed
+
+  // Neutral remove/add field pairings that share PROVABLE relations — evidence a downstream may use
+  // to confirm a rename. NOT a rename claim; the raw ADD + REMOVE FieldOps are always ALSO emitted.
+  repeated PairedEvidence paired_evidence = 7;
+}
+
+message FieldOp {
+  enum Kind {
+    KIND_UNSPECIFIED = 0;
+    ADD              = 1;                 // field present in to not from
+    REMOVE           = 2;                 // field present in from not to
+    TYPE_CHANGE      = 3;                 // rendered types differ (SchemaTypeRenderer equality)
+    OFFSET_CHANGE    = 4;                 // byte offset moved
+    META_CHANGE      = 5;                 // field metadata changed
+  }
+  Kind   kind  = 1;
+  string field = 2;                      // field name (matching key within the class)
+
+  SchemaType   from_type   = 3;          // present for REMOVE / TYPE_CHANGE (and ADD carries to_type)
+  SchemaType   to_type     = 4;          // present for ADD / TYPE_CHANGE
+  string       from_offset = 5;          // invariant int string; "" = N/A
+  string       to_offset   = 6;
+  BuiltinWidth from_width  = 7;          // present ONLY when the type is a known primitive (provable)
+  BuiltinWidth to_width    = 8;
+  string       from_meta   = 9;          // joined metadata for META_CHANGE; "" otherwise
+  string       to_meta     = 10;
+}
+
+// Byte width of a known BUILTIN primitive, from a fixed name->bytes table. A provable number — NOT a
+// narrows/safe verdict. Absent (null) when the type is not a known primitive.
+message BuiltinWidth { uint64 bytes = 1; }
+
+// A removed field paired with an added field in the same class that share provable relations.
+// The pairing bar is PRE-FILTERED, not raw: the producer emits a pairing ONLY when the removed and
+// added field share the SAME offset AND the SAME rendered type, so `signals` is always exactly
+// ["offsetExact","typeMatch"] (Ordinal-sorted). The weaker signals in the vocabulary below
+// (`offsetAdjacent`, `sizeMatch`) are DEFINED but never emitted — a field that shifted a slot or
+// changed width leaves no pairing at all. Consumers cannot loosen the bar from this artifact; the
+// raw ADD/REMOVE ops are always ALSO emitted for anyone who wants to re-pair with their own policy.
+// Vocabulary (for forward-compat): signals ⊆ {offsetAdjacent, offsetExact, sizeMatch, typeMatch}.
+// There is deliberately NO confidence, NO probability, and NO "rename" here.
+message PairedEvidence {
+  string from = 1;                       // removed field name
+  string to   = 2;                       // added field name
+  repeated string signals = 3;
+}
+
+message EnumDelta {
+  string name = 1;                       // "<module>/<name>"
+  repeated EnumMemberOp member_ops = 2;  // Ordinal by (member, kind)
+  ScalarChange resize  = 3;              // underlying-size change
+  ScalarChange realign = 4;              // alignment change
+  ScalarChange flags   = 5;              // raw enum flags bits change
+}
+
+message EnumMemberOp {
+  enum Kind {
+    KIND_UNSPECIFIED    = 0;
+    ADD_MEMBER          = 1;
+    REMOVE_MEMBER       = 2;
+    CHANGE_MEMBER_VALUE = 3;
+  }
+  Kind   kind   = 1;
+  string member = 2;
+  string from_value = 3;                 // invariant int string; "" = N/A
+  string to_value   = 4;
+}
+
+// ---- Whole-history roll-ups (facts only) ------------------------------------------------
+
+message FieldHistory {
+  string class_name = 1;                 // "<module>/<name>"
+  string field      = 2;
+  string first_seen_build = 3;           // min build in which (class_name, field) is present
+  string last_seen_build  = 4;           // max build in which it is present
+  repeated TypeAt type_history = 5;      // distinct CONSECUTIVE rendered types + the build each first appears
+}
+
+// One entry in a field's type history: the build at which `type` first became the field's type.
+message TypeAt {
+  string     build = 1;
+  SchemaType type  = 2;                  // structured (not stringified)
+}
+
+message EnumHistory {
+  string enum_name = 1;                  // "<module>/<name>"
+  string first_seen_build = 2;
+  string last_seen_build  = 3;
+}
+
+// ---- Shared value-change carriers -------------------------------------------------------
+
+// A class's parent set before/after a reparent (qualified parent names, in declared order).
+message Reparent {
+  repeated string from = 1;
+  repeated string to   = 2;
+}
+
+// A single before/after scalar, invariant-rendered ("" = absent side). Message-presence at the
+// containing field means "this attribute changed"; the values carry what it changed between.
+message ScalarChange {
+  string from = 1;
+  string to   = 2;
+}

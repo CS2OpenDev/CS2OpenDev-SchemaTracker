@@ -1,0 +1,73 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>Cs2SchemaTracker.Host</RootNamespace>
+    <AssemblyName>cs2-schema-tracker</AssemblyName>
+    <PublishSingleFile>true</PublishSingleFile>
+    <PublishTrimmed>false</PublishTrimmed>
+    <SelfContained>true</SelfContained>
+    <InvariantGlobalization>true</InvariantGlobalization>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <SchemasDir>..\..\..\schemas</SchemasDir>
+    <InventorySource>..\..\..\data\cs2-assets-inventory.json</InventorySource>
+    <WireDescriptorsSource>..\..\..\data\wire_descriptors.pb</WireDescriptorsSource>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Ship the single-source inventory next to the host (output/publish -> data/cs2-assets-inventory.json)
+         so the app runs with NO repo present: InventoryCatalogProvider.ResolveInventoryPath falls back to
+         <appdir>/data/cs2-assets-inventory.json. An in-repo run still uses the LIVE repo copy (repo-root
+         discovery finds it first), so this shipped copy never shadows development. -->
+    <Content Include="$(InventorySource)" Link="data\cs2-assets-inventory.json" CopyToOutputDirectory="PreserveNewest" />
+    <!-- Ship the SDK-sourced wire descriptors (netmessages/usermessages/gameevents/te/... — the
+         engine wire protos CS2 embeds in no binary) next to the host, same repo-first/app-dir-fallback
+         resolution as the inventory. The proto extractor merges these so network_messages.json /
+         demo_messages.json wire-ID -> type joins resolve. Regenerate via scripts/gen-wire-descriptors.sh. -->
+    <Content Include="$(WireDescriptorsSource)" Link="data\wire_descriptors.pb" CopyToOutputDirectory="PreserveNewest" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.CommandLine" />
+    <PackageReference Include="Google.Protobuf" />
+    <PackageReference Include="Grpc.Tools">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Nerdbank.GitVersioning">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="SteamKit2" />
+    <PackageReference Include="System.Security.Cryptography.ProtectedData" />
+    <PackageReference Include="Microsoft.Extensions.Configuration" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Json" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.EnvironmentVariables" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Update="appsettings.sample.json">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- schemas/*.proto are the single source of truth; Grpc.Tools generates the
+         message classes (GrpcServices=None: messages only, no service stubs). -->
+    <Protobuf Include="$(SchemasDir)\*.proto" ProtoRoot="$(SchemasDir)" GrpcServices="None" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Cs2SchemaTracker.Tests" />
+  </ItemGroup>
+
+  <!-- Release-bundle assembly (dotnet publish -p:PublishProfile=Bundle). Gated on BundleRelease. -->
+  <Import Project="bundle.targets" />
+
+</Project>

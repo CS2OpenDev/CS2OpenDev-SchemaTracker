@@ -1,0 +1,28 @@
+// Module manifest: every binary file read for this (build, platform)
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message Modules {
+  string schema_version = 1;
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  repeated Module modules = 100;
+}
+
+message Module {
+  string path             = 1;     // path inside the depot
+  string sha256           = 2;     // hex, lowercase, reproducible via `sha256sum`
+  uint64 file_size        = 3;
+  uint32 export_count     = 4;
+  uint32 schema_registration_count = 5;
+
+  // per-module resolved interfaces (additive). Boot-resolved CreateInterface
+  // version strings this module exposed (e.g. "Source2Server001"), sorted; empty when
+  // the module resolved none.
+  repeated string resolved_interfaces = 6;
+}

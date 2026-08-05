@@ -1,0 +1,64 @@
+// Steam PICS appinfo preservation — BUILD-LEVEL committed artifact.
+//
+// This is the shape of artifacts/<build_id>/pics-appinfo.json. It lives at the BUILD
+// level (cross-platform), alongside omissions.json — NOT under a <platform>/ dir —
+// because PICS (Product Info Change Service) appinfo for app 730 is a single
+// per-build-change fact, not a per-OS/per-walk one.
+//
+// CAPTURE, NOT DERIVATION. PICS is current-only and mutable: Valve increments the app's
+// change_number on every store/depot/config edit, and there is NO durable public source
+// for a clean, historical PICS response. So this artifact is grabbed ONCE at forward
+// acquisition of the head build and committed VERBATIM. It cannot be re-derived later from
+// the depot binaries — it is a snapshot of Steam's app metadata at that change point.
+//
+// PRESENT-WHEN-CAPTURED, NEVER REQUIRED. Only forward-captured builds carry this
+// file. Historical or re-walked builds legitimately have none — its absence is NOT an
+// omission and MUST NOT be recorded in omissions.json. Consumers treat it as optional.
+//
+// BODY REPRESENTATION — verbatim canonical-JSON string (deliberate choice). The PICS
+// appinfo body is Valve's ARBITRARY nested KeyValues (VDF) tree with no fixed schema; the
+// artifact's whole purpose is faithful preservation of that response, not modeling it.
+// We carry the rendered appinfo as ONE opaque string (`appinfo_json`) rather than
+// google.protobuf.Struct or a recursive KeyValues message because:
+//   - Fidelity: VDF leaves are all strings, so a string-valued canonical-JSON tree is an
+//     exact round-trip. Struct coerces every scalar to a double (mangling uint64 manifest
+//     GIDs and losing the string/number distinction) and cannot preserve key order; this
+//     string form keeps uint64 GIDs exact and key order under OUR control.
+// - Determinism: the body is rendered to canonical JSON (keys emitted in a
+//     stable order chosen by the renderer, fixed UTF-8, fixed escaping). Re-capturing the
+//     SAME PICS response yields a byte-identical body. The host owns that canonical
+//     rendering (cf. DumpAppInfoCommand's KvToJson, every leaf kept as a string).
+//   - Non-modeling: there is intentionally NO proto message for the appinfo internals.
+// We do not promise any field inside it (applies to OUR framing fields below,
+//     which ARE fully modeled; `appinfo_json` is documented as an opaque verbatim blob).
+//
+// All framing timestamps come from the build's provenance/manifest (ISO 8601 UTC) — never
+// DateTime.Now. Steam IDs are carried as strings (proto3 JSON 64-bit convention).
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+// ---- Top-level artifact (artifacts/<build_id>/pics-appinfo.json) -------------------------
+
+message PicsAppInfo {
+  string schema_version = 1;        // schemas/ family version emitted (e.g. "0.4.0")
+  string build_id       = 2;        // Steam build ID this capture is committed under
+
+  // ---- PICS identity ----
+  uint32 app_id         = 3;        // 730 (CS2). Small enough that proto3 JSON number form is exact.
+  string change_number  = 4;        // PICS change_number at capture, as a string (mutable, monotonic)
+  string captured_utc   = 5;        // capture/manifest time, ISO 8601 UTC, sourced from the build's
+                                    // provenance/manifest — NEVER DateTime.Now.
+  string appinfo_sha1   = 6;        // SHA-1 of the PICS response as Steam delivered it (integrity tag,
+                                    // hex lowercase); "" if not surfaced by the capturer.
+
+  // ---- Verbatim body ----
+  // Valve's appinfo KeyValues tree, rendered to CANONICAL JSON (stable key order, every leaf
+  // a string — see header). OPAQUE and NOT schema-modeled by us: its internal shape is Valve's,
+  // not part of this contract. This is the preserved response, byte-for-byte under canonical
+  // rendering. Treat as an unparsed blob; do not assume any key is present.
+  string appinfo_json   = 100;
+}

@@ -1,0 +1,13 @@
+; Export the three tier0 telemetry symbols under the exact names the
+; 2023-03-22-era pulse_system.dll imports, aliased onto the plain C definitions
+; in cs2_tier0_tm_shim.cpp. The mangled names are MSVC x64 member functions:
+;   ?Register@VTm_Zone_Base@@QEAAXXZ   -> public: void VTm_Zone_Base::Register(void)
+;   ?Unregister@VTm_Zone_Base@@QEAAXXZ -> public: void VTm_Zone_Base::Unregister(void)
+; g_tm_api is a DATA export (a telemetry API pointer), hence the DATA keyword.
+;
+; This set MUST stay in sync with kShimmableImports in walker/src/pe_import_shim.h:
+; the loader verifies at runtime that the shim exports every symbol it redirects.
+EXPORTS
+    g_tm_api = cs2shim_tm_api                                    DATA
+    ?Register@VTm_Zone_Base@@QEAAXXZ = cs2shim_tm_zone_register
+    ?Unregister@VTm_Zone_Base@@QEAAXXZ = cs2shim_tm_zone_unregister

@@ -1,0 +1,42 @@
+// Game-event extraction from .gameevents KV1 inside pak01_dir.vpk
+//
+// Shape matches the existing upstream output (parsed by CS2OpenDev-Docs from the
+// .gameevents KV1 files into gameevents_schema.json). Event-level metadata in CS2
+// .gameevents files lives as KV1 keys (e.g. "local", "reliable") alongside the field
+// list — modeled as a string->string `properties` map to keep round-trip lossless
+// without baking in an enum of every property name Valve might add.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message GameEvents {
+  string schema_version = 1;
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  repeated GameEvent events = 100;
+}
+
+message GameEvent {
+  string name    = 1;
+  string source  = 2;              // .gameevents file basename, e.g. "core.gameevents"
+  string comment = 3;              // trailing // comment from KV1; "" if absent
+
+  // Event-level KV1 keys outside the field list (e.g. {"local": "1", "reliable": "1"}).
+  // Map preserves both key and value as strings — no enum forces consumers to relearn
+  // the field set when Valve adds a property.
+  map<string, string> properties = 4;
+
+  repeated GameEventField fields = 5;
+}
+
+message GameEventField {
+  string name    = 1;
+  string type    = 2;              // KV1 type label: string, bool, byte, short, long, int,
+                                   // float, uint64, local, player_controller,
+                                   // player_controller_and_pawn, player_pawn, ehandle, none
+  string comment = 3;              // trailing // comment; "" if absent
+}

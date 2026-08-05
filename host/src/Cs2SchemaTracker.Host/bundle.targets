@@ -1,0 +1,106 @@
+<Project>
+
+  <!--
+    Release-bundle assembly (formerly scripts/assemble-bundle.ps1).
+
+    `dotnet publish -p:PublishProfile=Bundle -p:RuntimeIdentifier=<rid>` produces a SELF-CONTAINED,
+    single-platform host (its .NET runtime is bundled, so the target needs no dotnet install). This
+    target then stages that platform's native walkers + the inventory next to the apphost, writes the
+    bundle appsettings.json, and packages the tree:
+      - win-x64   -> dist/cs2-schema-tracker-<version>-win-x64.zip     (MSBuild ZipDirectory)
+      - linux-x64 -> dist/cs2-schema-tracker-<version>-linux-x64.tar.gz (tar, exec bits preserved)
+
+    ONE bundle per RID: build each on its own OS (the release matrix does exactly that). A Windows zip
+    cannot carry unix exec bits, so the linux bundle is packed with tar on a Linux host — hence the
+    per-RID split rather than one universal archive.
+
+    The natives-completeness check lives in the host itself (`verify-natives`, scoped to the RID's
+    platform) so the expected per-era binary set comes from the host's InventoryCatalog, never a
+    hand-maintained list.
+
+    Gated on BundleRelease (set by the Bundle publish profile) so it only runs for an explicit bundle
+    publish, never an ordinary `dotnet publish`.
+  -->
+
+  <PropertyGroup>
+    <RepoRoot>$([MSBuild]::NormalizeDirectory('$(MSBuildThisFileDirectory)', '..', '..', '..'))</RepoRoot>
+    <!-- natives/ root produced by the build-era-walkers scripts; overridable for CI staging. -->
+    <NativesRoot Condition="'$(NativesRoot)' == ''">$(RepoRoot)natives</NativesRoot>
+    <BundleInventory>$(RepoRoot)data\cs2-assets-inventory.json</BundleInventory>
+  </PropertyGroup>
+
+  <Target Name="AssembleBundle" AfterTargets="Publish" Condition="'$(BundleRelease)' == 'true'">
+
+    <!-- (0) RID -> platform. The Bundle profile is self-contained, so a RID is REQUIRED; map it to the
+             canonical natives/ platform dir. Anything else is an error (fail loud, not a silent skip). -->
+    <PropertyGroup>
+      <BundlePlatform Condition="'$(RuntimeIdentifier)' == 'win-x64'">windows-x86_64</BundlePlatform>
+      <BundlePlatform Condition="'$(RuntimeIdentifier)' == 'linux-x64'">linux-x86_64</BundlePlatform>
+    </PropertyGroup>
+    <Error Condition="'$(RuntimeIdentifier)' == ''"
+           Text="Bundle publish requires a RID: pass -p:RuntimeIdentifier=win-x64 or linux-x64." />
+    <Error Condition="'$(BundlePlatform)' == ''"
+           Text="Bundle publish RID '$(RuntimeIdentifier)' is not supported (expected win-x64 or linux-x64)." />
+
+    <!-- Names the output. Resolved HERE (not as a top-level property) so the Nerdbank.GitVersioning
+         $(Version) is populated by the time it is read (its GetBuildVersion target has run by Publish).
+         $(Version) IS the SemVer2 string (matches the release tag), so no -p:BundleVersion is needed;
+         pass one only to override. The 0.0.0-dev fallback covers a history-less build (no nbgv). -->
+    <PropertyGroup>
+      <BundleVersion Condition="'$(BundleVersion)' == ''">$(Version)</BundleVersion>
+      <BundleVersion Condition="'$(BundleVersion)' == ''">0.0.0-dev</BundleVersion>
+      <BundleStem>cs2-schema-tracker-$(BundleVersion)-$(RuntimeIdentifier)</BundleStem>
+      <BundleZip>$(RepoRoot)dist\$(BundleStem).zip</BundleZip>
+      <BundleTgz>$(RepoRoot)dist\$(BundleStem).tar.gz</BundleTgz>
+    </PropertyGroup>
+
+    <!-- (1) natives completeness for THIS platform only — host-owned (verify-natives reads the
+             compile-pin eras from the inventory). Fail-loud: a missing era binary aborts the bundle.
+             Run via `dotnet <dll>` (the SDK runtime on the build runner), platform-agnostic. -->
+    <Exec Command="dotnet &quot;$(PublishDir)cs2-schema-tracker.dll&quot; verify-natives --natives &quot;$(NativesRoot)&quot; --platform $(BundlePlatform) --inventory &quot;$(BundleInventory)&quot;" />
+
+    <!-- (2) stage THIS platform's natives next to the published app. The inventory is already shipped
+             at data/cs2-assets-inventory.json by the csproj Content copy (publish includes it), so the
+             host resolves it via the ResolveInventoryPath fallback — no explicit copy needed here. -->
+    <ItemGroup>
+      <BundleNatives Include="$(NativesRoot)\$(BundlePlatform)\**\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(BundleNatives)"
+          DestinationFiles="@(BundleNatives->'$(PublishDir)natives\$(BundlePlatform)\%(RecursiveDir)%(Filename)%(Extension)')" />
+
+    <!-- (3) drop the bare-name SONAME symlink stubs (libprotobuf.so -> libprotobuf.so.33.4.0). They
+             are link-time-only; the walker's DT_NEEDED is the VERSIONED lib. A `*.so` glob matches
+             only the bare stub (the real lib ends in .so.<ver>), and left as a 0-byte stub it would
+             corrupt the archive. (No-op for the windows bundle.) -->
+    <ItemGroup>
+      <BareSoStub Include="$(PublishDir)natives\**\*.so" />
+    </ItemGroup>
+    <Delete Files="@(BareSoStub)" />
+
+    <!-- (4) bundle appsettings.json. In the flat layout AppContext.BaseDirectory == the bundle root,
+             so NativesRoot is a base-relative name. InventoryPath is NOT set: the inventory ships at
+             data/cs2-assets-inventory.json and the host's ResolveInventoryPath fallback finds it there. -->
+    <WriteLinesToFile
+        File="$(PublishDir)appsettings.json"
+        Lines="{ &quot;Cs2SchemaTracker&quot;: { &quot;NativesRoot&quot;: &quot;natives&quot; } }"
+        Overwrite="true" />
+
+    <MakeDir Directories="$(RepoRoot)dist" />
+
+    <!-- (5a) windows: zip the staged tree (contents at the archive root). Unix exec bits are
+              irrelevant on windows, so ZipDirectory is fine. -->
+    <ZipDirectory Condition="'$(RuntimeIdentifier)' == 'win-x64'"
+                  SourceDirectory="$(PublishDir)" DestinationFile="$(BundleZip)" Overwrite="true" />
+
+    <!-- (5b) linux: chmod +x the apphost + the era walkers (NOT json), then tar (preserves exec bits;
+              a zip would drop them and the linux binaries would extract non-executable). Runs on the
+              linux release-matrix leg; `-C <dir> .` puts the bundle contents at the archive root. -->
+    <Exec Condition="'$(RuntimeIdentifier)' == 'linux-x64'"
+          Command="chmod +x &quot;$(PublishDir)cs2-schema-tracker&quot; ; find &quot;$(PublishDir)natives/$(BundlePlatform)&quot; -type f ! -name '*.json' -exec chmod +x {} + ; rm -f &quot;$(BundleTgz)&quot; ; tar czf &quot;$(BundleTgz)&quot; -C &quot;$(PublishDir)&quot; ." />
+
+    <Message Importance="high" Condition="'$(RuntimeIdentifier)' == 'win-x64'" Text="bundle assembled: $(BundleZip)" />
+    <Message Importance="high" Condition="'$(RuntimeIdentifier)' == 'linux-x64'" Text="bundle assembled: $(BundleTgz)" />
+    <Message Importance="high" Text="  self-contained ($(RuntimeIdentifier)) — no .NET install needed on the target." />
+  </Target>
+
+</Project>

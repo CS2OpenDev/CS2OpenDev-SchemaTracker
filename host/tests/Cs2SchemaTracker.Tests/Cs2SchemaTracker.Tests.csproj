@@ -1,0 +1,48 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <IsPackable>false</IsPackable>
+    <IsTestProject>true</IsTestProject>
+    <RootNamespace>Cs2SchemaTracker.Tests</RootNamespace>
+    <!-- xUnit/MSTest/NUnit convention is MethodName_State_Expected snake_case;
+         CA1707 (no underscores in member names) is wrong for test methods. -->
+    <NoWarn>$(NoWarn);CA1707</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" />
+    <PackageReference Include="xunit" />
+    <PackageReference Include="xunit.runner.visualstudio" />
+    <!-- Transitive via the host project ref, but listed explicitly because the
+          tests construct FileDescriptorProtos by hand. -->
+    <PackageReference Include="Google.Protobuf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Cs2SchemaTracker.Host\Cs2SchemaTracker.Host.csproj" />
+  </ItemGroup>
+
+  <!-- real shipped resource/*.gameevents fixtures, copied verbatim to the
+       test output dir so the round-trip test reads genuine Valve bytes from disk.
+       Deterministic: PreserveNewest copies the committed bytes unchanged. -->
+  <ItemGroup>
+    <Content Include="Vpk\fixtures\resource\*.gameevents">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Vpk\fixtures\resource\%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+
+  <!-- committed live-capture oracle for the NetworkMessageRttiScanner
+       integration test. Copied verbatim to the test output dir so the scan-vs-live
+       cross-validation reads the captured bytes from a stable, repo-relative path
+       (previously a hardcoded absolute path on one developer's machine, which
+       silently no-op'd everywhere else). Loaded via AppContext.BaseDirectory at
+       run time. -->
+  <ItemGroup>
+    <Content Include="NetworkMessages\fixtures\captured-23517234-listen.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>NetworkMessages\fixtures\%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+
+</Project>
