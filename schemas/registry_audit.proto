@@ -1,0 +1,52 @@
+// Registry audit: every named registry symbol present in the loaded binaries,
+// each labeled `extracted` (paired with the artifact filename that received it) or `omitted`
+// (paired with a non-empty rationale).
+//
+// Invariants:
+// - Every entry in every OTHER artifact is reachable from an `extracted` row; every
+//   `omitted` row carries a NON-EMPTY rationale.
+// - A symbol present in the binary but with NEITHER disposition set is a CI failure
+//   (silent drops are forbidden). The `disposition` oneof being unset is exactly that
+//   failure state — CI asserts every RegistryEntry has the oneof populated.
+// - Deterministic regeneration: an audit script reproduces this file
+//   byte-identically from the same inputs; entries are emitted in stable symbol order.
+//
+// PLATFORM MODEL (v0.2): one (build_id, platform) artifact set; one per-platform walk.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+// ---- Top-level artifact (registry_audit.json) -------------------------------------------
+
+message RegistryAudit {
+  string schema_version = 1;       // schemas/ family version (e.g. "0.2.0")
+  string build_id       = 2;       // Steam build ID
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  repeated RegistryEntry entries = 100;
+}
+
+message RegistryEntry {
+  string symbol = 1;               // the named registry symbol as the binary carries it
+  string module = 2;               // originating module, e.g. "client", "server", "engine2"
+                                   // (the client/server/engine discriminator, as elsewhere)
+
+  // Exactly one disposition MUST be set. An unset oneof is the "neither extracted nor
+  // omitted" state and is a CI failure — it must never appear in a committed artifact.
+  oneof disposition {
+    Extracted extracted = 10;
+    Omitted   omitted   = 11;
+  }
+}
+
+message Extracted {
+  string artifact_filename = 1;    // the catalog filename that received this symbol,
+                                   // e.g. "entity_schema.json", "convars.json", "network_messages.json"
+}
+
+message Omitted {
+  string rationale = 1; // non-empty written rationale for the omission
+}

@@ -1,0 +1,100 @@
+// Breakable-prop + collision-group extraction from CS2
+// scripts/propdata.txt (KV1) + scripts/collision_properties.txt (KV3 *text*),
+// both packed in the content-depot pak01.
+//
+// Structured messages — NOT a generic KV mirror. Two distinct source surfaces are
+// combined into one artifact:
+//
+// === propdata.txt (KV1; CONFIRMED against cached content VPKs, 2026-06-19) ===
+//   "PropData.txt"
+//   {
+//     "Cloth.Small" { "base" "Cloth.Base" "health" "30" }     // a prop class
+//     "Door.Standard" { "dmg.bullets" "1.0" "health" "1000" } // a prop class
+//     ...
+//     "BreakableModels"                                        // the one special block
+//     {
+//       "WoodChunks" { "models/Gibs/wood_gib01e.vmdl" "1" ... }
+//       "GlassChunks" { ... }
+//     }
+//   }
+// Every top-level child of the wrapper EXCEPT "BreakableModels" is a breakable-prop
+// class: a flat name→value block (base / health / dmg.bullets / dmg.club /
+// dmg.explosive / physicsmode / breakable_model / breakable_count / ...). The
+// "BreakableModels" block maps a gib-group name to a list of model paths (with a count
+// value per model).
+//
+// === collision_properties.txt (KV3 text; CONFIRMED 2026-06-19) ===
+//   { collision_properties = [ { name = "default" description = "..."
+//                                collision_group = "default"
+//                                interact_as = [...] interact_with = [...]
+//                                interact_exclude = [...] }, ... ] }
+// The collision-group registry: per group, the collision_group enum name + the
+// interact_as / interact_with / interact_exclude content-class lists.
+//
+// === v1 mapping decisions (mirror item_definitions philosophy) ===
+//   - Structured messages, NOT a raw KV tree. Only the join tables are surfaced.
+//   - Prop classes carry a sorted name→value `properties` bag (faithful: any field
+//     Valve adds is preserved, none dropped), keyed by the verbatim class id.
+//   - Absent scalar keys ⇒ proto3-default "" / 0 (no sentinel strings).
+//   - Both sources are OPTIONAL individually; the artifact requires at least one of
+//     {prop_classes, collision_groups} non-empty (an artifact with neither is useless).
+//
+// Determinism (host concern, noted for the contract): prop_classes by id Ordinal;
+// each class's properties by name Ordinal; breakable_models by id Ordinal and each
+// group's models in source order de-duplicated then Ordinal; collision_groups by name
+// Ordinal and each group's interact lists in source order (the KV3 array order is
+// meaningful) — duplicates preserved (arrays are not sets). Canonical JSON, LF, UTF-8.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message PropData {
+  string schema_version = 1;       // schemas/ family version
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  // Breakable-prop classes from propdata.txt (every top-level child except
+  // "BreakableModels"), sorted by id Ordinal.
+  repeated PropClass prop_classes = 100;
+
+  // The "BreakableModels" gib-group table from propdata.txt, sorted by id Ordinal.
+  repeated BreakableModelGroup breakable_models = 101;
+
+  // The collision-group registry from collision_properties.txt, sorted by name Ordinal.
+  repeated CollisionGroup collision_groups = 102;
+}
+
+message PropClass {
+  string id = 1;                   // class key, verbatim (e.g. "Cloth.Small", "Door.Standard")
+
+  // The class's scalar properties (base / health / dmg.* / physicsmode / breakable_model
+  // / breakable_count / ...), sorted by name Ordinal. VERBATIM strings; `base` references
+  // are NOT resolved (consumers walk the inheritance chain themselves).
+  repeated PropProperty properties = 2;
+}
+
+message PropProperty {
+  string name  = 1;                // the KV1 key, verbatim (e.g. "health", "dmg.bullets")
+  string value = 2;                // verbatim scalar; "" when the source value is empty
+}
+
+message BreakableModelGroup {
+  string id = 1;                   // gib-group key, verbatim (e.g. "WoodChunks", "GlassChunks")
+  // The model paths listed under the group (its KEYS), de-duplicated and Ordinal-sorted.
+  // (The per-model source value is conventionally a count; the model path is the payload.)
+  repeated string models = 2;
+}
+
+message CollisionGroup {
+  string name            = 1;      // KV3 `name`, verbatim (e.g. "default", "window")
+  string description     = 2;      // KV3 `description`, verbatim
+  string collision_group = 3;      // KV3 `collision_group` enum name, verbatim
+  // The interact_* content-class lists, in source order (array order is meaningful;
+  // duplicates preserved — these are lists, not sets).
+  repeated string interact_as      = 4;
+  repeated string interact_with    = 5;
+  repeated string interact_exclude = 6;
+}

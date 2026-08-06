@@ -1,0 +1,29 @@
+// Command extraction from CS2 ConCommandBase registry
+//
+// Shape matches the existing upstream output (parsed from DumpSource2/commands.txt
+// into commands_schema.json by CS2OpenDev-Docs) so v1 consumers get parity.
+// Commands differ from convars by having no default value — only name, flags, description.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message Commands {
+  string schema_version = 1;
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  repeated Command commands = 100;
+}
+
+message Command {
+  string name        = 1;          // may start with '+' or '-' for hold-toggle commands
+  repeated string flags = 2;       // subset of convar flag values
+  string description = 3;          // "" if the binary carries no description
+
+  // Whether the command exposes an autocomplete/completion callback
+  // (ConCommandData.HasCompletionCallback()).
+  bool has_completion_callback = 4;
+}

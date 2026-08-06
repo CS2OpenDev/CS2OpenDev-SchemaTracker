@@ -1,0 +1,104 @@
+// Provenance record. Every artifact set ships exactly one provenance.json.
+//
+// The provenance contract mandates ALL of:
+//   - Tool version: semver + git commit SHA of the dumper.
+//   - For every input binary read: path, SHA-256, file size, file mtime (from the Steam manifest).
+//   - Steam identity: appid, depotid, manifestid per depot read, Steam build ID, manifest
+//     creation time (UTC).
+//   - CS2 build identity: schema revision (from schema system), build_id (from Steam),
+//     built_from_cl (from built_from_cl.txt).
+//   - Target platform: (os, arch) — "windows-x86_64" | "linux-x86_64". Client/server is NOT a
+//     provenance axis; it is recorded per class in SchemaClass.module.
+//   - Schema version emitted: the proto3 family version every output conforms to.
+//
+// Determinism: every timestamp here comes from the INPUT (Steam manifest creation
+// time, binary mtime from the manifest) — never DateTime.Now. uint64 Steam IDs are carried as
+// strings so the proto3 JSON mapping is exact and stable across languages (proto3 JSON encodes
+// 64-bit ints as strings anyway; declaring them `string` makes that explicit and avoids any
+// numeric-precision ambiguity for consumers parsing the JSON).
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+// ---- Top-level artifact (provenance.json) -----------------------------------------------
+
+message Provenance {
+  string schema_version = 1;       // schemas/ family version emitted (e.g. "0.2.0")
+  string build_id       = 2;       // Steam build ID (also echoed in cs2_build.steam_build_id)
+  string platform = 3; // target (os, arch): "windows-x86_64" | "linux-x86_64".
+                                   // No client/server dimension — one depot per OS ships both;
+                                   // client/server lives per-class in SchemaClass.module.
+
+  ToolVersion      tool      = 10; // tool semver + git SHA
+  SteamIdentity    steam     = 11; // appid, per-depot manifests, build id, manifest creation time
+  CS2BuildIdentity cs2_build = 12; // schema revision, build_id, built_from_cl
+  repeated InputBinary inputs = 13; // every binary read, with reproducible SHA-256
+
+  // Fingerprint of the produced localization.json. localization.json is PRODUCED on every
+  // dump (so extraction and determinism stay exercised) but is NOT committed to the tree —
+  // at ~199 MB/set it is 96% of the working tree, so it is a build-on-demand artifact,
+  // regenerable via the host `emit-localization` command. This record lets a consumer verify
+  // that an on-demand rebuild is byte-identical to what was dumped: re-emit localization.json
+  // and compare its sha256/size against these values. The hash is over the DETERMINISTIC
+  // canonical JSON bytes (sorted keys, no insignificant whitespace, no timestamps), so it is
+  // stable across re-runs of the same tool version against the same content input. Absent for
+  // a build/era whose content depot was never acquired (no localization to produce).
+  LocalizationOutput localization = 14;
+}
+
+// Fingerprint of the build-on-demand localization.json (see Provenance.localization).
+message LocalizationOutput {
+  string sha256      = 1;          // sha256 (hex, lowercase) of the canonical localization.json bytes
+  uint64 size_bytes  = 2;          // byte length of the canonical localization.json
+  uint64 token_count = 3;          // number of localization tokens (top-level entries)
+}
+
+// Tool version (semver + git commit SHA of the dumper).
+message ToolVersion {
+  string semver     = 1;           // e.g. "0.2.0"
+  string git_commit = 2;           // git SHA of CS2-Schema-Tracker (the HOST) at extraction time
+
+  // Walker identity chain: the WALKER binary's OWN self-reported identity, distinct from
+  // git_commit above (the HOST's SHA) — mixed-vintage walker sets and a stale Docker image both
+  // produced corpus-scale damage undetected before this existed (incident #8). Sourced from
+  // `<walker> --version` (WalkerIdentity.Resolve), never guessed. "" when the walker's identity
+  // could not be resolved for this run (e.g. a fake/test runner); walker_src_fingerprint is the
+  // literal string "unknown" (not "") when the walker WAS resolved but predates the
+  // src-fingerprint line and printed none — see WalkerIdentity.UnknownFingerprint.
+  string walker_git_sha         = 3; // the walker binary's kWalkerGitSha
+  string walker_src_fingerprint = 4; // the walker binary's kWalkerSrcFingerprint; "unknown" if the
+                                     // binary predates the src-fingerprint line
+}
+
+// Steam identity. CS2 is one app (appid 730) whose per-OS binary depot ships client + server
+// together; a platform's walk may read more than one depot (e.g. the binary depot plus a
+// VPK-bearing content depot), so depot/manifest pairs are a repeated list.
+message SteamIdentity {
+  uint32 app_id               = 1;   // 730
+  repeated DepotManifest depots = 2; // one per depot read for this platform
+  string steam_build_id       = 3;   // Steam build ID as a string
+  string manifest_created_utc = 4;   // manifest creation time, ISO 8601 UTC (from the manifest)
+}
+
+message DepotManifest {
+  uint32 depot_id    = 1;          // e.g. 2347771 (windows) / 2347773 (linux)
+  string manifest_id = 2;          // 64-bit manifest ID carried as a string (proto3 JSON convention)
+}
+
+// CS2 build identity; each field's source is noted inline.
+message CS2BuildIdentity {
+  string schema_revision = 1;      // from the schema system probe
+  string steam_build_id  = 2;      // build_id from Steam (string)
+  string built_from_cl   = 3;      // contents of built_from_cl.txt
+}
+
+// One input binary read during extraction.
+message InputBinary {
+  string path      = 1;            // path inside the depot
+  string sha256    = 2;            // hex, lowercase; reproducible via `sha256sum`
+  uint64 file_size = 3;            // small enough that the proto3 JSON number form is exact
+  string mtime_utc = 4;            // file mtime from the Steam manifest, ISO 8601 UTC
+}

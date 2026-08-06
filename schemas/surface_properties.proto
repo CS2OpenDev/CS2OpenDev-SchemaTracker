@@ -1,0 +1,86 @@
+// Surface-property extraction from the CS2 scripts/surfaceproperties_*.txt
+// family (KV3 *text*, packed in the content-depot pak01).
+//
+// Structured messages — NOT a generic KV3 mirror. Each physical surface material
+// (keyed by `surfacePropertyName`) is surfaced as one `Surface` row carrying a
+// deterministic, sorted bag of scalar properties, tagged with the source file the
+// property came from. Only the SurfacePropertiesList arrays are surfaced; nothing
+// in the files is dropped.
+//
+// === The source family (CONFIRMED against cached content VPKs, 2026-06-19) ===
+// FOUR sibling KV3-text files, all packed in pak01 (chunks vary per build), all
+// sharing the shape `{ SurfacePropertiesList = [ { surfacePropertyName = "..." ... } ] }`
+// but each carrying a DIFFERENT field set for the same material:
+//   - surfaceproperties_game.txt        — physics: gamematerial, jumpfactor,
+//                                          maxspeedfactor, climbable,
+//                                          bulletPenetration{Distance,Damage}Modifier, ...
+//   - surfaceproperties_footsteps.txt   — footstep sound-event mappings
+//   - surfaceproperties_impact_effects.txt — impact particle/decal mappings
+//                                            (effect, effect_simplified, impactDecalName, ...)
+//   - surfaceproperties_steamaudio.txt  — acoustic coefficients
+//                                          (low/mid/highFreqAbsorption, scattering,
+//                                           *Transmission, ...)
+//
+// === AGGREGATION / SHAPE DECISION (lead-recommended generic property bag) ===
+// One repeated `surfaces`, each `Surface` keyed by (name, source_file) so the same
+// material's physics row, footstep row, impact row, and acoustic row are FOUR distinct
+// `Surface` entries distinguished by `source_file`. Each `Surface` carries a
+// deterministically-sorted list of `SurfaceProperty { name, value }` scalars (KV3 scalars
+// rendered verbatim as strings; typed-resource values like `resource:"…"` carry the inner
+// string verbatim). Rationale:
+//   - The four files carry DISJOINT, heterogeneous field sets per material; a single typed
+//     proto per field would be brittle and would drop any field Valve adds. A name→value
+//     bag is FAITHFUL (no dropped data) and structured (flattened material→property pairs,
+//     NOT a raw KV tree).
+//   - The `source_file` tag preserves which file each property came from, so a consumer can
+//     reconstruct the per-file view; combining all four into one artifact gives the
+//     consumer the full per-material picture in one place.
+//   - Nested arrays/maps under a property (rare; e.g. a list value) are flattened to the
+//     KV3-text rendering of the value, verbatim — never silently dropped.
+//
+// Determinism (host concern, noted for the contract): `surfaces` is sorted by
+// (name Ordinal, source_file Ordinal); within a Surface, `properties` is sorted by
+// name Ordinal. Canonical JSON, LF, UTF-8 no BOM.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message SurfaceProperties {
+  string schema_version = 1;       // schemas/ family version
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  // Every (material, source_file) row across the surfaceproperties_*.txt family,
+  // sorted by (name, source_file) Ordinal. REQUIRED non-empty.
+  repeated Surface surfaces = 100;
+}
+
+message Surface {
+  // The material name (the KV3 `surfacePropertyName` scalar), verbatim.
+  string name = 1;
+
+  // The source file this row was read from, e.g. "surfaceproperties_game.txt".
+  // Disambiguates the four per-material rows (physics / footsteps / impact / steamaudio).
+  string source_file = 2;
+
+  // The material's scalar properties from `source_file`, sorted by name Ordinal.
+  // A property whose KV3 value is a number/bool/string is rendered verbatim as a string;
+  // a typed-resource value (`resource:"…"`) carries the inner string; a nested
+  // array/map value carries its KV3-text rendering verbatim (never dropped).
+  repeated SurfaceProperty properties = 3;
+
+  // faithful capture (optional): the per-actor footstep scope this row is keyed by
+  // (e.g. "ct_player"), present only for surfaceproperties_footsteps.txt rows that nest
+  // materials under an actor scope. Previously folded into `source_file`; now carried
+  // separately so the (material, source_file) key stays clean. "" when unscoped (the
+  // common case / non-footstep files).
+  string scope = 4;
+}
+
+message SurfaceProperty {
+  string name  = 1;                // the KV3 key, verbatim (e.g. "gamematerial", "jumpfactor")
+  string value = 2;                // verbatim scalar; "" when the source value is empty
+}

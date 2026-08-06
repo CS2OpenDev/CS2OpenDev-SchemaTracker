@@ -1,0 +1,43 @@
+// Engine constants: named integer/string constants the binary itself names.
+//
+// Source: constants whose NAME and VALUE are both recoverable through the audited registry
+// surface — the schema system's named-constant metadata and the named-constant
+// pools. HARD RULE: only constants the binary itself names. A constant whose name
+// would have to be inferred is NEVER emitted. Every emitted constant therefore carries a
+// non-empty `name` and a non-empty `source` tying it back to the pool/registry it came from,
+// so registry_audit.json can reach it from an `extracted` row.
+//
+// NB: this is the AUTO-EXTRACTED engine_constants — distinct from CS2OpenDev-Docs's
+// hand-curated well_known_constants.json, which stays with that repo.
+//
+// PLATFORM MODEL (v0.2): one (build_id, platform) artifact set; one per-platform walk.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+// ---- Top-level artifact (engine_constants.json) -----------------------------------------
+
+message EngineConstants {
+  string schema_version = 1;       // schemas/ family version (e.g. "0.2.0")
+  string build_id       = 2;       // Steam build ID
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  repeated EngineConstant constants = 100;
+}
+
+message EngineConstant {
+  string name = 1; // the name the binary itself carries; never inferred
+  string source = 2;               // symbol pool / registry the constant was extracted from
+                                   // (e.g. a named-constant pool name or schema metadata key);
+                                   // non-empty so the audit can reach this row as `extracted`
+
+  // Tagged union: a constant is exactly one of integer or string, matching how the binary
+  // declares it. No coercion — the value is carried in its native form.
+  oneof value {
+    int64  int_value    = 10;
+    string string_value = 11;
+  }
+}

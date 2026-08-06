@@ -1,0 +1,79 @@
+// Localization token-table extraction from CS2 resource/csgo_<lang>.txt
+// (plain-text KV1 inside the content-depot pak01_dir.vpk).
+//
+// === What this is ===
+// The `resource/csgo_<lang>.txt` files are KV1 "lang" tables: a top-level
+//
+//   "lang" { "Language" "english"  "Tokens" { "#CSGO_..." "Display string" ... } }
+//
+// The `Tokens` section is the token→display-string binding — the join that turns the
+// internal item/weapon name tokens surfaced by item_definitions.json (e.g.
+// `#weapon_ak47`, `SFUI_WPNHUD_AK47`, `#CSGO_...`) into human-readable names. This is the
+// single most useful content table for a downstream docs/consumer.
+//
+// === DESIGN CHOICE: COMBINED token-keyed ===
+// One combined artifact keyed by TOKEN, each token carrying a per-language value map.
+// Rationale:
+//   - A token-keyed shape is the natural consumer shape: a consumer joining an item token
+//     wants every language's string for that token in one place, not 29 separate files.
+//   - The token UNIVERSE is defined by csgo_english.txt (the canonical/most-complete
+//     table). A token that exists only in a non-english file (rare, usually stale) is
+//     still admitted as a row, so no source data is dropped.
+//   - Per-language values are a name→value list (NOT a proto map) so the JSON ordering is
+//     deterministic: languages sorted Ordinal, tokens sorted Ordinal.
+//   - Size: csgo_english alone is multi-MB and there are ~29 langs, so the combined file
+//     is large but bounded and one-per-build. If size ever forces a split, an english-only
+//     variant (drop LocalizedString.values, keep only english_value) is the fallback; v1
+//     ships combined because the consumer join needs it.
+//
+// === v1 mapping decisions (mirror item_definitions philosophy) ===
+//   - Structured messages, NOT a generic KV1 mirror. Only the Tokens table is surfaced;
+//     the rest of the lang file (header keys other than Language) is out of scope.
+//   - RAW values: display strings are carried VERBATIM (after KV1 unescaping); no
+//     formatting-token (%s1) interpretation, no HTML stripping.
+//   - Encoding: the source files may be UCS-2/UTF-16LE; the host normalizes to UTF-8
+//     deterministically before parsing. The proto carries decoded UTF-8 strings.
+//   - Within one language file a duplicate token is last-occurrence-wins (KV1 override).
+//
+// Determinism (host concern, noted here for the contract): `languages` is Ordinal-sorted,
+// `tokens` is Ordinal-sorted by token, and each token's `values` is Ordinal-sorted by
+// language code.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message Localization {
+  string schema_version = 1;       // schemas/ family version
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  // The set of language codes contributing to this artifact (the file suffixes:
+  // "english", "german", "schinese", ...), Ordinal-sorted. Always includes "english"
+  // (the canonical token universe). REQUIRED non-empty.
+  repeated string languages = 100;
+
+  // Every token, Ordinal-sorted by `token`. REQUIRED non-empty.
+  repeated LocalizedString tokens = 101;
+}
+
+message LocalizedString {
+  string token = 1;                // the KV1 token key, verbatim (e.g. "#weapon_ak47")
+
+  // Convenience: the english display string for this token (proto3-default "" when the
+  // token is absent from csgo_english.txt — a non-english-only token). This is redundant
+  // with the "english" entry in `values` and is provided so an english-only consumer can
+  // ignore `values` entirely.
+  string english_value = 2;
+
+  // Per-language display strings, Ordinal-sorted by `language`. A language is present here
+  // only when that language's file carries this token. VERBATIM (KV1-unescaped) strings.
+  repeated LanguageValue values = 3;
+}
+
+message LanguageValue {
+  string language = 1;             // language code (the file suffix), e.g. "english"
+  string value    = 2;             // display string, verbatim (KV1-unescaped); "" allowed
+}

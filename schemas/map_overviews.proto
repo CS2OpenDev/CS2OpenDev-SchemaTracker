@@ -1,0 +1,94 @@
+// Per-map radar/overview metadata extraction from CS2
+// resource/overviews/*.txt (KV1, one file per map, packed in the content-depot pak01).
+//
+// Structured messages — NOT a generic KV1 mirror. Each overview file is a single
+// top-level block keyed by the map name; its scalars are radar metadata. The per-map
+// files are aggregated into one artifact (repeated `maps`), deterministically sorted by
+// map name.
+//
+// === resource/overviews/<map>.txt KV1 shape (CONFIRMED 2026-06-19) ===
+//   "de_dust2"
+//   {
+//     "material" "overviews/de_dust2_v2"   // radar texture
+//     "pos_x" "-2476"  "pos_y" "3239"      // upper-left world coordinate
+//     "scale" "4.4"  "rotate" "1"  "zoom" "1.1"
+//     "inset_left/top/right/bottom" "..."
+//     "CTSpawn_x/y" "..."  "TSpawn_x/y" "..."
+//     "bombA_x/y" "..."  "bombB_x/y" "..."  // bombsite radar positions
+//     ...
+//   }
+//
+// === AGGREGATION / SHAPE DECISION ===
+// One repeated `maps`, each `MapOverview` keyed by map name (the file's top-level block
+// key — which equals the file stem). The well-known radar fields (material, pos_x/y,
+// scale, rotate, zoom, the bombsite + spawn positions) are surfaced as named string
+// fields (rendered VERBATIM — they are floats/ints in the source but carried as strings
+// to avoid lossy float reformatting and to keep byte-stability). EVERYTHING ELSE in
+// the block (insets, any field Valve adds) is preserved in a sorted `properties` bag so
+// no source data is dropped. A separate `map_names` inventory lists every shipped map
+// overview, Ordinal-sorted.
+// Rationale: the named radar fields are the consumer-critical join (pixel↔world transform,
+// bombsite locations); the property bag guarantees faithfulness for the long tail.
+//
+// Determinism (host concern, noted for the contract): `maps` sorted by `name` Ordinal;
+// each map's `properties` by name Ordinal; `map_names` Ordinal-sorted + de-duplicated.
+// Canonical JSON, LF, UTF-8 no BOM.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message MapOverviews {
+  string schema_version = 1;       // schemas/ family version
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  // Every shipped overview, sorted by map name Ordinal. REQUIRED non-empty.
+  repeated MapOverview maps = 100;
+
+  // The inventory of shipped map-overview names (the file stems / block keys),
+  // Ordinal-sorted + de-duplicated. Redundant with `maps[].name` but provided as a flat
+  // maps inventory a consumer can read without walking `maps`.
+  repeated string map_names = 101;
+}
+
+message MapOverview {
+  string name = 1;                 // map name (the file's top-level block key / file stem)
+
+  // Well-known radar metadata, rendered VERBATIM as strings (proto3-default "" when
+  // absent). Floats/ints kept as strings to avoid lossy reformatting.
+  string material = 2;             // radar texture path
+  string pos_x    = 3;             // upper-left world X
+  string pos_y    = 4;             // upper-left world Y
+  string scale    = 5;             // world-units-per-pixel scale
+  string rotate   = 6;             // radar rotation flag
+  string zoom     = 7;             // radar zoom
+
+  // Bombsite + spawn radar positions (normalized [0,1] coords), verbatim. "" when absent.
+  string bomb_a_x = 8;             // "bombA_x"
+  string bomb_a_y = 9;             // "bombA_y"
+  string bomb_b_x = 10;            // "bombB_x"
+  string bomb_b_y = 11;            // "bombB_y"
+  string ct_spawn_x = 12;          // "CTSpawn_x"
+  string ct_spawn_y = 13;          // "CTSpawn_y"
+  string t_spawn_x  = 14;          // "TSpawn_x"
+  string t_spawn_y  = 15;          // "TSpawn_y"
+
+  // faithful capture (optional): the inner KV1 top-level block key when it DIFFERS
+  // from `name` (the file stem). Variant overviews — e.g. file "de_inferno_s2.txt" whose
+  // inner block key is "de_inferno" — otherwise lose the stem↔key distinction. "" when the
+  // block key equals the file stem (the common case).
+  string block_name = 16;
+
+  // Every OTHER scalar in the block (insets, any field Valve adds), sorted by name
+  // Ordinal. Faithful long-tail capture so no source data is dropped. The well-known
+  // fields above are NOT duplicated here.
+  repeated MapOverviewProperty properties = 100;
+}
+
+message MapOverviewProperty {
+  string name  = 1;                // the KV1 key, verbatim
+  string value = 2;                // verbatim scalar; "" when the source value is empty
+}

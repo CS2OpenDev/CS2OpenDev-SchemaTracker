@@ -1,0 +1,60 @@
+// Build-to-build changelog — committed per-(build,platform) artifact.
+//
+// Emitted by the host `diff --from <build> --to <build> [--platform]` subcommand and
+// committed at artifacts/<to_build>/<platform>/changelog.json (stored under the MORE
+// RECENT build of the diffed pair, alongside the other per-(build,platform) artifacts
+// like convars.json). Generated ONLY between consecutive committed builds: each build
+// diffs against its immediate predecessor (the committed build with the next-lower build
+// id for that same platform). The earliest committed build for a platform has no
+// predecessor and therefore carries NO changelog — a legitimate absence, not an omission.
+//
+// Diffs FIVE binary-derived families: classes + enums (from entity_schema.json),
+// convars (convars.json), commands (commands.json), engine_constants
+// (engine_constants.json). These five are unconditional binary-derived files, always
+// present, and appear at families[0..4] in a fixed order.
+//
+// A SIXTH family, `localization`, is appended at families[5] when the diff is supplied
+// both sides' localization.json (token keys in added/removed; per-token englishValue +
+// valuesHash rows in changed). Unlike the binary five, it is content-derived: localization
+// is a build-on-demand artifact (produced every dump, not committed — see
+// provenance.proto LocalizationOutput), so its sources are regenerated/supplied explicitly
+// rather than read from the committed set. When they are absent the changelog is the
+// five-family shape; when present the localization family makes it six.
+//
+// The changelog is deterministic: added/removed name lists and changed entries are
+// Ordinal-sorted, families appear in a stable declared order, and per-entry field changes
+// are emitted in a stable order — re-running diff over the same two artifact sets is
+// byte-identical.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message BuildChangelog {
+  string schema_version = 1;        // schemas/ family version (e.g. "0.4.0")
+  string platform       = 2;        // "windows-x86_64" | "linux-x86_64"
+  string from_build     = 3;        // baseline (predecessor) build id
+  string to_build       = 4;        // target (newer) build id — the build this file is committed under
+
+  repeated FamilyDelta families = 5; // one per diffed artifact family, stable declared order
+}
+
+message FamilyDelta {
+  string family            = 1;     // "classes" | "enums" | "convars" | "commands" | "engine_constants"
+  repeated string added    = 2;     // names present in to_build not from_build (Ordinal-sorted)
+  repeated string removed  = 3;     // names present in from_build not to_build (Ordinal-sorted)
+  repeated EntryChange changed = 4; // intersection entries whose value changed
+}
+
+message EntryChange {
+  string name = 1;                  // entry key (Ordinal-sorted across the list)
+  repeated FieldChange fields = 2;  // changed scalar attributes, stable order
+}
+
+message FieldChange {
+  string field     = 1;             // e.g. "default" | "field_count" | "flags" | "parent" | "value"
+  string old_value = 2;
+  string new_value = 3;
+}

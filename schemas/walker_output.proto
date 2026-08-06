@@ -1,0 +1,190 @@
+// Intermediate format the C++ walker kernel emits for the C# host to consume.
+// Follows the same semver discipline as the public output schemas.
+//
+// The walker writes exactly one of these per (binary-dir, platform) invocation; the host
+// reads it and merges with its own-extracted artifacts (protos, gameevents, etc.), then
+// serializes the entity portion into the public entity_schema.json.
+//
+// What lives here vs. what the host adds:
+//   - The walker emits RAW observations only: class/enum/field shapes walked out of the
+//     live CSchemaSystem object graph, plus reflection metadata carried verbatim from the
+//     binary (including the raw KV3 MGetKV3ClassDefaults string).
+//   - The walker does NOT perform the structural KV3 parse. SchemaMetadata.value_parsed
+//     (google.protobuf.Value) is left absent by the walker and populated host-side.
+//   - Identity the walker cannot know — build_id, source_revision (Steam changelist),
+//     provenance — stays OUT of this file. The host supplies those when it writes
+//     entity_schema.json. Only schema_version / walker_version / platform ride along here.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+// REUSE, not duplicate. Both files are package cs2.schema_tracker.v0, so we import the
+// public artifact's entity messages and embed them directly. Rationale:
+//   - The host mapping from walker_output -> entity_schema becomes mechanical (same types;
+//     copy the repeated fields, then the host stamps build_id/source_revision/provenance
+//     and fills SchemaMetadata.value_parsed). No field-by-field translation layer.
+//   - Single source of truth for the entity shape. Defining walker-side twins would create
+//     two structures that must be kept bit-identical by hand and would silently drift the
+//     first time one side changed. This intermediate is versioned together with the public
+//     artifact schemas — one schemas/ family version covers both — so the two cannot drift
+//     apart. That drift is exactly what the versioning discipline exists to prevent.
+//   - The coupling cost (the intermediate now depends on the public artifact's .proto) is
+//     acceptable: the dependency points from the internal contract to the public shape,
+//     which is the shape both ends are converging on anyway. The reverse dependency
+//     (public -> intermediate) would be the wrong direction; this is not that.
+//
+// The same reuse applies to the ICvar walk and the NetMessages walk: the
+// walker emits the public ConVar / Command / NetworkChannel messages directly, so the host
+// lift into convars.json / commands.json / network_messages.json stays mechanical (copy the
+// repeated field, then stamp build_id/platform identity).
+// The same reuse applies to the schema-metadata named-constant walk and the
+// reflection-reachable CUtlSymbol pool walk: the walker emits the public
+// EngineConstant / StringPool messages directly, so the host lift into
+// engine_constants.json / string_pools.json stays mechanical (copy the repeated field,
+// then stamp build_id/platform identity).
+import "entity_schema.proto";
+import "convars.proto";
+import "commands.proto";
+import "network_messages.proto";
+import "engine_constants.proto";
+import "string_pools.proto";
+
+message WalkerOutput {
+  string schema_version = 1;       // schemas/ family version
+  string walker_version = 2;       // walker binary semver
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"; matches what host invoked with
+                                   // (one walk per platform loads ALL modules; class/enum module tags carry client/server)
+
+  // The walker's responsibility, one walk per family:
+  // - CSchemaSystem walk -> classes/enums/fields (entity_schema below)
+  // - ICvar walk -> convars/commands (convars/commands below)
+  // - NetMessages registry -> network_messages (network_messages below)
+  // - Schema-metadata named-constant pools -> engine_constants (below)
+  // - Reflection-reachable CUtlSymbol pools -> string_pools (below)
+  // - Schema-system layout signature -> schema_system_layout_signature (below)
+
+  // Results of the CSchemaSystem walk. RAW observations only; reuses the public
+  // entity messages verbatim (see import comment above). SchemaMetadata.value_parsed is
+  // left unset by the walker and filled host-side after the structural KV3 parse.
+  EntitySchemaWalk entity_schema = 4;
+
+  // Results of the ICvar (ConCommandBase registry) walk. The walker emits the public ConVar /
+  // Command messages directly; the host copies these repeated fields into convars.json /
+  // commands.json and stamps schema_version/build_id/platform identity.
+  ConVarsWalk   convars  = 5;
+  CommandsWalk  commands = 6;
+
+  // Results of the NetMessages registry walk. The walker emits the public NetworkChannel
+  // messages directly; the host copies them into network_messages.json and stamps identity.
+  // proto_message_type values cross-reference the descriptor set the host extracts for
+  // the same platform.
+  NetworkMessagesWalk network_messages = 7;
+
+  // Results of the schema-metadata named-constant pool walk. The walker emits the public
+  // EngineConstant messages directly (only constants the binary itself names — name and
+  // source both non-empty); the host copies them into engine_constants.json and stamps
+  // schema_version/build_id/platform identity.
+  EngineConstantsWalk engine_constants = 8;
+
+  // Results of the reflection-reachable CUtlSymbol interned-string pool walk. The walker emits
+  // the public StringPool messages directly (entries deduplicated per pool, pool name
+  // preserved verbatim); the host copies them into string_pools.json and stamps identity.
+  StringPoolsWalk string_pools = 9;
+
+  string schema_system_layout_signature = 10; // probe output
+
+  // Auto-discovery completeness: the FULL universe of named registry
+  // symbols this walk OBSERVED in the loaded binaries — including symbols NOT
+  // emitted into any artifact. The host cross-references this against
+  // the produced artifacts to synthesize registry_audit.json: a symbol in the
+  // universe but absent from every artifact becomes an `Omitted` row carrying a
+  // rationale, because the audit invariant forbids silent drops. INTERNAL
+  // walker↔host intermediate — not a downstream-consumer surface
+  // (cf. registry_audit.json, which IS).
+  RegistryUniverse registry_universe = 11;
+
+  // Per-module boot-resolved CreateInterface version strings. The walker is the
+  // only side that can observe which CreateInterface versions each module exposed at
+  // boot; the host merges resolved_interfaces[] into the corresponding Module rows of
+  // modules.json (joined by module identity) and stamps schema_version/build_id/platform.
+  ModulesWalk modules = 12;
+}
+
+// Raw CSchemaSystem walk results. Mirrors EntitySchema's classes[]/enums[] payload but
+// without the host-only identity fields (build_id, source_revision). The host lifts these
+// two repeated fields straight into EntitySchema, then stamps identity + value_parsed.
+//
+// SchemaClass / SchemaEnum (and transitively SchemaClassParent, SchemaField, SchemaType
+// with its recursive Category + inner/inner2/inner3 + count, SchemaEnumMember, and
+// SchemaMetadata incl. the raw KV3 string) are reused as-is from entity_schema.proto.
+message EntitySchemaWalk {
+  repeated SchemaClass classes = 1;
+  repeated SchemaEnum  enums   = 2;
+}
+
+// Raw ICvar walk results. Mirror the public ConVars/Commands payloads minus the
+// host-only identity fields. ConVar / Command are reused as-is from convars.proto /
+// commands.proto; the host lifts the repeated field straight into the public artifact.
+message ConVarsWalk {
+  repeated ConVar convars = 1;
+}
+
+message CommandsWalk {
+  repeated Command commands = 1;
+}
+
+// Raw NetMessages registry walk results. Mirrors NetworkMessages' channels[] payload
+// minus host-only identity. NetworkChannel (and transitively NetworkMessageEntry) is reused
+// as-is from network_messages.proto; the host lifts channels[] straight into the public
+// network_messages.json.
+message NetworkMessagesWalk {
+  repeated NetworkChannel channels = 1;
+}
+
+// Raw schema-metadata named-constant walk results. Mirrors EngineConstants'
+// constants[] payload minus host-only identity. EngineConstant is reused as-is from
+// engine_constants.proto; the host lifts constants[] straight into engine_constants.json.
+// The walker emits only constants the binary itself names (name + source both non-empty).
+message EngineConstantsWalk {
+  repeated EngineConstant constants = 1;
+}
+
+// Raw reflection-reachable CUtlSymbol pool walk results. Mirrors StringPools'
+// pools[] payload minus host-only identity. StringPool is reused as-is from
+// string_pools.proto; the host lifts pools[] straight into string_pools.json. Entries are
+// deduplicated per pool with the pool name preserved verbatim.
+message StringPoolsWalk {
+  repeated StringPool pools = 1;
+}
+
+// Per-module boot-resolved CreateInterface version strings. This is walker-only
+// data (the host can't observe boot-time interface resolution); the host joins it onto
+// the modules.json Module rows by module identity. Unlike the other *Walk messages this
+// is NOT a verbatim public-message copy — modules.proto's Module mixes host-extracted
+// fields (sha256/file_size from the depot file) with this walker-only field, so the
+// walker carries just (module, resolved_interfaces) and the host merges.
+message ModuleInterfaces {
+  string module = 1;                         // module identity, e.g. "client" | "server" | "engine2"
+  repeated string resolved_interfaces = 2;   // boot-resolved CreateInterface versions, sorted; may be empty
+}
+
+message ModulesWalk {
+  repeated ModuleInterfaces modules = 1;
+}
+
+// One observed named registry symbol (whether or not it was extracted).
+message ObservedRegistrySymbol {
+  string symbol   = 1;   // the named registry symbol, verbatim as the binary carries it
+  string module   = 2;   // originating module: "client" | "server" | "engine2" | ...
+  string category = 3;   // walk category that observed it — "schema_class" | "schema_enum" |
+                         // "convar" | "command" | "network_message" | "engine_constant" |
+                         // "string_pool" | ... — lets the host derive an omission rationale
+}
+
+// The full observed-symbol universe for one (build, platform) walk.
+message RegistryUniverse {
+  repeated ObservedRegistrySymbol symbols = 1;
+}

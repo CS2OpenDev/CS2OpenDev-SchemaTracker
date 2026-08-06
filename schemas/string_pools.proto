@@ -1,0 +1,33 @@
+// String pools: interned strings the schema system registers, deduplicated per pool.
+//
+// Source: static string pools tagged as reflection-reachable at module load — e.g. the
+// CUtlSymbolLarge interned-string pools. Completeness: every interned string the
+// schema system registers appears, DEDUPLICATED by pool, with the pool name preserved.
+//
+// Determinism: within a pool, `entries` is emitted in a stable order (the host sorts
+// deduped strings before serialization) and pools are emitted in stable pool-name order, so
+// re-running against the same binaries is byte-identical.
+//
+// PLATFORM MODEL (v0.2): one (build_id, platform) artifact set; one per-platform walk.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+// ---- Top-level artifact (string_pools.json) ---------------------------------------------
+
+message StringPools {
+  string schema_version = 1;       // schemas/ family version (e.g. "0.2.0")
+  string build_id       = 2;       // Steam build ID
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  repeated StringPool pools = 100;
+}
+
+message StringPool {
+  string name = 1;                 // pool name preserved verbatim, e.g. "CUtlSymbolLarge"
+  repeated string entries = 2;     // interned strings, deduplicated within this pool,
+                                   // emitted in stable order for determinism
+}
