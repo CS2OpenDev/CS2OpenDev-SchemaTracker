@@ -1,0 +1,77 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "190",
+              "oldValue": "188"
+            }
+          ],
+          "name": "server.dll/CCSGameRules"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cash_team_per_dead_enemy",
+        "inferno_spread_speed_mult",
+        "inferno_spread_speed_mult_ct",
+        "inferno_velocity_factor_ct"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "de_inferno,de_mirage,de_train,de_dust2,de_nuke,de_ancient,de_overpass",
+              "oldValue": "de_anubis,de_inferno,de_mirage,de_train,de_dust2,de_nuke,de_ancient"
+            }
+          ],
+          "name": "sv_mapvetopickvote_maps"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "CSGO_Collectible_PremierSeason3Coin",
+        "CSGO_Collectible_PremierSeason3Coin_Desc",
+        "Team_Cash_Award_Dead_CTs:p{s2}",
+        "Team_Cash_Award_Dead_Terrorists:p{s2}",
+        "official_leaderboard_premier_season3_name"
+      ],
+      "changed": [],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "19222571",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "19236816"
+}

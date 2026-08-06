@@ -1,0 +1,589 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "sv_deltaticks_enforce",
+        "sv_deltaticks_log"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "clientdll,release"
+            }
+          ],
+          "name": "cl_track_aim_head_log_closest"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "clientdll,release"
+            }
+          ],
+          "name": "cl_track_aim_head_threshold"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,cheat",
+              "oldValue": "clientdll,release"
+            }
+          ],
+          "name": "cl_track_render_eye_angles"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a672b8c57155dab6b594cc39cfcaeae8efdcb6ff79f843f5a1d318f3f577dab2",
+              "oldValue": "f2b1ce46e024a1360d1243b0944ade70eebcbe6bd542a100611dc8d862b781ca"
+            }
+          ],
+          "name": "Attrib_KeychainSeed"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "df1dc364813b3a920d87ab1af1e871ef0076dda01bda92791328ec67d24cbeb2",
+              "oldValue": "efa49853368a80cfce9de403810b719061d00c46b28a1410a43cd4f961c84d30"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenBasaltCS2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ca2405ca27a95d89c54abdd54de6ef1dce6da37f1e8dac6999c65d71ec8ad871",
+              "oldValue": "9a3091cfcee0df69cff85c96fc54c07c70d47c5448de3bb3b619b48f6ab98155"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenBasaltCS2_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1b58bd8544afb33fc0c11ca2527db9f67e28c2cb6bc345be1edae475f97e929d",
+              "oldValue": "9910c4b0f5651031103880436646713c5ce3b3a7bc60dbb51b1ecf47c4456924"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenEdin"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8fbde4ff8dda06a886caa35a8c95cee214a70c5099ba97409beeaf5d4b3239b8",
+              "oldValue": "23dd0da123f78224fd442f15dd3e9e5c26e33a7dcba1a0195c98f084140686b0"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenEdin_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9732977282e5cb6d815d7b362cf377539d8bbd1c44c0bfb8bf3c7f7514c3c517",
+              "oldValue": "fc0179dcb4c2845e9af72a9ee43e09c4f49642be5c411180b3dbacc4a112f16e"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPalais"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2e37b329be6273915415fe1a69295f71a43fa32d9b4b0f7776a47f83fe086da5",
+              "oldValue": "4ca5ca04c9b4181a37bff73d58ebf94a33c9d8af19262f4df37af53cfe46db5e"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPalais_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "17532978d8bf5efffdca361c87f1fda70cfcd71def4928fb5dfec5e823fb01b9",
+              "oldValue": "5215722366048a3655781a057b1482a93bf3c6fe6dab248c868a10adb5efc8fd"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenWhistle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8406949c9457b162a4d3cb64b0170a7ea3bcd6aeeabb82f93eeb31f6094a6e12",
+              "oldValue": "0555c4f25b896404c5a0f62cbe35c948bad83dae4e50efed6a9cecfcc87fd149"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenWhistle_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "46a874938ade91f80fe5ea3b93be0ca86ddb83987be12404a3d929555131624d",
+              "oldValue": "c99e4da7b58300987764941610cda4b729a6ca52e79dcfaa45a50b1f9957f655"
+            }
+          ],
+          "name": "GameUI_PredictBodyShotEffects"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b6f8d552f90aec64313cb1edddfa7377efc550b8be8aa0009e9891b64a371957",
+              "oldValue": "597e05f0928275b83ee04e9fa3dad91641829af4bbdc20f85bd3ece3939715b8"
+            }
+          ],
+          "name": "GameUI_PredictBodyShotEffects_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fa7abdc0b439e7fe1087a76b698d0e4be0c45c0b3bf7a75344724c08fcbdc185",
+              "oldValue": "a643c661178bf4b4cb84504c1675190c87ba1b5c18500c97364ec6701a86dc1d"
+            }
+          ],
+          "name": "GameUI_PredictHeadShotEffects"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a7e0536dd757717cce6203e4df0a9b77a5e9be82000b98613999470cc7620f1a",
+              "oldValue": "59d60cf430831bf0000edb50ed94c5eea0dad72cd96a31d1a8eee2563ffb7d0d"
+            }
+          ],
+          "name": "GameUI_PredictHeadShotEffects_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "33032929ba10db956ffa263fba77419673e35ad0e559888175e863e5be3640b8",
+              "oldValue": "da1966919bc5c5aacd61bfa9d96f10403291b2622b4ef98e55a1a8b51a516e80"
+            }
+          ],
+          "name": "GameUI_PredictKillRagdolls"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7f9adcc0a33697e965bb94458572bcca523d13bceb50e15d1b82de880ddfb7c8",
+              "oldValue": "3746599c6cb7eb33b4519609d9c7e223b242ac68c4f4b404e783ea26b474ebaf"
+            }
+          ],
+          "name": "GameUI_PredictKillRagdolls_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce1df419e74a4db8f73dec333cd5567b4ee19fa7690e6e6bf96940820cd5d9e7",
+              "oldValue": "0e3de5ea0f02c53a783d3a06179fdf755f85643cb048f8336856071e82fdeb54"
+            }
+          ],
+          "name": "LongDog"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4ae62418ff90b798a56d1b0f9f31240e7aa3cc34cfc1f0bd1790999b87ff29ac",
+              "oldValue": "c1219a651b36a1b4b44e2aeabfcfe03d7bc63f874945572d98ec197181ac4c49"
+            }
+          ],
+          "name": "Player_DisconnectReason_InsecureClient"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f6d28b8eeac7cbd3f83f8ba3fbd7196d7b9bf20594f75754b6c501860dcb1567",
+              "oldValue": "2fe605a92adcb70ce63a7401ad8980be5341bf745f1f24bf7f770066b3cbcdf9"
+            }
+          ],
+          "name": "SFUI_MainMenu_Outofdate_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "89a166d25412de704b9162ec315724a5ed436116aa6251e69c3b52cc2d430388",
+              "oldValue": "ebe9b5acf64871187381d7d47104bf08a047b5fd1b64d7bae5b529f52db7fad8"
+            }
+          ],
+          "name": "SFUI_Map_de_edin"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d60ab2d438e738aaababf275d7c6b1bd471e13901aa8d4b9769ec4124e9f2ff6",
+              "oldValue": "281c481de503184d9f12ee1ef506b8562d9134f10d3d1317e706825da0beeffd"
+            }
+          ],
+          "name": "SFUI_Map_de_palais"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3113780f7ef4af4f56694f38aa95502cec96419f50df0e89f19a417078336009",
+              "oldValue": "8284b793c7d492e63c9752506ed214ade7b561908919b2c5fd4de3236e8efa9a"
+            }
+          ],
+          "name": "SFUI_Map_de_whistle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7b0baff3cc996230273974a849a318fff23d00be5bd3f1fd7af66c8242004d1c",
+              "oldValue": "e4bbf4623483402df5f214dfccf2d9628c7ae8abe33355f79631f63d99a36635"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_49"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5cdaf531182109858ea5056d1a2b5617ce99d37eea7da6a49ba1f488309bd42e",
+              "oldValue": "562599171ee1d7e2861194e94c29fb8196a1d713d53ac7c0bb39275b97905dad"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_BackgroundAlpha_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "eb1a5964b9f6119fcde961d50c29a1f13471f103d68e4e7dcb1e07693a1eb98e",
+              "oldValue": "fe77e76f9cda20a1ee3129ceb6ea39ac86bf6fb1b328cb95e83ef51c73d664ea"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_Radar_Background_Alpha"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "95ec0aca7a6713d5e52f884b2974808e976719bf4d246916b6bf3b2c045a0b3e",
+              "oldValue": "cbf4cad3bed1b0384b9470dd5684f8270936cebdddafab815f02f83e395f4e3d"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_Radar_Background_Alpha_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b3933870b8db7948358405297e1715e7bb03821ed61ff1768c8f9e2ef96357fb",
+              "oldValue": "9b5197efd081d5d5401b95f37fdd2f39b2a682861a685af33928b4059daab64a"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_Radar_Map_Additive"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "301da8cc2081f6cd595b8958bd29eb9740f67558cdd7fd76dad9a7009e7164c6",
+              "oldValue": "bd71ddd4219e22dfbbf690f5f270d5816f04b5ac48c0c84eaaa9e8ce2f3774d7"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_Radar_Map_Additive_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "84236a668d66c17739b54c60e926916e7bdccee51383a099ac6e917947f0f284",
+              "oldValue": "504c312a1534f800bfa5ce0845aa03abec1e205b8d5ce2e9b03ace6c03eee24c"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_Radar_Size_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ad76c496f6fe824a3f62ab23b1eff40d81477964ab5af55bb4cc16a5392fac34",
+              "oldValue": "13bbf5d39c37ad3d4253c424901cd76befb27268a0f47e2fd0579a3ddead3d2e"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_FrameTimePoor_Slider_Display"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "21fd91997a107ffb3bc6cf84c4d9024f8abfc414019b0cc1469f70fbc80c9143",
+              "oldValue": "716d48bff2385cd2c955fb1666e79e9b421055b71190699a7c659827618dfcfb"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMissedTicks"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b19dfa794a00e21043a65b4e982624e8dca43ef1b68ab6bbf90fd5610fc8fb5c",
+              "oldValue": "a83fc13b35af9931e178dd244b504693437908b944200f087feb90f3a263d22a"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMissedTicksPoor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d85f6e9e43ee5cd1fe1213ea417ec1efa64c93d6380901371df78a627e3fcd4",
+              "oldValue": "f0dd879412ef356d85900656d3333606615e4e5bdfb9ec4c597d03c1eb447033"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMissedTicksPoor_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dc8dacabe2f812f66f0039af6b9c751a1294a4cceec363fbaa47b3706c166255",
+              "oldValue": "1a3a4fa24ce20b8d5bb5cb1d05a86fd8f80102b670358c1688238511645daf50"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMissedTicks_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9640fa79f76629a633872059e831d16db39de30be765c71e97e300e277044bc4",
+              "oldValue": "4a0d7f660775edca3c9be25182f6e4e18a7689fef6c67dbdf3927c555582f5ff"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkQualityDetailed"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5664e45405f3cb8a9bc54bb86b8b6111548ad75a7df20716aa59bbd410eff43f",
+              "oldValue": "f207d49624a81ee224242f4abcba956c3372f2fdddb4a37d272ffbbcbaa3af6d"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkQualityDetailed_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c73a925a832fb416929a054c7fd48c8744a12b9fa6f39c0716fd7c1062123f9",
+              "oldValue": "370b469008b9fae48260452572ee122d03df41f04207f49223a8fc1d3fc6e2e4"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkQualityGraph"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bd71e7453ad0a0e9b41787cee1b46abb7e281c64ef12b0f46c24789e30eda620",
+              "oldValue": "1edde68503a4378fcf722d31caa2c68e319a2ce27d41db07218b4909519334c9"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d84ed6ec4008f166de78c551ee35a9d972bc7f8d4171a1609f63bc4d405c36e",
+              "oldValue": "baae4430250095e962c2d43a43bbe93fa4056f5414b81e89d26fa698de921922"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0ab9d5481b6ed911cc32c3caa2ea963560e2ae01061d8d87d98413a5984c819c",
+              "oldValue": "2edef88c68352a1ea4ed6e682aec4f0448020970880b47f6e3fb6d6b1f1035e4"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6a644997b6898cdb5a0aa061d00960ac83abdec3b1ab30bca9f934fc8de000ad",
+              "oldValue": "65ef9bccc29c260997d938dde8df2df32887581a54491b47b9afd18cf9f807f0"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "347d073f0cb97c7f52147a9f9aa590d56abd2e5b333d52ad481f12c436ff0c8b",
+              "oldValue": "b5622fe541a815bd1d39672e89fbb295d0cfbcfb5d33eea93079cc9eaf4b1202"
+            }
+          ],
+          "name": "annotations_grenade_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "87e349f628a20cb2706688ed5364ded060b20bb09ba154d5e384419b4128e61e",
+              "oldValue": "398adaef9e56e2c39c5246a1f67911607403bdd9c1d08d1267bc213351f33595"
+            }
+          ],
+          "name": "annotations_grenade_info_guides_off"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4567fbcdff0ba97034f5c0d078cd639bdb9b3854f205d07dad07694ad78930d5",
+              "oldValue": "d1f14592a4d82a04759f85fafb2f7ae4c3dee6fa44cf8ced62c908ca8c19af02"
+            }
+          ],
+          "name": "mainmenu_debug_lobby_of_five"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a88490756a665f66f0c6fd6f89401ec4647b1648571a556a9e1b28e57d1b0508",
+              "oldValue": "6c5224ad26e71fdb6ba37cb2ff89957cb0ae7f47939f1890b62d74f662842607"
+            }
+          ],
+          "name": "practicesettings_annotations_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b5d1694b84186814880e3509c2ffcf2e2b56de189b2948077cad48ed24ad9739",
+              "oldValue": "5635a540eda351a164dd5f7288691ac603be9feb475ea31dc54736dddf5757d2"
+            }
+          ],
+          "name": "practicesettings_annotations_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "84a6496aff96350343625837a836ee0274b5b289d81687aa86565eca038b70c0",
+              "oldValue": "3bae6c39a1e3a3a791210a40eefcff3629609b4ec4b7d082b37a831209ab1220"
+            }
+          ],
+          "name": "practicesettings_infammo_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a9f00478acdc56f1076524a3887804ae9891e5e4f37c9ab583a224402f749ab",
+              "oldValue": "343335b88a9ba0398b400512cca755b427592a957127c24e2bff281ebd2ce5a7"
+            }
+          ],
+          "name": "practicesettings_infwarmup_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a70319858b733582610b077906ba07abc003c0e9737a3bb92172969b65ca5a37",
+              "oldValue": "85d6d4d8606c8910ddf7bee2aef5b7533569a0659d3b11a89293103003ef9541"
+            }
+          ],
+          "name": "settings_damage_prediction"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f9b4514dace61235effded8792f2eabe016a985d73a83ab016bd8bca7adf0989",
+              "oldValue": "8ec534a33d8d1e2516f6b2078d5f025edde624414e7af71be2a21e772569435c"
+            }
+          ],
+          "name": "settings_damage_prediction_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0f96de0e23fb300a6d7fe8de85e8c2b3e59f0828ebf09751a073b414f2920f0c",
+              "oldValue": "4fdb349fc86128ca14b2b2b1f639be22b4cf92466da95a9b98af560a39d253af"
+            }
+          ],
+          "name": "settings_new"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4059d3e6a0b72c8debef6a45683d21f237bb6b14f15d2520cf499c90f00c7af1",
+              "oldValue": "83c6746e7586171151a1c830512bd2149749023f04ace3122ec7fb62a1170ead"
+            }
+          ],
+          "name": "tooltip_permission_settings_explain"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "16465245",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "16479532"
+}

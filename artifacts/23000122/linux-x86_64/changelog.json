@@ -1,0 +1,219 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "16",
+              "oldValue": "18"
+            }
+          ],
+          "name": "!GlobalTypes/CCSPlayerAnimationState"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "28",
+              "oldValue": "29"
+            }
+          ],
+          "name": "libclient.so/CCS2PawnGraphController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "14"
+            }
+          ],
+          "name": "libclient.so/CMapInfo"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "28",
+              "oldValue": "29"
+            }
+          ],
+          "name": "libserver.so/CCS2PawnGraphController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "14"
+            }
+          ],
+          "name": "libserver.so/CMapInfo"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "player_competitive_maplist_8_10_0_556B3D03",
+        "sv_csgo_gpu_culling_skybox",
+        "ui_inspect_bkgnd_map_C2AEBB5E",
+        "ui_mainmenu_bkgnd_movie_C2AEBB5E"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "player_competitive_maplist_8_10_0_C512DEBE",
+        "sc_instanced_mesh_mesh_shader",
+        "ui_inspect_bkgnd_map_539CD0B9",
+        "ui_mainmenu_bkgnd_movie_539CD0B9"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "ABoost",
+        "AHalls",
+        "AStairs",
+        "BHalls",
+        "Bear",
+        "BusStop",
+        "CTLane",
+        "Checkers",
+        "Corner",
+        "Cubby",
+        "Headshot",
+        "Highway",
+        "Lockers",
+        "MidRoof",
+        "OutsideA",
+        "OutsideB",
+        "Sandbags",
+        "SunRoom",
+        "TTruck",
+        "TYard",
+        "TreeRoom",
+        "Useless"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c05136665cadf9b81dbaea988e01d49eeddd3f5c76f3fd50291ff84f4c223645",
+              "oldValue": "e38b76f339e6de979607ed9d7d3e5c818e0773342a78c95f2bd0e2b157318f03"
+            }
+          ],
+          "name": "Cstrike_TitlesTXT_All_Hostages_Rescued"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bacebd8f71612c1102b9c35354a70f818528efe00824927955d84d02972000e4",
+              "oldValue": "fbc46ec71c97dd067423c5f439d3b3b52c39134d910aad97fc188dd8e1982570"
+            }
+          ],
+          "name": "Cstrike_TitlesTXT_Hostages_Not_Rescued"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cec3ff9b22a9ba1bfa3e89d2f9441484a2a563da5df5186c9cd3b46c82b25657",
+              "oldValue": "e7820fe92de9f18aea4c96a904c92eeecf58b6c6f55c0aefefe29675798e2dbe"
+            }
+          ],
+          "name": "Cstrike_TitlesTXT_Injured_Hostage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8237c6e3df9a28017aa06af0bdc06bae40607b84b36c7cd8242cc76f930637ae",
+              "oldValue": "46a88f2c8bdf13c04cfe1e93ab230d01eef8fa8eb9cf5a1c30c180d42edfe131"
+            }
+          ],
+          "name": "Cstrike_TitlesTXT_Killed_Hostage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0e4ec21b595033839d6d9f3895b931bfce2cfb52527fd79f8109487465008f91",
+              "oldValue": "2d861f5387ba3487801b78cba5e05536455416cd2900a416e5bfef8ed4c244de"
+            }
+          ],
+          "name": "Player_Cash_Award_Interact_Hostage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9cdc4890616d9fccf7f248df835dcbd55398faedbc4255c9664ced008a91ff46",
+              "oldValue": "3278058b17c7a8bb17142d8a185f8597feaff44f923bc2cf2cfa75d4be367e20"
+            }
+          ],
+          "name": "SFUI_HostageApproachPayout"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f3704b8d3229dad28f4a57cd8ebb2c401bcda0c2ae28816b6b72f86190510af4",
+              "oldValue": "bb75105f6107254d8b5388ea4f946d9f16272a55586f430cc8cc2ee96da4a0db"
+            }
+          ],
+          "name": "Team_Cash_Award_Hostage_Interaction"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a756cc7db7e3e4835e810fe24b1da32edb87221d54989f3e7a4889a0dd0479fc",
+              "oldValue": "6609b48d5e21b2bdb5459f7f62bc382fc7495a0c4c31338b0e15a41ce9648b7b"
+            }
+          ],
+          "name": "hostagerescuetime"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7582897b3270f0f5ef8d3bf8efbc8ed6c14c5f11c74a9cc83ce9fca91e7e51c2",
+              "oldValue": "a801e7e828cac9e394ebaa79430941c2a73e1217d11091fa2f08d20aaa02d00c"
+            }
+          ],
+          "name": "winpanel_mvp_award_rescue"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "22948967",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "23000122"
+}

@@ -1,0 +1,1358 @@
+{
+  "breakableModels": [
+    {
+      "id": "ConcreteChunks",
+      "models": [
+        "models/props_debris/concrete_chunk02a.vmdl",
+        "models/props_debris/concrete_chunk03a.vmdl",
+        "models/props_debris/concrete_chunk07a.vmdl",
+        "models/props_debris/concrete_chunk08a.vmdl",
+        "models/props_debris/concrete_chunk09a.vmdl"
+      ]
+    },
+    {
+      "id": "GlassChunks",
+      "models": [
+        "models/Gibs/Glass_shard01.vmdl",
+        "models/Gibs/Glass_shard02.vmdl",
+        "models/Gibs/Glass_shard03.vmdl",
+        "models/Gibs/Glass_shard04.vmdl",
+        "models/Gibs/Glass_shard05.vmdl",
+        "models/Gibs/Glass_shard06.vmdl"
+      ]
+    },
+    {
+      "id": "MetalChunks",
+      "models": [
+        "models/Gibs/metal_gib1.vmdl",
+        "models/Gibs/metal_gib2.vmdl",
+        "models/Gibs/metal_gib3.vmdl",
+        "models/Gibs/metal_gib4.vmdl",
+        "models/Gibs/metal_gib5.vmdl"
+      ]
+    },
+    {
+      "id": "WoodChunks",
+      "models": [
+        "models/Gibs/wood_gib01a.vmdl",
+        "models/Gibs/wood_gib01b.vmdl",
+        "models/Gibs/wood_gib01c.vmdl",
+        "models/Gibs/wood_gib01d.vmdl",
+        "models/Gibs/wood_gib01e.vmdl"
+      ]
+    }
+  ],
+  "buildId": "19099927",
+  "collisionGroups": [
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Solid to only players and npcs, has the same functionality as clip brush",
+      "interactAs": [
+        "playerclip",
+        "npcclip"
+      ],
+      "interactExclude": [],
+      "interactWith": [],
+      "name": "clip"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Solid to drones only",
+      "interactAs": [
+        "csgo_droneclip"
+      ],
+      "interactExclude": [],
+      "interactWith": [],
+      "name": "csgo_droneclip"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Solid to grenades only",
+      "interactAs": [
+        "csgo_grenadeclip"
+      ],
+      "interactExclude": [],
+      "interactWith": [],
+      "name": "csgo_grenadeclip"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Solid but exclude bullets & grenades.",
+      "interactAs": [
+        "passbullets"
+      ],
+      "interactExclude": [
+        "csgo_thrown_grenade"
+      ],
+      "interactWith": [],
+      "name": "csgo_railing"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Solid but exclude bullets, grenades, and players.  csgo_railings_no_players usually have a separate clip brush for player collisions.",
+      "interactAs": [
+        "passbullets"
+      ],
+      "interactExclude": [
+        "csgo_thrown_grenade",
+        "player"
+      ],
+      "interactWith": [],
+      "name": "csgo_railing_no_players"
+    },
+    {
+      "collisionGroup": "default",
+      "description": "Default collision",
+      "interactAs": [],
+      "interactExclude": [],
+      "interactWith": [],
+      "name": "default"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Default collision, but occlude sound, block soundscape selection, etc",
+      "interactAs": [
+        "blocksound",
+        "CONTENTS_SOLID"
+      ],
+      "interactExclude": [],
+      "interactWith": [],
+      "name": "default_block_sound"
+    },
+    {
+      "collisionGroup": "default",
+      "description": "Default collision but passes thrown grenades",
+      "interactAs": [],
+      "interactExclude": [
+        "csgo_thrown_grenade"
+      ],
+      "interactWith": [],
+      "name": "default_grenade_throw_exclude"
+    },
+    {
+      "collisionGroup": "default",
+      "description": "Default collision but passes player movement and thrown grenades",
+      "interactAs": [],
+      "interactExclude": [
+        "player",
+        "csgo_thrown_grenade"
+      ],
+      "interactWith": [],
+      "name": "default_player_movement_and_thrown_grenade_exclude"
+    },
+    {
+      "collisionGroup": "default",
+      "description": "Default collision, except ignored by player movement",
+      "interactAs": [],
+      "interactExclude": [
+        "player"
+      ],
+      "interactWith": [],
+      "name": "default_player_movement_exclude"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "not solid to players or npc and passes bullets",
+      "interactAs": [
+        ""
+      ],
+      "interactExclude": [
+        "player",
+        "npc"
+      ],
+      "interactWith": [],
+      "name": "foliage_no_collision_pass_bullets"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Solid to everything but bullets",
+      "interactAs": [
+        "passbullets"
+      ],
+      "interactExclude": [],
+      "interactWith": [],
+      "name": "grating"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Does not collide with anything, but blocks sound",
+      "interactAs": [
+        "blocksound"
+      ],
+      "interactExclude": [],
+      "interactWith": [],
+      "name": "no_collision_block_sound"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Default collision, but do not block line of sight",
+      "interactAs": [
+        "CONTENTS_SOLID_NO_BLOCK_LOS"
+      ],
+      "interactExclude": [],
+      "interactWith": [],
+      "name": "solid_no_block_los"
+    },
+    {
+      "collisionGroup": "ConditionallySolid",
+      "description": "Solid but does not block light or LOS",
+      "interactAs": [
+        "window"
+      ],
+      "interactExclude": [],
+      "interactWith": [],
+      "name": "window"
+    }
+  ],
+  "platform": "linux-x86_64",
+  "propClasses": [
+    {
+      "id": "Cardboard.Base",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "0.5"
+        },
+        {
+          "name": "dmg.club",
+          "value": "1.25"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.5"
+        }
+      ]
+    },
+    {
+      "id": "Cardboard.Indestructable",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cardboard.Base"
+        }
+      ]
+    },
+    {
+      "id": "Cardboard.Large",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cardboard.Base"
+        },
+        {
+          "name": "health",
+          "value": "40"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Cardboard.Medium",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cardboard.Base"
+        },
+        {
+          "name": "health",
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "id": "Cardboard.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cardboard.Base"
+        },
+        {
+          "name": "health",
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "id": "Cardboard.break",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cardboard.Base"
+        },
+        {
+          "name": "health",
+          "value": "10"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Cardboard.breakclient",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cardboard.Base"
+        },
+        {
+          "name": "health",
+          "value": "10"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Cardboard.physics",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cardboard.Base"
+        },
+        {
+          "name": "health",
+          "value": "15"
+        }
+      ]
+    },
+    {
+      "id": "Cloth.Base",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "0.5"
+        },
+        {
+          "name": "dmg.club",
+          "value": "0.75"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.5"
+        }
+      ]
+    },
+    {
+      "id": "Cloth.Large",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cloth.Base"
+        },
+        {
+          "name": "health",
+          "value": "100"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Cloth.Medium",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cloth.Base"
+        },
+        {
+          "name": "health",
+          "value": "50"
+        }
+      ]
+    },
+    {
+      "id": "Cloth.Object",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cloth.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Cloth.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Cloth.Base"
+        },
+        {
+          "name": "health",
+          "value": "30"
+        }
+      ]
+    },
+    {
+      "id": "Door.Standard",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.club",
+          "value": "1.25"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.5"
+        },
+        {
+          "name": "health",
+          "value": "1000"
+        }
+      ]
+    },
+    {
+      "id": "Flesh.Base",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "1.25"
+        },
+        {
+          "name": "dmg.club",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.5"
+        }
+      ]
+    },
+    {
+      "id": "Flesh.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Flesh.Base"
+        },
+        {
+          "name": "health",
+          "value": "10"
+        }
+      ]
+    },
+    {
+      "id": "Flesh.Tiny",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Flesh.Base"
+        },
+        {
+          "name": "health",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Glass.Base",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.club",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "0.1"
+        }
+      ]
+    },
+    {
+      "id": "Glass.CSWindow",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Glass.Window"
+        },
+        {
+          "name": "health",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Glass.CSWindow2",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Glass.Window"
+        },
+        {
+          "name": "health",
+          "value": "1"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Glass.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Glass.Base"
+        },
+        {
+          "name": "damage_table",
+          "value": "glass"
+        },
+        {
+          "name": "health",
+          "value": "5"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Glass.Window",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Glass.Base"
+        },
+        {
+          "name": "damage_table",
+          "value": "glass"
+        },
+        {
+          "name": "dmg.bullets",
+          "value": "0.5"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.0"
+        },
+        {
+          "name": "health",
+          "value": "1"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Glass.WindowStrong",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Glass.Base"
+        },
+        {
+          "name": "damage_table",
+          "value": "glass"
+        },
+        {
+          "name": "dmg.bullets",
+          "value": "0.5"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.0"
+        },
+        {
+          "name": "health",
+          "value": "100"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Glass.picture",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Glass.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Item.Base",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.club",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.0"
+        },
+        {
+          "name": "health",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "Item.Large",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Item.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Item.Medium",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Item.Base"
+        }
+      ]
+    },
+    {
+      "id": "Item.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Item.Base"
+        }
+      ]
+    },
+    {
+      "id": "Metal.Base",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.club",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.0"
+        },
+        {
+          "name": "health",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "Metal.Large",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Metal.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Metal.Medium",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Metal.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Metal.MediumClient",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Metal.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Metal.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Metal.Base"
+        }
+      ]
+    },
+    {
+      "id": "Metal.break",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Metal.Base"
+        },
+        {
+          "name": "health",
+          "value": "10"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Metal.break2",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Metal.Base"
+        },
+        {
+          "name": "health",
+          "value": "100"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Plastic.Base",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.club",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.0"
+        },
+        {
+          "name": "health",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "id": "Plastic.Large",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Plastic.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Plastic.Medium",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Plastic.Base"
+        }
+      ]
+    },
+    {
+      "id": "Plastic.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Plastic.Base"
+        }
+      ]
+    },
+    {
+      "id": "Plastic.Small2",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Plastic.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Plastic.SmallClient",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Plastic.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Plastic.break",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Plastic.Base"
+        },
+        {
+          "name": "health",
+          "value": "10"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "PlasticSmall.NoBreak",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Plastic.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "PlasticSmall.break",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Plastic.Base"
+        },
+        {
+          "name": "health",
+          "value": "10"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Pottery.Base",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.club",
+          "value": "1.25"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.5"
+        }
+      ]
+    },
+    {
+      "id": "Pottery.Huge",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Pottery.Base"
+        },
+        {
+          "name": "health",
+          "value": "100"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Pottery.Large",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Pottery.Base"
+        },
+        {
+          "name": "health",
+          "value": "70"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Pottery.Medium",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Pottery.Base"
+        },
+        {
+          "name": "health",
+          "value": "40"
+        }
+      ]
+    },
+    {
+      "id": "Pottery.Plant",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Pottery.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Pottery.PlantBreak",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Pottery.Base"
+        },
+        {
+          "name": "health",
+          "value": "20"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Pottery.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Pottery.Base"
+        },
+        {
+          "name": "damage_table",
+          "value": "glass"
+        },
+        {
+          "name": "health",
+          "value": "5"
+        }
+      ]
+    },
+    {
+      "id": "Pottery.break",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Pottery.Base"
+        },
+        {
+          "name": "health",
+          "value": "20"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Pottery.break2",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Pottery.Base"
+        },
+        {
+          "name": "health",
+          "value": "20"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Stone.Base",
+      "properties": [
+        {
+          "name": "dmg.bullets",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.club",
+          "value": "1.0"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.0"
+        }
+      ]
+    },
+    {
+      "id": "Stone.Gigantic",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Stone.Base"
+        },
+        {
+          "name": "health",
+          "value": "600"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Stone.Huge",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Stone.Base"
+        },
+        {
+          "name": "health",
+          "value": "400"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Stone.Large",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Stone.Base"
+        },
+        {
+          "name": "health",
+          "value": "200"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Stone.Medium",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Stone.Base"
+        },
+        {
+          "name": "health",
+          "value": "100"
+        }
+      ]
+    },
+    {
+      "id": "Stone.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Stone.Base"
+        },
+        {
+          "name": "health",
+          "value": "50"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.Barrel",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "0"
+        },
+        {
+          "name": "health",
+          "value": "50"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.Barrel2",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "0"
+        },
+        {
+          "name": "health",
+          "value": "201"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.Base",
+      "properties": [
+        {
+          "name": "breakable_model",
+          "value": "WoodChunks"
+        },
+        {
+          "name": "breakable_skin",
+          "value": "0"
+        },
+        {
+          "name": "dmg.bullets",
+          "value": "0.75"
+        },
+        {
+          "name": "dmg.club",
+          "value": "2.0"
+        },
+        {
+          "name": "dmg.explosive",
+          "value": "1.5"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.Huge",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "10"
+        },
+        {
+          "name": "health",
+          "value": "130"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.Large",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "6"
+        },
+        {
+          "name": "health",
+          "value": "50"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.Medium",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "4"
+        },
+        {
+          "name": "health",
+          "value": "30"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.MediumNobreak",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.Small",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "2"
+        },
+        {
+          "name": "health",
+          "value": "20"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.Small2",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "2"
+        },
+        {
+          "name": "health",
+          "value": "1"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.Tiny",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "0"
+        },
+        {
+          "name": "health",
+          "value": "6"
+        },
+        {
+          "name": "physicsmode",
+          "value": "3"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.chair",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "4"
+        },
+        {
+          "name": "health",
+          "value": "25"
+        }
+      ]
+    },
+    {
+      "id": "Wooden.sticks",
+      "properties": [
+        {
+          "name": "base",
+          "value": "Wooden.Base"
+        },
+        {
+          "name": "breakable_count",
+          "value": "0"
+        },
+        {
+          "name": "physicsmode",
+          "value": "1"
+        }
+      ]
+    }
+  ],
+  "schemaVersion": "0.5.0"
+}

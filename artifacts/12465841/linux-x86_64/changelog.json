@@ -1,0 +1,85 @@
+{
+  "families": [
+    {
+      "added": [
+        "libclient.so/C_FlashbangProjectile"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "libclient.so/CCSPlayerController_ActionTrackingServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "140",
+              "oldValue": "141"
+            }
+          ],
+          "name": "libclient.so/C_CSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerController_ActionTrackingServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "136",
+              "oldValue": "137"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerPawnBase"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cq_netgraph_problem_show_auto"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "sv_flashbang_strength"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12438553",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12465841"
+}

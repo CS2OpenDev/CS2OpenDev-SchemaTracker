@@ -1,0 +1,85 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "8"
+            }
+          ],
+          "name": "libclient.so/CCSPlayer_ItemServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "8"
+            }
+          ],
+          "name": "libserver.so/CCSPlayer_ItemServices"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_buywheel_nonumberpurchasing",
+        "ui_mainmenu_bkgnd_movie_91CCC7C5"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.160000",
+              "oldValue": "0.490000"
+            }
+          ],
+          "name": "snd_music_deathcam_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.160000",
+              "oldValue": "0.490000"
+            }
+          ],
+          "name": "snd_music_round_volume"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "ui_mainmenu_bkgnd_movie_94408AE3"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "11408339",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "11418830"
+}

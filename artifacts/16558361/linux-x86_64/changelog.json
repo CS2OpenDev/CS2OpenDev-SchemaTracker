@@ -1,0 +1,1831 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "sv_quantize_movement_input"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "CSGO_CollectibleCoin_sha2024_Champion",
+        "CSGO_CollectibleCoin_sha2024_Champion_Desc",
+        "CSGO_CollectibleCoin_sha2024_Finalist",
+        "CSGO_CollectibleCoin_sha2024_Finalist_Desc",
+        "CSGO_CollectibleCoin_sha2024_Quarterfinalist",
+        "CSGO_CollectibleCoin_sha2024_Quarterfinalist_Desc",
+        "CSGO_CollectibleCoin_sha2024_Semifinalist",
+        "CSGO_CollectibleCoin_sha2024_Semifinalist_Desc",
+        "CSGO_Collectible_Desc_GlobalGeneral2025",
+        "CSGO_Collectible_GlobalGeneral2025",
+        "CSGO_SupportGameAuthKey_Desc_23",
+        "CSGO_SupportGameAuthKey_Type_23",
+        "CSGO_TeamID_130",
+        "CSGO_TeamID_131",
+        "CSGO_TeamID_132",
+        "CSGO_TeamID_133",
+        "CSGO_TournamentChallenge_sha2024_activate_pass",
+        "CSGO_TournamentChallenge_sha2024_challengers_calender",
+        "CSGO_TournamentChallenge_sha2024_challengers_pickem",
+        "CSGO_TournamentChallenge_sha2024_grandfinal_calender",
+        "CSGO_TournamentChallenge_sha2024_grandfinal_pickem",
+        "CSGO_TournamentChallenge_sha2024_legends_calender",
+        "CSGO_TournamentChallenge_sha2024_legends_pickem",
+        "CSGO_TournamentChallenge_sha2024_quarterfinals_pickem",
+        "CSGO_TournamentChallenge_sha2024_semifinals_pickem",
+        "CSGO_TournamentJournal_sha2024",
+        "CSGO_TournamentJournal_sha2024_Crystal",
+        "CSGO_TournamentJournal_sha2024_Desc",
+        "CSGO_TournamentJournal_sha2024_Gold",
+        "CSGO_TournamentJournal_sha2024_Silver",
+        "CSGO_TournamentPass_sha2024",
+        "CSGO_TournamentPass_sha2024_Desc",
+        "CSGO_TournamentPass_sha2024_charge",
+        "CSGO_TournamentPass_sha2024_charge_Desc",
+        "CSGO_TournamentPass_sha2024_pack",
+        "CSGO_TournamentPass_sha2024_pack_Desc",
+        "CSGO_TournamentPass_sha2024_pack_tinyname",
+        "CSGO_TournamentPass_sha2024_store_desc",
+        "CSGO_TournamentPass_sha2024_store_title",
+        "CSGO_TournamentPass_sha2024_tinyname",
+        "CSGO_Tournament_Event_Location_23",
+        "CSGO_Tournament_Event_NameShort_23",
+        "CSGO_Tournament_Event_Name_23",
+        "CSGO_Watch_Cat_Tournament_23",
+        "CSGO_Watch_Info_Tournament_23",
+        "CSGO_Watch_Loading_Tournament_23",
+        "CSGO_Watch_NoMatch_Tournament_23",
+        "CSGO_crate_sha2024_promo",
+        "CSGO_crate_sha2024_promo_de_ancient",
+        "CSGO_crate_sha2024_promo_de_anubis",
+        "CSGO_crate_sha2024_promo_de_dust2",
+        "CSGO_crate_sha2024_promo_de_inferno",
+        "CSGO_crate_sha2024_promo_de_mirage",
+        "CSGO_crate_sha2024_promo_de_nuke",
+        "CSGO_crate_sha2024_promo_de_vertigo",
+        "CSGO_crate_signature_pack_sha2024_group_challengers",
+        "CSGO_crate_signature_pack_sha2024_group_challengers_desc",
+        "CSGO_crate_signature_pack_sha2024_group_challengers_tinyname",
+        "CSGO_crate_signature_pack_sha2024_group_champions",
+        "CSGO_crate_signature_pack_sha2024_group_champions_desc",
+        "CSGO_crate_signature_pack_sha2024_group_champions_tinyname",
+        "CSGO_crate_signature_pack_sha2024_group_contenders",
+        "CSGO_crate_signature_pack_sha2024_group_contenders_desc",
+        "CSGO_crate_signature_pack_sha2024_group_contenders_tinyname",
+        "CSGO_crate_signature_pack_sha2024_group_legends",
+        "CSGO_crate_signature_pack_sha2024_group_legends_desc",
+        "CSGO_crate_signature_pack_sha2024_group_legends_tinyname",
+        "CSGO_crate_signature_pack_sha2024_group_players_tag",
+        "CSGO_crate_sticker_pack_sha2024_challengers",
+        "CSGO_crate_sticker_pack_sha2024_challengers_desc",
+        "CSGO_crate_sticker_pack_sha2024_challengers_tag",
+        "CSGO_crate_sticker_pack_sha2024_challengers_tinyname",
+        "CSGO_crate_sticker_pack_sha2024_contenders",
+        "CSGO_crate_sticker_pack_sha2024_contenders_desc",
+        "CSGO_crate_sticker_pack_sha2024_contenders_tag",
+        "CSGO_crate_sticker_pack_sha2024_contenders_tinyname",
+        "CSGO_crate_sticker_pack_sha2024_legends",
+        "CSGO_crate_sticker_pack_sha2024_legends_desc",
+        "CSGO_crate_sticker_pack_sha2024_legends_tag",
+        "CSGO_crate_sticker_pack_sha2024_legends_tinyname",
+        "CSGO_crate_store_pack_sha2024_challengers_groupname",
+        "CSGO_crate_store_pack_sha2024_contenders_groupname",
+        "CSGO_crate_store_pack_sha2024_legends_groupname",
+        "CSGO_crate_store_pack_sha2024_signatures_groupname",
+        "CSGO_official_leaderboard_pickem_sha2024_team",
+        "EventItemDesc_sha2024_graffiti_org",
+        "EventItemDesc_sha2024_graffiti_team",
+        "EventItemDesc_sha2024_sticker_org",
+        "EventItemDesc_sha2024_sticker_team",
+        "SFUI_MajorEventVenue_StreamTitle_23_2",
+        "SFUI_MajorEventVenue_Subtitle_23_2",
+        "SFUI_MajorEventVenue_Title_23_2",
+        "SFUI_ProPlayer_afro",
+        "SFUI_ProPlayer_andu",
+        "SFUI_ProPlayer_childking",
+        "SFUI_ProPlayer_djoko",
+        "SFUI_ProPlayer_ex3rcice",
+        "SFUI_ProPlayer_fear",
+        "SFUI_ProPlayer_fl4mus",
+        "SFUI_ProPlayer_graviti",
+        "SFUI_ProPlayer_heavygod",
+        "SFUI_ProPlayer_insani",
+        "SFUI_ProPlayer_jackasmo",
+        "SFUI_ProPlayer_jambo",
+        "SFUI_ProPlayer_jba",
+        "SFUI_ProPlayer_l1hang",
+        "SFUI_ProPlayer_maka",
+        "SFUI_ProPlayer_malbsmd",
+        "SFUI_ProPlayer_matys",
+        "SFUI_ProPlayer_phzy",
+        "SFUI_ProPlayer_schilla",
+        "SFUI_ProPlayer_sl3nd",
+        "SFUI_ProPlayer_snow",
+        "SFUI_ProPlayer_sonic",
+        "SFUI_ProPlayer_susp",
+        "SFUI_ProPlayer_ultimate",
+        "SFUI_ProPlayer_zerrofix",
+        "SFUI_ProPlayer_ztr",
+        "StickerKit_desc_sha2024_signature_910",
+        "StickerKit_desc_sha2024_signature_910_glitter",
+        "StickerKit_desc_sha2024_signature_910_gold",
+        "StickerKit_desc_sha2024_signature_910_holo",
+        "StickerKit_desc_sha2024_signature_afro",
+        "StickerKit_desc_sha2024_signature_afro_glitter",
+        "StickerKit_desc_sha2024_signature_afro_gold",
+        "StickerKit_desc_sha2024_signature_afro_holo",
+        "StickerKit_desc_sha2024_signature_aleksib",
+        "StickerKit_desc_sha2024_signature_aleksib_glitter",
+        "StickerKit_desc_sha2024_signature_aleksib_gold",
+        "StickerKit_desc_sha2024_signature_aleksib_holo",
+        "StickerKit_desc_sha2024_signature_alistair",
+        "StickerKit_desc_sha2024_signature_alistair_glitter",
+        "StickerKit_desc_sha2024_signature_alistair_gold",
+        "StickerKit_desc_sha2024_signature_alistair_holo",
+        "StickerKit_desc_sha2024_signature_andu",
+        "StickerKit_desc_sha2024_signature_andu_glitter",
+        "StickerKit_desc_sha2024_signature_andu_gold",
+        "StickerKit_desc_sha2024_signature_andu_holo",
+        "StickerKit_desc_sha2024_signature_apex",
+        "StickerKit_desc_sha2024_signature_apex_glitter",
+        "StickerKit_desc_sha2024_signature_apex_gold",
+        "StickerKit_desc_sha2024_signature_apex_holo",
+        "StickerKit_desc_sha2024_signature_ax1le",
+        "StickerKit_desc_sha2024_signature_ax1le_glitter",
+        "StickerKit_desc_sha2024_signature_ax1le_gold",
+        "StickerKit_desc_sha2024_signature_ax1le_holo",
+        "StickerKit_desc_sha2024_signature_b1t",
+        "StickerKit_desc_sha2024_signature_b1t_glitter",
+        "StickerKit_desc_sha2024_signature_b1t_gold",
+        "StickerKit_desc_sha2024_signature_b1t_holo",
+        "StickerKit_desc_sha2024_signature_biguzera",
+        "StickerKit_desc_sha2024_signature_biguzera_glitter",
+        "StickerKit_desc_sha2024_signature_biguzera_gold",
+        "StickerKit_desc_sha2024_signature_biguzera_holo",
+        "StickerKit_desc_sha2024_signature_blamef",
+        "StickerKit_desc_sha2024_signature_blamef_glitter",
+        "StickerKit_desc_sha2024_signature_blamef_gold",
+        "StickerKit_desc_sha2024_signature_blamef_holo",
+        "StickerKit_desc_sha2024_signature_blitz",
+        "StickerKit_desc_sha2024_signature_blitz_glitter",
+        "StickerKit_desc_sha2024_signature_blitz_gold",
+        "StickerKit_desc_sha2024_signature_blitz_holo",
+        "StickerKit_desc_sha2024_signature_bodyy",
+        "StickerKit_desc_sha2024_signature_bodyy_glitter",
+        "StickerKit_desc_sha2024_signature_bodyy_gold",
+        "StickerKit_desc_sha2024_signature_bodyy_holo",
+        "StickerKit_desc_sha2024_signature_boombl4",
+        "StickerKit_desc_sha2024_signature_boombl4_glitter",
+        "StickerKit_desc_sha2024_signature_boombl4_gold",
+        "StickerKit_desc_sha2024_signature_boombl4_holo",
+        "StickerKit_desc_sha2024_signature_broky",
+        "StickerKit_desc_sha2024_signature_broky_glitter",
+        "StickerKit_desc_sha2024_signature_broky_gold",
+        "StickerKit_desc_sha2024_signature_broky_holo",
+        "StickerKit_desc_sha2024_signature_brollan",
+        "StickerKit_desc_sha2024_signature_brollan_glitter",
+        "StickerKit_desc_sha2024_signature_brollan_gold",
+        "StickerKit_desc_sha2024_signature_brollan_holo",
+        "StickerKit_desc_sha2024_signature_chelo",
+        "StickerKit_desc_sha2024_signature_chelo_glitter",
+        "StickerKit_desc_sha2024_signature_chelo_gold",
+        "StickerKit_desc_sha2024_signature_chelo_holo",
+        "StickerKit_desc_sha2024_signature_childking",
+        "StickerKit_desc_sha2024_signature_childking_glitter",
+        "StickerKit_desc_sha2024_signature_childking_gold",
+        "StickerKit_desc_sha2024_signature_childking_holo",
+        "StickerKit_desc_sha2024_signature_chopper",
+        "StickerKit_desc_sha2024_signature_chopper_glitter",
+        "StickerKit_desc_sha2024_signature_chopper_gold",
+        "StickerKit_desc_sha2024_signature_chopper_holo",
+        "StickerKit_desc_sha2024_signature_decenty",
+        "StickerKit_desc_sha2024_signature_decenty_glitter",
+        "StickerKit_desc_sha2024_signature_decenty_gold",
+        "StickerKit_desc_sha2024_signature_decenty_holo",
+        "StickerKit_desc_sha2024_signature_degster",
+        "StickerKit_desc_sha2024_signature_degster_glitter",
+        "StickerKit_desc_sha2024_signature_degster_gold",
+        "StickerKit_desc_sha2024_signature_degster_holo",
+        "StickerKit_desc_sha2024_signature_dexter",
+        "StickerKit_desc_sha2024_signature_dexter_glitter",
+        "StickerKit_desc_sha2024_signature_dexter_gold",
+        "StickerKit_desc_sha2024_signature_dexter_holo",
+        "StickerKit_desc_sha2024_signature_djoko",
+        "StickerKit_desc_sha2024_signature_djoko_glitter",
+        "StickerKit_desc_sha2024_signature_djoko_gold",
+        "StickerKit_desc_sha2024_signature_djoko_holo",
+        "StickerKit_desc_sha2024_signature_donk",
+        "StickerKit_desc_sha2024_signature_donk_glitter",
+        "StickerKit_desc_sha2024_signature_donk_gold",
+        "StickerKit_desc_sha2024_signature_donk_holo",
+        "StickerKit_desc_sha2024_signature_drop",
+        "StickerKit_desc_sha2024_signature_drop_glitter",
+        "StickerKit_desc_sha2024_signature_drop_gold",
+        "StickerKit_desc_sha2024_signature_drop_holo",
+        "StickerKit_desc_sha2024_signature_electronic",
+        "StickerKit_desc_sha2024_signature_electronic_glitter",
+        "StickerKit_desc_sha2024_signature_electronic_gold",
+        "StickerKit_desc_sha2024_signature_electronic_holo",
+        "StickerKit_desc_sha2024_signature_elige",
+        "StickerKit_desc_sha2024_signature_elige_glitter",
+        "StickerKit_desc_sha2024_signature_elige_gold",
+        "StickerKit_desc_sha2024_signature_elige_holo",
+        "StickerKit_desc_sha2024_signature_ex3rcice",
+        "StickerKit_desc_sha2024_signature_ex3rcice_glitter",
+        "StickerKit_desc_sha2024_signature_ex3rcice_gold",
+        "StickerKit_desc_sha2024_signature_ex3rcice_holo",
+        "StickerKit_desc_sha2024_signature_exit",
+        "StickerKit_desc_sha2024_signature_exit_glitter",
+        "StickerKit_desc_sha2024_signature_exit_gold",
+        "StickerKit_desc_sha2024_signature_exit_holo",
+        "StickerKit_desc_sha2024_signature_fallen",
+        "StickerKit_desc_sha2024_signature_fallen_glitter",
+        "StickerKit_desc_sha2024_signature_fallen_gold",
+        "StickerKit_desc_sha2024_signature_fallen_holo",
+        "StickerKit_desc_sha2024_signature_fame",
+        "StickerKit_desc_sha2024_signature_fame_glitter",
+        "StickerKit_desc_sha2024_signature_fame_gold",
+        "StickerKit_desc_sha2024_signature_fame_holo",
+        "StickerKit_desc_sha2024_signature_fear",
+        "StickerKit_desc_sha2024_signature_fear_glitter",
+        "StickerKit_desc_sha2024_signature_fear_gold",
+        "StickerKit_desc_sha2024_signature_fear_holo",
+        "StickerKit_desc_sha2024_signature_felps",
+        "StickerKit_desc_sha2024_signature_felps_glitter",
+        "StickerKit_desc_sha2024_signature_felps_gold",
+        "StickerKit_desc_sha2024_signature_felps_holo",
+        "StickerKit_desc_sha2024_signature_fl1t",
+        "StickerKit_desc_sha2024_signature_fl1t_glitter",
+        "StickerKit_desc_sha2024_signature_fl1t_gold",
+        "StickerKit_desc_sha2024_signature_fl1t_holo",
+        "StickerKit_desc_sha2024_signature_fl4mus",
+        "StickerKit_desc_sha2024_signature_fl4mus_glitter",
+        "StickerKit_desc_sha2024_signature_fl4mus_gold",
+        "StickerKit_desc_sha2024_signature_fl4mus_holo",
+        "StickerKit_desc_sha2024_signature_flamez",
+        "StickerKit_desc_sha2024_signature_flamez_glitter",
+        "StickerKit_desc_sha2024_signature_flamez_gold",
+        "StickerKit_desc_sha2024_signature_flamez_holo",
+        "StickerKit_desc_sha2024_signature_floppy",
+        "StickerKit_desc_sha2024_signature_floppy_glitter",
+        "StickerKit_desc_sha2024_signature_floppy_gold",
+        "StickerKit_desc_sha2024_signature_floppy_holo",
+        "StickerKit_desc_sha2024_signature_frozen",
+        "StickerKit_desc_sha2024_signature_frozen_glitter",
+        "StickerKit_desc_sha2024_signature_frozen_gold",
+        "StickerKit_desc_sha2024_signature_frozen_holo",
+        "StickerKit_desc_sha2024_signature_graviti",
+        "StickerKit_desc_sha2024_signature_graviti_glitter",
+        "StickerKit_desc_sha2024_signature_graviti_gold",
+        "StickerKit_desc_sha2024_signature_graviti_holo",
+        "StickerKit_desc_sha2024_signature_grim",
+        "StickerKit_desc_sha2024_signature_grim_glitter",
+        "StickerKit_desc_sha2024_signature_grim_gold",
+        "StickerKit_desc_sha2024_signature_grim_holo",
+        "StickerKit_desc_sha2024_signature_hallzerk",
+        "StickerKit_desc_sha2024_signature_hallzerk_glitter",
+        "StickerKit_desc_sha2024_signature_hallzerk_gold",
+        "StickerKit_desc_sha2024_signature_hallzerk_holo",
+        "StickerKit_desc_sha2024_signature_heavygod",
+        "StickerKit_desc_sha2024_signature_heavygod_glitter",
+        "StickerKit_desc_sha2024_signature_heavygod_gold",
+        "StickerKit_desc_sha2024_signature_heavygod_holo",
+        "StickerKit_desc_sha2024_signature_hunter",
+        "StickerKit_desc_sha2024_signature_hunter_glitter",
+        "StickerKit_desc_sha2024_signature_hunter_gold",
+        "StickerKit_desc_sha2024_signature_hunter_holo",
+        "StickerKit_desc_sha2024_signature_icy",
+        "StickerKit_desc_sha2024_signature_icy_glitter",
+        "StickerKit_desc_sha2024_signature_icy_gold",
+        "StickerKit_desc_sha2024_signature_icy_holo",
+        "StickerKit_desc_sha2024_signature_im",
+        "StickerKit_desc_sha2024_signature_im_glitter",
+        "StickerKit_desc_sha2024_signature_im_gold",
+        "StickerKit_desc_sha2024_signature_im_holo",
+        "StickerKit_desc_sha2024_signature_ins",
+        "StickerKit_desc_sha2024_signature_ins_glitter",
+        "StickerKit_desc_sha2024_signature_ins_gold",
+        "StickerKit_desc_sha2024_signature_ins_holo",
+        "StickerKit_desc_sha2024_signature_insani",
+        "StickerKit_desc_sha2024_signature_insani_glitter",
+        "StickerKit_desc_sha2024_signature_insani_gold",
+        "StickerKit_desc_sha2024_signature_insani_holo",
+        "StickerKit_desc_sha2024_signature_jackasmo",
+        "StickerKit_desc_sha2024_signature_jackasmo_glitter",
+        "StickerKit_desc_sha2024_signature_jackasmo_gold",
+        "StickerKit_desc_sha2024_signature_jackasmo_holo",
+        "StickerKit_desc_sha2024_signature_jambo",
+        "StickerKit_desc_sha2024_signature_jambo_glitter",
+        "StickerKit_desc_sha2024_signature_jambo_gold",
+        "StickerKit_desc_sha2024_signature_jambo_holo",
+        "StickerKit_desc_sha2024_signature_jame",
+        "StickerKit_desc_sha2024_signature_jame_glitter",
+        "StickerKit_desc_sha2024_signature_jame_gold",
+        "StickerKit_desc_sha2024_signature_jame_holo",
+        "StickerKit_desc_sha2024_signature_jba",
+        "StickerKit_desc_sha2024_signature_jba_glitter",
+        "StickerKit_desc_sha2024_signature_jba_gold",
+        "StickerKit_desc_sha2024_signature_jba_holo",
+        "StickerKit_desc_sha2024_signature_jdc",
+        "StickerKit_desc_sha2024_signature_jdc_glitter",
+        "StickerKit_desc_sha2024_signature_jdc_gold",
+        "StickerKit_desc_sha2024_signature_jdc_holo",
+        "StickerKit_desc_sha2024_signature_jimpphat",
+        "StickerKit_desc_sha2024_signature_jimpphat_glitter",
+        "StickerKit_desc_sha2024_signature_jimpphat_gold",
+        "StickerKit_desc_sha2024_signature_jimpphat_holo",
+        "StickerKit_desc_sha2024_signature_jks",
+        "StickerKit_desc_sha2024_signature_jks_glitter",
+        "StickerKit_desc_sha2024_signature_jks_gold",
+        "StickerKit_desc_sha2024_signature_jks_holo",
+        "StickerKit_desc_sha2024_signature_jl",
+        "StickerKit_desc_sha2024_signature_jl_glitter",
+        "StickerKit_desc_sha2024_signature_jl_gold",
+        "StickerKit_desc_sha2024_signature_jl_holo",
+        "StickerKit_desc_sha2024_signature_jt",
+        "StickerKit_desc_sha2024_signature_jt_glitter",
+        "StickerKit_desc_sha2024_signature_jt_gold",
+        "StickerKit_desc_sha2024_signature_jt_holo",
+        "StickerKit_desc_sha2024_signature_karrigan",
+        "StickerKit_desc_sha2024_signature_karrigan_glitter",
+        "StickerKit_desc_sha2024_signature_karrigan_gold",
+        "StickerKit_desc_sha2024_signature_karrigan_holo",
+        "StickerKit_desc_sha2024_signature_kauez",
+        "StickerKit_desc_sha2024_signature_kauez_glitter",
+        "StickerKit_desc_sha2024_signature_kauez_gold",
+        "StickerKit_desc_sha2024_signature_kauez_holo",
+        "StickerKit_desc_sha2024_signature_kaze",
+        "StickerKit_desc_sha2024_signature_kaze_glitter",
+        "StickerKit_desc_sha2024_signature_kaze_gold",
+        "StickerKit_desc_sha2024_signature_kaze_holo",
+        "StickerKit_desc_sha2024_signature_krimbo",
+        "StickerKit_desc_sha2024_signature_krimbo_glitter",
+        "StickerKit_desc_sha2024_signature_krimbo_gold",
+        "StickerKit_desc_sha2024_signature_krimbo_holo",
+        "StickerKit_desc_sha2024_signature_krimz",
+        "StickerKit_desc_sha2024_signature_krimz_glitter",
+        "StickerKit_desc_sha2024_signature_krimz_gold",
+        "StickerKit_desc_sha2024_signature_krimz_holo",
+        "StickerKit_desc_sha2024_signature_kscerato",
+        "StickerKit_desc_sha2024_signature_kscerato_glitter",
+        "StickerKit_desc_sha2024_signature_kscerato_gold",
+        "StickerKit_desc_sha2024_signature_kscerato_holo",
+        "StickerKit_desc_sha2024_signature_kyxsan",
+        "StickerKit_desc_sha2024_signature_kyxsan_glitter",
+        "StickerKit_desc_sha2024_signature_kyxsan_gold",
+        "StickerKit_desc_sha2024_signature_kyxsan_holo",
+        "StickerKit_desc_sha2024_signature_l1hang",
+        "StickerKit_desc_sha2024_signature_l1hang_glitter",
+        "StickerKit_desc_sha2024_signature_l1hang_gold",
+        "StickerKit_desc_sha2024_signature_l1hang_holo",
+        "StickerKit_desc_sha2024_signature_liazz",
+        "StickerKit_desc_sha2024_signature_liazz_glitter",
+        "StickerKit_desc_sha2024_signature_liazz_gold",
+        "StickerKit_desc_sha2024_signature_liazz_holo",
+        "StickerKit_desc_sha2024_signature_lucaozy",
+        "StickerKit_desc_sha2024_signature_lucaozy_glitter",
+        "StickerKit_desc_sha2024_signature_lucaozy_gold",
+        "StickerKit_desc_sha2024_signature_lucaozy_holo",
+        "StickerKit_desc_sha2024_signature_lucky",
+        "StickerKit_desc_sha2024_signature_lucky_glitter",
+        "StickerKit_desc_sha2024_signature_lucky_gold",
+        "StickerKit_desc_sha2024_signature_lucky_holo",
+        "StickerKit_desc_sha2024_signature_lux",
+        "StickerKit_desc_sha2024_signature_lux_glitter",
+        "StickerKit_desc_sha2024_signature_lux_gold",
+        "StickerKit_desc_sha2024_signature_lux_holo",
+        "StickerKit_desc_sha2024_signature_m0nesy",
+        "StickerKit_desc_sha2024_signature_m0nesy_glitter",
+        "StickerKit_desc_sha2024_signature_m0nesy_gold",
+        "StickerKit_desc_sha2024_signature_m0nesy_holo",
+        "StickerKit_desc_sha2024_signature_magixx",
+        "StickerKit_desc_sha2024_signature_magixx_glitter",
+        "StickerKit_desc_sha2024_signature_magixx_gold",
+        "StickerKit_desc_sha2024_signature_magixx_holo",
+        "StickerKit_desc_sha2024_signature_maka",
+        "StickerKit_desc_sha2024_signature_maka_glitter",
+        "StickerKit_desc_sha2024_signature_maka_gold",
+        "StickerKit_desc_sha2024_signature_maka_holo",
+        "StickerKit_desc_sha2024_signature_malbsmd",
+        "StickerKit_desc_sha2024_signature_malbsmd_glitter",
+        "StickerKit_desc_sha2024_signature_malbsmd_gold",
+        "StickerKit_desc_sha2024_signature_malbsmd_holo",
+        "StickerKit_desc_sha2024_signature_matys",
+        "StickerKit_desc_sha2024_signature_matys_glitter",
+        "StickerKit_desc_sha2024_signature_matys_gold",
+        "StickerKit_desc_sha2024_signature_matys_holo",
+        "StickerKit_desc_sha2024_signature_mezii",
+        "StickerKit_desc_sha2024_signature_mezii_glitter",
+        "StickerKit_desc_sha2024_signature_mezii_gold",
+        "StickerKit_desc_sha2024_signature_mezii_holo",
+        "StickerKit_desc_sha2024_signature_mzinho",
+        "StickerKit_desc_sha2024_signature_mzinho_glitter",
+        "StickerKit_desc_sha2024_signature_mzinho_gold",
+        "StickerKit_desc_sha2024_signature_mzinho_holo",
+        "StickerKit_desc_sha2024_signature_n0rb3r7",
+        "StickerKit_desc_sha2024_signature_n0rb3r7_glitter",
+        "StickerKit_desc_sha2024_signature_n0rb3r7_gold",
+        "StickerKit_desc_sha2024_signature_n0rb3r7_holo",
+        "StickerKit_desc_sha2024_signature_naf",
+        "StickerKit_desc_sha2024_signature_naf_glitter",
+        "StickerKit_desc_sha2024_signature_naf_gold",
+        "StickerKit_desc_sha2024_signature_naf_holo",
+        "StickerKit_desc_sha2024_signature_nertz",
+        "StickerKit_desc_sha2024_signature_nertz_glitter",
+        "StickerKit_desc_sha2024_signature_nertz_gold",
+        "StickerKit_desc_sha2024_signature_nertz_holo",
+        "StickerKit_desc_sha2024_signature_niko",
+        "StickerKit_desc_sha2024_signature_niko_glitter",
+        "StickerKit_desc_sha2024_signature_niko_gold",
+        "StickerKit_desc_sha2024_signature_niko_holo",
+        "StickerKit_desc_sha2024_signature_noway",
+        "StickerKit_desc_sha2024_signature_noway_glitter",
+        "StickerKit_desc_sha2024_signature_noway_gold",
+        "StickerKit_desc_sha2024_signature_noway_holo",
+        "StickerKit_desc_sha2024_signature_nqz",
+        "StickerKit_desc_sha2024_signature_nqz_glitter",
+        "StickerKit_desc_sha2024_signature_nqz_gold",
+        "StickerKit_desc_sha2024_signature_nqz_holo",
+        "StickerKit_desc_sha2024_signature_perfecto",
+        "StickerKit_desc_sha2024_signature_perfecto_glitter",
+        "StickerKit_desc_sha2024_signature_perfecto_gold",
+        "StickerKit_desc_sha2024_signature_perfecto_holo",
+        "StickerKit_desc_sha2024_signature_phzy",
+        "StickerKit_desc_sha2024_signature_phzy_glitter",
+        "StickerKit_desc_sha2024_signature_phzy_gold",
+        "StickerKit_desc_sha2024_signature_phzy_holo",
+        "StickerKit_desc_sha2024_signature_rain",
+        "StickerKit_desc_sha2024_signature_rain_glitter",
+        "StickerKit_desc_sha2024_signature_rain_gold",
+        "StickerKit_desc_sha2024_signature_rain_holo",
+        "StickerKit_desc_sha2024_signature_rigon",
+        "StickerKit_desc_sha2024_signature_rigon_glitter",
+        "StickerKit_desc_sha2024_signature_rigon_gold",
+        "StickerKit_desc_sha2024_signature_rigon_holo",
+        "StickerKit_desc_sha2024_signature_ropz",
+        "StickerKit_desc_sha2024_signature_ropz_glitter",
+        "StickerKit_desc_sha2024_signature_ropz_gold",
+        "StickerKit_desc_sha2024_signature_ropz_holo",
+        "StickerKit_desc_sha2024_signature_saffee",
+        "StickerKit_desc_sha2024_signature_saffee_glitter",
+        "StickerKit_desc_sha2024_signature_saffee_gold",
+        "StickerKit_desc_sha2024_signature_saffee_holo",
+        "StickerKit_desc_sha2024_signature_schilla",
+        "StickerKit_desc_sha2024_signature_schilla_glitter",
+        "StickerKit_desc_sha2024_signature_schilla_gold",
+        "StickerKit_desc_sha2024_signature_schilla_holo",
+        "StickerKit_desc_sha2024_signature_senzu",
+        "StickerKit_desc_sha2024_signature_senzu_glitter",
+        "StickerKit_desc_sha2024_signature_senzu_gold",
+        "StickerKit_desc_sha2024_signature_senzu_holo",
+        "StickerKit_desc_sha2024_signature_sh1ro",
+        "StickerKit_desc_sha2024_signature_sh1ro_glitter",
+        "StickerKit_desc_sha2024_signature_sh1ro_gold",
+        "StickerKit_desc_sha2024_signature_sh1ro_holo",
+        "StickerKit_desc_sha2024_signature_siuhy",
+        "StickerKit_desc_sha2024_signature_siuhy_glitter",
+        "StickerKit_desc_sha2024_signature_siuhy_gold",
+        "StickerKit_desc_sha2024_signature_siuhy_holo",
+        "StickerKit_desc_sha2024_signature_sjuush",
+        "StickerKit_desc_sha2024_signature_sjuush_glitter",
+        "StickerKit_desc_sha2024_signature_sjuush_gold",
+        "StickerKit_desc_sha2024_signature_sjuush_holo",
+        "StickerKit_desc_sha2024_signature_skullz",
+        "StickerKit_desc_sha2024_signature_skullz_glitter",
+        "StickerKit_desc_sha2024_signature_skullz_gold",
+        "StickerKit_desc_sha2024_signature_skullz_holo",
+        "StickerKit_desc_sha2024_signature_sl3nd",
+        "StickerKit_desc_sha2024_signature_sl3nd_glitter",
+        "StickerKit_desc_sha2024_signature_sl3nd_gold",
+        "StickerKit_desc_sha2024_signature_sl3nd_holo",
+        "StickerKit_desc_sha2024_signature_snax",
+        "StickerKit_desc_sha2024_signature_snax_glitter",
+        "StickerKit_desc_sha2024_signature_snax_gold",
+        "StickerKit_desc_sha2024_signature_snax_holo",
+        "StickerKit_desc_sha2024_signature_snow",
+        "StickerKit_desc_sha2024_signature_snow_glitter",
+        "StickerKit_desc_sha2024_signature_snow_gold",
+        "StickerKit_desc_sha2024_signature_snow_holo",
+        "StickerKit_desc_sha2024_signature_somebody",
+        "StickerKit_desc_sha2024_signature_somebody_glitter",
+        "StickerKit_desc_sha2024_signature_somebody_gold",
+        "StickerKit_desc_sha2024_signature_somebody_holo",
+        "StickerKit_desc_sha2024_signature_sonic",
+        "StickerKit_desc_sha2024_signature_sonic_glitter",
+        "StickerKit_desc_sha2024_signature_sonic_gold",
+        "StickerKit_desc_sha2024_signature_sonic_holo",
+        "StickerKit_desc_sha2024_signature_spinx",
+        "StickerKit_desc_sha2024_signature_spinx_glitter",
+        "StickerKit_desc_sha2024_signature_spinx_gold",
+        "StickerKit_desc_sha2024_signature_spinx_holo",
+        "StickerKit_desc_sha2024_signature_stanislaw",
+        "StickerKit_desc_sha2024_signature_stanislaw_glitter",
+        "StickerKit_desc_sha2024_signature_stanislaw_gold",
+        "StickerKit_desc_sha2024_signature_stanislaw_holo",
+        "StickerKit_desc_sha2024_signature_summer",
+        "StickerKit_desc_sha2024_signature_summer_glitter",
+        "StickerKit_desc_sha2024_signature_summer_gold",
+        "StickerKit_desc_sha2024_signature_summer_holo",
+        "StickerKit_desc_sha2024_signature_susp",
+        "StickerKit_desc_sha2024_signature_susp_glitter",
+        "StickerKit_desc_sha2024_signature_susp_gold",
+        "StickerKit_desc_sha2024_signature_susp_holo",
+        "StickerKit_desc_sha2024_signature_syrson",
+        "StickerKit_desc_sha2024_signature_syrson_glitter",
+        "StickerKit_desc_sha2024_signature_syrson_gold",
+        "StickerKit_desc_sha2024_signature_syrson_holo",
+        "StickerKit_desc_sha2024_signature_tabsen",
+        "StickerKit_desc_sha2024_signature_tabsen_glitter",
+        "StickerKit_desc_sha2024_signature_tabsen_gold",
+        "StickerKit_desc_sha2024_signature_tabsen_holo",
+        "StickerKit_desc_sha2024_signature_techno4k",
+        "StickerKit_desc_sha2024_signature_techno4k_glitter",
+        "StickerKit_desc_sha2024_signature_techno4k_gold",
+        "StickerKit_desc_sha2024_signature_techno4k_holo",
+        "StickerKit_desc_sha2024_signature_teses",
+        "StickerKit_desc_sha2024_signature_teses_glitter",
+        "StickerKit_desc_sha2024_signature_teses_gold",
+        "StickerKit_desc_sha2024_signature_teses_holo",
+        "StickerKit_desc_sha2024_signature_torzsi",
+        "StickerKit_desc_sha2024_signature_torzsi_glitter",
+        "StickerKit_desc_sha2024_signature_torzsi_gold",
+        "StickerKit_desc_sha2024_signature_torzsi_holo",
+        "StickerKit_desc_sha2024_signature_try",
+        "StickerKit_desc_sha2024_signature_try_glitter",
+        "StickerKit_desc_sha2024_signature_try_gold",
+        "StickerKit_desc_sha2024_signature_try_holo",
+        "StickerKit_desc_sha2024_signature_twistzz",
+        "StickerKit_desc_sha2024_signature_twistzz_glitter",
+        "StickerKit_desc_sha2024_signature_twistzz_gold",
+        "StickerKit_desc_sha2024_signature_twistzz_holo",
+        "StickerKit_desc_sha2024_signature_ultimate",
+        "StickerKit_desc_sha2024_signature_ultimate_glitter",
+        "StickerKit_desc_sha2024_signature_ultimate_gold",
+        "StickerKit_desc_sha2024_signature_ultimate_holo",
+        "StickerKit_desc_sha2024_signature_vexite",
+        "StickerKit_desc_sha2024_signature_vexite_glitter",
+        "StickerKit_desc_sha2024_signature_vexite_gold",
+        "StickerKit_desc_sha2024_signature_vexite_holo",
+        "StickerKit_desc_sha2024_signature_vini",
+        "StickerKit_desc_sha2024_signature_vini_glitter",
+        "StickerKit_desc_sha2024_signature_vini_gold",
+        "StickerKit_desc_sha2024_signature_vini_holo",
+        "StickerKit_desc_sha2024_signature_volt",
+        "StickerKit_desc_sha2024_signature_volt_glitter",
+        "StickerKit_desc_sha2024_signature_volt_gold",
+        "StickerKit_desc_sha2024_signature_volt_holo",
+        "StickerKit_desc_sha2024_signature_w0nderful",
+        "StickerKit_desc_sha2024_signature_w0nderful_glitter",
+        "StickerKit_desc_sha2024_signature_w0nderful_gold",
+        "StickerKit_desc_sha2024_signature_w0nderful_holo",
+        "StickerKit_desc_sha2024_signature_xertion",
+        "StickerKit_desc_sha2024_signature_xertion_glitter",
+        "StickerKit_desc_sha2024_signature_xertion_gold",
+        "StickerKit_desc_sha2024_signature_xertion_holo",
+        "StickerKit_desc_sha2024_signature_yekindar",
+        "StickerKit_desc_sha2024_signature_yekindar_glitter",
+        "StickerKit_desc_sha2024_signature_yekindar_gold",
+        "StickerKit_desc_sha2024_signature_yekindar_holo",
+        "StickerKit_desc_sha2024_signature_yuurih",
+        "StickerKit_desc_sha2024_signature_yuurih_glitter",
+        "StickerKit_desc_sha2024_signature_yuurih_gold",
+        "StickerKit_desc_sha2024_signature_yuurih_holo",
+        "StickerKit_desc_sha2024_signature_zerrofix",
+        "StickerKit_desc_sha2024_signature_zerrofix_glitter",
+        "StickerKit_desc_sha2024_signature_zerrofix_gold",
+        "StickerKit_desc_sha2024_signature_zerrofix_holo",
+        "StickerKit_desc_sha2024_signature_zont1x",
+        "StickerKit_desc_sha2024_signature_zont1x_glitter",
+        "StickerKit_desc_sha2024_signature_zont1x_gold",
+        "StickerKit_desc_sha2024_signature_zont1x_holo",
+        "StickerKit_desc_sha2024_signature_ztr",
+        "StickerKit_desc_sha2024_signature_ztr_glitter",
+        "StickerKit_desc_sha2024_signature_ztr_gold",
+        "StickerKit_desc_sha2024_signature_ztr_holo",
+        "StickerKit_desc_sha2024_signature_zywoo",
+        "StickerKit_desc_sha2024_signature_zywoo_glitter",
+        "StickerKit_desc_sha2024_signature_zywoo_gold",
+        "StickerKit_desc_sha2024_signature_zywoo_holo",
+        "StickerKit_sha2024_signature_910",
+        "StickerKit_sha2024_signature_910_glitter",
+        "StickerKit_sha2024_signature_910_gold",
+        "StickerKit_sha2024_signature_910_holo",
+        "StickerKit_sha2024_signature_afro",
+        "StickerKit_sha2024_signature_afro_glitter",
+        "StickerKit_sha2024_signature_afro_gold",
+        "StickerKit_sha2024_signature_afro_holo",
+        "StickerKit_sha2024_signature_aleksib",
+        "StickerKit_sha2024_signature_aleksib_glitter",
+        "StickerKit_sha2024_signature_aleksib_gold",
+        "StickerKit_sha2024_signature_aleksib_holo",
+        "StickerKit_sha2024_signature_alistair",
+        "StickerKit_sha2024_signature_alistair_glitter",
+        "StickerKit_sha2024_signature_alistair_gold",
+        "StickerKit_sha2024_signature_alistair_holo",
+        "StickerKit_sha2024_signature_andu",
+        "StickerKit_sha2024_signature_andu_glitter",
+        "StickerKit_sha2024_signature_andu_gold",
+        "StickerKit_sha2024_signature_andu_holo",
+        "StickerKit_sha2024_signature_apex",
+        "StickerKit_sha2024_signature_apex_glitter",
+        "StickerKit_sha2024_signature_apex_gold",
+        "StickerKit_sha2024_signature_apex_holo",
+        "StickerKit_sha2024_signature_ax1le",
+        "StickerKit_sha2024_signature_ax1le_glitter",
+        "StickerKit_sha2024_signature_ax1le_gold",
+        "StickerKit_sha2024_signature_ax1le_holo",
+        "StickerKit_sha2024_signature_b1t",
+        "StickerKit_sha2024_signature_b1t_glitter",
+        "StickerKit_sha2024_signature_b1t_gold",
+        "StickerKit_sha2024_signature_b1t_holo",
+        "StickerKit_sha2024_signature_biguzera",
+        "StickerKit_sha2024_signature_biguzera_glitter",
+        "StickerKit_sha2024_signature_biguzera_gold",
+        "StickerKit_sha2024_signature_biguzera_holo",
+        "StickerKit_sha2024_signature_blamef",
+        "StickerKit_sha2024_signature_blamef_glitter",
+        "StickerKit_sha2024_signature_blamef_gold",
+        "StickerKit_sha2024_signature_blamef_holo",
+        "StickerKit_sha2024_signature_blitz",
+        "StickerKit_sha2024_signature_blitz_glitter",
+        "StickerKit_sha2024_signature_blitz_gold",
+        "StickerKit_sha2024_signature_blitz_holo",
+        "StickerKit_sha2024_signature_bodyy",
+        "StickerKit_sha2024_signature_bodyy_glitter",
+        "StickerKit_sha2024_signature_bodyy_gold",
+        "StickerKit_sha2024_signature_bodyy_holo",
+        "StickerKit_sha2024_signature_boombl4",
+        "StickerKit_sha2024_signature_boombl4_glitter",
+        "StickerKit_sha2024_signature_boombl4_gold",
+        "StickerKit_sha2024_signature_boombl4_holo",
+        "StickerKit_sha2024_signature_broky",
+        "StickerKit_sha2024_signature_broky_glitter",
+        "StickerKit_sha2024_signature_broky_gold",
+        "StickerKit_sha2024_signature_broky_holo",
+        "StickerKit_sha2024_signature_brollan",
+        "StickerKit_sha2024_signature_brollan_glitter",
+        "StickerKit_sha2024_signature_brollan_gold",
+        "StickerKit_sha2024_signature_brollan_holo",
+        "StickerKit_sha2024_signature_chelo",
+        "StickerKit_sha2024_signature_chelo_glitter",
+        "StickerKit_sha2024_signature_chelo_gold",
+        "StickerKit_sha2024_signature_chelo_holo",
+        "StickerKit_sha2024_signature_childking",
+        "StickerKit_sha2024_signature_childking_glitter",
+        "StickerKit_sha2024_signature_childking_gold",
+        "StickerKit_sha2024_signature_childking_holo",
+        "StickerKit_sha2024_signature_chopper",
+        "StickerKit_sha2024_signature_chopper_glitter",
+        "StickerKit_sha2024_signature_chopper_gold",
+        "StickerKit_sha2024_signature_chopper_holo",
+        "StickerKit_sha2024_signature_decenty",
+        "StickerKit_sha2024_signature_decenty_glitter",
+        "StickerKit_sha2024_signature_decenty_gold",
+        "StickerKit_sha2024_signature_decenty_holo",
+        "StickerKit_sha2024_signature_degster",
+        "StickerKit_sha2024_signature_degster_glitter",
+        "StickerKit_sha2024_signature_degster_gold",
+        "StickerKit_sha2024_signature_degster_holo",
+        "StickerKit_sha2024_signature_dexter",
+        "StickerKit_sha2024_signature_dexter_glitter",
+        "StickerKit_sha2024_signature_dexter_gold",
+        "StickerKit_sha2024_signature_dexter_holo",
+        "StickerKit_sha2024_signature_djoko",
+        "StickerKit_sha2024_signature_djoko_glitter",
+        "StickerKit_sha2024_signature_djoko_gold",
+        "StickerKit_sha2024_signature_djoko_holo",
+        "StickerKit_sha2024_signature_donk",
+        "StickerKit_sha2024_signature_donk_glitter",
+        "StickerKit_sha2024_signature_donk_gold",
+        "StickerKit_sha2024_signature_donk_holo",
+        "StickerKit_sha2024_signature_drop",
+        "StickerKit_sha2024_signature_drop_glitter",
+        "StickerKit_sha2024_signature_drop_gold",
+        "StickerKit_sha2024_signature_drop_holo",
+        "StickerKit_sha2024_signature_electronic",
+        "StickerKit_sha2024_signature_electronic_glitter",
+        "StickerKit_sha2024_signature_electronic_gold",
+        "StickerKit_sha2024_signature_electronic_holo",
+        "StickerKit_sha2024_signature_elige",
+        "StickerKit_sha2024_signature_elige_glitter",
+        "StickerKit_sha2024_signature_elige_gold",
+        "StickerKit_sha2024_signature_elige_holo",
+        "StickerKit_sha2024_signature_ex3rcice",
+        "StickerKit_sha2024_signature_ex3rcice_glitter",
+        "StickerKit_sha2024_signature_ex3rcice_gold",
+        "StickerKit_sha2024_signature_ex3rcice_holo",
+        "StickerKit_sha2024_signature_exit",
+        "StickerKit_sha2024_signature_exit_glitter",
+        "StickerKit_sha2024_signature_exit_gold",
+        "StickerKit_sha2024_signature_exit_holo",
+        "StickerKit_sha2024_signature_fallen",
+        "StickerKit_sha2024_signature_fallen_glitter",
+        "StickerKit_sha2024_signature_fallen_gold",
+        "StickerKit_sha2024_signature_fallen_holo",
+        "StickerKit_sha2024_signature_fame",
+        "StickerKit_sha2024_signature_fame_glitter",
+        "StickerKit_sha2024_signature_fame_gold",
+        "StickerKit_sha2024_signature_fame_holo",
+        "StickerKit_sha2024_signature_fear",
+        "StickerKit_sha2024_signature_fear_glitter",
+        "StickerKit_sha2024_signature_fear_gold",
+        "StickerKit_sha2024_signature_fear_holo",
+        "StickerKit_sha2024_signature_felps",
+        "StickerKit_sha2024_signature_felps_glitter",
+        "StickerKit_sha2024_signature_felps_gold",
+        "StickerKit_sha2024_signature_felps_holo",
+        "StickerKit_sha2024_signature_fl1t",
+        "StickerKit_sha2024_signature_fl1t_glitter",
+        "StickerKit_sha2024_signature_fl1t_gold",
+        "StickerKit_sha2024_signature_fl1t_holo",
+        "StickerKit_sha2024_signature_fl4mus",
+        "StickerKit_sha2024_signature_fl4mus_glitter",
+        "StickerKit_sha2024_signature_fl4mus_gold",
+        "StickerKit_sha2024_signature_fl4mus_holo",
+        "StickerKit_sha2024_signature_flamez",
+        "StickerKit_sha2024_signature_flamez_glitter",
+        "StickerKit_sha2024_signature_flamez_gold",
+        "StickerKit_sha2024_signature_flamez_holo",
+        "StickerKit_sha2024_signature_floppy",
+        "StickerKit_sha2024_signature_floppy_glitter",
+        "StickerKit_sha2024_signature_floppy_gold",
+        "StickerKit_sha2024_signature_floppy_holo",
+        "StickerKit_sha2024_signature_frozen",
+        "StickerKit_sha2024_signature_frozen_glitter",
+        "StickerKit_sha2024_signature_frozen_gold",
+        "StickerKit_sha2024_signature_frozen_holo",
+        "StickerKit_sha2024_signature_graviti",
+        "StickerKit_sha2024_signature_graviti_glitter",
+        "StickerKit_sha2024_signature_graviti_gold",
+        "StickerKit_sha2024_signature_graviti_holo",
+        "StickerKit_sha2024_signature_grim",
+        "StickerKit_sha2024_signature_grim_glitter",
+        "StickerKit_sha2024_signature_grim_gold",
+        "StickerKit_sha2024_signature_grim_holo",
+        "StickerKit_sha2024_signature_hallzerk",
+        "StickerKit_sha2024_signature_hallzerk_glitter",
+        "StickerKit_sha2024_signature_hallzerk_gold",
+        "StickerKit_sha2024_signature_hallzerk_holo",
+        "StickerKit_sha2024_signature_heavygod",
+        "StickerKit_sha2024_signature_heavygod_glitter",
+        "StickerKit_sha2024_signature_heavygod_gold",
+        "StickerKit_sha2024_signature_heavygod_holo",
+        "StickerKit_sha2024_signature_hunter",
+        "StickerKit_sha2024_signature_hunter_glitter",
+        "StickerKit_sha2024_signature_hunter_gold",
+        "StickerKit_sha2024_signature_hunter_holo",
+        "StickerKit_sha2024_signature_icy",
+        "StickerKit_sha2024_signature_icy_glitter",
+        "StickerKit_sha2024_signature_icy_gold",
+        "StickerKit_sha2024_signature_icy_holo",
+        "StickerKit_sha2024_signature_im",
+        "StickerKit_sha2024_signature_im_glitter",
+        "StickerKit_sha2024_signature_im_gold",
+        "StickerKit_sha2024_signature_im_holo",
+        "StickerKit_sha2024_signature_ins",
+        "StickerKit_sha2024_signature_ins_glitter",
+        "StickerKit_sha2024_signature_ins_gold",
+        "StickerKit_sha2024_signature_ins_holo",
+        "StickerKit_sha2024_signature_insani",
+        "StickerKit_sha2024_signature_insani_glitter",
+        "StickerKit_sha2024_signature_insani_gold",
+        "StickerKit_sha2024_signature_insani_holo",
+        "StickerKit_sha2024_signature_jackasmo",
+        "StickerKit_sha2024_signature_jackasmo_glitter",
+        "StickerKit_sha2024_signature_jackasmo_gold",
+        "StickerKit_sha2024_signature_jackasmo_holo",
+        "StickerKit_sha2024_signature_jambo",
+        "StickerKit_sha2024_signature_jambo_glitter",
+        "StickerKit_sha2024_signature_jambo_gold",
+        "StickerKit_sha2024_signature_jambo_holo",
+        "StickerKit_sha2024_signature_jame",
+        "StickerKit_sha2024_signature_jame_glitter",
+        "StickerKit_sha2024_signature_jame_gold",
+        "StickerKit_sha2024_signature_jame_holo",
+        "StickerKit_sha2024_signature_jba",
+        "StickerKit_sha2024_signature_jba_glitter",
+        "StickerKit_sha2024_signature_jba_gold",
+        "StickerKit_sha2024_signature_jba_holo",
+        "StickerKit_sha2024_signature_jdc",
+        "StickerKit_sha2024_signature_jdc_glitter",
+        "StickerKit_sha2024_signature_jdc_gold",
+        "StickerKit_sha2024_signature_jdc_holo",
+        "StickerKit_sha2024_signature_jimpphat",
+        "StickerKit_sha2024_signature_jimpphat_glitter",
+        "StickerKit_sha2024_signature_jimpphat_gold",
+        "StickerKit_sha2024_signature_jimpphat_holo",
+        "StickerKit_sha2024_signature_jks",
+        "StickerKit_sha2024_signature_jks_glitter",
+        "StickerKit_sha2024_signature_jks_gold",
+        "StickerKit_sha2024_signature_jks_holo",
+        "StickerKit_sha2024_signature_jl",
+        "StickerKit_sha2024_signature_jl_glitter",
+        "StickerKit_sha2024_signature_jl_gold",
+        "StickerKit_sha2024_signature_jl_holo",
+        "StickerKit_sha2024_signature_jt",
+        "StickerKit_sha2024_signature_jt_glitter",
+        "StickerKit_sha2024_signature_jt_gold",
+        "StickerKit_sha2024_signature_jt_holo",
+        "StickerKit_sha2024_signature_karrigan",
+        "StickerKit_sha2024_signature_karrigan_glitter",
+        "StickerKit_sha2024_signature_karrigan_gold",
+        "StickerKit_sha2024_signature_karrigan_holo",
+        "StickerKit_sha2024_signature_kauez",
+        "StickerKit_sha2024_signature_kauez_glitter",
+        "StickerKit_sha2024_signature_kauez_gold",
+        "StickerKit_sha2024_signature_kauez_holo",
+        "StickerKit_sha2024_signature_kaze",
+        "StickerKit_sha2024_signature_kaze_glitter",
+        "StickerKit_sha2024_signature_kaze_gold",
+        "StickerKit_sha2024_signature_kaze_holo",
+        "StickerKit_sha2024_signature_krimbo",
+        "StickerKit_sha2024_signature_krimbo_glitter",
+        "StickerKit_sha2024_signature_krimbo_gold",
+        "StickerKit_sha2024_signature_krimbo_holo",
+        "StickerKit_sha2024_signature_krimz",
+        "StickerKit_sha2024_signature_krimz_glitter",
+        "StickerKit_sha2024_signature_krimz_gold",
+        "StickerKit_sha2024_signature_krimz_holo",
+        "StickerKit_sha2024_signature_kscerato",
+        "StickerKit_sha2024_signature_kscerato_glitter",
+        "StickerKit_sha2024_signature_kscerato_gold",
+        "StickerKit_sha2024_signature_kscerato_holo",
+        "StickerKit_sha2024_signature_kyxsan",
+        "StickerKit_sha2024_signature_kyxsan_glitter",
+        "StickerKit_sha2024_signature_kyxsan_gold",
+        "StickerKit_sha2024_signature_kyxsan_holo",
+        "StickerKit_sha2024_signature_l1hang",
+        "StickerKit_sha2024_signature_l1hang_glitter",
+        "StickerKit_sha2024_signature_l1hang_gold",
+        "StickerKit_sha2024_signature_l1hang_holo",
+        "StickerKit_sha2024_signature_liazz",
+        "StickerKit_sha2024_signature_liazz_glitter",
+        "StickerKit_sha2024_signature_liazz_gold",
+        "StickerKit_sha2024_signature_liazz_holo",
+        "StickerKit_sha2024_signature_lucaozy",
+        "StickerKit_sha2024_signature_lucaozy_glitter",
+        "StickerKit_sha2024_signature_lucaozy_gold",
+        "StickerKit_sha2024_signature_lucaozy_holo",
+        "StickerKit_sha2024_signature_lucky",
+        "StickerKit_sha2024_signature_lucky_glitter",
+        "StickerKit_sha2024_signature_lucky_gold",
+        "StickerKit_sha2024_signature_lucky_holo",
+        "StickerKit_sha2024_signature_lux",
+        "StickerKit_sha2024_signature_lux_glitter",
+        "StickerKit_sha2024_signature_lux_gold",
+        "StickerKit_sha2024_signature_lux_holo",
+        "StickerKit_sha2024_signature_m0nesy",
+        "StickerKit_sha2024_signature_m0nesy_glitter",
+        "StickerKit_sha2024_signature_m0nesy_gold",
+        "StickerKit_sha2024_signature_m0nesy_holo",
+        "StickerKit_sha2024_signature_magixx",
+        "StickerKit_sha2024_signature_magixx_glitter",
+        "StickerKit_sha2024_signature_magixx_gold",
+        "StickerKit_sha2024_signature_magixx_holo",
+        "StickerKit_sha2024_signature_maka",
+        "StickerKit_sha2024_signature_maka_glitter",
+        "StickerKit_sha2024_signature_maka_gold",
+        "StickerKit_sha2024_signature_maka_holo",
+        "StickerKit_sha2024_signature_malbsmd",
+        "StickerKit_sha2024_signature_malbsmd_glitter",
+        "StickerKit_sha2024_signature_malbsmd_gold",
+        "StickerKit_sha2024_signature_malbsmd_holo",
+        "StickerKit_sha2024_signature_matys",
+        "StickerKit_sha2024_signature_matys_glitter",
+        "StickerKit_sha2024_signature_matys_gold",
+        "StickerKit_sha2024_signature_matys_holo",
+        "StickerKit_sha2024_signature_mezii",
+        "StickerKit_sha2024_signature_mezii_glitter",
+        "StickerKit_sha2024_signature_mezii_gold",
+        "StickerKit_sha2024_signature_mezii_holo",
+        "StickerKit_sha2024_signature_mzinho",
+        "StickerKit_sha2024_signature_mzinho_glitter",
+        "StickerKit_sha2024_signature_mzinho_gold",
+        "StickerKit_sha2024_signature_mzinho_holo",
+        "StickerKit_sha2024_signature_n0rb3r7",
+        "StickerKit_sha2024_signature_n0rb3r7_glitter",
+        "StickerKit_sha2024_signature_n0rb3r7_gold",
+        "StickerKit_sha2024_signature_n0rb3r7_holo",
+        "StickerKit_sha2024_signature_naf",
+        "StickerKit_sha2024_signature_naf_glitter",
+        "StickerKit_sha2024_signature_naf_gold",
+        "StickerKit_sha2024_signature_naf_holo",
+        "StickerKit_sha2024_signature_nertz",
+        "StickerKit_sha2024_signature_nertz_glitter",
+        "StickerKit_sha2024_signature_nertz_gold",
+        "StickerKit_sha2024_signature_nertz_holo",
+        "StickerKit_sha2024_signature_niko",
+        "StickerKit_sha2024_signature_niko_glitter",
+        "StickerKit_sha2024_signature_niko_gold",
+        "StickerKit_sha2024_signature_niko_holo",
+        "StickerKit_sha2024_signature_noway",
+        "StickerKit_sha2024_signature_noway_glitter",
+        "StickerKit_sha2024_signature_noway_gold",
+        "StickerKit_sha2024_signature_noway_holo",
+        "StickerKit_sha2024_signature_nqz",
+        "StickerKit_sha2024_signature_nqz_glitter",
+        "StickerKit_sha2024_signature_nqz_gold",
+        "StickerKit_sha2024_signature_nqz_holo",
+        "StickerKit_sha2024_signature_perfecto",
+        "StickerKit_sha2024_signature_perfecto_glitter",
+        "StickerKit_sha2024_signature_perfecto_gold",
+        "StickerKit_sha2024_signature_perfecto_holo",
+        "StickerKit_sha2024_signature_phzy",
+        "StickerKit_sha2024_signature_phzy_glitter",
+        "StickerKit_sha2024_signature_phzy_gold",
+        "StickerKit_sha2024_signature_phzy_holo",
+        "StickerKit_sha2024_signature_rain",
+        "StickerKit_sha2024_signature_rain_glitter",
+        "StickerKit_sha2024_signature_rain_gold",
+        "StickerKit_sha2024_signature_rain_holo",
+        "StickerKit_sha2024_signature_rigon",
+        "StickerKit_sha2024_signature_rigon_glitter",
+        "StickerKit_sha2024_signature_rigon_gold",
+        "StickerKit_sha2024_signature_rigon_holo",
+        "StickerKit_sha2024_signature_ropz",
+        "StickerKit_sha2024_signature_ropz_glitter",
+        "StickerKit_sha2024_signature_ropz_gold",
+        "StickerKit_sha2024_signature_ropz_holo",
+        "StickerKit_sha2024_signature_saffee",
+        "StickerKit_sha2024_signature_saffee_glitter",
+        "StickerKit_sha2024_signature_saffee_gold",
+        "StickerKit_sha2024_signature_saffee_holo",
+        "StickerKit_sha2024_signature_schilla",
+        "StickerKit_sha2024_signature_schilla_glitter",
+        "StickerKit_sha2024_signature_schilla_gold",
+        "StickerKit_sha2024_signature_schilla_holo",
+        "StickerKit_sha2024_signature_senzu",
+        "StickerKit_sha2024_signature_senzu_glitter",
+        "StickerKit_sha2024_signature_senzu_gold",
+        "StickerKit_sha2024_signature_senzu_holo",
+        "StickerKit_sha2024_signature_sh1ro",
+        "StickerKit_sha2024_signature_sh1ro_glitter",
+        "StickerKit_sha2024_signature_sh1ro_gold",
+        "StickerKit_sha2024_signature_sh1ro_holo",
+        "StickerKit_sha2024_signature_siuhy",
+        "StickerKit_sha2024_signature_siuhy_glitter",
+        "StickerKit_sha2024_signature_siuhy_gold",
+        "StickerKit_sha2024_signature_siuhy_holo",
+        "StickerKit_sha2024_signature_sjuush",
+        "StickerKit_sha2024_signature_sjuush_glitter",
+        "StickerKit_sha2024_signature_sjuush_gold",
+        "StickerKit_sha2024_signature_sjuush_holo",
+        "StickerKit_sha2024_signature_skullz",
+        "StickerKit_sha2024_signature_skullz_glitter",
+        "StickerKit_sha2024_signature_skullz_gold",
+        "StickerKit_sha2024_signature_skullz_holo",
+        "StickerKit_sha2024_signature_sl3nd",
+        "StickerKit_sha2024_signature_sl3nd_glitter",
+        "StickerKit_sha2024_signature_sl3nd_gold",
+        "StickerKit_sha2024_signature_sl3nd_holo",
+        "StickerKit_sha2024_signature_snax",
+        "StickerKit_sha2024_signature_snax_glitter",
+        "StickerKit_sha2024_signature_snax_gold",
+        "StickerKit_sha2024_signature_snax_holo",
+        "StickerKit_sha2024_signature_snow",
+        "StickerKit_sha2024_signature_snow_glitter",
+        "StickerKit_sha2024_signature_snow_gold",
+        "StickerKit_sha2024_signature_snow_holo",
+        "StickerKit_sha2024_signature_somebody",
+        "StickerKit_sha2024_signature_somebody_glitter",
+        "StickerKit_sha2024_signature_somebody_gold",
+        "StickerKit_sha2024_signature_somebody_holo",
+        "StickerKit_sha2024_signature_sonic",
+        "StickerKit_sha2024_signature_sonic_glitter",
+        "StickerKit_sha2024_signature_sonic_gold",
+        "StickerKit_sha2024_signature_sonic_holo",
+        "StickerKit_sha2024_signature_spinx",
+        "StickerKit_sha2024_signature_spinx_glitter",
+        "StickerKit_sha2024_signature_spinx_gold",
+        "StickerKit_sha2024_signature_spinx_holo",
+        "StickerKit_sha2024_signature_stanislaw",
+        "StickerKit_sha2024_signature_stanislaw_glitter",
+        "StickerKit_sha2024_signature_stanislaw_gold",
+        "StickerKit_sha2024_signature_stanislaw_holo",
+        "StickerKit_sha2024_signature_summer",
+        "StickerKit_sha2024_signature_summer_glitter",
+        "StickerKit_sha2024_signature_summer_gold",
+        "StickerKit_sha2024_signature_summer_holo",
+        "StickerKit_sha2024_signature_susp",
+        "StickerKit_sha2024_signature_susp_glitter",
+        "StickerKit_sha2024_signature_susp_gold",
+        "StickerKit_sha2024_signature_susp_holo",
+        "StickerKit_sha2024_signature_syrson",
+        "StickerKit_sha2024_signature_syrson_glitter",
+        "StickerKit_sha2024_signature_syrson_gold",
+        "StickerKit_sha2024_signature_syrson_holo",
+        "StickerKit_sha2024_signature_tabsen",
+        "StickerKit_sha2024_signature_tabsen_glitter",
+        "StickerKit_sha2024_signature_tabsen_gold",
+        "StickerKit_sha2024_signature_tabsen_holo",
+        "StickerKit_sha2024_signature_techno4k",
+        "StickerKit_sha2024_signature_techno4k_glitter",
+        "StickerKit_sha2024_signature_techno4k_gold",
+        "StickerKit_sha2024_signature_techno4k_holo",
+        "StickerKit_sha2024_signature_teses",
+        "StickerKit_sha2024_signature_teses_glitter",
+        "StickerKit_sha2024_signature_teses_gold",
+        "StickerKit_sha2024_signature_teses_holo",
+        "StickerKit_sha2024_signature_torzsi",
+        "StickerKit_sha2024_signature_torzsi_glitter",
+        "StickerKit_sha2024_signature_torzsi_gold",
+        "StickerKit_sha2024_signature_torzsi_holo",
+        "StickerKit_sha2024_signature_try",
+        "StickerKit_sha2024_signature_try_glitter",
+        "StickerKit_sha2024_signature_try_gold",
+        "StickerKit_sha2024_signature_try_holo",
+        "StickerKit_sha2024_signature_twistzz",
+        "StickerKit_sha2024_signature_twistzz_glitter",
+        "StickerKit_sha2024_signature_twistzz_gold",
+        "StickerKit_sha2024_signature_twistzz_holo",
+        "StickerKit_sha2024_signature_ultimate",
+        "StickerKit_sha2024_signature_ultimate_glitter",
+        "StickerKit_sha2024_signature_ultimate_gold",
+        "StickerKit_sha2024_signature_ultimate_holo",
+        "StickerKit_sha2024_signature_vexite",
+        "StickerKit_sha2024_signature_vexite_glitter",
+        "StickerKit_sha2024_signature_vexite_gold",
+        "StickerKit_sha2024_signature_vexite_holo",
+        "StickerKit_sha2024_signature_vini",
+        "StickerKit_sha2024_signature_vini_glitter",
+        "StickerKit_sha2024_signature_vini_gold",
+        "StickerKit_sha2024_signature_vini_holo",
+        "StickerKit_sha2024_signature_volt",
+        "StickerKit_sha2024_signature_volt_glitter",
+        "StickerKit_sha2024_signature_volt_gold",
+        "StickerKit_sha2024_signature_volt_holo",
+        "StickerKit_sha2024_signature_w0nderful",
+        "StickerKit_sha2024_signature_w0nderful_glitter",
+        "StickerKit_sha2024_signature_w0nderful_gold",
+        "StickerKit_sha2024_signature_w0nderful_holo",
+        "StickerKit_sha2024_signature_xertion",
+        "StickerKit_sha2024_signature_xertion_glitter",
+        "StickerKit_sha2024_signature_xertion_gold",
+        "StickerKit_sha2024_signature_xertion_holo",
+        "StickerKit_sha2024_signature_yekindar",
+        "StickerKit_sha2024_signature_yekindar_glitter",
+        "StickerKit_sha2024_signature_yekindar_gold",
+        "StickerKit_sha2024_signature_yekindar_holo",
+        "StickerKit_sha2024_signature_yuurih",
+        "StickerKit_sha2024_signature_yuurih_glitter",
+        "StickerKit_sha2024_signature_yuurih_gold",
+        "StickerKit_sha2024_signature_yuurih_holo",
+        "StickerKit_sha2024_signature_zerrofix",
+        "StickerKit_sha2024_signature_zerrofix_glitter",
+        "StickerKit_sha2024_signature_zerrofix_gold",
+        "StickerKit_sha2024_signature_zerrofix_holo",
+        "StickerKit_sha2024_signature_zont1x",
+        "StickerKit_sha2024_signature_zont1x_glitter",
+        "StickerKit_sha2024_signature_zont1x_gold",
+        "StickerKit_sha2024_signature_zont1x_holo",
+        "StickerKit_sha2024_signature_ztr",
+        "StickerKit_sha2024_signature_ztr_glitter",
+        "StickerKit_sha2024_signature_ztr_gold",
+        "StickerKit_sha2024_signature_ztr_holo",
+        "StickerKit_sha2024_signature_zywoo",
+        "StickerKit_sha2024_signature_zywoo_glitter",
+        "StickerKit_sha2024_signature_zywoo_gold",
+        "StickerKit_sha2024_signature_zywoo_holo",
+        "StickerKit_sha2024_team_3dm",
+        "StickerKit_sha2024_team_3dm_glitter",
+        "StickerKit_sha2024_team_3dm_gold",
+        "StickerKit_sha2024_team_3dm_holo",
+        "StickerKit_sha2024_team_big",
+        "StickerKit_sha2024_team_big_glitter",
+        "StickerKit_sha2024_team_big_gold",
+        "StickerKit_sha2024_team_big_holo",
+        "StickerKit_sha2024_team_c9",
+        "StickerKit_sha2024_team_c9_glitter",
+        "StickerKit_sha2024_team_c9_gold",
+        "StickerKit_sha2024_team_c9_holo",
+        "StickerKit_sha2024_team_cplx",
+        "StickerKit_sha2024_team_cplx_glitter",
+        "StickerKit_sha2024_team_cplx_gold",
+        "StickerKit_sha2024_team_cplx_holo",
+        "StickerKit_sha2024_team_faze",
+        "StickerKit_sha2024_team_faze_glitter",
+        "StickerKit_sha2024_team_faze_gold",
+        "StickerKit_sha2024_team_faze_holo",
+        "StickerKit_sha2024_team_fntc",
+        "StickerKit_sha2024_team_fntc_glitter",
+        "StickerKit_sha2024_team_fntc_gold",
+        "StickerKit_sha2024_team_fntc_holo",
+        "StickerKit_sha2024_team_fq",
+        "StickerKit_sha2024_team_fq_glitter",
+        "StickerKit_sha2024_team_fq_gold",
+        "StickerKit_sha2024_team_fq_holo",
+        "StickerKit_sha2024_team_furi",
+        "StickerKit_sha2024_team_furi_glitter",
+        "StickerKit_sha2024_team_furi_gold",
+        "StickerKit_sha2024_team_furi_holo",
+        "StickerKit_sha2024_team_g2",
+        "StickerKit_sha2024_team_g2_glitter",
+        "StickerKit_sha2024_team_g2_gold",
+        "StickerKit_sha2024_team_g2_holo",
+        "StickerKit_sha2024_team_gl",
+        "StickerKit_sha2024_team_gl_glitter",
+        "StickerKit_sha2024_team_gl_gold",
+        "StickerKit_sha2024_team_gl_holo",
+        "StickerKit_sha2024_team_hero",
+        "StickerKit_sha2024_team_hero_glitter",
+        "StickerKit_sha2024_team_hero_gold",
+        "StickerKit_sha2024_team_hero_holo",
+        "StickerKit_sha2024_team_imp",
+        "StickerKit_sha2024_team_imp_glitter",
+        "StickerKit_sha2024_team_imp_gold",
+        "StickerKit_sha2024_team_imp_holo",
+        "StickerKit_sha2024_team_liq",
+        "StickerKit_sha2024_team_liq_glitter",
+        "StickerKit_sha2024_team_liq_gold",
+        "StickerKit_sha2024_team_liq_holo",
+        "StickerKit_sha2024_team_mibr",
+        "StickerKit_sha2024_team_mibr_glitter",
+        "StickerKit_sha2024_team_mibr_gold",
+        "StickerKit_sha2024_team_mibr_holo",
+        "StickerKit_sha2024_team_mngz",
+        "StickerKit_sha2024_team_mngz_glitter",
+        "StickerKit_sha2024_team_mngz_gold",
+        "StickerKit_sha2024_team_mngz_holo",
+        "StickerKit_sha2024_team_mouz",
+        "StickerKit_sha2024_team_mouz_glitter",
+        "StickerKit_sha2024_team_mouz_gold",
+        "StickerKit_sha2024_team_mouz_holo",
+        "StickerKit_sha2024_team_navi",
+        "StickerKit_sha2024_team_navi_glitter",
+        "StickerKit_sha2024_team_navi_gold",
+        "StickerKit_sha2024_team_navi_holo",
+        "StickerKit_sha2024_team_pain",
+        "StickerKit_sha2024_team_pain_glitter",
+        "StickerKit_sha2024_team_pain_gold",
+        "StickerKit_sha2024_team_pain_holo",
+        "StickerKit_sha2024_team_psnu",
+        "StickerKit_sha2024_team_psnu_glitter",
+        "StickerKit_sha2024_team_psnu_gold",
+        "StickerKit_sha2024_team_psnu_holo",
+        "StickerKit_sha2024_team_pw",
+        "StickerKit_sha2024_team_pw_glitter",
+        "StickerKit_sha2024_team_pw_gold",
+        "StickerKit_sha2024_team_pw_holo",
+        "StickerKit_sha2024_team_ratm",
+        "StickerKit_sha2024_team_ratm_glitter",
+        "StickerKit_sha2024_team_ratm_gold",
+        "StickerKit_sha2024_team_ratm_holo",
+        "StickerKit_sha2024_team_spir",
+        "StickerKit_sha2024_team_spir_glitter",
+        "StickerKit_sha2024_team_spir_gold",
+        "StickerKit_sha2024_team_spir_holo",
+        "StickerKit_sha2024_team_vita",
+        "StickerKit_sha2024_team_vita_glitter",
+        "StickerKit_sha2024_team_vita_gold",
+        "StickerKit_sha2024_team_vita_holo",
+        "StickerKit_sha2024_team_vp",
+        "StickerKit_sha2024_team_vp_glitter",
+        "StickerKit_sha2024_team_vp_gold",
+        "StickerKit_sha2024_team_vp_holo",
+        "StickerKit_sha2024_team_wcrd",
+        "StickerKit_sha2024_team_wcrd_glitter",
+        "StickerKit_sha2024_team_wcrd_gold",
+        "StickerKit_sha2024_team_wcrd_holo",
+        "coupon_perfectworld_02",
+        "coupon_perfectworld_02_stattrak",
+        "musickit_perfectworld_02",
+        "musickit_perfectworld_02_desc",
+        "store_nav_tournament_23"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15f49dc6863e0b4d42c00286de23c5501aa68dd400763dcf20ff3aa1f32535bc",
+              "oldValue": "a672b8c57155dab6b594cc39cfcaeae8efdcb6ff79f843f5a1d318f3f577dab2"
+            }
+          ],
+          "name": "Attrib_KeychainSeed"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "17e9046b716e7c9f8a19bc643952481fa3f9f0150cc0af78ded3608a4e6b8601",
+              "oldValue": "df1dc364813b3a920d87ab1af1e871ef0076dda01bda92791328ec67d24cbeb2"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenBasaltCS2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c87ed262a1178bbca644e0c838253eb643e49ef47f2e24ce3566ec71eadd9b1c",
+              "oldValue": "ca2405ca27a95d89c54abdd54de6ef1dce6da37f1e8dac6999c65d71ec8ad871"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenBasaltCS2_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f1d11fc09bcebc867b427466dab4b2e9be7d4badc8febff184328a576714c241",
+              "oldValue": "1b58bd8544afb33fc0c11ca2527db9f67e28c2cb6bc345be1edae475f97e929d"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenEdin"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cbf16514474e62c977682c24cfa3a251d9683d2cb9dc98573060f961b1d01dc6",
+              "oldValue": "8fbde4ff8dda06a886caa35a8c95cee214a70c5099ba97409beeaf5d4b3239b8"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenEdin_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "17f0790c2a1591bbaab1652d36e1f596dcbb3c25ee1e174423b5c13a36182d2b",
+              "oldValue": "9732977282e5cb6d815d7b362cf377539d8bbd1c44c0bfb8bf3c7f7514c3c517"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPalais"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d6300eb0025385adab7b4f8a85007adadb02b5bf3d7cb17d392fae8ddc803d02",
+              "oldValue": "2e37b329be6273915415fe1a69295f71a43fa32d9b4b0f7776a47f83fe086da5"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPalais_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "58d2071e370d66187eddd12e8ed1cfe312169e24d1e4fc0e7ac1b5eee57aa99f",
+              "oldValue": "17532978d8bf5efffdca361c87f1fda70cfcd71def4928fb5dfec5e823fb01b9"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenWhistle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b9449a822302dba9544d65fffc318990efef4d0bafd3994bec9898ed3e52acaa",
+              "oldValue": "8406949c9457b162a4d3cb64b0170a7ea3bcd6aeeabb82f93eeb31f6094a6e12"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenWhistle_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "HEROIC",
+              "oldValue": "Heroic"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "43b21b6e6b355f4e3f1b115a1589069c2ccee811d1903ef3e419d6579e492873",
+              "oldValue": "a96dc210a58cbb8ec70732b93e295043115a276f2b40d52d379bf37861c83424"
+            }
+          ],
+          "name": "CSGO_TeamID_95"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1802d1356740682a058e3b18877eaf99e7a46c7515b640058c2e37e5eb343dcd",
+              "oldValue": "2af5936b7beee975348d25dcd7bf61a7e9cf4488e0b1da1b5a83e2301986a680"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_missinglink_capsule_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c4186c9ca721dd721b55882b4c575f41f27e7904be54428399624623247eb90e",
+              "oldValue": "b5fe2a0d479f50bd69240b9630a62519a17dfa3858035bfca048e2e3397ed4d8"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_weapon_01_capsule_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "467061a17b42f8c69d99ceab5deccf6d4492c8cba91f4952bd39963650331074",
+              "oldValue": "fcbf1ed9c115b37d99c06e478c6146c95d0c1b657d0e094d5676d98cc767893e"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_stkr_craft_01_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "010fcd824241f093fbccb46ad56622a6e881b16c1cdbba145f6565d7f8e591e8",
+              "oldValue": "e8aa1e3f229b6dc5c1226e13ff679841f1d9be8452aab03c5ded56f4fe3f9288"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_stkr_craft_02_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2cde6e4cf91e5fc59c69ad681e6bbe8b2db07b71d323c158fcbeca24cf89342b",
+              "oldValue": "bfa85552ddd814b7b91dcbe8cda6aa9beb7e50f6eb77865db225b4375ed01766"
+            }
+          ],
+          "name": "GameUI_Disconnect_Request_HSIdle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a96f5a1bfb0b61409934a878ddd0eb2a7c51d174997f7f4c8393a34109a18f17",
+              "oldValue": "46a874938ade91f80fe5ea3b93be0ca86ddb83987be12404a3d929555131624d"
+            }
+          ],
+          "name": "GameUI_PredictBodyShotEffects"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a236237736b41fd5ca633f4c883411211780a02f34e771661a549cab469c4998",
+              "oldValue": "b6f8d552f90aec64313cb1edddfa7377efc550b8be8aa0009e9891b64a371957"
+            }
+          ],
+          "name": "GameUI_PredictBodyShotEffects_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b52202f71b082d7ce7a3a4ba65f0b1ee9bbb1ef36258fec1f767f73737018e22",
+              "oldValue": "fa7abdc0b439e7fe1087a76b698d0e4be0c45c0b3bf7a75344724c08fcbdc185"
+            }
+          ],
+          "name": "GameUI_PredictHeadShotEffects"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7a7aa987aa8b31c1918e74f94d3e91940afe17e39cc63c82fc0322533b57a987",
+              "oldValue": "a7e0536dd757717cce6203e4df0a9b77a5e9be82000b98613999470cc7620f1a"
+            }
+          ],
+          "name": "GameUI_PredictHeadShotEffects_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4602428f222b7b54e3924e63224f3968315e7800199e6721e180c04e136a5e69",
+              "oldValue": "33032929ba10db956ffa263fba77419673e35ad0e559888175e863e5be3640b8"
+            }
+          ],
+          "name": "GameUI_PredictKillRagdolls"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "37d760ed193d23e9a56aa0061d827a059734bb5bcaf14d3af8c68cf4f36b6911",
+              "oldValue": "7f9adcc0a33697e965bb94458572bcca523d13bceb50e15d1b82de880ddfb7c8"
+            }
+          ],
+          "name": "GameUI_PredictKillRagdolls_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cf1e446c1a7d23bf97b217f08cbce63cd7adb4ee0797a862978c7352516d7495",
+              "oldValue": "3214103c4ac9208cb978f96d73c98a6c86db675b23c64841f49c6cb37e242134"
+            }
+          ],
+          "name": "LoadingProgress_CSFunLoading12"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c0502c3737cf070b034db54b78c28b2865eff06d95583d9528c3e2e80a5ab779",
+              "oldValue": "ce1df419e74a4db8f73dec333cd5567b4ee19fa7690e6e6bf96940820cd5d9e7"
+            }
+          ],
+          "name": "LongDog"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e0cab9e3d7e729b0062e1137e765ad3ef5d9d626bb484745fe0c2223d80a26e9",
+              "oldValue": "7600006f54586e097ac362f4873f8a72786284c9b61d14194630d2cb63b0e35a"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverLink_Nvidia"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5866b5bca65b8d6a53cc25bb45ee3b339d20c8ca9e1d296305de3c42b04d80f9",
+              "oldValue": "4ae62418ff90b798a56d1b0f9f31240e7aa3cc34cfc1f0bd1790999b87ff29ac"
+            }
+          ],
+          "name": "Player_DisconnectReason_InsecureClient"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2455b3a5fded02291292077657e6cc8185e9f81d8aa4cbb4447a9e66692c1d6c",
+              "oldValue": "e15cca6a10824b7a46f3221871ccee3294363629d67c2ca493a1866c297984b5"
+            }
+          ],
+          "name": "RefreshRateRecommendation"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e94de2ed3f8e38113e2850131eb86864af1d6eec6ba0512e661834d15071c2da",
+              "oldValue": "89a166d25412de704b9162ec315724a5ed436116aa6251e69c3b52cc2d430388"
+            }
+          ],
+          "name": "SFUI_Map_de_edin"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4bd820a9acfea55be8787519165b37fc617c5599b1eda11e783159c6866f2f26",
+              "oldValue": "d60ab2d438e738aaababf275d7c6b1bd471e13901aa8d4b9769ec4124e9f2ff6"
+            }
+          ],
+          "name": "SFUI_Map_de_palais"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b3d49428a901bfb99d08ee1dc2e4cdb6efbe22d77fb4c8abbec0da2da4133b1b",
+              "oldValue": "3113780f7ef4af4f56694f38aa95502cec96419f50df0e89f19a417078336009"
+            }
+          ],
+          "name": "SFUI_Map_de_whistle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7527ea7d31a4b414e365acd0ed08b1ab48de6070aac4e34bbe66670ad228cb92",
+              "oldValue": "7b0baff3cc996230273974a849a318fff23d00be5bd3f1fd7af66c8242004d1c"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_49"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1a4b4126dfe84038896deb8d144b9465c6c2b2df9c28092530dd32c0eaafede",
+              "oldValue": "eb1a5964b9f6119fcde961d50c29a1f13471f103d68e4e7dcb1e07693a1eb98e"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_Radar_Background_Alpha"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "511d510c320528a52e9bcef5077bb2f093fdd9c9e22c05272d36a1570c637b33",
+              "oldValue": "95ec0aca7a6713d5e52f884b2974808e976719bf4d246916b6bf3b2c045a0b3e"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_Radar_Background_Alpha_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0b4a9ce5c5582113bca5295d74a7c52ea6a7f950335e98bcb82232d2e3d6ed7d",
+              "oldValue": "b3933870b8db7948358405297e1715e7bb03821ed61ff1768c8f9e2ef96357fb"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_Radar_Map_Additive"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2f502da9b955f7dfe3b2453313e1f8a0e1d71cb5a1d2951ed7ccaacc56f149a9",
+              "oldValue": "301da8cc2081f6cd595b8958bd29eb9740f67558cdd7fd76dad9a7009e7164c6"
+            }
+          ],
+          "name": "SFUI_Settings_HUD_Radar_Map_Additive_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "83cc2047d367d237ffaec87f70c0cfa8c600f8941849eec533798c1cfb0d8965",
+              "oldValue": "6ea05d1e48345a73c46a0e10f844a482c7f0feec5a955801ca5bced53efafa14"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_FrameTimePoor_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0486149b65a7a2a61dabb0211a295901685bc63218cd85968092c4e3ebbc447e",
+              "oldValue": "21fd91997a107ffb3bc6cf84c4d9024f8abfc414019b0cc1469f70fbc80c9143"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMissedTicks"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c6675b60289a623a54fdedf804ba3f225453fccf2558d2a616a410d0f85c4f79",
+              "oldValue": "b19dfa794a00e21043a65b4e982624e8dca43ef1b68ab6bbf90fd5610fc8fb5c"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMissedTicksPoor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "754042a8be22942ee19ffc962256a5adbe393ac719711b69358da6aed307b0c6",
+              "oldValue": "6d85f6e9e43ee5cd1fe1213ea417ec1efa64c93d6380901371df78a627e3fcd4"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMissedTicksPoor_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8dad3f7824cd3e26a20ffe026c4a799e9f884c3487a5c8c92e3a3f5db8cdb031",
+              "oldValue": "dc8dacabe2f812f66f0039af6b9c751a1294a4cceec363fbaa47b3706c166255"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMissedTicks_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aef3b767fdf14d0ad1c34efd718325e35c2251027b847fb10d95c4c913d6999c",
+              "oldValue": "9640fa79f76629a633872059e831d16db39de30be765c71e97e300e277044bc4"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkQualityDetailed"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6f6eb406564181e86e8b1138b3b1c8495b258b420c015b4560292092845e55ec",
+              "oldValue": "5664e45405f3cb8a9bc54bb86b8b6111548ad75a7df20716aa59bbd410eff43f"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkQualityDetailed_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aa85220e413c9dbd2488ad04935c8ba601ce290d774fa277d9e116c1e1a45484",
+              "oldValue": "7c73a925a832fb416929a054c7fd48c8744a12b9fa6f39c0716fd7c1062123f9"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkQualityGraph"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "94766cd576390b3003f7ab6c0946e17c205b7b35f78c6451ecb02a23627caa7b",
+              "oldValue": "ebc9b2cfe3a6411a092574e3cb35ccac6df736d76bde237b31568848fdc82dd1"
+            }
+          ],
+          "name": "SFUI_Settings_Match_Ping_Threshold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7163264e9b9e08f9ca8ae09e39a200073dbc69482731259d5da0185c9b48a074",
+              "oldValue": "bd71e7453ad0a0e9b41787cee1b46abb7e281c64ef12b0f46c24789e30eda620"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "780c88a8927c784683420613270aa4c0b17e5d6f0e18cacd3e815c6804f8a1ce",
+              "oldValue": "6d84ed6ec4008f166de78c551ee35a9d972bc7f8d4171a1609f63bc4d405c36e"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c48db8e78bf6bab51da56a824279205bcd4cd08e4d6aeebde3896df9bf48d451",
+              "oldValue": "0ab9d5481b6ed911cc32c3caa2ea963560e2ae01061d8d87d98413a5984c819c"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2164f267535a33d1f2aa18691f3523573722c477a5936874bea23253a59c53b2",
+              "oldValue": "6a644997b6898cdb5a0aa061d00960ac83abdec3b1ab30bca9f934fc8de000ad"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Only %players% compatible player is searching in %region%.#|#Only %players% compatible players are searching in %region%.",
+              "oldValue": "Only %players% player is searching in %region% region, long wait expected.#|#Only %players% players are searching in %region% region, long wait expected."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2b7f6c0ee5f6f114369ceea1856163c51f42bee4537dca0613da6344b30cf2c9",
+              "oldValue": "8801c1ab12b9cf9fcd3a53960fbd9eacd2e76a933b15f07bee1f6f42a5742da4"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersR:p{players}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Only %players% compatible player is searching in your region.#|#Only %players% compatible players are searching in your region.",
+              "oldValue": "Only %players% player is searching in your region, long wait expected.#|#Only %players% players are searching in your region, long wait expected."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "9f0e6e7bdc240e4daa87b30a9382ee611e76996152c08eaa3ebb8fa05e8f8042",
+              "oldValue": "2ddddbab84eada4f6eb6a15c712b57927a97efc38f00e54ad16f54f1dd5b723d"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersY:p{players}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4905a77b03f0f332bb9e9aab28b3a7a616a0f5c3f4ba9f1aff03d8c063481e3c",
+              "oldValue": "347d073f0cb97c7f52147a9f9aa590d56abd2e5b333d52ad481f12c436ff0c8b"
+            }
+          ],
+          "name": "annotations_grenade_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1419de4123de80c60896beb7ca22621742dc76ed24badccb684a44417f202067",
+              "oldValue": "87e349f628a20cb2706688ed5364ded060b20bb09ba154d5e384419b4128e61e"
+            }
+          ],
+          "name": "annotations_grenade_info_guides_off"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b8e0ce0e011522dde66520508665cca36a3729641bfbeeb5ecf9465bc5c29506",
+              "oldValue": "4567fbcdff0ba97034f5c0d078cd639bdb9b3854f205d07dad07694ad78930d5"
+            }
+          ],
+          "name": "mainmenu_debug_lobby_of_five"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "156ac4d778eff4c1d25e8e8275243a702c4524c77d53dac9bb7271142a6f8f10",
+              "oldValue": "c75666f7b1aa71cad6f5fbad9f163a5ef57b8cfba757988c8e306708f0c5694a"
+            }
+          ],
+          "name": "popup_scrape_sticker_level"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b5c91925533db31f95683ea529306f2e3d9d687acedcb1309ac1b64aa74af1e9",
+              "oldValue": "a88490756a665f66f0c6fd6f89401ec4647b1648571a556a9e1b28e57d1b0508"
+            }
+          ],
+          "name": "practicesettings_annotations_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "When <b>enabled</b> the map guide will load.",
+              "oldValue": "When <b>enabled</b> the map guide will load, and the following settings will be forced on: infinite warmup, infinite ammo, and grenade camera."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "34afbb24d1282c599797daf7b99c75707f4caf65bf671b4d7659ce4a36820b79",
+              "oldValue": "b5d1694b84186814880e3509c2ffcf2e2b56de189b2948077cad48ed24ad9739"
+            }
+          ],
+          "name": "practicesettings_annotations_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e72f9f2c4850dddb5fdecced1db65ec808667ff5101e902dbb665010c848a5c",
+              "oldValue": "94ea887d827bc19e5e82c9e2cae09e90e3b37ec4bb5f34961abccc34b8c71a3e"
+            }
+          ],
+          "name": "quest_1350_var_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7a5a17468bdbf048f324f2f2bcb4cb1e05ca631580be0d7abb7a47909ddf3fec",
+              "oldValue": "a70319858b733582610b077906ba07abc003c0e9737a3bb92172969b65ca5a37"
+            }
+          ],
+          "name": "settings_damage_prediction"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e65fa2c0e6619c6c36ae5d1b6c94cc5a2673d401cf2b05ac940f7565636732e8",
+              "oldValue": "f9b4514dace61235effded8792f2eabe016a985d73a83ab016bd8bca7adf0989"
+            }
+          ],
+          "name": "settings_damage_prediction_info"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "16479532",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "16558361"
+}

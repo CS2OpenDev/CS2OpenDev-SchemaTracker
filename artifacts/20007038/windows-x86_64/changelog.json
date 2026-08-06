@@ -1,0 +1,3146 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/CDestructiblePart",
+        "!GlobalTypes/CDestructiblePart_DamageLevel",
+        "!GlobalTypes/CPAssignment_t",
+        "!GlobalTypes/CSmartPropElement_ModelEntity",
+        "!GlobalTypes/CSmartPropElement_PropDynamic",
+        "!GlobalTypes/C_INIT_CheckParticleForWater",
+        "!GlobalTypes/C_INIT_CreateWithinCapsuleTransform",
+        "!GlobalTypes/C_OP_CreateParticleSystemRenderer",
+        "!GlobalTypes/C_OP_GameLiquidSpill",
+        "!GlobalTypes/C_OP_PinRopeSegmentParticleToParent",
+        "!GlobalTypes/NmFloatCurveCompressionSettings_t",
+        "!GlobalTypes/RsBlendStateDesc_t",
+        "!GlobalTypes/RsDepthStencilStateDesc_t",
+        "!GlobalTypes/RsRasterizerStateDesc_t",
+        "!GlobalTypes/RsStencilStateDesc_t",
+        "client.dll/CDestructiblePartsComponent",
+        "client.dll/CPulseGameBlackboard",
+        "server.dll/CDestructiblePartsComponent",
+        "server.dll/CPulseGameBlackboard",
+        "server.dll/CPulsePhysicsConstraintsFuncs"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "24",
+              "oldValue": "25"
+            }
+          ],
+          "name": "!GlobalTypes/CDecalInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "19",
+              "oldValue": "16"
+            }
+          ],
+          "name": "!GlobalTypes/CDetailPropModel"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "11"
+            }
+          ],
+          "name": "!GlobalTypes/CMixSteamAudioDirect"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CMixSteamAudioHybridReverb"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CMixSteamAudioPathing"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "!GlobalTypes/CNmChainSolverTask"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "16",
+              "oldValue": "12"
+            }
+          ],
+          "name": "!GlobalTypes/CNmClip"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "8"
+            }
+          ],
+          "name": "!GlobalTypes/CNmClipDocEvent_Sound"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CNmPreviewArchetype"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CNmPreviewArchetype::SecondarySkeleton_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "9"
+            }
+          ],
+          "name": "!GlobalTypes/CNmSoundEvent"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "48",
+              "oldValue": "47"
+            }
+          ],
+          "name": "!GlobalTypes/CParticleFloatInput"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "23",
+              "oldValue": "22"
+            }
+          ],
+          "name": "!GlobalTypes/CSchemaSystemInternalRegistration"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "10",
+              "oldValue": "8"
+            }
+          ],
+          "name": "!GlobalTypes/CSmartPropElement_Model"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "1",
+              "oldValue": "3"
+            },
+            {
+              "field": "parent",
+              "newValue": "CSmartPropElement_ModelEntity",
+              "oldValue": "CSmartPropElement"
+            }
+          ],
+          "name": "!GlobalTypes/CSmartPropElement_PropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/CSmartPropOperation_RandomOffset"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/CSmartPropOperation_RandomRotation"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/CSmartPropOperation_RandomScale"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CSosGroupActionLimitSchema"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CSosGroupActionSchema"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "16",
+              "oldValue": "9"
+            }
+          ],
+          "name": "!GlobalTypes/CSosSoundEventGroupSchema"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/C_INIT_CreateFromParentParticles"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "14"
+            }
+          ],
+          "name": "!GlobalTypes/C_INIT_CreateWithinSphereTransform"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/C_INIT_DistanceToNeighborCull"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "32",
+              "oldValue": "30"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_RenderRopes"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_WaterImpulseRenderer"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "16",
+              "oldValue": "15"
+            }
+          ],
+          "name": "!GlobalTypes/GeneralOptionsEditableData_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "14",
+              "oldValue": "16"
+            }
+          ],
+          "name": "!GlobalTypes/WorldNode_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "21",
+              "oldValue": "20"
+            }
+          ],
+          "name": "client.dll/CBaseAnimGraphController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "1",
+              "oldValue": "8"
+            }
+          ],
+          "name": "client.dll/CCSObserver_ObserverServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "38",
+              "oldValue": "39"
+            }
+          ],
+          "name": "client.dll/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "39",
+              "oldValue": "38"
+            }
+          ],
+          "name": "client.dll/C_BaseModelEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "51",
+              "oldValue": "53"
+            }
+          ],
+          "name": "client.dll/C_CSWeaponBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "21",
+              "oldValue": "20"
+            }
+          ],
+          "name": "server.dll/CBaseAnimGraphController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "43",
+              "oldValue": "42"
+            }
+          ],
+          "name": "server.dll/CBaseModelEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "40",
+              "oldValue": "41"
+            }
+          ],
+          "name": "server.dll/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "50",
+              "oldValue": "52"
+            }
+          ],
+          "name": "server.dll/CCSWeaponBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "68",
+              "oldValue": "67"
+            }
+          ],
+          "name": "server.dll/CFuncMover"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "27",
+              "oldValue": "29"
+            }
+          ],
+          "name": "server.dll/CRagdollProp"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "14"
+            }
+          ],
+          "name": "server.dll/CTriggerLerpObject"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/CDestructiblePartsSystemData_DamageLevel",
+        "!GlobalTypes/CDestructiblePartsSystemData_HitGroupInfoAndDamageLevels",
+        "!GlobalTypes/CSosGroupBranchPattern",
+        "!GlobalTypes/CSosGroupMatchPattern",
+        "!GlobalTypes/CSosSoundEventGroupListSchema",
+        "!GlobalTypes/InfoOverlayData_t",
+        "animationsystem.dll/CPulseCell_Outflow_IntSwitch",
+        "animationsystem.dll/CPulseCell_Outflow_StringSwitch",
+        "assetpreview.dll/CPulseCell_Outflow_IntSwitch",
+        "assetpreview.dll/CPulseCell_Outflow_StringSwitch",
+        "assetrename.dll/CPulseCell_Outflow_IntSwitch",
+        "assetrename.dll/CPulseCell_Outflow_StringSwitch",
+        "client.dll/CCSClientPointScriptEntity",
+        "client.dll/CCSPointScript",
+        "client.dll/CCSPointScriptExtensions_CCSWeaponBaseVData",
+        "client.dll/CCSPointScriptExtensions_entity",
+        "client.dll/CCSPointScriptExtensions_observer",
+        "client.dll/CCSPointScriptExtensions_player",
+        "client.dll/CCSPointScriptExtensions_player_controller",
+        "client.dll/CCSPointScriptExtensions_weapon_cs_base",
+        "client.dll/CDestructiblePartsSystemComponent",
+        "client.dll/CProjectedTextureBase",
+        "client.dll/CPulseCell_Outflow_IntSwitch",
+        "client.dll/CPulseCell_Outflow_StringSwitch",
+        "client.dll/C_EnvProjectedTexture",
+        "hammer.dll/CPulseCell_Outflow_IntSwitch",
+        "hammer.dll/CPulseCell_Outflow_StringSwitch",
+        "particles.dll/CPulseCell_Outflow_IntSwitch",
+        "particles.dll/CPulseCell_Outflow_StringSwitch",
+        "pet.dll/CPulseCell_Outflow_IntSwitch",
+        "pet.dll/CPulseCell_Outflow_StringSwitch",
+        "pulse_system.dll/CPulseCell_Outflow_IntSwitch",
+        "pulse_system.dll/CPulseCell_Outflow_StringSwitch",
+        "resourcecompiler.dll/CPulseCell_Outflow_IntSwitch",
+        "resourcecompiler.dll/CPulseCell_Outflow_StringSwitch",
+        "server.dll/CCSPointScript",
+        "server.dll/CCSPointScriptExtensions_CCSWeaponBaseVData",
+        "server.dll/CCSPointScriptExtensions_entity",
+        "server.dll/CCSPointScriptExtensions_observer",
+        "server.dll/CCSPointScriptExtensions_player",
+        "server.dll/CCSPointScriptExtensions_player_controller",
+        "server.dll/CCSPointScriptExtensions_weapon_cs_base",
+        "server.dll/CDestructiblePartsSystemComponent",
+        "server.dll/CEnvProjectedTexture",
+        "server.dll/CInfoProjectedDecal",
+        "server.dll/CPulseCell_Outflow_IntSwitch",
+        "server.dll/CPulseCell_Outflow_StringSwitch",
+        "toolscenenodes.dll/CPulseCell_Outflow_IntSwitch",
+        "toolscenenodes.dll/CPulseCell_Outflow_StringSwitch"
+      ]
+    },
+    {
+      "added": [
+        "!GlobalTypes/ParticleFanType_t",
+        "!GlobalTypes/ParticleLiquidContents_t",
+        "!GlobalTypes/PulseApiFeature_t",
+        "!GlobalTypes/RsComparison_t",
+        "!GlobalTypes/RsCullMode_t",
+        "!GlobalTypes/RsFillMode_t",
+        "!GlobalTypes/SmartPropDeformableAttachMode_t",
+        "!GlobalTypes/SmartPropDeformableOrientMode_t",
+        "!GlobalTypes/SosGroupFieldBehavior_t",
+        "pulse_system.dll/PulseTestEnumColor_t",
+        "pulse_system.dll/PulseTestEnumShape_t"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "member:Stop",
+              "newValue": "",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/CNmParticleEvent::Type_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:None",
+              "newValue": "0",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/EDestructibleParts_DestroyParameterFlags"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:NAV_ATTR_LAST_INDEX",
+              "newValue": "63",
+              "oldValue": "31"
+            },
+            {
+              "field": "member:NAV_MESH_PRECISE",
+              "newValue": "",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/NavAttributeEnum"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:OBSERVER_INTERP_SETTLING",
+              "newValue": "3",
+              "oldValue": "2"
+            },
+            {
+              "field": "member:OBSERVER_INTERP_STARTING",
+              "newValue": "1",
+              "oldValue": ""
+            },
+            {
+              "field": "member:OBSERVER_INTERP_TRAVELING",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "!GlobalTypes/ObserverInterpState_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:PF_TYPE_COUNT",
+              "newValue": "29",
+              "oldValue": "27"
+            },
+            {
+              "field": "member:PF_TYPE_PARTICLE_ROPE_SEGMENT",
+              "newValue": "25",
+              "oldValue": ""
+            },
+            {
+              "field": "member:PF_TYPE_PARTICLE_ROPE_SEGMENT_NORMALIZED",
+              "newValue": "26",
+              "oldValue": ""
+            },
+            {
+              "field": "member:PF_TYPE_PARTICLE_SCREENSPACE_CAMERA_DISTANCE",
+              "newValue": "27",
+              "oldValue": "25"
+            },
+            {
+              "field": "member:PF_TYPE_PARTICLE_SCREENSPACE_CAMERA_DOT_PRODUCT",
+              "newValue": "28",
+              "oldValue": "26"
+            }
+          ],
+          "name": "!GlobalTypes/ParticleFloatType_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:PARTICLE_ORIENTATION_SET_FROM_NORMAL",
+              "newValue": "1",
+              "oldValue": ""
+            },
+            {
+              "field": "member:PARTICLE_ORIENTATION_SET_FROM_ROTATIONS",
+              "newValue": "2",
+              "oldValue": "1"
+            },
+            {
+              "field": "member:PARTICLE_ORIENTATION_SET_NONE",
+              "newValue": "-1",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/ParticleOrientationSetMode_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:RENDER_BUFFER_PER_FRAME_WRITE_ONCE",
+              "newValue": "",
+              "oldValue": "2048"
+            },
+            {
+              "field": "member:RENDER_BUFFER_POOL_ALLOCATED",
+              "newValue": "2048",
+              "oldValue": "4096"
+            },
+            {
+              "field": "member:RENDER_BUFFER_USAGE_CONDITIONAL_RENDERING",
+              "newValue": "4096",
+              "oldValue": "8192"
+            }
+          ],
+          "name": "!GlobalTypes/RenderBufferFlags_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:DFLAG_IGNORE_ARMOR",
+              "newValue": "32768",
+              "oldValue": "16384"
+            },
+            {
+              "field": "member:DFLAG_SUPPRESS_BREAKABLES",
+              "newValue": "16384",
+              "oldValue": ""
+            },
+            {
+              "field": "member:DFLAG_SUPPRESS_UTILREMOVE",
+              "newValue": "65536",
+              "oldValue": "32768"
+            },
+            {
+              "field": "member:DMG_LASTDFLAG",
+              "newValue": "16384",
+              "oldValue": "8192"
+            }
+          ],
+          "name": "!GlobalTypes/TakeDamageFlags_t"
+        }
+      ],
+      "family": "enums",
+      "removed": [
+        "!GlobalTypes/ActionType_t",
+        "!GlobalTypes/CNmSoundEvent::Type_t",
+        "!GlobalTypes/DecalVBType_t",
+        "!GlobalTypes/PulseTestEnumColor_t",
+        "!GlobalTypes/PulseTestEnumShape_t"
+      ]
+    },
+    {
+      "added": [
+        "animgraph_debug_max_poseop_count",
+        "cl_ent_joint_filter_substrings",
+        "cl_ent_joint_lines",
+        "cl_force_spec_hud_color_to_team",
+        "cs_test_inspect_panzoom",
+        "debug_async_data_panel_override_state",
+        "ent_joint_filter_substrings",
+        "ent_joint_lines",
+        "imgui_show_cs2_worldmodel",
+        "panorama_label_draw_rects",
+        "panorama_toggledebugger_mode",
+        "parallel_update_surrounding_bounds_in_spatial_partition_update",
+        "phys_threaded_cloth_bone_update",
+        "r_particle_allowprerender",
+        "r_particle_debug_show_attribute",
+        "r_particle_debug_show_rope_segments",
+        "r_particle_testbuffers",
+        "sv_kill_players_at_coord_min",
+        "sv_matchperfstats_maxclientperfsamples",
+        "tv_playcast_http_delta_fragment_timeout_s"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,cheat",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_ent_joint_names"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,cheat",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "ent_joint_names"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "cl_ent_joint_filter_substring",
+        "cl_obs_interp_angle_progress_headstart",
+        "cl_obs_interp_dist_to_turn_to_face",
+        "cl_obs_interp_obstruction_behavior",
+        "cl_obs_interp_pos_halflife",
+        "cl_obs_interp_pos_rate",
+        "cl_obs_interp_settle_dist",
+        "cl_obs_interp_snap_dist",
+        "cl_obs_interp_turn_to_face_end_frac",
+        "cl_obs_interp_turn_to_face_start_frac",
+        "ent_joint_filter_substring",
+        "panorama_force_text_shadow_strength",
+        "r_particle_force_material_binds",
+        "r_stereo_multiview_instancing",
+        "ragdoll_relax_limts",
+        "ragdoll_validate_targetpose",
+        "ragdoll_visualize_targetpose",
+        "sc_bounds_group_cull",
+        "sc_disable_shadow_materials",
+        "sv_pure_kick_clients",
+        "sv_pure_trace",
+        "vulkan_memgr_telemetry_stats"
+      ]
+    },
+    {
+      "added": [
+        "healme",
+        "pulse_list_game_blackboards"
+      ],
+      "changed": [],
+      "family": "commands",
+      "removed": [
+        "create_flashlight",
+        "nav_avoid",
+        "nav_precise",
+        "sv_pure"
+      ]
+    },
+    {
+      "added": [
+        "schema_enum:!GlobalTypes/EDestructibleParts_DestroyParameterFlags/EDestructibleParts_DestroyParameterFlags::None",
+        "schema_enum:!GlobalTypes/ObserverInterpState_t/ObserverInterpState_t::OBSERVER_INTERP_STARTING",
+        "schema_enum:!GlobalTypes/ParticleFanType_t/ParticleFanType_t::PARTICLE_FAN_TYPE_FAN",
+        "schema_enum:!GlobalTypes/ParticleFanType_t/ParticleFanType_t::PARTICLE_FAN_TYPE_RADIAL",
+        "schema_enum:!GlobalTypes/ParticleFanType_t/ParticleFanType_t::PARTICLE_FAN_TYPE_ROTOR_WASH",
+        "schema_enum:!GlobalTypes/ParticleFloatType_t/ParticleFloatType_t::PF_TYPE_PARTICLE_ROPE_SEGMENT",
+        "schema_enum:!GlobalTypes/ParticleFloatType_t/ParticleFloatType_t::PF_TYPE_PARTICLE_ROPE_SEGMENT_NORMALIZED",
+        "schema_enum:!GlobalTypes/ParticleLiquidContents_t/ParticleLiquidContents_t::PARTICLE_LIQUID_NONE",
+        "schema_enum:!GlobalTypes/ParticleLiquidContents_t/ParticleLiquidContents_t::PARTICLE_LIQUID_OIL",
+        "schema_enum:!GlobalTypes/ParticleLiquidContents_t/ParticleLiquidContents_t::PARTICLE_LIQUID_WATER",
+        "schema_enum:!GlobalTypes/ParticleOrientationSetMode_t/ParticleOrientationSetMode_t::PARTICLE_ORIENTATION_SET_FROM_NORMAL",
+        "schema_enum:!GlobalTypes/ParticleOrientationSetMode_t/ParticleOrientationSetMode_t::PARTICLE_ORIENTATION_SET_NONE",
+        "schema_enum:!GlobalTypes/PulseApiFeature_t/PulseApiFeature_t::AF_ENTITIES",
+        "schema_enum:!GlobalTypes/PulseApiFeature_t/PulseApiFeature_t::AF_FAKE_ENTITIES",
+        "schema_enum:!GlobalTypes/PulseApiFeature_t/PulseApiFeature_t::AF_NONE",
+        "schema_enum:!GlobalTypes/PulseApiFeature_t/PulseApiFeature_t::AF_PANORAMA",
+        "schema_enum:!GlobalTypes/PulseApiFeature_t/PulseApiFeature_t::AF_PARTICLES",
+        "schema_enum:!GlobalTypes/PulseApiFeature_t/PulseApiFeature_t::AF_SELECTORS_WITHOUT_REQUIREMENTS",
+        "schema_enum:!GlobalTypes/RsComparison_t/RsComparison_t::RS_CMP_ALWAYS",
+        "schema_enum:!GlobalTypes/RsComparison_t/RsComparison_t::RS_CMP_EQUAL",
+        "schema_enum:!GlobalTypes/RsComparison_t/RsComparison_t::RS_CMP_GREATER",
+        "schema_enum:!GlobalTypes/RsComparison_t/RsComparison_t::RS_CMP_GREATER_EQUAL",
+        "schema_enum:!GlobalTypes/RsComparison_t/RsComparison_t::RS_CMP_LESS",
+        "schema_enum:!GlobalTypes/RsComparison_t/RsComparison_t::RS_CMP_LESS_EQUAL",
+        "schema_enum:!GlobalTypes/RsComparison_t/RsComparison_t::RS_CMP_NEVER",
+        "schema_enum:!GlobalTypes/RsComparison_t/RsComparison_t::RS_CMP_NOT_EQUAL",
+        "schema_enum:!GlobalTypes/RsCullMode_t/RsCullMode_t::RS_CULL_BACK",
+        "schema_enum:!GlobalTypes/RsCullMode_t/RsCullMode_t::RS_CULL_FRONT",
+        "schema_enum:!GlobalTypes/RsCullMode_t/RsCullMode_t::RS_CULL_NONE",
+        "schema_enum:!GlobalTypes/RsFillMode_t/RsFillMode_t::RS_FILL_SOLID",
+        "schema_enum:!GlobalTypes/RsFillMode_t/RsFillMode_t::RS_FILL_WIREFRAME",
+        "schema_enum:!GlobalTypes/SmartPropDeformableAttachMode_t/SmartPropDeformableAttachMode_t::RELATIVE",
+        "schema_enum:!GlobalTypes/SmartPropDeformableAttachMode_t/SmartPropDeformableAttachMode_t::SNAP",
+        "schema_enum:!GlobalTypes/SmartPropDeformableAttachMode_t/SmartPropDeformableAttachMode_t::STIFFEN",
+        "schema_enum:!GlobalTypes/SmartPropDeformableOrientMode_t/SmartPropDeformableOrientMode_t::BACKWARD_NORMAL",
+        "schema_enum:!GlobalTypes/SmartPropDeformableOrientMode_t/SmartPropDeformableOrientMode_t::FORWARD_NORMAL",
+        "schema_enum:!GlobalTypes/SmartPropDeformableOrientMode_t/SmartPropDeformableOrientMode_t::MAINTAIN_OFFSET",
+        "schema_enum:!GlobalTypes/SmartPropDeformableOrientMode_t/SmartPropDeformableOrientMode_t::NONE",
+        "schema_enum:!GlobalTypes/SmartPropDeformableOrientMode_t/SmartPropDeformableOrientMode_t::UP_NORMAL",
+        "schema_enum:!GlobalTypes/SosGroupFieldBehavior_t/SosGroupFieldBehavior_t::kBranch",
+        "schema_enum:!GlobalTypes/SosGroupFieldBehavior_t/SosGroupFieldBehavior_t::kIgnore",
+        "schema_enum:!GlobalTypes/SosGroupFieldBehavior_t/SosGroupFieldBehavior_t::kMatch",
+        "schema_enum:!GlobalTypes/TakeDamageFlags_t/TakeDamageFlags_t::DFLAG_SUPPRESS_BREAKABLES",
+        "schema_enum:pulse_system.dll/PulseTestEnumColor_t/PulseTestEnumColor_t::BLACK",
+        "schema_enum:pulse_system.dll/PulseTestEnumColor_t/PulseTestEnumColor_t::BLUE",
+        "schema_enum:pulse_system.dll/PulseTestEnumColor_t/PulseTestEnumColor_t::GREEN",
+        "schema_enum:pulse_system.dll/PulseTestEnumColor_t/PulseTestEnumColor_t::RED",
+        "schema_enum:pulse_system.dll/PulseTestEnumColor_t/PulseTestEnumColor_t::WHITE",
+        "schema_enum:pulse_system.dll/PulseTestEnumShape_t/PulseTestEnumShape_t::CIRCLE",
+        "schema_enum:pulse_system.dll/PulseTestEnumShape_t/PulseTestEnumShape_t::SQUARE",
+        "schema_enum:pulse_system.dll/PulseTestEnumShape_t/PulseTestEnumShape_t::TRIANGLE"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "63",
+              "oldValue": "31"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/NavAttributeEnum/NavAttributeEnum::NAV_ATTR_LAST_INDEX"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/ObserverInterpState_t/ObserverInterpState_t::OBSERVER_INTERP_SETTLING"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/ObserverInterpState_t/ObserverInterpState_t::OBSERVER_INTERP_TRAVELING"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "29",
+              "oldValue": "27"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/ParticleFloatType_t/ParticleFloatType_t::PF_TYPE_COUNT"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "27",
+              "oldValue": "25"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/ParticleFloatType_t/ParticleFloatType_t::PF_TYPE_PARTICLE_SCREENSPACE_CAMERA_DISTANCE"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "28",
+              "oldValue": "26"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/ParticleFloatType_t/ParticleFloatType_t::PF_TYPE_PARTICLE_SCREENSPACE_CAMERA_DOT_PRODUCT"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/ParticleOrientationSetMode_t/ParticleOrientationSetMode_t::PARTICLE_ORIENTATION_SET_FROM_ROTATIONS"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "2048",
+              "oldValue": "4096"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/RenderBufferFlags_t/RenderBufferFlags_t::RENDER_BUFFER_POOL_ALLOCATED"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "4096",
+              "oldValue": "8192"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/RenderBufferFlags_t/RenderBufferFlags_t::RENDER_BUFFER_USAGE_CONDITIONAL_RENDERING"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "32768",
+              "oldValue": "16384"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/TakeDamageFlags_t/TakeDamageFlags_t::DFLAG_IGNORE_ARMOR"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "65536",
+              "oldValue": "32768"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/TakeDamageFlags_t/TakeDamageFlags_t::DFLAG_SUPPRESS_UTILREMOVE"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "16384",
+              "oldValue": "8192"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/TakeDamageFlags_t/TakeDamageFlags_t::DMG_LASTDFLAG"
+        }
+      ],
+      "family": "engine_constants",
+      "removed": [
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_COUNT_ENVELOPE",
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_LIMITER",
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_NONE",
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_SET_SOUNDEVENT_PARAM",
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_SOUNDEVENT_CLUSTER",
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_SOUNDEVENT_COUNT",
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_SOUNDEVENT_MIN_MAX_VALUES",
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_SOUNDEVENT_PRIORITY",
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_TIME_BLOCK_LIMITER",
+        "schema_enum:!GlobalTypes/ActionType_t/ActionType_t::SOS_ACTION_TIME_LIMIT",
+        "schema_enum:!GlobalTypes/CNmParticleEvent::Type_t/CNmParticleEvent::Type_t::Stop",
+        "schema_enum:!GlobalTypes/CNmSoundEvent::Type_t/CNmSoundEvent::Type_t::Play",
+        "schema_enum:!GlobalTypes/CNmSoundEvent::Type_t/CNmSoundEvent::Type_t::Stop",
+        "schema_enum:!GlobalTypes/DecalVBType_t/DecalVBType_t::eCount",
+        "schema_enum:!GlobalTypes/DecalVBType_t/DecalVBType_t::eDynamic",
+        "schema_enum:!GlobalTypes/DecalVBType_t/DecalVBType_t::eFirst",
+        "schema_enum:!GlobalTypes/DecalVBType_t/DecalVBType_t::eInvalid",
+        "schema_enum:!GlobalTypes/DecalVBType_t/DecalVBType_t::eStatic",
+        "schema_enum:!GlobalTypes/NavAttributeEnum/NavAttributeEnum::NAV_MESH_PRECISE",
+        "schema_enum:!GlobalTypes/PulseTestEnumColor_t/PulseTestEnumColor_t::BLACK",
+        "schema_enum:!GlobalTypes/PulseTestEnumColor_t/PulseTestEnumColor_t::BLUE",
+        "schema_enum:!GlobalTypes/PulseTestEnumColor_t/PulseTestEnumColor_t::GREEN",
+        "schema_enum:!GlobalTypes/PulseTestEnumColor_t/PulseTestEnumColor_t::RED",
+        "schema_enum:!GlobalTypes/PulseTestEnumColor_t/PulseTestEnumColor_t::WHITE",
+        "schema_enum:!GlobalTypes/PulseTestEnumShape_t/PulseTestEnumShape_t::CIRCLE",
+        "schema_enum:!GlobalTypes/PulseTestEnumShape_t/PulseTestEnumShape_t::SQUARE",
+        "schema_enum:!GlobalTypes/PulseTestEnumShape_t/PulseTestEnumShape_t::TRIANGLE",
+        "schema_enum:!GlobalTypes/RenderBufferFlags_t/RenderBufferFlags_t::RENDER_BUFFER_PER_FRAME_WRITE_ONCE"
+      ]
+    },
+    {
+      "added": [
+        "Attrib_PurchaserAccountID",
+        "Attrib_PurchaserAccountID_title",
+        "CSGO_VanityLoadout_FindOnMarket",
+        "CSGO_VanityLoadout_Inspect",
+        "CSGO_crate_community_36",
+        "CSGO_crate_community_36^volatile",
+        "CSGO_crate_community_36_desc",
+        "CSGO_crate_sticker_pack_community2025_capsule",
+        "CSGO_crate_sticker_pack_community2025_capsule_desc",
+        "CSGO_crate_sticker_pack_community_2025_short",
+        "CSGO_crate_sticker_pack_sugarface2_capsule",
+        "CSGO_crate_sticker_pack_sugarface2_capsule_desc",
+        "CSGO_crate_sticker_pack_sugarface2_short",
+        "CSGO_set_community_36",
+        "CSGO_set_community_36_desc",
+        "Item_PurchasedVolatile",
+        "NewItemMethod_PurchasedVolatile",
+        "PANOHUD_Spectate_Vanity_Loadout_Close_Popup",
+        "PANOHUD_Spectate_Vanity_Loadout_Hide",
+        "PANOHUD_Spectate_Vanity_Loadout_Show",
+        "PaintKit_ak47_puffer_custom",
+        "PaintKit_ak47_puffer_custom_Tag",
+        "PaintKit_aug_trigger_discipline_velco",
+        "PaintKit_dual_elite_biblical_angel",
+        "PaintKit_dual_elite_biblical_angel_Tag",
+        "PaintKit_glock_mirror_maze",
+        "PaintKit_glock_mirror_maze_Tag",
+        "PaintKit_m4a1s_quick_liquidation",
+        "PaintKit_m4a4_skrrrt_green",
+        "PaintKit_m4a4_skrrrt_green_Tag",
+        "PaintKit_mac10_kamicatze",
+        "PaintKit_mac10_kamicatze_Tag",
+        "PaintKit_mag7_circle_copper",
+        "PaintKit_mag7_circle_copper_Tag",
+        "PaintKit_mp5sd_chrome",
+        "PaintKit_mp5sd_chrome_Tag",
+        "PaintKit_mp7_smoking_kills_v2",
+        "PaintKit_mp7_smoking_kills_v2_Tag",
+        "PaintKit_mp9_vinyl",
+        "PaintKit_mp9_vinyl_Tag",
+        "PaintKit_nova_ocular",
+        "PaintKit_nova_ocular_Tag",
+        "PaintKit_p2000_deep_red",
+        "PaintKit_p2000_deep_red_Tag",
+        "PaintKit_p250_bullfrog",
+        "PaintKit_p250_bullfrog_Tag",
+        "PaintKit_scar_refraction",
+        "PaintKit_scar_refraction_Tag",
+        "PaintKit_ump45_illumina_v2",
+        "PaintKit_ump45_illumina_v2_Tag",
+        "SFUI_HUDSpecColorOverride",
+        "SFUI_HUDSpecColorOverride_desc",
+        "SFUI_OfficialDatacenterID_52",
+        "StickerKit_community_2025_foil_aint_a_rental",
+        "StickerKit_community_2025_foil_eyes_sky",
+        "StickerKit_community_2025_foil_good_as_new",
+        "StickerKit_community_2025_foil_hands_off",
+        "StickerKit_community_2025_foil_king_crasswater",
+        "StickerKit_community_2025_foil_queen_ava",
+        "StickerKit_community_2025_glitter_ct_tracks",
+        "StickerKit_community_2025_glitter_overloaded",
+        "StickerKit_community_2025_glitter_t_tracks",
+        "StickerKit_community_2025_holo_bomb_planted",
+        "StickerKit_community_2025_holo_chrome_dome",
+        "StickerKit_community_2025_holo_cutie",
+        "StickerKit_community_2025_holo_evidence",
+        "StickerKit_community_2025_holo_froggles",
+        "StickerKit_community_2025_lenticular_bullhit",
+        "StickerKit_community_2025_lenticular_digistrike",
+        "StickerKit_community_2025_lenticular_mvp",
+        "StickerKit_community_2025_paper_candy_apples",
+        "StickerKit_community_2025_paper_cubix_connexion",
+        "StickerKit_community_2025_paper_eyes_of_farlow",
+        "StickerKit_community_2025_paper_fade_mangos",
+        "StickerKit_community_2025_paper_gloves_on",
+        "StickerKit_community_2025_paper_lock_in",
+        "StickerKit_community_2025_paper_mimicapsule",
+        "StickerKit_community_2025_paper_pop_pup",
+        "StickerKit_community_2025_paper_pots",
+        "StickerKit_community_2025_paper_sent_with_love",
+        "StickerKit_community_2025_paper_skelly_stab",
+        "StickerKit_community_2025_paper_vice_cursor",
+        "StickerKit_desc_community_2025_foil_aint_a_rental",
+        "StickerKit_desc_community_2025_foil_eyes_sky",
+        "StickerKit_desc_community_2025_foil_good_as_new",
+        "StickerKit_desc_community_2025_foil_hands_off",
+        "StickerKit_desc_community_2025_foil_king_crasswater",
+        "StickerKit_desc_community_2025_foil_queen_ava",
+        "StickerKit_desc_community_2025_glitter_ct_tracks",
+        "StickerKit_desc_community_2025_glitter_overloaded",
+        "StickerKit_desc_community_2025_glitter_t_tracks",
+        "StickerKit_desc_community_2025_holo_bomb_planted",
+        "StickerKit_desc_community_2025_holo_chrome_dome",
+        "StickerKit_desc_community_2025_holo_cutie",
+        "StickerKit_desc_community_2025_holo_evidence",
+        "StickerKit_desc_community_2025_holo_froggles",
+        "StickerKit_desc_community_2025_lenticular_bullhit",
+        "StickerKit_desc_community_2025_lenticular_digistrike",
+        "StickerKit_desc_community_2025_lenticular_mvp",
+        "StickerKit_desc_community_2025_paper_candy_apples",
+        "StickerKit_desc_community_2025_paper_cubix_connexion",
+        "StickerKit_desc_community_2025_paper_eyes_of_farlow",
+        "StickerKit_desc_community_2025_paper_fade_mangos",
+        "StickerKit_desc_community_2025_paper_gloves_on",
+        "StickerKit_desc_community_2025_paper_lock_in",
+        "StickerKit_desc_community_2025_paper_mimicapsule",
+        "StickerKit_desc_community_2025_paper_pop_pup",
+        "StickerKit_desc_community_2025_paper_pots",
+        "StickerKit_desc_community_2025_paper_sent_with_love",
+        "StickerKit_desc_community_2025_paper_skelly_stab",
+        "StickerKit_desc_community_2025_paper_vice_cursor",
+        "StickerKit_desc_sugarface2_foil_clavis",
+        "StickerKit_desc_sugarface2_foil_lorena",
+        "StickerKit_desc_sugarface2_foil_lucas",
+        "StickerKit_desc_sugarface2_holo_clavis",
+        "StickerKit_desc_sugarface2_holo_lorena",
+        "StickerKit_desc_sugarface2_holo_lucas",
+        "StickerKit_desc_sugarface2_paper_clavis",
+        "StickerKit_desc_sugarface2_paper_lorena",
+        "StickerKit_desc_sugarface2_paper_lucas",
+        "StickerKit_sugarface2_foil_clavis",
+        "StickerKit_sugarface2_foil_lorena",
+        "StickerKit_sugarface2_foil_lucas",
+        "StickerKit_sugarface2_holo_clavis",
+        "StickerKit_sugarface2_holo_lorena",
+        "StickerKit_sugarface2_holo_lucas",
+        "StickerKit_sugarface2_paper_clavis",
+        "StickerKit_sugarface2_paper_lorena",
+        "StickerKit_sugarface2_paper_lucas",
+        "VanityLoadout_WeaponInfo_collection",
+        "VanityLoadout_WeaponInfo_name",
+        "VanityLoadout_WeaponInfo_pattern",
+        "VanityLoadout_WeaponInfo_stock",
+        "VanityLoadout_WeaponInfo_wear",
+        "VanityLoadout_WeaponInfo_wear_fill",
+        "collection_xp_tooltip",
+        "current_offer_tooltip",
+        "dealer_message_addition_factory_new_0",
+        "dealer_message_addition_factory_new_1",
+        "dealer_message_addition_factory_new_2",
+        "dealer_message_addition_factory_new_3",
+        "dealer_message_addition_stattrak_0",
+        "dealer_message_addition_stattrak_1",
+        "dealer_message_addition_stattrak_2",
+        "dealer_message_addition_stattrak_3",
+        "dealer_message_addition_stattrak_4",
+        "dealer_message_battle_scarred_0",
+        "dealer_message_battle_scarred_1",
+        "dealer_message_battle_scarred_2",
+        "dealer_message_battle_scarred_3",
+        "dealer_message_battle_scarred_4",
+        "dealer_message_classified_0",
+        "dealer_message_classified_1",
+        "dealer_message_classified_2",
+        "dealer_message_classified_3",
+        "dealer_message_classified_4",
+        "dealer_message_classified_5",
+        "dealer_message_covert_0",
+        "dealer_message_covert_1",
+        "dealer_message_covert_2",
+        "dealer_message_covert_3",
+        "dealer_message_covert_4",
+        "dealer_message_covert_5",
+        "dealer_message_covert_6",
+        "dealer_message_covert_7",
+        "dealer_message_covert_8",
+        "dealer_message_covert_9",
+        "dealer_message_end_0",
+        "dealer_message_end_1",
+        "dealer_message_end_2",
+        "dealer_message_end_3",
+        "dealer_message_factory_new_0",
+        "dealer_message_factory_new_1",
+        "dealer_message_factory_new_2",
+        "dealer_message_factory_new_3",
+        "dealer_message_factory_new_4",
+        "dealer_message_factory_new_5",
+        "dealer_message_first_offer_0",
+        "dealer_message_first_offer_1",
+        "dealer_message_first_offer_10",
+        "dealer_message_first_offer_2",
+        "dealer_message_first_offer_3",
+        "dealer_message_first_offer_4",
+        "dealer_message_first_offer_5",
+        "dealer_message_first_offer_6",
+        "dealer_message_first_offer_7",
+        "dealer_message_first_offer_8",
+        "dealer_message_first_offer_9",
+        "dealer_message_item_desc_0",
+        "dealer_message_item_desc_1",
+        "dealer_message_last_offer_0",
+        "dealer_message_last_offer_1",
+        "dealer_message_last_offer_2",
+        "dealer_message_last_offer_3",
+        "dealer_message_last_offer_4",
+        "dealer_message_last_offer_5",
+        "dealer_message_last_offer_6",
+        "dealer_message_last_offer_7",
+        "dealer_message_last_offer_8",
+        "dealer_message_last_offer_9",
+        "dealer_message_minimal_wear_0",
+        "dealer_message_minimal_wear_1",
+        "dealer_message_minimal_wear_2",
+        "dealer_message_minimal_wear_3",
+        "dealer_message_minimal_wear_4",
+        "dealer_message_next_offer_0",
+        "dealer_message_next_offer_1",
+        "dealer_message_next_offer_10",
+        "dealer_message_next_offer_11",
+        "dealer_message_next_offer_12",
+        "dealer_message_next_offer_13",
+        "dealer_message_next_offer_14",
+        "dealer_message_next_offer_15",
+        "dealer_message_next_offer_16",
+        "dealer_message_next_offer_17",
+        "dealer_message_next_offer_18",
+        "dealer_message_next_offer_19",
+        "dealer_message_next_offer_2",
+        "dealer_message_next_offer_20",
+        "dealer_message_next_offer_21",
+        "dealer_message_next_offer_22",
+        "dealer_message_next_offer_23",
+        "dealer_message_next_offer_24",
+        "dealer_message_next_offer_25",
+        "dealer_message_next_offer_26",
+        "dealer_message_next_offer_27",
+        "dealer_message_next_offer_28",
+        "dealer_message_next_offer_29",
+        "dealer_message_next_offer_3",
+        "dealer_message_next_offer_30",
+        "dealer_message_next_offer_31",
+        "dealer_message_next_offer_32",
+        "dealer_message_next_offer_33",
+        "dealer_message_next_offer_34",
+        "dealer_message_next_offer_35",
+        "dealer_message_next_offer_36",
+        "dealer_message_next_offer_37",
+        "dealer_message_next_offer_38",
+        "dealer_message_next_offer_39",
+        "dealer_message_next_offer_4",
+        "dealer_message_next_offer_40",
+        "dealer_message_next_offer_5",
+        "dealer_message_next_offer_6",
+        "dealer_message_next_offer_7",
+        "dealer_message_next_offer_8",
+        "dealer_message_next_offer_9",
+        "dealer_message_open_check_out_0",
+        "dealer_message_open_check_out_1",
+        "dealer_message_open_check_out_2",
+        "dealer_message_open_check_out_3",
+        "dealer_message_open_check_out_4",
+        "dealer_message_open_check_out_5",
+        "dealer_message_open_check_out_6",
+        "dealer_message_open_check_out_7",
+        "dealer_message_purchase_confirm_0",
+        "dealer_message_purchase_finalizing_0",
+        "dealer_message_restricted_0",
+        "dealer_message_restricted_1",
+        "dealer_message_restricted_2",
+        "dealer_message_resume_0",
+        "dealer_message_resume_1",
+        "dealer_message_resume_2",
+        "dealer_message_resume_3",
+        "dealer_message_resume_4",
+        "dealer_message_resume_5",
+        "dealer_message_resume_6",
+        "dealer_message_start_0",
+        "dealer_message_start_1",
+        "dealer_message_start_10",
+        "dealer_message_start_11",
+        "dealer_message_start_12",
+        "dealer_message_start_13",
+        "dealer_message_start_14",
+        "dealer_message_start_15",
+        "dealer_message_start_16",
+        "dealer_message_start_17",
+        "dealer_message_start_18",
+        "dealer_message_start_19",
+        "dealer_message_start_2",
+        "dealer_message_start_20",
+        "dealer_message_start_21",
+        "dealer_message_start_22",
+        "dealer_message_start_23",
+        "dealer_message_start_24",
+        "dealer_message_start_25",
+        "dealer_message_start_26",
+        "dealer_message_start_27",
+        "dealer_message_start_28",
+        "dealer_message_start_29",
+        "dealer_message_start_3",
+        "dealer_message_start_4",
+        "dealer_message_start_5",
+        "dealer_message_start_6",
+        "dealer_message_start_7",
+        "dealer_message_start_8",
+        "dealer_message_start_9",
+        "dealer_message_stattrack_0",
+        "dealer_message_stattrack_1",
+        "dealer_message_stattrack_2",
+        "dealer_message_stattrack_3",
+        "dealer_message_stattrack_4",
+        "dealer_message_stattrack_6",
+        "dealer_message_stattrack_7",
+        "dealer_message_timerexpired_0",
+        "dealer_message_timerexpired_1",
+        "dealer_message_timerexpired_10",
+        "dealer_message_timerexpired_2",
+        "dealer_message_timerexpired_3",
+        "dealer_message_timerexpired_4",
+        "dealer_message_timerexpired_5",
+        "dealer_message_timerexpired_6",
+        "dealer_message_timerexpired_7",
+        "dealer_message_timerexpired_8",
+        "dealer_message_timerexpired_9",
+        "dealer_message_txn_xld_bailout_0",
+        "dealer_message_txn_xld_bailout_1",
+        "dealer_message_txn_xld_bailout_2",
+        "dealer_message_txn_xld_bailout_3",
+        "dealer_message_usp-s_0",
+        "dealer_message_usp-s_1",
+        "dealer_message_usp-s_2",
+        "dealer_message_usp-s_3",
+        "dealer_offer_attachment_final",
+        "dealer_offer_attachment_final_title",
+        "dealer_offer_attachment_remaining",
+        "dealer_offer_attachment_remaining_title",
+        "dealer_offer_attachment_status",
+        "dealer_offer_attachment_status-active",
+        "dealer_offer_attachment_status-declined",
+        "dealer_offer_attachment_status-declined-price",
+        "dealer_offer_attachment_status-price",
+        "dealer_offer_attachment_title",
+        "dealer_offer_attachment_wear",
+        "dealer_offer_received_count",
+        "declined_offer_tooltip",
+        "future_offer_tooltip",
+        "inv_context_open_terminal",
+        "laptop_app_title",
+        "laptop_app_version",
+        "laptop_battery_tooltip",
+        "laptop_expiration_tooltip",
+        "laptop_original_seal_tooltip",
+        "laptop_pan_tooltip",
+        "laptop_window_collection_title",
+        "laptop_window_expiration_title",
+        "laptop_window_messages_title",
+        "laptop_window_seal_title",
+        "laptop_zoom_tooltip",
+        "popup_control_tooltip_move_keychain",
+        "popup_control_tooltip_move_sticker",
+        "popup_control_tooltip_rotate_sticker",
+        "popup_control_tooltip_rotate_weapon",
+        "popup_decodeable_button_terminal",
+        "popup_decodeable_desc_terminal",
+        "popup_decodeable_warning_terminal",
+        "popup_lootlist_claim_ok",
+        "popup_lootlist_claim_ww",
+        "popup_lootlist_claim_xp",
+        "popup_lootlist_desc",
+        "popup_lootlist_progress",
+        "popup_lootlist_title",
+        "popup_signal_full",
+        "popup_signal_ok",
+        "popup_totool_decodeable_header_terminal",
+        "popup_vpn_status_connected",
+        "popup_vpn_status_disconnected",
+        "system_dealer_join_chat_0",
+        "system_dealer_left_chat_0",
+        "system_user_reject_offer_0",
+        "user_btn_accept",
+        "user_btn_accept_0",
+        "user_btn_accept_1",
+        "user_btn_accept_2",
+        "user_btn_accept_3",
+        "user_btn_accept_4",
+        "user_btn_accept_5",
+        "user_btn_accept_final",
+        "user_btn_decline_desc",
+        "user_btn_end",
+        "user_btn_next",
+        "user_btn_next_0",
+        "user_btn_next_1",
+        "user_btn_next_2",
+        "user_btn_next_3",
+        "user_btn_next_4",
+        "user_btn_next_5",
+        "user_btn_next_6",
+        "user_btn_next_7",
+        "user_btn_pause",
+        "user_btn_purchase_desc_continue",
+        "user_btn_purchase_desc_end",
+        "user_btn_purchase_desc_purchase",
+        "user_btn_purchase_final_title",
+        "user_btn_purchase_title"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Container Series #%s1",
+              "oldValue": "Secure Connection Line #%s1"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "fac6c90e779c9ddc3e072cfe12f6fc664c1d561c44d34f10d8fd1cb82686c4d4",
+              "oldValue": "ba3dcab34b580098273cc34611fed8483c258fec2ed3d5e50f5d88ee298119a2"
+            }
+          ],
+          "name": "Attrib_SecureConnectionLine"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f198f0f59dba4072d9abfb322f748d5852d6c0004c9ad24f9619707cf60fa125",
+              "oldValue": "f8ea4c87fe6b7b0956b21eb941feb15ce8d15285e42b63a2faf0560c8db0c446"
+            }
+          ],
+          "name": "CSGO_Item_Desc_KnifeM9"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fa153d04299750131728d51670403d75d51bc6e4082b5a14bd0ef7a9cced74b3",
+              "oldValue": "e6a133acc34d27d2cf9bee3f2fee0c02379b3ec78a8a157d0a8e8f0bcac71f0f"
+            }
+          ],
+          "name": "CSGO_Item_Desc_knife_survival_bowie"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "One item may be purchased from this Terminal. This Terminal will present multiple offers for the following items:",
+              "oldValue": "Offers an opportunity to purchase one of the following:"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "286e766016125ecd4f8a9682e9b8245084653dcd1504ef855b6a6c9836c432f0",
+              "oldValue": "3ec7140f65a0a28406e2677fe8b18e544db6a3a81a0ad0ffaf1e1b4ea46bad38"
+            }
+          ],
+          "name": "Econ_Revolving_Loot_SecureConnectionLine"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ea8e6eb94a84e41fa9195e034d9ff752b2dc60f8a2c3abf42a938644f4ee51fd",
+              "oldValue": "302f8fb708b3ea2b4888f9eb9186776e2d41c14b741f51dbbef72ec9bf263835"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dav1deusalmostclutchvsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7fe52462c72d9dab1b55f627b1748a4545bcca76d99f60c71ebc9966caee6c38",
+              "oldValue": "4b88dc2a0b366e2cca39a57b76bc7d1be4360b55178d987a8f9c8cb48f494f90"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dav1deusclutchdeniedvsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5b4058f8d287e0048c192e95a6075e7ad9cda799959cf5a1f2869da04661c8df",
+              "oldValue": "0eb2a684702825ef39498802f3ab30b1febc459dcf0b73386a49581f948bcff4"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dav1deusmistakevsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d132e994c58e14440505ae0a1ba98ab82d975472f995f2596032b351347543b",
+              "oldValue": "4a4938146f8616c223b1ad15c183497baa2cf2f1030029003e7ebcc961e11299"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dgt3kvsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a6f199b5dae38e9fb422798c25f7d6a17e167c27af94341bae321f83954085be",
+              "oldValue": "6f789349ed8f6ac90a126105df70a749d47350ca1e93e495ba68c3dff827a231"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_elige1v2clutchvsmongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2d5a98ca1643f423429d14881f63cd3fbdca4de63bf770ae11fdbc96dd35dd0d",
+              "oldValue": "2481dc811b1f2592c51fc5ae4d6dded87dac53cea81e141ae00aca555141e4a1"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_elige3kdancingvsmongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dfdfb72974fa6d0dd22f8b3c2eac1004854878fbd02dbde47c983503fd8c4238",
+              "oldValue": "1f456ac1e43757578131bd5f403048d6ea3bed117b949398fb7cd2acc7881ab5"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_frozen2khsvsmongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "84f98aecf207f61dabf4db9c7f26daf765cce93932efe37d3d24372056b288af",
+              "oldValue": "62b4a00eb8806cea67189bb046e106d5ef6df92ced4fa6425ac503b71103f796"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_frozen3kvsmongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "834f5d58cfb958507d2b8d040b7ae88c96cd4caaf017203c9c210f508acae3fb",
+              "oldValue": "4e6082632540f77eff122cef304563c1f07dd0c5a7f8989d6ec593bce5a21388"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_karrigan2kentryvsmongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aefd9d1c04f65952796173b48abdf3a46d14d26adbfe69958a2b677f47e1f681",
+              "oldValue": "d9e9e14d3a619c155844548974e7e146758f97e8eaa104067503e0d2925276c4"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_karrigan2kmac10vsmongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "37d9e01add0e44198a3803b64055578a3b02e9fa1e5d2b0ff649f0a262faabd2",
+              "oldValue": "915285b072f34be8618c0ffd8aef6235931dec186dd9099b145a4ef05141f270"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mzinho2kafterplantvsfazeonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f02317dfc09f7c072d8e7bbf7e58192d5a574f830217b02cbfe84a15d1669f88",
+              "oldValue": "2a8a737271c9e78b9103a87dd249fc488a16014b33576623e9d8ff3c347a685d"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mzinho2kaftertimevspainonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "65f54ddc0347c9f6eedde22df2a5d83a10dfed51896eaa5aa43e99ce9e48a7e0",
+              "oldValue": "abfc636ffd899964d87d5170c73d683602ca9e4b20f0a10792156a7a60ad4be6"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mzinho2kvsecovsfazeonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15e1891166ec4cc8cfa88e03846f4e2688a4a58521a4619b377001aa10458866",
+              "oldValue": "c7c8d131c35bd4c0f7a2bc8235ae6e59c55665a5ce11c7d2c6c4ce6600940211"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mzinho3kvspainonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7741f6fc67516ccc482e75fbb1c44c3dd87b6c25356029498514192c9f916bdf",
+              "oldValue": "e2e31cb746115e3b01025a9ccd59ee09e9f70d55dfe3e5e799b2b8a7b6923437"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mzinhochaseandisdeniedthe1v2vsfazeonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b60d987619945c731d990863bceb65d86cc9dcbca199c049a3cc579557bcbfa7",
+              "oldValue": "035939aa934ad4a5d35e882dc4a248a7a3ad928021020e8a8121f9c000384b8e"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mzinhodobleentryvspainonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1248deeba1e126308349fa17dcaf8ca56c1b77aadcde0aa4d9709941d01f3d15",
+              "oldValue": "92b02497ad94406e3507a614d7195b1a7fc24752c7b1a2e23be12d6dbea37bdf"
+            }
+          ],
+          "name": "HighlightReel_aus2025_apexairbornevsmouzoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "11639e3f1b70559eb68b2b0a9e100f01152a90d2cfa8cb0fce3482259c7f51f4",
+              "oldValue": "4be446114fbdc47815c2152409f94c24ae59a3044a29ece3a82e9aaf7291067d"
+            }
+          ],
+          "name": "HighlightReel_aus2025_dav1deusalmostclutchvsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "295ef925412913a22d794cfa1c477bc3af0c525a59d4826a9fae8bcb2f47717e",
+              "oldValue": "0442b7e0c3c035709fe61c4a9b57eb15f1201fdbe48e414696b0036e08c77b93"
+            }
+          ],
+          "name": "HighlightReel_aus2025_dav1deusclutchdeniedvsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0ed11a9a3fc8aff814ec12fedae1af242cc44cc3fc74843c1b0b20ffd5660659",
+              "oldValue": "960988fd9482fcddc95f74a83dd3bd26428680fc4da5abe00c2cdcfcf11fe8f6"
+            }
+          ],
+          "name": "HighlightReel_aus2025_dav1deusmistakevsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "02a5a0d85ad349c5e6a09f35ef768a9e6327b4c22faea0d3b0b361a260962fb8",
+              "oldValue": "f11cb704d8e9c2372ccd4e2f7ab7a6433ec4c790b2dc243613bff8105dc3d61e"
+            }
+          ],
+          "name": "HighlightReel_aus2025_dgt2kvsthemongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "10d790db2a119bda6043a7eb2bd8a02983bed7831a56d23453c274fc7d83b2bc",
+              "oldValue": "94d186fcb73d8ad646558a17402088a185945ced39ab7c96e1ee63091462ecad"
+            }
+          ],
+          "name": "HighlightReel_aus2025_flamezlasteffortvsmouzoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "21e0ae7a598172f42ea6b29df8c3e13b49f06b147027e5a12fe3e0e2800205fd",
+              "oldValue": "da839faf1d209f1be76b38f3b6c9d4f57f1df3cf6c7f2c404fa7de17f1acd78f"
+            }
+          ],
+          "name": "HighlightReel_aus2025_jimpphatjimmyjabsvsvitalityoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7a926822abd4a356ee6ae12e4c08baa525726069556fede88ec40cbc07b5d7d0",
+              "oldValue": "d9bf59a5df89e2645768dc54dac33680be1a50b2f35d0c56edb9863bc15aa173"
+            }
+          ],
+          "name": "HighlightReel_aus2025_jimpphatpitholdvsvitalityoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2832121d90f321e065c58b46690eb4ab167db886c51f346df6ed0bfbdce03232",
+              "oldValue": "9fae96268e0d2fb0ffc61434fa906d06e2597282527961999322b236eb0109b8"
+            }
+          ],
+          "name": "HighlightReel_aus2025_jimpphatpitpotvsvitalityoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f23690f7ae9750703c912b82fb4bb259e815dcbbb92c1828c69c49c34d1a8cc2",
+              "oldValue": "3ec6574784610e055e72a5429d5a878cc639c765fe6972ceda66113f03ea2df3"
+            }
+          ],
+          "name": "HighlightReel_aus2025_karrigan2kentryvsmongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "da99358d35e5ce82f0e21f3df14869815586916336f86f2035b3da652334e3fe",
+              "oldValue": "223e80b6f8840a5be16b6af0aabbf6e17eec062e82ecd4652c874e730aa2cafd"
+            }
+          ],
+          "name": "HighlightReel_aus2025_karrigan2kmac10vsmongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bce62bcb3f051af3c0256d9834abb4db9e22a87ce2a7a34feca6babb9116035b",
+              "oldValue": "999d6b03d6ca5df0f5c13e3a38b11bb8d5ec86cedf5bfd7b908d3f31bf407fb1"
+            }
+          ],
+          "name": "HighlightReel_aus2025_meziteamflashedvsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ea62d1dde62047fdc89b7b1a72f60a458dad67d1e0ed61c4b5a2fe0d889ba55f",
+              "oldValue": "478edf9e1156e3eabd91c9fedd8a56bc0eca649b27c62bce9553500c3c58fbe8"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mzinho2kafterplantvsfazeonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5aa51e658f6373584682d8816df18e54ce665dc4fd334b50bc2ee99a39177894",
+              "oldValue": "46c9333088c55d155d9bd9d98a0d9530b6cb6014af9a40f2504a00f030caadec"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mzinho2kaftertimevspainonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "88e0250c55e39ad817600fd4ef9f96cb11c124313f2dc7c5401e5c400b688406",
+              "oldValue": "592a10507324135d8964a6145572a1fdd05e78490216545b7c8ef07edf1a247e"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mzinho2kintovictoryvspainonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f690615ed2de2a55a5a45c4b448dad9bb8f863045f95f3921c4902cfb46fb1c1",
+              "oldValue": "adaff9c733b5bd9bc9cf73d852e4934369f4492fd8de80490dd6912f0c537575"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mzinho3kvspainonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "19f8a24cabb6096315bfb672993a9990e1e35652d8669a6b0991150a008fc745",
+              "oldValue": "3342a8c714f0c6d99676539297974404a4a42310a1b502a268912476c796310c"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mzinhoclose1v3vsvitalityondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "948fcfde25071465c45159cafac108a8a93f201afcf3c804d81a6d07be779908",
+              "oldValue": "1a96890f933d0419a752a4718862de587db1157482601207d7b209aec6718774"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mzinhoflashingdoesntmattervsthemongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "af5f16286b245961264c45de63668aa163d600e5cccf5a52184d11bdf010b930",
+              "oldValue": "0d906fc9ac1d3ce313e215b5b2c344533c7f1fcecd7cb44c1fd23d37c2512872"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mzinhoonetapvsvitalityondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1aac13f3f53583ce9d53b7617de78e98573f13242206a0467bfc4693fe93393e",
+              "oldValue": "51be6e6856b8709911e70151aa53db4f6abfb53198625eda0604651e88684285"
+            }
+          ],
+          "name": "HighlightReel_aus2025_nqzicantseevsthemongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9d9d651358be20718858b494d8599d82502af5b61343f394b0976a7e08e6c504",
+              "oldValue": "c880a6bb76f22acfd840b7d7db6e513dad9c6c3fd46a3c53346e48f9cac2e8b2"
+            }
+          ],
+          "name": "HighlightReel_aus2025_ropzrapidfirevsmouzoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6f51b2d3dc494ea4600a4460420b3d70aa3581a05e0bc14545e4ad4b3e440006",
+              "oldValue": "e595f4384f916674f8051a3ebcbf891c8497f41adc5c5f37248f18af19d10e24"
+            }
+          ],
+          "name": "HighlightReel_aus2025_ropzstrongholdvsmouzoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bae0161c8aa6420fec8ff093b0140ff9dcece529c02e4939bfe32ab07eaf8045",
+              "oldValue": "9c45e614b84db19f97ca676e04d8cfc9c7cf5b57d963bea477dd94669b23453d"
+            }
+          ],
+          "name": "HighlightReel_aus2025_snownicetryvsthemongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f64788025be131feed0f0834573094e8cd295848f316506a6a778218a5b1a0b0",
+              "oldValue": "3088c9f477cb65bd6358b3245e2f029f461da0936053a34d8df90a2067827db5"
+            }
+          ],
+          "name": "HighlightReel_aus2025_torzsiclosecallvsvitalityoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b6585e558c1f5d847e4bb866dcdbb4c7ea2e0ebab214c1440e33b57c9ffd38b6",
+              "oldValue": "9cd001edea6fd04a424b3e42a8a5fc7141d121f9891a6a52df191116beb6862b"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywoo3kdominatingvsmouzontrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "951d708a17809d24caf4a38b55e8aa8d89670e4a292d5cb116364121201952b3",
+              "oldValue": "e07aa3ddfe6f38b922bd8a4f69438492def22d6f27edc0514b1e021614289979"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywoobreaksmokevsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "74f983a2e550bae1a3609c89ad6e09a744abf474b76498f5d3fffb748740ec7a",
+              "oldValue": "1ee0fb71909f30e938d5d1652d2a6019d676835272fa95db2f3cd7b70f18d19d"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywoosmokespeakervsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "[{s:bind_drop}] Copy to Clipboard & Close",
+              "oldValue": "[{s:bind_lookatweapon}] Copy to Clipboard & Close"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "496b5817791b0df298dd7a4a41ba86731affd95b9dec7eedc8c1b50b2dc7b313",
+              "oldValue": "d83210365fe6707e6dc2bcfb9ac7836421cc7532915b7457f78a1d773d9de164"
+            }
+          ],
+          "name": "PANOHUD_Spectate_Navigation_CopyHighlightAndClose"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "[{s:bind_drop}] Copy Highlight URL",
+              "oldValue": "[{s:bind_lookatweapon}] Copy Highlight URL"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "851c5e1b2bbc671ba0ac80600a46ec4fa52915e2c56805b6d43dbb08f83ac454",
+              "oldValue": "5beb99d478edc016136a22b5e1cdabefd3ed34cb8e3e44f0d77d2c3f62c00ff6"
+            }
+          ],
+          "name": "PANOHUD_Spectate_Navigation_CopyHighlightURL"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "[{s:bind_drop}] Play Highlight",
+              "oldValue": "[{s:bind_lookatweapon}] Play Highlight"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2e7172a91a0e8a60f240e381a9969878f7fe8df8ea2ea70ea6770e350a84730f",
+              "oldValue": "98de920b490d2a5774bfe1b6176785a76ba1cf0c2defed1c9bbfce6851221b8e"
+            }
+          ],
+          "name": "PANOHUD_Spectate_Navigation_PlayHighlight"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ff4200938d301d1c39147f7c5355c5cd5fdf52afe5b8f8141574edd721a97ac4",
+              "oldValue": "2e5e874f508e15b2ebe9e5d93308be7868ce19fbc4e48d6ba42a472a62695bd2"
+            }
+          ],
+          "name": "PaintKit_aa_fade_mp7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5e976dc5d45837c841a8b0a3296416d79e9eeccfd05d02b8a08c1ad22c20deb5",
+              "oldValue": "566959e068e6d5e6daf0609c9b5d821b01bfc9721c66a6f57fdb5f95dcdd3a2e"
+            }
+          ],
+          "name": "PaintKit_aa_glock_18_urban_moon_fever"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f0c81ea985b00e8de73402a6247c5a459e835e623e6fe3e29de180824d9ab94e",
+              "oldValue": "72652d314d2113038cf56b17ff1c2f65df542482318ccc2fe19dd73a1d6b49f9"
+            }
+          ],
+          "name": "PaintKit_aa_p250_gravediggers"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a0bfe23ae0c2ec9b25bfb3f175271f5e5074905ae62236c4777dfb2f94972ace",
+              "oldValue": "ec5c644680b3452dffa77dcddb9ae6655aca7ca62126965feb0efce559a1e643"
+            }
+          ],
+          "name": "PaintKit_aa_ump45_moonrise_sunset"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "49a58cebfb09887cf8c0ed8521e710b3d0fb091068209cba484d00b822161f85",
+              "oldValue": "1c08ad77d929f5d9d305e29cc34a0bcbaa9b036ff11d104d72afad325c742537"
+            }
+          ],
+          "name": "PaintKit_aa_vertigo_blue"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0ff6bbbe97f5d9fc054330e6a47b87654636be12f9288122b6a758b9469f1f00",
+              "oldValue": "7758cd768551ce4254265e3160af5ae126274fa059bcc6372188f856d9f11b63"
+            }
+          ],
+          "name": "PaintKit_aa_vertigo_red"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d43921f288019d6e8be3acad3e272acfc9209e941be9aa6bd92bc03e4e5d3e4c",
+              "oldValue": "ca3cfb6eddf97ae73bd2c3a96b6104aaaec3951e4ec206bd84af3cdd18a52c6f"
+            }
+          ],
+          "name": "PaintKit_am_awp_pawpaw"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "047a957599621997dda1664cd68bc4d5906ea23e96b0cf299b705357ecb7bef4",
+              "oldValue": "f25f4c0f55a6367cf0588ed624611e3b326e5e308f10f57106f3617eae250b3b"
+            }
+          ],
+          "name": "PaintKit_am_bloom_blue"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "03658b16d920916536a8d71c2ed5197b8cbfafc258c6eb50e56cdffdc3971545",
+              "oldValue": "7ccbd9d4e839ad141d80fd8f979f0989b7ac13bb0c0b1b73976cc0a432df1114"
+            }
+          ],
+          "name": "PaintKit_am_circuitboard_aqua"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7b85ee23d1ee9ab86325827887f474e7c36caf1bd0ebd154dde2dfb7fb25bee5",
+              "oldValue": "17bf92c7a08f1aea74462fdc993371844aa02686a166c25b33b167970558133a"
+            }
+          ],
+          "name": "PaintKit_am_circuitboard_green"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f8b777dd13a79bcda2dc8423caf3e4983de1cbafaaab6edb9ab3f2b5f3b72c89",
+              "oldValue": "af4fe7c2f0f9573f638791d56c4a474dff34f2ae09cf374fb2d19ba8a8a106f0"
+            }
+          ],
+          "name": "PaintKit_am_circuitboard_orange"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "245c908192e2d79b4dd517f331174664234bd50ef0cda1e28f075b9f01886672",
+              "oldValue": "568e5868715a5d33537ee8c5cbaebe35714c8dec4373203f1832a1c9cd75b9ab"
+            }
+          ],
+          "name": "PaintKit_am_circuitboard_silver"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3ea68cfbd63660be0959dad492fb0740d0945e29df3f76f31ef915d26c4c1f45",
+              "oldValue": "e07725bd1989827862d5901fd9be07ca2ce0db6c7b0c74746e974d2137685607"
+            }
+          ],
+          "name": "PaintKit_am_crystallized_dark_green"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "617f4d5a863cf81a856e60b5383504665571d9ba3c9d8d9921b66775b04196bb",
+              "oldValue": "fe333d48069adf039ccd99f2ee3d58cf00655b7b4e74852c562bb5a8984f0c0b"
+            }
+          ],
+          "name": "PaintKit_am_crystallized_green"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bc5ecc1d171e77488428d512a8b24c30db67bf4d445ecc3ca334bd2f70f4de49",
+              "oldValue": "5898f027da7a1d4ec6070ccd18eaab79139836baa94a8ef4d9e773cf31831e22"
+            }
+          ],
+          "name": "PaintKit_am_veneto2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "06764360954c59d1030fd1b02a6c52a0d36604b40119d91db04cca3e36f883ce",
+              "oldValue": "ce76aec9c1a86a77adf616268754dfeb3455e70f08ad5a8774fe159da53f9996"
+            }
+          ],
+          "name": "PaintKit_am_veneto_red"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2e3965f10abec9b79cc42c23445d12823e92f29e107a1dc5a88a4aeec0253eab",
+              "oldValue": "200d1449d1b03dea6ed9e66056602f93a3f7a2b499400ba31026b8aafcf75d0c"
+            }
+          ],
+          "name": "PaintKit_aq_mag7_swag7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3e090caf5112a1d0f6dddea43887198dc178832637508246d077a8ab3574df7b",
+              "oldValue": "b1795a6229b1a2eb5dc517163842d4480dd460fbaebad4dc6d55c5c090567cf1"
+            }
+          ],
+          "name": "PaintKit_aq_xm1014_ziggy_anarchy"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4e3ce6634acdcd66e59a1c7aa019378596dd27ee4b48eafbeda5edf38cdda268",
+              "oldValue": "36bbdebd6e870aeaf942acfb56d2831e52292e85186e0b248d5865e7d04a6e3b"
+            }
+          ],
+          "name": "PaintKit_cu_ak47_asiimov"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f457ee8c3cb33356faa602f66c1266af43a4b3940ec0373aa93cb421e10b1846",
+              "oldValue": "9e3be9093a884300996897a7b376d73f8b22269db6729f9ab7657d6e1f6c5fdc"
+            }
+          ],
+          "name": "PaintKit_cu_ak47_aztec"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8a061ea3d6f90a3b42da3afe5d1139675108d70759d71cf82bb0235665269b2f",
+              "oldValue": "77d1967bd3df09b2e3dbf866a6d3fe0435cf01dfd40914ea565d681fa87ffd20"
+            }
+          ],
+          "name": "PaintKit_cu_ak_island_floral"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dbd8b660fb9bcd72644e68c6460371ca0362bc426d0e5f0f6a360722b85cd616",
+              "oldValue": "a09b501e4c04d90c734adcdc9c4035c4e94a4e130c14e7510f4fa1d8818163ae"
+            }
+          ],
+          "name": "PaintKit_cu_ak_neon_rider"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "663d914f298def80515701b60b1a97c3a6163d317dcceff90fed445a2a49eab0",
+              "oldValue": "5536f1d96dddcdd7a1a325a4c15ff13b7c442fc6a3a3f48164076f098fc83cc2"
+            }
+          ],
+          "name": "PaintKit_cu_aug_momentum"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5f6092b4e9ebffad44fbad94879ce7d5f4a4ebb5ec5994692cad80e8261188b1",
+              "oldValue": "7543be11fd41c2ec90d74ac03fbb00ef61d4f1be1c178f2c9e875209c31ddf5e"
+            }
+          ],
+          "name": "PaintKit_cu_aug_whitefang"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ae496c2a5000d448bfdcc4d376e0eea1590f0dcfc90d62ca9880b302e784f03",
+              "oldValue": "3e3c8e983910a1612bc39a2c19afdbc814be399235831d6f08192735eb2b6500"
+            }
+          ],
+          "name": "PaintKit_cu_bizon_riot"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f8f4943b8a8befe8a4a7289464e3a814972d9e291bd1a02bb51ab0b36b1838f4",
+              "oldValue": "3bc94d336300fcbe5c7ac81cea44418b5223ff3bc0cee39524db485e0b3234b7"
+            }
+          ],
+          "name": "PaintKit_cu_cz75_eco"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ea47ea5b73fe04b1f6d4dc91d34ef94cfd2a334e9940aaf0b6ba217497135d0",
+              "oldValue": "5aa0b4881e65678db2b02bd6147411dd34dbef01b1baf89b4386d52318f52c23"
+            }
+          ],
+          "name": "PaintKit_cu_desert_eagle_corroden"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1e3625a4e9d70f9b64e6b4809f11952778b9b65f92652931f5a6ad9f5199c09",
+              "oldValue": "c8fb0bbd5c9944ed13966f95d49b92ff1acc69b93cc5debd6eb94d659ab66384"
+            }
+          ],
+          "name": "PaintKit_cu_dual_elites_rally"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a12a20985493a714e76b43b8f6e0f1d08038c37cf352005ddb74d95e966b3634",
+              "oldValue": "0cc2a97802bcff5b8a23ac214bb20fd620274453eeab52f53a4ecc1db4884f4a"
+            }
+          ],
+          "name": "PaintKit_cu_famas_owl_orange"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0d4b2264ff4134459d15de96c32d66126fda3174d5218c2f5172a269fe9c46b9",
+              "oldValue": "11e42e949a09ae8568677a370414f04c0b40164ff4060e0d8c4c1878cf01766c"
+            }
+          ],
+          "name": "PaintKit_cu_glock18_corroden"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b288039f8b76edae98eef08eaf83a9d18c3ea6bfd6c421e8a886250bdad10b0b",
+              "oldValue": "1f28da3a3db1d3833f43c06a18de6d58d8ab15350ccde06b4037b060b72db19b"
+            }
+          ],
+          "name": "PaintKit_cu_m4a1s_nightmare"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "135762448f083ed40a0d71f16d2da68c425a058c31020d6835a14d398559e3b6",
+              "oldValue": "dad9be7d7b92fadcb9e6b89bcaf4c6087c94dcba386b379a45031c9fe11cd248"
+            }
+          ],
+          "name": "PaintKit_cu_m4a4_neo_noir"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "eff086faf14a1160476d309bf93d75f127ff18541b5860ad63d56837942f6a22",
+              "oldValue": "a0c98f489197a472666a2da8d7a85fee69fb166ef6ccbe9730a6f43334bfdcc4"
+            }
+          ],
+          "name": "PaintKit_cu_mp7_racketeer"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "011ffd9c077eb3b007871f9f16593b7dae73bb4678acc0d2878e8a57e6b05a04",
+              "oldValue": "684a75e1eb46e3f4fac6af25492a6edfd36129cae44197e71fd082f14f9eda3e"
+            }
+          ],
+          "name": "PaintKit_cu_mp9_island_floral"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b297e204063483231c92bdf6d7662396774395739e4ad3872eddf4418f667a57",
+              "oldValue": "15f4787a402de34b803fd4224a4fafc32a09c352f52ea138798652036f32dec3"
+            }
+          ],
+          "name": "PaintKit_cu_mp9_vein"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9813c7e37a581d096db275c42b0bf6bf3ac57ab40a7bfed40e0a260a4f62fbba",
+              "oldValue": "4d8ae08ded6d104a17407e680d16c56ddc24996da650b0fbefe49438de42e042"
+            }
+          ],
+          "name": "PaintKit_cu_nova_toy_soldier"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac9a92d3ca87b55995499f4816e1fab0ff21c1281ca13418161d20645e8b40d2",
+              "oldValue": "2ec4c028d47f8714f589f576dc1bdbfcbb5ad776938b41110bda7ef37c7e9653"
+            }
+          ],
+          "name": "PaintKit_cu_p2000_urban_hazard"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "66617fc51d67a93f90092d58f68fdffaf4fb23a8661bd16edc955c1117b35446",
+              "oldValue": "17f54cd924fb9ef986041e4b0453ef28cd98df181090e649b9c1c8aa40539121"
+            }
+          ],
+          "name": "PaintKit_cu_p90_offworld"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "de33633d09c51079f89982dd19051e40d80653865576c05a148fce11bdc1078f",
+              "oldValue": "7718d5cac729054e219d0ced44d815394a3f9025837dcd1ddf43e46d59347f09"
+            }
+          ],
+          "name": "PaintKit_cu_r8_survivalist"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f564a097237ec077baa4ac3585ca84da01d9f801a07657405d3f98a6e3de78da",
+              "oldValue": "2094734d5ee223ff45bc694c61aff036aa4f3985940e4034c8cd4bd0efc351ad"
+            }
+          ],
+          "name": "PaintKit_cu_revolver_oppressor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "494beb43d2575e70c6e1902e68cdeb248063e08f0d40f2f8db6767bd1448d6f7",
+              "oldValue": "685b798e32d5d254cabf6662c2daf62d1c2f6238ca171753e944497cf88d5468"
+            }
+          ],
+          "name": "PaintKit_cu_sawedoff_black_sand"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b744fa8d2e07cbdbc3a1b028ccec89e471cb939b69f87b85b858212f80ffa913",
+              "oldValue": "c528ef0df40fbb3de3e378391a1e69354d2eb96a92f5474c70df0f385ac07c92"
+            }
+          ],
+          "name": "PaintKit_cu_sawedoff_devourer"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d78e58d1d4c655c819985844842a73446a5fea772b647638c6ccfd88a5a78fba",
+              "oldValue": "43e28103125d044da9e7be7cdd0b66b42e921c55b232948e50bc47ade3903236"
+            }
+          ],
+          "name": "PaintKit_cu_sg553_rally"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6718af037971da7a233ecd6eeed6649a82229dfeda4fa77fa18f2875b05ef33c",
+              "oldValue": "1597d817f991b97e0571392699f8bc4c25f6863268534b58f0743832ff5aaa4e"
+            }
+          ],
+          "name": "PaintKit_cu_tec9_bamboo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8d7b0922663cbf258220d89ff93984bfec92655ef77a61791e71e84fa60805b1",
+              "oldValue": "d850844a4d79d2848cd89cfd936a9d550de5d02fdd43cd7d04ca7ae85d43f56d"
+            }
+          ],
+          "name": "PaintKit_cu_tec9_snake"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "560a38b486b88c4f1eb6d838aff57fc36e9def0627d87d91b1c8ad04c4835305",
+              "oldValue": "188b94f2de27ed63ed142c5cc5d5d92781da935006e66c4ddfaea4802a2dae80"
+            }
+          ],
+          "name": "PaintKit_cu_ump45_white_fang"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c8432944d6def6d04c3a1815bd5471505e38eb3c86afb687817715b679652bec",
+              "oldValue": "364b49b602cd17cc55cbb2e70de5b549757e4db59c4a352cc6c8aa9fceaa3d61"
+            }
+          ],
+          "name": "PaintKit_cu_ump45_x-ray_machine"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5d69deacfe4fd28d82e4eee27f8e0a90c47bbb5956e7887d1542186c62f905b7",
+              "oldValue": "b26613cf06bcfd7fd6aba356cf607293ebe916e6c14c1561341246ef44b25e98"
+            }
+          ],
+          "name": "PaintKit_cu_ump_arrows"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b5e5f32f826e2e83fa65a18b7c6b2c4a691d2e01971ca2ef976de231ec953f02",
+              "oldValue": "ecf6fde48607ee7aba05faff73dbecd6c661d5fde27a50ca4b59bec21f123ab4"
+            }
+          ],
+          "name": "PaintKit_cu_usp_cut"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b16d8b3f72f8348859075e4e066834c3a9ecb582d70054022f9ea19fb0e0f646",
+              "oldValue": "5d960f746f897f1c9c668cafdba772d28ae9a6ff0d6d18396e0f314fe1b6517f"
+            }
+          ],
+          "name": "PaintKit_cu_usp_flashback"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "261b9ffb4891907d10f435296b1dbb0794098214207956e90b10a2a242634074",
+              "oldValue": "faaf2106069262e76aad199d76260c0089180e8fab0fb6c5f8cca24ff057ee0b"
+            }
+          ],
+          "name": "PaintKit_cu_xm1014_incinerator"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b886977073858a96cc4d54dbdcbbea74be13463f22c88d5a1bb44d5bd56a8151",
+              "oldValue": "9a887e7b7c93d4dcec2a2a9cd5c091cc54c57245c6e4dc2d738ff815db754b73"
+            }
+          ],
+          "name": "PaintKit_cu_xm1014_oxide_blaze"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "01381bc1c700450f7d880e6ab8cd6ece4c4a51cb436b2886332274a4fa805570",
+              "oldValue": "2ca0388cf1ec56849375e0a1aff037dfeb42cd5706d2698c7c0aa7e3e3caa048"
+            }
+          ],
+          "name": "PaintKit_gs_ak47_empress"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "35d598aba807f6853b955b74b77a3e6bf2e357ee21818bda8c5c522cb8b8a598",
+              "oldValue": "f263a260c74aecb0056d8f56a88ddd233699d6a82e156882f5b3d0438d74a3ad"
+            }
+          ],
+          "name": "PaintKit_gs_aug_stymphalian_birds"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2417e62b3d3400286750f03fbba907506e72acad7324a87b8c4a5ef4264166e1",
+              "oldValue": "6f63b284b6885614667eba27ad65fb88cfa4f1f45ed981ddfceb49d4911802a4"
+            }
+          ],
+          "name": "PaintKit_gs_awp_death"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bf7b031f19b044463edc8605312ba2fd971f6561fd213c05130e0858d1c78729",
+              "oldValue": "3127b957c274bd025d6749eddd94511eea4d7fec5b59467f330d166b36584375"
+            }
+          ],
+          "name": "PaintKit_gs_awp_enamel"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "87097d2d9a916a7a4e5b13d9292adee2deb006ea4c906ce71ea82e51c645b8ff",
+              "oldValue": "85ed563e411a15c8517b94e3a3d87fc3c91aa8512adb24f9095d418205cf7323"
+            }
+          ],
+          "name": "PaintKit_gs_cz75_tacticat"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d7160a07eae9c72baf268c27ed95b6e39979493058b1e2bf73693ecbf98c8f08",
+              "oldValue": "d86c0da1156309ae6f22a5c42476a0c58a187d1df90e0f83bbd0d27919792466"
+            }
+          ],
+          "name": "PaintKit_gs_deagle_aggressor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ba5139435f62d1cf1ce90e50169e6a76ecce8f367ebb9c123e8d77789388f40e",
+              "oldValue": "ece95633e688dedb9c37e2e0a3f7598d8fd6fcbf6e84c0800b2e90dc29860bd1"
+            }
+          ],
+          "name": "PaintKit_gs_fiveseven_hot_rod_violet"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7620abcd3040f9c1e13479b02ec6a96ce2b28317a07bc78d26535d9a45adede8",
+              "oldValue": "88255ee9eea2552f73bc84fc56b35b444a0f05f9b31751a0acce9cc2e1d85848"
+            }
+          ],
+          "name": "PaintKit_gs_g3sg1_buccaneer"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e6e6a2d69974529ec53c313912eef382faac4c800839a3f6398921b74eab884c",
+              "oldValue": "c57c09fc8a89b5fda6b67514d276a671005eda19e1796311b06c5319bce29648"
+            }
+          ],
+          "name": "PaintKit_gs_g3sg1_savage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fb2741df9dcb5783d314d7391834b8cc641d13133acde8d20ed0c47566c19c9c",
+              "oldValue": "f03cb8a1858c4394994366825a7b9291e7c16df4d73e8b060762d5d68fa83a91"
+            }
+          ],
+          "name": "PaintKit_gs_glock_thunder_dust"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3b68a2c07b0a5e1454b23fb4d196e78cc777c2446edcac34120123037612122e",
+              "oldValue": "8c5ae485348ce05fbbeb71ce6983c86139b6183ac283ea2f1f14f793e8298256"
+            }
+          ],
+          "name": "PaintKit_gs_m4a1s_operator"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a848d7c896c6a91dd3f1b0c094ccfb0799b0285aec0c8a466ce3ac530d81b9f6",
+              "oldValue": "f90b5c7d1f748074adc34abf706c80d1847ae0fdc975463b67c91a2be4cd662f"
+            }
+          ],
+          "name": "PaintKit_gs_m4a4_chopper_ghost"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dcc6640f56e7ab1a8db3e88956aa410c2c8b22ddd23c22f13c6767b361637354",
+              "oldValue": "b7b6c54cdd90f82fbf2c4034e9184f5ad7ebc7996efa2a30f53162ae72f24465"
+            }
+          ],
+          "name": "PaintKit_gs_m4a4_emperor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "46e604f5de219865ce8bf74a02023ab2c6d6d1d80d89ccdac2267f8b4ddcd973",
+              "oldValue": "7d5dea727d3d4323a8ce57636eeee3a00fdb3fe6549b80461c132926479529de"
+            }
+          ],
+          "name": "PaintKit_gs_mac10_checker"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e64df633b5b80d18ca8097d14c984ce6cf6aa3c59b2f50a4fdc5af37f4b9b0db",
+              "oldValue": "13cf6e948e8a66d79e1ba2965902221c5ab924ee28a2e23d249722c0976985fc"
+            }
+          ],
+          "name": "PaintKit_gs_mac10_exo_pipes"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6bcabe19f05bd81e25566a345266a7f4208ff3ba6223d90f2b12f2808870e34f",
+              "oldValue": "ba7f65d4492811a7cde99c0ae8502e45087b933e1b67e4186a8b3e49c7b2fce4"
+            }
+          ],
+          "name": "PaintKit_gs_mag7_glass"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "27dea27aeefa85624414ebad68c61b082fdd6b23c1b9a1f4f7a1f1d16336a1d8",
+              "oldValue": "72f46a2ce8afd30d91e67e2208bb9b4322a01d3719e64a8d53754fee8facc95d"
+            }
+          ],
+          "name": "PaintKit_gs_mag7_justice"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "458ef5766aafca23924217eb6fd57667af00ecf8d48a79ba0b4d29e3d6504fcd",
+              "oldValue": "791f475a4f5d146580986b97aa58dd450a05c83430c71240ba39ae787d0a71e6"
+            }
+          ],
+          "name": "PaintKit_gs_mp5_festival_drip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2b3e26219f96097525739441703a8f0412691425a58d41fd469cbeeec566d5f4",
+              "oldValue": "bb1282dfe5f270b79326b65ce2bc15f3d2a8e847777abddf8c7335d49fbed357"
+            }
+          ],
+          "name": "PaintKit_gs_mp5sd_astromatic"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "88e2ec0418b71beab21e49023ad1f51ec4bdcfb891e01289bc1a1287ecca0110",
+              "oldValue": "a6f0c4b883ff960ada9bb6037b10af9d573046305e5ae4e3ba79777df1c1e96a"
+            }
+          ],
+          "name": "PaintKit_gs_mp9_colony01"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "34177501c6b04a3e38c7bfa36d47f86672a99b0e0a5aac7e4deadeeae6586010",
+              "oldValue": "45d1bb41c7a34a2b58233fec536d81fec3a0dfd817e66fe70189bb67f9f6ee27"
+            }
+          ],
+          "name": "PaintKit_gs_negev_thor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4b3ca3e9b1d593e6d8500e1d705c7c32032fde4c29714db49d489cb0af404325",
+              "oldValue": "f9b8bbe870cbe9edd7998e87c50de14613c4d2e48243faf6131973b9b53114b2"
+            }
+          ],
+          "name": "PaintKit_gs_nova_anchorite"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "57447a90e36ed579369060e8ee36dee0a641b3f8be732dd1cdf71d88f2c06487",
+              "oldValue": "dd5ea6bff96ace612c4ed80bd386d57c84a764063828e530b7c4dde375ea9656"
+            }
+          ],
+          "name": "PaintKit_gs_p250_checker"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "74072687ddd392953cec548cd459f3d933924701e7a29e484dc5008188ca15d5",
+              "oldValue": "85a0ae7bc5b4f7495d16af758814add7046367dbbf9890151f9d04293a268eff"
+            }
+          ],
+          "name": "PaintKit_gs_p90_tread"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1911a5459d455e3255547ac845b49df9051cc0ca8904c48a37c3a6687e9d6ad3",
+              "oldValue": "321bc791b8d9a49221e0e1b8d427723b2d0938f67059f7ad4b481a1c5faeb7ca"
+            }
+          ],
+          "name": "PaintKit_gs_revolver_tread"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "656bf443451e680db0fbddda1b1e7af39b3d8cd7f5fcfd8f2c1c79f0efada204",
+              "oldValue": "7fff5681ee6f36861dd46e20449f4d040a5640ce681d6b3d8ff19c087d7ade3c"
+            }
+          ],
+          "name": "PaintKit_gs_sg553_over_heated"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f2800f90827d914565209e8392ad45d480310b9938f7e771cdac15bf6a63cb4d",
+              "oldValue": "0a729b899151f82a4218da495687452d7fd3c996cc907870c0811113ba13831e"
+            }
+          ],
+          "name": "PaintKit_gs_sg553_phantom"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "980b9df87bcb653cb1c45f1b2d43d307fe2f8e8d8b2b3f94243ce273bba784aa",
+              "oldValue": "e1012ac5ac96e8e5a699be62bc8d86f2ec7221908d52fc3d64983ac511693c26"
+            }
+          ],
+          "name": "PaintKit_gs_ssg08_checker"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e4e930313bdde99e3bcd7063c54870427fd13d1a9e0e3e85e459cfc83eb9012c",
+              "oldValue": "9cacf92bdc02469a0d8fae7fd756796023eed08325fbd377975719c8a36970f8"
+            }
+          ],
+          "name": "PaintKit_gs_tec9_envoy"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e6b56a9913bd3456eccbb5f5604d4f0fb647533c9e373ee1f8ab592b77dd5df6",
+              "oldValue": "58e5f22cc8d4cf2d15e05d7253302ccc312a00b43bf60297e71d098bd180fb1d"
+            }
+          ],
+          "name": "PaintKit_gs_tec9_fubar"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "79a5da8c400afe848b168c3ddd0b18427b018f834ad993f0cbc93f4279bc9ee6",
+              "oldValue": "0ea0c628c7e0f429c3db87e70fdfc3dbd686b0753495d3030057760a45cfc62d"
+            }
+          ],
+          "name": "PaintKit_gs_usps_hangedman"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3cc301cbb57e9ab29533e9e27a4ff264662120ad4da933683937045d2714c099",
+              "oldValue": "3838c9b210c8becac28068bbc2c16dcd40d9dd7d9bbdfa9ea061fe2a9a67863f"
+            }
+          ],
+          "name": "PaintKit_hy_aug_torn_orange"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "01d8982647e0e61fe4be9df27178e370f23ddfd9a48ec8cc30e919044a44dd2f",
+              "oldValue": "c09b7c6b06512e7d6e2f01e28ab5bc626d5950958b07b61d56565a5fc776557d"
+            }
+          ],
+          "name": "PaintKit_hy_bloom_red"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dde1b44367957f6408c7380014b2caa5568a830c20cbddbd518904612c7115e0",
+              "oldValue": "6e3ac5ce4ed9620110ee85ded39fee20ba876c0ecefb940df9317d8a68a5ba6a"
+            }
+          ],
+          "name": "PaintKit_hy_blueprint_aqua"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6b7a4f6c704e7c357c8d19977ef0b1ccb74ea373be4b9719f03260b6dec88df0",
+              "oldValue": "de4f90c8f26b2dd7193baf895a467f32fb0dc2bd3115c29572cf1a8b720e088a"
+            }
+          ],
+          "name": "PaintKit_hy_blueprint_bluered"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b427f54696e860256a94b9637adf7b5275760161c7ccd51a537ea2e3b3807f7d",
+              "oldValue": "955ff6203f929820599cb504a4681147674aff54658c2026faffd783dcee3f69"
+            }
+          ],
+          "name": "PaintKit_hy_blueprint_red"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3ed385c467951d640089dd38ac5c5dbd80f485918e98a5b8411a5fac9995500c",
+              "oldValue": "6ef4dc3a2ef95664b60d8857f2de2a11a76ea8045d2f2aa7261d34a60fff7370"
+            }
+          ],
+          "name": "PaintKit_hy_blueprint_white"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f669a7238d642e552de7eae012ff0b0bf57c0256114e3a43df769c9a0dfe044a",
+              "oldValue": "3081857ddb4de6b7fc8628e2bcb7ff4a122dbaf1cb402add912b86a6a42899d0"
+            }
+          ],
+          "name": "PaintKit_hy_canals_tile"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "30350d98af49f7834dcf30e1804b39e4bc3fed31d76583311d31869fd706b0e4",
+              "oldValue": "dbe6134b2dd677eb46b20e50ad1fcf2f2c40c6b4355e0f8b046fcede122325e7"
+            }
+          ],
+          "name": "PaintKit_hy_ducts_grey"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dbb2171e22220acf47f0a07629c4b5ea4d403873961f91720ec690a9ac23d5cf",
+              "oldValue": "f7a8ed9bdb39e1cf6c4cf9b0aa29ccd3cee306a51b8138fe366791db7d95058e"
+            }
+          ],
+          "name": "PaintKit_hy_gelpen_dark"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "92b80c3d2d2a00f78bae63658e35eef6c2b786135010ca7d9bd7f69390c23276",
+              "oldValue": "a59d6eb7aec0803a6440dc4e8498621e9f3d0e106fcd05a8001c48d4048c97c2"
+            }
+          ],
+          "name": "PaintKit_hy_splatter3"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "It has been custom painted in gunmetal grey using fractal designs and finished with orange accents.\n\n<i>&gt;&gt;WEAPON FINISH TEXTURE EXPERIMENTS, ENTRY ONE&lt;&lt;</i>",
+              "oldValue": "It has been custom painted in gunmetal grey using fractal designs and finished with orange accents.\n\n<i>>>WEAPON FINISH TEXTURE EXPERIMENTS, ENTRY ONE<<</i>"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "80c64b6349ae74d0cbfeb3a9f6a2dbf65e4ba2fb0d1479c4317d99b16eeff659",
+              "oldValue": "ab547b7395d60845590c1a2356a2da617d053683c86ffdcbeffb4ec21ba4b800"
+            }
+          ],
+          "name": "PaintKit_p2k_fractal"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1cd0212945e4d4863a0166b4e5e3600ccfd923439a5c70705df1623c24ae735",
+              "oldValue": "1624544a7dd898fbd0414ba8f4cc65fecaed8696de93fe7e457e52b7e4b9e9c5"
+            }
+          ],
+          "name": "PaintKit_sp_bloom_orange"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a3757f866dd920603d16c5d3d85be35f0049755a76879625810e518e3a911d31",
+              "oldValue": "549de524399115a19af2cddd4e6a18f44029159b43d279db2800ea9d5c7c7666"
+            }
+          ],
+          "name": "PaintKit_sp_bud_green"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "73c780bfed450d16e4055120739b331e389f97a1932df609a4f01bab9bc949c2",
+              "oldValue": "71fa563947da178a5b39dcf077e3648c40622fdbe94da766b25400df42770565"
+            }
+          ],
+          "name": "PaintKit_sp_elites_winter_raider"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e4907f4920e6264539773c59756c5654ec627c51cd3d04ed469919a22fcc7ae2",
+              "oldValue": "06f47b9b711c0937eb3aee1a49e15a72fc5f2d96933ff5328077e428d7577d44"
+            }
+          ],
+          "name": "PaintKit_sp_famas_ghost_insects"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "afd6f6eb5d5f23c2fc9f06f0473deeff418b3d08fa45a08e6307176af9239ff3",
+              "oldValue": "96e468e5ceb2f38d79ce2153d5391f109c67b0dedeb517609e5848ea18dc1dda"
+            }
+          ],
+          "name": "PaintKit_sp_mesh_safetyblack"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3d871af9bc8f201452fcdd4568d35d80ab0f3ff79f1d964cddb88a55e3e61347",
+              "oldValue": "74ab4f613ec36a9b32a5db9f4f58aa1e2a9ba0ab548cd95a23afbe4b631aab5d"
+            }
+          ],
+          "name": "PaintKit_sp_mesh_safetyred"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e020c8b1ae71eaff111fb863605adbf836b84fa1dd8d3123b1093b6fbbf3940d",
+              "oldValue": "28f7b9f82ef670f06e93af71d2e653f655fb16b1d3469fa4d4b30b977dc39b05"
+            }
+          ],
+          "name": "PaintKit_sp_negev_lionfish"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b2bda387adce457daf67cce4f8b656b3bf350437bb6845faf49b4b49162351ca",
+              "oldValue": "2f2c362a6e35fdb30d742f8e0af594606ab6b8e8faa304db82c8b30b9bc8c2c6"
+            }
+          ],
+          "name": "PaintKit_sp_palm_green"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cff4bd6186eb81e0e019b87e65c5583704b22e73aeb74f7313ceae6f3fe5e149",
+              "oldValue": "f905b25ce46b4f99ef09301c8d310a9c1586cfa1b0ae3a9e86867f7ba48b399b"
+            }
+          ],
+          "name": "PaintKit_sp_sg533_aloha"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9668e2ad42d5238e9acb42d5d7a1d10a223b1caba9a12cfcbca02aa2382587b5",
+              "oldValue": "cd311519ca6dfd6541d94001c33c1fe280fac90578c18c375f04eede95861a95"
+            }
+          ],
+          "name": "PaintKit_sp_tape_short_rally"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "27c2b3b7385438c5f2c4421b78f70e63779441cd699c284407ce94b46543db8f",
+              "oldValue": "35a05a1ee34b6ab8f783b48136561a9d1e2f9ecf407a4a67f8e37f29fc32e57c"
+            }
+          ],
+          "name": "SFUI_Map_mainmenu"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "EU, Madrid",
+              "oldValue": "EU, Spain"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "27b8d8c4fa6c9ecd7a58221f31fea9175d1577261cb2e1fc712847948d8e5c63",
+              "oldValue": "253a3c21be38d865961a5300a3c6f973bca53cdac43a397f717d3d2575433a6b"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_21"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "EU, Warsaw",
+              "oldValue": "EU, Poland"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "7709c4dbbc2a60743937b16fba1d9ad26c42605256b134570e17560d01921bef",
+              "oldValue": "8608ac9379d0c5f7513d9b28265b99cafb0ca69230ea4ed3a524601beb865f58"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_28"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "EU, Amsterdam",
+              "oldValue": "EU, Netherlands"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "97c8ebf4fa8fda4a24129ba553156e032cf07a1e61fb48f76cb8037373d09853",
+              "oldValue": "4489bd795df51c13ffafcd623b397b0f1d8361bba946b3f68e80ad7436248dfd"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_29"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "EU, Frankfurt",
+              "oldValue": "EU, Germany"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f3e2ddc482f5a29b3fd578a62a0f3a553239226857f3fa7a0ccd802e73329bfa",
+              "oldValue": "90111b529ae815aeda60e4b0f2c5cc6ca64fa97c85232ec96ea3ba38528aac53"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "EU, Helsinki",
+              "oldValue": "EU, Finland"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b6ab680045cb9cb29bf0a78d18bfcb1b7290639f075f7eb526923157e811bf33",
+              "oldValue": "b736bf01c146449204111cb3a7d55781f3f02c5ae09501cabb309fda9463fe88"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_33"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "EU, Helsinki",
+              "oldValue": "EU, Finland"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b6ab680045cb9cb29bf0a78d18bfcb1b7290639f075f7eb526923157e811bf33",
+              "oldValue": "b736bf01c146449204111cb3a7d55781f3f02c5ae09501cabb309fda9463fe88"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_44"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "EU, Stockholm",
+              "oldValue": "EU, Sweden"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "9b06ff50e5df322b9904c1cb65e8388d0fb9c5c43bff34640c7df98c13aaf8e8",
+              "oldValue": "395945543cd5bbe2e2e9b06c5746014e07088f2cb818751189aeeec7c98955af"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_8"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "EU, Vienna",
+              "oldValue": "EU, Austria"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "c257a9118d6886b4879e55ba76e5fe1715cfa25b83b61d90a6cf931862d5195f",
+              "oldValue": "e1b07a322f7e82599c190d3722782b00c56fc69041d136f1aabb9fdaa4a41c5f"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_9"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c8b678f3cf0687d51f8ee38d380ce8e2e20add4c9113463c8a2f3fa750136391",
+              "oldValue": "6aed1372bece6d05990f02538b1a62f0de3d9f9adade8a9eaee795953ddd2558"
+            }
+          ],
+          "name": "SFUI_WPNHUD_knife_kukri"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "89d1049efa3bcfa39d67acf9c9c81ce52af6d506ae713ef1d1aca6afa31f59c3",
+              "oldValue": "2df2fb351256aa6b1301c5b05e917b9ff29920e67db31e682954ec010855c152"
+            }
+          ],
+          "name": "SFUI_WPNHUD_knife_outdoor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "835d113b4e76bd200cc1aa16312138fe60136becdb0116e16959114d8c0440ac",
+              "oldValue": "964319f6ff12a965b40a153d8318ce3a89215d717266a24330e92d2c2f1cd740"
+            }
+          ],
+          "name": "SFUI_WPNHUD_knife_skeleton"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "512257702b3790c856b798cdd2b2c15c69537d8fd217a9eb7dd44e4fa74e865c",
+              "oldValue": "4e987a7ca8053184b8a24637237a187aa66a7d4f40f665569b6110154d1ecb5a"
+            }
+          ],
+          "name": "StickerKit_de_train_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b8b2cf0f4e1d79ba2c53bd5c51543898cfb05fa9a20fe46a56b6bccbfc999209",
+              "oldValue": "dfe86d656afe32f0e1de59e5f7e1ddd09d6e2f83a76624a2de1ec83047df4819"
+            }
+          ],
+          "name": "crate_community_33_unusual_itemname"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "66c94a935cb48a91f1ac64f790021acd7a6f343078b033662c1ca7964ecee135",
+              "oldValue": "4f0c187e366fb103051964571e3ccd2c889b8a226f513204ccf68f1d289893e6"
+            }
+          ],
+          "name": "crate_community_33_unusual_lootlist"
+        }
+      ],
+      "family": "localization",
+      "removed": [
+        "FileOpenDialog_Cancel",
+        "FileOpenDialog_Col_Attributes",
+        "FileOpenDialog_Col_DateCreated",
+        "FileOpenDialog_Col_DateModified",
+        "FileOpenDialog_Col_Name",
+        "FileOpenDialog_Col_Size",
+        "FileOpenDialog_Col_Type",
+        "FileOpenDialog_Directory_Name",
+        "FileOpenDialog_FileType_Folder",
+        "FileOpenDialog_File_Name",
+        "FileOpenDialog_File_Type",
+        "FileOpenDialog_Icon",
+        "FileOpenDialog_Look_in",
+        "FileOpenDialog_Name",
+        "FileOpenDialog_NewFolderPrompt",
+        "FileOpenDialog_NewFolder_DefaultName",
+        "FileOpenDialog_NewFolder_InputTitle",
+        "FileOpenDialog_Open",
+        "FileOpenDialog_Save",
+        "FileOpenDialog_Select",
+        "FileOpenDialog_ToolTip_NewFolder",
+        "FileOpenDialog_ToolTip_OpenInExplorerButton",
+        "FileOpenDialog_ToolTip_Up",
+        "FileOpenDialog_Type"
+      ]
+    }
+  ],
+  "fromBuild": "19932965",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "20007038"
+}

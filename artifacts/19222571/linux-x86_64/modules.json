@@ -1,0 +1,413 @@
+{
+  "buildId": "19222571",
+  "modules": [
+    {
+      "exportCount": 824,
+      "fileSize": "8752640",
+      "path": "game/bin/linuxsteamrt64/libanimationsystem.so",
+      "resolvedInterfaces": [
+        "AnimationSystemUtils_001",
+        "AnimationSystem_001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "2cf319176793d30c312d87d2aa0db1e2ea032ae8a962289df9cc8fa73db1d816"
+    },
+    {
+      "exportCount": 460,
+      "fileSize": "1018516",
+      "path": "game/bin/linuxsteamrt64/libcairo.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "58b4d0fc30bcaa813528a7c682126c3fa57527ceffd5e776a5a3d342dcb61724"
+    },
+    {
+      "exportCount": 2281,
+      "fileSize": "8083864",
+      "path": "game/bin/linuxsteamrt64/libengine2.so",
+      "resolvedInterfaces": [
+        "EngineServiceMgr001",
+        "GameResourceServiceClientV001",
+        "HostStateMgr001",
+        "NetworkClientService_001",
+        "NetworkServerService_001",
+        "Source2EngineToClient001",
+        "Source2EngineToServer001"
+      ],
+      "schemaRegistrationCount": 4,
+      "sha256": "c2a55be411bea37b5140f211e4c7d07112ea40fc49f4d845ef11db44b501970b"
+    },
+    {
+      "exportCount": 324,
+      "fileSize": "2970296",
+      "path": "game/bin/linuxsteamrt64/libfilesystem_stdio.so",
+      "resolvedInterfaces": [
+        "VAsyncFileSystem2_001",
+        "VFileSystem017"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "5ab587532f44d7537f1876319b39a768033e68e82326960ec76ebc934b393e51"
+    },
+    {
+      "exportCount": 100,
+      "fileSize": "260716",
+      "path": "game/bin/linuxsteamrt64/libinputsystem.so",
+      "resolvedInterfaces": [
+        "InputSystemVersion001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "b6bf3204c64b881bc7fa370536ebad7495bcb3ebd6d6d943199a20bf6649c689"
+    },
+    {
+      "exportCount": 363,
+      "fileSize": "387712",
+      "path": "game/bin/linuxsteamrt64/liblocalize.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "db42c39e1b99ec3083c1e2133ab606e059f0cf9b29b0a1b86e3a3f9d7afda268"
+    },
+    {
+      "exportCount": 358,
+      "fileSize": "1280648",
+      "path": "game/bin/linuxsteamrt64/libmaterialsystem2.so",
+      "resolvedInterfaces": [
+        "TextLayout_001",
+        "VMaterialSystem2_001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "0fcdb2a1208b7b03661d2425f9f64c22eb66b99846459d38a3d48ed39e8a1cff"
+    },
+    {
+      "exportCount": 784,
+      "fileSize": "2496388",
+      "path": "game/bin/linuxsteamrt64/libmeshsystem.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "4dd6b9bc54f26e308dfe4445ff2ab7b503db93c943bae0a11d77025b74ff1bae"
+    },
+    {
+      "exportCount": 824,
+      "fileSize": "4068564",
+      "path": "game/bin/linuxsteamrt64/libnetworksystem.so",
+      "resolvedInterfaces": [
+        "FlattenedSerializersVersion001",
+        "NetworkMessagesVersion001",
+        "NetworkSystemVersion001",
+        "SerializedEntitiesVersion001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "305843fe7cd5894d874669d09da79d95b406883195e3ed78269e9bb7d78d7850"
+    },
+    {
+      "exportCount": 2007,
+      "fileSize": "5627216",
+      "path": "game/bin/linuxsteamrt64/libpanorama.so",
+      "resolvedInterfaces": [
+        "PanoramaUIEngine001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "0a964c1e2f20d136e11a191a6a90163d8b24fcb6c8fdec4ea4aa2d9e89940365"
+    },
+    {
+      "exportCount": 825,
+      "fileSize": "2878076",
+      "path": "game/bin/linuxsteamrt64/libpanorama_text_pango.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "99744e7fa0f7a0a965de16f808d1d1367a3c479b54cfd8187ee20107cae081ec"
+    },
+    {
+      "exportCount": 880,
+      "fileSize": "4584320",
+      "path": "game/bin/linuxsteamrt64/libpanoramauiclient.so",
+      "resolvedInterfaces": [
+        "PanoramaUIClient001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "064521049062fbed1bddd1bd68d5ad0a047def2f58737b3645699cf07749d38a"
+    },
+    {
+      "exportCount": 1968,
+      "fileSize": "8394400",
+      "path": "game/bin/linuxsteamrt64/libparticles.so",
+      "resolvedInterfaces": [
+        "ParticleSystemMgr003"
+      ],
+      "schemaRegistrationCount": 1,
+      "sha256": "c9c9499f97ae4393ea8b74e34c3c1a7a0126f4a0f6d18e4b30055f379fcc1870"
+    },
+    {
+      "exportCount": 304,
+      "fileSize": "20917456",
+      "path": "game/bin/linuxsteamrt64/libphonon.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "670ca646241c8652611cdb00450c4296e5d38ffd467dcd9844ca1fef3a13998a"
+    },
+    {
+      "exportCount": 376,
+      "fileSize": "1534548",
+      "path": "game/bin/linuxsteamrt64/libpulse_system.so",
+      "resolvedInterfaces": [
+        "IPulseSystem_001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "5db77f8d6f9ba28aaa9dcda742a80644208920188004514e8eb8c1e800063897"
+    },
+    {
+      "exportCount": 1945,
+      "fileSize": "2541008",
+      "path": "game/bin/linuxsteamrt64/librendersystemempty.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "dfef2a477b45a633eba1730f7ffa6806b8ea8fbe93e505dcde9e0d9189931806"
+    },
+    {
+      "exportCount": 1949,
+      "fileSize": "4147420",
+      "path": "game/bin/linuxsteamrt64/librendersystemvulkan.so",
+      "resolvedInterfaces": [
+        "RenderDeviceMgr001",
+        "RenderUtils_001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "281a79831a48276d940bd197259082dcaebc4db1f24b9b015e8b46669141a1ea"
+    },
+    {
+      "exportCount": 358,
+      "fileSize": "594504",
+      "path": "game/bin/linuxsteamrt64/libresourcesystem.so",
+      "resolvedInterfaces": [
+        "ResourceSystem013"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "35b2746e1aff631c7f97c6f50e8884bee707cb5681e3debc66de022b4b964499"
+    },
+    {
+      "exportCount": 777,
+      "fileSize": "1845008",
+      "path": "game/bin/linuxsteamrt64/libscenefilecache.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "1b39d4df18785be68651d801db9ddbdc98c64e1b75e203b10475a581752b9baa"
+    },
+    {
+      "exportCount": 828,
+      "fileSize": "7107764",
+      "path": "game/bin/linuxsteamrt64/libscenesystem.so",
+      "resolvedInterfaces": [
+        "SceneSystem_002",
+        "SceneUtils_001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "bd836d6bdb57078851a0cd41ce4c3641c71249a92cac0eb92a4a467a56749949"
+    },
+    {
+      "exportCount": 358,
+      "fileSize": "531748",
+      "path": "game/bin/linuxsteamrt64/libschemasystem.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "6fa281602ba43b8fb5b727855361196b2f621700a9313be3803810c6c0895252"
+    },
+    {
+      "exportCount": 616,
+      "fileSize": "4339852",
+      "path": "game/bin/linuxsteamrt64/libsoundsystem.so",
+      "resolvedInterfaces": [
+        "SoundSystem001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "a574e4d7d5c90091801fbb5e4f86a5b0bc14907258b877b08c672cba73559e14"
+    },
+    {
+      "exportCount": 1115,
+      "fileSize": "384344",
+      "path": "game/bin/linuxsteamrt64/libsteam_api.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "e0f16637ca7a197bb734a3e13f08055a3aa0929c299a496cf9e78da67a79d729"
+    },
+    {
+      "exportCount": 318,
+      "fileSize": "789676",
+      "path": "game/bin/linuxsteamrt64/libsteamaudio.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "fd8870115c3bd3837470f026b7cbb9d03356e87b9480d78bcd78a23fe9e52fc4"
+    },
+    {
+      "exportCount": 37,
+      "fileSize": "5692434",
+      "path": "game/bin/linuxsteamrt64/libsteamnetworkingsockets.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "0a21a2cbb64041de1b6f2ed81efeba2e0f7f9b31e685fdd865496ae66c7ac0a6"
+    },
+    {
+      "exportCount": 3268,
+      "fileSize": "4544884",
+      "path": "game/bin/linuxsteamrt64/libtier0.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "705c83d5338748a559779147e9cf61de425fd969570a8be97efa0c9a4aa3e26c"
+    },
+    {
+      "exportCount": 14925,
+      "fileSize": "30769216",
+      "path": "game/bin/linuxsteamrt64/libv8.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "e2c892cb363abf6c2aee12d254f2d0329e229701bf33551b378fd8b3d3313ee5"
+    },
+    {
+      "exportCount": 5129,
+      "fileSize": "2926872",
+      "path": "game/bin/linuxsteamrt64/libv8_icui18n.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "01b0d4d05e4133711524327c3e4e9aea3cde63db2285c68f8f291792aaaf5d8f"
+    },
+    {
+      "exportCount": 2528,
+      "fileSize": "1916656",
+      "path": "game/bin/linuxsteamrt64/libv8_icuuc.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "fe3b4f779300756916dee441b2f3c2a97686eafcea878e26d11b45e48e0769ff"
+    },
+    {
+      "exportCount": 395,
+      "fileSize": "215240",
+      "path": "game/bin/linuxsteamrt64/libv8_libbase.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "5da50179405d6269d14f31db6f42f2349cfeb2d3d0753eacd5b0c4c43b226a69"
+    },
+    {
+      "exportCount": 893,
+      "fileSize": "1172208",
+      "path": "game/bin/linuxsteamrt64/libv8_libcpp.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "435453d24d2dae28ccda3cc5a5b20e9805c7b806bb2723d1053c3268af0b9b0b"
+    },
+    {
+      "exportCount": 169,
+      "fileSize": "113320",
+      "path": "game/bin/linuxsteamrt64/libv8_libplatform.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "cbb63a4921bb1ad4d1e6956815ae92e22a9a5f48420f501eaab8b6796d8677ab"
+    },
+    {
+      "exportCount": 88,
+      "fileSize": "110600",
+      "path": "game/bin/linuxsteamrt64/libv8_zlib.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "042539abb051849204b62fdfb54dd241a21b0f0b91cd491ae66c481c41935251"
+    },
+    {
+      "exportCount": 352,
+      "fileSize": "333240",
+      "path": "game/bin/linuxsteamrt64/libv8system.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "b96eb4b423cad05d3e29068b8fe5b2ad04a8e0f738f18606d1f7a882b43cfc13"
+    },
+    {
+      "exportCount": 106,
+      "fileSize": "218472",
+      "path": "game/bin/linuxsteamrt64/libvconcomm.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "a6ace64966cac6d22f39e036862ca5b1e02026ddb6e79787604eac76359e40f0"
+    },
+    {
+      "exportCount": 1369,
+      "fileSize": "7032600",
+      "path": "game/bin/linuxsteamrt64/libvideo.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "f6bac7e19b5620614abe2c60069e7f85dfe2138b6ef6a6c0101c4e58418ee387"
+    },
+    {
+      "exportCount": 798,
+      "fileSize": "5208576",
+      "path": "game/bin/linuxsteamrt64/libvphysics2.so",
+      "resolvedInterfaces": [
+        "VPhysics2_Handle_Interface_001",
+        "VPhysics2_Interface_001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "2bd484dcc8af01ef51585c52d812681015e8818dea43188463bf2eae21aca345"
+    },
+    {
+      "exportCount": 470,
+      "fileSize": "1111632",
+      "path": "game/bin/linuxsteamrt64/libvscript.so",
+      "resolvedInterfaces": [],
+      "schemaRegistrationCount": 0,
+      "sha256": "89cb7feb97f0139dec46f55c2ce0992d5e8fb9ef1fa7059551126359d3555d7a"
+    },
+    {
+      "exportCount": 1967,
+      "fileSize": "2973548",
+      "path": "game/bin/linuxsteamrt64/libworldrenderer.so",
+      "resolvedInterfaces": [
+        "WorldRendererMgr001"
+      ],
+      "schemaRegistrationCount": 4,
+      "sha256": "495abff69b5d23a33226695e514efdc2b4692212999156bfeef6b5360d4043da"
+    },
+    {
+      "exportCount": 2087,
+      "fileSize": "58411680",
+      "path": "game/csgo/bin/linuxsteamrt64/libclient.so",
+      "resolvedInterfaces": [
+        "Source2Client002",
+        "Source2ClientConfig001",
+        "Source2ClientPrediction001",
+        "Source2ClientUI001"
+      ],
+      "schemaRegistrationCount": 416,
+      "sha256": "82dc16191d0c50f0baa8dde017fb7ca8fc062b8e06d1d557dc4e2fc6fdd0553a"
+    },
+    {
+      "exportCount": 834,
+      "fileSize": "2808900",
+      "path": "game/csgo/bin/linuxsteamrt64/libhost.so",
+      "resolvedInterfaces": [
+        "GameSystem2HostHook",
+        "Source2Host001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "30ba04550fb65c4227fe3323d2d85cee9b838fd49047a97fdc7c43e90ddb3939"
+    },
+    {
+      "exportCount": 824,
+      "fileSize": "3381716",
+      "path": "game/csgo/bin/linuxsteamrt64/libmatchmaking.so",
+      "resolvedInterfaces": [
+        "MATCHFRAMEWORK_001"
+      ],
+      "schemaRegistrationCount": 0,
+      "sha256": "5ac9f355e2438800224ed24843e7754ba86a57a5a34fdb720de6ddae2beac672"
+    },
+    {
+      "exportCount": 839,
+      "fileSize": "26484488",
+      "path": "game/csgo/bin/linuxsteamrt64/libserver.so",
+      "resolvedInterfaces": [
+        "Source2GameClients001",
+        "Source2GameEntities001",
+        "Source2Server001",
+        "Source2ServerConfig001"
+      ],
+      "schemaRegistrationCount": 642,
+      "sha256": "8195ead636bb4f57a78ee49fef9a9b09f3dc708d114bd447cdb34d0188a2305b"
+    }
+  ],
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0"
+}

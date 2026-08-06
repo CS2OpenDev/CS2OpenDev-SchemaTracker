@@ -1,0 +1,351 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "24",
+              "oldValue": "26"
+            }
+          ],
+          "name": "libserver.so/CBasePlayerController"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cq_max_starved_substitute_commands"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "cl_frametime_summary_report_detailed"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "2.000000",
+              "oldValue": "0.750000"
+            }
+          ],
+          "name": "cl_tickpacket_recvmargin_window"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "cq_adjust_deadzone_ticks_faster",
+        "cq_adjust_deadzone_ticks_slower",
+        "cq_buffer_bloat_msecs",
+        "cq_queue_sample_count",
+        "cq_starve_hold_msecs",
+        "cq_starve_increment_msecs"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8b03a41ebc279b1afed32671e9456b6e921539400a8cc481dcbcfdeaee798ada",
+              "oldValue": "f7112d021f8ab36c5a58600fdcc2d76168bbcecc8856d0c6c802332df5dba0c8"
+            }
+          ],
+          "name": "CSGO_MatchInfoTxt_Group1L"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dcd8e9eecd61d21266667d3a90e5480251b169a2b47c9f1055981e245be90c02",
+              "oldValue": "398ec2c722cd425986c18c04c011d4d69d8eab121b4dcee18fa871847be5453a"
+            }
+          ],
+          "name": "CSGO_MatchInfoTxt_Group1LSeries"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c46d7ef8563fc969fae94a9d1c0da332bec999bf53f437229e8721236f0a5c4d",
+              "oldValue": "56a6dfef5061824f736fb452dc74076beb0f7bb9e88751b7a73e705b33f20adb"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_16"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e101bfac7dafaa73fe35aa0b7c828c486eb612c8ff79f265263bc673d5d21325",
+              "oldValue": "fc9cb7d706ad3dec8cd77504aac7225de262511f6c7c3fa9c92f7dfb68ec4f3d"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3bb87829dfb241e535e38c8203b5903b3d70c1d2783dd146a194f85bfc661787",
+              "oldValue": "72a0af8e49d491774fcfcaeef15920b420c13849a81382e5d0243afcab42e165"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_27"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "56cf9722ce70b2de3f3b77640776ca8e96932d3e45d9e7a7fd9873dd416ed76d",
+              "oldValue": "4fe6e1723ac3e09d4aad857c6282ce82e5aded8a9aea22a4a70502d24f222aec"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_29"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "84ac59e507f987d4d835963e0570310367310d1458946f6e22b071a4e6828d48",
+              "oldValue": "814d63119e067f90e7d5590d6a5b94880458766b73545ceae523b7f545701f0c"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_40"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7f30a27e5fcf8c599c22200f1ac2f22bb52adbedd384c3736a097bd59f8ceb3a",
+              "oldValue": "37a0ca0f00ac073855a21c54ccb9b694599a51d71cb27b4a6295800375d90b02"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_41"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cea3462d6fe9875ec2e8f38c9ee8256b4d85cc3074b666c6c5b958e2c12afc7f",
+              "oldValue": "8ffcb06150999cddca3742e4c3390c19db41c1f18f44c9bb25ff5af1a00e72ab"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_42"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2f231158a4542ab7dbea0fbf936a4977f1fd7ac89e382c2e98a072ca004c62d3",
+              "oldValue": "ed6bc8d6c7f974c5aa3aa73ff6f6962a6152f73ec769a2c49d10ce4a4f9d1d83"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_46"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "975d55e3f1bd88b6458495be726d1a8882764ea0b6e8d516ebc5a72df3a28020",
+              "oldValue": "9c0d47b77f161818aebc3a00cdfb3d34f36758304db53875aff6f160fcb4bf81"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_47"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5482c34e11ecf730c74155fda47c1bbaabc5160d1556502c8f524b9089da505d",
+              "oldValue": "e1ccfa693d32d1f6fbd79cd38715ceb8528ee15fe90bea83c018f0e3fe575e19"
+            }
+          ],
+          "name": "CSGO_Tournament_Event_Stage_Display_48"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2d283fb2706abdc5c7bd9a1407bad66cbe202672badbb3e282b2c32e27b3e77b",
+              "oldValue": "db484d7159afae346848e89df598ab7f331012f8d4dffd6034c21ce5c4a5b873"
+            }
+          ],
+          "name": "SFUI_JoystickAimTurningExtraRampUpDelay_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac261cdc092a7ffd547691ed8d81b76f47f38b8233fcbd427e8935ef2bd154ce",
+              "oldValue": "17fe59afcf06519473d4b1f0eb3b1eb642f03d9d984214f272dd8bba7e43abd7"
+            }
+          ],
+          "name": "SFUI_JoystickAimTurningExtraRampUpTime_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3cf8681628e5564cb15607d9276b424a8ee3ccdf27810cb599b0667c09f61ce4",
+              "oldValue": "b14c65e439cc9dfb072af224fafb75a9b6ed9ef2ee18c349c32cee38e3020e53"
+            }
+          ],
+          "name": "SFUI_JoystickAimTurningExtraYaw_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0cc3d00561c821231002f81387763f67f35ed622040176883c930c3f69692bc5",
+              "oldValue": "332e9fa1a5598b88d5f2ca784538b102b33020ccbde60084793398d3b519cabf"
+            }
+          ],
+          "name": "SFUI_LoginPerfectWorld_AntiAddiction1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fa273983066c9840a80285390e36408ad51a1df9658483b92969bfb44472b758",
+              "oldValue": "503e2813bbfd9c4f794fa3bbe7cb807b4f9c8922efa6657602911a9a5438e6cb"
+            }
+          ],
+          "name": "SFUI_LoginPerfectWorld_AntiAddiction2"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Open recording device when the game starts, instead of the first time the mic is used.",
+              "oldValue": "Keeps the recording device active to avoid gameplay freezes on some hardware."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "8896290404f38f4a51e5a039ae23b6ee394da27d262aa3430e519cd747dd140a",
+              "oldValue": "b4e311ebff5aff40b25601e98266ab8d03cf6744d8a6991437b31f8357f80b87"
+            }
+          ],
+          "name": "SFUI_Settings_voice_always_sample_mic_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "da05ee69d657b94e100efe6403470a181fdb9544c3f5f47ce8d8475e8e0e71dd",
+              "oldValue": "5ed1350945c2c0d5ffc41bfe5f2138ba79f215c1801a2c25b9fc933b4818f9e5"
+            }
+          ],
+          "name": "UI_AntiAddiction_ExitGameNowMessage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "64b2e9078d036a1b9349604058e3697c0df9541634520fbffc360263906fb14d",
+              "oldValue": "a0e5a726733f1c1ca797c4cb3aedfbfe05017023600f1c82b0224324de1158a8"
+            }
+          ],
+          "name": "UI_AntiAddiction_Tooltip_GameTime"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4dd61f95af73784e780e0799b2ae35217043ebacacaf51fd9126dca39d1c98d7",
+              "oldValue": "30eb1a4696248bfcf5972efa31b53f620542cf399ff316abdee466dfb5faf089"
+            }
+          ],
+          "name": "UI_AntiAddiction_Tooltip_GameTimeNone"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "216ff5b9d084e68815e40b1f6da7514c1cf2926c15594d5cfe80d8cc8dca9044",
+              "oldValue": "1191ee24d874d7714ef975a9de3e079bef107d5486059eebbfc3abb54ae494f8"
+            }
+          ],
+          "name": "Workshop_item_error_image"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ffed051d852ef2565bdb2f19c68eb9e279c793249db93e7bb7bdedc98590af6f",
+              "oldValue": "aef4f03fcde2f4b7cadfd4b7583d7d1a66112ccb80548ca5c3a97aa262358fcf"
+            }
+          ],
+          "name": "Workshop_item_error_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3570e1d238f60f9cbfcad12fc984da90b7df7aa55ac60b0f1d10c6b15ea4e056",
+              "oldValue": "7ba04c317d63e16397aeba879cd21e1307654854cc65b5b67789d24c15b50d1a"
+            }
+          ],
+          "name": "Workshop_item_ready"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b48ed42afeece1c37a783a61815705dd878883fec1c2518ee745a7ab6bf61a1e",
+              "oldValue": "4139a39a76134e16a941a199a429b0a3dca53fc50b71ec819ef73ed05f1bf731"
+            }
+          ],
+          "name": "Workshop_item_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "70cef73cbbeb79e0391ff6e7507b39135ec2f56106b07b31a116bfba7bbce756",
+              "oldValue": "933dd1d160b302e317d26cbbcc5e99b851377fd05a90fe18acb0815fb1e30c5e"
+            }
+          ],
+          "name": "popup_decodable_rent_weapon_count:p{numlootlist}"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "14672345",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "14684351"
+}

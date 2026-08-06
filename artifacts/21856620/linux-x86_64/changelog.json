@@ -1,0 +1,3127 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "demo_movie_write_intervals"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "CSGO_Recipe_Count_Items_Remaining:f",
+        "CSGO_Recipe_Count_Items_Selected:f",
+        "CSGO_Recipe_TradeUp_Items_Inv:f",
+        "CSGO_Recipe_TradeUp_Items_Remain:f",
+        "CSGO_Recipe_TradeUp_Items_XofY:f",
+        "CSGO_RemoveKeychainToolCharges_Reward:f",
+        "CSGO_Watch_Minute:f",
+        "Panorama_DeathPanel_DamageGiven:f",
+        "Panorama_DeathPanel_DamageTaken:f",
+        "Panorama_PlayerDetails_Commendations_Left:f",
+        "Post_Round_Damage_Report_Given:p",
+        "Post_Round_Damage_Report_Taken:p",
+        "SFUI_BuyMenu_CanOnlyCarryXGrenades:f",
+        "SFUI_BuyMenu_MaxItemsOfType:f",
+        "SFUI_BuyMenu_MaxItemsOfTypePurchased:f",
+        "SFUI_BuyMenu_ReachedWeaponsExpertLimit:f",
+        "SFUI_PlayerCount_Alive_Left:f",
+        "SFUI_PlayerCount_Alive_Right:f",
+        "SFUI_Store_Offer_Days_Remaining:f",
+        "SFUI_Store_Offer_Days_Remaining_bid:f",
+        "SFUI_Store_Offer_Days_Remaining_claim:f",
+        "SFUI_Store_Offer_Days_Remaining_last_bid:f",
+        "SFUI_Store_Offer_Days_Remaining_last_claim:f",
+        "SFUI_Store_Timer_Day:f",
+        "SFUI_Store_Timer_Hour:f",
+        "SFUI_Store_Timer_Min:f",
+        "SFUI_Store_Timer_Sec:f",
+        "SFUI_Store_Timer_Week:f",
+        "SFUI_UserAlertNoteType_LowPlayersR:p",
+        "SFUI_UserAlertNoteType_LowPlayersY:p",
+        "StoreCheckout_NotEnoughRoom_TooManyStorageUnits",
+        "Team_Cash_Award_Dead_CTs:p",
+        "Team_Cash_Award_Dead_Terrorists:p",
+        "WatchMenu_Viewers_dv:f",
+        "contextmenu_lobby-count:f",
+        "cs_rating_need_wins:f",
+        "cs_rating_wins_needed:f",
+        "cs_rating_wins_needed_verbose:f",
+        "cs_rating_wins_needed_verbose_intro:f",
+        "eom-skillgroup-map-win:f",
+        "eom-skillgroup-needed-wins:f",
+        "eom-skillgroup-win:f",
+        "funfact_ace:f",
+        "funfact_best_accuracy:f",
+        "funfact_best_counterterrorist_accuracy:f",
+        "funfact_best_terrorist_accuracy:f",
+        "funfact_blind_kills:f",
+        "funfact_bomb_carriers:f",
+        "funfact_bomb_planted_before_kill:f",
+        "funfact_bots_assumed:f",
+        "funfact_broke_windows:f",
+        "funfact_ct_accuracy:f",
+        "funfact_ct_win_no_casualties:f",
+        "funfact_ct_win_no_kills:f",
+        "funfact_ct_win_time:f",
+        "funfact_damage_multiple_enemies:f",
+        "funfact_damage_no_kills:f",
+        "funfact_damage_with_grenade:f",
+        "funfact_default_weapon:f",
+        "funfact_defended_bomb:f",
+        "funfact_defuse_was_close_call_hundredths:f",
+        "funfact_defuse_was_close_call_tenths:f",
+        "funfact_defuse_was_close_call_thousandths:f",
+        "funfact_defused_with_dropped_kit:f",
+        "funfact_died_from_multiple_attackers:f",
+        "funfact_domination:f",
+        "funfact_donated_weapons:f",
+        "funfact_draw:f",
+        "funfact_empty_guns:f",
+        "funfact_failed_bomb_plants:f",
+        "funfact_fall_damage:f",
+        "funfact_fallback1:f",
+        "funfact_fallback2:f",
+        "funfact_first_blood:f",
+        "funfact_first_kill:f",
+        "funfact_grenades_thrown:f",
+        "funfact_items_dropped_value:f",
+        "funfact_items_purchased:f",
+        "funfact_kill_defuser:f",
+        "funfact_kill_rescuer:f",
+        "funfact_kill_wounded_enemies:f",
+        "funfact_killed_before_dying:f",
+        "funfact_killed_enemies:f",
+        "funfact_killed_half_of_enemies:f",
+        "funfact_kills_grenades:f",
+        "funfact_kills_headshots:f",
+        "funfact_kills_with_last_round:f",
+        "funfact_kills_with_single_grenade:f",
+        "funfact_kills_with_stattrak_weapon:f",
+        "funfact_knife_bomb_planter:f",
+        "funfact_knife_kills:f",
+        "funfact_knife_level_reached:f",
+        "funfact_knife_without_ammo:f",
+        "funfact_molotov_burns:f",
+        "funfact_money_spent:f",
+        "funfact_nightvision_damage:f",
+        "funfact_num_times_jumped:f",
+        "funfact_number_of_overkills:f",
+        "funfact_pickup_bomb:f",
+        "funfact_posthumous_kills_with_grenade:f",
+        "funfact_pulled_trigger:f",
+        "funfact_quarter_health:f",
+        "funfact_respawned:f",
+        "funfact_revenge:f",
+        "funfact_rounds_without_dying:f",
+        "funfact_short_round:f",
+        "funfact_shots_fired:f",
+        "funfact_slow_trigger:f",
+        "funfact_steps_taken:f",
+        "funfact_survival_time:f",
+        "funfact_survived_multiple_attackers:f",
+        "funfact_t_win_no_casualties:f",
+        "funfact_t_win_no_kills:f",
+        "funfact_taser_kill:f",
+        "funfact_ter_win_time:f",
+        "funfact_terrorist_accuracy:f",
+        "funfact_ticking_time:f",
+        "funfact_used_all_ammo:f",
+        "funfact_used_multiple_weapons:f",
+        "funfact_won_as_last_member:f",
+        "mapwinrecord_graph_title:f",
+        "matchmaking_stat_avgSearchTimeSeconds:f",
+        "matchmaking_stat_ongoingMatches:f",
+        "matchmaking_stat_playersLockedIn:f",
+        "matchmaking_stat_playersOnline:f",
+        "matchmaking_stat_playersSearching:f",
+        "matchmaking_stat_serversOnline:f",
+        "mission_directive:f",
+        "mission_directive_progress:f",
+        "popup_decodable_rent_weapon_count:f",
+        "popup_redeem_souvenir_desc:f",
+        "popup_useitem_button_getkeychaincharges:f",
+        "quest_11000_var_desc:f",
+        "quest_11000_var_ingame:f",
+        "quest_11000_var_partial:f",
+        "quest_11001_var_desc:f",
+        "quest_11001_var_ingame:f",
+        "quest_11001_var_partial:f",
+        "quest_11002_var_desc:f",
+        "quest_11002_var_ingame:f",
+        "quest_11002_var_partial:f",
+        "quest_11003_var_desc:f",
+        "quest_11003_var_ingame:f",
+        "quest_11003_var_partial:f",
+        "quest_11004_var_desc:f",
+        "quest_11004_var_ingame:f",
+        "quest_11004_var_partial:f",
+        "quest_11005_var_desc:f",
+        "quest_11005_var_ingame:f",
+        "quest_11005_var_partial:f",
+        "quest_11006_var_desc:f",
+        "quest_11006_var_ingame:f",
+        "quest_11006_var_partial:f",
+        "quest_11007_var_desc:f",
+        "quest_11007_var_ingame:f",
+        "quest_11007_var_partial:f",
+        "quest_11008_var_desc:f",
+        "quest_11008_var_ingame:f",
+        "quest_11008_var_partial:f",
+        "quest_11009_var_desc:f",
+        "quest_11009_var_ingame:f",
+        "quest_11009_var_partial:f",
+        "quest_11010_var_desc:f",
+        "quest_11010_var_ingame:f",
+        "quest_11010_var_partial:f",
+        "quest_11011_var_desc:f",
+        "quest_11011_var_ingame:f",
+        "quest_11011_var_partial:f",
+        "quest_11012_var_desc:f",
+        "quest_11012_var_ingame:f",
+        "quest_11012_var_partial:f",
+        "quest_11013_var_desc:f",
+        "quest_11013_var_ingame:f",
+        "quest_11013_var_partial:f",
+        "quest_11014_var_desc:f",
+        "quest_11014_var_ingame:f",
+        "quest_11014_var_partial:f",
+        "quest_11015_var_desc:f",
+        "quest_11015_var_ingame:f",
+        "quest_11015_var_partial:f",
+        "scoreboard_timeline_ot:f",
+        "team-intro-overtime-1st-half:f",
+        "team-intro-overtime-2nd-half:f",
+        "tooltip_cs_rating_none:f",
+        "tooltip_skill_group_none:f",
+        "tooltip_skill_group_nonedangerzone:f",
+        "tooltip_skill_group_nonewingman:f",
+        "tooltip_skill_group_wins:f",
+        "wins_count:f",
+        "xpshop_new_items:f",
+        "xpshop_popup_clear_n_tracks:f",
+        "xpshop_popup_clear_n_tracks_text:f",
+        "xpshop_redeem_bid_batchover:f",
+        "xpshop_redeem_not_enough_stars:f"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Highlights",
+              "oldValue": "Highlight:"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d1f4118bd1689a55c570e3a0ccb2ae3c32379e203d2c143c8c8a6d58689050c8",
+              "oldValue": "498d04b61fa20c1fac340b48c4d9fd64b5fc864b5466c1bd769c1d3b007e229e"
+            }
+          ],
+          "name": "CSGO_Demo_Highlight"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "31b78c2262c5dade42190b7ac6ed631edc61bf1360d4ac3b1c46d8068080e11c",
+              "oldValue": "4c94c6771e1f86d1469a4fc4bdbc476c96e719ed4aaa91fbe5ce00f1794a8374"
+            }
+          ],
+          "name": "CSGO_MainMenu_Play"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<b>{d:count}</b> Item Remaining#|#<b>{d:count}</b> Items Remaining"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "3a7ba995fc6a7e1dfa0bcba7355a6c8fae7cfc01e53550e204e2997d37d05623",
+              "oldValue": "7cff94bf20e348da4c33da44f676f3205f4ffa72c5bc35952f5e7bb87ec98287"
+            }
+          ],
+          "name": "CSGO_Recipe_Count_Items_Remaining:p{count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<b>{d:count}</b> Item Selected#|#<b>{d:count}</b> Items Selected"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "271cb6a9284d77720e71e5ed5f904eba6cc94353e81bbb1f7cd0fd7eab5dee93",
+              "oldValue": "435078a462b7941235e3694079b0968ddd459ca81ca179aa88382806c8cb4548"
+            }
+          ],
+          "name": "CSGO_Recipe_Count_Items_Selected:p{count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:count} Eligible for Exchange#|#{d:count} Eligible for Exchange"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "210ce32d3c14b3720269fa13cf587e0e1ded3b6b47936277ffcaf19bab41cd16",
+              "oldValue": "a9667101114b5f6ae5dcd58aeec307e4ec65124a82fcf618ab182eb6a29bab99"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUp_Items_Inv:p{count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:count} Selected for Exchange#|#{d:count} Selected for Exchange"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b4bfe4a402ae67161a20b35c3aedc84006d7630451ea1d0e00f268fc65192d68",
+              "oldValue": "a2d26591faf519f1246294ca4cc3631b9b949642ce2df4b75a6b3b4d8ec6c450"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUp_Items_Remain:p{count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:count} / {d:recipecount} Selected for Exchange#|#{d:count} / {d:recipecount} Selected for Exchange"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "5aa8c6bf9a425791fb8b798dedf70cfb1f213054c9b382473437167b6235fa82",
+              "oldValue": "c6c25bf7de153ff5a51d4745230f988446d54c4e3e74883ecdc09ef89af2d4d2"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUp_Items_XofY:p{count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "+{d:item_count} Charm Detachment#|#+{d:item_count} Charm Detachments"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "09dcbd48c734e7635c25c680ae2648cdc8a0a313b08e757703a2496071c3e778",
+              "oldValue": "aa44605cc1a6c8d7fb081885f8d1a0b1e2ba4cc9e655d5d39e454b1cb977d12a"
+            }
+          ],
+          "name": "CSGO_RemoveKeychainToolCharges_Reward:p{item_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "%s1 Minute#|#%s1 Minutes"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "c8037cd3bb1b209ebe0a4391fee2cbb3d299a091ee10002e78e0d13bacce13ce",
+              "oldValue": "6814ecfff0c208a6ff2279029ff301d0ab5746d939d5f57cff33b22380bbf8d9"
+            }
+          ],
+          "name": "CSGO_Watch_Minute:p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e8327f697b3f16a7ae2047d5bef5f1b2666fce4b7103d6b9e4468b82d8faa309",
+              "oldValue": "fc08bf7be5dccc46d71ea9ac888d53fb560d427dfcde44d77be1ca84689d9b7f"
+            }
+          ],
+          "name": "GameUI_Confirm_Write_Setting_Text"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "591f4baf6d40967da8ea7776ddb5e6fc2b64815d83321ebab3cf162d62786c60",
+              "oldValue": "89d70e9fe3b3c9547a9a8755f099d68543fde729f748ed24aeadf4a5497c5634"
+            }
+          ],
+          "name": "GameUI_Confirm_Write_Setting_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "13351e7901006bfce520a009a68e49f2526ad51a72e6233837c854ea0d5954f7",
+              "oldValue": "8cd98de8705c0355a3954846575ef56fb842d47f6809845efb309a2f52ce1548"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-apex-double-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "03ae165bda32177ac8ba033914fb1eab78c25adfa61dacafc6a3d0cdd0d93dc5",
+              "oldValue": "206a33c75425d86cbdb42976eb3feae7bde19a258e18bb30a4fc126642484e86"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-apex-vs-faze-on-inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c7a11b82dbe0948dea563376082d5ec21778f5edba47b4491433e41c181cc8e5",
+              "oldValue": "b0ddde1439d5ef303c8c51d52b387df8bc665423aa88a0c856797633c68ae17f"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-apex-vs-faze-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce67e0c5c46f135cc2cf94d47ae1b095a99a60b90905891d37474be7c2a16e4f",
+              "oldValue": "9a75c97cb60078c548ee5a01b2f639e1250bdc25e0e4222fce5ab08fe1fb4c3d"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-broky-double-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e32d2cc788085ac0840f027843514fe3bf93f2eca5c78216394f7fd98b291889",
+              "oldValue": "aed24b877690b6ae233ab647418b36618ef53c7618f04b9967cc5cc24743aa6d"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-broky-quadro-on-inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9d338ec7f54fb9cd45d919b1acc41c7e4b93be68eec341beedfc364b31836cde",
+              "oldValue": "22b448b1f6b614e09edebfabbae0729c48623e25dc1080a6255e75fdd7ba8904"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-broky-triple-on-dust2-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e8e3ca5d8035c000f8dc22d85a2c4115710b9430fe766112b859e3e4f03d43be",
+              "oldValue": "6acf80abae0d5a29568da711c3612467b62fe151b0c3958194cc08616e8d3d44"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-broky-triple-on-dust2-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aa9c328363be31db3715b822b9661020ef12d4e585e6139e4070d4503a071861",
+              "oldValue": "850a5250ed8f6dbdfb4085b6cae7d450a85bb5c63d28abbc18b8fe30c1105a56"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-broky-triple-on-inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a974adb3b2cae401ac9c89383b168c44d1fb345eb777284e0c53c16c8671b881",
+              "oldValue": "2674eabc8fb450efcf12c47e77ebc8d7ae4a9396cd499e2e8a08988c6d3d6e6b"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-broky-vs-vitality-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "95a6ca3d768ea40f07833388e3e29e10571accfdde6dcdb19920fd80ef3e9c43",
+              "oldValue": "02a24934563602822dde2cce542f0ea3049fff53b336105cfec3e390206ec42e"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-broky-vs-vitality-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f0fbd285b0842a384ba7f55ee194f40915e3c94fbb101d60943ba9881cb4b9d5",
+              "oldValue": "310b8b2493cb29c66fa1bf05ea2313f0ed2808f63c160821634c2315833d92b8"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-flamez-triple-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d221e27960b4549047532beb9d2837dc59302ae886931d3eb39ba8f23c3ffffe",
+              "oldValue": "b64f20f88ec4587d526ae9f8e9ab247443c2bb07c6c2530dd889cd88f05bc904"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-flamez-vs-faze-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "131dcdeedd42d4acacd8d8576e4500e7a11605f4dcb587cc7abe9b5053f322a0",
+              "oldValue": "534a005711b4cc6001eb7b87ef13ba9cd62424dec9886baf8e2ce115c8fe232f"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-frozen-triple-on-dust2-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d08b8c87377b6704e32f376610b9c1503bf7d6104165488658fec6108b124c62",
+              "oldValue": "1f1c3b29b91c19fc32977c342ab6c599c8d73b426c7626d11b968eef7f1468ed"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-frozen-triple-on-dust2-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "51df71fb01972978cce9749a68e392f5dc4b322b4b28818fe8c793e326d96911",
+              "oldValue": "90786109edd7c82ec29caf7638cd30b911c82c63ea4039d0267db858b52ea418"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-frozen-triple-on-inferno-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a781f3b89c62820f895dfcf96ec8a80ac4c3df00fdbab5e9666077049408f750",
+              "oldValue": "26b36651f4ce5cb5cd6307431c87bccf013dc64126b50e851f44a002b88403ff"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-frozen-vs-vitality-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "47c98eb25648e9bcef72c8fc1ef777ed201f6b0aee73a80929538672b5c21604",
+              "oldValue": "3fe8bf0d8da9ac92fdf73f1c8f5eaa12a1e7f3fe7b77a8c1668ffadea05dd166"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-frozen-vs-vitality-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9c885d5aab668840de7704e54125fe6329a815d1c2d0b4fdcf1f50eb3cf3e998",
+              "oldValue": "c3976708aa668316613cb28f54adb95ac197a2c9d0f1800b068ca025f7669d09"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-jcobbb-triple-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e1b80f3002468e107f4d844fe34599b82bd89577e5043213222b3554f633641",
+              "oldValue": "0eb31ad10f684dc7b18e55779cc83e273ec46f399b980063d95d1b92b0445caf"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-jcobbb-vs-vitality-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "362f5da3a0693c5bc048a693d9fac6873625bd5c696f605a09d0b92e799959a7",
+              "oldValue": "a1685677c8745d14b581d015090e0b3bef3f760964b6d5bf8c2c264745fb37b5"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-jcobbb-vs-vitality-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "195ec350ec428fffe0a675c60bfcfd5b5163c673bdb50e856228af2024aba150",
+              "oldValue": "a80503c157ab4e8ca8c37c5176a67095fa97e24ff8ac544a0568ddb8b24d2684"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-karrigan-triple-on-nuke-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cbe1d583dac56c21855a2cf40e4ae8d57f6a084f806bf9619db68ab6b1b5c625",
+              "oldValue": "66c5d72c14ef8564ea036be487495e6af9d7b2efb1a3b8049c58fe33e8a8329b"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-karrigan-triple-on-nuke-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7a3ae826f19e8bf9b5c5f047d2206a0d6ae800ba321573dd7e5b0d03201917d1",
+              "oldValue": "17acabd5e37ac94452169403e4755182a5597b089f1dc7eaa163e5126559fc36"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-karrigan-vs-vitality-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dec45da6e2a025f056c81824e9482fb6d309fdd4a88f8cee4b6d7c947baba01a",
+              "oldValue": "663f2a3203145472bd827b81a81b7e5c51a4ea2826bd92bbab9c05ecfdabf1e2"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-mezii-clutch-1v2-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9aad42d162792e57c603065e57ec0be94b92434ab29f2e895e71bb19ea682184",
+              "oldValue": "e4594c9da8cf36c0088af57027d18f36c540fa0cdeb149db051af56da0be4639"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-mezii-clutch-1v3-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bcc2f03494540deac522e1a3b4e8f28d7185163afaf620f3af9ba2ca3675e030",
+              "oldValue": "49b5e76f9396c6af332fe1113f6c78a6f447ee7357ea1ce9b5c9b50474cf6d99"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-mezii-vs-faze-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a0a2790404f47905d34d49d361e57e3ed5870a7dbc9ade94436b26f49b063554",
+              "oldValue": "dcce6a7b21baeb76964d3b15bb3f8e3d42baad4002527d30325b17103087a516"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-ropz-double-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "742b424899e4959dc4b91095ce90e2645e4041574bcb02b30b9c33062638b315",
+              "oldValue": "de3c53870fa5520a77a8e12347090fbf1c682b593e49280e384e696eb074115a"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-ropz-double-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7b97ebded4b6035986d2d9d72dae23eecf1b4a18343b1457a6d82af18cc33e7a",
+              "oldValue": "3161f243d540cc06a5de14b47706297394d4cf4caa2aa8fab782ef980d2e6168"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-ropz-triple-on-inferno-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a3af7506ed13810834442e991e525b41f06f82f169cd3b09c8d1e5ed991ca080",
+              "oldValue": "350e37204391310db88b519c0a9503280da1694ac39b0109aea71e4f58b8a070"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-ropz-triple-on-inferno-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5cfbfe484c102f9312026e52f9ceb10b3534e247eb71f038ab87dfa3f1e50fc8",
+              "oldValue": "61341bfac215a4b3a2068f2cddb118b07fa790fda5d446a7926d2abf645f64d1"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-ropz-vs-faze-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b0d250c618ce24c4cfae9ae3ef487f379d8e0a800de3538ad567e9bea332fab8",
+              "oldValue": "c62481f196be526fa45bd3d996fa3c7b8dbbea4e9a8cb6858c2afd817491a770"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-ropz-vs-faze-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "94c0a1dc64ef7ff04ebde6fbbdeb0c5a2353ff656bde6350670aed32f5953f73",
+              "oldValue": "4eac8338254c28a0c326454911c3de646cf329ed86d54e6d36f37ba0a1c38981"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-twistzz-double-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5bf7a1c3cdf8a0f5c451fefea10fdc37bd140190ccee67513cae90890c2be9cc",
+              "oldValue": "c7b96275433d6412dca255ea5f5d54086a68cfddd342e55effe3ee2cc3e00091"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-twistzz-quadro-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "60207d4e386d576ddc7691fad1216e1a28be635fa7feebe9465ec034d5006aff",
+              "oldValue": "84eaf1b50422d6f9b686da9494b2c6f8ce1a1eb96bde70dc411cdc7a76d6058b"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-twistzz-triple-on-nuke-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3e5560afe9e91df5911d524670f1ad559e09a9c3809a3f318f99e16836a79552",
+              "oldValue": "3c5b90225dc1aca5e9cf978d00f8163673cefe4cd3962efebc0cb302fcc74d8c"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-twistzz-triple-on-nuke-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b159fbe96d72479a4a418140a367d700d8206ae3d4d5b1d35b5573cdaf75c325",
+              "oldValue": "5449c2df016eb576fa295e871018f8496b9ed7e3cef4866305b81f4def1a0d93"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-twistzz-vs-vitality-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "235d86dade6995731322689b38826714cf0c7b5ffb393c1b1a3675a983496c58",
+              "oldValue": "a07af9c8b24ec9c75fde71b38dc26288eb10664c94000d8893a22411048b82f8"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-twistzz-vs-vitality-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1c929d918449c2b30471f353d7cf2aa730786090f3ac817d919b3b0de477cf3c",
+              "oldValue": "be597ce017e8ec9fea7a630b9ba5820e05029ca4ff636a9d84ee0aec72e94439"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-zywoo-quadro-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7b7048277cab47c875dea28ee559e99dba1326a977263ea845e4c291d7e86a59",
+              "oldValue": "89e59e4d7f563f3254a64b2bdcd3d33c8095a713d9024c70fb6f11a3116d368d"
+            }
+          ],
+          "name": "HighlightDesc_bud2025_gf-zywoo-vs-faze-on-inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "19eb47e457b3e00411a5d40c1cdfab69788481f164b91b6c30cc62054429bca5",
+              "oldValue": "8cf3d8f510e0b8da73e4fab48591224ca2714777abf074ef5710a33b40ef5537"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-apex-double-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dbda0154074db6c283b8486aa60c0c8148f6cadf48d16e6b0291034042048fba",
+              "oldValue": "defb5be78b2f39e6c78362f18f73d0bedcd9317d8da51295f8416db8b89f91cc"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-broky-double-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "77fc7da435682c0cf7df9fbb17c1954d874404b101e64efe90bd32ea9636e5f4",
+              "oldValue": "cc37716f0387cfd4e4b048ff874c7d63fbecaebb9a4a1581ba53c86ed6a9cdac"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-broky-quadro-on-inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a71e3bfcd25777973c677b8f85745deabf52a709455b552fa5f702637940b6ed",
+              "oldValue": "ecab9e1262771368673d65ef025015a8b6a230dfb13f266bb0d04b7bc6ee5b3f"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-broky-triple-on-dust2-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3efa9e329d6e128e0501b8830e91309b572cb55119c683727c5a43f83d0b8980",
+              "oldValue": "8cfe938b72c96f902cbd3c25923a206a3b3a7eed4d5ab95325d0f845a0f8af2c"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-broky-triple-on-dust2-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a8b5b64da2cbceb8b3117f6295f79e55452462ac1ac00800e1990bbbeae91252",
+              "oldValue": "4cba05c29f5229cbb9efd5cfa07e44caa9188d86580dda0038c737e291939a4a"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-broky-triple-on-inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "574421daf6833d040ae8981d46eb74e2346f2696ad9c5abe62905a00ce31af06",
+              "oldValue": "481f73ab22f64468044ce48a1fe47bc99118bb546753946fd7e29d4d148a2ac2"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-flamez-quadro-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c766b40d5642f4528a19355d129aa8f87f5b4b89440fa974b2a5d97ff96d1401",
+              "oldValue": "c073c6e52629b9950590ba34bde6172f5c78c08652f6e96172e6d84dfb7d84c9"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-flamez-triple-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "95981dc0783439f11c5c6f3d5caf24a4d812376fc770b8385dc8bd642efdb2cf",
+              "oldValue": "29b52b58aeccc43072ffd94bf5e723e9f6402977cfef29a1f151700d3c0c8711"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-frozen-triple-on-dust2-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3a89e1fcbd559d30e875dc00e3721175344c808e8a73fbc0e800ce4bee7d14a5",
+              "oldValue": "41acde6f14346653f0f490f91aea9ab6affe1430326da1367a2e766c30526b29"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-frozen-triple-on-dust2-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3d402a97a16ce7847c0b600a542d7937d9626d86d1d7c9b96752419e5d762727",
+              "oldValue": "561e36f54ed2b1132951f32055eca6f671c0e9c5776db37c6661125509a1ab07"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-frozen-triple-on-inferno-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dd8495101f37983895116211e730b3b547c5424b87bfe5b26b4f834d36e3af31",
+              "oldValue": "da896b0b12e5b43c31a715ba18383d3bddd5f31779b445d41b5c24d3dc2c6080"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-frozen-triple-on-inferno-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7f35fb53189848953afe9bf237b53a7825f67e29bc29b84178072827f0762e34",
+              "oldValue": "e49c4f567ad6d279bf840292994418784c23e0548cbb42fd81e8354344debd7a"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-jcobbb-triple-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8075d503f13d9fa42075ca6053c56dd2baae355853fc1ff2d6fa4b4b0697960f",
+              "oldValue": "15fec2e9d0187285ea98962e520dd983e3b99482a19757499e54a9b345364b7f"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-karrigan-triple-on-nuke-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9a98738aa513141e5b49f9d171908a417dac0d82fbbb64641515b6d21fa9d3a5",
+              "oldValue": "8f3561a9bce92f1b53bde7541582e9074f1dea20dadecc9b123956eff5545fc4"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-karrigan-triple-on-nuke-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7da20d3e9031f48f3f6fdaaf6b5171ec57242418aaec2436b66ddb906730ef2d",
+              "oldValue": "fd1762ad069e30e0352587079a4282a2cb7d550f3b7a8d8f5631a72707b3be8b"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-mezii-clutch-1v2-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d1b49100d7bc380b977511aff90d24721e287c6fb078aa2bf611219c75081435",
+              "oldValue": "a843a974f45bfe7ab198431689e3eb9ed9588d4aca439e946b60755520a9bb33"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-mezii-clutch-1v3-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "609ed98e6abcacb2b0144c1d22849197605a14cb432089a4eee49b43c96355f4",
+              "oldValue": "80dd7af352818b0c1c2d222b70809f9d28755c1534c475df26ef3aa081c8c136"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-mezii-triple-on-inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2321331703bc53f3a7d000abe8ae8a6b667b302e6eac4c35d87b24e6992fe4ac",
+              "oldValue": "a3a753e8e7785172dc96da4b2eb30c69f97e65eb58247b4158ff1c95446c5eb9"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-ropz-double-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fd3c6274830dd4292d703dd5f4b58b950bc0e5432bb9f4dfdc5d0aa4d7e57cc5",
+              "oldValue": "ec1b717750b2230c4d41301d95b644a4099549240cea4025c1df7403bdbb8791"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-ropz-double-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bb2ae213496f6f19841acd7dc4155615e5f39f1325d1dbb0cbd3664a87ac5832",
+              "oldValue": "11c0b106aad081bf63c78fefdc2a7deab1af51304309a6eae1626043b77791e0"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-ropz-triple-on-inferno-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8e129702427507fe7d6f6b768b2a2dda4cf4f02ea90676455381ca4930b50710",
+              "oldValue": "56721ca96818b042f1c31fa938e001b939de5cb3508fdf85d53ce8da994fd30c"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-ropz-triple-on-inferno-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7e90f1a9e6d11e96700575a774096cee5c95bab47868563f341ad7380009a6fd",
+              "oldValue": "9cca6a639f301179d41c7fc4ec6e6704ed109be2d78de4f3ee44910116ebd830"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-twistzz-double-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b5a310edba2250d32bdf10bd1345d0ca35388ffe6db3dc8e449fb2d85eb673f0",
+              "oldValue": "c4084010f86cac30804179902367793a5d6e5edb80c3f36195870cbefbc5192f"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-twistzz-quadro-on-nuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e09978c4138aa54abc26b5944ec6b6f86d3ddbedfdf761e402314a24b46e754f",
+              "oldValue": "6019bbbbe6439bead7c5cde8efad09271e0fb081a04e968d2a7b6222970988f3"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-twistzz-triple-on-nuke-1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1339270a532a99cc00cc141f69f1fe9fb0123418f9855854911ad1da42fff24f",
+              "oldValue": "9a736e57438a35bfb76ece879d3ea35104b595725ec3abc5cbdbb5ed49d1ad17"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-twistzz-triple-on-nuke-2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3d47a1d0d6952c87369480b155c759ce7926ef32dad4c309bf2678ac52c38023",
+              "oldValue": "a9b0f328efd0199d005f734570abbacdddfe41a1eaa4668eaad70e8b90940b60"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-zywoo-quadro-on-dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "331ceb451e11442571f0d969765f663ae0d59c4d04c5baae8091afade9b0c3aa",
+              "oldValue": "4c7deff1d9f9453e9d3d1606e702754e5a30e9c51b750ad4646c23025196b057"
+            }
+          ],
+          "name": "HighlightReel_bud2025_gf-zywoo-triple-on-inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<font color='#A0A0A0'>Damage given:  </font><font color='#FFFFFF'><b>{d:damage_given}</b></font> <font color='#A0A0A0'> in</font> <font color='#FFFFFF'><b>{d:hits_given} hit </b></font>#|#<font color='#A0A0A0'>Damage given:  </font><font color='#FFFFFF'><b>{d:damage_given}</b></font> <font color='#A0A0A0'> in</font> <font color='#FFFFFF'><b>{d:hits_given} hits </b></font>"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "c46ffd23d1ecdf58687b81369c46ab8bcd0bcd9763ecc3dfb94d4b0b3bc5e3ca",
+              "oldValue": "2fda6fdbd3df76dd39635630cb25a71ab5eda45b74a0cf08467c747cf83825e1"
+            }
+          ],
+          "name": "Panorama_DeathPanel_DamageGiven:p{hits_given}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<font color='#A0A0A0'>Damage taken:  </font><font color='#FFFFFF'><b>{d:damage_taken}</b></font> <font color='#A0A0A0'> in</font> <font color='#FFFFFF'><b>{d:hits_taken} hit </b></font>#|#<font color='#A0A0A0'>Damage taken:  </font><font color='#FFFFFF'><b>{d:damage_taken}</b></font> <font color='#A0A0A0'> in</font> <font color='#FFFFFF'><b>{d:hits_taken} hits </b></font>"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f5c24faf5ded6b0c6631822c8c454c70cd8290a85a63ca67f1946ffa30088472",
+              "oldValue": "5086a85b55fe4959201b57af94f3644d71a7f82076d77217fc58b499d28e467d"
+            }
+          ],
+          "name": "Panorama_DeathPanel_DamageTaken:p{hits_taken}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "You can commend {d:num_token} more player today#|#You can commend {d:num_token} more players today"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "736947cb2397d7ba17f8ce99ff16a0731f2c05a62855aba99d2d9b8aa7d76f3a",
+              "oldValue": "ff18efe36c05e010b447c53ce92b0e8c3a4b9c1bd19ddcfa930e86186b237151"
+            }
+          ],
+          "name": "Panorama_PlayerDetails_Commendations_Left:p{num_token}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": " \u0006•\u0001 Damage Given \u0006→\u0001 %s3: %s2 in %s1\u0001#|# \u0006•\u0001 Damage Given \u0006→\u0001 %s3: %s2 in %s1\u0001"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "a5c27b1ebefeaff18aa796644f1f287fb3a03236ccd2525acdea261f70bb0d58",
+              "oldValue": "49dc68e02e8b86341feda1f8baa92bbf1edcaf54943dfa874194800653f4cddb"
+            }
+          ],
+          "name": "Post_Round_Damage_Report_Given:p{s1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": " \u000F•\u0001 Damage Taken \u000F←\u0001 %s3: %s2 in %s1\u0001#|# \u000F•\u0001 Damage Taken \u000F←\u0001 %s3: %s2 in %s1\u0001"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "7bc19f729953a3f6a7f0de9ed70af8d253e5de96064f1eab48ae3c16fdd5bac6",
+              "oldValue": "b86049b7b5086b858d98393749e41e233a97f40c8f45cb37cb77930245dd66d2"
+            }
+          ],
+          "name": "Post_Round_Damage_Report_Taken:p{s1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "You can only carry {s:s1} grenade#|#You can only carry {s:s1} grenades"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "54c562f615a093552e70a9634938d956823d1f36510176c5db2ebe38754842dd",
+              "oldValue": "cceb732c5d0a44b4986590aa7e0b66261c0b8fe9601edb6fbc3a00e1e74b46d4"
+            }
+          ],
+          "name": "SFUI_BuyMenu_CanOnlyCarryXGrenades:p{s1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "You can only carry {s:s1} of this type#|#You can only carry {s:s1} of this type"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "cd7ca01f340cf0027fcb2a7c5bee8c4f90ad2e0a0bdb1bdb63c1a521a12787b6",
+              "oldValue": "b5130de01ad8b6b548bec3fea7b5e45850f29f2bb3d54fb1ef823ae143cc860c"
+            }
+          ],
+          "name": "SFUI_BuyMenu_MaxItemsOfType:p{s1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "You can only purchase {s:s1} of this type#|#You can only purchase {s:s1} of this type"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "81b68a645b30286db33928ece9a2e8dd1e786b1a5f90e59ed34b0ead6476425f",
+              "oldValue": "fe31ee4ea3c15f950b6c44a05f45bbb6135f2e409245a540432b7a2919161e5b"
+            }
+          ],
+          "name": "SFUI_BuyMenu_MaxItemsOfTypePurchased:p{s1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Already purchased {s:s1} this match#|#Already purchased {s:s1} this match"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "efae0792bcd47826bb1d93791328767735864180cf42ce67c61ee42d27270832",
+              "oldValue": "c927fea23b61d510cec099296e3498f1b08004583f0f36882c9ac0afa6506532"
+            }
+          ],
+          "name": "SFUI_BuyMenu_ReachedWeaponsExpertLimit:p{s1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "31b78c2262c5dade42190b7ac6ed631edc61bf1360d4ac3b1c46d8068080e11c",
+              "oldValue": "4c94c6771e1f86d1469a4fc4bdbc476c96e719ed4aaa91fbe5ce00f1794a8374"
+            }
+          ],
+          "name": "SFUI_Play"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "ALIVE#|#ALIVE"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "e2f1aefa83b2ff218d8fe9b8769038687aff68d1152433cd12428806f9f7a62d",
+              "oldValue": "7beb73324318ada65edacd304a6f9db33e5bfd473ed0dcf09fcc0be510bb3b3f"
+            }
+          ],
+          "name": "SFUI_PlayerCount_Alive_Left:p{left_side_alive}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "ALIVE#|#ALIVE"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "e2f1aefa83b2ff218d8fe9b8769038687aff68d1152433cd12428806f9f7a62d",
+              "oldValue": "7beb73324318ada65edacd304a6f9db33e5bfd473ed0dcf09fcc0be510bb3b3f"
+            }
+          ],
+          "name": "SFUI_PlayerCount_Alive_Right:p{right_side_alive}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e34536a5f6837cc8d0d790a8aecd0ea4ca3cd1e26afefdf73bdea5499035f7e2",
+              "oldValue": "0110bdae4f9163ea1670f05f78ebeab6bbeeb366a8a8a3fdee819f370d7e086f"
+            }
+          ],
+          "name": "SFUI_Scoreboard_Overtime1stHalf"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "95e590e148371d310d5ef9983679e180efaf2bbe993306a38cb54d6aaa107ede",
+              "oldValue": "6c24ca38b2b30f44372e456524dfc5d44be52ec0a33e0f297104132b6dff6d91"
+            }
+          ],
+          "name": "SFUI_Scoreboard_Overtime2ndHalf"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "999d82c7abcbc11bdfcd71de61dd20c6e26a7e4347a75b15721b21aa13a9969a",
+              "oldValue": "c46d5c27981a361dc2610922a0fd2344ebcdb90742ffac66e80f2e53bba132af"
+            }
+          ],
+          "name": "SFUI_Scoreboard_OvertimeHalftime"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6e0f0760a677401fa37d9fae56903724149ea93d88c2120d462ee4ed93d8483e",
+              "oldValue": "613a37555600407ba837108b44763463746d469d24ad5cf43ddd52c51f10548c"
+            }
+          ],
+          "name": "SFUI_Scoreboard_Overtime_In"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:daysremaining} day Remaining#|#{d:daysremaining} days Remaining"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "3eee69a147ce1d864d1c5738ccff64116bd86efa2c7c76633c9ecbdee7ef51da",
+              "oldValue": "388afd8fec3dd357068271df95f96f404537a55d1b66c1773a74547ef4943787"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:daysremaining} day remaining to bid on this offer#|#{d:daysremaining} days remaining to bid on this offer"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "87b97cda678375cb9bfa3012ac1c32a75874bffb5b5537da9441a04485b86a24",
+              "oldValue": "19cf3c6f48cf4b50d1d783063f87b1be48c1e640562c491173be0a4a93b11265"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_bid:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:daysremaining} day remaining#|#{d:daysremaining} days remaining"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b80cbcff391fade952462eefc6f489b65d383c754930982caee82e50b0a0b2df",
+              "oldValue": "504ac38ca03b9cec1eb935347f3bd0dc89b8d6ffeba0c272867ca41eec82cb9d"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_claim:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Last chance to bid on this offer"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "134d2d17e0aa651b1e03f8788f0f82170405973a8007cb4831f62d85ce1dc3ed",
+              "oldValue": "286bb86a2fbd7f6f5d459b3ee611f94d3e080a5e79160d95360e9c1690074e0b"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_last_bid"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Last chance to claim this offer"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "634a3eb795719b77ed9933392807211ef8c8feca72933644f92456e997fb1e97",
+              "oldValue": "b4b0eece32a53c3499ff25d7289278b6bd272c619ff8de7fc93ba64eba82a4e7"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_last_claim"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Only %players% compatible player is searching in %region%.#|#Only %players% compatible players are searching in %region%."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "cc36d9adf401551105fe23779f6b6338aa6c9ac3b5daa03863e0fbe6339ee4d1",
+              "oldValue": "2e4db514275e5c19a18b6d76d123669334248fae255d422d03aa73c4bd9039c1"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersR:p{players}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Only %players% compatible player is searching in your region.#|#Only %players% compatible players are searching in your region."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "a88daa01cd729ae5147adfb8b07cbfb6fe54b4fb0c899fd0dac8d966d3af1d05",
+              "oldValue": "0932e50bb5fc8040f966de689dd76d00a7f5972061ed6ee27adcd06e09de1b8e"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersY:p{players}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "355b08fd179458b02ac64ce397099a86ac38377b1e7a2df7914e28ca064374b5",
+              "oldValue": "b951c79594a5991366be6640fe886a0cc96d023b5e8ee2d9e7d00ce00c422620"
+            }
+          ],
+          "name": "Scoreboard_Overtime1stHalf"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bc6a49c8286e700adf11bd261721251a4ee6e59e16cb826677522d4e78d6f152",
+              "oldValue": "77debc964c1710b27b1d8f92ce988ef5fd4cb35df13bd2fc613111fd48453734"
+            }
+          ],
+          "name": "Scoreboard_Overtime2ndHalf"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": " \u0006+$%s1\u0001 team income for %s2 eliminated CT#|# \u0006+$%s1\u0001 team income for %s2 eliminated CTs"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0dc78f85c6e6cfae8d6a3308ff2592bdd125be29e9eb4541474e682661e5ccf4",
+              "oldValue": "601b13bded7b1c56ee51c08c459b62bb766994f9a45b8cfc516e1454ba0b2dbd"
+            }
+          ],
+          "name": "Team_Cash_Award_Dead_CTs:p{s2}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": " \u0006+$%s1\u0001 team income for %s2 eliminated terrorist#|# \u0006+$%s1\u0001 team income for %s2 eliminated terrorists"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "c9bff3be122bc16a364ebe4b0e97b5755b421ab12eaade7d368165d71bf60b80",
+              "oldValue": "6e0f67f95ca6a6630758aeae584d94e4d7d5cc5f662a27c39e23be250e6d708e"
+            }
+          ],
+          "name": "Team_Cash_Award_Dead_Terrorists:p{s2}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6742c770ef7b5092ef26595f273ed240e3b06aa7b67e71d61c9dfacb81c490fa",
+              "oldValue": "a4e79a9f585c2c2095d7bc686b0e08b4cce1a6cc71aac02f8ad1fa7fad8f6229"
+            }
+          ],
+          "name": "Time_OvertimeIn"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:spectatorCount} Viewer#|#{d:spectatorCount} Viewers"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "79c69be201a78cec080a0cb21999dba03405059ec20225e91b31c0e4cb43f28d",
+              "oldValue": "e0ff254c27a273a58e22d25e05dadb1df5771850d2feb8d307845ac7ec7b515c"
+            }
+          ],
+          "name": "WatchMenu_Viewers_dv:p{spectatorCount}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:lobby_count} Lobby #|#{d:lobby_count} Lobbies"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "6bbf55e76184cf6998357a3f8b2c5b2bea70708a56f61f9614746f94a251054a",
+              "oldValue": "10932bc9387208931b9612071a3542de6ff986aff05fbcdc8902d5a6059d62e0"
+            }
+          ],
+          "name": "contextmenu_lobby-count:p{lobby_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:wins-needed} win needed#|#{d:wins-needed} wins needed"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "62643f4103244c7a01320192cb1140780fddfef4a18af9ff05b0e3b658fdc785",
+              "oldValue": "2d679f8abdf285bf3887a7509090cfdb14e5975632bcdfb963ecb61601cd0bdf"
+            }
+          ],
+          "name": "cs_rating_need_wins:p{wins-needed}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Win <b>{d:winsneeded}</b> more match#|#Win <b>{d:winsneeded}</b> more matches"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "9b52e27eaca732ff736b0e4100862085dae1e3a6844710234331691a7d4d3b76",
+              "oldValue": "82afe7b09b4cc9da7a4ec148df4254a89a44d6020e2ae38415fb4bc2077dea85"
+            }
+          ],
+          "name": "cs_rating_wins_needed:p{winsneeded}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Win <b>{d:winsneeded}</b> additional match to establish your CS Rating#|#Win <b>{d:winsneeded}</b> additional matches to establish your CS Rating"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "4dd8ab4a24766439ac7f1e29127bdf1b06406e7902b6983c50cc298d0c57e842",
+              "oldValue": "bf49d5205f4b90f107e743906d4e297c37eb771490afe50f01cc66338af4c469"
+            }
+          ],
+          "name": "cs_rating_wins_needed_verbose:p{winsneeded}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Win <b>{d:winsneeded}</b> match to establish your CS Rating#|#Win <b>{d:winsneeded}</b> matches to establish your CS Rating"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0e165d5bcc4701bea9b0291cc795eefaa5d63d3863897d092a52addef129d818",
+              "oldValue": "2ebb905ac98a66918224a92bff95a582366f6527fc6da893ee992e302afd19d9"
+            }
+          ],
+          "name": "cs_rating_wins_needed_verbose_intro:p{winsneeded}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:rating_type} {s:map} Match Won#|#{s:rating_type} {s:map} Matches Won"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "87b60d67a49cbba9a905b4256a7e5cdc2097130a5bb0c2b8c343541da51ddcc9",
+              "oldValue": "58570108e7f90208bc6fc4feac971248fd4963c00b31a1d910a9c46b0cf29f06"
+            }
+          ],
+          "name": "eom-skillgroup-map-win:p{matcheswon}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Win {d:winsneeded} match to display your Skill Group#|#Win {d:winsneeded} matches to display your Skill Group"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "49c7b968f947e8a10416b6ae4361281cc143e4ca657747ab6a50972c8be99d1c",
+              "oldValue": "b5410570672216a030e69edab7f03353d135425bd57936e6021c0690ee36cd17"
+            }
+          ],
+          "name": "eom-skillgroup-needed-wins:p{winsneeded}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:rating_type} Match Won#|#{s:rating_type} Matches Won"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "167cb61f0abe041b130404195cac5b79b3b266d50e1408a3a11ac307a18afb0a",
+              "oldValue": "41f83d761cd252c6133b8353470619858b05d8cbbf7bae86b5bdb1f5f783d9b9"
+            }
+          ],
+          "name": "eom-skillgroup-win:p{matcheswon}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Ace!  {s:funfact-player} killed the entire enemy team."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "ab1be03806bb12cf4ac9f923e85a05492800ad73410c591b54ad8ac200a428b1",
+              "oldValue": "f00fbbb595efa5d8f83c3e33f36b2894c0eb4bcba743ce40bb6b1465dc377752"
+            }
+          ],
+          "name": "funfact_ace"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} had an accuracy of {d:funfact-d1}%.#|#{s:funfact-player} had an accuracy of {d:funfact-d1}%."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "1064cdf294074a9c81333ca0adc5fac707056e35cf753113b7b711210e5b4e8d",
+              "oldValue": "7e4de5790527fa4074b08d8d646820ac67c0533e6c419031a4d634d41aea36f9"
+            }
+          ],
+          "name": "funfact_best_accuracy:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} had an accuracy of {d:funfact-d1}%, while their team's was {d:funfact-d2}%.#|#{s:funfact-player} had an accuracy of {d:funfact-d1}%, while their team's was {d:funfact-d2}%."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0021328ae69c26f33859538bddac7ba0d4638b89f09aee2c6e133120e743e357",
+              "oldValue": "c52bad99df85be2cd29300766b2c2d533e2092efb928c44b4b567923fd7b509e"
+            }
+          ],
+          "name": "funfact_best_counterterrorist_accuracy:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} had an accuracy of {d:funfact-d1}%, while their team's was {d:funfact-d2}%.#|#{s:funfact-player} had an accuracy of {d:funfact-d1}%, while their team's was {d:funfact-d2}%."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "3bc0ca7a0b9fb49da3e7658ef829695fd9f210427354d9235bd95c7ca3d87963",
+              "oldValue": "91f471477283be98a60884c59324973cdcce85d5af9512668d19f600eff9cf9f"
+            }
+          ],
+          "name": "funfact_best_terrorist_accuracy:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed an enemy while flashbanged.#|#{s:funfact-player} killed {d:funfact-d1} enemies while flashbanged."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d623e3651a9fe43e129c90148673c7970976859e01d267b21acd314edd34f47f",
+              "oldValue": "a17c8c738d6ce0dd8b4b33d6b1ac5433ebb99eb93947e28c8cb01d9a65eccc84"
+            }
+          ],
+          "name": "funfact_blind_kills:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed {d:funfact-d1} bomb carrier in the last round.#|#{s:funfact-player} killed {d:funfact-d1} separate bomb carriers in the last round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "4599cf9f814929973d242d72ef122623b398156ea5f8110802a9a52e3ef17c48",
+              "oldValue": "9cb83debe2344ed6341efa3ead582eebd52dc9ce6d9d0b646aca61d92dc6d39c"
+            }
+          ],
+          "name": "funfact_bomb_carriers:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "No players were killed prior to the bomb being planted."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "e5aa4cbd45a4a407e05aeec1d57ebc1154cf14ba87560dd384f1fe739353702a",
+              "oldValue": "5afc8f765ff984a26d2a247f7718d95f45b1c66cd19cb2b09e68b4ed7ecb9982"
+            }
+          ],
+          "name": "funfact_bomb_planted_before_kill"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} assumed control of {d:funfact-d1} bot that round.#|#{s:funfact-player} assumed control of {d:funfact-d1} bots that round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "7c6f06575603aa1ca18fed342499f67720c7b3a016750853033932b8af17521e",
+              "oldValue": "4954cda0a2c5058d79b336bd3d7913518b8378221632f284ae9d8b74aa4a2b72"
+            }
+          ],
+          "name": "funfact_bots_assumed:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} shattered {d:funfact-d1} window.#|#{s:funfact-player} shattered {d:funfact-d1} windows."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0878397367a560b7db2edae2c0d5c1f8b9eb15be4145bc938acebfe1ba3de800",
+              "oldValue": "4f608cee629d2b74c1bfccc260ea6632fa42a59cdd457721fe05d58a3ead7eb5"
+            }
+          ],
+          "name": "funfact_broke_windows:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Counter-Terrorists had the best accuracy with {d:funfact-d1}%.#|#Counter-Terrorists had the best accuracy with {d:funfact-d1}%."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "ea7e0f1ae77b7a04ad08c1d9d8dfe866eebbaf2bfff929792d8a2e02d7da8897",
+              "oldValue": "1d69e10dc4f14ff99c81d0d2edf8915f6b59401f5d9d9fa98e4a4dcae79c7015"
+            }
+          ],
+          "name": "funfact_ct_accuracy:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Counter-Terrorists won without taking any casualties."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "696c033f7a61581b06f6b685131b60c285513924e25ec5f81002b93b62b788b1",
+              "oldValue": "a927de2f03ef7662fdfc83c39d591d3f0d04be55ca5b658ad0808e02d768e0a4"
+            }
+          ],
+          "name": "funfact_ct_win_no_casualties"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Counter-Terrorists won without killing any Terrorists."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "368a8abb3ba029d541ef2efc628c106e6dd00c106cd949d71b7720d3eb109804",
+              "oldValue": "7750bd9b29ab37c62469bd052e92c14e3bac3c8cdb3d4e3419660fa972d78c07"
+            }
+          ],
+          "name": "funfact_ct_win_no_kills"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "The CT team eliminated the T team in {d:funfact-d1} second.#|#The CT team eliminated the T team in {d:funfact-d1} seconds."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "5a4f6b43b530950c1215d016143ee6afb8e0cf5570ae35e57b635de23e49e921",
+              "oldValue": "1c9056847c98c94a0cef8189b789d6cb452f8aaf1886dc523c0fab0bf941f8ce"
+            }
+          ],
+          "name": "funfact_ct_win_time:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} did damage to {d:funfact-d1} enemy.#|#{s:funfact-player} did damage to {d:funfact-d1} enemies."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "5cc4dfa5ca0a6e40ccf12b75f6d828832fabf359899e29278184c1161e1fdad8",
+              "oldValue": "3cadd24cb8256412d3d5c66b91d76aa444ec74f6407f9dd3deff3f782979f437"
+            }
+          ],
+          "name": "funfact_damage_multiple_enemies:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} had no kills, but did {d:funfact-d1} damage.#|#{s:funfact-player} had no kills, but did {d:funfact-d1} damage."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "bdbaa4f15d15005d6ccfd9e4c86fc5bb062b57c2479ff7b7f7213f70daed9731",
+              "oldValue": "3a6b95dec7a64af666fad7a11d820f2dfd25607df00cf1eaead0661993e291c2"
+            }
+          ],
+          "name": "funfact_damage_no_kills:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} did {d:funfact-d1} total damage with grenades.#|#{s:funfact-player} did {d:funfact-d1} total damage with grenades."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2f96b4f54e911fee4b884abe6ce7f4d31edc6cae14fc5b3c3ce7c53e2c44cc57",
+              "oldValue": "6c1b4c5260833ec3c87b5f0a833de72b11fd1deb46393587cb8a9659fa74ee02"
+            }
+          ],
+          "name": "funfact_damage_with_grenade:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} won the round without picking up any weapons."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "8ed7b180f0384abc844d060e5d8eeee33c764c9b503dad343fc1d5be37810e71",
+              "oldValue": "2df59288fb1fd8eef68dd38b92ff8a911424d0a6b1727b43d7f22fbd0b6f12ad"
+            }
+          ],
+          "name": "funfact_default_weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} defended the planted bomb from {d:funfact-d1} enemy.#|#{s:funfact-player} defended the planted bomb from {d:funfact-d1} enemies."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d1bbc33a7753f275f332a3bd88775a445c68e58ebae59b022801672545af81c9",
+              "oldValue": "9decb90df305de8ac2113039371b27f72191e0dc90d164b9d139943bc451a034"
+            }
+          ],
+          "name": "funfact_defended_bomb:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} defused the bomb with 0.0{d:funfact-d1} seconds remaining.#|#{s:funfact-player} defused the bomb with 0.0{d:funfact-d1} seconds remaining."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "7a51eb8974427e56e7baef5ea4a7cf57f78061adf54e3a87c37cf9bec4c0f0c9",
+              "oldValue": "f8a97d9afd28f56ddb99165a37e908cc10195bd4ddacbf44d3874a6c68489e89"
+            }
+          ],
+          "name": "funfact_defuse_was_close_call_hundredths:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} defused the bomb with 0.{d:funfact-d1} seconds remaining.#|#{s:funfact-player} defused the bomb with 0.{d:funfact-d1} seconds remaining."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f4930f621ca25689a66b3dd07499d116af74f75498626c53aac75e8145c75285",
+              "oldValue": "a2ed6b9fa0bb7f30a0a381a314c14c67f944ae7e83d7d498550513dafd0f22aa"
+            }
+          ],
+          "name": "funfact_defuse_was_close_call_tenths:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} defused the bomb with 0.00{d:funfact-d1} seconds remaining.#|#{s:funfact-player} defused the bomb with 0.00{d:funfact-d1} seconds remaining."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "87b91886c10b8c8c8bf948e9dca84842e10589e84b71fd52cf38fd11b24d2f31",
+              "oldValue": "e0cf1bd04317efc690105ddeff48e1ebdbb74d752bc9f777ca4388d95b73674e"
+            }
+          ],
+          "name": "funfact_defuse_was_close_call_thousandths:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} defused the bomb with a dropped defuse kit."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "3fd8534d752b667b840120e59b6b8da3557d4ecfbc4c97d49d069731d63180c4",
+              "oldValue": "9cb211ce6d67998328b875c5496bb80d5fe4c903ad2e031d1fd65e16747e5d96"
+            }
+          ],
+          "name": "funfact_defused_with_dropped_kit"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} took damage from {d:funfact-d1} enemy before dying.#|#{s:funfact-player} took damage from {d:funfact-d1} enemies before dying."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "e8f173d4051ae0656b6fa928bee582ac7045c12e00a475c3e9849a72ba972b3e",
+              "oldValue": "ff392dd8809190d97b16216a5b9a38781caa1581fe5a6a44cf47ee9c4d286e6e"
+            }
+          ],
+          "name": "funfact_died_from_multiple_attackers:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} dominated the most players."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "73fb331df04c8e48e679899e648d85eb42a43893accd0646a8b8e161909a3125",
+              "oldValue": "fd349abaef00e3f45603293016b037b27382707e03ea7cd0257b0252a28234a3"
+            }
+          ],
+          "name": "funfact_domination"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} donated {d:funfact-d1} weapon that round.#|#{s:funfact-player} donated {d:funfact-d1} weapons that round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d1c5c4dc872ea15a2e5ecf896f9e6b5393972f1587c6f56c506e0195d1ebe6d1",
+              "oldValue": "b69d74523f7b25cbc930c059afd66afdef038d5415522d224d888a74643c78eb"
+            }
+          ],
+          "name": "funfact_donated_weapons:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Match was restarted based on player votes."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "36b4f3b4329449f97d88129e28de194b819e5d102b60414bb3fac938201b7aae",
+              "oldValue": "b2387f77f5caad2d844f9acc72c1a8e1bfdc6ac1980c8735004998ade646e06c"
+            }
+          ],
+          "name": "funfact_draw"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} ran out of ammo using {d:funfact-d1} gun.#|#{s:funfact-player} ran out of ammo using {d:funfact-d1} guns."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "fc81efb4d541c8aea82cf1f72c91367145b7aedd73bc9a62adee09b992ddc593",
+              "oldValue": "2ba3eba5380f8695c24ea44f443373e8374ceb8731936a57f151a2978977968e"
+            }
+          ],
+          "name": "funfact_empty_guns:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:funfact-d1} Terrorist tried planting the bomb that round.#|#{d:funfact-d1} Terrorists tried planting the bomb that round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "8cb401d8cf9b0e10a991685df3d9c92985d281909dff9a3f37a5e5d1c466b54a",
+              "oldValue": "3ffbb83aaa43f29a12c02cdb3b2a478ea599afeee83f3b98731090c893c30278"
+            }
+          ],
+          "name": "funfact_failed_bomb_plants:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} took {d:funfact-d1} damage... from the earth.#|#{s:funfact-player} took {d:funfact-d1} damage... from the earth."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "5114b10c03a2c015093b964059ce54671dab55b2f95cfd0a67cbf3ce3d36b8e9",
+              "oldValue": "335395ee8446848db95b94b90aa8172886821a0b8780bf63675d71ab70041ec5"
+            }
+          ],
+          "name": "funfact_fall_damage:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "The cake is a lie."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "dd2e1d7654c132d107b7f5185609467013d656fb174bb763d12b04ec055e60d8",
+              "oldValue": "670ab3045766472a6f43c48c1d8295601196d98b64f90b1643eb72e5e9f1ec84"
+            }
+          ],
+          "name": "funfact_fallback1"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Yawn."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "946d2ff0fe8ac765df6cab034a04e05fe87e269f122e39cec140cfe8f0ffcba4",
+              "oldValue": "4e71a5af8ef38ac5ccb2dedd1e2cdd78b5b32ae25f9946668db04f55f11434de"
+            }
+          ],
+          "name": "funfact_fallback2"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} drew first blood {d:funfact-d1} second into the round.#|#{s:funfact-player} drew first blood {d:funfact-d1} seconds into the round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "56f096a85dc0d594d165d204ca41901df7272a2c5571312e067677c5d4b57b41",
+              "oldValue": "ac0360b26833ca70e66e605c4d312bd3d5beccd9719d1e92297e6742b0ef4346"
+            }
+          ],
+          "name": "funfact_first_blood:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:funfact-d1} second into the round, {s:funfact-player} got the first kill.#|#{d:funfact-d1} seconds into the round, {s:funfact-player} got the first kill."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "96a371b09d022796684cbf7f4eaba0128a507918bd81da157fde9ab8c58f0dbd",
+              "oldValue": "bbfb7f9db33c21de9eb23aa6049347d2a4eb8bd563ac24883b9b7019e04ec254"
+            }
+          ],
+          "name": "funfact_first_kill:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} threw {d:funfact-d1} grenade that round.#|#{s:funfact-player} threw {d:funfact-d1} grenades that round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b27cf5d4f463fd4b1d0543c6d350180c3aa7094978c6d5ebd26af53cd95d6329",
+              "oldValue": "9006696cde879b185386d3b8d61aa2dc0d9654b70b3d0abe73ebb402cffb2c92"
+            }
+          ],
+          "name": "funfact_grenades_thrown:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} threw away ${d:funfact-d1} worth of supplies.#|#{s:funfact-player} threw away ${d:funfact-d1} worth of supplies."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "91c4fcb5bb0fae54042e5fa840789f74c60d41800df76fa712db7b53a484b91b",
+              "oldValue": "d074d6d359b16c5562c3851bb5f90d719990ef5b1685268cff6c92770a288a74"
+            }
+          ],
+          "name": "funfact_items_dropped_value:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} bought {d:funfact-d1} item.#|#{s:funfact-player} bought {d:funfact-d1} items."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d2b22105c3d4fc1f9a737bb0e6b7e39c4940324c5a0633716355b5d1d6e06605",
+              "oldValue": "1471225c60dc16abe3a82a10842409481e6dc00c2450535f7d89d56444c2ad58"
+            }
+          ],
+          "name": "funfact_items_purchased:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} successfully stopped the bomb defuser."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "ac775e5d771a27ccad230c649ab0c203df40439351d5e1e1986bc0fdf0487730",
+              "oldValue": "834687028154f0e187e1ef3ffc2d4fab03b9e3d6ce921e2aeb748613d9f04478"
+            }
+          ],
+          "name": "funfact_kill_defuser"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed the hostage extractor."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "3eb58ba230e7d557e4b176dfc00f955be1737985543869a5b6c7d86dd8be82f5",
+              "oldValue": "ad8e5f650c3b010adba406f9e06bdf3fa67fb614016f88b0c7dbd840244e6b06"
+            }
+          ],
+          "name": "funfact_kill_rescuer"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} finished off {d:funfact-d1} wounded enemy.#|#{s:funfact-player} finished off {d:funfact-d1} wounded enemies."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2ae1df502f8c189757a9d0b8bbb7d8c7b5871a1381c6c2c2f28dca93a1db3a46",
+              "oldValue": "158132612eb2d3c50bddd42ed082d1da178db718a16632febfe687ce54cd8f99"
+            }
+          ],
+          "name": "funfact_kill_wounded_enemies:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed {d:funfact-d1} player before dying.#|#{s:funfact-player} killed {d:funfact-d1} players before dying."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "19f99adbb38cccc54bfc1b87d1208c1d018ea76f8f458370e45844d7d76e72fe",
+              "oldValue": "e18ad7529a3ce3ab63c68c28f3449aad43cf96d81f24b488e9f050436bbef13f"
+            }
+          ],
+          "name": "funfact_killed_before_dying:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed {d:funfact-d1} opponent.#|#{s:funfact-player} killed {d:funfact-d1} opponents."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "530e5ab8178cf719cbba0744dafc336402db91129d24764bf8b1925ce08ab97b",
+              "oldValue": "41fffa06bf20731c7000817e00e25417c00e04b65308e2ab8a0c0aa03a15fe82"
+            }
+          ],
+          "name": "funfact_killed_enemies:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed {d:funfact-d1}% of the enemy team.#|#{s:funfact-player} killed {d:funfact-d1}% of the enemy team."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "4378c42f82a8cf0882675dd14a21043145bbbd3b694c0afb9ffcc570f3a95cff",
+              "oldValue": "e1905c07ca97a48dfe449a543d513882d520fb8fae936b7bede4cd2ce3cdd628"
+            }
+          ],
+          "name": "funfact_killed_half_of_enemies:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed {d:funfact-d1} enemy with grenades.#|#{s:funfact-player} killed {d:funfact-d1} enemies with grenades."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "bda2ee1ab2c9513854ca76454f0e84839e1916ad5a74e85cb7880479cfc52e7f",
+              "oldValue": "335951d4651c11b803c2e86890a0c7e2d0955c72e1a2335cbfa4a6e9d52f2c2b"
+            }
+          ],
+          "name": "funfact_kills_grenades:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed {d:funfact-d1} enemy with headshots that round.#|#{s:funfact-player} killed {d:funfact-d1} enemies with headshots that round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "1e0130b5c5d3b6fabd18e66e80f595860bb2b53f41b5b7afb4914a8bb1bd121b",
+              "oldValue": "4433f31dee2db2f440615dfe499dfc461a412eb01a0451279f2deca9df341ad0"
+            }
+          ],
+          "name": "funfact_kills_headshots:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed an enemy with their last bullet.#|#On {d:funfact-d1} occasions with only one bullet left, {s:funfact-player} killed an enemy."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "bac61a4046ae7b8e25c4d72a8cdd2839de989257b95e0a57b3c097ac044cbeb9",
+              "oldValue": "714a6f814cd79fb30c7ec2ef32e2b8f7eff6cbe93911f1d08717dcc21a33b606"
+            }
+          ],
+          "name": "funfact_kills_with_last_round:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} hit {d:funfact-d1} enemy with one grenade.#|#{s:funfact-player} hit {d:funfact-d1} enemies with one grenade."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f88ec09799bdf34c68f05e4b9c67ed0473d5346a6d4d80f0e2f789cd487d95fc",
+              "oldValue": "5c277b22b7eec478aa875ff7ef2007a780f383f130b01e15c440922e01a53259"
+            }
+          ],
+          "name": "funfact_kills_with_single_grenade:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} added {d:funfact-d1} kill to their StatTrak™ weapons that round.#|#{s:funfact-player} added {d:funfact-d1} kills to their StatTrak™ weapons that round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "110e67062eb63ff95b1b7db23b5a0a31fdc5bcc8d6ea9ff406b30b1f09bf3526",
+              "oldValue": "9a3ae5cbff4dd61948ed49e7d4d92ee9ad9180e23ee53dc5afa5a5b4c57ee39e"
+            }
+          ],
+          "name": "funfact_kills_with_stattrak_weapon:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} won on knife Level by killing the bomb planter."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "bfc9d57a6f4b65cbca2302fd96d47650ac51cef93555ec62719b770194cbae77",
+              "oldValue": "204c5df8b922a4836eb37c9ff0ea426ae69604bff2071ceb03080e67aea70665"
+            }
+          ],
+          "name": "funfact_knife_bomb_planter"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed an enemy with the knife.#|#{s:funfact-player} had {d:funfact-d1} knife kills this round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2ebf41d7aca9060347970c6c2ea972aa9218ae6c51d4fd586b47cac0168bce95",
+              "oldValue": "9de52368a9729556fc3dcf30fc4a611229252212bdc55587087fa8158833596b"
+            }
+          ],
+          "name": "funfact_knife_kills:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:funfact-d1} player reached gold knife level.#|#{d:funfact-d1} players reached gold knife level."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "44e851a09582d434bf497b247c4b665b72c38c71a921849ce68443031cc8cda7",
+              "oldValue": "48e84685643511481c9207267e9cd172161c54c6c1a802aea501640fe868f817"
+            }
+          ],
+          "name": "funfact_knife_level_reached:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} got {d:funfact-d1} knife kill after running out of ammo.#|#{s:funfact-player} got {d:funfact-d1} knife kills after running out of ammo."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "cf92cb83b3b897843b0700e41ec2f76b5cfab51fffcb1e0dea065dd84e4e9bbb",
+              "oldValue": "7ac5b17c664c0fe8a22928d03dd55c9baa8542f380bb2f8649a97a96fc709834"
+            }
+          ],
+          "name": "funfact_knife_without_ammo:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} torched {d:funfact-d1} player with fire.#|#{s:funfact-player} torched {d:funfact-d1} players with fire."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "5f8d713648f82fa60ba61cd7f1f4ecc39dae5441f2e708e5c61efe13b1ab0d3e",
+              "oldValue": "d35170a69cbefc218e6a08838470abdbe37890eedf88873e2775a8221f17319b"
+            }
+          ],
+          "name": "funfact_molotov_burns:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} spent ${d:funfact-d1} that round.#|#{s:funfact-player} spent ${d:funfact-d1} that round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "79b54aaadf964776195aba436a94c5b32106f0fb54499d19c5cf21d058bedf8a",
+              "oldValue": "b62fc1991c026716285d64e0083694e6a43d75822cc86b14c3199e42c760f843"
+            }
+          ],
+          "name": "funfact_money_spent:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} did {d:funfact-d1} damage while wearing nightvision.#|#{s:funfact-player} did {d:funfact-d1} damage while wearing nightvision."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "38cabd09adb8c6694bf85b7c94572694a614409a6465fa850bd2e75e4086e486",
+              "oldValue": "b576847af21f7921e8cd974be3777c9a564051748edaca6d459aa9345835578f"
+            }
+          ],
+          "name": "funfact_nightvision_damage:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} jumped {d:funfact-d1} time during the round.#|#{s:funfact-player} jumped {d:funfact-d1} times during the round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "4bd82f3f23d603f05d4ee33cd5283e37d0998af9b5ae00829a4caa3d3d3c9c4a",
+              "oldValue": "abe65712613279362e2ed16318379a28d879bfc764b634c3c5e8cc5957fd6447"
+            }
+          ],
+          "name": "funfact_num_times_jumped:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed {d:funfact-d1} player they were already dominating.#|#{s:funfact-player} killed {d:funfact-d1} players they were already dominating."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b100cc0c55c0dc3df05fa8f99dfb4f7cc193fc9a2a88e68b2dcb11b028ee5c37",
+              "oldValue": "2c9b836190e13d1a7b87ecd9b9e7f040b6256c3d6218515a71f5358c6bc7e7ef"
+            }
+          ],
+          "name": "funfact_number_of_overkills:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} planted bomb after being owned by {d:funfact-d1} teammate.#|#{s:funfact-player} planted bomb after being owned by {d:funfact-d1} teammates."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f2fb4ffff5731f0ecfd7f2a98d165bc56c7c37e3ac521abc770bdd383840f726",
+              "oldValue": "32d656dbf720a7e3bc2a6b0706d9abffd387c2db68928dc1786da0ecb821abf3"
+            }
+          ],
+          "name": "funfact_pickup_bomb:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed an enemy with a grenade after dying.#|#{s:funfact-player} got {d:funfact-d1} grenade kills while dead."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "03d6c76eb0f7b597d2f3b7ad12979db0912130a5437a8491ff346e7bc7d58977",
+              "oldValue": "f0e022c879478e0cfc5c1f695585d6d097b75315a1cba7f7b4b8cde31e5eebb0"
+            }
+          ],
+          "name": "funfact_posthumous_kills_with_grenade:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} pulled the trigger {d:funfact-d1} time that match.#|#{s:funfact-player} pulled the trigger {d:funfact-d1} times that match."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "66ab582e06f1967ba7f6b252bec3bfb3a075789f5470c0fec8af9f8c90228afc",
+              "oldValue": "0b8b34ddc95a692892bf7ccf29583a0b169c5259f820beae801a8c82bd166968"
+            }
+          ],
+          "name": "funfact_pulled_trigger:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} killed {d:funfact-d1} player while under 25 health.#|#{s:funfact-player} killed {d:funfact-d1} players while under 25 health."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b2b7c35d77cb86b470ef3f9b553f83387e46147e36bff6108a86648362975654",
+              "oldValue": "2db21bf7114df640c2d1d9a295b35a5620b889aa831af519d0f60fe2b115738a"
+            }
+          ],
+          "name": "funfact_quarter_health:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} respawned {d:funfact-d1} time during the match.#|#{s:funfact-player} respawned {d:funfact-d1} times during the match."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2e707a5e939003cc9c1623c9604da37466d7573c5d7dfe5352c6ca2709fe29cf",
+              "oldValue": "c2d221dfc58c7aa293e73cc4e87dba3aeb11b15945890725636d6f526a5198a3"
+            }
+          ],
+          "name": "funfact_respawned:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} got revenge on {d:funfact-d1} player.#|#{s:funfact-player} got revenge on {d:funfact-d1} players."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "139451d9e50768e067b33744ab856225548e0ca028da4f38b7eeab472cbba734",
+              "oldValue": "87228e0f5c498737b38857f3b02d497d339566ac5a24a1ed7fe17f1c87a31f2a"
+            }
+          ],
+          "name": "funfact_revenge:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} lasted {d:funfact-d1} consecutive round without dying.#|#{s:funfact-player} lasted {d:funfact-d1} consecutive rounds without dying."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "075bdfc2ef88586109eedc271fd48d26910dff79b8d376eaeb0486799aba6048",
+              "oldValue": "5a45e3d18f2d53008fa0ff282f40e665331443d1dd6034cb930aa3c9d717ca8e"
+            }
+          ],
+          "name": "funfact_rounds_without_dying:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "That round took only {d:funfact-d1} second!#|#That round took only {d:funfact-d1} seconds!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "66d4ca7ec8001f1a235a3becf56e08e69b89cdad9a72a3747ce030fdd13fb5fd",
+              "oldValue": "f0bf9bf43a16b8945a6a517c7108d913d6fe4fecd698457cfedf34e84465de15"
+            }
+          ],
+          "name": "funfact_short_round:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:funfact-d1} shot was fired that round.#|#{d:funfact-d1} shots were fired that round."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "1528023017318bb49caedce2be58b5948c91db2ca1ae4fb7380ba6a7978bd875",
+              "oldValue": "954f61e7b71047691606d51fa83f472420823059d22a615fa86caae09fa9ff5c"
+            }
+          ],
+          "name": "funfact_shots_fired:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} died without firing a shot using {d:funfact-d1} gun.#|#{s:funfact-player} died without firing a shot using {d:funfact-d1} guns."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "4bc249e2a2f4d754dc266c1ad6bbd1b4da85feceafdb67382efc3d21ad3f3704",
+              "oldValue": "825bc68f68377730ab7d3a9dc146e12b3bed408889c227e1eb2a0bdcbbdbbfed"
+            }
+          ],
+          "name": "funfact_slow_trigger:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} ran {d:funfact-d1} step during the match.#|#{s:funfact-player} ran {d:funfact-d1} steps during the match."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "9399c41af9308b9d544a532f2fd78b8f46c3f4efd735014333c06a28d8bd55b4",
+              "oldValue": "03f241175e474b4eb403a137947a6fb5c7788e49fca0916d47c33883680fec33"
+            }
+          ],
+          "name": "funfact_steps_taken:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} survived the longest: {d:funfact-d1} second.#|#{s:funfact-player} survived the longest: {d:funfact-d1} seconds."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d3c8ade74a148d1d84d08b71e0ba944377baca307051c8b3b803155e25f87703",
+              "oldValue": "dc68705a1315eef1cc7b06f51b73063a317ec00f5c98548c09e6eab9ffd187b3"
+            }
+          ],
+          "name": "funfact_survival_time:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} survived attacks from {d:funfact-d1} enemy.#|#{s:funfact-player} survived attacks from {d:funfact-d1} different enemies."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "020b78657d9363a776b80a3549a51e859344dea4d4b79191090b85d0f06a87cd",
+              "oldValue": "b06cb1a9f07e94f511d1296941d27125fcf75493c09c4a05a50d1187bb648e35"
+            }
+          ],
+          "name": "funfact_survived_multiple_attackers:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Terrorists won without taking any casualties."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "07017096154f7536032a95bb737e3f763727c5738aec5b6092a0d167301b8f3e",
+              "oldValue": "daeb5a2ecbf3a8d358154ad43a8c8c0f2ef2f9f699d953cc0d5255d4a004b27f"
+            }
+          ],
+          "name": "funfact_t_win_no_casualties"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Terrorists won without killing any Counter-Terrorists."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "1a972237674e6a6b184e9340bb5d6561614123005d35f6117c26a6775eb87729",
+              "oldValue": "cf0dd2fc110bfb2749b28d61dbd4c59e6909c6d54b579687aba182b76de96da1"
+            }
+          ],
+          "name": "funfact_t_win_no_kills"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} tased {d:funfact-d1} player.#|#{s:funfact-player} tased {d:funfact-d1} players."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "6bfff35e16edc7250f955e60e06c8db4580e9f51bdaf301223f556b627344ba2",
+              "oldValue": "bda150a90040f028cf5fdea4bb9c945f57c924ba3f71416db4636e9a3f581d60"
+            }
+          ],
+          "name": "funfact_taser_kill:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "The Terrorist team eliminated the CT team in {d:funfact-d1} second.#|#The Terrorist team eliminated the CT team in {d:funfact-d1} seconds."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "ceba210e78b52ab82e945aa4f06916571f7332d20dc031066953d1810a3224d1",
+              "oldValue": "5ff42d568743ef931ed276c06e675d498f00d4c97bf182feb5df384c8a737b99"
+            }
+          ],
+          "name": "funfact_ter_win_time:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Terrorists had the best accuracy with {d:funfact-d1}%.#|#Terrorists had the best accuracy with {d:funfact-d1}%."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "227ce45eccac6f8378944394c4b80c963b1b793ae346b8c00f0d931b58404d5e",
+              "oldValue": "3a76c47ab571e2b6608ad245d948985c65ac990e0b70c53b19c0ec592e2a61e1"
+            }
+          ],
+          "name": "funfact_terrorist_accuracy:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Terrorists won despite {d:funfact-d1} CT trying to defuse the bomb.#|#Terrorists won despite {d:funfact-d1} CTs trying to defuse the bomb."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "4aaf6eca28006c39ebbedd7083fdaf0a92696635a718b0f5e629e3536c3351e7",
+              "oldValue": "c73fb41a42c3d0bf1507845a71bdfb275ad18fe3339d79588ca69a56ac253f7b"
+            }
+          ],
+          "name": "funfact_ticking_time:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} went completely dry on ammo."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "3d2e0f62d2271fd7f374cf0d441ee08961732c4d2acff8f4cad63c82d3205acf",
+              "oldValue": "e955405bdf77f38ab57345594cee031cf0cf7c63238af1b1a9ba0a591d68b669"
+            }
+          ],
+          "name": "funfact_used_all_ammo"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:funfact-player} used {d:funfact-d1} firearm.#|#{s:funfact-player} used {d:funfact-d1} different firearms."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "1224831acfd6b379d8076c35a187a8e774ece7dada9dca07d829027304d2b6b2",
+              "oldValue": "01cd18d01a31af6f1b28b66d0bb3e68fe585d5807f5154b1fce0f4b40e3fcac9"
+            }
+          ],
+          "name": "funfact_used_multiple_weapons:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "As the last member alive, {s:funfact-player} killed {d:funfact-d1} enemy and won.#|#As the last member alive, {s:funfact-player} killed {d:funfact-d1} enemies and won."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "1f5ffd005823760282e05e4f3eaada8e0da3c8cfbebb47961c1099e52c049f24",
+              "oldValue": "f4ea1ccd330e26a3fb8f96019ddb5f0f2ad26011d4f18f427c1ef58831d89777"
+            }
+          ],
+          "name": "funfact_won_as_last_member:p{funfact-d1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Most Recent Win#|#Most Recent Wins"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2eb184893236c73cc42d479d305ac387da18987b388489f65106e0b3192b2d25",
+              "oldValue": "bc4bd484c9b58bc6b281175dc48fc838a13d7fd996b108d1ba7387f4b27e89a9"
+            }
+          ],
+          "name": "mapwinrecord_graph_title:p"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{s:stat} Estimated search time"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "bc84662e44d302ecb5900f985d965417c4c917bb45935b31bd3344a9f95ab243",
+              "oldValue": "24ccee989f307e1dc9b1c7177814ea3a149531478dedc82fe0a76e0676916d3b"
+            }
+          ],
+          "name": "matchmaking_stat_avgSearchTimeSeconds"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:stat} Matches in progress"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "807eb7e3ea44bbd294171eb085005701f0e7e59971ffe0a239c12668dd3ba88f",
+              "oldValue": "63d91df5af6ad896f78ccee55d8d9640e058b45901a791180bc118ecf46f85d1"
+            }
+          ],
+          "name": "matchmaking_stat_ongoingMatches"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:stat} player out of {d:total_stat} confirmed#|#{d:stat} players out of {d:total_stat} confirmed"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "39f05dffeb5fe5f1f68ff44565ed6de736612b59c308330f6f688a5cc291dc82",
+              "oldValue": "6d5ff6e3319750ec346e70802c3be7e2ffac5c431619166ec1aa9b5da4df5ace"
+            }
+          ],
+          "name": "matchmaking_stat_playersLockedIn:p{stat}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:stat} Players online"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "a2522623ebb18a004ba3b74cc960edf3eff8a869c762350a9e3d8c2feb0b0fee",
+              "oldValue": "a1f1fa6d7b776e6a60521429b2b9aad0836631c352f0c9537f6de61e6054cd43"
+            }
+          ],
+          "name": "matchmaking_stat_playersOnline"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:stat} Players searching"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "8781d2124ddc8dda23b7ba5b79b8ac0688e54711b51bc4e58ef31ee19917e790",
+              "oldValue": "b8c2a7064f5bb03d8fdcaaeabc7fb860950511d0923a448b10b83fe5c854b871"
+            }
+          ],
+          "name": "matchmaking_stat_playersSearching"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:stat} Servers online"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "155a11b50f9ac3c64f7cce25c6dfece8f1317ea7b6cd0a1545f8cd8393030dca",
+              "oldValue": "2dab84d51b268c7ae08bf9fa48fc64d33c18125677a43c32c08f463bc7118269"
+            }
+          ],
+          "name": "matchmaking_stat_serversOnline"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Rent {d:numlootlist} Weapon for 7 Days#|#Rent {d:numlootlist} Weapons for 7 Days"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "bea01c840250bada2d9c50296d87bb056eedd96ee1507f059b48f3d098cb53dc",
+              "oldValue": "6cb0ea0471745c977a69c2b5e621cf8d39df87b5b4bb1ee0fc03a3200411a218"
+            }
+          ],
+          "name": "popup_decodable_rent_weapon_count:p{numlootlist}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<span class=\"get-souvenir-redeem-count\">{d:redeems}</span> Souvenir claim left#|#<span class=\"get-souvenir-redeem-count\">{d:redeems}</span> Souvenir claims left"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "9e3926141ad06a4f1dea61b83f7d25120273f611adaf2b82e88e3d1db2836d10",
+              "oldValue": "daaa4c38260e71409f0579c4ff98bfd0d0b716377a82bfcf750e00526b56c1f0"
+            }
+          ],
+          "name": "popup_redeem_souvenir_desc:p{redeems}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Add <b>{d:item_count}</b> Charm Detachment#|#Add <b>{d:item_count}</b> Charm Detachments"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "95f3cd7dbd40bbd50ae58fc2fc419e1a9be4e31f850a6b8e51440c071d189560",
+              "oldValue": "5bf6bfa8951595a4e015d0c877f498db86f647dbbbcd1e5b1d71cd09dd92b0fd"
+            }
+          ],
+          "name": "popup_useitem_button_getkeychaincharges:p{item_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Overtime#|#Overtime {d:scoreboard_ot}"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "c9228572983b10a34cc4b9cfd23e9a5b771eacfeee00471956910a457ac0e903",
+              "oldValue": "a25b47de17d35b3969faea3922b3d096b476d36f6a903c1f602d914270867516"
+            }
+          ],
+          "name": "scoreboard_timeline_ot:p{scoreboard_ot}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Overtime: First Half#|#Overtime {d:overtime_num}: First Half"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "07f9dc9073593b3d7c05ca98bac30b94a4b8e186a44647229e2c360f89ba278f",
+              "oldValue": "4ac06ed8056fbe3f15f28c9787334a7f5fe150f6e62ffe87fc7dc2f3e3acdb57"
+            }
+          ],
+          "name": "team-intro-overtime-1st-half:p{overtime_num}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Overtime: Second Half#|#Overtime {d:overtime_num}: Second Half"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f4356b55a60508628ae34c072fe557933451dcce769d7fbfa15e43498d3bfc46",
+              "oldValue": "2f4bc7b0ce6c69e01a43c1134f0c2377176fdbe2f74ad1e34e142679f3ce9f4f"
+            }
+          ],
+          "name": "team-intro-overtime-2nd-half:p{overtime_num}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Win <b>{d:winsneeded}</b> additional match to establish your CS Rating.#|#Win <b>{d:winsneeded}</b> additional matches to establish your CS Rating."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "8116a03c630dd188febcaf15fb138424c7dcda900cb474aba8d0098528fc5850",
+              "oldValue": "cca0c0f7cef13cfc6e9b0512d2185606241e0f786d5e914c815397c195158024"
+            }
+          ],
+          "name": "tooltip_cs_rating_none:p{winsneeded}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Win <b>{d:winsneeded}</b> match to establish your Competitive Skill Group.#|#Win <b>{d:winsneeded}</b> matches to establish your Competitive Skill Group."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "216f4d02a57b5dc9fe67359742b532eb337bb12ba58fce92c898cda28c480ddf",
+              "oldValue": "fe09c52700d9ba18e479ff568aa573286f6fb624c77e2d06735ebd007ac2040b"
+            }
+          ],
+          "name": "tooltip_skill_group_none:p{winsneeded}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Danger Zone Skill Group needs to be calibrated, complete some Danger Zone matches to establish your Skill Group."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "877be51f8118f476a585015abc49b7557c2029d9152f7dceacd63d42c7887207",
+              "oldValue": "8bdaa77d0ccfa41bdaa43be86c532b933a55952d4c9a087b32d4d7b576071c79"
+            }
+          ],
+          "name": "tooltip_skill_group_nonedangerzone"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Win <b>{d:winsneeded}</b> match to establish your Wingman Skill Group.#|#Win <b>{d:winsneeded}</b> matches to establish your Wingman Skill Group."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "1df6334e79561f88e8567d5268aa00f99078bcdfc7fb2f1e7aecffd1d801d355",
+              "oldValue": "c22ab580fbe9cbe6b2368bfa019a9317f0c2bb5beb75ff572e988e2a703039a3"
+            }
+          ],
+          "name": "tooltip_skill_group_nonewingman:p{winsneeded}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<img src='file://{images}/icons/ui/trophy.svg'  vspace='6' class='player-card-tooltip-icon'/> {d:wins} Win#|#<img src='file://{images}/icons/ui/trophy.svg'  vspace='6' class='player-card-tooltip-icon'/> {d:wins} Wins"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "c411f97e7ad2fb55ccf0accd86a9c508e83c569554f443ba2a797e2ff780f88f",
+              "oldValue": "287ad46aa3cc78dcacdfdbb002a523569bd3781929eec2ba003bd20f77040120"
+            }
+          ],
+          "name": "tooltip_skill_group_wins:p{wins}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "{d:wins} win#|#{d:wins} wins"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2cab6410907a9a79b0b96c9e2edf3f5316db15dc06eb8106015c4fdde43a1b8f",
+              "oldValue": "3e0d96b838b8ac58fc32689a0d47e2a40e6626eacf27f4b848514e6a55526a2d"
+            }
+          ],
+          "name": "wins_count:p{wins}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "New Item!#|#New Items!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "675c62e5016b844f18bb383501ad75f78bd36ee70d0c3f69bfcac5ef9a4f6ec2",
+              "oldValue": "cf028da3bf6855cf63582fc26fab370dc2c1346760305ea8346aa5b6d5dba654"
+            }
+          ],
+          "name": "xpshop_new_items:p{new-count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Clear {d:completed_tracks_count} Completed Pass#|#Clear {d:completed_tracks_count} Completed Passes"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "64b053bf77e23be94f6f6ee38d731424b1775c2513f14b41818feed79844064d",
+              "oldValue": "44f83c86f8d92fb47ae147c9a77d18d154d8d029438f7476013133fcaafc01d9"
+            }
+          ],
+          "name": "xpshop_popup_clear_n_tracks:p{completed_tracks_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "You have earned all the Armory Credits from this pass.<br><br>Clearing this Armory Pass will let you activate a new one. This will not affect your current Armory Credits Balance.#|#You have earned all the Armory Credits from {d:completed_tracks_count} Armory Passes.<br><br>Clearing these {d:completed_tracks_count} Armory Passes will let you activate new ones. This will not affect your current Armory Credits Balance."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "51df5298da71e2f3b8e2d8e8eddab2631eafa06fdf089f65dd54744ab8cc9000",
+              "oldValue": "2ac3b2294eb41b15640dbecb194312851e6347ef10040f5bc67738ec4aed3a7c"
+            }
+          ],
+          "name": "xpshop_popup_clear_n_tracks_text:p{completed_tracks_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "22afb8d8f149e808690076c42cf040c9a611352eb4e09b203b134ee7e4bfe6a9",
+              "oldValue": "6eed21ba1ea7601eb1b056726e60af17c26c1806309d8abb5f3648bf7c183829"
+            }
+          ],
+          "name": "xpshop_popup_clear_track_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Bidding on this batch has closed. Winning bidders will be notified after the settlement completes. Please come back tomorrow to bid on the next batch. Bidding will reopen in {d:hours_until_bid_batch} hour.#|#Bidding on this batch has closed. Winning bidders will be notified after the settlement completes. Please come back tomorrow to bid on the next batch. Bidding will reopen in {d:hours_until_bid_batch} hours."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0c8b2a426baa25a1ec4965d4f6d1b69bc102e5eb266a312a69a591c0bc2d0644",
+              "oldValue": "8516e22f55e7643041f801eeaf21785d29c41e70200db45eba367870f4a55b17"
+            }
+          ],
+          "name": "xpshop_redeem_bid_batchover:p{hours_until_bid_batch}"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "You need {d:stars_needed} additional Armory Credit. Earn them by playing with an active Armory Pass.#|#You need {d:stars_needed} additional Armory Credits. Earn them by playing with an active Armory Pass."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "8f78deeba73162a305f5d7e135beec0e79fed79893d3bca43da7419274d92cfe",
+              "oldValue": "648255956b90105279bb2f382d3f3499df55dd93a6593630a4348f576c7d8581"
+            }
+          ],
+          "name": "xpshop_redeem_not_enough_stars:p{stars_needed}"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "21789745",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "21856620"
+}

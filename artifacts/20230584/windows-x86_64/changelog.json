@@ -1,0 +1,2657 @@
+{
+  "families": [
+    {
+      "added": [
+        "client.dll/C_CSWeaponBaseShotgun",
+        "server.dll/CCSWeaponBaseShotgun"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseShotgun",
+              "oldValue": "C_CSWeaponBase"
+            }
+          ],
+          "name": "client.dll/C_WeaponNOVA"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseShotgun",
+              "oldValue": "C_CSWeaponBase"
+            }
+          ],
+          "name": "client.dll/C_WeaponSawedoff"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseShotgun",
+              "oldValue": "C_CSWeaponBase"
+            }
+          ],
+          "name": "client.dll/C_WeaponXM1014"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseShotgun",
+              "oldValue": "CCSWeaponBase"
+            }
+          ],
+          "name": "server.dll/CWeaponNOVA"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseShotgun",
+              "oldValue": "CCSWeaponBase"
+            }
+          ],
+          "name": "server.dll/CWeaponSawedoff"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseShotgun",
+              "oldValue": "CCSWeaponBase"
+            }
+          ],
+          "name": "server.dll/CWeaponXM1014"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_ironsight_dot_scale",
+        "cl_obs_interp_speed"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "GameUI_IronsightScale",
+        "GameUI_SniperCrosshairThickness",
+        "settings_grenadecrosshair_short",
+        "settings_snipers_xhair"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0578f0c492a944317be8ba5b7aa12badaad0f9c4246e44c1603c2b1f65339199",
+              "oldValue": "1b5c1fd2319fee5013e337ec7c13b066dc5901b74a22d18d72a5f43ae3de4938"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenGolden"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4e768f924b6321e09a81dfc1039c3d319122bffa7d223235bf71eb316022cbba",
+              "oldValue": "eb98957cf881ea4b686a2b67685c7a213f4849878f1573c64b4a52152251e0af"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenGolden_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5c922751e9ba5b01f27551b29cca36b9ccc1e6babf771e39e65b1e145eab0f60",
+              "oldValue": "36304c434b2e7a19a6fe1da00c1b886f96c643567955bc29cdbd54d2fd33963a"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPalacio"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c5cc29b1da4e908a4e76c6a351c170c46aee4280ca4b5aa8496f78b2b9f1e534",
+              "oldValue": "645b71c2e3899540b1955e374708648f8524e4d9e997df99ec09ee4de89cdb5f"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPalacio_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d7d532b7f9ef5d23adaf74db26b27db05f64760747bf130d821b9533ba696353",
+              "oldValue": "e5d1208ee48c830d49bb8c0510a6c4985a82a7a555a260a346b47bb9fd71f1da"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenRooftop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e3add25ec944d601e559f912a8f8a01426eb508986c748573059cb540db6028",
+              "oldValue": "9db2286edc398c66cf8aa1f12e9b6c2b62d37da5c0646dcd190d66bdad322c1e"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenRooftop_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d732b02664fbd7b071b38345bad7001b9decbabde1d05e5c9413b1dca2b0ce87",
+              "oldValue": "e6ad9d6ca01063adedba40927cbfcf535db015134bbc958d9259aead27aebfac"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenTransit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6da17d8342dca3d526a5ab65e0a78fc0dfbb33d39ccf6fa8af02080dbf713a7c",
+              "oldValue": "1842f5577e6670aa532c4eedc8b1474c1a9ec5c075d7e11590074cff36d20726"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenTransit_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ee43db12d30f693e328fe94e56239d7741287ddb2c763e05aa689494d71a6b66",
+              "oldValue": "c8b3b9ff889647c30c1913678354ac290b7dc12c3168e2d02e3d7382c2e97201"
+            }
+          ],
+          "name": "CSGO_character_operator_dossier_op10_ancient2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "05f2340ecefb6d771d6aa4726537243a5f60dcf76125ed750478a7a750364078",
+              "oldValue": "9a20325ea3f66dbcc4f7963c8aab1f5dddefcb1f92bf42d95c8de7cf39dca354"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_drboom_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9dfbdfde92cd2515b92e5c0751c5accf4afe084479f416b995ede30e363e872d",
+              "oldValue": "60270df94054b28d61fd62e0037db1c508a9a1340cc9ae3174279d309b1d82c4"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_drboom_capsule_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4c26ceda226d10dc67866f8cfebb6512689dc60238268c9ec1813b3232f0fbeb",
+              "oldValue": "975fcccebb52834fcc84cfb7d837fbbf374416303c96dc29d971da17cfc934f0"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_drboom_capsule_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dc39e327a77bdab262e2aef415e4e42c1f6f5c8112c97895fb9d06d0ce6a7c85",
+              "oldValue": "52552eec3562e119b5ada5ae3c2cbf79cf90c0b03e4ef6f541b34298e3960459"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_ml_community_01_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8a228352ce953d788d246952b2fbf063822218f373795a1bc4b62738478fb2f1",
+              "oldValue": "4d6771663cbd800faf55401a4922b88d702331faeed22facbee0f13cf6e74d3f"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_ml_community_01_capsule_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8180462f61c14ad7f0edd9b656b1f8f2749c25e821ea1d015b758859030f05df",
+              "oldValue": "e4a71055bc068fd2586483aee983cbff0d5a6bd4ee59481a73a40400cd63315b"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_ml_community_01_capsule_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0b58f743baf8c687f2d5802a47d171bc0b73b63662e135c56b8349d43f2eb7f8",
+              "oldValue": "d00ed131e605c6674876bf39a95ebfee74ecd5b6744d5a2397a75694f92a345a"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_weapon_01_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4a0a75b3901d7ebb1181b97314ad18585ea90de8596efdda55a5e7aa185f8417",
+              "oldValue": "e1b0d7826587646775a0ab262f9be3ca3e977a1f8f99fdc241ad8de4d9d5c470"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_weapon_01_capsule_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "951a7730e648fb13f67a7633726174a66f8aed8edc77c5467da9bc08cdd070d5",
+              "oldValue": "17f14686d8e6dfdcb0928b56e305f48b25485b9b538a4667b4d63159116ec9b7"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_weapon_01_capsule_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6eb3ec2c7c38abc35a591bd2da5bba882e49cf52770fc6e4851de9884892293e",
+              "oldValue": "374deb3e0d12e8aaa33b60580147a54c97823c3f8cc01d69658463103ccb1c7b"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_community2025_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce03c03b3be590ec136f2f2fc76008ae4f9cd7bd048caa5763f33e9ef2b53c4c",
+              "oldValue": "92e219f6c87e5e18bd286dab1fce4286cae6bce71d045d28261d99c0814182ec"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_community_2025_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d8c09605a3b5239c483b98aa4a5be455b1caf86eb9ff12eb5e9fe77eb451015c",
+              "oldValue": "61a51ee66cbb454f421b94059c7eb116ad97535c2b1f8368cf31c1aeb638cfea"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_sugarface2_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "09139d51a39b64a5ce26d8705180a017860a2cbbc10389516a01f74f69e8aa70",
+              "oldValue": "68297a3a75b14fbe744cfe6ed6a8b75a0b2dec487862c4b8bc15c2d2ed3e1b29"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_sugarface2_capsule_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cd74e22e0a4aa3e1e4e6fba57ec5211549e845d12fc7a01c7566a0b37b60eca0",
+              "oldValue": "2ac082080fbda2daba534b956eb5a04e4773085b89b7865ba2def6c0dcbbcf9b"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_sugarface2_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "910fce47052372906881eeb0f4db71d3ee282f22101a2915a01f5bce119170a1",
+              "oldValue": "05702294ad2bf2531f73c5ad6bd8a66cb5137d74a8b4a07a7b6e17b9786919ce"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_sugarface_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7204d417a7c7e856cf35ca2077acddd04484143950d4a62696277e84a5b46b39",
+              "oldValue": "f313138c0442a6483eeab60c99bf5a1e3ca2f4b0a8ac7a3dd07c4e522e5cc7de"
+            }
+          ],
+          "name": "Cstrike_Auto_Rezoom_Sniper"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5df4e355be7df0dc63dd6a0007199025c7f06006aa03af8f64b92dea17b3aead",
+              "oldValue": "d8a1b1f992b1274df830e31b3fbc6bb35f13c8feb94c3ec8d552d3cac15aa66d"
+            }
+          ],
+          "name": "Cstrike_Delay_Unzoom_Sniper"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac72e55a9e7e5ba6b90d26917b058c66d88daf146e6677bf40904b5e43a76c20",
+              "oldValue": "158336d6f38d5b172d56d8238be7d06e563a8b1b49df6ab987c6788b28ee2ccc"
+            }
+          ],
+          "name": "Cstrike_Show_Inaccuracy_Sniper"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f422eae86f3443f461847b256447729612c08a8ccc3e88d8a82aee45ec312414",
+              "oldValue": "123a217d59537a05cccfdaa7f751a61cd7427c059f30d952a331056b24ef9ed5"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_donkclean3kvsmouzonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e5eb4a063eeaac4fd583890547c23ff09c3a516d0d391c88ce721022a65c80b0",
+              "oldValue": "e839c0fac72cfaaf316736d5747317ee57df1535a500489843757c6490bdab62"
+            }
+          ],
+          "name": "LoadingProgress_CompilingShadersRemaining"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "549453175034ab4891428afb6b8f3b06a55ca754b867a3d2736b913e85d968cd",
+              "oldValue": "869a5fce0b95ee2ee0b68d95abdcd44a08e8a726b21b2f6c82a51191e8b8e8e7"
+            }
+          ],
+          "name": "PANOHUD_Spectate_Navigation_ToggleXRay_Off"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c5171ff5131c55df2363d1de5c473165dc873d3abf42e9bc5adcb391a5152c57",
+              "oldValue": "64955cf8da17625ef1910e6055e3afc9645d10ed8b313e66b2dd526694c302de"
+            }
+          ],
+          "name": "PANOHUD_Spectate_Navigation_ToggleXRay_On"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a4e804d09dc86eece890205a1bb4b6b46d6f60af410f2a5659beb0fd96f20442",
+              "oldValue": "d76045a38496372eb7441e4ae6e92da1ace7bc5c23d7199de9b891c6642b4edc"
+            }
+          ],
+          "name": "SFUI_BuyMenu_OnlyOneArmor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0b9e8392a7bf10d1e65252db230a45efa368d20bc8d485b07e4a40c5e7be4ebc",
+              "oldValue": "ea218e3997f57a4a125719c713b3c9f72a8cb3ce069f7e048c68f14132b14210"
+            }
+          ],
+          "name": "SFUI_Map_de_golden"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "65d49d7357b5e303a94c8f835237333e4ce41558552865945341af04d9720a86",
+              "oldValue": "a695a5d6034d1738536ab730c676ac622733cd8dfd23349a9f6b8a1173729c51"
+            }
+          ],
+          "name": "SFUI_Map_de_palacio"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c3ae7a57829eeb7ac1fc44aed571d71618a02a9999620a9015673a637bdb3744",
+              "oldValue": "59e4ede01b5167801a45aaa72815bc65b688882ee4fc600fc1533efd90754c17"
+            }
+          ],
+          "name": "SFUI_Map_de_rooftop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d6d9238b206e729266046a55808b8cf2c253afa9ac296e2b5b76d7994556e76d",
+              "oldValue": "0de503e9d355f708e866be6a3136c013caeaed44132fea7ae244b8a6311a72e8"
+            }
+          ],
+          "name": "SFUI_Map_de_transit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d30b86fd83b34111adc0432869ea5289f7986dd06a740a49854420f438be0f65",
+              "oldValue": "30889842c92c2b4a97ea668d4d8f4f088c3eb1c4557b90530c43f192306ac3b9"
+            }
+          ],
+          "name": "SFUI_Settings_GOTV_Caster_Volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "24dfc0aa22f031d684d31827f48b48399c5166301607af82d92ad9e9dae947fd",
+              "oldValue": "c5b58a53cbb0dcb963a29a10420d6d46e3a3f54e5a7fa20b0114a77824d7c067"
+            }
+          ],
+          "name": "SFUI_Settings_GOTV_Caster_Volume_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "80311438320fcd757a707d9db4dfbc133d4dc980f32d90a0cc0e9d7eeb6fe194",
+              "oldValue": "8cb741c050f6b847b6b1537e443c3bad7670e2ac31bcad87bf5d8cd790cf82c0"
+            }
+          ],
+          "name": "SFUI_Settings_UniqueTeammateColors"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4030794a66d990a1c83326df068d84212524704207db4a6b318a3de0ef90200a",
+              "oldValue": "ee2e0a1654464410a9dc79bf10393edeec3220d7c213dc4aea1ca1450f8c88b3"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c2fd2eed618246794a85f8fd1cd553f46ea7fa3e1c97a30a3e310259e009ba71",
+              "oldValue": "cb8b1305eeaabcf8f8e3df3fa3f695af8edc8c7a73d128a4e4ae5534d9cfb92f"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_bid:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3883581b97b1957658005f9039f008597c7398794c46f402d51d442acd5ad8ec",
+              "oldValue": "589ddbf0e2262ed22669f9350d89b82cf94b293fb2bc93b10508cd2a23b0d5b4"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_claim:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8d0b79bbd84e31dc13e80b5371dbfc83b389a8417413ef943a9a2e3ee65884f0",
+              "oldValue": "9da9cb8c9531c9428e3836346438ced0305f3a4281dc07951b63968615b6c0e0"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_last_bid"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "acde2eb6487355923e591f133f24f4f8ffc9b752cd10c1cd1d778b2f47e80c71",
+              "oldValue": "b370a7e71debf9d8016ee120a5cde52817055ac41dc3541d944b02bd91721e74"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_last_claim"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fbf8a14c6d8896aa3f4abffb864c8cc384fed161e8cb0c0f6cdf8b29a72576c1",
+              "oldValue": "1905392ea2bbada3462ad315fc8178841bce88d23ca4d24e34f1c565899b264d"
+            }
+          ],
+          "name": "SFUI_ToggleOpenMic"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "570f39f5d04c708acf21dafea4b0dad22c7ea7325cc688e5e03a7f97422852ef",
+              "oldValue": "03722956e390e9b7f874cdbc36352404adff15902aac0b81de18da6924334c41"
+            }
+          ],
+          "name": "SFUI_Workshop_New_Map"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5e4b9e92a570cafc1225d460a1e28950855a7a3dfb53be909006b41d59d3f5d0",
+              "oldValue": "6fa883c25a2425add6047e7665e33374d43d9d0a7aca0c7ec6e4fcb5f4ab581b"
+            }
+          ],
+          "name": "StickerKit_community_2025_lenticular_bullhit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b62d0efc343b6676e6b42f4cdc5f9e272c0ff0c42eb22d3943b11f74267c43bb",
+              "oldValue": "9e12360b9628bd5bbe54b0f5160bf6282a22eef9bd55ccd11f3409cdc26765a5"
+            }
+          ],
+          "name": "StickerKit_community_2025_lenticular_digistrike"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "673bac6b3393d2a9c9e2fab4f84a68853b3dc534b96cc1eb615650847c8d7f1f",
+              "oldValue": "c0d226fff3eaf6a49916eb9a7891b573755fc1de33e34b9561ae345cc5e94371"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_eyes_of_farlow"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9e5254f56200673f3fde9942306c8c408fec92908434602446965aba29b8868d",
+              "oldValue": "4b1d259968e3493f914e27ab0c72f0e2d4cc06ae8364a3d5b454c4ececc7ce61"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_fade_mangos"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ad7aba5e55c8709016368fb736b52741d62755bdb739961c04e679ad07716b8c",
+              "oldValue": "72c20c0153b4c17aefaeb628955f52bb4bccc03f53083108c25ba36a7922d6d2"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_pots"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "131131d9c484e530d3f6bb3fb11b94e937717e0387ef91df176447b13bebfd40",
+              "oldValue": "85947d5fa2ebac801c88e77211e62d6a3e2e672d791c3d313a314301baa1c8c2"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_vice_cursor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d0180b3782d71c8e61f1ca1e5a07715d19336e98f70aa1a3cc270fb6e40f584f",
+              "oldValue": "7760dd955edd3a2582160a41b45ad557b41c214eaa7e3dc3c320b2d8448102c6"
+            }
+          ],
+          "name": "SurvivalMapLocation_Helipad"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5533185ba4972e17787d69c0072d5c017943885503f2e06b83a1ffcaa49de386",
+              "oldValue": "d25c34454c98860980a914de64db287c233d31338a5ef652e7d469477a799e31"
+            }
+          ],
+          "name": "SurvivalMapLocation_Hospital"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "46f66811afa341981075e3e5912d712acbc65558b69905891b1cf3473e14c9b7",
+              "oldValue": "72910f405190e36d18ba3284071b095a5b324239d1ec9e691c0d4fdcdd4ca430"
+            }
+          ],
+          "name": "SurvivalMapLocation_Hotel"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0b92dbfa707f367ae8ebb9107dd928450764a27f34ef1e511080edf39bf0f232",
+              "oldValue": "fe8b8b8a2f60bd61006c9edad5ae5f9faadfbb57bf209fadcb8c4fb025700fbb"
+            }
+          ],
+          "name": "SurvivalMapLocation_Observatory"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ec0602196693157345612a29cacba41089e80c48bbb20740a0afa5e5fb692ab5",
+              "oldValue": "7a8a471a7e13fa37b5cd69fb2dcf1c2f035ae3dfd8e11d17b709770ad738e21f"
+            }
+          ],
+          "name": "SurvivalMapLocation_RockPoolA"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6657d8c7acf297494ce18e8df6ccf7fe55d11452d1291b2aeaadf1ae536de4e7",
+              "oldValue": "b8e229f2e93fa6c90f9bdcbed5f5275106234fc2bd8ec55aeed42f917098b9bc"
+            }
+          ],
+          "name": "SurvivalMapLocation_RockPoolB"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f3efb7d162542fb60576882173a8d9fa5b212f6735006420224d94f42f374faa",
+              "oldValue": "a94b166d711ed9ac699f9c95c784dd43a334b83214d360f4ebfbac9f341d8eef"
+            }
+          ],
+          "name": "SurvivalMapLocation_RockPoolC"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "99cdc78ce5c903e07dd45f8dfa8bbe9526e2c21bff2b25f51342c6876dc33aad",
+              "oldValue": "c9b3a61c2d2ae9f0fc2117072decdf61ae029d310ccea0244f0c646b44505e93"
+            }
+          ],
+          "name": "SurvivalMapLocation_Summit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "18a484ecc74dbb0dc05ac8d3a399e3b52c17502311cf0bad16b771f9c85a61cb",
+              "oldValue": "c197526b1b0b0e7130272f864eedd75d5447f3b99067d3b470f7ad4c4f8ea2a2"
+            }
+          ],
+          "name": "SurvivalMapLocation_Swimming"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "65f9901a5ceba156d465bb05a0c7672ae7b4ad309ed7293bfb2f183535433439",
+              "oldValue": "4a079fc5c4ba8921ac1845fe32f030ef0a04965a916a5a769619686f1f8379da"
+            }
+          ],
+          "name": "SurvivalMapLocation_VisitorCenter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "76e171a7f2e77b04b6f68cb38a7355255bcbb7da0d66db274e2b830bddb0e1e1",
+              "oldValue": "8dd962de1ced9271bc1bf305f25f03b2bafdcf5f37eb66c70e026e72232a082d"
+            }
+          ],
+          "name": "VanityLoadout_WeaponInfo_stock"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "58955f8611d4bc7de67758101ab503f9d6a9517cb7e6b1584c5c8b9d1f44de13",
+              "oldValue": "034ae751c51c3e8c97c4a8bcb47ccc17647c2597e0c08752cc71b6f3c786c859"
+            }
+          ],
+          "name": "coupon_sugarface_sticker_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "689ba633c3f054a2b25e1ce53ea1b90738ac5a5a964baf23e5da08f2e3041ef4",
+              "oldValue": "20036f5030a1c6f4b87ceaf62f34ab0fb9e2fcfaceaf755d9648676a7c9b2d61"
+            }
+          ],
+          "name": "cs_rating_generic"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a00bd07967f61d878fc024ad2f5b379d44b0417735a65d74a2e0fbb61d3b7c13",
+              "oldValue": "6a8cc053f52f0d5ce94572d64d6a7f65fe09a04c98dee425d1c0d2120f7855b5"
+            }
+          ],
+          "name": "cs_rating_promotion_nextmatch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d1bf33980644121ae62f20294ad437891d1ff8be039d4575015578ec67040e76",
+              "oldValue": "88e4a80a342f47089cd97d15cda0abcb8cd62094087320c30a4187800ca101e6"
+            }
+          ],
+          "name": "cs_rating_relegation_nextmatch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "35ccb088b5750cf726f8e585bfae2ae9801cbd69de6303cfbb6b3f0adfc53f5b",
+              "oldValue": "dae36325dab09bf838e66b48b92db0a440552fa1cc6b0e169ea6b7da93d55d61"
+            }
+          ],
+          "name": "dealer_message_addition_factory_new_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3c1618d2f46458bddf7c07c0bd2393d8dd0255f81d67ea6ed60269fc93673ef7",
+              "oldValue": "cdd52c6cbd36f0c608c21b95927dd7a0f2f20b3268c359aed22dd8d2ffc26196"
+            }
+          ],
+          "name": "dealer_message_addition_factory_new_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4a57bce27a12e0f8974c639ee760b643e0c7b1b56846a49381d7a183a33604dc",
+              "oldValue": "26d0300dd294f9f504300006feb8085b39bce2da8299f40330e80d72a835a161"
+            }
+          ],
+          "name": "dealer_message_addition_factory_new_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3d0f7f9b82c18f6a136eecc475d31fa00c947a6b6696b03d4744ed52beb228a7",
+              "oldValue": "a01c623de5ea4f5c84f6556f131d247ef3c79cafdc27cb2d9f5dcdc0a8e4cbc0"
+            }
+          ],
+          "name": "dealer_message_addition_factory_new_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b392ffff96b1f48656ad467583740406b440700d668b45547fdf629e640d4122",
+              "oldValue": "0d9f45eed7aa4c57f1a8a307141b2a68bf158fd578037f0de7a9a94bad2aeaf2"
+            }
+          ],
+          "name": "dealer_message_addition_stattrak_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b7f1957cb233b8569434bd0b8ba648dbd7a96da02e00f1489bd0c35b55cf997f",
+              "oldValue": "c4a873e39412398a0bdcee9259f1b7a9cf8f409cd11b5e9e448086e7fa47d478"
+            }
+          ],
+          "name": "dealer_message_addition_stattrak_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e8f6886097a775ccb421cd350336f9a5a16d93479fa294ea228075fce0eecabc",
+              "oldValue": "1fedafc6f5359a2e5af78348ac790d82cd495048016f1e67dea932b0eb92c32c"
+            }
+          ],
+          "name": "dealer_message_battle_scarred_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b84709577f6a1f3ce394c60aec4020c979be9fd829a3af7afe590c015564163c",
+              "oldValue": "1999cd8e6cf7ce40de8919ccb22a708413f093b5dc08b0d5c61651d6f6075d37"
+            }
+          ],
+          "name": "dealer_message_classified_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d4622a0b79c5cc2e6ef4693a7f1e949dbd57cbb0665e1723553a983f5fb5fe9f",
+              "oldValue": "1466f0cd62e8822b18f89c3058b25ab3c1218bfe4b64529426558e2d4083f3dd"
+            }
+          ],
+          "name": "dealer_message_classified_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8b72c4c843d69b4d47cbea0b0fbc034b44d9a65119db0a2048ead695c778a2fa",
+              "oldValue": "b18b833c51c9440433385a827cd4acea082811836781d9c8370513eec7b87be5"
+            }
+          ],
+          "name": "dealer_message_classified_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f811060170d748b36996b6e2e3b06342fdf6f4b1a349a2480360991005a0895b",
+              "oldValue": "441c09c9cb8af3e5752c7aa089d1235965f135f40ea09f546787f1b90f811a45"
+            }
+          ],
+          "name": "dealer_message_classified_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d8181206df1ed75d24492771005b02e8dc19384848894bbf33d3a5bd9498085d",
+              "oldValue": "63ee0893520d84711cd2e9e03d382bc9786938a908367d10367e450ce9e61ed8"
+            }
+          ],
+          "name": "dealer_message_classified_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "34c705a356c9df55e7f990cfd3bc7c7bb52fa95745647e9d56282f04f595a169",
+              "oldValue": "4629b09f4ec5a7588881fef38d6e0acd4322b94175fbf15c840d36e5ab2d5a62"
+            }
+          ],
+          "name": "dealer_message_classified_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a20660c55521c445074765a9b85c78ff1b7f2bc7fd386d683421e4fd769013d6",
+              "oldValue": "838737bd755ea921d637d55db3ba6b6d57d409edbc3c1c4ddea527f58798d8ea"
+            }
+          ],
+          "name": "dealer_message_covert_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d73c64abb6bcb1a5989659ad5e943767b3b1f705fbd9abf7dfb602400e67f15d",
+              "oldValue": "ba7a438af7a97a767d3f1385af021168fb27143cb65d068eddf8f489a3e208f3"
+            }
+          ],
+          "name": "dealer_message_covert_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e68ca98a6ca752647f803bd2ecc1b5a39f1de09ef8a7706ea2617a4572141fb3",
+              "oldValue": "0e3f16a23eac7d0f3de696d34821f07fb1f93612579b076ddfc037aeae7902be"
+            }
+          ],
+          "name": "dealer_message_covert_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d730571d42465a50a77b0b6d5d197e62f532c30ea2bfdd1155e835120901f288",
+              "oldValue": "eebb8485fc4ab5a492c4de2264e18c62b36e61697d31e8a7c4b09c6b936c3311"
+            }
+          ],
+          "name": "dealer_message_covert_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ab0c09b19f6fb3065703716fcd3464ec0ef2f34ced74f91cc613f81805536069",
+              "oldValue": "29cd213ef07a5b6057393c7c342f5c1b1404ccfb7402414587924a5961635e88"
+            }
+          ],
+          "name": "dealer_message_covert_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7f18c6d48e685dca6ea73ce1106bbd7aa5a1639781e761138c6a620372dad815",
+              "oldValue": "e4c23c973deb82ddb4885a261bae790ed3fa7701ff0a13afbd4743c28509c033"
+            }
+          ],
+          "name": "dealer_message_covert_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "125f622386f8e5ba5dc8d68f58a9a19e1d3a95e36ce6c81c129642239a344db7",
+              "oldValue": "a5859002356b816aa9abe9e8ab96ebc645bdcac3f500b447d5d7b5c9673b1252"
+            }
+          ],
+          "name": "dealer_message_covert_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7b5b8537193d942216d054fd3b5e2bd939f8e14d6460aaeb49362b9477b9e377",
+              "oldValue": "35e3fcdd8d74496775f10e7d82a18577eaff3685e467ee9cf3f0d90fe638a3f1"
+            }
+          ],
+          "name": "dealer_message_covert_8"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "03710368b545689ec51d2d5def87363449fb8ae3f3c1798e27b658902ed3d2cd",
+              "oldValue": "1a06f1ed0eb8cf8af01484de8545fb3024d103aaf0cae50163734d5eaa4bc82f"
+            }
+          ],
+          "name": "dealer_message_end_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8a9d22c76ce7ba070c72be91ae6b884f46c14bc01451d67fd6a4f646ef9c5172",
+              "oldValue": "f3f6d0faf7d513ccf4fbd6e85e2e794c61944f8a3d924f875146f7d721cead8f"
+            }
+          ],
+          "name": "dealer_message_factory_new_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2b6740f6293b70619f285ca638234a8d9d94aab152408557970a9db265cac33e",
+              "oldValue": "61bae37436ddd1076009feadad9c8c519e9ba53e27d69b77f879c56d01eb4ace"
+            }
+          ],
+          "name": "dealer_message_factory_new_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aa10fc3a3fd506713aa8d542f4f0a20d21b95d47cd73d9acaf29f942355cb3ba",
+              "oldValue": "115f75953ec1f4675fda890bb7898eb9e5ef0dc5709fdd0750d67a5bbd1fa4d9"
+            }
+          ],
+          "name": "dealer_message_factory_new_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6c9ada35ab715069f064fe29d0289e3e4bf23c1ab15305d922ad18b64d5eb4cc",
+              "oldValue": "3463260b0556a3c11cf2c416817c80986deae85e0608dedd4ad7fa79611555d3"
+            }
+          ],
+          "name": "dealer_message_factory_new_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "70c4d0bdb426580118f2d66843038b05fdc0746778ac25dfa51373d9464889b8",
+              "oldValue": "33deda8af025ba33ee98b97be724512eace6afd9aa4e05e42c4b95fde1c0c9a2"
+            }
+          ],
+          "name": "dealer_message_factory_new_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0083ae48325cb97e4187665339496d5d37d9de371d8dfdbdce48a43a5d9dab4f",
+              "oldValue": "85a8317d3bd849fb67d804e35914daa1eedae7180b1b6116631d84cf525ca1a2"
+            }
+          ],
+          "name": "dealer_message_factory_new_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "12b6d9f53bc449f345b6687eb32e4f5c572f080a9663cbf74ad60571f0a8318f",
+              "oldValue": "b16b88506771e96318348422f088a6bc15e9fda91daba20abf71d6f245cc3719"
+            }
+          ],
+          "name": "dealer_message_first_offer_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2a48a5301074c9baacf6bc8fd7f000bafb3ff746dc32ff9ce2302f162243080e",
+              "oldValue": "611d9980b44f55a3861d24a93d7d64eafe92f9a4e3e46ed164965567a0d61dbc"
+            }
+          ],
+          "name": "dealer_message_first_offer_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "97312e07efec3046bb9eef631dbc6c9a6bbfaec3dab4b3cb1355e5df853a2853",
+              "oldValue": "de431a8ae23fac03c386715e06b181c4fdafb7460864dff05eb4939812455712"
+            }
+          ],
+          "name": "dealer_message_first_offer_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "47279b8453050456f32e5eaaea0a62228b653543d773166d3c9011607fdcffc0",
+              "oldValue": "bf460db01da078ad195caf92ca0a816de2c781d527614bd6a44a10f0cfb24063"
+            }
+          ],
+          "name": "dealer_message_first_offer_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "84d5aa86cf458e46a0dee811e072b93f9b869d90e5fcf3e67401446dbf758868",
+              "oldValue": "4808c06669604231cc180a49b3957b17f86daa2e5a0abaf4f6b495284acb69f9"
+            }
+          ],
+          "name": "dealer_message_first_offer_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6bf59cf6852ca692c55a607ccb3387437aaae94a4c338354fde23a781a2752ac",
+              "oldValue": "b616ebacf7fb849eeb08b683bb0eb9ac188d2e66dc52496d1c4a6649dd76ed7c"
+            }
+          ],
+          "name": "dealer_message_first_offer_6"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "278f556196cd66f11af354e90d218ca95a7a3b7530bacaa05b599bd189ba9a11",
+              "oldValue": "01be2ac3dec8b684b2f75f70e941105293ad01370be919c763913084b5e6f6cc"
+            }
+          ],
+          "name": "dealer_message_first_offer_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "178f6e4252ad0b419fd35883fd11a94b661e4ff0f42bb384cd2e3af5083628b5",
+              "oldValue": "cfa5c2ab350d60c63769cf4cc28538ed76e139316c1d74dd0aa7b9eca6092717"
+            }
+          ],
+          "name": "dealer_message_first_offer_8"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f4116ed59ef4bd5453616b814fc37aea7494d01035c4a082ff47736980ea179c",
+              "oldValue": "6d79a82232888e1d97474ed405da3aa16421252d8700c423162a48f3b99d1f4d"
+            }
+          ],
+          "name": "dealer_message_first_offer_9"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5100deafb50835f4a1fb9c98e22505622a8a8bfd4a68cdc2dd9a8e4b1c940526",
+              "oldValue": "e0b611469560166013a3d474ace608cb6a1d8063d879fc532dcddabc60b87853"
+            }
+          ],
+          "name": "dealer_message_item_desc_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "414e3aa405bcc3d563ae68bdf7ee2496837fa571db5dd9798e5a3a7a6f0a0082",
+              "oldValue": "88de2172b96bd05574e5f7d84197e59fbfac782fec086171cf26ad8615cf2b5b"
+            }
+          ],
+          "name": "dealer_message_last_offer_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1c1bf0e05e47f34acf43afa7772a6a93d42777d530df93b7912561099471f197",
+              "oldValue": "605a9ea55b7d51f9da71c6f6496a0d9689c0c98a54925ac2fe5780b6d4699d3b"
+            }
+          ],
+          "name": "dealer_message_last_offer_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3d6f74797830b734780b44bfcb1ce070584aee2f31376a5f26706eb8536b727f",
+              "oldValue": "cc30e7774d64bea1c8118ba54d6ba2e9340f18fbd2d000b269baf3aaa36d5c35"
+            }
+          ],
+          "name": "dealer_message_last_offer_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fd8fef6b3b9649feb4455eda13dbbee5e4e0eb0be6e236be9a69e68a0435b800",
+              "oldValue": "c761a744d632185dd0ce5f12875ad7211797efd185071dc89d243c9fd1dfd521"
+            }
+          ],
+          "name": "dealer_message_last_offer_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3b75d2a2d84d68af6c22c7e4b4a3ff21b06b4dd2b8693e9f242bf38382e23596",
+              "oldValue": "f027e4d59cc2845c1f931753ef09e0ad8723ca2f9fd4c01862ea995a958141a9"
+            }
+          ],
+          "name": "dealer_message_last_offer_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b7a437818ba3c2c0f3d2db79ce84d939b10dca7d6232fdb0d214ec969e787a34",
+              "oldValue": "b69b70a868eb3dfe73238dbbe6990472ec5753c2dc1d8b8bd6968577a4f965fe"
+            }
+          ],
+          "name": "dealer_message_last_offer_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "21f6796c2e77f65337b277eb822026e4aeabbb7ed66218f7ed81c9d01ca288ef",
+              "oldValue": "cf852730469604559665b257aa8392f76290787a5ac02ceaf468013e5a12a0cd"
+            }
+          ],
+          "name": "dealer_message_last_offer_9"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "61cd45dcaa6d242eff4a3a8f9140d71daf6b0bf3412d5192b5801c2f36b295d0",
+              "oldValue": "870bd41b51767b9cb2af6afa22368fd98a6b1d2e3f8fcedfb0bba0c673c7abc9"
+            }
+          ],
+          "name": "dealer_message_minimal_wear_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2a0db1aa36498dac0c2f0e565d43acc34346e0dee7521a74d457d8f2b2e4699d",
+              "oldValue": "31e0c60ee1645c16f11fd23b1ce830cb78baf873315dacab2c7835ea51aab00f"
+            }
+          ],
+          "name": "dealer_message_minimal_wear_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "070a5bb971c3adbbce42b1c2b76542bfe3304595116da96a1fbc31a953e9de47",
+              "oldValue": "0fc47c5e6bab497e95400f8aff272ae382dbf1b92ca02b9ee9708febc43f0ed1"
+            }
+          ],
+          "name": "dealer_message_minimal_wear_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2c73929403a656f5a1200e343842c74fafdfa43f7e577e20d863089090a1f1e7",
+              "oldValue": "c7c9c11dcfe6325e92a23e8c8433954a17f41b56886ca7c82d5a2ef696624c4e"
+            }
+          ],
+          "name": "dealer_message_next_offer_10"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a32e40d0fa10f53c963b298970cd5031495d7d99addbdda4c616c1a3167bc351",
+              "oldValue": "c914c56a054adb3916616df659d9b7808718b2b780c8406125e0cba987a80834"
+            }
+          ],
+          "name": "dealer_message_next_offer_11"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2b8ab23e19d755d866db3fa7e04a1ddd0c343e021dbe77b014e5d036cbcc5309",
+              "oldValue": "f7e4f64c5724830a8a357f4c7056352ca119653ca95e1d617b8b2b26c9a36e16"
+            }
+          ],
+          "name": "dealer_message_next_offer_12"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d207ca3019524db64f7bf7a9ec0f46cd70b4f63d205baa95496d8768b22a3f8a",
+              "oldValue": "582bdc000bcc35e7c2c414d05121069697861b5b0a51c01b5acbcc709941ebf0"
+            }
+          ],
+          "name": "dealer_message_next_offer_13"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3326be66ddff075099fef757f76d32bae58261a8d381c33c59dedce648a3cae9",
+              "oldValue": "112e0cdc62a11a67afe0a864f78ec0247ed3e1b0e6ece7a71046544ee28900a4"
+            }
+          ],
+          "name": "dealer_message_next_offer_14"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9863adf013c68c8f2cdb3849ac70fcf2bb85a59164d9c322ffac3c0a9b818910",
+              "oldValue": "9e3b16c2c0112b5550c003b74d406c6c2c87d2bc3cfcb5b21fc4843762ae357d"
+            }
+          ],
+          "name": "dealer_message_next_offer_15"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "179f04350f29d368d133e62ba38cf79e91137272f214e68cf61c790e7d12d49e",
+              "oldValue": "9097aa71fa024fdef1785c9c2c4d96e44d67eddc45e6e12a50ccf612b5fdc368"
+            }
+          ],
+          "name": "dealer_message_next_offer_16"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4b9673cab27a1609193125b32d6f08cfe6a92bf5249a2e9d107787afe0e56be6",
+              "oldValue": "f09375605408b6f8fe5a01f543478cafce48329c4861b3e44667a9367a17a748"
+            }
+          ],
+          "name": "dealer_message_next_offer_17"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c85b93ba63265b8fe50ad2e260be41158491c34b01118d9dfaa59df6ea0fafde",
+              "oldValue": "7052362df166bde77a587e705b4b9126057b11d273cc36ae3aaf1526570ab664"
+            }
+          ],
+          "name": "dealer_message_next_offer_19"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "69eadcae67c507906327595cbb1eff6271305375ea7c0ec94280da498925ba1b",
+              "oldValue": "ae4f015b4199c02162f0399e5231a46625d7a38a4c9ef4b57ff0740952cfd1db"
+            }
+          ],
+          "name": "dealer_message_next_offer_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ed192fe24593a4d6ac417b7eb9103bc025c965195701115aff78bcac5b6552a2",
+              "oldValue": "bfc3ebd537c45db56c3f7a0331405dcf99896410c03812f0dddd5734097cfa28"
+            }
+          ],
+          "name": "dealer_message_next_offer_20"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9bb9a56b16d41b5d51ac99c71f8214c8b9c43fdb655f2aeabcd5d9bca7a61cac",
+              "oldValue": "df6e7852595fe87db17a9f2bfc56d70c0d41e277d9de184b3ac0a9df56350c83"
+            }
+          ],
+          "name": "dealer_message_next_offer_21"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0c3a91e447e2217719c4c40034ba0428a8a023004b72925c74886a4f29f3a057",
+              "oldValue": "625c2606939b0f1d1fbe2e238993a7d1179c5eb7d39894ca6ba2f7ef1ca07751"
+            }
+          ],
+          "name": "dealer_message_next_offer_22"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "52f1712c08955f365e6352c1bd95c48ba5bb199a0d25e474f70f44294d4d620d",
+              "oldValue": "2f3071f4eeb109039ce34f004acd060f3a7c1944e79e5d7345440218d5df3b52"
+            }
+          ],
+          "name": "dealer_message_next_offer_23"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ecf7edcf446b1c8f377b5fb147a50d23ed4a018b95dc36bd68339b932b4429c0",
+              "oldValue": "61aa6835afee1093b5ae07b63b838f4ed08bf1b6bd6d512f5867716c3fc0ea60"
+            }
+          ],
+          "name": "dealer_message_next_offer_24"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3811d986455ec0973d369a36d5d17f7f45dbd63be7d96d8d30b0db1f3a84e978",
+              "oldValue": "0a2592b6debd2c504de5b11a90c60373e766daa54ad0c710362256fe659aad27"
+            }
+          ],
+          "name": "dealer_message_next_offer_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "501b4bed3bd7b1595b78e692982bb43b03d98fcaf6fd878cb33fef374a8fe827",
+              "oldValue": "ad6f0dd37219bd7b07591e317ed1c08e121f9b414fefe94f69a9eae7c542ac2e"
+            }
+          ],
+          "name": "dealer_message_next_offer_31"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "de82ac469a6b6a039692da9d5078434392f1d4873c896c9e36c763c4e11333e0",
+              "oldValue": "11f4c91ae78805307054710bc207f52d51f5a14cbca7f6dcb382bc1cb642c6de"
+            }
+          ],
+          "name": "dealer_message_next_offer_32"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d8b8c3ac3d78a82b114693797707a5d0fbb72c6f8aaecdf8540d4f5fc144a358",
+              "oldValue": "dce3ea3adb68d2378069f7d3bc9499b1db5633734edeba3e6905a776d25fab29"
+            }
+          ],
+          "name": "dealer_message_next_offer_36"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f8d2195a3cb417e2dec8dc3217b9544a954222ec245822a1443d84fc981f1ce0",
+              "oldValue": "5a8f8d96f1e00dd9d897082956381e71eb6f07dc666e2aeebc419783ee1c91db"
+            }
+          ],
+          "name": "dealer_message_next_offer_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c65f5a4b17a50f7fa13a80e0abfdd82814e0c4f0cf5d72f6d8890cd30c369201",
+              "oldValue": "51282f8b917965d2fa354b8a4e2c660a271ee1365f01b293d077e94ad7c87d61"
+            }
+          ],
+          "name": "dealer_message_next_offer_6"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b0728a00e4eb51782962e5becaf22fa32d2864bbaa4f30b49cfbb6d6b0cac7bd",
+              "oldValue": "2d3a6beee58ca519b874675c9973faed5d2bbd29e6d52c3876f69b76f5460108"
+            }
+          ],
+          "name": "dealer_message_next_offer_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f5fbb85f80ae60d39315803314a0a8d0d927c92c6edb21af5643aae027551ad6",
+              "oldValue": "69e71dea8b6bc853380903e0f57bbb4d341ffa71bc5bf96ba6cd47abe54ad0df"
+            }
+          ],
+          "name": "dealer_message_next_offer_8"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "09003ce524541a803e0bfed203d5eb2503b899aa8e3298b266579f1f3c9a9f25",
+              "oldValue": "f7d98d720d977a0bcbcdd3c61c1a37019ae643f917b9a7e8d3a12f59f9a154f3"
+            }
+          ],
+          "name": "dealer_message_next_offer_9"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ad2cf1fc608a1cb9ea5a6ca24708ac75021cee53784d7e6bb2680d53dd38c334",
+              "oldValue": "ec6302f1e2e46bd3da6761a999019227032902b9d96a1df0ec195be56772a767"
+            }
+          ],
+          "name": "dealer_message_open_check_out_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "df978aecf23c5b1df0a65e26e9dce3f9d1cfc2515740571c10cadb16427f2c40",
+              "oldValue": "0cc91c495c3ca8ee58703d58e79980d645b6ebf86a2a912a3448846108401fa4"
+            }
+          ],
+          "name": "dealer_message_open_check_out_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e1131d0d66ab0d92152f5aabab3d107b7cb35ee98b79988dab562200ac6c9970",
+              "oldValue": "f99aa2f323751a6ce03818d76e22bb8d1d6e32c6876f065d4982d6a55575f0b0"
+            }
+          ],
+          "name": "dealer_message_open_check_out_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f5f90656c75e66c8803f43e66c484b1c8a2a37cb48a3fa8133e6448d9f58c8a",
+              "oldValue": "0b465ce18f319b71d08689f9a33de6cd5ebd591597352628079da2734fdbfe02"
+            }
+          ],
+          "name": "dealer_message_open_check_out_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e31efe307a062b5a7d8092297b188cce973f1806ee5fe0f66f07a6cebbd4e732",
+              "oldValue": "955e6ee1cf649bd8a37f1324a17a108fea0a62d90fbcace467ff0bee27ededad"
+            }
+          ],
+          "name": "dealer_message_open_check_out_6"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c8a0acd498d67e16320ccd15a2f6d310fac4e132bb22821e19a167d7bf638172",
+              "oldValue": "a139451974d3fe08b549faebd948b7c97af9638432ce36dff451dcca163e995c"
+            }
+          ],
+          "name": "dealer_message_open_check_out_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6450ae50a96f75d7f9aa019371883970f158c48f8b25b880b5f62f1eb0ac36d6",
+              "oldValue": "a5cc3a12a9be53aa2363bf847c4427aa993e58ab554c5438be6e2e02c602d9c8"
+            }
+          ],
+          "name": "dealer_message_purchase_confirm_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a1af5f7357fa59b19f2e5e0962a7bdc77207a581aa157df29622f13634ebc85a",
+              "oldValue": "fd627a964314db3a369c3b0d05fc8aa45d16496128149692ab8d33e9f19f65a6"
+            }
+          ],
+          "name": "dealer_message_restricted_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "124a91b877ae6fb4d75a318aa36eaff4fd1cca04735d38d8cfc36970fba591ad",
+              "oldValue": "2e51317e65d3125eec550f8a40402393e8f40e9979357aef8084b14e438b6243"
+            }
+          ],
+          "name": "dealer_message_resume_6"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4fb8780fe3e62f94b7f2670ec45693f0295f24075cb11f01b6cd9614ac35fa1f",
+              "oldValue": "605cf6360ad72230777fcd03a8e9394511ac6f40fe30c1e7c381e063c2d9de41"
+            }
+          ],
+          "name": "dealer_message_start_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8db82f33ed249f30975edcc806e6b4db31e5458deb00cbb5b9aee8ffa9e34729",
+              "oldValue": "078d50fca72ad1b9fa1633b1d326e6a61f5478ca8121c307e5bafefff22d4b17"
+            }
+          ],
+          "name": "dealer_message_start_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "981fc206bbbf29e36f18b49b1a48b603c1e41bb8a1d690d47cbaeba2c43c0683",
+              "oldValue": "96d42fb51a11997c1c01b1cf05c52eb81a4ae9e57c4e4778f233b411ce4a1ffe"
+            }
+          ],
+          "name": "dealer_message_start_10"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5fd6dd9c97b3de20acb882f2a9f39a6dedebbc4e14f35a7c98b41dbe6cfaa313",
+              "oldValue": "afeb50e285ef92cb8cf4d67fb285148af936fcb7d954f03cfab0dc33f13371bf"
+            }
+          ],
+          "name": "dealer_message_start_11"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5b8eb9b180da262ec7f100b25f178ac097d2646502bd1f48a3ad2e5d4099ffac",
+              "oldValue": "554f069b4b1cb794e9d027f0d80256050ccdf11f18810c4aa08eee395a50c087"
+            }
+          ],
+          "name": "dealer_message_start_12"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0ca9b31261533724e0f909726d4b6bccf85d5d729e5eb30dc467ede27a5eb3e3",
+              "oldValue": "c3d31684e285d78496a030779363e7c7549e64bd1e4aaec6a3569c42a097b93b"
+            }
+          ],
+          "name": "dealer_message_start_13"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5fb8190710913945ba209ade2e06173900775d5c478cd2e3c518b9572691b23c",
+              "oldValue": "e27ae625eb0c7dfc30ce6cd56f9c138686a8949a293e6492aee2b536a286ab67"
+            }
+          ],
+          "name": "dealer_message_start_14"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f588f5e865c0209f95644c64671efbd0fdf99572f13c3453faa2b6e8aaf83ebd",
+              "oldValue": "858a68721aefb7b3eecd6e692bafc96f86d46e2f2f2cb527cae98c70869c6563"
+            }
+          ],
+          "name": "dealer_message_start_15"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a7300b2b5251800d08ea95ba66fe74d6dfa2b9c22b7f0952f469fd041235d587",
+              "oldValue": "f4bc4105b293284ba63e2fea96d451129630bae273ff070e0577033bfdef6725"
+            }
+          ],
+          "name": "dealer_message_start_16"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "43cd7593660f42493ed465c4a408c5230678135be9fef137dabda142510f42ae",
+              "oldValue": "d676ef5ce3d93acddf2f610be2dbd3ce438eb7071cb3f7635bfb57c484d6be5a"
+            }
+          ],
+          "name": "dealer_message_start_17"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e707a38195b1a91fbbb7b00074fc96b609418289f931546c8184e37a6e99cfb5",
+              "oldValue": "75684700fa9ef83d5c2b924109ab185c4c5ad38bbed1dcb86173346155a97fd6"
+            }
+          ],
+          "name": "dealer_message_start_18"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "01c72da95d759cbf83e358089f970243c934412d6d648ee79f0a2357093f7936",
+              "oldValue": "cbe61b5f7df6b9bf177572f95febcfb15a3594bdbfa5efe09ccb64fa22a38181"
+            }
+          ],
+          "name": "dealer_message_start_21"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1607f25411836d133fb6bf0b0577c0e481c1125c0f36e742b6e7fdb0cb60117e",
+              "oldValue": "35cb5360a68e7954617d66bb33d55b3672bf22708e148a030718ca28cde6a81b"
+            }
+          ],
+          "name": "dealer_message_start_22"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6e8b3c4c6358a87f56fe39d5dfac600b7a531fbf2ebfde1cb601adf1c208bb5c",
+              "oldValue": "cb9324a7daf95fa440c4196be1986b1320d36b7a6a710441e921d2090bc350ec"
+            }
+          ],
+          "name": "dealer_message_start_23"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0f7ff84e3bc982b63c08cda69380c163393df2060e81476ecae0f8b1474fa78d",
+              "oldValue": "d613624794035eeab9cc6599d713e08e84e2487931f3c4352cf53ec2b679ab42"
+            }
+          ],
+          "name": "dealer_message_start_24"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2d4c777e1269390d90853721dceec761aacd4b58774938a29a5a514c703b973c",
+              "oldValue": "978b0a0fd421fe033a1f6c365125e14cf4872392d58e61d6733963e7e2825768"
+            }
+          ],
+          "name": "dealer_message_start_25"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d754d64090b2e133c3ad020157081209bb7be9ddd3516097912cb66abf65cace",
+              "oldValue": "ef2f992819785b24d9e0b89334a0f19a08de010c1958c237fc1ae46a6e8bf5a2"
+            }
+          ],
+          "name": "dealer_message_start_26"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7f641e24058a9297dc942f7d9407e955dc7f935a5256f889d5a85d109eb5ee2a",
+              "oldValue": "eda03f38f812f9ceb2e4d7cabef54cbfcdf292356c7ab3298f38a4cf5b42f8fd"
+            }
+          ],
+          "name": "dealer_message_start_27"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "00073168b22227da26c08d4c4f94895ff4b2af7cd4ba0f4c4d4f32183e363ab2",
+              "oldValue": "6ff8ca8200e8fa65a96f8c8417d812e51cf7fa69af54f1807ecdb287eac44b4b"
+            }
+          ],
+          "name": "dealer_message_start_28"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3420094c6ff4204f2e5d8ea18226a1b01fca6811ee66b97d07aa90589e3e7c01",
+              "oldValue": "56210f6fc64e39054900b2b637d40c7c59871675312050a8d3a8365c6d96fc69"
+            }
+          ],
+          "name": "dealer_message_start_29"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6dce2769ed715186cf42ee3304f688071bc250eb6c579bfba2b3d09ec136855c",
+              "oldValue": "63368077feb9790488303f318c222ed68cd4c9678f3272b14f1bd06e520dd299"
+            }
+          ],
+          "name": "dealer_message_start_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f264c953da2d1c60e2a9edd140896c07d196a73b8111184e6dc4efca3c249950",
+              "oldValue": "c8a15837f6e243293b162b8cb434b21ebc2aeb3cf39ac89bfc2aa8a8811c76f1"
+            }
+          ],
+          "name": "dealer_message_start_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c2830508e3eb1d3f6c1bb73454457a91759acd1b4026a4162a402afa634d7b5a",
+              "oldValue": "39441157d67af4a998be6b58a1aaf44f0a1f4b7d00833d9a7064d4d68f025ba2"
+            }
+          ],
+          "name": "dealer_message_start_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "01d4aec5e032077fab8569bd14231999203ae3b9bd4e2f0c41cfb28bce353618",
+              "oldValue": "c7e38712fd06a0fb1574005fbcdb3b29bbe5c0afb7c9b05c445eaeff578a2533"
+            }
+          ],
+          "name": "dealer_message_start_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "407801158891998861ba01b4a74ac802200c6480b26298a8cf8f33ec3fd8f424",
+              "oldValue": "7ea60ca7b6d11ca7dab2c55aedfaea83e9dc5d2e4a0f609be76eef0c081b85c4"
+            }
+          ],
+          "name": "dealer_message_start_8"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e3f1279042cb460876893381e9c3e6d1d00caff1c6c2332c63dbe96b833f0acb",
+              "oldValue": "7667a4c33182e090914ad4e5c84ca93326cc0ba8a857c2b12f19ad1353fdb8bd"
+            }
+          ],
+          "name": "dealer_message_stattrack_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b62cd677343e602404e5b8923ed44d7a8ee9dd98057589544efe5919debfa8b3",
+              "oldValue": "e1ae8f6c391f66aa8809892f95e7e2ee33119cc2369d68dcc386624c1e288668"
+            }
+          ],
+          "name": "dealer_message_stattrack_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c54ca6e9c9844bd83bdf910b69ccc2df9a9dea88eb7eb6a261dd440fea18a7f4",
+              "oldValue": "a5067e97f4673bed26368a2cb58dfe176e212996d188bb5fe1737fd16bb9c461"
+            }
+          ],
+          "name": "dealer_message_timerexpired_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "521515948c69d0f1bc077171f002377dc1082b4c98c3e6606e51f7874ef53f05",
+              "oldValue": "2b00948683e9a092a4ba2b4252219de49881f462e8028106760bd2f4e49225d6"
+            }
+          ],
+          "name": "dealer_message_timerexpired_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3b9e86fc750c9d14e939e517c276cc6dad40885210ad28b8d1d116c0d235b7eb",
+              "oldValue": "1d88e658abe905d3f5b585066cf030f706dd2321aba77ef31a75d7ff9659fd1f"
+            }
+          ],
+          "name": "dealer_message_timerexpired_10"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e027db41e2cf1777f865d335d6dcc072895c20aad0ff9f221ff5bc86b8cf5861",
+              "oldValue": "d7e6d3613ca43257623dfc7ad140bd1817c2bd5db78c687a2f9ad85dac842837"
+            }
+          ],
+          "name": "dealer_message_timerexpired_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7b8a04a28b11307437fc0680c8e0562c059869b8db634d7811ca651c911a9f29",
+              "oldValue": "782e3ef0cfe54bb5eab1cadc8454c85005eed3cefdd34e514e4fb804cce3ff05"
+            }
+          ],
+          "name": "dealer_message_timerexpired_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c4dd62b872cdb3b2cd0ae11c87c2b79b59e3be86b0d3ae578d35f303372087a6",
+              "oldValue": "605dda9c81eb9996c0a3bbccfb1a056d91918e82475aeb7ede5c4762b29a8748"
+            }
+          ],
+          "name": "dealer_message_timerexpired_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c8916f653184c4bab5adf375a2798921473894cd9333b66e2c5d8b475afe6b70",
+              "oldValue": "52dd9f7f0341b434f9f05271a81ba9e7043515449d46fc867f737cdb06b17467"
+            }
+          ],
+          "name": "dealer_message_timerexpired_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9f6b66a3917fd3a0bb1d0dab89d3c2ad974f28e0c399eeb0c451876ccdf34671",
+              "oldValue": "41035b0aec8b546c79c775024f074dbbfc2fc032f7abd7f9a8fb71e4da56c45f"
+            }
+          ],
+          "name": "dealer_message_timerexpired_8"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "83163f60eccf61bba990ecae2d99924916918f823547ed799b5ae2c135fbd528",
+              "oldValue": "9d32f06fd76fa44d1e6cfec658e81bfbafdf1e513b6c28d7aa9da3ff9b5dc943"
+            }
+          ],
+          "name": "dealer_message_txn_xld_bailout_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "279a31a6d4a00df1df1ddc40176fe6bcdefa13caba2c99766d9726bb19ec4ab7",
+              "oldValue": "c2e87ff614f3327c5381576841552cf74e55b76a08a37ffae3975e629c2fec43"
+            }
+          ],
+          "name": "dealer_message_txn_xld_bailout_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cdec4d124962ded64f3f7c84933051dbb15ac4c44930cc9e5a8056572ff6f9c0",
+              "oldValue": "a37e703260ed3a3b8cb2dad73d3462295ff4c41060f988ebefb89f4b9e9fb1ea"
+            }
+          ],
+          "name": "dealer_message_txn_xld_bailout_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c19b125f49019b3e599b921f5d399b2c868f50ef031c016fe16ac4d87a567585",
+              "oldValue": "219e24f0a4507dd50571371da0d615413b777a1c3d1dccff18ca423dd2a94970"
+            }
+          ],
+          "name": "dealer_message_txn_xld_bailout_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d3551c5af5af2ace4605dace5b16a5fdc80897cf39bc74f18aebdecc1511c2b5",
+              "oldValue": "14787dc76aaa3bf3b1696f5d07a06f1dc38421b4ebdd53c5ea68b92a90977eea"
+            }
+          ],
+          "name": "dealer_message_usp-s_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a75b0516aa9fa4ebc39559c2acedfe30598aab04854301180c8d8c77b3807ec3",
+              "oldValue": "2af6641bf5b7f1c76629a78a3e205044268c0958601bb3d3abc73863465fd74e"
+            }
+          ],
+          "name": "dealer_message_usp-s_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a8804979c42d8de00c227ebf4fbd4cd56e1051ef47dfbfb7491ab4b416bc6350",
+              "oldValue": "597feac33dc8a151e879788edebf2ce816c77015a01d5400786fdecde364d4b9"
+            }
+          ],
+          "name": "dealer_offer_attachment_final"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7a6e8a4a50065d94a12ae5af1191356aab5ee3afd14b345000decaa42a3b57a9",
+              "oldValue": "f4799c250fc8005ba8caa365e01bd1730788445424d293a006c260f3dd7253da"
+            }
+          ],
+          "name": "dealer_offer_attachment_final_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dc215cf6692a476e5a1b523bd6f5c49c5e50466f6edb55178a412cfd132a0ac7",
+              "oldValue": "9bdff0d22a2d9b03f8584ee6cb78cbcb97020cea6b950114c14de7d92c9f017c"
+            }
+          ],
+          "name": "inv_empty_lister_for_stattrackswap"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8b0718b0fa45c27b0b719329eb170965d895a58672fa529b0a50e4a04a5244c2",
+              "oldValue": "424f58da18ed5a701c343b0dee1bb37c32461a5aeb0c9d7bbe84d8a9af70c25d"
+            }
+          ],
+          "name": "inv_select_item_stattrack_swap_capability"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "af543160a7f5f9b00f05bf482416ac2aff0f2b2e7bb1c201f3ed4a68a33b097d",
+              "oldValue": "88b92183719e412fe00f00e49ce624f94b9cae453224bfb4ce8a62a13ea5a825"
+            }
+          ],
+          "name": "inv_select_item_use_capability"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6159e05eaac78a1493d80715a226e0f4b93c49934ca14057fe0894051ba9c5d8",
+              "oldValue": "66401f985ed70984d0138fbe0ce86a7f42684822eb71790ae751aca5535da89c"
+            }
+          ],
+          "name": "keychain_kc_db_200iq"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c85da2c141f3786b777a5a317b0a6ea7730bbd8ebb08309833901eaa48378ad",
+              "oldValue": "d82e558b0afb391c351a7e6d128125b538114991ace78bb2cbbd24ce158cac36"
+            }
+          ],
+          "name": "keychain_kc_db_8ball"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3b11c52f5baf7eb0e55d74eeb6d00471ef002ccdbbde3edf728767543113c9e1",
+              "oldValue": "ad5ff811428122ad3642dcab441a334e0d4842e934e2bb2a76f587f0b3c5c872"
+            }
+          ],
+          "name": "keychain_kc_db_aztec"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dccd8970ad540c79659fd49ec158ae7abf0fc62be3242221f632a7583ca46806",
+              "oldValue": "790f244f7c35d6eac006619160df24e51a4d44217802d483f2aa9f7cd79ea578"
+            }
+          ],
+          "name": "keychain_kc_db_biomech"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "badd4e17fbe7e96b9a8f89bb97a86d86b6b0e71e39ab97be282b737e49323a35",
+              "oldValue": "064329d6cd0dbfac31d3ca3f748360df78b45d4153bc68dbd71646f26db86e52"
+            }
+          ],
+          "name": "keychain_kc_db_bombacat"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0417f38d35db93959662d8ec8083be01f435a0dcb626bec509a4fb03e8114c3a",
+              "oldValue": "63880f414a0438a53d195b522433bb4de26ce5fea252dee66564c787bff64bc0"
+            }
+          ],
+          "name": "keychain_kc_db_clown"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5b44b4c6879bf4aa649837e1683c977e199aea0504be6619539c49959203ead2",
+              "oldValue": "0d589118ef8d145aec5765ac5462ec382980ee44f506e6af513e26c5ed51d49d"
+            }
+          ],
+          "name": "keychain_kc_db_dimsum"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b77c70932ca0c5aac089ae4719477f23c59f1185207c08f8f193027534df8283",
+              "oldValue": "9bfdc10be01cfc774ec3f37827f8c67b2afd6e8901d4335bd48a3488cda54eef"
+            }
+          ],
+          "name": "keychain_kc_db_drbrian"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "64b9bf077f92c087c30302e04a301b4ba2ff4dc4b4d0042ee9584db757ad6e54",
+              "oldValue": "77cf81e2e6647e81b79ce69436752568c0960a69c9de1f45da8338c06624a7fe"
+            }
+          ],
+          "name": "keychain_kc_db_dripfade"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "72763ef96ed85130c7df2f0ded53797c8fe67530d8d0730fb984cf224f877f8c",
+              "oldValue": "ac8990de4b45ed0549b11f8ed05cc2afab539a21febe7588d8b868d0d640a652"
+            }
+          ],
+          "name": "keychain_kc_db_eco"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8f9433ebdf93aa1b9dce5f2bd8112b8d3b5660419a8fbe8d89be59acdfc0951b",
+              "oldValue": "05d4746aca8cb1d7d71a0e2c5c279949e2ff64636382feefbc6b16d94d66736b"
+            }
+          ],
+          "name": "keychain_kc_db_eviscerate"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e2fa2f99f3e92f2a92c8eb743066de590adc4f073db9091fa6fbce8cdeaf3339",
+              "oldValue": "dac83261d918be048b373a82806dbb2a6d8aac3819a40f7c3a8429d765f763da"
+            }
+          ],
+          "name": "keychain_kc_db_eyecritter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8070328ac0690db8aeda1e878b20e2e19a868d3d55d3a6faeffa1d909bcc3614",
+              "oldValue": "e6d31c9616d861cc8547c8e7716c3ff1b1dcb33b5d0326a7d749e142847e309a"
+            }
+          ],
+          "name": "keychain_kc_db_flash"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d6f00a22573430c43e3e3fdceb73f14b0589bde6b4ae938c2abab255879daecf",
+              "oldValue": "8a018b0d1b6db7a62fc1934ce2c8d1b5aa577666f5420bc60e19833d85c9a422"
+            }
+          ],
+          "name": "keychain_kc_db_hellcat"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2d871bd6fe6bbde2dc50c4743718e4342a6c13ad0b4a00186b2bdfe4b5ae33b1",
+              "oldValue": "07f13cd58fa65fbea86d887fe60541365f724aeb455ade74a50cb7ae020845a8"
+            }
+          ],
+          "name": "keychain_kc_db_incendiary"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "29becb1387bde8ec814a2331babd7f65bf9fa54ac2c0817857de19e58f37191e",
+              "oldValue": "ad276dc1a95c74e0de1b9e10467d8e376a7e0ae1eb08cc729f58155d791c5370"
+            }
+          ],
+          "name": "keychain_kc_db_lighter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a358d2295e8167c6523ff15c1f675f9adda1b9343792629716eaac8ff852ae2",
+              "oldValue": "d1bb27619dbaa9697899ac131db496690551df7956af57f8403efd5e5e7b4e0a"
+            }
+          ],
+          "name": "keychain_kc_db_occult"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d8ce413ca2f7497e339cad1e7efdb4fa86c2a250ebdb462f24f6837a723d6a86",
+              "oldValue": "7a88935200fb3d179fb43a54d3241000bbd9cd2ab31f9cfb023a8f543f8d2aa4"
+            }
+          ],
+          "name": "keychain_kc_db_terror"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac30adc6ea5e6b48a67d83c0977a4038531c2ad40cb582bd7f89f5992636f4cc",
+              "oldValue": "1b986915187af1c3944b0a114fd689bdfdcc0e9e98c818a0d8cbd4b6cf364ac5"
+            }
+          ],
+          "name": "keychain_kc_db_ugly"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b4d7d24b0d8ffb8416ca79b79a0fe690952d2470a67dbb6e1b78c904c0ea05a7",
+              "oldValue": "8b3629444987890e6c48335df57cfa4b8b7592532fb5547d273dab82315541be"
+            }
+          ],
+          "name": "keychain_kc_db_wood"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8cb68e53143d6f724cf904ec33c793400364eb97c447256afc1a93a44a4c3427",
+              "oldValue": "2527558615ced3a6be5a32f3a48eb67dbd9c590103394a68539698326131a895"
+            }
+          ],
+          "name": "keychain_kc_db_yeti"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5786ab43425bf2f5b9a95d5febf6ecee8a18f4067bd869a94de796c01a904162",
+              "oldValue": "9e2e9c157ba81df7c0a2b7b5796da37a641fe08a44dbb9eb6fb6a123754ffc9e"
+            }
+          ],
+          "name": "keychain_kc_db_yinyang"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0815934b420ef79e3671deeeaee6239a2df82294a37a3e1b92bbb31a5eeb42e3",
+              "oldValue": "8abb2672a8c066b03729effe8ef831cac4df346dcd2bcf45558b861111d679fe"
+            }
+          ],
+          "name": "keychain_kc_missinglink_ancientcurse"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "47015ce9f02b2dbefb21fcfe8ccbd4f524ec362ec9055dd66a84b59337c00b0e",
+              "oldValue": "2ec9644a4c97a46f636481edba2ce4922e6cc6ee62115054c687e0210385322f"
+            }
+          ],
+          "name": "keychain_kc_missinglink_babyserpent"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aae4d88c3dc33ffc92d0fa27be7fe202dd144128a291742e8ad8b1cb2cd8ecf2",
+              "oldValue": "e320793622f2d23661c3fe5462665e7c2fd396a00ea9d0d0692a5e37777a36be"
+            }
+          ],
+          "name": "keychain_kc_missinglink_basketball"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "428ae7cf4066237a694f07c3ddec8ff01e4b3184a1bfbaa42d47723f68a82385",
+              "oldValue": "0e286a5d10de84f0463856e3382a32f96cb46e2000aadc1ab670aecf0545e033"
+            }
+          ],
+          "name": "keychain_kc_missinglink_bodybag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "86522bfe9a921957da29f8e7c4db4564fcd244d81c357cc36b0ecd3784d35aad",
+              "oldValue": "daf2c4a7c89e9a5a8c2758ec062b0a6492b240f797485e972b76362e897394b7"
+            }
+          ],
+          "name": "keychain_kc_missinglink_cactus"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "24ceb043285152740e460e80610c9c133a82b214c3421bd0d50793060b537528",
+              "oldValue": "9724394cb5082f27963e38c3f829f67836f9bba2dadef9e5540d99fe70129c0a"
+            }
+          ],
+          "name": "keychain_kc_missinglink_charmburger"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6ff23ef1bc8da5cd54e77004d09d7ddaf654e848d4959ff46f1b69f3974b256b",
+              "oldValue": "867d1a903e12dc105117c217b8fc5041794beea4e388324e9c1cf6bf347139ea"
+            }
+          ],
+          "name": "keychain_kc_missinglink_cigar"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "983e348f10e69e24845737625f1060627574b33774cef69ef186c0575cb9c16b",
+              "oldValue": "909a44212452426807697bbc797d9bacc9aeed1eaa599de17c3c737473c8a435"
+            }
+          ],
+          "name": "keychain_kc_missinglink_cthulhu"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "293f4b39d3ae8252f10985e51b410fc9cf8383fc4bd8316637768a28d7c58b76",
+              "oldValue": "a87e051d013be1ead0d355bfb9bb828458a460526e5588ba390dece432e7fa5b"
+            }
+          ],
+          "name": "keychain_kc_missinglink_happy"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f635e8a8507c0c03cf73e9d996ace5fa26ed638437b65a74b521db566963b533",
+              "oldValue": "45c8866ed3f6d807715c7a9966c6e18b8151795a7b2e7bd39f9c20dc87477f28"
+            }
+          ],
+          "name": "keychain_kc_missinglink_lilhatchling"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "25e8ef7af53377afb114f43baf6299ffe6a668ac97d30018623a8978bf98c144",
+              "oldValue": "e859fb2c2e177ef8e06af04f80c4d7bf644c16a1995d9d28cbf67827ce1cd72f"
+            }
+          ],
+          "name": "keychain_kc_missinglink_lilhothead"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a701a94579ffb24343b8b1f65c0b2dc60844a58b5c6fe81245898f7913ddbbbc",
+              "oldValue": "187fe54645fc340145674fb673d83123e5df908068c70fd94bb78bb0a970eed2"
+            }
+          ],
+          "name": "keychain_kc_missinglink_lillol"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c983ecc56f26936c7c3f77b3e334dbf915da49e89e1e2948d9b18f0f9329604",
+              "oldValue": "e491f2d43ca37959d18bdd747a05986d3d4d9dc24bd161d2ffe9503d44687547"
+            }
+          ],
+          "name": "keychain_kc_missinglink_melted"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "72a86642f8a7c6299f07c9de17e23a3ef8453a287fecf67f392e8afd3e804fde",
+              "oldValue": "ce7b1f0ff775d3b097d01d3765f985fe73477393df855a0f72e1e62becc8685b"
+            }
+          ],
+          "name": "keychain_kc_missinglink_muteghost"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aa9041a92460744f3f56b2801d3f8c1fd97af47dae44b76d9491ba727f429c62",
+              "oldValue": "f67ebd41e2d61bab2afe9a3401a147f41cac0f11ee55151df081404295e865b0"
+            }
+          ],
+          "name": "keychain_kc_missinglink_pencil"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0774c4a82b8b1100e048e880155ec018843e1730ae92d9ecbc9bffc44021ee2d",
+              "oldValue": "efb0d431368ddb9c08fc1f80d2749edbedbfce45319c9c55fe82bbb7a54f46f1"
+            }
+          ],
+          "name": "keychain_kc_missinglink_pinata"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e97efc459523abd0f1a14b1bbdf9471148e589c78b572e37fc8b836a4495a407",
+              "oldValue": "61bd4332d002edc2d1bc20dfd8a4e8cfdd4069c89bc58f501360b78d7a88f972"
+            }
+          ],
+          "name": "keychain_kc_missinglink_popsicle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "64971fa229e1ea74021df897718836a8d5e2f8aeb898c40706a92deedd6bb59e",
+              "oldValue": "ffc37a18a45b29419f7eab7d54d9678c172605e8f1bfa2ae75c85fef44ce66da"
+            }
+          ],
+          "name": "keychain_kc_missinglink_retrovision"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "202d450db3afa312e1e35c92f10e029b8a257590f9ad5f8272326d16d0601a11",
+              "oldValue": "35785affd58a417d341c6b6cc1bc01ed4fec468837048b4e3a67ebec088c232d"
+            }
+          ],
+          "name": "keychain_kc_missinglink_sentai"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d513f0acc70b032de4340ce0ed314cee354d7b035a7fc201aab16cb05fbd5f81",
+              "oldValue": "20c7512b016c9ad60df9efc6a2cf90ece13e10e29d74abb294577665c369b6a9"
+            }
+          ],
+          "name": "keychain_kc_missinglink_sillyelephant"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ff1ce38c38627bf1afe14b71820dc5909d4b82a09f0a4c2bae301be74228346d",
+              "oldValue": "cfa726363444aaa6e39dc41e2f77030bb7259348aff5bc5ff87b336f80a30a67"
+            }
+          ],
+          "name": "keychain_kc_missinglink_slime"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "39ab5244b432334ad5015add016dec6c44416a8d9f64d1e64e7115e8317c85cc",
+              "oldValue": "6e3b9db3b86a064f7af8bedcb5b3c14ab2be6f1a3b60f95c34ad47aee33cf6b8"
+            }
+          ],
+          "name": "keychain_kc_missinglink_surfsup"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2852c21c60d260ffba2d2dce5add453fd596708f651682f540ffcbf4798b376f",
+              "oldValue": "922f1201a911110e94511436eac0de8f513be2fecc2e9ecb3b6656862cb215f9"
+            }
+          ],
+          "name": "keychain_kc_missinglink_winemaker"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8f83498a1145167565845ef55cece5173cb63e4b046bb4f1bb20247380e74293",
+              "oldValue": "e003a955ad2840270200df249a38707fc4eb671088e3e892ce199c0ee5ff85ae"
+            }
+          ],
+          "name": "laptop_pan_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "853901645314429b74161f3aa3875f438f3f014e39a817fc30ec56bf57f64be3",
+              "oldValue": "1f2c0c27eabb0e24b21c8135755eb2139a36d4ba762c1920fe2308e76a477aab"
+            }
+          ],
+          "name": "laptop_zoom_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6749a1dff35fd8abc904c9d1b220afdb9922c4688d16c987d4dad8f87c2ad9e7",
+              "oldValue": "923ac4c03bb818ed5a342e327861b75c587b8358a8609cdc24d9aa88c4949bd4"
+            }
+          ],
+          "name": "popup_lootlist_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "86dd49091086cea2ac03418496ceeb971e974d854ba994842771cf57286fe2a3",
+              "oldValue": "4ad75892f8655572fe2c837d72c26c3c77766019aa73afc746a9db156ccdad25"
+            }
+          ],
+          "name": "popup_lootlist_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e1721122901fb71fbf3130bb40b7363daef2b8f3cf6652cafc30ca48a544258c",
+              "oldValue": "f9bcf1a28ac339575c35494e5500c6b9f6bd11fffdb55a1053848a9d7382e310"
+            }
+          ],
+          "name": "popup_vpn_status_connected"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c43fd8973e6a7ca638efa941a55ef54b80215ff77eac238c2f07e371e911a890",
+              "oldValue": "5018a4ed6c8c4faa848876eabe8a62644607a7b9297a25f15d780f238da11291"
+            }
+          ],
+          "name": "popup_vpn_status_disconnected"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e629cf03bc75027e14d7dc3f5ac74a00a3a973d441291f22c274b1f16398c01e",
+              "oldValue": "cd3b50af0db15543b6b9dd02d6c6ee3fe13a9faced3cca5365801ecf2cc2cb48"
+            }
+          ],
+          "name": "store_nav_coupon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e0b72c910daba094cf0167e1bca0d02bee09cc9b6d15a2a627134890a9c4b8cc",
+              "oldValue": "0ac6360a534ccfbaa15537d3d0ede5427075b8497fd3bc2d93875e9b9fc802d6"
+            }
+          ],
+          "name": "store_nav_market"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9a58f162b1e2c1a1b362d9ef056104003f304c4c6ae6bf9a492f73674c7db2c1",
+              "oldValue": "83b25014e6c29d2af00b194709ff35897b5a1f0e6a06b3f0bb03fc8d6c44ccc6"
+            }
+          ],
+          "name": "system_dealer_join_chat_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e267c3d31e669328ee9a3c9b10b1262493f0e6f0d2180bfecdc90ba42a940f16",
+              "oldValue": "cb35fc870f6c850165b23f9a590aed3c41db4f46da406d3064ed22e86aa24ce1"
+            }
+          ],
+          "name": "system_dealer_left_chat_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "68860105e7b8fc58b83dcf9846efe8980a0a478da60c7c7f3e415ca5a2b9c87a",
+              "oldValue": "8b492e987475cb42b8306ad3a04b5b44d04d603bfbfe2b848d622fe4ae8dfb8b"
+            }
+          ],
+          "name": "system_user_reject_offer_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aa3e5aecf68e4bb6eca9977f6c0088c17c64aad1cf48e229611709ea94bc30bd",
+              "oldValue": "dd8c1c39637212f8ce4324efa80a211f358fcc528ec22c5b7fd5c1d0d99d6fea"
+            }
+          ],
+          "name": "user_btn_end"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f6eebb2a1fb4c54310dc19f9a61977a1f829b3bed411b6f259e5787b5b5eaa82",
+              "oldValue": "e8c0b9f9ce57fd0a2e1c484533707b671b01b1632e3891bb29e7d81c9b2c6d3d"
+            }
+          ],
+          "name": "user_btn_purchase_desc_end"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "717bafec6080498a2fae32e754a576211a4338532402ec57558689da95eebfe2",
+              "oldValue": "feb8701eaf13d88731f0c0db62dd45d414f102022b1158c1dc4f59874b416b06"
+            }
+          ],
+          "name": "vcd_op10_coopmission_felix_broken_fang_mission1_end_alt_01"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0c4e439064846ebd50507e1c7b407616ae2ca70e5447835b118b642854817231",
+              "oldValue": "c464e6bc04a41630724f5d7e45d3bfbb6f75ed16d10cd859ef4da0c4fc2f347f"
+            }
+          ],
+          "name": "vcd_op10_coopmission_felix_broken_fang_mission1_vending_alt_03_tk01"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "20215164",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "20230584"
+}

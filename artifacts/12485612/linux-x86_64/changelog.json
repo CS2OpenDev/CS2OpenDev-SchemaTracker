@@ -1,0 +1,85 @@
+{
+  "families": [
+    {
+      "added": [
+        "libclient.so/C_HEGrenadeProjectile"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "19",
+              "oldValue": "23"
+            }
+          ],
+          "name": "libclient.so/C_Inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "24",
+              "oldValue": "28"
+            }
+          ],
+          "name": "libserver.so/CInferno"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "r_csgo_smoke_clip_sniper",
+        "r_flush_on_pooled_ib_resize"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "sv_hegrenade_damage_multiplier"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "sv_hegrenade_radius_multiplier"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12465841",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12485612"
+}

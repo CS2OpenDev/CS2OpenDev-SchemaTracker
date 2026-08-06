@@ -1,0 +1,3516 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll,hidden",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "buildsparseshadowtree"
+        }
+      ],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "000aa073dd982fe1e949ae13a910c18ddf83e242d0ea9ffc950e2490396ebe1d",
+              "oldValue": "11675c5d17ea8f01233db8d00344423cf6532e5e53070736d181022afec19d0b"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenAssembly"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dd6dcc2f6fa8bfa9ee5212cf50184e6a3b7ec83502b9a869137a5e89d0d2620f",
+              "oldValue": "f692cd3c371219c4b390792819b05ab3b092415a8f39c0785edcfc6e60859257"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenAssembly_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8de8bdfcdaccd536ecd720912604fc0af31de4d904d900283a1587cfd876ec1d",
+              "oldValue": "06c8922071e65c877cdcf0934dcd827e94fbb8c8998ce0b594fe9820964bc7d9"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenMemento"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "62ad8c61b027077cf4b911fedab8c79eb1a98446f41b3b81d26e10dcbc4fa2f2",
+              "oldValue": "22ce814705d32cd9d4810731f393be793e16a00c59b5c7b89d077b25a39a621b"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenMemento_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "de68babfa12af933d5eba2fec850179a30a67a7575369634046ecba838a75968",
+              "oldValue": "a477eef58517d9212f6d66f19fced88a4167aacb0de0f771f8b81be3425048d2"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenMills"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "99e61bdb1031555222e4557a50a77555d724450e9ee3b7a4768567683fad9b9d",
+              "oldValue": "586fc40ba4cb56ae1d6ca3e001f9cf20923c748c02812fc01a5e78611797c6b8"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenMills_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "25ca01726b13e8a1771edbe6153980f8ff0bc4d97b2e503ba817d53ccd536f0f",
+              "oldValue": "1f588221f56ef07476c65151a56d03fa67e67fbf6bfba6b4367170c07a598fbc"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPoolDay"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a3197d15b7ef6681a44d60939b157d9d99f7e336ff3f47979a7ef9fa8f8305b8",
+              "oldValue": "f61d73c8c74b4066722316715ca5beb82297261ba128e271cd049f924501783b"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPoolDay_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "74bb635fa6e7a7b3ebff57994c7ea41ba7fd3bb471b16b5ff4789f7976821d56",
+              "oldValue": "4004b2e92f73070f35889c653162ed0829a2266b9d7c4072eba5f285982f2280"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenThera"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2eeeb7fee060e27611b35dfb4a7d0354a6e2570294229d2c83baf4991da6f482",
+              "oldValue": "1c103c06873fcf68bda6d33a96319477df837ca4f141d8b4e4409bcaaae66e68"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenThera_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b4ed409ed86b5af58bd777b8fd13eb81a9a6238fbcb0de24b936b080f5ef5a14",
+              "oldValue": "4eda79742cce7e5337aa4f79de044d3ea0163c06234cf96472038fb7a1a4e578"
+            }
+          ],
+          "name": "CSGO_Purchasable_XpShop_Ticket"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "365a218ccc4a167369d8f5a1b034be0f7c22fe360fd2b505267b940dd8771f4c",
+              "oldValue": "54842ca2bfa64abf305208a434fd05b85040b35269b9c2a6a3db5ff1e368aecd"
+            }
+          ],
+          "name": "CSGO_Purchasable_XpShop_Ticket_Desc40"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ed71f7bd8e1cd3adc8fb7d138991e5f7875325e284e06ef6938d24c7d3af23b",
+              "oldValue": "90e80164ba13453317cb6fadb5eef3d41193a83bec13a0382654abf4b374f65c"
+            }
+          ],
+          "name": "CSGO_Purchasable_XpShop_Ticket_TooManyTracks"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "431ca2832d8e08c46d52836658e8d80fbda3dce3bb5a3cb112bf09c3bf1175d5",
+              "oldValue": "8ca27cfe54abcd9869efb6df2f28c6d6e476e1087ec5f08ebbaec595cee77de0"
+            }
+          ],
+          "name": "CSGO_RemoveKeychainToolCharges_Desc3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bccbd5eb907a1bfdb6e573e120dfc41f2721e7b87141a5c5a4e02e2ee02cd0d0",
+              "oldValue": "c612f154bc0c1e833b9412f46b7b7874de216e02a187718668bc7e1b972747ba"
+            }
+          ],
+          "name": "CSGO_Tool_Patch_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "281dac322e484bfd326224826e49bf19e730306daf3d197acac298e436c216ff",
+              "oldValue": "6ccd1b72d76566740f871b50f706810f0264972a2fff4ecded4e031795bcfcfe"
+            }
+          ],
+          "name": "CSGO_Tool_Sticker_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "90877b07d0fb87ed6d58e6fc03084e8a273557b46c8ce990ef562933470fbd06",
+              "oldValue": "539efe1143bed8294c158dac9abb901072069fc96d1567dfa962941c08aa0bc7"
+            }
+          ],
+          "name": "CSGO_TournamentChallenge_cph2024_activate_pass"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "19589c0adfee51ec18a530c7d5a2ec74d62a84ed47249134b3ed5e3634f14147",
+              "oldValue": "f83d2b3bc5d1619fd5f8f01e7cd325efa2dd622b26dfbf38da60487b3036c9bb"
+            }
+          ],
+          "name": "CSGO_TournamentChallenge_cph2024_challengers_calender"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "085fd9e8277475d72d853a296ec5ca4111b07226b4b03cd9f573a2dfc194ea86",
+              "oldValue": "d1b503526843eb810dc94653f46e5a77ae8e3b11c50e8fa117e59c2d485cedf9"
+            }
+          ],
+          "name": "CSGO_TournamentChallenge_cph2024_challengers_pickem"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "79ee06edc403b396203b91bc3efbe14e074404b3fbee0061c6ca2d337349a9c7",
+              "oldValue": "65e999852dca2d9f63ea84df4bbd1099ae01b5904738255b1229da6963ee2d1b"
+            }
+          ],
+          "name": "CSGO_TournamentChallenge_cph2024_grandfinal_calender"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "203b876ecb84870d469e4eed5784d4ef8c7e95f11959323e56491b190d9c30ea",
+              "oldValue": "424bc59ce5dd9d67dca9d7a7a509706b7b8987e9fc2e401b357d058f991ad47f"
+            }
+          ],
+          "name": "CSGO_TournamentChallenge_cph2024_legends_calender"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ffec471e4c72e4a4050e1b3397605caf5c6dfac133cdecb777555001c2dc7b60",
+              "oldValue": "a2a8c1505e156f05e66ac8494e2de4e5de731249b50f21d78d605a0563c53f0a"
+            }
+          ],
+          "name": "CSGO_TournamentChallenge_cph2024_legends_pickem"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e26add6e30ec7249eb2e8c3301632fd18fcf0aa61729099ef12fd440be55d40b",
+              "oldValue": "ddd8b9837291aff1e7dd010c3e548ae3d42b770bd37e671bc5c12af9635d2879"
+            }
+          ],
+          "name": "CSGO_TournamentChallenge_cph2024_quarterfinals_pickem"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "00693509d0dc48db1fb07feeb99196e746a7ab6ed259e3a10df4a835ef31e671",
+              "oldValue": "27c79d952b139dec9b9adf2371089b7d02925b3503245c57f9b733d1fd9ce613"
+            }
+          ],
+          "name": "CSGO_TournamentChallenge_cph2024_semifinals_pickem"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0aa24340f72a963fdc2d2e70ec88ec932b9195be9477b0501e445fee08e9abfd",
+              "oldValue": "aabe67381a173ebb2f019e71dde90e9a4ca4667d8a0ed7204d1293b41b4ed050"
+            }
+          ],
+          "name": "CSGO_crate_community_27"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c59da12fa2c147ec773c403da357678ae492567c9b8ff1e7f5a7bb664d46096",
+              "oldValue": "d3d2cb3375546b0ec153b2c7c50d7a28ac9750fa5c4b560238b78e1e349b8101"
+            }
+          ],
+          "name": "CSGO_crate_community_28"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b4fe21277abe22bce8c1b20e56f3448ba0c989a2a1fed1d96a6f86d981cea5ec",
+              "oldValue": "d123d30896b1b86604520ebf30cae75d1785bc19d7bff668a764d524e2bfed71"
+            }
+          ],
+          "name": "CSGO_crate_community_32"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e0ba6b5e9a563d1b2f0d92229028f10966ff76da8abe553719aca7c705dbe96a",
+              "oldValue": "4a081a6ce7a5b91a12eeace6a74e9a6c0bd6c33d737a476d9f8153686b607665"
+            }
+          ],
+          "name": "CSGO_crate_community_34"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "165b26345a2b692f90ccd9689ffbafc0e6c084fd1dba5e5c71f76f102d604ad7",
+              "oldValue": "79ce6f68b5b837962681f77a3d0da5cdf2821b2698433cf8a0406e1a03e15528"
+            }
+          ],
+          "name": "CSGO_crate_key_community_34"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "30ced62615d4d3c812d0b38e8769750713890d7051277c255647e9a88a331739",
+              "oldValue": "9f04c91b27730d625dcf730b745935a1a681234254ce27acf0b91ea52cb77b1a"
+            }
+          ],
+          "name": "CSGO_crate_key_community_34_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "55a34d235e2349503fe8ca565c466c5d2ddac9f04481b6190417eaf9cb5d05cb",
+              "oldValue": "1ecb56e6951568f586c242f414e7354df073568d84c83e402dc5b6a4833cb25d"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_missinglink_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "20eaa290b42aa5e679a99a7badf3d6c456921948840bc20cd98159f12a9ccd98",
+              "oldValue": "6418e9e7398538977ed2269a1133b440f56bd0d4c27dab423bcbd984b5f2334c"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_missinglink_capsule_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0cf8513aaef03ed73a45965e752ca5006d49a90b27dbe98fa6f29b3850dd6e54",
+              "oldValue": "a63bae2fc9e52882e2c30413abe4950410f901ac9de5c15379084ab5cdf4abb7"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_missinglink_capsule_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5c90ac70221fd54bc8ecd6dd5296e9ed95ef9efc9a5263f31a6034ac16fc290b",
+              "oldValue": "e4095879fa564858bcaaa14a4385378654e619590c28e9993c8c5b3582f4ffec"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_weapon_01_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a18454dbf911663d1e36aee8e89522f2d8aeedfc2cba3a4dcc9fa628d2130297",
+              "oldValue": "17cf3c2360e92b573ac3802ba273308c20c22f39168d910942a1c313b34e1529"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_weapon_01_capsule_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b973877a512b2c7547f880195c7df0a0291e0b91bb1cbdef2e92fa654d5928d5",
+              "oldValue": "4c2ca4781d94c6c4458eff3a305b511c73fdc2cde567b945bf7d245bbbdf5da2"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_antwerp2022_group_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fc1b44a6bf9349a7f8659d26353b65e5ca4f3cb98d7c46d0ec236ee5cdd50927",
+              "oldValue": "9bb37617c904b9a4186cdea8f4bc3d385d5c5f70cfcc2a8bc908bb2f42bfad1f"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_antwerp2022_group_champions_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e7f44caff62170114fb9445ca721d6beb41fe72b6d2765bbb18b1d8e195b8cfb",
+              "oldValue": "433e8191a41b2a2c58bf79f23d694229e431a34cac74a441f59afba9148e438f"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_antwerp2022_group_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0b90466bfb5ecfa06fc94e18b3d718eaffb645258b73142fe155dff743d8e0db",
+              "oldValue": "d9f80695087959bf51613c89d3da35ec77897f4963f420d2c8e2b61afd28d01b"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_astr_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3063cfe46d80493bb66eb87e1482d40494c4f0c20d29443be370cd25ff23319e",
+              "oldValue": "5ac1e03e0360dba05877b191782f46d35c0e8e6bcbab763393c4d33e8d293421"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_faze_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bf591c7f0e0df545eee5bfb89a2f6908d578a61493d765557138d474cca48e27",
+              "oldValue": "a992359b69b20d40751dc1955d9a14c6b2d45bb6ad5289d0b3eb92be1377fd99"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_flip_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "39fd8c26df19748bfbbeba66c3470cc39377b73b9f1fc973921c68c96fedadb5",
+              "oldValue": "416667832cf88fe766f00ed9a78bdffa220f6e88d918237e1f74ea2f71deb31e"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_fntc_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "22404a2b120372534e0fd759b68655d2cac962473e3d5b9a74f12550a84f349f",
+              "oldValue": "1a9e17380064189d1d076ebc9f39e2d30f26bf670756f8a73caf0eae63b94711"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_g2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2287e7b695b8836fac4b1e7bd206be84c46ad724b92bfc9b99d1d1099aa098f4",
+              "oldValue": "6a05dcecb5ee641ce4e42036d87ae549741e5fb68dc1da7baffb39ac1b70a819"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_gamb_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a0f9799329b8483535c9286ce5941b2b99efa6afeb29166695fecc27bafb3936",
+              "oldValue": "b0ea6b2e0bd66f9fee088e47795863c6dbfcd4769990c5792350f97438ad29ad"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_god_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2bb6795ea287c9588ffeeed1005a934372c7154a1f6042105e87e3c3d85c22eb",
+              "oldValue": "3618ca15ee6acdc7c13497889dee1af93154f4745641fd137c03c80dbb24cef6"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_group_1_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8c4f9fef567803e9217126efe3bafc1ba631f826d0b8e4155b8abf2b91672557",
+              "oldValue": "4bd024a4253ca46fe94ccd55bc389e5c8a89cd864f8531662a92b4ee7451783e"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_group_2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9832f9f960dbb598d78c7b17c77a0f2c626543abba81a8e4515effff7a3755b2",
+              "oldValue": "3e7ba6c370679e9f8e6649878dba1f99f344aa971b74786e2ca300951f1e36f5"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_hlr_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8f9e1af1f44322a533920d9daea33d89fdc2c357b786b5dda4e582b5045da43d",
+              "oldValue": "4dcc94ecd29338e573aeebeea1f31205d612bd1feb2a279aafe95d02d6e8f9d3"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_liq_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cae89934718949cc10832b528ac6787e98f7146810134db4a210ef2e58ac6b16",
+              "oldValue": "1a4d102413fa2d8ab929cec934365c5d0b4af0282c075095769d4d7302e04ce3"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_mss_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2c2f43bf4e08914f325553ced234f26d102088a91887da5acba29dc4ad6b7ac7",
+              "oldValue": "0c8afdd605f244fdb51bf2d7603a052a3188a59172cb216aa91546e0e4200722"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_navi_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "839abfba6a6892d58fe760bbf6a822c1e440bc522798292c0bbbae864b5cd460",
+              "oldValue": "21d91a49cb73bf13f9e9abee2e11239de8f322e4d7e1991024bab59f3774a59f"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_nor_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f7ea3b8da50b5a9047cd59524b4016b0f35f6559dd06111e9242048005bdac35",
+              "oldValue": "6febee9d9e53b332eb2fe3529e48f81033a2d6355ec23e1a72f29be116684905"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_nv_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "50acb95752effb6fb191844ac015dd5b6f0936ebe5442a6851d28088e3033982",
+              "oldValue": "fd32d899c2959ae1c51914326c1fd6e9644c3755f10310c6fd7e811669e97c69"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_optc_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c5d38b1641ed74511bf8360e65d38c72a964076256801d3134728844a14b028a",
+              "oldValue": "aab5f6ce3dcde0b06b652fdec28f852b85d394f3fd6fd227e4a3a87fe6914f6e"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_sk_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2416f59fbe9456d29cc8bcf696c2f391a52c52edf1130a9f60315caa0ce6831e",
+              "oldValue": "00dd2657533ec26628e6a444ef203b11e7c557897e1df76cd2e537238ee31a4a"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_atlanta2017_vp_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "18d5b8bf6539f8b5d52e4e1af646bcca1283868db7d56cd501bc21eb1659a21b",
+              "oldValue": "93090b61af12a77b97b95fbcc872c392f6dbd0ef9a3295d69c2e53f5e7eb624e"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_berlin2019_group_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d238cc25517aad1793bf7596855d8efac17d192353c2d40502dac06946a5aa4b",
+              "oldValue": "bc88b9678c74277ab22b742cddbb444f4953efa9233b7dce8b1630fddb66bfbb"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_berlin2019_group_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "46332604d83841404334b9f8da0eeb6c946e7181f13edd4b4456e263668b878f",
+              "oldValue": "b0b68ca8ce813325e97a3b40036c9db714cc8d104f4b0808b31389ecc9940e0d"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_berlin2019_group_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f426e7b8f5f35352bcff9d03a82c02b99d1c99a123d53f7c4911a558cc72454",
+              "oldValue": "80dc8726b1123b596da0521dbe5cb1750648931ddb42e849f82c9f638a228d34"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_boston2018_group_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0b7cbea37c45498fb8a818ebf133f7b84d7dcc13645aac4195e22cad53f4dce6",
+              "oldValue": "eb072e86758e55cbfeea3ffa93faab4c36df1688804be7562016cebd0c45afef"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_boston2018_group_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5b51c724d6db3aec277179a641b87ce8dce3427c7c678537b235159d20ef0260",
+              "oldValue": "1b09485f22923b19c6d326bf9d3956ffb8d494bc1d429166765d3e5d5941fc7e"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_boston2018_group_contenders_flg_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2e216869a9e5395f0d7737d8960a4cc36c0b4bb0315960c1b46563a9c733fc4d",
+              "oldValue": "2d400c73067b02c7794212140b80e06c493ecb3d6198664c7ef536e8af4160b2"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_boston2018_group_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d5ae52351585779ad2039952dcced397a4e73b7b0d5ef2931c2d63864dbc471b",
+              "oldValue": "e40d7a2ddc3f4dff8361300cf58d50606bad9b3055e62867e4afd079545e50fe"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_c9_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "22c6e37092f102ba075af6f77896646d1c2be6082774f28f87ecc6b974260f45",
+              "oldValue": "5fdc3ca338ecf1b350d500b63344d52a3f0213972a6605bdd00d16eb933648e1"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_clg_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a5e99d510f73922ec263e824028a0760ab58aa29b6ca4952b5d952273b3c3110",
+              "oldValue": "6c1c59e334a05adb1a25ecf9086fcb5ab4c01f1a2fdf6492fa933bfc8f7ab32e"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_dig_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac81a35ab63fd4c86e8ea15b6267dd9da48e381a26542001b2756fdb7343f6f6",
+              "oldValue": "f8ddd094e992e8fe8268da8ff303ca6cbbef0b0f2f57764472c7f364d67c0f69"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_flip_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5fa41137199216f75bddfd15b30d448e955cc410d621d1ade05ca0646f84e348",
+              "oldValue": "c36c3b3b41e40aa81a7235d953cf20ec381bd719e6535fde50b0d170fab60214"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_fntc_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "850e2493179f2a44e6732111b9f97a46d94ce5dc78c83812bcbfa30cd5a3d0aa",
+              "oldValue": "e4b73cf3e6f53146aab0471132f2bff9b5f3dd19fb50d67cde5008d737071ec2"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_g2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a05356217650357459324da8ed82ca1463e91726d90d82ef821d2216949b50e",
+              "oldValue": "7453dfb4c42a6ce7497a8851b8f59896dfebe00115347da9addfdc956979bd62"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_group_1_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5f9633c0721fca74e33aa641f9e1fb741c73f7ea17ff7a4572f0e5ffda462e68",
+              "oldValue": "a106a0ad84f785d8aeeb85777c0c0d13f1cba11f6d7944cc9b77a1a67a8e7e22"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_group_2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dbb3d0f4db5083714b657a011f514683248fcbda388124c476f484a95096f3d9",
+              "oldValue": "3346faccb9ae80eaaa320345a1e35ce50e826a56a576510e311e2ab1413d12fb"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_liq_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4b4809529b1865014f67c2f5605d4195d5d654c9c064e39d4f98fd0a89c77c5e",
+              "oldValue": "3299d463abf1becb1aab2864de69981c92773fa98a31415a64008f81467e5e7e"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_lumi_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6732453b1f86c75386c97e98bd4a1800f152707c5138aca1c8a1576d372c31ef",
+              "oldValue": "ab1934366f6b0e0fb0bd0cb15f23ae196d53879da1ff94e3803aeb32290d7d41"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_mss_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fc68563b3c5385df15ad39b5c097352a9138cfc6e53853f8b741985c4277df7c",
+              "oldValue": "0a7e7caac225697beb4104786f778613b1518e14ee518ccc573ec53b38fc9fdc"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_navi_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "84b277d025803d21e73c1686c380bcd80dcc3edfdcc73229f912ea9d6869fa0d",
+              "oldValue": "9999bc90b731742b02d3893b062bc0dd377880cfad2ff55e6b35bb6abe76db6b"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_nip_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e4e9e8bb25d74891e7ae6371afe2ed0e8dc4f0609fbc1b68968bf844901742b0",
+              "oldValue": "87aea5bebb411af3d7bddac47cac44c52345a832f2d8424c90cf5a4192f68ccd"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_nv_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4bde4e706dddee08a071bdfa0006204737be63194a0148a487d3dc968c26a8c0",
+              "oldValue": "42596946633adaabee55acf094a812f2f61f14f9b5011ced35bd2c54ca6a6d49"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_tit_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c98c2a4b28dafa3f4865839275cafbfa9f62d998ca84a97a002c2590b3f7bee6",
+              "oldValue": "d25be1510a75dd3e01420f72d91ee601dd50e86e9a10ab74353102bab97385b2"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_tsolo_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "45d48de993f25e42e461f2042dd39791cb8c09d0bc3848f6f1be9b596006dd9e",
+              "oldValue": "3b742d2c250e503dfe6c938a464ce3c2c945f56310760506c1fbbc06f4f0fee8"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_vex_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3590757e6988d13e9b5a32043eda1d780e42792d330e0897ebc234cf2ef16713",
+              "oldValue": "8f8021e456bdf2b479a52e8f345cfde141f19998aa53fad2e8d44b39eb5c96b5"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cluj2015_vp_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e6e671ed2d5020601595922eb40385bc190770b7a1c3db72098f6d956da4ebde",
+              "oldValue": "15155a32367b67efcf831bb0b8f539baf19eff0a0a4da3d64d691136e2c4a025"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_astr_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "41e89f88d90b66452a9af40b1485f8f94854fa22e7d1f847c6b6af833affdd4b",
+              "oldValue": "73e31026f87aab575ca9b140adaa11dbc41e3340fa343d25afc78ec40d385255"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_clg_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "20b66e8d11bc38d0f1b68ae36349733b9b61531a413d235551cbae0c4921530a",
+              "oldValue": "de6334a5c67247983291783bf58acd4fe5bb28f183621a9c06a0dc755510633a"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_dig_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6bdfcd80c5e0c776e7318fb2760a253133e3e4e47bdb1fb7812c1d44d4da749b",
+              "oldValue": "8258ef5e226edb482debb74e0d645149920f8d3a8fca9e4417c71cefc6a29cdc"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_faze_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "51ed7a20358a2a6fb8f5b1add762873146fee39b419c1c4676315df5e6621e28",
+              "oldValue": "d23fdecd1d868acfe8c142a42d41b4ca74f110a5a49977749e0c598121b7284d"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_flip_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3c34f1cc3850ff5f8e52a7246cbcb3356c24cb31243343e80be764f324c6d287",
+              "oldValue": "48e1a452bcb76b1423016c2e26ee51864cbd361d397eef6d6e6f51a5fc63bf1d"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_fntc_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bf5ed35df94a3bbad18ac1fc1870ed97484ed69d2e46f54c85ec9362b4bc6b0e",
+              "oldValue": "59ee82fee70bb3fc947345c98e961efabc13bc1ff0f37721a7b74db26e0dab43"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_g2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b70d70ce10e82c0edb50358827406296e8b3d90d9a67a245be79789d2442e6c2",
+              "oldValue": "7db550be4b1d2674b34223640d5cfe393a5ba418cc89d116ae8f95c50149f498"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_gamb_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a1b9e11c5c6055a52fedc3682123a93a761d0ff14e54395952701207d922f103",
+              "oldValue": "5f2757b84460b2f59c1760990a5edb6509d6179ea05c1d4f17ebd90c19acb63a"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_group_1_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b306b5e36dab995ec147627f68f8e91f0657ac49f8ad6f1ee7a77c3628ebea10",
+              "oldValue": "098f15a8178a824352cea55e15530af873ffc265345546c6661f64be009e9863"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_group_2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9384c4b73588f55d42a4c045a5bbf6226bfdfc175da7a2694a8f3aece3bd7b92",
+              "oldValue": "3d2d182ef8ada2eda1d030cb5c8a5a1dc253cf4ca0b082c1122b3d87c27d0d80"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_liq_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "310ce5156315a26c2869565716179d67ec22cb7bfb76fc04c36a705816398b68",
+              "oldValue": "6a8fa76dc0c47026ce57a4cc39ee942d80d3ba1e68638c32b253043f856787f5"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_mss_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b9df1e1c4284904a8628631f53926f043dc60223feda35e85e7d7084d6f82eb2",
+              "oldValue": "99149b725faa7c685cf08ba2be5303727bcce7db9aa9ffb08a9fceaded9fb8ba"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_navi_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b2a2bff9689a0fdbfe3cefa75aed6b78fc336a0e7e60c956279c749855a14aba",
+              "oldValue": "68b02993b8a6098bb3dbba3b52c91aff02083bac025bb518cbac8ace2a15bd2d"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_nip_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f070a2347b0bdca4243534a0050e4fa8ad9bd03cabccc5e0ad929f378b81f88a",
+              "oldValue": "d6f93e7b34e3e4a5fb8e8f3952d0bc09f477464a6511c44081ab2076d286648a"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_nv_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f852cc343ca20b7ea72fa2a951af92849f69c88c43daf5e9d8df588ec7ec7a9c",
+              "oldValue": "30bb7d5aa955f367fe13047f69e6c14e99bd33abb9c9b36a174df6228cdec8f9"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_optc_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4633b37edc3f40a411f24852b4966f29e7bb4328eb8c127773d891d2e272ec92",
+              "oldValue": "c7c378d92a056e603dcb3c5d099b8fb0c728c7c993ea8d90421072b0de1b454f"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_sk_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b776862ead02b304e5338b0560441b3be6e18e04dbf8dfbaa39b5b8c17d44d62",
+              "oldValue": "3fef5bb77531ba991121273740014b6f27dc6cd216b5623e27d24e18ddb243be"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cologne2016_vp_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a1b048cd15f3c7f7b7d9087322c4de51832cb5c5f9a7dba6b02da90a10ef78f5",
+              "oldValue": "c52cfadadc0a3d45e959c06b8e4630ed1a78f14037b8db580ce2f124639bb7e1"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_astr_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "29ed2f68ee28df47940fc4a460a44ab9b4e4d965889bf9b4d70df230baf1d19d",
+              "oldValue": "8bd93c45b1c9a2489f0407a2f0ca5252ecae58f1b28eba986c715af6ed1b1984"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_c9_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a5fb23dfe7f534d2f9dbf8e488029e9cfc6b1390ce183a60d1dd76482c4e538e",
+              "oldValue": "2fb2726b3a98393f1e0b8937084f65ddaee77a9603b23cd2bcfc61e8ab7ed4d7"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_clg_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3d2eea8870118bb3a760340f5d8db69ed147422ac76d80e579bc269a3683e79a",
+              "oldValue": "c10c5aca9fb94126440d225c28d61e29b7fdb42dd20f22895bb82f360adc42d1"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_faze_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fb820be8c8c14da4b53a36f928771e52f3bf2cadd7e69a4a2cbdac0171ba03b6",
+              "oldValue": "323c7a907dbf7d8a56d884e30a8f9da10d45db9b482256d6cc8f38beed60044b"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_flip_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce6923bbcde8d75745e940ce8cb1edf188d30e88d5dd66e4825311a080e64dfc",
+              "oldValue": "178981cb90e77f7dc2aa2e743ce0a628bf2865a954ed91721139238eb1b2de77"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_fntc_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c7090823e10dd4e59efab30a09acc6dd72e188f32ad6ca63082471f3e008d47b",
+              "oldValue": "33d9d9bf0db54157006626e87ad5b95d66f3cb9799b7dc9d7b8c4f99a3ee89ba"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_g2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4c212ad4483497fb37088aa4646c5f401f942b27459039806c63f5d96647b4e1",
+              "oldValue": "907cda5ce0f1c056136ac9aa6cb455afd7509077dd48919c27fa6f92971fd2f2"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_gamb_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "00e64a495f4ab2bf270a1ee598676161b0757586747a24d2a23f7062e4702599",
+              "oldValue": "57d853f21c0c45972883ece40fe03197ecfd0eba6f684cc8c7701468f460192c"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_group_1_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cfb595557f727803f048e1ac29e7479ea0ea7c02032916a3b965fca166493818",
+              "oldValue": "2d3315c1689525516d794103793525726e3e5de4fa84cde0866f91d721dd61a4"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_group_2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d2b59470a6b60c2a668a3d8f0b2c0e8f00d63555ae31aef1cb08289320a47d0",
+              "oldValue": "aa38b595b7ede7550b5ef01fd10b473fcd0585b0d16be7c9a60ef14ee4b4967f"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_liq_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f75f3405d7d8c2b3720cb43d3231e4c02184446c1a2e0abd8b5aa6fea8ebe911",
+              "oldValue": "9224da309cc0b482e2ebffca07c867b7c5596edf2a89d400083e8cb1903cea97"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_lumi_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "79b3cb87f696873cc68dca694877b9573db62b186bde5dee5065bf8f5a7c8401",
+              "oldValue": "3a08b2ee018ba8ae9c3c16b1dab6e36ee28c3596de352c9ca4ce9b599288c7f0"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_mss_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "89d7f4cf7948b4f14c72ea100cc1e0a893ed29a760a3537511d2a799f3124daa",
+              "oldValue": "0877fd6ab0ababdf6c902b5984f38fcfb0c94563a0376cc9b263d06a885ef19a"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_navi_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "18ba2cc0a2d9b607a6a132cf04312042a1b90963a844926b9d110acf6c0f160e",
+              "oldValue": "142b938915cba89a130e3b3059fa0d03153639c6ae538514579688f03c4607e0"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_nip_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6139a3e2396b6d19bab82bda0c65887b43120f4cacad759e7be24521218b221d",
+              "oldValue": "7ad7ea21dc5371183bc7d5584c47e2216b5ff53611447d22ff38d1df27dd6886"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_nv_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "627c9f0d0b4ab8ed5340d255ce4d7facae113018bb696bee2281ae071f18fd54",
+              "oldValue": "fe833f11bec7df49dd9c5f8c275477ab1ddd808dca268884baca1150b1f154a1"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_splc_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f9ad4d20ee902104cfb944d68796f53ff9f0b27602e5555a3f55f6c9c7a31819",
+              "oldValue": "d254fdcfcaebd842a13f63816c352424c26d7e8335e91706d478335af786c40c"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_columbus2016_vp_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3b147c40c18c2184bfa4e530464ea29163020b6189a9e6a8c494e25f4298b91c",
+              "oldValue": "c11eb1e987863b73b2c254f9708de5692012d3cbf924888eec171eb9c085ba51"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cph2024_group_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "342288a0c7c4ddfd0ecd4c2673735ff0b216b3b21cc0c042c7e18718929d3e83",
+              "oldValue": "db1f0deeff56350cb5604ea5246c263aa2a5cc78469a92b8b128136454acedbe"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cph2024_group_champions_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "72fce37daaaf603a27b9efce83bf2397cf59213946097fb32037b9d8622b2358",
+              "oldValue": "c71d0cf513852e08b7e113c64285e5399dc9cceeb72d5891312be3f96ee3d367"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cph2024_group_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "746f600934553e61a30924c17fdfbf1d0e93c9a0bb759ea4ba5f08c642e3d737",
+              "oldValue": "81c9a2b9772b01cce0b41b369948dcd60c288b377e48b41e96126ce8c525e141"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_cph2024_group_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c346e5b30828fcb1aa8038c8d24bf9d4bedb8ecda09fb45764a144bb33c3627",
+              "oldValue": "b54c26337f303963e26bfb940209a7eff75577e71b443af90a9787424f662e63"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_clg_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53f7094d4ea20d89c87ca941b051af9b317dd44ce0a607a9158ee0061457fa0a",
+              "oldValue": "ee841a78191f0c261b1168d8766d78b76c7de9a096d06c8bb14aa67f4e6e647d"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_cloud9_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "84fb38dfe7882ef5ec8925663537b4d791c214e34f2780f88029af862ddc524b",
+              "oldValue": "12e688809919a03672c8a7700c98b6217a1c70e62008d47f5eb69c284ea09d1a"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_ebettle_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fb075211d3e633e612aeec4144f5aa69b73e7c2e7516c708fdea2bb8770c5971",
+              "oldValue": "7612ada0ab98d0b5e5174e299576c2dba5bd709a9aff7f71ed3d90bdd361fe6a"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_envyus_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1a878c465979fc84fa71aacf124c2322a1b0010b2777cae9305609be61acaa98",
+              "oldValue": "29c2da16f04a7305311b610a56fc7de1b3069d1191001c42674e0228967034f2"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_flipside_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "46781be4eaaceaaa26b0e9ae442a7a2820a1d43a7df9950d3a1bc3e25207559d",
+              "oldValue": "d23da430e8abc7a85bd29ebb785ff72c5e05d530ed9a56f2cfc57fdb20377c2d"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_fnatic_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3b97233930c23ba80bc140ceb7fa8ba9858a05564461bf884f9860b665d569ac",
+              "oldValue": "d16d434579fa7c693f0b0d0d3ab89097166f913c1c22482dc64d55f6c42c400e"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_group_1_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1b3538fb71e409abae06928c1092e3fa26deedab6249e4c64ce8f8b4085a784b",
+              "oldValue": "3e8da5e044eef953c0884493ca63f6efed012f11a76473379ad3fdbca5968738"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_group_2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7a7670a200f5afefb1eddd054224932497444c9c8ca5993f4f5523d5db3d79fb",
+              "oldValue": "14f3e4914b12c5ba7b48fe137ce72ef10694f428e9761f3a1bd85f2e37640af9"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_group_3_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2a947132f50141adaf58b88e589fb890a6d4b49ff4146d9ad2f89d17fa841198",
+              "oldValue": "614eb88f577ba2d4516af053c7b5d21153a379a55f542a0b19e092ec2dfab992"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_group_4_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8d72d029584f0a0e25e820e2dd2b2c9750a62ed2b6cfae23cd2110b66f219933",
+              "oldValue": "c03f258cc9f7095532bebde6f2ff7bfdd185a497f40116137a93400950eb62c2"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_kinguin_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e35a45dc67730a082b087cffd28523e88c258697ebf32e60ded387928bb93e37",
+              "oldValue": "64bdcbf3717f69270523f6a50e0f4775cce7a11bad7280b7f6c69b4b66f5dba5"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_luminositygaming_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8eae896fac5a94498bb59fcbb536ec7b8eb5ab08dcb6d432d22694f9a59223dd",
+              "oldValue": "e20db6ea89a38068d2389f3c8510572b8f32200e476dbddc5fff1daeda20c988"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_mousesports_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f94090fd6d643d47ba244c62da1462a6cffc5f8a5971112589fef845e588d95",
+              "oldValue": "3ce9638d322e9a44f33630871c6115137137d3cd6a82744af611b6db48db6a53"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_navi_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f820829919563d2b82b735bfceb54c090c4439cbb107accc419426d61f496f36",
+              "oldValue": "a38d66698d83c3b3e74a9c63303c45134eadb82ed4d5972096c801eaccdc86d6"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_ninjasinpyjamas_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "915fe658921bca971fe3c445286355239f98dbfbb65929dd2fdcdc9aa242099c",
+              "oldValue": "17201d487f32772fcef3b65cbe9a6ec7ce1a0750b45fabc00287bdf02ca2f691"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_renegades_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "40b9922694c6c61eaa6f8dbe44c1227be6e7509f5ff543396a21f4a277cb445f",
+              "oldValue": "d1da9b8d5effab9ec7d7c73a058f3ba2f9eb8178837f0885b14275730a7eaf30"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_solomid_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d87c3d4d233b9c90ab950bf73f215218dbf73c453801dd6ad10cbf6473f5443d",
+              "oldValue": "368751deeb86845fe29ab33b52f695f8751a619d45dfa2e6fda96157918bf2c7"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_teamimmunity_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c947e9fa459da0b948c6afa9dc27d39fc9c897c9ae71c41d1c6895226b55dd94",
+              "oldValue": "fec459d2674369440e279d0302a5566769be9947e4770f5383ac6ab33b5a8ef0"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_titan_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15e6203736d242b9ccdb72c24ceeef87b189393f522795cbed6f0d2b5640f746",
+              "oldValue": "63e74a5b4612372671517784282943372c23a23ecdc9eb12020b24d31a05ed2f"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_eslcologne2015_virtuspro_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "933fe1fe6784d6cc6a28e958937373fd55422818c6cfd37d991383301b8a589e",
+              "oldValue": "8749f5f208da0e434da65d45ebfe9dc04ea3ff899fb1917ad5743af68a5fbb2c"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_katowice2019_group_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e2b961b48b0b531c78ead2094ff6d797c10959a2b944cf3fbf9b62567ed941a3",
+              "oldValue": "ac4937a6e4a8714689ccb07cc04549765673e2c2b83174e2c721ca01039d475c"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_katowice2019_group_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cdde019b4f19301683f6133e7693e74193b890b4f04c0f12b45eb86a8ec30823",
+              "oldValue": "a7e1795f4a0432bcc319b77d2ac319165453eaa85b87535ded56bbeaa03a6596"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_katowice2019_group_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a7deecf5579f06179dfa231a74506829624110b02ffb26a14764ac070afb0a1a",
+              "oldValue": "7fafeb9a02748b449f494ac07e1a418334fd4a280f4b5f521bd7e5fb2371d5c8"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_krakow2017_group_1_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "faecdb85dec79c60f262b67ca8a5f17bed7f13cca97bd39abd5ed2acc0ce0b0e",
+              "oldValue": "de193e8785ac56d280b09a83203a9900121ca45638a99b61b6091978ddbd1461"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_krakow2017_group_2_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "938c741fec846d2685f674e92a4854268c5559115657e3a75bf82e6661b6a6a4",
+              "oldValue": "9036e02295a26aafd6ef0fc6f58dfaf964ab4f3c2728b51462a0ed18c1a73803"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_london2018_group_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "27c7d9b1ab3227a0967b618ba760ad6367b864f5ea1dc3a61f2c63359c46a9d4",
+              "oldValue": "e4857f78eb9e8f44cb6b0af63fd97974d02839f4a65d903b0ea7182d98aab2ae"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_london2018_group_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4676ba86610362952f9bc73dea125f7c39e34f8acc876c7087e3bf610919c0ef",
+              "oldValue": "2583dd48340329cfb3b31a897e11c9198b61bc7bd608d5d84b69d04139fcdbf4"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_london2018_group_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "397fff5a7569797fdc943cfdc1d034d95e5b91985806b48b774318ac83f2ffbf",
+              "oldValue": "20221b728c2fb50fb6421cac68192dfc35ecbe18d896f9a729126a218e687d2f"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_paris2023_group_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2b2dd5e04f4d9f43abf286196ef179ab53cc0af2364e42fe4f0abe9befde3f05",
+              "oldValue": "ebff72e6b732152f0a0566eac54a16185f3a465e10e3d18179fb9d4845694087"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_paris2023_group_champions_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9d3ed5639f6ce1f652cb1c1b879a4c64cad23c72339da284059dc33c5b4532a0",
+              "oldValue": "b3b8cff734e72cf01ce81c48475a87a7367e1056875a980df67b927bba5d35a6"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_paris2023_group_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f7f100fc84c430bba3e1c9b7db4c2f7123949420fae5ff4ebf8d4469202f905e",
+              "oldValue": "7d9a2545bef4be837010b72605c7dd7be1987ac9249090e93952cc618bca0d3e"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_paris2023_group_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c4550f73090715e27d841fac8304f2b4db6ac4f8eb64ee3234a4748eedda635b",
+              "oldValue": "0420a3b0dadd36767e4f7deb611fc4b3df148037d190cddf0d63efdf078d7cb8"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_rio2022_group_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "69fd7f373c0004189060418e69512ee4d6cd165682644a2230841a28a5e33f87",
+              "oldValue": "cdbc3fd22caeb1f15f4bcd7907e22977e320cd93cbf3371e64715b7170230fda"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_rio2022_group_champions_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8a147b2027acccafeea32212836d96feb2f5e0bc795a44c2c042a19cf72df6bb",
+              "oldValue": "5b05d911ccacb22f1fd99efa5d14ee4f77401eb34dff81e774cacb8ee4258334"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_rio2022_group_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d05e4d0b70d3f69bbe35b128c4d6da5e363edfd5f0526aa20de6fdb8f87992bd",
+              "oldValue": "1f3fb2d0a37e4ca61aba5bca681fd202182ad6007e8d3f75062d2dc2a8086b66"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_rio2022_group_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "afc97d8d1b7d9097b14ec9cc338c68de4a11f29fe3dee764829c2bdc3815d2e0",
+              "oldValue": "ead4ef3522726f9f48e7b50c5b181678a1b981c9930b452b276e31772592461d"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_stockh2021_group_champions_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "231cbd2052ff238b2d1b652c757b7489fb408443ba1f6591c75ed074a9d67f23",
+              "oldValue": "89f1bf11b63287d9019cb5e7a6fbc180635f95104fb9279ece2a043b387ca25d"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_stockh2021_group_finalists_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5c5283163c25a01e47c8a009bea03482be079738487962d93a2b74c85296079c",
+              "oldValue": "c7b3fedc5023d992e21d3e44bae5ea610bb752076943084ea43720c85a33b7dd"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_antwerp2022_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5c222089b439a1ae33e9f30d884fa8849455fb58f374d69d85bd19ba89b1ab32",
+              "oldValue": "ed932f066a81ca5b376a560fa4e695f7d3d1dfb16d3bdf02018cbd1dd1428d77"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_antwerp2022_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "db5b2fd14e185269482de05c05e5b16daf9f261b3c728f1e8e3488c3b0b039ba",
+              "oldValue": "56bdd1df67a1f6de3ea98b1b375006545f6f60200b0fc55af8049d0765c6ae7f"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_antwerp2022_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b8d301673d0f72cb7cdeb8bb2b2fe303258bd7376d77df54678ae8e8d725ab76",
+              "oldValue": "8064e89fbd927358df0271dc0b4ec2028cd626595b7ce54622cc4ad0e09fe1f1"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_atlanta2017_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "81a0ba64a9a386903dff74939f3d618819ccff1df3dcc1bda0431e65c041e595",
+              "oldValue": "03b646c64ca4ecacd26e91cfb3ab9d5557abaa42fa446f8a2f26104c3b54b6e4"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_atlanta2017_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "838b1fb8b96070cb68428ef60c6091d6ae24303b29ff91228775f95d0fd540b7",
+              "oldValue": "516c69292c6ba53bc133fbbe087c5b1eb840c8cf95472ded588f35cded430da9"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_berlin2019_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "618abee5a477cac72f230eaad84579589455bbcd215345b014d609baea0b4f8b",
+              "oldValue": "9ff41e0ce3f81686f4f1a31557dd1c1dfd086930543a000a675a875c0108ded0"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_berlin2019_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9c0470bc45d48de6061327059f9a36b802c862c3b9272631ebfb1718fb82fb2e",
+              "oldValue": "16d6a2d728c21fe4e5cdd209d3a3262079c6c81536a04df2a197af17e84efde7"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_berlin2019_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "37c34b785b4b378a6d90966847af182319f2ef7d81c4e23433f036514108704f",
+              "oldValue": "86ff9be69f0ba4d57436d720e1a3d096781f2c43b3f1a705de325c1b69a3b951"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_boston2018_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "10b8952e76aa0a7757d755893c034142421eb03a0fe3412ef55f605f6919485a",
+              "oldValue": "d8c9a96f2878265f029733d014ec7261b8f955075cf8904e8c435fd4d6fbe203"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_boston2018_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "33aaf73b7d26f8e2a6c3a551c0f3b751fd9c53a34f92b006d80ff74354f88130",
+              "oldValue": "d7a332fa986ca8a5a918dcb2013bfe27996a0e6ed49b0176d283c191667d9a75"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_boston2018_contenders_flg_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "23fe723138a33631b8a68ee32bfb2403ae281f6c99d6209b6c44fdc6b0528412",
+              "oldValue": "cce4c8bb45534b191badc98d5208be539ac0da1ecb81a6651fc4383fe26f17ce"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_boston2018_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2c0966180cc6570ae9e18e2b44f388d3c821ed4ca27890caa67e4eb5130408b2",
+              "oldValue": "3f22e1abdf0af9d2bd1e147a117a268de54c0dfa45e841c7be1c7d5f278b2db5"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_cluj2015_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fc42200207f142f879ad0ebe7e04f5fed852b776585cbd327ca5953c41eb26c9",
+              "oldValue": "9d9193e949232b5086753821f5047a0fcfa6165b4ee5e7b14f3d8d84e3caa59d"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_cluj2015_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cdee4423b429407ccf5323082382f7ff71861e2440ed4796688fb14de3ab1a6c",
+              "oldValue": "1ece13194646955bcd40a043daddea32d6679a72527f82c0eda1d25511108c44"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_cologne2016_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5e374408d7b0f4cfdb4f14f8777a9bc2e5048838ff88443cf4f7f13eabbe48e1",
+              "oldValue": "04e3f74e6a2e7f768420517b0e511e8ffbc8c29fb77dbdad528413979a821f2e"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_cologne2016_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2253ca96c0f94105506fe799e9e990c1db93c9cc97cba875aa7310b18885d8fc",
+              "oldValue": "99992016a1c2f8857ccdaa7168adb64d5a58c5c2cb56af1158792a738f08babc"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_columbus2016_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a686f1d309ce3659046ffbeaee5a00c582f8680f11df36b0ea580daaaf28eed",
+              "oldValue": "dc2b2d4b105b8b0f1f928bbe9d3f65a232d5943b652f1a18b0a0505daf0def70"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_columbus2016_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4e76fc26364b9cf8b4972727fcf4a7d86526eabb704fd794d034cd6c928a86c6",
+              "oldValue": "61d5fdfa0c8dd9c1e1bf550c4458f22b0859abf9da62b72545d8444d93949bf2"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_cph2024_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "89f826562cc4d3fb04c19c6fac1897ad345610cdca4c720d2c6207b64b1fe1e2",
+              "oldValue": "6c4f01f0ad834a00dd1565f329756e96b05dfd677f902150b32ddd47fd7dbf88"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_cph2024_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8d53bd0e72a51dae9cb1e3a3ffc8bddd4f58e8cfffc739b1157ed8a4517f6ce8",
+              "oldValue": "e82d42485c8fc236dbad6880616379d0b5df7b572bb5f9382cc88e5aae5a6759"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_cph2024_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a0d9e0dc068390aed4e8d71762b87894fe4ec7e860334ec5d5ae461f9a2d540f",
+              "oldValue": "b455b097d925c3ad65a0690813fc29d642a361058e77e4a54e499de28ab71cc0"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_eslcologne2015_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "48a248280ef54875db800c187ab581be45858aad02fe3e795523a9b5977c39b6",
+              "oldValue": "2e0b904f954828cc5b3c1a63a029afe26b501f1faa94011f274fde7e5e3c4a93"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_eslcologne2015_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "40e83fae0b65a906d531990b94e28191f81947ab6bafab1646e91a3a8febb9c5",
+              "oldValue": "768529c532fc604d51bd4e95aec935bccc2432391f7c26bbc12bd9b39fa8be98"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_katowice2019_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e1c1ad0e7f9a99191cfac55c44beb571975990dbc605c0784f420baeedbc04c2",
+              "oldValue": "0ff513533792edda1433d610b65bbf8c6737bdf22e69ab8aa64488fca14c32e4"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_katowice2019_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "eb5737f04f134ba6c7c9105e258bd40094f3437c6f9c9894a4d1f4927f26fdbf",
+              "oldValue": "99304c3503b051d1abc04254e3ca5b92a2aa31d0313dd9152d9b8a01535d6d76"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_katowice2019_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "73e9c0aa32df3916be6f84c719eea3c19069f226373d158d495f84f2dcf610e8",
+              "oldValue": "4b0ed21e1cf1e45b288e26627717052b75d65691ca9a62c8cb0837bbaf402de9"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_krakow2017_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4d8eedbffad51b743a6c98b2274da7a8f7229b9ce15f2bb1992ef16369e8617b",
+              "oldValue": "2eef39f90a9b0d58993a043dde6abc07ec10adefb90e302944c7ab1296390f27"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_krakow2017_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ccd588e126ef807f10c3d490f81c781b75eae12abfcf0af8363193aae12a2c45",
+              "oldValue": "f54a7b3588d54a03841058eb80687210698f8bde22cf72b91c321e2e778fc2a3"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_london2018_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "11213f0685dacdef2c1aa5e909bc9331d0fd78d6362fff60b0f0e17beb13e137",
+              "oldValue": "7b4877de2fde804375ac6ff1d6ccbfb737fa4d418b5cb2407d5acdb7604b21f0"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_london2018_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "65bffc8869228e7fce1d89350da14ae0f4090a877b9387959af4e114184bbd6c",
+              "oldValue": "e40ed0715f5eda9c68f5a7e02974c799e845d85ec9f75d2c8d5ccac8a7aa0fa6"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_london2018_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ddbffc81df4438ad4dff75b536ce7ab9e6e457167596e4af6cf7723bdab43867",
+              "oldValue": "c5623c2a3027f8a61b7f8f120a1cb9a4f37542b72a61a96592a4408c762111fc"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_paris2023_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3a7284b722269464e3c100d74910be67e66ab0a6ff1ac0697f8124dd436ba3dd",
+              "oldValue": "79e75101553385862b8361c92ddeb0c09bc9b15db4099a8e0393508f1bfff028"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_paris2023_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ed6058f7bacf4adbbd379ac912075d930397907b18e2977245e71c628292ac5",
+              "oldValue": "be2bbf35d788330d77de6a6fed82212c64a42893fa31e095eb4b898bf1d0dba0"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_paris2023_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0ecf24205c0e5191d286acd1fea4609a9ae3e16f7d90b4cc430c2cac61220039",
+              "oldValue": "156f1b7d2280fad39898b55031a225b2e175bbd7b311ed19809fea85b8e73b8f"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_rio2022_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d73693d941620f1705bb5cddd1da7f70434b047e682e96e7d9c70141f831b8e1",
+              "oldValue": "eefca37607e7235da9f120751b5ff5b92b5b4f11f327cddc30f621c54cba429b"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_rio2022_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b93c9f726643749426607e32bdb122178ed9be865a671d12e913385f106d1877",
+              "oldValue": "920afbfcd47d4a0a84fef1d9172bab11f1acdfe8ea7bba98b646fcc6c9c2961d"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_rio2022_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "603f8bfed4ae053362eb2b21c533f90353f38c63e65a45cc28fdf3662f9ad7e6",
+              "oldValue": "41357e0584493b01526073f576424902a7c89acbba7947163f237f2bcb1143c8"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_rmr2020_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c9a12f2b6d99fd2eca825e16c2c8e3da8f990a52bb5d6f564c06d873e459e949",
+              "oldValue": "f2818e403abdb3dd8da73ef0e4c2e1bec7f28d272a06427017acff494b38c6aa"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_rmr2020_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "797de86e368406253ef2fbfad18bfb633a848a886c113b97e300b5aa3cb6e1f8",
+              "oldValue": "7b6c4a38a8abfb34a36e5ceb0169a97aa7126e0f1d8fa573f067d04d47401e1f"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_rmr2020_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "beb3d488e74ef6749e0f839e809fa6d6699aed917fbc21bd4059f898224a4cde",
+              "oldValue": "177a1f8a488ae8cd0f6e0b033228d3dfd53fe1c826c8b9a38199b8fa1427d0df"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_stkr_craft_01_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5e3b42c72f958f969289d98fc90180a9ac8c51f2345f31fa3ce3146d97943fa2",
+              "oldValue": "fb286212dfbe3f65a47c4a1da43385a3a469fe7ca07ad42c2458d7fb58e98fc3"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_stkr_craft_01_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4ae6398d4fe8d440f3fffbaeed46e59b71a6903e6aa6a8ed9bc90e30e34a7e00",
+              "oldValue": "856fc5f336a3f0f5d13e34768db8f375e316e7814cba7a94cc8ebe1ee15cc690"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_stkr_craft_02_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8378da8891f71a15cb295e2ee7b0181c2f433b072b88e8bc01db9c4428fa04e6",
+              "oldValue": "3bbade2b83c3889175e54bdb8588333a1e1ad96e955f84fc225329d0dbef7715"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_stkr_craft_02_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cffd829f51dd0a97080c399e3dc49082072010dd0cb867f1ee3c95ca147abda9",
+              "oldValue": "e90745d271ac169fa474331c16dd409497128e6995ce0ebf8a4fec3e11500dbc"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_stockh2021_challengers_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cffd829f51dd0a97080c399e3dc49082072010dd0cb867f1ee3c95ca147abda9",
+              "oldValue": "e90745d271ac169fa474331c16dd409497128e6995ce0ebf8a4fec3e11500dbc"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_stockh2021_contenders_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8cdcd4a31302e94c2275bd37ac504b4d5311529e97044b00375882fe9361f157",
+              "oldValue": "f6f5e28a271c898ed10846528c83563a1a9354375c402aff53ccbbbd82569c79"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_stockh2021_legends_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3c5b0532d0a9298228f6e52f6ed97f324e16cd346c5d3440a36ecea629b6696a",
+              "oldValue": "6e9859144b5395d3d69f5cdf43e54698d55b583087024f28245ad67e90ae2a43"
+            }
+          ],
+          "name": "CSGO_set_anubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "38e16ffa0e5269d5b928fec990c7d18666646dd9964d336bc32c05a43f6ad072",
+              "oldValue": "b4262139787770f025bc242e2c7ef0f3245e328c05b1359039a4e81bd6c45180"
+            }
+          ],
+          "name": "CSGO_set_community_31"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cbf8b96c76c6486b25c5fb5c5b5967889a53c010fb1102c71f0cdf65b15ce029",
+              "oldValue": "cc13e0c299ced02fc34e47c32b903d5ce83d3e9755480e646329eaad52c756b7"
+            }
+          ],
+          "name": "CSGO_set_community_32"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a7399093ff83cff688f4eaa1d8389e47d4be11c001281fa8e8fe4a6924fb7c26",
+              "oldValue": "07217e6ccdb2c5d467ccbdf04151faa5ae25b45bd6c45f8dd43acc893106baf9"
+            }
+          ],
+          "name": "CSGO_set_community_33"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "af5f4aae4c6d40f1d6cc41f0f04918d6ccaf225b532b95a52e347ea299a99fd4",
+              "oldValue": "f316fcdb60566b85ebae79993bdd0692f4416629c726aacd317402b4517c6c04"
+            }
+          ],
+          "name": "CSGO_set_community_34"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "60f7cb06069f8b4b82767592f128f315558e500461eed3499465fffc3c6e4ce8",
+              "oldValue": "74b69b00d03125a616856c0c66b2c263efb4d081655140118eeaf3ce5b0fc4ae"
+            }
+          ],
+          "name": "CSGO_set_graphic_design"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac54f2ecdd21f8759a22444855039ac764509eea57157df4b02fbc3fab9b4662",
+              "oldValue": "4abbe0b1fee72da535bd1e460eec767c6459522efd80071bb6f9c1416ff8c8fd"
+            }
+          ],
+          "name": "CSGO_set_graphic_design_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f10795539174196c831bf8c2fcf93b079bb3b24856377e7b340a1121ebbd1b28",
+              "oldValue": "cd2a73ed964b103f883de3b59d87722b5b7881cededc4ac7ccb4ce1f87699810"
+            }
+          ],
+          "name": "CSGO_set_overpass_2024"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e75ca793870c7efc508be6e076aaf5bdea031dcdb818cec000de913a73fd6f42",
+              "oldValue": "7138706582ddc73c1051cf04596b1171fde24d147de91e4948962eea1187812d"
+            }
+          ],
+          "name": "CSGO_set_overpass_2024_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a00d9f602e01a3874e78e303924126ece04603f7656d1c5d6e6e0594446a4559",
+              "oldValue": "d11a339d187a82db172c7b8722f5e6948e29d9970af42c0341e132ea2ab0722c"
+            }
+          ],
+          "name": "CSGO_set_realism_camo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "30c111b2716ef1f7211116fc5aca017e8bf382d83f5840fc3446ba1293c455da",
+              "oldValue": "1187727e9947a2fc10abd2ce6fe6204abacf0fa5ad41d8388398c3f88a75b290"
+            }
+          ],
+          "name": "CSGO_set_realism_camo_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c9172986788ede6cbe2f4a74df08e51176f6512d72e91b8e7110653a85551c5",
+              "oldValue": "66bf828e0004aa05e768ffc1e7f1c9676884b5b8f2bd2de49906b3dfae357dff"
+            }
+          ],
+          "name": "GSyncHelpLinkURL"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c8c744e246c165b4a3ea70ed2f153026324c58358547267e054f15beee1fadd2",
+              "oldValue": "2e559148332d9cca78b110ec75ee3b13e4ab4ce93a72721b9368d29ab5ecbb3e"
+            }
+          ],
+          "name": "GameUI_Retake_Notice_MvpCardAvailable"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a6e98ead6ceb4fa0b12b10f984bce4dc4b263c2c13f53e048ddeae02d8b41356",
+              "oldValue": "6a9cc414ba0e95bcc97ac1ea0410cb8ee633df1727d049746d9cdd5a6a7d827b"
+            }
+          ],
+          "name": "ItemHistory_Transaction_UnlockCrateForRental"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b92287f030b31f0851039583b8d36333ce1d01c1040af4cfe72fb22951891305",
+              "oldValue": "b2ada8de50d4bbdf6179d9d7716e14b74f3b76a00e19fbb7b38d7c60ae3e2027"
+            }
+          ],
+          "name": "LoadingProgress_CSFunLoading43"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3db3c99536dae153c478d9a1a2ed3a544d54491501bbdd6918857c825d2b2e16",
+              "oldValue": "e5950829a39bfb99f89b709af7cea3187565d767e94feb62d42fbc8338e43d79"
+            }
+          ],
+          "name": "LoadingProgress_CompilingShaders"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d18dbf876474d2cedcdab1b3587ef2bbe12486835555052d907a5d491abfc1e0",
+              "oldValue": "838742bc2250641041310197c3ea060247c165868ba8cab8195268390489c8ff"
+            }
+          ],
+          "name": "LowLatencyVSyncRecommendation_Nvidia"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "71add87886bb79035936c457862ef1f16690913e54f38b1d68da545228d32438",
+              "oldValue": "b6cfad4b3d8b9495748582c5eb0286cfe8a17cd812417b68b1a37624113ebf95"
+            }
+          ],
+          "name": "PaintKit_aq_case_hardened_2_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9d343371bbb9a25f882acacbbb0c888650d5731e132287f63fd7dc20b9759cfc",
+              "oldValue": "a05a8839830678461d661fcee32eb664e3cb76bb46067f94bb00ad6b658a13b6"
+            }
+          ],
+          "name": "PaintKit_cu_overpass_baby_dualies_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e6e8492352713ccfd12cec4d9bfe5af1b5070f5f964a9afe32750f3cb6e7ea35",
+              "oldValue": "3e2b046e62307f4c28e4e5a606d52c0d777851d36605c8b87670975448e2ddd2"
+            }
+          ],
+          "name": "PaintKit_cu_overpass_wurst_nova"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "22389dfe3c857588d991f0f0cbc2ffc862dbae38294102453ca5ca79d53ce7b8",
+              "oldValue": "2ec67fc9783c0d0d9f9471830660349a1744dce27398f932cedcd3d1157e8529"
+            }
+          ],
+          "name": "PaintKit_glock_chomper_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a85d03e34dfb9c11d056b756b28abe7f207eea26aed98f301c30059e5af6a2a5",
+              "oldValue": "d45209afd5990dd74a8ae67f63faddf23499d0c00c6cfd3f0bc557f3ecbb4e37"
+            }
+          ],
+          "name": "PaintKit_gs_constellation_dark_mp7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "66edad458332da5ae5ee11d3d3e564ab7ba0761a87cb3ec5dd9fd727fe2bf73b",
+              "oldValue": "1505dc83e358fb6a540da0a50dd13d2abbdab461d4a2a3305cd75e2232026532"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_ace"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b8a5239ee2bfb949e2777151f7324a714ba6caf99904f1699dfae955b399be37",
+              "oldValue": "4cc4a72cbeac53f5c4a2b20caa15fd7b670c5d952699b1ac633b81f61f2cc11e"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_blast"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aebd9c6180a21e3c713dd267a1dbea75979bf6350f99ed62b895a81ed2d137f7",
+              "oldValue": "69dbbd26745f84a321637c1c66462c4c315707361cce2fab86253af03c588d8c"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_bombdefuse"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aaf1aff863a762317a01d4dc4c3a778ba8fced0a285cbfb8ae58c1bdada6a946",
+              "oldValue": "01063d518a23f855a8f0ecd4de0a6fe960901dc7bccb9102e4b781b8ef77b2ea"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_bombdefuse_clutch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "510d4c18f0387fd073c0454e9937964bfd3442a13c3a34161741ea0043081e6b",
+              "oldValue": "6aaf2e727a45c06893bd14ce8e4daf1c6cba841efdf9002e49a95e68b9eab7d2"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_bombplant"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "275a3baa211803dc77e4ea2c7382566cdc51830b250c105be6f4f6da7f00f8a1",
+              "oldValue": "2757d2f632f2b3081d33d9c2740c1b969bfbd93034f32ff14588621be1b99cb5"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_bombplant_clutch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "88c688f9b7599e70957755d606a0e4b9860929a2d594fb8c2efa71a9019f203e",
+              "oldValue": "af5f5ff8e9b74a4de4a310830a8bffcf8b8f34ce2fb5d23b7059c0ec735ace8f"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "eca6b765ff22cd17f2552f84d3158552d8c32cbf5f38062681a2ec16943cfc50",
+              "oldValue": "3a4924a08c25e9665c418921aad64fa60034bc53ea62d0b2b8891715ea52afce"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_kills_four"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c7abcf64ef8eca3373a249f822c7a0fbac5e666a4ba682f9724da4acd82c615b",
+              "oldValue": "2343665a8d50566212df5d49b6beb196b31b5e363e9cc5863a25b538728c9a1f"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_kills_three"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4da859bf6fcf20cdd3f7063b547c3037cb1656ce1edc48d1ad6aa0f88dac7c77",
+              "oldValue": "68f718627ca8aeca8457fa5c9069bfc755eb28bf93ae8e18a402ad92e91d249f"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_rescue"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15ee59dfc068d65d7bf4320af4ba26bbe3930b63cb1d4f63ac2d2cd8fe63d9ca",
+              "oldValue": "eafd0c3a46f4ebaaa051373544fa280fd77a11a7584d40814501f7482310dd6b"
+            }
+          ],
+          "name": "Panorama_winpanel_mvp_award_score"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7600006f54586e097ac362f4873f8a72786284c9b61d14194630d2cb63b0e35a",
+              "oldValue": "e1a4d2b3cda8e202561b6e5279901f53f10060d0383b430b96a3209e0eace06e"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverLink_Nvidia"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "822ab54576b75b6bde1c725df5a53205df2b4aff95cb8af6de3ba556a1b97fa7",
+              "oldValue": "8671250f34ad7c7be27aa2bda2e5530c5252601b27203311b6e28a4a7728344e"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverWarning_Nvidia"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e15cca6a10824b7a46f3221871ccee3294363629d67c2ca493a1866c297984b5",
+              "oldValue": "ce3a064958bc56ebf906cbf93c1c30ea759c36823d781865bb6de1b7578d683b"
+            }
+          ],
+          "name": "RefreshRateRecommendation"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b2e461b2c0ce946a8dc1e11fe8334db188fb1c1a21a5cfa22e89dd4cd6dc6a02",
+              "oldValue": "d52697f63a97ea0242d4e4b2c89a56dcea91c06a8bbd898fa430aad9ed03a6e9"
+            }
+          ],
+          "name": "SFUI_InvTooltip_KeychainCapsuleTag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "94281c64c53cb0663d1ed0aeae07b632c9d8443959287b8fafdb122b7fc1cd9a",
+              "oldValue": "187ad845ceeedd6408deffc61691ca947aac25f7611988bb98134f74895496c5"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusPlayingSteamRP"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d0e70e7d830056545a76c700e43654587c40c50b61b0d1daf5ac984fa62c50d8",
+              "oldValue": "cee248e5f5d3b0a1567bcfacfa604283ab9d3b1c7c195867d56c0d3b2bb15227"
+            }
+          ],
+          "name": "SFUI_Map_ar_pool_day"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bbca5009c9110b5c11aec9137b547f4c165db01363b45d4fec3bc2fde03a70df",
+              "oldValue": "69bdea7bb7213e94b6a5cd47768a13e5fc846c0e8abb3f9483da46992f17ed67"
+            }
+          ],
+          "name": "SFUI_Map_cs_climb"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "caf87f3d4d7406bedc9e66b6a930745fa848aea0104092b6073022055e6e121c",
+              "oldValue": "60206c947cf1d4404e7e9919293600c60fc169abbbedc8e2a9bfdec26030c69f"
+            }
+          ],
+          "name": "SFUI_Map_de_assembly"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f1e51b616fefad28f9accb509f36802f2da28661b833d6434df6e2ec8ba59cff",
+              "oldValue": "c84cad109b6df24691de4abfed06c10cacdcae3557202b2a8a0dc7c50bb589aa"
+            }
+          ],
+          "name": "SFUI_Map_de_blagai"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2e6f195559a92b359eaea01f176bc5138db05617f61239c70cfd5a9ed8c83b44",
+              "oldValue": "faea03a318d6cdf63de861ef6e42f69a2dc758c91a499ef246639320183281c5"
+            }
+          ],
+          "name": "SFUI_Map_de_boyard"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "def4e2bf008db1195a5cc75777036266704f81ed79caa2f614b4aa0b339b802b",
+              "oldValue": "7cd245c68e6a7dd99985f63d4a75d54bdb870b761d4e282277ad70dcef6e2f20"
+            }
+          ],
+          "name": "SFUI_Map_de_crete"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "050f48557f7cb5e09fdcf44e60d558ca79bc3f1d4869935188b8888f65db5f25",
+              "oldValue": "d273a86319919b930e4881ccf088768ef39895fb2bf686ba329e54ea86170abb"
+            }
+          ],
+          "name": "SFUI_Map_de_iris"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d86f1a54ed906e6bb669d958bd3cfb90db3c982d7cd55cb0103874f9ae5d9e40",
+              "oldValue": "358041ff3af92867ac5effd128a00ea0f943f00e93428ae7a44dab6525fd0cfe"
+            }
+          ],
+          "name": "SFUI_Map_de_mills"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8f4faad1e71174799f411f50fda258059b25ee631d245a1e4c0d697a076e17a8",
+              "oldValue": "e2a9e6024df748f64dc5a141437a1bd96ce76e59f9754ec5d4b9eb09dff24716"
+            }
+          ],
+          "name": "SFUI_Map_de_prime"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d297cbb0284fdb8b2e8d91659bfdfeaaf7960cabbffd761542c7f0a50edbfab3",
+              "oldValue": "bf518a502bbaa8d03c4ce60f088037cc15ef7bf8b171e5309e768072a3526a41"
+            }
+          ],
+          "name": "SFUI_Map_de_thera"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5425f11f71871b7b0c1690ae89b933fedeabbd1359638fc18fd9c89a9287a97c",
+              "oldValue": "8cb3927792801501e37045292695995a2fcdf5b65a3e5838c6565a8cfc034f71"
+            }
+          ],
+          "name": "SFUI_Map_de_tuscan"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "baa35530760e2a4ec299acdac6340bb75098d0c375978b4b1b55a555245d9aca",
+              "oldValue": "6dc58da695ff65a9e2b1fda71a34726bd55e570e8217461af318a4a9b92d770b"
+            }
+          ],
+          "name": "SFUI_Map_mainmenu"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ca72714fd1512b249d71aeed74e15ef2a044a40bd14d179e8e840b0fc9f31ca8",
+              "oldValue": "fcaf4c984296ff5a93db1db5ee6f41a9a4980ae94acdd2b21b3e81045f5265c8"
+            }
+          ],
+          "name": "SFUI_Map_workshop_preview_ancient"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ba9669a9b32970ee4cdad700901bf07d24c11232b4d783b298f2ef042cf7e78",
+              "oldValue": "2fec2ae5001b757d124d3a8e43d4d4f6ea3f5957f6a6d54db7748a7264147cc4"
+            }
+          ],
+          "name": "SFUI_Map_workshop_preview_dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "49066193a4051b7fdae496c43d96c2cca534bcca6835b73c6cefe2dd01c8703d",
+              "oldValue": "7a34e46063a4773ca4c5baf87a77a78c12bf7426e5f74c7cdff8b30c41d6d44e"
+            }
+          ],
+          "name": "SFUI_Map_workshop_preview_inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "67ea7e50d504d51d1a07cebdd69a9a5974291f9e8ee481deaccf71d2d4d72bf0",
+              "oldValue": "61d986c707e96c23b528b2ebf8c4de83fe3f2a842b86fd6983a0af3bf2369ce7"
+            }
+          ],
+          "name": "SFUI_Patch_Remove_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "88383da4f85989d15e3f877c3b9d5f5233597124fb2567d55a25d5b22ab4857e",
+              "oldValue": "0d581a9ebed4a1eacfb19affee89a639906c6bc847ac2023021b84f599362ea3"
+            }
+          ],
+          "name": "SFUI_Settings_Display"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2fc87916f20c6f25d1f12270c40eb9f948a34a937a92c3c9073f67796aa7e201",
+              "oldValue": "8e8da21f127fd10c13ac2a816f6dde351ec12c54c932ab706b5b67bff323e173"
+            }
+          ],
+          "name": "SFUI_Settings_FPS_Max_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a85a3fc8f815a05a363a5fbda05022c7101f40f662cbe5ad686b7424f1d17eef",
+              "oldValue": "21c09857dd3cae6f4b4a0e0b6d87d5c1bdb5a1a0293ca06608ab01d61232bb00"
+            }
+          ],
+          "name": "SFUI_Settings_FPS_Max_UI_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "69441e51bd24bb80a579f6db74628b13e1f81663c930a060ce963af2f472fb62",
+              "oldValue": "f422e504780910f3c747cf966188e37df47ef5a467588460ab20d45a12a4a1fc"
+            }
+          ],
+          "name": "SFUI_Settings_GSync"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2eb9a20d37a5d953b65ec88e1b6306a5907a9db155effae6db6a8c18b27047a3",
+              "oldValue": "ca613acfae0c1e5e989f662d1be92342af7ff84ff6419897e9373c385c0ded1c"
+            }
+          ],
+          "name": "SFUI_Settings_GSync_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ca0429a1d679d99a9f377df63d430116871076df701bed3d60e1fcd3dcaf5d1",
+              "oldValue": "576c7a28bf1363815ed5b73350559f1f786a3ed7a8a00eeee4e4760ffa8aa434"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdelivery"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4748623da6be5e43ff48437693e77ed7179bc017d1f898693f6c1de235b07cda",
+              "oldValue": "11995cae6b877d8e840c6d3994c7aeba36bf222b4f2f8f26ffee8f3fe3784289"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdeliveryPoor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "178e65f1e9c861a02d0c2d884e688c5a1ccf85277735b7e6fb2a17657051886d",
+              "oldValue": "46075fd3f41dc7cd675947ba7cd99f8e5bda6c9c93240ca1c1b128085b02cade"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdeliveryPoor_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c82a6b3cf181443c13120b6686519c47cfb44135af8db8ddadf35ff4ea3f442c",
+              "oldValue": "8f7931b75b258d1fb0847630cc9d99464ebe04fbadc36a5b9639b13cfd251770"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdelivery_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aa8137f2a2dded98ad9457440d4e8628a0e376003088ea4f48deaac96fdce276",
+              "oldValue": "0ea8154adc79cd525bc21cf9028f67010f6188a3c37dbe32769d1ef1ee493545"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkQualityGraph_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d1b073132baa36c078e6b249d0649aec81bbd03b4364ba5796dca9a3af5d742b",
+              "oldValue": "5b180ba4c70d9941bee068fd95af62930e8f9cea096203e1a08663974e5164e9"
+            }
+          ],
+          "name": "SFUI_Settings_OverheadIdTeammateColors"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "45eaac1df3c4528a8c10f2acf323034543966321528ccb694f924fbab1fd3008",
+              "oldValue": "55f7b60c6a6dd63b7da5a24bbb291d4928a4dc009e797fc5612ccc7b7f71007b"
+            }
+          ],
+          "name": "SFUI_Settings_Vertical_Sync"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "27374e235f002a0a2dc9ddaba63282650d3fe86a7e3d5432f171fc148a537479",
+              "oldValue": "227af4ca5dd30c72e5ba58cd379e9a4d4e0de92ef81c5b10dc876ee71c12ef71"
+            }
+          ],
+          "name": "SFUI_Settings_WaitForVSync_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "97e73c7505db330c7bdbe47161be4c0ad8073e8c1bb1eb27f70036b296adf5b5",
+              "oldValue": "332ffb5c3657fa4485fb7071f302a9e07a20a7734e83bf14780399063d530035"
+            }
+          ],
+          "name": "SFUI_Sticker_RemoveImmediate_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "440f3a537501af93fd882a3d8a7fb52fa74b4fe93c66e7435bf577e7e6f2c9cf",
+              "oldValue": "db4b8b0b5c622fc32226b10ee39c1fd0538a1e90edc1db9f5dc030bc64b7d505"
+            }
+          ],
+          "name": "SFUI_Sticker_Remove_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8b2ca7865f2fdaaa915a44dfc1283e0ff24ff80bcf3a9c1c63b1c503f55a6abd",
+              "oldValue": "3d06ed35494a609aeb5c3bd27c3dd90878ca83e6cb106452a1630d19ddceaae7"
+            }
+          ],
+          "name": "SFUI_Sticker_Wear_How_To"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "01ba17da3d2ebfb7c3327884ca361e7b82a10fb05db1ce42a899507feb147d5e",
+              "oldValue": "e48df865451bbcf9ee18edb71e32e5e3d45f97fa8641f2dd9263f860d3fd46e4"
+            }
+          ],
+          "name": "SFUI_Sticker_Wear_Warning"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cd50eacd86707c7fb006d01073f92106d74a1caa80822860109284de87fe6adb",
+              "oldValue": "c0e7c042fc54bed3d34aab099da570658573f6aa5072a9807144211c678d0e4a"
+            }
+          ],
+          "name": "SFUI_Sticker_Wear_Warning_Full"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9835f32fec11f4308590ef1aafc3e78b2d322e18bcb61a2d0dd029166a5de642",
+              "oldValue": "a9533a8bf538ddd630965a26efde837161699f4b63217cf4223af8eeaadabad4"
+            }
+          ],
+          "name": "SFUI_Store_Limited_Time_Tagline"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ebcbf8584d3fd73775fc84c52827b747b669c0b0759817b3a30c73caa55a03ee",
+              "oldValue": "e1411473b1be2a44181eb75333e44b0c224f5e9e7fa7f0772b7ae6b5e1c21743"
+            }
+          ],
+          "name": "SettingsRecommendation"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "85ef0a8b1f723d967a5c9520acf284cd6ff107bc1733c9819d3db17a657260e1",
+              "oldValue": "222cd1d15c2f59066f99f71857613a9b62989468a8f62380aef378423c47dd9c"
+            }
+          ],
+          "name": "SteamVideo_Bomb_Defused"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b32f600fe08858463a8c32a8cb999e2b90d06f115e1f18ac9c0fc2f1228d36b4",
+              "oldValue": "ee72ff382fae3a6f849e793b54a26f7748f0ccf5dff52ba73af987434e4df33c"
+            }
+          ],
+          "name": "SteamVideo_Bomb_Defused_LocalPlayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "940a0a09595bd1a4e5cfd451f907de9e94f02c34fdba890fc2902d44ec59c4b8",
+              "oldValue": "d6f888e71b573129ee748d55ec87c25d43da8f5d864eafa6d84e0ba984cca106"
+            }
+          ],
+          "name": "SteamVideo_Bomb_Exploded_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3bdb7896222629784a80d21690a6c5f80e7633b01838bce07ded876b93a7e012",
+              "oldValue": "5c33a0c90f3ab3a37289bed24e2a61a364e7d0703e469d6067d3d9d6b865425e"
+            }
+          ],
+          "name": "SteamVideo_Bomb_Planted"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "91800c7d5ec89098d3d6e70e4210cf139f4e1bfdfecaca5193d5dc51141795d2",
+              "oldValue": "29b3f2d5889b0bcf0d2e09f4ef0227c4fd6a4da30b753659de7eea9d0c3e806f"
+            }
+          ],
+          "name": "SteamVideo_Bomb_Planted_LocalPlayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9b3371178afbe84cf9cde345822c1bf30fae30a515aba6473df2441388bfe25c",
+              "oldValue": "e9a4e21c400dab0c8e0bbf39b424f288090cbaa944bd636bbfa31f114e6a49e7"
+            }
+          ],
+          "name": "SteamVideo_Player_Death_Description"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ef103b1a64e955eba32b61638f63bb97a5b74f257984e1d8e17db1a121f9d4c",
+              "oldValue": "081da11ec0ed5275408fb777c0d33f6c20972a1947ef0cc66ca61b55d9017e0f"
+            }
+          ],
+          "name": "SteamVideo_Player_Death_Description_Plural"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4db6f8d11fdae3a8ea1515fb0e1687e738361a1a37e97c48844d0ca591ca70ae",
+              "oldValue": "c44f1f965779fbffbc53a02fa62ffe96c04790008a205edbf2c1c942fe29b6c4"
+            }
+          ],
+          "name": "SteamVideo_Player_Death_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ccec2b28c5eb9f6d179d3837f3c215f8d150ebc9f5e8c47648b18a7842f53ec4",
+              "oldValue": "f1963dca0c8be347ff368693f3406799ac4119ffa74d55f26546db4a7c211d9d"
+            }
+          ],
+          "name": "SteamVideo_Player_Double_Kill_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ecf75e3179440db49bfbdfeb31228f2716420170251d3b38e881668928e27f2",
+              "oldValue": "045d995af4de93400556f08e5494a436686208c2750ce932055c8385c2212fb0"
+            }
+          ],
+          "name": "SteamVideo_Player_Kill_Description"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b64a5041428958128d0d6dd22b8ce9ac9b244b4651dd99669deb3a0d79b193d8",
+              "oldValue": "747c9eb6be8102ae9d1d3c8bbf20dd310376700b8345a29392f2d6e85e86424a"
+            }
+          ],
+          "name": "SteamVideo_Player_Kill_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "39031e421ce9f7f93a2900b60e64057d711e715a533bfe6aa2d578c361f8b67a",
+              "oldValue": "c16dee55fca6a7be492b8ed57f00e1ce88d01fb1db10f6b202fbc30552add7ab"
+            }
+          ],
+          "name": "SteamVideo_Player_Killed_Self_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dec21a9892765aa4d7fee88583cfb4a2a14ec805e1e8318c59243fc3a12e1e28",
+              "oldValue": "be305f8ef938e7c660da64ab7d7171f2aefdaf937319a02d281b3ffb041508fd"
+            }
+          ],
+          "name": "SteamVideo_Player_Multi_Kill_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3694d310f78687146e3c8858cb7253d3ea5d7c288b022d839510b50633c29c4c",
+              "oldValue": "52ecbd3864507cf98c215ea556b68d759a688fee3bbefffd09a1d822638b5698"
+            }
+          ],
+          "name": "SteamVideo_Start_Of_Round_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2413072878db0b6df35861fd2be2586e99f09940acacd9040b3ea4022a384f95",
+              "oldValue": "da021f856604536ae5917f6f3e3220de6c365c3973e995ec5e572beb1d449fdb"
+            }
+          ],
+          "name": "StickerKit_elemental_craft_paper_fire_one"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3fb17f32a5f5a61e4b156b1a1cd7caabbb8df7db887b425ec05f214ce95a0f75",
+              "oldValue": "749d8817693f15bc3bc9dd672f1f6826f9cf54af18857dd6b9749ed0e1ea4a22"
+            }
+          ],
+          "name": "StickerKit_elemental_craft_paper_fire_two"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "28404eddaeb7cb6734f14a5339ed60226f4e8afcba00fb03c9cc9ef8f78be7da",
+              "oldValue": "9aa05fd7dc1ac0f40f3f19f3f6901d071390a4f753577fedafaa2f03102dbe7e"
+            }
+          ],
+          "name": "StickerKit_sticker_craft_foil_mouth"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a371bc3d6d6781573dd841783718f9a61b4a78ea5701846ef3581e1373c0f637",
+              "oldValue": "3685d79595c3adebe2c88790c8392f31366afac271f3f8cf811e0d6a3c67d3df"
+            }
+          ],
+          "name": "StickerKit_sticker_craft_glitter_kawaii_eyes"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "29d2bd88b17493530f30ea4481a3a3a91f4301f2dfecd884069f7c6ac63768d7",
+              "oldValue": "47b82559ab968b1b695349956b89d91ac3c43ad4b3a4aaebdedbe2eee8e27919"
+            }
+          ],
+          "name": "StickerKit_sticker_craft_lenticular_angry_eyes"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "80c5da0550024e67f32aae620b93b7c8c232cf79e229ec6270ff495663d0f6f1",
+              "oldValue": "1b9ca1f59f85b2281088ad8d291ce714e50185e963fb0753d11ba913a518bd1a"
+            }
+          ],
+          "name": "UI_File_Filter_SupportedImageFormats"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "95fc845473df3cafb11a8709f1ec438485986020224210937959f24ba18049fa",
+              "oldValue": "e407f4bab1029ae9f54484411cbbc36873de4830ab37bd850659ecbbd9b8f96a"
+            }
+          ],
+          "name": "VariableRefreshRateRecommendation_Nvidia"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5a888fd6490cc6933b548c58c104c3d76bbb359ff3109574536796502cc658bc",
+              "oldValue": "f60969508a5a4af9df15080a3582689ee2ea5a38a18a33f703049aebd4c83620"
+            }
+          ],
+          "name": "elevated_status_ad_xpshop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "58570108e7f90208bc6fc4feac971248fd4963c00b31a1d910a9c46b0cf29f06",
+              "oldValue": "c0ce13590425490b760cd263e5d5cf28231983aa94013141be92c2c73cf71dcc"
+            }
+          ],
+          "name": "eom-skillgroup-map-win:p{matcheswon}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9f3e2f41e91daf9d7a8c9a0269401ea5ab3793c46b099ed943c87a31e6cc0557",
+              "oldValue": "928674d7b45adc860cf7de1023a62c1b815eb046fee2f0d93519db4f540cfb24"
+            }
+          ],
+          "name": "inv_context_look_inside"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0f1298e92768ede79e09048dad8172ad463bc77289392a8f6371eca55e221f67",
+              "oldValue": "2db2b3f746a5215be727c6b66cac44c38ab875659ee62bbb3f53c763bc13686a"
+            }
+          ],
+          "name": "inv_context_preview_can_keychain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9c00d4385fd840a6ddae501dddbdebaf0210ae340abcb551003e33a9deda5f9f",
+              "oldValue": "dffd893fa0de5ebea3da4ce46b496cf66b476204462741e808eba5241d097437"
+            }
+          ],
+          "name": "inv_context_preview_can_sticker"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5f4d178b87f334bd29a6c388cb7f302eb5fe1d13daa4f9a0292bdb7d72c6da65",
+              "oldValue": "9d640a0911dcf6c79628563e05834fc9a89f25015c4cdb50f79c8994a00a302e"
+            }
+          ],
+          "name": "inv_nav_keychain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a5b12516bfc5fe7a0e74bad4b2c510758feffc09b751400b6b5ea406da1db611",
+              "oldValue": "037a3956364c36eabff48bb70f080604ef81529caf10e906473b6be6d335935f"
+            }
+          ],
+          "name": "inv_select_item_use"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "47da7617f3d24cbb48d9504b553a0fa34b1528609beb78f1f1ea628ae7f5dd28",
+              "oldValue": "e42d8473c1883f8fecdab326e6da74633d8da44fa364bda6af11340554c311e9"
+            }
+          ],
+          "name": "keychain_kc_missinglink_cat"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "44945506f39f6ce1e8676f49f73014b2cc0d84dc070f6d8bf2cecfb9a665bbe9",
+              "oldValue": "6dc249336a0d69f6d3082ff89e36accb0f00b3ad778611085162b5352bd93bb0"
+            }
+          ],
+          "name": "playerstat_name_7.5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dc7109d8ac004a86dd8cd51970f42dd82df9d2f056c50c08d71a81d0993be7b4",
+              "oldValue": "967216c8a6f5040e8959f9c7ce14414848b268d675af1fbf8f1dd81ff57bf61d"
+            }
+          ],
+          "name": "popup_can_stick_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "db768a7a56d38a81de3f6d22fc6cb56da7aefc4089c0e041193740a56392349d",
+              "oldValue": "e8be1a93bdd415fccfb47d7ab5d84fbcc33aade90dac871a1a6d6d2a70645b0e"
+            }
+          ],
+          "name": "popup_can_stick_scrape_hint"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b23897b76776ece340b5e7a8ca2d2b2db2f332ec7bf3b0a7e97b35154bafa35a",
+              "oldValue": "c159b94312590a37a35c9e4e4dc83904a931f20a27368f8d57839c83c735c6a5"
+            }
+          ],
+          "name": "popup_decodeable_xray_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9b43ee88ec96cbc4fb07d6f6293899bc4de6dbfa51b2afe63c1d2a76c135f44c",
+              "oldValue": "79881d438d89a2002313221eb2ab4ccc540f7e4ec7ed611fb2025af8f496733c"
+            }
+          ],
+          "name": "popup_inv_lootlist_header"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e83cc75c2fea0345ceab2630756b8fa22a9071334b422796ebf0f2f404442abd",
+              "oldValue": "d7a0d2678a5149d70044d7adc6e690ae1fe0f00d05f04f27c097ba2e54a3d6f3"
+            }
+          ],
+          "name": "quest_1064_hud_var_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2d893e7c7712bc51eb7a0446df4d319aa69a65ec7b14bcb39b9c06a2fee21f41",
+              "oldValue": "7c0439d65e0da0dbc8b587f3b21e463868871c8b1f9cca607f29c10c20471522"
+            }
+          ],
+          "name": "quest_action_singular_act_retakes_picked_mvp_card"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "41b6d17d7bf211c6e1eb2ad8dc3e80feccbe13d646a272ee40e20687c8c3393e",
+              "oldValue": "e56afad5c8b13032f9696a66956ac6c127fb76220519b118f1411a9483e0c425"
+            }
+          ],
+          "name": "store_tab_xpshop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4803590b57cdc6a1ca102fa320e9808cf8de3bd98f793cf25449b8bab422ff28",
+              "oldValue": "691b9ddb89fcf1bc549585d424f75b2e0c36734968e98d863e6f01e6ee24f251"
+            }
+          ],
+          "name": "tooltip_character_cheer"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "54b6fa04040215ed83c353b3dbad68aabc15893e907587ccebc0175c0e4509ed",
+              "oldValue": "c4d733c44183dc6f287c3b07e80441851eb33157cfb76e31ede60263bdc64e69"
+            }
+          ],
+          "name": "tooltip_character_defeat"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ace314df94a9be0e712ffd5d757641659d67ec486e61b69ceec276d625968ce1",
+              "oldValue": "52a256584e54777b25f8b4f72f8cbec6f40cd05ce5ae7261048412673fd04c19"
+            }
+          ],
+          "name": "tooltip_inspect_scenery"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "84280a964a834565856054c28ff63ab832f628e86f5e160c1b00bc98d7f2fc65",
+              "oldValue": "090634f1328036cc008d920d3c4f8e949a823c5f6d059cafd0d84c43af79b5a6"
+            }
+          ],
+          "name": "winpanel_mvp_award_ace"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b68f440fe6db4165e45019152046f3697f55088b7015efd5795026da48d74104",
+              "oldValue": "a87ab92180718467f9eb68435fcecd9053fcb9a804dfe620cb128c9873eafc5a"
+            }
+          ],
+          "name": "xpshop_howto"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07189fa9f2a7753ddb59ce94e4cfea07d6a31644767987ee8012f5fecedff321",
+              "oldValue": "0e2397560be6bd39cf1e7169c027f9d2d3d07e40a0d9df82781409b39ab1826b"
+            }
+          ],
+          "name": "xpshop_key_warning"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e25d176ce3580dfdc9aa2284a25d52fb85736c7735cb9ec9472aa8caa31d98c6",
+              "oldValue": "67ac8110a55d2f618ccedb96528852bc7b4ddad568f4d1e4559018456016108a"
+            }
+          ],
+          "name": "xpshop_next_credit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "096c6d27ad05a85892e4a99be2a7635b2fa719231bdb8100d934c1551477bc1b",
+              "oldValue": "7a0a0ca4b169fc9dfbec24fb98f3078a6b9596854c8dff6d7a642d11690ebb94"
+            }
+          ],
+          "name": "xpshop_pass_activate_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "39182a4bdc34394d3dc41d1b42aa219e6e1bf67d85fb75b2cb4cd9b189e69b71",
+              "oldValue": "59766514c4705b6ec092264384ca52e79e53425e2f75e4893a5bf0cfe521e239"
+            }
+          ],
+          "name": "xpshop_pass_activate_open_armory"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "27594a7b9bb2b6b90081eb06b3bd1ede8c83136e41d43a161b5f1cc69d06a90a",
+              "oldValue": "04966824d1e98b0cdeb2830aa00b929244721449911976f75ea8be7006f20643"
+            }
+          ],
+          "name": "xpshop_pass_credits"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "97b3b36b4bf6cca5833a6d452ae9c9db99ba85376eb50fb8766f008f4b769416",
+              "oldValue": "e29313c06d657636d493af2d9efa7b8be2f2b97ef431164b398b0ce3946d83a5"
+            }
+          ],
+          "name": "xpshop_popup_clear_n_tracks:p{completed_tracks_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a29a0bdf9f72f5a1bbd14c4c87e37d4e7e6d36d7b1a3398ebbe463941f1208c3",
+              "oldValue": "218b5cb16000bb5e58b0d0093a01c464479ed9421ada2482e60c03d85cdd9538"
+            }
+          ],
+          "name": "xpshop_popup_clear_n_tracks_text:p{completed_tracks_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bb44c5cb90e8dfba9801b055a744d13f5b374401eaed05683a0deb3ece3e788a",
+              "oldValue": "de21df147bf48924f51c1a7dea67380386af32e9e41f672013392ea7e3ac3285"
+            }
+          ],
+          "name": "xpshop_popup_clear_track_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1b34f21c5d6b9aca38975dd399d9b636b7468fee8ebf9a8985d1fcde88e5b2b2",
+              "oldValue": "1281e78a8f1778af9c8be6248d9681a968c0b3858e5079ef7dc68bb3b823a435"
+            }
+          ],
+          "name": "xpshop_redeem_item_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53383003c250f2d1a5bc1034045d2926e233dbecb5a70a5aed28d255773d9a36",
+              "oldValue": "4f838f0e849bdd570186aa889b2d75161adf7f52f7215f08f041e17902628be1"
+            }
+          ],
+          "name": "xpshop_redeem_item_desc_crate"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fdf46066e26ae1bd1490ed700c0d71559e4a018222e34d6d683545ca97a56acf",
+              "oldValue": "afa5b0400a2d34c81ddff159cd530aa8a088b85fc21281f5368ddf71e4d86487"
+            }
+          ],
+          "name": "xpshop_redeem_item_desc_limitedtime"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5939f518d46fe27af1a20a79136743d3cb383e66e67c0111d5398940533622d3",
+              "oldValue": "a2e742c04e1a1fe26c97796de0ac070657d01d0fb7d15dcfa72df22e58213e4d"
+            }
+          ],
+          "name": "xpshop_redeem_need_pass_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07ec7fc02417d54df1924ee1d79db3e7fefd27a81e0cc11db0794be0d7e2c1af",
+              "oldValue": "02a945d4524c5e2010bcbb5bc02f738db521de9fe96ebf324e312cefeb960a14"
+            }
+          ],
+          "name": "xpshop_redeem_not_enough_stars:p{stars_needed}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "358f46aff3ec12f729b34e82019e888e28b8fac366f635a43e01164e03e8e645",
+              "oldValue": "8ffa4e693294bd962b0fda06eddf8e2b0bf670d5d34e9a1d4b9c03c09ede3a0b"
+            }
+          ],
+          "name": "xpshop_redeem_use_confirm_item"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "708b411a4810877be8408cc82a2a86451bd53330fd3cdbb539bd0e003b1fcee3",
+              "oldValue": "207222d3c8f3ff1282d5efe835ac55db2577bcf1bab7c9a27071a401d7c04add"
+            }
+          ],
+          "name": "xpshop_redeem_use_confirm_item_crate"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d40f8d4aa44e6c6802ce833460b73a3e7814d72c83ea14fa04597eedfd5b1d9e",
+              "oldValue": "b8435304a76e4a142d092fba2a4a3522292b968312e1464bee41f8724e42414c"
+            }
+          ],
+          "name": "xpshop_redeem_use_confirm_item_limitedtime"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "38c43a24ec3658e93eaa8c15d6012778b3b3e0f133e9315e8241a9dfb8fe4d32",
+              "oldValue": "efc2239cd4ae4e56abd5cf031779e57f001229afbb5774c7d1c6aedb5efcc4ce"
+            }
+          ],
+          "name": "xpshop_redeem_use_stars"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ba8d71886f8fbef459771530a0595d7714e7ba84ad0b55bfb5fa26c3d066f948",
+              "oldValue": "8b13f2485e68c79446b8e8242fdd58a2c6b1a786bec31a6c7aadbc548f045b9b"
+            }
+          ],
+          "name": "xpshop_track_complete_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5e65d300e47267b57988aef53f64c71b4fce24cd5b4f054ac71a69f7fa807476",
+              "oldValue": "89a75326515812655db30244052bc452854c9b07c24dac56bdea693c912f288f"
+            }
+          ],
+          "name": "xpshop_track_mini_stars_counter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c41bd521ca93bec1d7d9f24b38685715b4a3753be6b8e317712b42e585dc558f",
+              "oldValue": "b42fb3494df1c945d7ce8d4d84ce0e51e35f8a6836b5c5158efeaeb893ec8e16"
+            }
+          ],
+          "name": "xpshop_track_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8c72355a4adf417d397c711887e1cbc98d5dae3bcbc346fe914083bfa3ee974e",
+              "oldValue": "21366e2236869a90a097deb6daccf222269a7f0b0e50c2328acff255957937fc"
+            }
+          ],
+          "name": "xpshop_upsell_btn"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "17b22ce9e12b3d52c4b1b913127e405d1a98bf47670b21352985ff59f5d5f6ae",
+              "oldValue": "7e99816b4ebbd858f2e8f0e33b752bfdfc754004882199b743a8b6f5b6e869d8"
+            }
+          ],
+          "name": "xpshop_upsell_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8548a901dbdf309a0dbf1139649aedf8fee579cfa0936e2adca7fe7dd5a69285",
+              "oldValue": "0d55bee76a83902cf39109ba6b2d1423f3706132ea7934897c675d5e9d65f782"
+            }
+          ],
+          "name": "xpshop_upsell_mainmenu_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53e79c27aef280a2821e8ccce72098eddd47147878ef319c8f252edce785935c",
+              "oldValue": "ecd782e3afc8e8eb3297528d1a2758df060aaf5f3e5672fa90bc75de54671e57"
+            }
+          ],
+          "name": "xpshop_upsell_mainmenu_2"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "15910582",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "15923186"
+}

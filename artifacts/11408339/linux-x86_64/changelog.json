@@ -1,0 +1,1291 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/BoneDemoCaptureSettings_t",
+        "!GlobalTypes/CAnimDemoCaptureSettings",
+        "!GlobalTypes/CAnimEventDefinition",
+        "!GlobalTypes/CAnimEventListener",
+        "!GlobalTypes/CAnimEventListenerBase",
+        "!GlobalTypes/CAnimEventQueueListener",
+        "!GlobalTypes/CAnimGraphControllerBase",
+        "!GlobalTypes/CAnimGraphTag",
+        "!GlobalTypes/CAnimParameterManagerUpdater",
+        "!GlobalTypes/CAnimScriptBase",
+        "!GlobalTypes/CCSPulseServerFuncs_Globals",
+        "!GlobalTypes/CDemoSettingsComponentUpdater",
+        "!GlobalTypes/CMotionGraphUpdateNode",
+        "!GlobalTypes/CNavHullPresetVData",
+        "!GlobalTypes/CNavHullVData",
+        "!GlobalTypes/CParticleInput",
+        "!GlobalTypes/CParticleVariableRef",
+        "!GlobalTypes/CPulseCell_Inflow_GameEvent",
+        "!GlobalTypes/CPulseCell_Outflow_PlayVCD",
+        "!GlobalTypes/CPulseCell_SoundEventStart",
+        "!GlobalTypes/CPulseCell_Step_EntFire",
+        "!GlobalTypes/CPulseCell_Step_SetAnimGraphParam",
+        "!GlobalTypes/CPulseCell_Value_FindEntByName",
+        "!GlobalTypes/CPulseGraphInstance_ServerPointEntity",
+        "!GlobalTypes/CPulseRuntimeMethodArg",
+        "!GlobalTypes/CPulseServerFuncs",
+        "!GlobalTypes/CPulseServerFuncs_Sounds",
+        "!GlobalTypes/CPulseTestFuncs_LibraryA",
+        "!GlobalTypes/CPulse_CallInfo",
+        "!GlobalTypes/CSolveIKTargetHandle_t",
+        "!GlobalTypes/C_OP_DragRelativeToPlane",
+        "!GlobalTypes/C_OP_RenderGpuImplicit",
+        "!GlobalTypes/C_OP_SetVariable",
+        "!GlobalTypes/ClutterSceneObject_t",
+        "!GlobalTypes/ClutterTile_t",
+        "!GlobalTypes/EmptyTestScript",
+        "!GlobalTypes/IKDemoCaptureSettings_t",
+        "!GlobalTypes/ISkeletonAnimationController",
+        "!GlobalTypes/InfoForResourceTypeCDOTANovelsList",
+        "!GlobalTypes/ParticleNamedValueConfiguration_t",
+        "!GlobalTypes/PulseRuntimeCallInfoIndex_t",
+        "!GlobalTypes/RnBodyDesc_t",
+        "!GlobalTypes/vphysics_save_cphysicsbody_t",
+        "libclient.so/CFuncWater",
+        "libclient.so/C_CSMinimapBoundary",
+        "libclient.so/C_CsmFovOverride",
+        "libserver.so/CCSMinimapBoundary",
+        "libserver.so/CInfoTargetServerOnly",
+        "libserver.so/CPointPulse"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "13"
+            }
+          ],
+          "name": "!GlobalTypes/AggregateMeshInfo_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CFuseSymbolTable"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CParticleInput",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/CParticleFloatInput"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CParticleInput",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/CParticleModelInput"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CParticleInput",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/CParticleTransformInput"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "23",
+              "oldValue": "22"
+            },
+            {
+              "field": "parent",
+              "newValue": "CParticleInput",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/CParticleVecInput"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "10"
+            }
+          ],
+          "name": "!GlobalTypes/CPulseCell_Inflow_Method"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "2",
+              "oldValue": "0"
+            },
+            {
+              "field": "parent",
+              "newValue": "CPulseCell_BaseFlow",
+              "oldValue": "CPulseCell_Step_BaseCallMethod"
+            }
+          ],
+          "name": "!GlobalTypes/CPulseCell_Step_CallExternalMethod"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CPulse_InvokeBinding"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/CPulse_OutflowConnection"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/CSeqScaleSet"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "ISkeletonAnimationController",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/CSkeletonAnimationController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "!GlobalTypes/C_INIT_CreateOnModel"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/C_INIT_VelocityFromCP"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "14"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_LockToBone"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "8"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_MoveToHitbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_PinParticleToCP"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "7"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_RemapModelVolumetoCP"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "14",
+              "oldValue": "13"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_RenderOmni2Light"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_SetChildControlPoints"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_SetSingleControlPointPosition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "27",
+              "oldValue": "25"
+            }
+          ],
+          "name": "!GlobalTypes/CompMatPropertyMutator_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "32",
+              "oldValue": "31"
+            }
+          ],
+          "name": "!GlobalTypes/CompositeMaterialInputLooseVariable_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/IKTargetSettings_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/ParticleNamedValueSource_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "!GlobalTypes/SolveIKChainPoseOpFixedSettings_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "!GlobalTypes/WorldNode_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "22",
+              "oldValue": "20"
+            }
+          ],
+          "name": "libclient.so/CAnimGraphNetworkedVariables"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "13"
+            }
+          ],
+          "name": "libclient.so/CBaseAnimGraph"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "14",
+              "oldValue": "16"
+            }
+          ],
+          "name": "libclient.so/CBaseAnimGraphController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "3"
+            }
+          ],
+          "name": "libclient.so/CCSPlayer_ItemServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "36",
+              "oldValue": "33"
+            }
+          ],
+          "name": "libclient.so/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "25",
+              "oldValue": "26"
+            }
+          ],
+          "name": "libclient.so/CPlayer_CameraServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "14"
+            }
+          ],
+          "name": "libclient.so/CPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "51",
+              "oldValue": "49"
+            }
+          ],
+          "name": "libclient.so/C_BarnLight"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "78",
+              "oldValue": "82"
+            }
+          ],
+          "name": "libclient.so/C_BaseEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "10"
+            }
+          ],
+          "name": "libclient.so/C_CSGOViewModel"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "108",
+              "oldValue": "100"
+            }
+          ],
+          "name": "libclient.so/C_CSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "184",
+              "oldValue": "189"
+            }
+          ],
+          "name": "libclient.so/C_CSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "12"
+            }
+          ],
+          "name": "libclient.so/C_PhysPropClientside"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "59",
+              "oldValue": "58"
+            }
+          ],
+          "name": "libclient.so/C_WeaponCSBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "22",
+              "oldValue": "20"
+            }
+          ],
+          "name": "libserver.so/CAnimGraphNetworkedVariables"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "54",
+              "oldValue": "52"
+            }
+          ],
+          "name": "libserver.so/CBarnLight"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "11"
+            }
+          ],
+          "name": "libserver.so/CBaseAnimGraph"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "11",
+              "oldValue": "13"
+            }
+          ],
+          "name": "libserver.so/CBaseAnimGraphController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "11"
+            }
+          ],
+          "name": "libserver.so/CBaseCSGrenadeProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "73",
+              "oldValue": "77"
+            }
+          ],
+          "name": "libserver.so/CBaseEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "203",
+              "oldValue": "198"
+            }
+          ],
+          "name": "libserver.so/CCSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "184",
+              "oldValue": "190"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "3"
+            }
+          ],
+          "name": "libserver.so/CCSPlayer_ItemServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "38",
+              "oldValue": "35"
+            }
+          ],
+          "name": "libserver.so/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "38",
+              "oldValue": "36"
+            }
+          ],
+          "name": "libserver.so/CFuncTrackTrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "1",
+              "oldValue": "0"
+            },
+            {
+              "field": "parent",
+              "newValue": "CBaseModelEntity",
+              "oldValue": "CBaseDoor"
+            }
+          ],
+          "name": "libserver.so/CFuncWater"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "1",
+              "oldValue": "3"
+            }
+          ],
+          "name": "libserver.so/CNavSpaceInfo"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "34",
+              "oldValue": "33"
+            }
+          ],
+          "name": "libserver.so/CPhysicsProp"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "14"
+            }
+          ],
+          "name": "libserver.so/CPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CServerOnlyPointEntity",
+              "oldValue": "CBaseEntity"
+            }
+          ],
+          "name": "libserver.so/CPointTeleport"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "62",
+              "oldValue": "57"
+            }
+          ],
+          "name": "libserver.so/CScriptedSequence"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "52",
+              "oldValue": "51"
+            }
+          ],
+          "name": "libserver.so/CWeaponCSBase"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/AnimComponentID",
+        "!GlobalTypes/AnimNodeID",
+        "!GlobalTypes/AnimNodeOutputID",
+        "!GlobalTypes/AnimParamID",
+        "!GlobalTypes/AnimScriptHandle",
+        "!GlobalTypes/AnimStateID",
+        "!GlobalTypes/AnimTagID",
+        "!GlobalTypes/CActionComponent",
+        "!GlobalTypes/CAddAnimNode",
+        "!GlobalTypes/CAimMatrixAnimNode",
+        "!GlobalTypes/CAndCondition",
+        "!GlobalTypes/CAnimActionBase",
+        "!GlobalTypes/CAnimAnimEvent",
+        "!GlobalTypes/CAnimClipData",
+        "!GlobalTypes/CAnimClipDataManager",
+        "!GlobalTypes/CAnimComponentBase",
+        "!GlobalTypes/CAnimComponentManager",
+        "!GlobalTypes/CAnimComponentState",
+        "!GlobalTypes/CAnimComponentStateTransition",
+        "!GlobalTypes/CAnimMotorBase",
+        "!GlobalTypes/CAnimNodeBase",
+        "!GlobalTypes/CAnimNodeConnection",
+        "!GlobalTypes/CAnimNodeList",
+        "!GlobalTypes/CAnimNodeManager",
+        "!GlobalTypes/CAnimNodeState",
+        "!GlobalTypes/CAnimNodeStateTransition",
+        "!GlobalTypes/CAnimParamSpan",
+        "!GlobalTypes/CAnimParamSpanSample",
+        "!GlobalTypes/CAnimParameterList",
+        "!GlobalTypes/CAnimParameterListUpdater",
+        "!GlobalTypes/CAnimScriptComponent",
+        "!GlobalTypes/CAnimState",
+        "!GlobalTypes/CAnimStateList",
+        "!GlobalTypes/CAnimStateMachine",
+        "!GlobalTypes/CAnimStateTransition",
+        "!GlobalTypes/CAnimTagManager",
+        "!GlobalTypes/CAnimTagSpan",
+        "!GlobalTypes/CAnimationGraph",
+        "!GlobalTypes/CAnimationSubGraph",
+        "!GlobalTypes/CBindPoseAnimNode",
+        "!GlobalTypes/CBlend2DAnimNode",
+        "!GlobalTypes/CBlend2DItemBase",
+        "!GlobalTypes/CBlendAnimNode",
+        "!GlobalTypes/CBlendNodeChild",
+        "!GlobalTypes/CBlockSelectionMetric",
+        "!GlobalTypes/CBoneMaskAnimNode",
+        "!GlobalTypes/CBonePositionMetric",
+        "!GlobalTypes/CBoneVelocityMetric",
+        "!GlobalTypes/CCPPScriptComponent",
+        "!GlobalTypes/CChoiceAnimNode",
+        "!GlobalTypes/CChoiceNodeChild",
+        "!GlobalTypes/CChoreoAnimNode",
+        "!GlobalTypes/CCommentAnimNode",
+        "!GlobalTypes/CConditionBase",
+        "!GlobalTypes/CConditionContainer",
+        "!GlobalTypes/CConnectionProxyItem",
+        "!GlobalTypes/CContainerAnimNodeBase",
+        "!GlobalTypes/CCurrentRotationVelocityMetric",
+        "!GlobalTypes/CCurrentVelocityMetric",
+        "!GlobalTypes/CCycleCondition",
+        "!GlobalTypes/CCycleControlAnimNode",
+        "!GlobalTypes/CCycleControlClipAnimNode",
+        "!GlobalTypes/CDampedPathAnimMotor",
+        "!GlobalTypes/CDampedValueComponent",
+        "!GlobalTypes/CDampedValueItem",
+        "!GlobalTypes/CDirectPlaybackAnimNode",
+        "!GlobalTypes/CDirectionalBlendAnimNode",
+        "!GlobalTypes/CDistanceRemainingMetric",
+        "!GlobalTypes/CEmitTagAction",
+        "!GlobalTypes/CExpressionAction",
+        "!GlobalTypes/CFinishedCondition",
+        "!GlobalTypes/CFloatAnimValue",
+        "!GlobalTypes/CFollowAttachmentAnimNode",
+        "!GlobalTypes/CFollowPathAnimNode",
+        "!GlobalTypes/CFootAdjustmentAnimNode",
+        "!GlobalTypes/CFootCycleMetric",
+        "!GlobalTypes/CFootLockAnimNode",
+        "!GlobalTypes/CFootLockItem",
+        "!GlobalTypes/CFootPinningAnimNode",
+        "!GlobalTypes/CFootPinningItem",
+        "!GlobalTypes/CFootPositionMetric",
+        "!GlobalTypes/CFootStepTriggerAnimNode",
+        "!GlobalTypes/CFootStepTriggerItem",
+        "!GlobalTypes/CFutureFacingMetric",
+        "!GlobalTypes/CFutureVelocityMetric",
+        "!GlobalTypes/CGraphMotionItem",
+        "!GlobalTypes/CGroupAnimNode",
+        "!GlobalTypes/CGroupInputAnimNode",
+        "!GlobalTypes/CGroupOutputAnimNode",
+        "!GlobalTypes/CHitReactAnimNode",
+        "!GlobalTypes/CInputStreamAnimNode",
+        "!GlobalTypes/CJiggleBoneAnimNode",
+        "!GlobalTypes/CJiggleBoneItem",
+        "!GlobalTypes/CJumpHelperAnimNode",
+        "!GlobalTypes/CLODComponent",
+        "!GlobalTypes/CLeanMatrixAnimNode",
+        "!GlobalTypes/CLookAtAnimNode",
+        "!GlobalTypes/CLookComponent",
+        "!GlobalTypes/CMotionItem",
+        "!GlobalTypes/CMotionItemGroup",
+        "!GlobalTypes/CMotionMatchingAnimNode",
+        "!GlobalTypes/CMotionMetricBase",
+        "!GlobalTypes/CMotionNodeManager",
+        "!GlobalTypes/CMotionParameter",
+        "!GlobalTypes/CMotionParameterManager",
+        "!GlobalTypes/CMovementComponent",
+        "!GlobalTypes/CMoverAnimNode",
+        "!GlobalTypes/CNodeBlend2DItem",
+        "!GlobalTypes/COrCondition",
+        "!GlobalTypes/CParameterCondition",
+        "!GlobalTypes/CPathAnimMotor",
+        "!GlobalTypes/CPathAnimMotorBase",
+        "!GlobalTypes/CPathHelperAnimNode",
+        "!GlobalTypes/CPathMetric",
+        "!GlobalTypes/CPlayerInputAnimMotor",
+        "!GlobalTypes/CProxyAnimNodeBase",
+        "!GlobalTypes/CPulseCell_Step_BaseCallMethod",
+        "!GlobalTypes/CPulseCell_Step_CallMethod",
+        "!GlobalTypes/CPulse_LandingPadInfo",
+        "!GlobalTypes/CRagdollAnimNode",
+        "!GlobalTypes/CRagdollComponent",
+        "!GlobalTypes/CRigidBodyWeight",
+        "!GlobalTypes/CRigidBodyWeightList",
+        "!GlobalTypes/CRootAnimNode",
+        "!GlobalTypes/CSelectorAnimNode",
+        "!GlobalTypes/CSequenceAnimNode",
+        "!GlobalTypes/CSequenceBlend2DItem",
+        "!GlobalTypes/CSequenceMotionItem",
+        "!GlobalTypes/CSetFacingAnimNode",
+        "!GlobalTypes/CSetParameterAction",
+        "!GlobalTypes/CSingleFrameAnimNode",
+        "!GlobalTypes/CSkeletalInputAnimNode",
+        "!GlobalTypes/CSlopeComponent",
+        "!GlobalTypes/CSlowDownOnSlopesAnimNode",
+        "!GlobalTypes/CSolveIKChainAnimNode",
+        "!GlobalTypes/CSolveIKChainAnimNodeChainData",
+        "!GlobalTypes/CSpeedScaleAnimNode",
+        "!GlobalTypes/CStanceOverrideAnimNode",
+        "!GlobalTypes/CStanceScaleAnimNode",
+        "!GlobalTypes/CStateAction",
+        "!GlobalTypes/CStateMachineAnimNode",
+        "!GlobalTypes/CStateMachineComponent",
+        "!GlobalTypes/CStateStatusCondition",
+        "!GlobalTypes/CStepsRemainingMetric",
+        "!GlobalTypes/CStopAtGoalAnimNode",
+        "!GlobalTypes/CSubGraphAnimNode",
+        "!GlobalTypes/CSubtractAnimNode",
+        "!GlobalTypes/CTagCondition",
+        "!GlobalTypes/CTimeCondition",
+        "!GlobalTypes/CTimeRemainingMetric",
+        "!GlobalTypes/CToggleComponentAction",
+        "!GlobalTypes/CTurnHelperAnimNode",
+        "!GlobalTypes/CTwoBoneIKAnimNode",
+        "!GlobalTypes/CVRInputComponent",
+        "!GlobalTypes/CWayPointHelperAnimNode",
+        "!GlobalTypes/CZeroPoseAnimNode",
+        "!GlobalTypes/C_OP_ExternalGenericForce",
+        "!GlobalTypes/C_OP_ScreenForceFromPlayerView",
+        "!GlobalTypes/PulseRuntimeLandingPadIndex_t",
+        "libserver.so/CFuncWaterAnalog",
+        "libserver.so/CPhysPropWeaponUpgradeExoJump"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "animgraph_compression_ik_enable",
+        "animgraph_network_enable",
+        "cl_csgo_shoot_trim_input_frames",
+        "cl_http_log_enable",
+        "cl_loadout_saved_sort",
+        "cl_matchlist_controlroom_aid",
+        "cl_predict_weapon_drop",
+        "composite_material_dump_images",
+        "composite_material_use_gpu_endpoint_optimization",
+        "composite_material_use_gpu_perceptual_error_metric",
+        "cs_minimap_create_output_size",
+        "install_dlc_workshoptools_cvar",
+        "mp_warmuptime_match_cancelled",
+        "nav_test_npc_collision_range",
+        "navspace_path_use_water_level_locator",
+        "pawn_mimic_all",
+        "phys_async_buoyancy_update",
+        "player_competitive_maplist_8_10_0_FCEBAD1",
+        "r_csgo_gpu_culling_camera_offset",
+        "r_csgo_smoke_fullres_pass",
+        "r_particle_gpu_implicit",
+        "r_particle_gpu_implicit_debug_bricks",
+        "r_particle_gpu_implicit_debug_stats",
+        "r_particle_gpu_implicit_debug_wireframe",
+        "r_particle_gpu_implicit_lds_cache",
+        "r_render_to_cubemap_begin_mixing_roughness",
+        "rtx_allow_blas_compact",
+        "rtx_allow_blas_create",
+        "sc_show_cs_skinning_stats",
+        "skeleton_instance_scaleset_enable",
+        "snd_music_deathcam_volume",
+        "snd_music_map_objective",
+        "snd_music_menu_volume",
+        "snd_music_round_volume",
+        "snd_music_tensec_volume",
+        "snd_steamaudio_perspective_correction_front_only",
+        "sv_csgo_shoot_log_attack_cmds_only",
+        "sv_remove_ent_from_pvs"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "1",
+              "oldValue": "true"
+            }
+          ],
+          "name": "ai_use_visibility_cache"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_borrow_music_from_player_slot"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "dota_enable_spatial_audio"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "dota_spatial_audio_mix"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "7200.000000",
+              "oldValue": "200.000000"
+            }
+          ],
+          "name": "inferno_dlight_spacing"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,release,commandline_enforced"
+            }
+          ],
+          "name": "mp_drop_grenade_enable"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,release,commandline_enforced"
+            }
+          ],
+          "name": "mp_drop_knife_enable"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "phys_parallel_islands"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "vulkan_link_time_optimize_libraries"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "animgraph_enable_tickJobs",
+        "cl_accountprivacysetting1",
+        "cl_buywheel_nomousecentering",
+        "cl_buywheel_nonumberpurchasing",
+        "cl_cam_driver_compensation_scale",
+        "cl_csgo_show_cmd_size",
+        "closeonbuy",
+        "dev_cs_enable_consistent_jumps",
+        "handforce_inner",
+        "handforce_outer",
+        "handforce_scale",
+        "headforce_inner",
+        "headforce_outer",
+        "headforce_strength",
+        "navspace_block_size_max",
+        "navspace_create_tactial_connections",
+        "physics_sphere_cast_with_epsilon_experimental",
+        "player_competitive_maplist_8_10_0_FB803604",
+        "r_cs_skinning",
+        "r_csgo_depth_prepass_players",
+        "snd_deathcamera_volume",
+        "snd_hrtf_distance_behind",
+        "snd_mapobjective_volume",
+        "snd_menumusic_volume",
+        "snd_mvp_volume",
+        "snd_othermusic_volume",
+        "snd_roundaction_volume",
+        "snd_roundend_volume",
+        "snd_roundstart_volume",
+        "snd_tensecondwarning_volume",
+        "steamlearn_enable",
+        "steamlearn_override_inference_keys",
+        "sv_exojump_jumpbonus_forward",
+        "sv_exojump_jumpbonus_up",
+        "sv_exojump_soundramp",
+        "sv_exostaminajumpcost",
+        "sv_exostaminalandcost",
+        "sv_falldamage_exojump_multiplier",
+        "sv_jump_impulse_exojump_multiplier",
+        "sv_weapon_encumbrance_per_item",
+        "sv_weapon_encumbrance_scale"
+      ]
+    },
+    {
+      "added": [
+        "cs_quit_prompt",
+        "dev_send_gc_message",
+        "dev_send_gc_message_server",
+        "map_workshop",
+        "minimap_create",
+        "pulse_debug_print",
+        "vulkan_vma_defrag",
+        "vulkan_vma_gpu_mem_dump"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_phys_create_test_character_proxy"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_phys_dump_intersection_controller"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_phys_list"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_phys_sleep"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_phys_wakeup"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_physics_add_test"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_physics_highlight_active"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_physics_remove_test"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_physics_report_active"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "dump_panorama_css_properties"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "dump_panorama_events"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "dumpparticlelist"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "linked_concommand,developmentonly,defensive",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "ik_debug_fabrik_backwards_iteration_toggle"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "linked_concommand,developmentonly,defensive",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "ik_debug_fabrik_forwards_iteration_toggle"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "phys_create_test_character_proxy"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "phys_dump_intersection_controller"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "phys_list"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "phys_sleep"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "phys_wakeup"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "physics_add_test"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "physics_highlight_active"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "physics_remove_test"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "physics_report_active"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "status_json"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "sv_shutdown"
+        }
+      ],
+      "family": "commands",
+      "removed": [
+        "check_dpi",
+        "csgo_launch_workshop_map"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "11081546",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "11408339"
+}

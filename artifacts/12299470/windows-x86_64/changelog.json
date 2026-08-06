@@ -1,0 +1,1857 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/C_OP_ShapeMatchingConstraint",
+        "!GlobalTypes/InfoForResourceTypeCNmClip",
+        "!GlobalTypes/InfoForResourceTypeCNmSkeleton",
+        "assetpreview.dll/CEntityComponent",
+        "assetrename.dll/CEntityComponent",
+        "client.dll/CBreachCharge",
+        "client.dll/CBreachChargeProjectile",
+        "client.dll/CBumpMine",
+        "client.dll/CBumpMineProjectile",
+        "client.dll/CCSObserver_CameraServices",
+        "client.dll/CCSObserver_MovementServices",
+        "client.dll/CCSObserver_ObserverServices",
+        "client.dll/CCSObserver_UseServices",
+        "client.dll/CCSObserver_ViewModelServices",
+        "client.dll/CCSPlayerBase_CameraServices",
+        "client.dll/CCSWeaponBaseVData",
+        "client.dll/CEntityComponent",
+        "client.dll/CPlayer_ViewModelServices",
+        "client.dll/CTablet",
+        "client.dll/CTripWireFire",
+        "client.dll/CTripWireFireProjectile",
+        "client.dll/CWeaponZoneRepulsor",
+        "client.dll/C_CSWeaponBase",
+        "client.dll/C_CSWeaponBaseGun",
+        "cs2_workshop_manager.dll/CEntityComponent",
+        "engine2.dll/CEntityComponent",
+        "hammer.dll/CEntityComponent",
+        "modeldoc_editor.dll/CEntityComponent",
+        "pet.dll/CEntityComponent",
+        "postprocessingeditor.dll/CEntityComponent",
+        "resourcecompiler.dll/CEntityComponent",
+        "server.dll/CCSObserver_CameraServices",
+        "server.dll/CCSObserver_MovementServices",
+        "server.dll/CCSObserver_ObserverServices",
+        "server.dll/CCSObserver_UseServices",
+        "server.dll/CCSObserver_ViewModelServices",
+        "server.dll/CCSPlayerBase_CameraServices",
+        "server.dll/CCSWeaponBase",
+        "server.dll/CCSWeaponBaseGun",
+        "server.dll/CCSWeaponBaseVData",
+        "server.dll/CEntityComponent",
+        "server.dll/CPlayer_ViewModelServices",
+        "sfm.dll/CEntityComponent",
+        "toolscenenodes.dll/CEntityComponent",
+        "worldrenderer.dll/CEntityComponent"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/AggregateLODSetup_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "!GlobalTypes/BoneDemoCaptureSettings_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "16",
+              "oldValue": "15"
+            }
+          ],
+          "name": "!GlobalTypes/CAnimDemoCaptureSettings"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/CMixSteamAudioSource"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_InstantaneousEmitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "11",
+              "oldValue": "10"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_RemapAverageHitboxSpeedtoCP"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "10",
+              "oldValue": "9"
+            }
+          ],
+          "name": "!GlobalTypes/RnMesh_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "assetpreview.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "assetrename.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "57",
+              "oldValue": "58"
+            }
+          ],
+          "name": "client.dll/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "1",
+              "oldValue": "7"
+            },
+            {
+              "field": "parent",
+              "newValue": "CCSPlayerBase_CameraServices",
+              "oldValue": "CPlayer_CameraServices"
+            }
+          ],
+          "name": "client.dll/CCSPlayer_CameraServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "36",
+              "oldValue": "35"
+            }
+          ],
+          "name": "client.dll/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CPlayer_ViewModelServices",
+              "oldValue": "CPlayerPawnComponent"
+            }
+          ],
+          "name": "client.dll/CCSPlayer_ViewModelServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "client.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_AK47"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBase",
+              "oldValue": "C_WeaponCSBase"
+            }
+          ],
+          "name": "client.dll/C_BaseCSGrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBase",
+              "oldValue": "C_WeaponCSBase"
+            }
+          ],
+          "name": "client.dll/C_C4"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "100",
+              "oldValue": "108"
+            }
+          ],
+          "name": "client.dll/C_CSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "49",
+              "oldValue": "22"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "141",
+              "oldValue": "185"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "10",
+              "oldValue": "12"
+            }
+          ],
+          "name": "client.dll/C_CSTeam"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_DEagle"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBase",
+              "oldValue": "C_WeaponCSBase"
+            }
+          ],
+          "name": "client.dll/C_Fists"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBase",
+              "oldValue": "C_WeaponCSBase"
+            }
+          ],
+          "name": "client.dll/C_Knife"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBase",
+              "oldValue": "C_WeaponCSBase"
+            }
+          ],
+          "name": "client.dll/C_Melee"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "26",
+              "oldValue": "27"
+            }
+          ],
+          "name": "client.dll/C_PlantedC4"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponAWP"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponAug"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBase",
+              "oldValue": "C_WeaponCSBase"
+            }
+          ],
+          "name": "client.dll/C_WeaponBaseItem"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponBizon"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponElite"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponFamas"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponFiveSeven"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponG3SG1"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponGalilAR"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponGlock"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponHKP2000"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponM249"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponM4A1"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponMAC10"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponMP7"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponMP9"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponMag7"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBase",
+              "oldValue": "C_WeaponCSBase"
+            }
+          ],
+          "name": "client.dll/C_WeaponNOVA"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponNegev"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponP250"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponP90"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponSCAR20"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponSG556"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponSSG08"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBase",
+              "oldValue": "C_WeaponCSBase"
+            }
+          ],
+          "name": "client.dll/C_WeaponSawedoff"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponShield"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponTaser"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponTec9"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBaseGun",
+              "oldValue": "C_WeaponCSBaseGun"
+            }
+          ],
+          "name": "client.dll/C_WeaponUMP45"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "C_CSWeaponBase",
+              "oldValue": "C_WeaponCSBase"
+            }
+          ],
+          "name": "client.dll/C_WeaponXM1014"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "cs2_workshop_manager.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "engine2.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "hammer.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "modeldoc_editor.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "pet.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "postprocessingeditor.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "resourcecompiler.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CAK47"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CBaseCSGrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "server.dll/CBot"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CBreachCharge"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "9"
+            }
+          ],
+          "name": "server.dll/CBreachChargeProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CBumpMine"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "11"
+            }
+          ],
+          "name": "server.dll/CBumpMineProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CC4"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "193",
+              "oldValue": "203"
+            }
+          ],
+          "name": "server.dll/CCSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "70",
+              "oldValue": "71"
+            }
+          ],
+          "name": "server.dll/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "45",
+              "oldValue": "26"
+            }
+          ],
+          "name": "server.dll/CCSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "147",
+              "oldValue": "183"
+            }
+          ],
+          "name": "server.dll/CCSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "7"
+            },
+            {
+              "field": "parent",
+              "newValue": "CCSPlayerBase_CameraServices",
+              "oldValue": "CPlayer_CameraServices"
+            }
+          ],
+          "name": "server.dll/CCSPlayer_CameraServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CPlayer_ViewModelServices",
+              "oldValue": "CPlayerPawnComponent"
+            }
+          ],
+          "name": "server.dll/CCSPlayer_ViewModelServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "14",
+              "oldValue": "21"
+            }
+          ],
+          "name": "server.dll/CCSTeam"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "34",
+              "oldValue": "33"
+            }
+          ],
+          "name": "server.dll/CChicken"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CDEagle"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "server.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CFists"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CKnife"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CMelee"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "27",
+              "oldValue": "28"
+            }
+          ],
+          "name": "server.dll/CPlantedC4"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "4"
+            }
+          ],
+          "name": "server.dll/CPointPrefab"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "20"
+            },
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CTablet"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "8"
+            }
+          ],
+          "name": "server.dll/CTripWireFireProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "14",
+              "oldValue": "15"
+            }
+          ],
+          "name": "server.dll/CVoteController"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponAWP"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponAug"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CWeaponBaseItem"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponBizon"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponElite"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponFamas"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponFiveSeven"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponG3SG1"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponGalilAR"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponGlock"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponHKP2000"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponM249"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponM4A1"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponMAC10"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponMP7"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponMP9"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponMag7"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CWeaponNOVA"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponNegev"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponP250"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponP90"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponSCAR20"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponSG556"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponSSG08"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CWeaponSawedoff"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponShield"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponTaser"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponTec9"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponUMP45"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBase",
+              "oldValue": "CWeaponCSBase"
+            }
+          ],
+          "name": "server.dll/CWeaponXM1014"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "CCSWeaponBaseGun",
+              "oldValue": "CWeaponCSBaseGun"
+            }
+          ],
+          "name": "server.dll/CWeaponZoneRepulsor"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "sfm.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "toolscenenodes.dll/CEntityInstance"
+        },
+        {
+          "fields": [
+            {
+              "field": "parent",
+              "newValue": "",
+              "oldValue": "IHandleEntity"
+            }
+          ],
+          "name": "worldrenderer.dll/CEntityInstance"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/CEntityComponent",
+        "!GlobalTypes/IHandleEntity",
+        "client.dll/CCSPlayer_ObserverServices",
+        "client.dll/CWeaponCSBaseVData",
+        "client.dll/C_BRC4Target",
+        "client.dll/C_BreachCharge",
+        "client.dll/C_BreachChargeProjectile",
+        "client.dll/C_BumpMine",
+        "client.dll/C_BumpMineProjectile",
+        "client.dll/C_CSPropExplodingBarrel",
+        "client.dll/C_CSPropExplodingBarrelTop",
+        "client.dll/C_DangerZone",
+        "client.dll/C_DangerZoneController",
+        "client.dll/C_Drone",
+        "client.dll/C_Dronegun",
+        "client.dll/C_EnvGasCanister",
+        "client.dll/C_GrassBurn",
+        "client.dll/C_InfoMapRegion",
+        "client.dll/C_ItemCash",
+        "client.dll/C_KnifeGG",
+        "client.dll/C_ParadropChopper",
+        "client.dll/C_PhysPropAmmoBox",
+        "client.dll/C_PhysPropLootCrate",
+        "client.dll/C_PhysPropRadarJammer",
+        "client.dll/C_PhysPropWeaponUpgrade",
+        "client.dll/C_PlantedC4Survival",
+        "client.dll/C_PropCounter",
+        "client.dll/C_SurvivalGameRules",
+        "client.dll/C_SurvivalSpawnChopper",
+        "client.dll/C_Tablet",
+        "client.dll/C_TripWireFire",
+        "client.dll/C_TripWireFireProjectile",
+        "client.dll/C_WeaponCSBase",
+        "client.dll/C_WeaponCSBaseGun",
+        "client.dll/C_WeaponZoneRepulsor",
+        "server.dll/CBRC4Target",
+        "server.dll/CBrBaseItem",
+        "server.dll/CCSEnvGunfire",
+        "server.dll/CCSPlayer_ObserverServices",
+        "server.dll/CCSPlayer_ParachuteServices",
+        "server.dll/CCSPropExplodingBarrel",
+        "server.dll/CCSPropExplodingBarrelTop",
+        "server.dll/CDZDoor",
+        "server.dll/CDangerZone",
+        "server.dll/CDangerZoneController",
+        "server.dll/CDrone",
+        "server.dll/CDronegun",
+        "server.dll/CEnvGasCanister",
+        "server.dll/CGrassBurn",
+        "server.dll/CInfoArmsRaceCounterterrorist",
+        "server.dll/CInfoArmsRaceTerrorist",
+        "server.dll/CInfoGasCanisterLaunchPoint",
+        "server.dll/CInfoMapRegion",
+        "server.dll/CItemCash",
+        "server.dll/CKnifeGG",
+        "server.dll/CLogicEventListener",
+        "server.dll/CParadropChopper",
+        "server.dll/CPhysPropAmmoBox",
+        "server.dll/CPhysPropLootCrate",
+        "server.dll/CPhysPropMapPlacedLongUseEntity",
+        "server.dll/CPhysPropMetalCrate",
+        "server.dll/CPhysPropMoneyCrate",
+        "server.dll/CPhysPropParadropCrate",
+        "server.dll/CPhysPropRadarJammer",
+        "server.dll/CPhysPropWeaponRefillHeavyArmor",
+        "server.dll/CPhysPropWeaponUpgrade",
+        "server.dll/CPhysPropWeaponUpgradeArmor",
+        "server.dll/CPhysPropWeaponUpgradeArmorHelmet",
+        "server.dll/CPhysPropWeaponUpgradeContractKill",
+        "server.dll/CPhysPropWeaponUpgradeHelmet",
+        "server.dll/CPhysPropWeaponUpgradeParachute",
+        "server.dll/CPhysPropWeaponUpgradeTablet",
+        "server.dll/CPhysPropWeaponUpgradeTabletDroneIntel",
+        "server.dll/CPhysPropWeaponUpgradeTabletHighres",
+        "server.dll/CPhysPropWeaponUpgradeTabletZoneIntel",
+        "server.dll/CPlantedC4Survival",
+        "server.dll/CPointDZDroneGunSpawn",
+        "server.dll/CPointDZItemSpawn",
+        "server.dll/CPointDZItemSpawnGroup",
+        "server.dll/CPointDZParachuteSpawn",
+        "server.dll/CPointDZParadropDenialRegion",
+        "server.dll/CPointDZWeaponSpawn",
+        "server.dll/CPointDZWeaponSpawnGroup",
+        "server.dll/CPropCounter",
+        "server.dll/CSurvivalGameRules",
+        "server.dll/CSurvivalSpawnChopper",
+        "server.dll/CTabletBlocker",
+        "server.dll/CTabletBlockerShim",
+        "server.dll/CTriggerCustomBounds",
+        "server.dll/CTriggerSafeMoneyGather",
+        "server.dll/CTriggerSurvivalPlayArea",
+        "server.dll/CWeaponCSBase",
+        "server.dll/CWeaponCSBaseGun",
+        "server.dll/CWeaponCSBaseVData"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_redemption_reset_timestamp",
+        "cl_search_key_token",
+        "imgui_temp_enable",
+        "mat_tonemap_bloom_scale",
+        "mat_tonemap_bloom_start_value",
+        "nav_obstruction_draw_island",
+        "nav_obstruction_draw_island_hull",
+        "nav_obstruction_draw_movefail_blocking",
+        "panorama_assert_loading_panel_type",
+        "player_competitive_maplist_2v2_10_0_C8D88986",
+        "player_wargames_list2_10_0_0",
+        "r_csgo_smoke_avoid_flat",
+        "r_csgo_viewmodel_envmap_clamp_plane_distance",
+        "r_csgo_viewmodel_far_plane",
+        "r_csgo_viewmodel_near_plane",
+        "r_icon_generate_mips",
+        "r_icon_highcontrast_postprocessing_weight",
+        "r_icon_max_mip_width",
+        "r_icon_texturestreaming_waitframes",
+        "r_particle_newcode",
+        "slope_drop_blend_min_player_speed",
+        "slope_drop_on_land_blend_time",
+        "snd_use_baked_occlusion",
+        "sv_always_play_damage_headshot_feedback",
+        "sv_distance_guaranteed_damage_feedback",
+        "sv_weapon_swap_difficulty_near_hi_pri",
+        "tv_relay_hard_shutdown",
+        "ui_mainmenu_bkgnd_movie_1016BB11"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_clutch_mode"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "5",
+              "oldValue": "1"
+            }
+          ],
+          "name": "cl_crosshaircolor"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0",
+              "oldValue": "50"
+            }
+          ],
+          "name": "cl_crosshaircolor_b"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "255",
+              "oldValue": "250"
+            }
+          ],
+          "name": "cl_crosshaircolor_g"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0",
+              "oldValue": "50"
+            }
+          ],
+          "name": "cl_crosshaircolor_r"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "3.900000",
+              "oldValue": "10.000000"
+            }
+          ],
+          "name": "cl_crosshairsize"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "6.000000",
+              "oldValue": "3.000000"
+            }
+          ],
+          "name": "cl_min_china_movie_time"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "4.000000",
+              "oldValue": "0.000000"
+            }
+          ],
+          "name": "cl_min_movie_time"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "2",
+              "oldValue": "0"
+            }
+          ],
+          "name": "cl_observed_bot_crosshair"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "cl_show_observer_crosshair"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,release,defensive"
+            }
+          ],
+          "name": "developer"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0",
+              "oldValue": "false"
+            }
+          ],
+          "name": "mat_show_distance_field"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "",
+              "oldValue": "armsrace"
+            }
+          ],
+          "name": "mp_endmatch_votenextmap_wargames_modes"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll,cheat",
+              "oldValue": "clientdll,cheat"
+            }
+          ],
+          "name": "r_icon_custommaterial_maxres"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            },
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll,cheat",
+              "oldValue": "clientdll,cheat"
+            }
+          ],
+          "name": "r_icon_player_equip_gloves_from_loadout"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll,cheat",
+              "oldValue": "clientdll,cheat"
+            }
+          ],
+          "name": "r_icon_rendering_height"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "4",
+              "oldValue": "2"
+            },
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll,cheat",
+              "oldValue": "clientdll,cheat"
+            }
+          ],
+          "name": "r_icon_rendering_msaa_mode"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll,cheat",
+              "oldValue": "clientdll,cheat"
+            }
+          ],
+          "name": "r_icon_rendering_width"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll,cheat",
+              "oldValue": "clientdll,cheat"
+            }
+          ],
+          "name": "r_icon_show_timing"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll,cheat",
+              "oldValue": "clientdll,cheat"
+            }
+          ],
+          "name": "r_icon_use_kv3_camera"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,archive,release",
+              "oldValue": "developmentonly,clientdll"
+            }
+          ],
+          "name": "r_show_build_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0",
+              "oldValue": "1.000000"
+            }
+          ],
+          "name": "snd_headphone_eq"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.040000",
+              "oldValue": "0.022500"
+            }
+          ],
+          "name": "snd_mapobjective_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.000000",
+              "oldValue": "0.300000"
+            },
+            {
+              "field": "flags",
+              "newValue": "archive,release",
+              "oldValue": "replicated,cheat"
+            }
+          ],
+          "name": "snd_spatialize_lerp"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.040000",
+              "oldValue": "0.022500"
+            }
+          ],
+          "name": "snd_tensecondwarning_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "developmentonly,gamedll,clientdll,replicated,commandline_enforced,defensive"
+            }
+          ],
+          "name": "sv_disable_teamselect_menu"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.000000",
+              "oldValue": "800.000000"
+            },
+            {
+              "field": "flags",
+              "newValue": "reference",
+              "oldValue": "gamedll,release"
+            }
+          ],
+          "name": "sv_dz_show_enemy_name_scope_range"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "developmentonly,gamedll,clientdll,replicated,commandline_enforced,defensive"
+            }
+          ],
+          "name": "sv_human_autojoin_team"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "1",
+              "oldValue": "0"
+            }
+          ],
+          "name": "tv_record_immediate"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "animgraph_compression_ik_enable",
+        "cl_clutch_mode_gain",
+        "cl_compass_enabled",
+        "cl_dz_playagain_auto_spectate",
+        "cl_parachute_autodeploy",
+        "cl_rappel_tilt",
+        "cl_tablet_mapmode",
+        "csgo_monitorgamma",
+        "csgo_monitorgamma_tv_exp",
+        "dev_cs_enable_new_move",
+        "gg_knife_kill_demotes",
+        "lightquery_debug_indirect_lighting_fast",
+        "mp_dronegun_stop",
+        "mp_ggprogressive_healthshot_killcount",
+        "mp_ggprogressive_random_weapon_kills_needed",
+        "mp_ggprogressive_round_restart_delay",
+        "mp_ggprogressive_use_random_weapons",
+        "mp_ggtr_always_upgrade",
+        "mp_ggtr_bomb_defuse_bonus",
+        "mp_ggtr_bomb_detonation_bonus",
+        "mp_ggtr_bomb_pts_for_flash",
+        "mp_ggtr_bomb_pts_for_he",
+        "mp_ggtr_bomb_pts_for_molotov",
+        "mp_ggtr_bomb_pts_for_upgrade",
+        "mp_ggtr_bomb_respawn_delay",
+        "mp_ggtr_end_round_kill_bonus",
+        "mp_ggtr_last_weapon_kill_ends_half",
+        "mp_ggtr_num_rounds_autoprogress",
+        "nav_obstruction_draw_fail_block",
+        "player_competitive_maplist_2v2_10_0_0",
+        "player_wargames_list2_10_0_DC207394",
+        "r_csgo_enable_outlines",
+        "r_csgo_outline_width",
+        "r_icon_blocking_map_load",
+        "spec_dz_group_teams",
+        "sv_arms_race_vote_to_restart_disallowed_after",
+        "sv_breachcharge_arm_delay",
+        "sv_breachcharge_delay_max",
+        "sv_breachcharge_delay_min",
+        "sv_breachcharge_distance_max",
+        "sv_breachcharge_distance_min",
+        "sv_breachcharge_fuse_max",
+        "sv_breachcharge_fuse_min",
+        "sv_bumpmine_arm_delay",
+        "sv_bumpmine_detonate_delay",
+        "sv_dz_enable_respawn",
+        "sv_dz_enable_respawn_solos",
+        "sv_dz_exploration_payment_amount",
+        "sv_dz_exploration_payment_amount_bonus",
+        "sv_dz_force_zone",
+        "sv_dz_jointeam_allowed",
+        "sv_dz_last_respawn_warning",
+        "sv_dz_last_respawn_wave",
+        "sv_dz_parachute_reuse",
+        "sv_dz_player_max_health",
+        "sv_dz_player_spawn_armor",
+        "sv_dz_player_spawn_health",
+        "sv_dz_respawn_additional_wait_time_solo",
+        "sv_dz_respawn_pick_time",
+        "sv_dz_respawn_wait_time_per_death",
+        "sv_dz_show_security_door_item_price",
+        "sv_dz_show_weapon_spawns",
+        "sv_dz_team_count",
+        "sv_dz_warmup_tablet",
+        "sv_dz_zone_bombdrop_money_reward",
+        "sv_dz_zone_bombdrop_money_reward_bonus",
+        "sv_dz_zone_damage",
+        "sv_dz_zone_hex_radius",
+        "sv_force_reflections",
+        "sv_ggprogressive_autosniper_first",
+        "sv_ggprogressive_shotgun_last",
+        "sv_grassburn",
+        "sv_player_parachute_velocity",
+        "sv_spawn_rappel_min_duration",
+        "sv_spawn_rappel_min_duration_with_chute",
+        "sv_tablet_show_path_to_nearest_resq",
+        "sv_tripwirefire_trace_length",
+        "tablet_c4_dist_max",
+        "tablet_c4_dist_min",
+        "tv_allow_camera_man_override",
+        "ui_mainmenu_bkgnd_movie_47C62B23",
+        "ui_playsettings_prime",
+        "voice_scale"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": [
+        "confirm_purchase_item_def_now",
+        "dz_clearteams",
+        "dz_jointeam",
+        "dz_shuffle_teams",
+        "survival_check_num_possible_final_zone",
+        "sv_dz_paradrop",
+        "sv_dz_reset_danger_zone"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12192623",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12299470"
+}

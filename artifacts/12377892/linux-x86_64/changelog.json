@@ -1,0 +1,55 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_player_visibility_show_stencil_proxy",
+        "cl_player_visibility_stencil_proxy_min_dist"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "1.400000",
+              "oldValue": "1.300000"
+            }
+          ],
+          "name": "cl_player_visibility_stencil_bloat_amount_ellipsoid"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "cl_player_visiblity_show_stencil_proxy",
+        "cl_player_visiblity_stencil_proxy_min_dist"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12358457",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12377892"
+}

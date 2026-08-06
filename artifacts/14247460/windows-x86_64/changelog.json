@@ -1,0 +1,62 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "CSGO_Workshop_Mode_gungameprogressive"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "VAC has detected irregular gameplay and has canceled the match.\nThe player who was flagged by VAC and their party have received a cooldown.",
+              "oldValue": "VAC has detected irregular gameplay and has canceled the match.\nThe player that was flagged by VAC, and their party, have recieved a cooldown."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "a9c3934090455ce968f757b613077472957ecf88927f18bc007d754f861cf84b",
+              "oldValue": "af3dac2ffdcd9f9299cb520522dfa4dec8f59bee5af8e4d1679a884ad8ff7528"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "14238169",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "14247460"
+}

@@ -1,0 +1,107 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "sv_auto_cstrafe_attempt_window",
+        "sv_auto_cstrafe_kick",
+        "sv_auto_cstrafe_logging",
+        "sv_auto_cstrafe_lower_overlap_pct_threshold",
+        "sv_auto_cstrafe_min_attempts",
+        "sv_auto_cstrafe_sequence_length",
+        "sv_auto_cstrafe_success_threshold",
+        "sv_auto_cstrafe_upper_overlap_pct_threshold"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": [
+        "cl_quest_events_print",
+        "cl_quest_schedule_print"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bf96efcf72c8d6042356f617b14b8327b976557a10f9f5f68656aed127e1fb02",
+              "oldValue": "d224ad8e0c767ce7966c0310fcbcc2606cf5f5341de96e7e9ea42e4a27c0f804"
+            }
+          ],
+          "name": "SFUI_GameModeGungameProgressiveDescList"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07afbe40fca386b757940f98a03ff88b3854a5ec3e4f1b5157fe7b7e8d360e5d",
+              "oldValue": "c4e9486e7c93be4f7248bb13cacca66d29112445e1bba74432a4aed625a17a1a"
+            }
+          ],
+          "name": "SFUI_How_to_Play_Controller_Start"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a80d36af9392e5609de356dba9c1ef621f50c10b97ac5a2ff62926322e38cc7b",
+              "oldValue": "70ea833e0f20ddfb41841136fba8e6395d48e73622bb63214734b1b2ea46a317"
+            }
+          ],
+          "name": "StickerKit_cologne2014_esl_a"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c10da868f886f2eea2ec8441d02379393bc41a8e7296ff603753545f36f87b9",
+              "oldValue": "ddf806b3bc6b348ef058a4a5e80342d9436d89eb60f6ca3459859f1d921695ea"
+            }
+          ],
+          "name": "StickerKit_cologne2014_esl_b"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cff3b6bdba49717b982dd012064e4e87917fe04309875149e64af9b6e59ec206",
+              "oldValue": "b3e357d168108ad26dd0663de56b80ef47ca25282343a0a45a2aaf095de91619"
+            }
+          ],
+          "name": "gamemode_gungameprogressive_desclist"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "15582507",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "15644071"
+}

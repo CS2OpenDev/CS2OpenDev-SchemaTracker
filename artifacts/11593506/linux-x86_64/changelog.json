@@ -1,0 +1,704 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/AnimComponentID",
+        "!GlobalTypes/AnimNodeID",
+        "!GlobalTypes/AnimNodeOutputID",
+        "!GlobalTypes/AnimParamID",
+        "!GlobalTypes/AnimScriptHandle",
+        "!GlobalTypes/AnimStateID",
+        "!GlobalTypes/AnimTagID",
+        "!GlobalTypes/AnimTagName",
+        "!GlobalTypes/CAnimAttachment",
+        "!GlobalTypes/CPulseMathlib",
+        "!GlobalTypes/C_OP_RemapSDFDistanceToScalarAttribute",
+        "!GlobalTypes/C_OP_RemapSDFGradientToVectorAttribute",
+        "!GlobalTypes/C_OP_SDFForce",
+        "!GlobalTypes/C_OP_SDFLighting",
+        "!GlobalTypes/FakeEntity_t",
+        "!GlobalTypes/InfoForResourceTypeCJavaScriptResource",
+        "!GlobalTypes/InfoForResourceTypeCTypeScriptResource",
+        "libclient.so/ViewAngleServerChange_t",
+        "libparticles.so/CParticleBindingRealPulse",
+        "libserver.so/CPointScript",
+        "libserver.so/CPulseGraphInstance_ServerPointEntity",
+        "libserver.so/ViewAngleServerChange_t"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "!GlobalTypes/CModelConfigElement_RandomPick"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "45",
+              "oldValue": "44"
+            }
+          ],
+          "name": "!GlobalTypes/CParticleFloatInput"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/CPulse_InvokeBinding"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_ExternalWindForce"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "6"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_RemapDensityToVector"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "49",
+              "oldValue": "48"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_RenderModels"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "11"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_SetControlPointToImpactPoint"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "27",
+              "oldValue": "26"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_WorldTraceConstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "7"
+            }
+          ],
+          "name": "!GlobalTypes/ClutterSceneObject_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "21",
+              "oldValue": "22"
+            }
+          ],
+          "name": "libclient.so/CBasePlayerWeaponVData"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "37",
+              "oldValue": "35"
+            }
+          ],
+          "name": "libclient.so/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "90",
+              "oldValue": "89"
+            }
+          ],
+          "name": "libclient.so/CWeaponCSBaseVData"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "8"
+            }
+          ],
+          "name": "libclient.so/C_BaseCSGrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "22",
+              "oldValue": "21"
+            }
+          ],
+          "name": "libclient.so/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "186",
+              "oldValue": "185"
+            }
+          ],
+          "name": "libclient.so/C_CSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "10"
+            }
+          ],
+          "name": "libclient.so/C_EnvSky"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "22",
+              "oldValue": "21"
+            }
+          ],
+          "name": "libclient.so/C_PlantedC4"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "libclient.so/PhysicsRagdollPose_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "8"
+            }
+          ],
+          "name": "libserver.so/CBaseCSGrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "14",
+              "oldValue": "13"
+            }
+          ],
+          "name": "libserver.so/CBaseCSGrenadeProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "21",
+              "oldValue": "22"
+            }
+          ],
+          "name": "libserver.so/CBasePlayerWeaponVData"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "26",
+              "oldValue": "25"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "39",
+              "oldValue": "37"
+            }
+          ],
+          "name": "libserver.so/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "34",
+              "oldValue": "33"
+            }
+          ],
+          "name": "libserver.so/CChicken"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "10"
+            }
+          ],
+          "name": "libserver.so/CEnvSky"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "libserver.so/CFuncMoveLinear"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "24",
+              "oldValue": "22"
+            }
+          ],
+          "name": "libserver.so/CMapVetoPickController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "90",
+              "oldValue": "89"
+            }
+          ],
+          "name": "libserver.so/CWeaponCSBaseVData"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "libserver.so/PhysicsRagdollPose_t"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/CPulseCell_Value_Expression",
+        "!GlobalTypes/CPulseGraphInstance_ServerPointEntity",
+        "!GlobalTypes/InfoForResourceTypeCPanoramaScript",
+        "!GlobalTypes/InfoForResourceTypeCPanoramaTypeScript"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_debug_duck",
+        "cl_disconnect_voice_fade",
+        "cl_num_bot_matches",
+        "engine_rendersystem_shader_model",
+        "net_async_clientconnect",
+        "net_async_job_random_sleep",
+        "panorama_2d_translate_no_comp_layer",
+        "panorama_3dpanel_anim_fadeinout_time_scale",
+        "panorama_3dpanel_anims_pivotlock",
+        "panorama_3dpanel_camera_blend_mode",
+        "panorama_3dpanel_camera_inout_scale",
+        "panorama_3dpanel_camera_inout_scale_kb",
+        "panorama_3dpanel_camera_lookat_scale",
+        "panorama_3dpanel_camera_preset_blend_time",
+        "panorama_3dpanel_camera_rotate_altitude_scale",
+        "panorama_3dpanel_camera_rotate_azimuth_scale",
+        "panorama_3dpanel_debuginfo_anim",
+        "panorama_3dpanel_debuginfo_cam",
+        "panorama_3dpanel_debuginfo_item",
+        "panorama_3dpanel_debuginfo_manifest",
+        "panorama_3dpanel_debuginfo_paused",
+        "panorama_3dpanel_debuginfo_player",
+        "panorama_3dpanel_light_move_scale",
+        "panorama_3dpanel_light_rotate_altitude_scale",
+        "panorama_3dpanel_light_rotate_azimuth_scale",
+        "panorama_3dpanel_loadout_rotate_drag",
+        "panorama_3dpanel_loadout_rotate_frametime_multiplier",
+        "panorama_3dpanel_loadout_rotate_grab_scale",
+        "panorama_3dpanel_loadout_rotate_scale",
+        "panorama_allow_texture_composition_layer_fast_path",
+        "panorama_allow_transitions",
+        "panorama_box_shadow_no_comp_layer",
+        "panorama_cache_command_list_repaint_threshold",
+        "panorama_cache_command_list_size_threshold",
+        "panorama_classes_force_invalidate",
+        "panorama_clear_frames_on_device_restore",
+        "panorama_command_reordering",
+        "panorama_comp_layer_lru_lifetime",
+        "panorama_composition_atlas",
+        "panorama_console_max_autocomplete",
+        "panorama_console_max_history",
+        "panorama_console_max_lines",
+        "panorama_console_position_and_size",
+        "panorama_daisy_wheel",
+        "panorama_dash_border_base_width",
+        "panorama_dash_gap_len",
+        "panorama_dash_len",
+        "panorama_debug_dead_pad",
+        "panorama_debug_movies",
+        "panorama_debug_overlay_opacity",
+        "panorama_debug_overlay_opacity_max",
+        "panorama_debug_overlay_opacity_min",
+        "panorama_debug_ready_for_display",
+        "panorama_disable_blur",
+        "panorama_disable_box_shadow",
+        "panorama_disable_descendant_filtering",
+        "panorama_disable_draw_fancy_quad",
+        "panorama_disable_draw_text",
+        "panorama_disable_draw_text_shadow",
+        "panorama_disable_layer_cache",
+        "panorama_disable_layer_clear",
+        "panorama_disable_render_callbacks",
+        "panorama_disable_render_target_cache",
+        "panorama_disallow_hover_styles",
+        "panorama_dragscroll_affordance",
+        "panorama_dragscroll_maxflickvelocity",
+        "panorama_dragscroll_minflickvelocity",
+        "panorama_dragscroll_mintime",
+        "panorama_dragscroll_velocitymultiplier",
+        "panorama_early_anim_dispatch",
+        "panorama_enable_secondary_layout_pass",
+        "panorama_force_active_controller_type",
+        "panorama_force_text_shadow_strength",
+        "panorama_frame_limit_v8_gc_microseconds",
+        "panorama_highlight_bad_opacity_masks",
+        "panorama_highlight_composition_layers",
+        "panorama_highlight_slow_operations",
+        "panorama_hsbc_through_fast_path",
+        "panorama_joystick_axis_repeat_curve_time",
+        "panorama_joystick_axis_repeat_interval_end",
+        "panorama_joystick_axis_repeat_interval_start",
+        "panorama_joystick_button_repeat_curve_time",
+        "panorama_joystick_button_repeat_interval_end",
+        "panorama_joystick_button_repeat_interval_start",
+        "panorama_large_dispatch_event_queue",
+        "panorama_max_fps",
+        "panorama_max_oof_overlay_up_fps",
+        "panorama_max_overlay_fps",
+        "panorama_max_text_shadow_strength",
+        "panorama_might_scroll_no_comp_layer",
+        "panorama_min_comp_layer_cache_cost",
+        "panorama_movie_async_load_size_bytes",
+        "panorama_movie_force_not_ready_behavior",
+        "panorama_reload_animations",
+        "panorama_render_target_cache_max_size",
+        "panorama_show_fps",
+        "panorama_show_fps_scale",
+        "panorama_simple_borders_no_comp_layer",
+        "panorama_spew_layout_invalidates",
+        "panorama_stats_log_time",
+        "panorama_steampad_button_repeat_curve_time",
+        "panorama_steampad_button_repeat_interval_end",
+        "panorama_steampad_button_repeat_interval_start",
+        "panorama_style_flag_force_invalidate",
+        "panorama_suspend_paint",
+        "panorama_temp_comp_layer_min_dimension",
+        "panorama_track_render_commands",
+        "panorama_transform_parents_no_layer_for_perspective",
+        "panorama_transforms_no_comp_layer",
+        "panorama_transition_time_factor",
+        "panorama_use_backbuffer_directly",
+        "player_competitive_maplist_8_10_0_DC064984",
+        "r_aoproxy_show",
+        "r_csgo_reconstruct_normals",
+        "r_csgo_reconstruct_normals_method",
+        "r_csgo_smoke_shadow",
+        "r_vma_defrag_enabled",
+        "r_vma_defrag_max_allocation_count_per_pass",
+        "r_vma_defrag_max_allocation_size_per_pass",
+        "r_vma_defrag_moves_per_frame",
+        "r_vma_defrag_threshold_mb",
+        "sc_clutter_density_full_size",
+        "sc_clutter_density_none_size",
+        "sc_clutter_draw",
+        "snd_rear_stereo_scale",
+        "snd_spatialize_lerp",
+        "spec_replay_fullframe",
+        "sv_disable_teamselect_menu",
+        "sv_human_autojoin_team",
+        "sv_jump_spam_penalty_time",
+        "tv_port1",
+        "ui_mainmenu_bkgnd_movie_B42D9173"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,replicated,release",
+              "oldValue": "developmentonly,gamedll,replicated,defensive"
+            }
+          ],
+          "name": "bot_controllable"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "1.000000",
+              "oldValue": "0.350000"
+            }
+          ],
+          "name": "cl_crosshair_dynamic_maxdist_splitratio"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.000000",
+              "oldValue": "1.000000"
+            }
+          ],
+          "name": "cl_crosshair_dynamic_splitalpha_innermod"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "1.000000",
+              "oldValue": "0.500000"
+            }
+          ],
+          "name": "cl_crosshair_dynamic_splitalpha_outermod"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "cl_predict_weapon_drop"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            },
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "clientdll,archive,release"
+            }
+          ],
+          "name": "gameinstructor_enable"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "1.000000",
+              "oldValue": "0.000000"
+            }
+          ],
+          "name": "healthshot_healthboost_time"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            }
+          ],
+          "name": "phys_parallel_islands"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "-0.100000",
+              "oldValue": "-0.010000"
+            }
+          ],
+          "name": "r_csgo_gpu_culling_camera_offset"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "[1:5][2:10][5:5][6:1]",
+              "oldValue": "[1:12][2:25][5:12][6:11]"
+            }
+          ],
+          "name": "sv_mapvetopickvote_phase_duration"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "ai_shot_bias_max",
+        "ai_shot_bias_min",
+        "cl_spec_mode",
+        "forceactivecontrollertype",
+        "player_competitive_maplist_8_10_0_FCEBAD1",
+        "r_show_ao_proxies",
+        "steamcontroller_flow_sensitivity",
+        "sv_enablebunnyhopping",
+        "ui_mainmenu_bkgnd_movie_91CCC7C5"
+      ]
+    },
+    {
+      "added": [
+        "cl_dump_player_animgraph_state",
+        "panorama_dispatch_event",
+        "panorama_dump_symbols",
+        "panorama_generate_layout_xsd",
+        "panorama_print_cache_status",
+        "panorama_print_svg_stats"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "tv_broadcast_status"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "tv_clients"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "tv_mem"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "tv_record"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "tv_relay"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "tv_retry"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "tv_status"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "tv_stop"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "tv_stoprecord"
+        }
+      ],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "11519750",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "11593506"
+}

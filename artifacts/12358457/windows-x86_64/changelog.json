@@ -1,0 +1,75 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "9"
+            }
+          ],
+          "name": "!GlobalTypes/CSAdditionalMatchStats_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "76",
+              "oldValue": "70"
+            }
+          ],
+          "name": "server.dll/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "137",
+              "oldValue": "147"
+            }
+          ],
+          "name": "server.dll/CCSPlayerPawnBase"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "phys_mesh_cluster_cull_compensation",
+        "phys_mesh_find_matching_contacts_distance",
+        "tv_delay1"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "mp_hostagepenalty"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12349504",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12358457"
+}

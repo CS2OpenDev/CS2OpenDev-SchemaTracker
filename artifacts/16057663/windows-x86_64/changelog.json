@@ -1,0 +1,761 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/CDestructiblePartRuntimeData",
+        "!GlobalTypes/CDestructiblePartRuntimeDataVector",
+        "!GlobalTypes/CDestructiblePartsSystemData",
+        "!GlobalTypes/CDestructiblePartsSystemData_HitGroupInfoAndPartData",
+        "!GlobalTypes/CDestructiblePartsSystemData_PartData",
+        "client.dll/CCSPlayer_DamageReactServices",
+        "client.dll/CRagdollManager"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "2",
+              "oldValue": "0"
+            }
+          ],
+          "name": "!GlobalTypes/CAnimGraphControllerBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/RagdollCreationParams_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "33",
+              "oldValue": "32"
+            }
+          ],
+          "name": "client.dll/C_BaseModelEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "104",
+              "oldValue": "103"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "11",
+              "oldValue": "10"
+            }
+          ],
+          "name": "server.dll/CBaseAnimGraph"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "10"
+            }
+          ],
+          "name": "server.dll/CBaseCombatCharacter"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "33",
+              "oldValue": "26"
+            }
+          ],
+          "name": "server.dll/CBaseModelEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "server.dll/CRagdollManager"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "client.dll/C_RagdollManager"
+      ]
+    },
+    {
+      "added": [
+        "!GlobalTypes/EDestructiblePartDamagePassThroughType"
+      ],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "debug_destructible_parts",
+        "sv_damage_prediction_allowed"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "healthshot_healthboost_damage_multiplier"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "mp_damage_headshot_only"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "mp_damage_scale_ct_body"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "mp_damage_scale_ct_head"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "mp_damage_scale_t_body"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "mp_damage_scale_t_head"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,clientdll,replicated,cheat",
+              "oldValue": "developmentonly,gamedll,replicated,cheat"
+            }
+          ],
+          "name": "mp_flinch_punch_scale"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "net_async_clientconnect"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,clientdll,replicated,defensive",
+              "oldValue": "developmentonly,gamedll,replicated,defensive"
+            }
+          ],
+          "name": "phys_headshotscale"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,clientdll,replicated,defensive",
+              "oldValue": "developmentonly,gamedll,replicated,defensive"
+            }
+          ],
+          "name": "phys_playerscale"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll",
+              "oldValue": "clientdll,cheat"
+            }
+          ],
+          "name": "r_csgo_mboit_force_mixed_resolution"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [
+        "destructible_parts_force_destroy"
+      ],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [
+        "schema_enum:!GlobalTypes/EDestructiblePartDamagePassThroughType/EDestructiblePartDamagePassThroughType::Absorb",
+        "schema_enum:!GlobalTypes/EDestructiblePartDamagePassThroughType/EDestructiblePartDamagePassThroughType::Normal"
+      ],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "GameUI_SystemInfo_Attention_LowDiskSpaceForSwapfile",
+        "GameUI_SystemInfo_Attention_Low_System_Memory",
+        "GameUI_SystemInfo_Title"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "61c72391e9280211400a4c8432d16a5cc01ae45a67ae9d868d86c4c029f88f80",
+              "oldValue": "6ca001a42d01f24fb239fc1e6830dcc569711d8fd7eb80fd2b1eef042303d5f0"
+            }
+          ],
+          "name": "CSGO_Purchasable_XpShop_Ticket_Desc40"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "713557768f11a5ffd7c67d90b55a6b80359df61c3e62974ab9c9ad950e8785f5",
+              "oldValue": "429258b571802f32a2023848888a2623e2f7e0196737756b476dce4caa946189"
+            }
+          ],
+          "name": "CSGO_crate_community_34"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9976a1002c19ad364717e6ac72a9077790d11c79dd72ac1dd2db716b47e741df",
+              "oldValue": "31684754c5610f7166f71de0942fbe3a06ac20f53f26c23ddf0144895a882a71"
+            }
+          ],
+          "name": "CSGO_crate_key_community_34"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "64303ea6243ac668125e9afebf4a221a3dab379b65d44eae36abeaa92ea265c6",
+              "oldValue": "d5ea0b92d8111a13c91f3d9009544478791289a3bb21e153667f34db939967e8"
+            }
+          ],
+          "name": "CSGO_set_community_34"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "474c0d901b90e8e9dc20c1a36c43da16c8af5c8ce881e72ce9d14a4c429f1e5e",
+              "oldValue": "662125eb6442eef418c7179049741f68e8d66e2d607cd78d73db3d01369b5440"
+            }
+          ],
+          "name": "CSGO_set_graphic_design"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bea24e866055a6debd027d77ebf80d4b50663de1135c15b5692aa6021998bd61",
+              "oldValue": "dd20d1a944f76a05aa44627b90689ec72c41af75a5a346c51448af7d20cda5ef"
+            }
+          ],
+          "name": "CSGO_set_overpass_2024"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "606b5c960ca8255bdc0d0a00d8b95f3690511ad30678e6a409918473f975f4d7",
+              "oldValue": "b504db89733960f0f681b5eab2128048f993d7627a6fc7704fbd85d08a88e949"
+            }
+          ],
+          "name": "CSGO_set_realism_camo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bc05c3494f85969d733555ffb40a40f73e66179c39fec9e2a3399fa1e8a8254d",
+              "oldValue": "72f6a238418fef0f15b287c0da9ea4b37613d7355a0998cdab3fab47b18e13d0"
+            }
+          ],
+          "name": "CSGO_set_xpshop_wpn_01"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bc05c3494f85969d733555ffb40a40f73e66179c39fec9e2a3399fa1e8a8254d",
+              "oldValue": "72f6a238418fef0f15b287c0da9ea4b37613d7355a0998cdab3fab47b18e13d0"
+            }
+          ],
+          "name": "CSGO_set_xpshop_wpn_01_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "28d2650ef869ec6df6d9fe3577ec8048a366d5c65661bfc05bc47fd0fb445fab",
+              "oldValue": "caac54d3ce69fb881f8e181bd8f929238174c76420d75e487f05cf5f96798731"
+            }
+          ],
+          "name": "Item_XpShopRedeem"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ca6e56d8a490826a657edfe0cffe46bde8540e697b812a16d1b733985cd3c531",
+              "oldValue": "bb9660f7ae43c721f534e0ac78b681712e7448b01173adb946d4f70a9bb16238"
+            }
+          ],
+          "name": "LoadoutSlot_Flair"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e1c29b3473265eee56af7aece3cc9f1acafaf3fba11d530f839862b3145515e1",
+              "oldValue": "c6af6da256b35ae1cb4815867aeecd67864199249fa824f78b166cc024c165ba"
+            }
+          ],
+          "name": "NewItemMethod_XpShopRedeem"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "55fd37f60499ef714d0b5493cdea533247db4321a335592964ded57442bc380a",
+              "oldValue": "1dbfab9dab5a4868be0f1b78fd8c465e1c111851a58315938e8957a5152ec2fa"
+            }
+          ],
+          "name": "PaintKit_aq_case_hardened_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f4344da81a9ce07bfe11bd0d4a8fa88240db34990e4a87a8a035cbe2fb8f9bbf",
+              "oldValue": "98381e28cf5a4370c8be83cd242d73a390d910bd8fd428ae18af8fe203ee0891"
+            }
+          ],
+          "name": "PaintKit_hy_overpass_paintover_teal"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b7f836ee3420c998d82f86f884950fb7beb57a6bc288c24d68207da8b11bea71",
+              "oldValue": "dd3ce63ab5212c88968499b8942c9fd10ecd23a69c15b602ca0ca4e7729166c8"
+            }
+          ],
+          "name": "PaintKit_hy_overpass_paintover_teal_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ad2b22b264adf3a460b3c5788d1c3fa664f4f431ca8265bd8889c49818843d0d",
+              "oldValue": "e4902b7c699ebb1d3aa9e1fc36abad390644351c9929234f3221d88319a9066e"
+            }
+          ],
+          "name": "PaintKit_scar20_fury_topo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1050c50bea4a13933187d219a08b017d7a3ae50913cf12db9b0756dcb7dd0ca",
+              "oldValue": "e012caa4c14750682582a0e7e34129c74af5542d2fe239f8c2a56ea544df58f9"
+            }
+          ],
+          "name": "SFUI_InvContextMenu_nameable"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4a10baf7454d3f19dbcbda2cb2867a760916ad3590eaf09e9ef484aa007fcbf7",
+              "oldValue": "3d1d13c7322a78880a1163d19ec7124696c997ea03802f875bbc453f6ba5b6dc"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_AccountWarningTrustMajor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f4a159080ddbf497760316629d46e7b52ee04d21f1a50eaf19003eff9bba05e7",
+              "oldValue": "a128667d5121cf19ece4cc54b7ed7815e825fab6a6d8fede79eca5284f474e1e"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_AccountWarningTrustMinor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "34f62ad367f711961acd8a87d964f0a98237501b944867cc6c4574ac9cdcc6ff",
+              "oldValue": "6494b6c5e511125f66d8128e424b629136628f256d526cdc6817062270af5a83"
+            }
+          ],
+          "name": "SFUI_Settings_Display"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "63c78c8dabdfb87893d8562d9b88ce884cabbefd7fa57ad12690cba90201a992",
+              "oldValue": "3d85d58594a89fed30c73733127e56cdc20437231e10de1bee2f627a65d5c683"
+            }
+          ],
+          "name": "SFUI_Settings_FilterText_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fd4137e5e66b56f860e3e29b9debf10976b18f51dbff6dd2c39bd5a0282a187b",
+              "oldValue": "2a0bb442bac4d63641cee08639f060adc44bb03c71d2cd2f0b232c310b337578"
+            }
+          ],
+          "name": "SFUI_Settings_Presets"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53369e4594d2db38a05f057fbde6e5e3f1866ed489f1c35561d6e4ef2e6707c5",
+              "oldValue": "4e302e67ec7b737f8b0ecdf3529c9643e70715502e65ba5567ec27135a877062"
+            }
+          ],
+          "name": "SteamVideo_Bomb_Defused_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4a1a76861f6b2451ebbe5e5deae661822d4988ca6f2e22284de2c64d49848f76",
+              "oldValue": "64a604c78297ad479edff5a6dcb5796b7fc847a24552861d2977a620d970d953"
+            }
+          ],
+          "name": "SteamVideo_Bomb_Planted_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a51ddbddd3585996e81f6923070a064f2bc714eb2fc81295f090e32c1dd56b7b",
+              "oldValue": "fd2c2c85d6556735b318a8563a271342b6db74fba195f9f02dc7b5be5115827b"
+            }
+          ],
+          "name": "inv_context_nameable"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "86361856c81b5ae1dc888ab145eeaa444669c2c00f2e0c3d32502cb044430269",
+              "oldValue": "61aef08f3ce51bc6f9f03658fb8cc512ab7ed8e88cdc6100001d9319fe8754fb"
+            }
+          ],
+          "name": "inv_session_prop_xpshopredeem"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e901ef0761cb71689dbefab7dfa81dd4cf03d0e268dbe97bc9d5f33896f89cf",
+              "oldValue": "9f7ab6811bb04c3fd3b33c1595236a432a381ddf4aaa6229e7fec99b60eac287"
+            }
+          ],
+          "name": "mainmenu_major_hub"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0d3a20b100b3a8bc0d84635ef75f7f43e2665d25af7500a8d1dce327c1ad9ae8",
+              "oldValue": "e518029ebc28a59f96e365768868e34751371d7a566d7be387b442696bd4f88c"
+            }
+          ],
+          "name": "mainmenu_major_hub_no_items"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9cea7d903d8105fc1196222b9c4220429670b5e22193458e03ea2795b5a5fa2d",
+              "oldValue": "433af437e929b3fe7bd21b174c992332023e164db14dfb398947eaa4c6ead8f8"
+            }
+          ],
+          "name": "popup_nameable_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f0c911e89570c515d39bcc7ae769bcc9931b9ddcbb6428d04dba1f5a73b1df7",
+              "oldValue": "29fda531531b7c6d57ecc3ae810e6905c955f5cef956a8803b4c2122d423a83d"
+            }
+          ],
+          "name": "popup_title_xpshopredeem"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d17241346b013845a31c37c97013c9f5e846dd00b5026c37ba430e1d29adda4c",
+              "oldValue": "6ac79c1d9069ba7daea8be1005c30f8bb9ca0c5501a89def014538fafed26eea"
+            }
+          ],
+          "name": "quest_1028_hud_var_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "37b9539646039dc30a5b155b130b1fc3a09f2bd1a2e03396cf2a95cd18b72447",
+              "oldValue": "0232c050eafa32b83770bbfb5c6ee7cfc907923a69393646e8171e6d0d20fe70"
+            }
+          ],
+          "name": "quest_1028_var_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e708f3f4f28ae73cc9d3733ae7c54fe6dba789e4f0fce07fb6d0bec4bc4d6886",
+              "oldValue": "382700c1b3641beadb09ba7d975ca7f12a5a1ae9834dc7edee0a0ad7e9dc5cba"
+            }
+          ],
+          "name": "quest_1029_hud_var_desc_CT"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "52883edd953774f2573946f984aedd21c2a7f4fda02ce6f0f5df76ae50c4b667",
+              "oldValue": "7110f0224b2db6296e448a54a6510a9c79f14df3517bc095c2316ba354cf4ee0"
+            }
+          ],
+          "name": "settings_video_presets"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4d7b9d0d2620e4b229eec9935c9e4b41aa3999fa26fc36be3409bcf21705637f",
+              "oldValue": "31084f712950e0cb15becc8b00e9088214a82954680f28a4b447ef437b8b9efb"
+            }
+          ],
+          "name": "tooltip_nameable_clear"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a295f559c1b07b8581911ef1ea8e282ce2a03579f798a86a570834c2466a9a83",
+              "oldValue": "a8e42109a0d01e65d47e99b36340db25a170da54a5776b00ca36b0eec01cde7d"
+            }
+          ],
+          "name": "xpshop_balance"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e2a125015ecca1494da1ea2721346cf512753ba58ab4fb6827bb0b033ad6c122",
+              "oldValue": "c3fca47cd02100086945e3116cf982100797903316713a7fa9cf3519a129c199"
+            }
+          ],
+          "name": "xpshop_balance_caps"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3cde517c9664fd57a65bb8f5a468561b8f1db04118985417b765cb9f438742b3",
+              "oldValue": "0c82ea71a5e1d44a9258cd36356c454921843736beb60a7d525645db33775e38"
+            }
+          ],
+          "name": "xpshop_howto"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3bb30ba783fc8a9591e2d7203d0f90a4f4c9af48f6a9c03f64f4f9eba7b67d4c",
+              "oldValue": "bad052aa073056b59b340f92e137a03c26761a4a80c0ca3ec8c93e84d338146b"
+            }
+          ],
+          "name": "xpshop_key_warning"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1cbae76c4f466f57d258860b52815fd45d408cb6ddcdd5ef3916ec8669305b9e",
+              "oldValue": "225e3324f15db354ed6bee3aa3f2b0625f84a3a4a0caf983a2591e3a0be68618"
+            }
+          ],
+          "name": "xpshop_next_credit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1de359c73bcbcd289dd3b088af26d3102a15dde50cbd89a6ae57999ee524661",
+              "oldValue": "6f7094f8cac50b0150fad7fdfa09e8f1a2bc6b07c43f3c2d09dfa28f335604f6"
+            }
+          ],
+          "name": "xpshop_pass_activate_open_armory"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6ec6dd1a65b29b7852829847a24b9c4cafbf4578c7b463b0d747e223b41da4a3",
+              "oldValue": "ec6dd02589bd952c99d56b371898d7eabf6f3f2bba3d2ac22952ec432843eb57"
+            }
+          ],
+          "name": "xpshop_pass_credits"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "44f83c86f8d92fb47ae147c9a77d18d154d8d029438f7476013133fcaafc01d9",
+              "oldValue": "531fd712665cfdb33b6181a0756aba4bd7fff8a7784f126770b9b5ed740de1aa"
+            }
+          ],
+          "name": "xpshop_popup_clear_n_tracks:p{completed_tracks_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2ac3b2294eb41b15640dbecb194312851e6347ef10040f5bc67738ec4aed3a7c",
+              "oldValue": "08845b4474eb6821534ce08b426099324830365b831ca020d17cfd27f96a6dc7"
+            }
+          ],
+          "name": "xpshop_popup_clear_n_tracks_text:p{completed_tracks_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6eed21ba1ea7601eb1b056726e60af17c26c1806309d8abb5f3648bf7c183829",
+              "oldValue": "86e001dabba715cb2a479e7c3276c170f8c82467cc01af20f474a46e68a86d4d"
+            }
+          ],
+          "name": "xpshop_popup_clear_track_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "03b275fbb53a6b6f93f4c5eae812a1db6be523e77c87addd016dd41c6fa18a8d",
+              "oldValue": "f38693dbc28cd94cc8b161266a7d4be5ca0a9e4041ae840b9be1309df93fa169"
+            }
+          ],
+          "name": "xpshop_redeem_use_confirm_item"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "03c57f863e2ccaa87d7a92fdf946dab075753c56f7e1b42de33f2fd874620dcc",
+              "oldValue": "974af869b9e9e2582dbd3c52a292f1b61fab2ab75dd3e8dad1860dcf70688717"
+            }
+          ],
+          "name": "xpshop_redeem_use_confirm_item_limitedtime"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a6350d8606fceaa5d262d2f6d7ebe899d49a49c0280b0b8ff2a481893e2ab8c3",
+              "oldValue": "27be88d72cc0526a80ea6e065608f27f419db510afd46ce91f03bce534036f4f"
+            }
+          ],
+          "name": "xpshop_track_complete_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b585534c422d8816ab44a7255b176e81811b78d7c78ca28e4bd36c7d9f41e5f6",
+              "oldValue": "a371d33583367bf9b2edfd8ccc179d4d26d5332521c75f23bd56cb8db4a6fd25"
+            }
+          ],
+          "name": "xpshop_track_mini_stars_counter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b8a1fb976d797b932c30aedf7748accff4287aa7ea0c54c50a0909645a0bb81e",
+              "oldValue": "a971a02557a9e35e6961b8208fb0f4c44fa09babdf3a6620e18d124975270354"
+            }
+          ],
+          "name": "xpshop_track_tooltip"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "16015437",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "16057663"
+}

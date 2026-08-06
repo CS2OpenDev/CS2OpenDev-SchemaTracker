@@ -1,0 +1,51 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,clientdll,replicated,defensive"
+            }
+          ],
+          "name": "sv_unify_random_seed"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "net_client_steamdatagram_ping_measurement_direct_only"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12427908",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12438553"
+}

@@ -1,0 +1,720 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_allow_multi_input_binds"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "Player_DisconnectReason_InputAutomation",
+        "Player_DisconnectReason_InputAutomation_Detail"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "42be9273280177e4e14185c2e2f2a1d6462c6efa0402486c7b26a0d8b295ceb3",
+              "oldValue": "cd42480ab507190e9b3c07fba011919387ca9b946df497aa0873386657c13932"
+            }
+          ],
+          "name": "CSGO_Possessive"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9e8b075148b92c0a23474e88f397fb7513aa5c74db95d301c72ca92e41da02ce",
+              "oldValue": "7673909db4f57452a9534f7377f6d21086aae175f54ec768c698ea4e6a60481d"
+            }
+          ],
+          "name": "HudSpecPlayer_WeaponName"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "747200a0ce69f22529bcef7ae8c24f4a9a8616278b337ce8641e33da7ce79950",
+              "oldValue": "e7d4f6c24f3cca9889d3733e9b72c68e8c6d1a6fde1eaa9a21cb43a8483a4d87"
+            }
+          ],
+          "name": "Op_bloodhound_507"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "01ca380c7d71c4d8f7f88f4c2227cbc1879357b2af9bbb6a63ce5a0f63f22d8b",
+              "oldValue": "49065313463ba4ec1bf7dc7a2d5b1bd6ff4f590aa5707175dada8e946f1b0ffe"
+            }
+          ],
+          "name": "Op_bloodhound_518"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fb4baca5b1a45ad4e5ac01208b73afa869ca27de03bb4fb898f0a8fba2c21c9b",
+              "oldValue": "1908a8e4edee5355d48d4f755cf0ff6aa5a0dac348e9cb5e7b4f828c467f5663"
+            }
+          ],
+          "name": "Op_bloodhound_Valeria_bank_turner"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "baa335be72de230c0d6bc49547c1a07c0b6809d898d37ef51d35e3f3eaf4c027",
+              "oldValue": "77781808f5bf46db64f1152dea6f26fa3254a7b2b55084a404aa7e1a8b24426e"
+            }
+          ],
+          "name": "Op_bloodhound_Valeria_meet_mentor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c02131b357710644640c7f52510a6546bb66dfbad419e218f1fdf6c6f5be9055",
+              "oldValue": "836b5a07d246d11bcedba14f04a3abf3c5c30a4cf0c87a6466bc28d1345e94ce"
+            }
+          ],
+          "name": "Outside"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "146cc64798067b52acac4d029b44eed485b3edc5f70b36d2a02dc2d092806657",
+              "oldValue": "ca2bfa6be05db8799f86ca938e79c2fb4248c7e383bf00205f1bda7deff30f93"
+            }
+          ],
+          "name": "OutsideLong"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "458dbc898bdc8a78e789a12a06bcfaaff1b8a75550d4d77f53858117e933223c",
+              "oldValue": "d173111a4af5b9f7dd104e5715633617ddfcbd97aa0c83a55e013dcded43049e"
+            }
+          ],
+          "name": "Quest_Flashbang_Mapgroup_Team_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7964cb465b86feba39b68ca90f2a031e7eb802d542e04ecd4c14f71e64ffc715",
+              "oldValue": "c50ade787f63bd4458c4eb39da0be3924c32f0fe62be1dc332e033970aa4d04a"
+            }
+          ],
+          "name": "Quest_Kills_Mapgroup_Victim_Team_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a9c9ef0baedd258c4661221b697e909952f1124db86ea4087a06269e48a387eb",
+              "oldValue": "c7e3c862b66350acfe2bc26db3824a1cfd467ed8f89c7596f63cdb4ed1494200"
+            }
+          ],
+          "name": "Quest_PlantBomb_Mapgroup_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1adebbda6b4fd70c696ed98dc318a24462bf0fa1f356757a5fe5df137de61f59",
+              "oldValue": "1e2b1035bd8c93636dc0eb0dafa4ac8d1f41603f7526f246766ccd477cf39ee1"
+            }
+          ],
+          "name": "Quest_Weapon_Map_Team_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bafead8e92424d6cfb3e87f75bb3b771585bdc93be9e3e5546e98287da3fddd2",
+              "oldValue": "142eafc6a7f6881fd2b75f94c1eb2e49031a4b3563f1f186bc9e77788f107493"
+            }
+          ],
+          "name": "Quest_Weapon_Map_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8712341056c36d814370afd1f61ad5107207f72612846e0a64cb1a34d3977136",
+              "oldValue": "f1ba9a72734e2117f046e4dd9869193e28abfb1d3af9b4cfdef746f7c1f0a77b"
+            }
+          ],
+          "name": "Quest_Weapon_Mapgroup_Team_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9a818e93e73833ad5a51ff8e0f0bd984586c84cf89a55df0d7af040a2ba61dbf",
+              "oldValue": "1cbcd5a93c6744a15e5d2a77590b9a86b55a5e8fbfd60f10534db0931d231b40"
+            }
+          ],
+          "name": "Quest_Weapon_Mapgroup_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dddae6014635b9101b20c00c47a30206a9f59b9d1af20ee2a371f144ca148985",
+              "oldValue": "1ca5ae050466d45d83e71f1bbae0ddefe3951e71f05b30814da85d13554f0267"
+            }
+          ],
+          "name": "Quest_Weapon_Mode_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c898d21e2ce761fd7474d6c0721e555e3c9f8848abef2c33784db7e381a1adaa",
+              "oldValue": "4519d9f7b4e1a52ee2134f8f488f6bf283fb52ab23ff13d9de4e8747db8249ba"
+            }
+          ],
+          "name": "Quest_Weapon_Within_3_Mapgroup_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f7df8a2a111d694ab63e1cadd127fd9b351c15f2e12a1c4bb7e13cee1ba10a2e",
+              "oldValue": "4e40939a4ebb9b7e482e8bdaf6ba5dbc03b0c7747a8e4cff85a5f6e63450dec7"
+            }
+          ],
+          "name": "Quest_Win_a_Mode_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bb25659563299df8fc82ef89d5db59b0c649b76c9ccc9cd108f472d55d3507a6",
+              "oldValue": "867e2e4bf16bd20dcd771e4e3933201fc007ad4a3383055d535cd8cbcc025c4d"
+            }
+          ],
+          "name": "SFUI_BuyMenu_Tagging"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d1ea8fb40bc9e2adc9997d48671e4438b3c80d25b2fa2bf2428c305dbfa92fef",
+              "oldValue": "f0879b8a32bada5b0500e4e36c5ac799cb6f2b177b29a33f468cfab17657b4ef"
+            }
+          ],
+          "name": "SFUI_HOW TO PLAY"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "94ceb672e9f1939f04cc4b62f0eb52b68cf7d25000de98691231c5afb2726668",
+              "oldValue": "93062fad2c3b39120a73d8981ed03a642e0ef01fb732cf0a5b5171dbf0358cb2"
+            }
+          ],
+          "name": "SFUI_OfficialDatacenterID_45"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "137492cde9643d4b76170b05dba63d7e5fdc77ec7d52696ed81b54cd0b456fde",
+              "oldValue": "72748ba60285367c207e4c73eafb6b97633cd9cc2b649aeaec5eefca9c75a6aa"
+            }
+          ],
+          "name": "SFUI_Settings_Reflex_Boost"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "28176b85e285d13a3c79320ec02e68944bf5f0bf82b321c2c58376add4e627ea",
+              "oldValue": "cf4585222317c3c80f5c6d922848a86c40e3ec24d469a6d978e4810cb8fa5723"
+            }
+          ],
+          "name": "TabletMobility_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d5b0216960edfb98a6b50715b1631892a2127fb4803c9f4a2b6af14e9215bed3",
+              "oldValue": "7920deebdeda3fc1dab4d205ddea1673b6e2b2945283ae45ff480119954c092d"
+            }
+          ],
+          "name": "cp8_comicsection_title_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "765959611c0ace83e114e9e62c072a11a896847cbc7025c9d497360d2add55b8",
+              "oldValue": "5698a119d4ace5e97ba07f6f961454bd1562f30ac55ad9e3569b460218319bdc"
+            }
+          ],
+          "name": "cp8_comicsection_title_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "354b5161d253f11c48c71f0638c514d2469bab38d8530b2d8530bf27c56789cd",
+              "oldValue": "dc5ad1dceaf826591481710bada49d4285ae0fa736a5d6a6e21f565f52e1dff5"
+            }
+          ],
+          "name": "cp8_comicsection_title_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "646f4fcc69872f44c4465b57ea667925621b0e084d371fa53684ad71b9330c1f",
+              "oldValue": "767c3cfaea77866648f5e5cc025b480b10dde622d37ce26e7c97f52b0f14b187"
+            }
+          ],
+          "name": "cp8_comicsection_title_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "18e8973faee8267c5a2ad77afe913b85b7469454deb8bb214fb21bc9a8fe2660",
+              "oldValue": "65d9b4dab453547b006925d93fb3b9673eadaa4cfdb5c4d5ab9fe20613cbb3a6"
+            }
+          ],
+          "name": "mainmenu_major_hub_no_items"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3b01fea2a1959971275a9caf46a95f5debb6913fe7cf92e48263d354108c85a1",
+              "oldValue": "9eb6a28cbab8d73ccb7b7ca1f6195b824d20c0105e61a15e0cf8f64cb92483c5"
+            }
+          ],
+          "name": "major_hub_souvenir_package_desc_no_price"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "56eedc78b112ea99a49f01255d5757ba8cc595861dfe7548a8c110b26381b2a8",
+              "oldValue": "2ae1e280b0249d84400e63e9a3050b6ce72260c6a0c28e51b8c03f93fa54dbf1"
+            }
+          ],
+          "name": "op07_quest_name_701"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c9d704ef2461bb2aa367777c43cc30759620b11cf8cd92cf0b6bf963cc84ed73",
+              "oldValue": "9b7ef38efb7a02373d69beba0ca156a55a7616810661f01e1f3bf7ebd2145ab9"
+            }
+          ],
+          "name": "op07_quest_name_707"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "137bb48f6e8a36c471e7440e2f05c95a252efbeb138546f9dc01917aa531f3c8",
+              "oldValue": "26b7f63046258db6a4303dda167ef1f15ac774d9f4692ec9f24ba59b7196515c"
+            }
+          ],
+          "name": "op07_quest_name_721"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "63f704dbba68b8cdc45e7c3171bb6897dc66353cbee3e191e296eaf46c239a40",
+              "oldValue": "bfab35180edc876a26d76c20c86da66ee7f5d6b43641307d240b949b0681b1f4"
+            }
+          ],
+          "name": "op07_quest_name_727"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "77f15394eea4343d3f5106b19ae25a4ad0afdb67a590cdabfdb7b34ffdb9a4c0",
+              "oldValue": "37cb45a9621313e829a84e50c3488d4df627a08b903a85994177702b5d107822"
+            }
+          ],
+          "name": "op07_quest_name_806"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1c8ed0f6f2ed954d1386ddf57bfab8c00bb2fa9b1bdf9a8dfe2490446eb3d4d",
+              "oldValue": "657ef2a4ecfa8cc6fbf5a08c4c6db1cca8c94bd60e2dc16050a3e2a2ff0bea04"
+            }
+          ],
+          "name": "op07_quest_name_816"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "091d8dc18b4598d9f490f4d2435dd0267f508e892f24de3e2f8161030941eedc",
+              "oldValue": "ccb5fe3c601035070bd53a1b9f8096d438230e7381b59af965694082f4a5faef"
+            }
+          ],
+          "name": "op07_quest_name_824"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aa46de7cef82422cc81820aa8832f02ef59c543ec8de1397f127cd8f41410785",
+              "oldValue": "a79e6ecc8f6af8b7ccd9932d13caed02d9833575a071d79185bea463696b9fa5"
+            }
+          ],
+          "name": "op08_intro_name"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cb155813ef19603f81751cc5072ee6ce1f90f4e6d67fbc5354ced3dba7550ade",
+              "oldValue": "df6254075dc60e7d38db92faccb94b4653c3301414a08407afe1d107dcc2c87b"
+            }
+          ],
+          "name": "op08_quest_name_901"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4b197d903f355502ac435bbb29597197034a9d6e716137f7a85872380f8c2205",
+              "oldValue": "66db8d2a63b542087b7ea1457435049a7fbec83522360325b538d36541ad7c5e"
+            }
+          ],
+          "name": "op08_quest_name_902"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5e4b943b55bd38e6b21c45f5b15535d792d2b3268a253d0e9b912d1aea60ad1b",
+              "oldValue": "ebad0720d3c5dabfa1058a2abd0384fc1e0c81cadb93659049f0c980966caa94"
+            }
+          ],
+          "name": "op08_quest_name_909"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f7da1f2d1667ad598f098e83fd08782b39f96b77ab50629a67ab8f2ea9fc82ad",
+              "oldValue": "65d4827cf4b8df245916ee0547bf7a00cce8688dacd556326a0229f39c3d6db4"
+            }
+          ],
+          "name": "op08_quest_name_914"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "513d0ef64c4d203cff6172e96ead428017f8fbb1da28dfa7e7964b3a00e04cd8",
+              "oldValue": "1e76b41092933c3905dd41e3176a75bd0c92137de6f161fdf76d4630e863eb3f"
+            }
+          ],
+          "name": "op08_quest_name_928"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b6530ff53b1ef49aeb597e53168a6174a88548102602bf27449be41529ea7ba8",
+              "oldValue": "b1aab2a6ae699e873a709b2e64b84efd16317af47579614b4d9290dfdd6207fc"
+            }
+          ],
+          "name": "op09_quest_name_1020"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4271c39cde1219f367304a7aa31692a3e93bd2a7a5520b234fa00d0008f95581",
+              "oldValue": "28c78a71b19c95b1fd391de60b2f9c8de682d32cc2f26487e470db17ff94d169"
+            }
+          ],
+          "name": "op09_quest_name_935"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f4b665d1f6d6045cde7a84470408bed9f526882e0a390b08782f43c9203a7e02",
+              "oldValue": "13c5fff1fd41343b776479c0b177f11ae0b4c3a43735ee4b8d872dc1fb14ae29"
+            }
+          ],
+          "name": "op09_quest_name_937"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5475c601a4eaa3eeb7ec874f10657c9cf8429606f0a0979e8f93e0461a060a96",
+              "oldValue": "5989b39494f41efd7f4b775d7b2a1243976f6fff09f86e8ae1393084e7b7ccd2"
+            }
+          ],
+          "name": "op09_quest_name_952"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ed2827442bed0d5eb77daf5c85e1b3269497a714564922f7b098a6be5d5c30b1",
+              "oldValue": "7df3bd23caf2dda3e63288cb4f70094fc303bbcdb801f101ddbae1e6e401d9dd"
+            }
+          ],
+          "name": "op09_quest_name_953"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e41abbc47e1ab6ab126350f071c1b995d018197f597efa05bf7a6756779c0e86",
+              "oldValue": "2571f109f126f054afb8fd8fa2b901b0d73b26fa5db28d5309bf309c77df396f"
+            }
+          ],
+          "name": "op09_quest_name_956"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b2e38b12f162c24224bef8cf1fb90f9376f2d4d0fd4ceaf2b2037cc2d6d636b3",
+              "oldValue": "33cfeee2f5428b5ccb5cefbdd63693bd019b5d06a8629774c527f7e765627aa9"
+            }
+          ],
+          "name": "op09_quest_name_958"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d1a7b408d7dadfe23097ab8685c312cd5ef86eb5046f02c93f71a54dba7d2107",
+              "oldValue": "b163786e29f905383e47397a46ee450f2dbe376a39f552969dd57f32e28897ca"
+            }
+          ],
+          "name": "op10_quest_name_1043"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "764081d46d760b04af1bc2c218f0ab512671807c34e080a904db19ba4478749f",
+              "oldValue": "baaa0e6fe2b216334d7b55b1e1206283d0ae374ac714cf164f1839d22148f95c"
+            }
+          ],
+          "name": "op10_quest_name_1056"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5c2b7d553d832b4109deac617879ff32ded12e1a89d72079039be3321bad5e9e",
+              "oldValue": "7bc9038ff384cdb95231755ce280ba0fcf72c4cd8412ac3a22b416966049f71f"
+            }
+          ],
+          "name": "op10_quest_name_1083"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "836da48e2a27fc988749f82f62b312232e3a64e99c498b0372c261f1836792ad",
+              "oldValue": "ba78a5261497fa3b6ef6eaeec97b98fe6b4353f348dc1ef66b29a4b263b26977"
+            }
+          ],
+          "name": "op10_quest_name_1093"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d44d7a2fe44f683967da745e9fcf941bdc6a00aabb377d3e9c77a0c44961e213",
+              "oldValue": "396152a20ddf16d9147119e8fc80fc84f6ad30e875c3f5b453bbad0d3aef4875"
+            }
+          ],
+          "name": "op10_quest_name_1096"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "42e170a5ee5cc98b54ee0c9df35f7bfd972cc41afcd4d80270649a175c8619d5",
+              "oldValue": "29505b4c082bb3e28342a148125e72d53b4962c33e6cc682aa9b633899aa60d0"
+            }
+          ],
+          "name": "op11_quest_name_1107"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7b83e60932dc39ea5965482cf5981a21c56fd901d5df5c26cbdf007b969e4bde",
+              "oldValue": "8875e8dbb67dd1af88c342ff7aa90a1f3efac82ca4eda8be92c4a06e115cd17c"
+            }
+          ],
+          "name": "op11_quest_name_1117"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "78527f570839480e7a33ec30e5c762901e69ef91e13fd34a91c18f3f00f060f5",
+              "oldValue": "899aaba93aa3095425f6e15457bb729f31f248ac9bd315edbc11d99ffe33abd8"
+            }
+          ],
+          "name": "quest_1012_hud_var_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "075d574767b5ca64f01f2b4587665c02d1880493314bc2cac6e6c6ba9830d582",
+              "oldValue": "3ec8f60a52d6400986b92132c297bc886fbc0798a64ff48e41d3617eb67b61fd"
+            }
+          ],
+          "name": "quest_1012_var_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0ffdff2338f19e19dfc28e0ff420d0e26d748ebf5a85b5e067aee0eb3c7841ab",
+              "oldValue": "07479d1ec6e2accc95534cf4f71752afe932bdaa6d992e5a20961636676d620d"
+            }
+          ],
+          "name": "quest_1065_hud_var_desc_CT"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0e9197e9886c8cf9ab9e7cc5dd57954a7b600ca73baf72295352c8224b061303",
+              "oldValue": "fa87183460c058304084f0e3bbaab2906d3e497c8477c86f416e681dcca75792"
+            }
+          ],
+          "name": "quest_1207_var_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d172afb1877444770e0b3923d0ce0086d38844104a95f87557d4f28de3bb163e",
+              "oldValue": "8499adaec22aff0781b2866c3f237d9823fbe29ce586807e138de70c2060f94e"
+            }
+          ],
+          "name": "quest_1296_var_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ad5cef669e2de9853dda36f3d7ea6e972778a628b0efa22b0f636ada7960af63",
+              "oldValue": "1d6a0e083a39b783209885c7e648af85c6a99793cac69c515b35a6fd3e72421f"
+            }
+          ],
+          "name": "quest_action_plural_act_bumpmine_launch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f9009392136ebf474813c6c397f3e1eaf6b7f471269eaa27ca2c01341d4ca953",
+              "oldValue": "e29e4ff89e7c87bab2192c3c2c1dd1e7070bc53688e4ef620ac3b95dcffb3173"
+            }
+          ],
+          "name": "quest_action_singular_act_bumpmine_launch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d940e30a2ec3ccb1f776512dfa2cba1b3777c86e9674c9e16d5d031e1080b11a",
+              "oldValue": "05e2416632337f15cfee654c17652152b45f202ac2934323c434b4f34881b977"
+            }
+          ],
+          "name": "quest_bonus_de_gwalior"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ada95e90308ae1ee24b68637448cb7f68f5885ce65a854271884c7c525a7d1cb",
+              "oldValue": "493f8ea7134a425c388505e7bed83cc599d0b3d3ac9592c31754c939cd430331"
+            }
+          ],
+          "name": "quest_bonus_set_community_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dd977aad662041a30cfcfde6b07b35539d715dab02f887bb877c6c220811e794",
+              "oldValue": "b852ce7b99528c283050aefd1f3c870ad47b4ea3910b90338277be3ecf4ff1ae"
+            }
+          ],
+          "name": "vcd_op09_coopmission_web_franz_mission_cellblock_pre_fight_01"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "de0f32ba6edc5e36c252e562d1cde7ab69a08ff2ef9f8209635c3071b709217d",
+              "oldValue": "484a484e0249f6da8bb657d1bde224dacd0e5b4213cdf444146f12cbcd0d3da8"
+            }
+          ],
+          "name": "vcd_op09_coopmission_web_m2_felix_corridor_01"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "15372392",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "15424813"
+}

@@ -1,0 +1,83 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_weapon_clip_thinwalls_pitchlimit_down",
+        "cl_weapon_clip_thinwalls_pitchlimit_up"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.800000",
+              "oldValue": "0.500000"
+            }
+          ],
+          "name": "anim_scale_wasd_input_arm_pump"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.800000",
+              "oldValue": "0.500000"
+            }
+          ],
+          "name": "anim_scale_wasd_input_hip_dip"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.800000",
+              "oldValue": "0.250000"
+            }
+          ],
+          "name": "anim_scale_wasd_input_hip_swivel"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "playcast"
+        }
+      ],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12377892",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12398121"
+}

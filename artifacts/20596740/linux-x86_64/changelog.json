@@ -1,0 +1,2165 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/CNmAimCSNode::CDefinition"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/CChicken_GraphController",
+        "!GlobalTypes/C_Chicken_GraphController"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "demo_max_consecutive_skip_packets",
+        "sv_use_playercache"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "#GameUI_Retake_Card_TheAWPortunity,1,1,weapon_awp",
+              "oldValue": "#GameUI_Retake_Card_TheAWPortunity,1,1,rifle4"
+            }
+          ],
+          "name": "mp_retake_ct_loadout_bonus_card"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "1|3;#GameUI_Retake_Card_4v3,1,0,secondary0|1;#GameUI_Retake_Card_FlashOut,0,0,secondary0,grenade0;#GameUI_Retake_Card_HideAndPeek,0,0,secondary0,grenade1",
+              "oldValue": "1|3;#GameUI_Retake_Card_4v3,0,0,secondary0|1;#GameUI_Retake_Card_FlashOut,0,0,secondary0,grenade0;#GameUI_Retake_Card_HideAndPeek,0,0,secondary0,grenade1"
+            }
+          ],
+          "name": "mp_retake_ct_loadout_default_pistol_round"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "#GameUI_Retake_Card_BehindEnemyLines,1,1,rifle1,grenade2",
+              "oldValue": "#GameUI_Retake_Card_BehindEnemyLines,1,1,rifle1,grenade0"
+            }
+          ],
+          "name": "mp_retake_ct_loadout_enemy_card"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "4|2;#GameUI_Retake_Card_LightEmUp,1,1,rifle1,grenade0|2;#GameUI_Retake_Card_Kobe,1,1,rifle1,grenade2|1;#GameUI_Retake_Card_1g,1,1,rifle1,grenade3|1;#GameUI_Retake_Card_DisappearingAct,1,1,rifle1,grenade1|1;#GameUI_Retake_Card_EyesOnTarget,1,1,weapon_aug",
+              "oldValue": "4|2;#GameUI_Retake_Card_LightEmUp,1,1,rifle1,grenade0|2;#GameUI_Retake_Card_Kobe,1,1,rifle1,grenade2|1;#GameUI_Retake_Card_1g,1,1,rifle1,grenade3|1;#GameUI_Retake_Card_DisappearingAct,1,1,rifle1,grenade1|1;#GameUI_Retake_Card_EyesOnTarget,1,1,rifle3"
+            }
+          ],
+          "name": "mp_retake_ct_loadout_full_buy_round"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "3|2;#GameUI_Retake_Card_UmpInSmoke,1,1,weapon_ump45,grenade1|2;#GameUI_Retake_Card_FunNGun,1,1,weapon_mp9,grenade2|2;#GameUI_Retake_Card_Sharpshooter,1,1,weapon_ssg08,grenade0|2;#GameUI_Retake_Card_BurstBullpup,1,1,weapon_famas",
+              "oldValue": "3|2;#GameUI_Retake_Card_UmpInSmoke,1,1,smg2,grenade1|2;#GameUI_Retake_Card_FunNGun,1,1,smg0,grenade2|2;#GameUI_Retake_Card_Sharpshooter,1,1,rifle2,grenade0|2;#GameUI_Retake_Card_BurstBullpup,1,1,rifle0"
+            }
+          ],
+          "name": "mp_retake_ct_loadout_light_buy_round"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "2|2;#GameUI_Retake_Card_TakeFive,0,0,weapon_fiveseven|2;#GameUI_Retake_Card_BlindFire,1,0,weapon_p250,grenade0|2;#GameUI_Retake_Card_OnlyTakesOne,0,0,weapon_deagle|2;#GameUI_Retake_Card_SneakyBeakyLike,0,0,weapon_p250,grenade1",
+              "oldValue": "2|2;#GameUI_Retake_Card_TakeFive,0,0,secondary3|2;#GameUI_Retake_Card_BlindFire,0,0,secondary2,grenade0|2;#GameUI_Retake_Card_OnlyTakesOne,0,0,secondary4|2;#GameUI_Retake_Card_SneakyBeakyLike,0,0,secondary2,grenade1"
+            }
+          ],
+          "name": "mp_retake_ct_loadout_upgraded_pistol_round"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "#GameUI_Retake_Card_TheAWPortunity,1,1,weapon_awp",
+              "oldValue": "#GameUI_Retake_Card_TheAWPortunity,1,1,rifle4"
+            }
+          ],
+          "name": "mp_retake_t_loadout_bonus_card"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0|3;#GameUI_Retake_Card_4BadGuysLeft,1,0,secondary0|1;#GameUI_Retake_Card_LookAway,0,0,secondary0,grenade0;#GameUI_Retake_Card_WhenThereIsSmoke,0,0,secondary0,grenade1",
+              "oldValue": "0|3;#GameUI_Retake_Card_4BadGuysLeft,0,0,secondary0|1;#GameUI_Retake_Card_LookAway,0,0,secondary0,grenade0;#GameUI_Retake_Card_WhenThereIsSmoke,0,0,secondary0,grenade1"
+            }
+          ],
+          "name": "mp_retake_t_loadout_default_pistol_round"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0|2;#GameUI_Retake_Card_OlReliable,1,1,rifle1,grenade0|1;#GameUI_Retake_Card_SmokeShow,1,1,rifle1,grenade1|1;#GameUI_Retake_Card_HotShot,1,1,rifle1,grenade3|1;#GameUI_Retake_Card_EyeSpy,1,1,weapon_sg556,grenade2",
+              "oldValue": "0|2;#GameUI_Retake_Card_OlReliable,1,1,rifle1,grenade0|1;#GameUI_Retake_Card_SmokeShow,1,1,rifle1,grenade1|1;#GameUI_Retake_Card_HotShot,1,1,rifle1,grenade3|1;#GameUI_Retake_Card_EyeSpy,1,1,rifle3,grenade2"
+            }
+          ],
+          "name": "mp_retake_t_loadout_full_buy_round"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0|2;#GameUI_Retake_Card_BackInAFlash,1,1,weapon_ump45,grenade0|2;#GameUI_Retake_Card_AllIn,1,1,weapon_galilar|1;#GameUI_Retake_Card_BoomBox,1,1,weapon_mac10,grenade2,grenade1|1;#GameUI_Retake_Card_SetThemFree,1,1,weapon_ssg08,grenade0",
+              "oldValue": "0|2;#GameUI_Retake_Card_BackInAFlash,1,1,smg2,grenade0|2;#GameUI_Retake_Card_AllIn,1,1,rifle0|1;#GameUI_Retake_Card_BoomBox,1,1,smg0,grenade2,grenade1|1;#GameUI_Retake_Card_SetThemFree,1,1,rifle2,grenade0"
+            }
+          ],
+          "name": "mp_retake_t_loadout_light_buy_round"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0|2;#GameUI_Retake_Card_BlindFire,1,0,weapon_elite,grenade0|2;#GameUI_Retake_Card_QueOta,0,0,weapon_deagle|1;#GameUI_Retake_Card_SmokeScreen,0,0,weapon_p250,grenade1|1;#GameUI_Retake_Card_TecTecBoom,0,0,weapon_tec9,grenade2",
+              "oldValue": "0|2;#GameUI_Retake_Card_BlindFire,0,0,secondary2,grenade0|2;#GameUI_Retake_Card_QueOta,0,0,secondary4|1;#GameUI_Retake_Card_SmokeScreen,0,0,secondary2,grenade1|1;#GameUI_Retake_Card_TecTecBoom,0,0,secondary3,grenade2"
+            }
+          ],
+          "name": "mp_retake_t_loadout_upgraded_pistol_round"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "inv_header_quality"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7ccc4761925773f9ba2d5287f0b9c5209f40e8397b20ec3389fa57b046042b23",
+              "oldValue": "6afad8ad1ab97291932fadf4d154ea04e968eb6de5e4fb77399cfa2c1601bd1b"
+            }
+          ],
+          "name": "Attrib_KeychainRemoveTool_Charges"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1dd0678a4b4e0a1ae6b0da809f8c2e132a1eaca216ff50c74193373728b8a37",
+              "oldValue": "d148d28a147e905dce6f3c4b38e597ffe4e15ac03ae3da71546e53fdf25095b6"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUpX_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b5514bed033cebe7789385c972f4842780cf90db63cd18dbc729c90cd649ddf7",
+              "oldValue": "3bd14580f84622907d0c11e67401f4a43e0ce142b540aa4d42b55dae35a46b2c"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUpX_Desc_html"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d64ebd410d8a26d13407cb33fec6c1d66950acaf62822906ace90087d8c7e43e",
+              "oldValue": "11b3c97e598f3eb713b23e5292681020de288da97191a1162fe1bfc9b86cbc08"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUp_Items_NoSelection"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "93986ded4700f0d966433d3c9d4402b59aa1965fccd5958bd1ff06e5c05d49e1",
+              "oldValue": "838515f1df769f939cce48dde9592a84bf2d6e594c8c7767100c638dff68cd1d"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUp_Items_XofY:p{count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e497e94575757e332fa6899cdb087c6bf3596cf1cb673142467b006e0a199bd8",
+              "oldValue": "07b959fa90de920bac3eb767fa2f8746ec8a1d9e057d46cf15a36b5a6dd6c178"
+            }
+          ],
+          "name": "CSGO_RemoveKeychainToolCharges_Desc3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d3f430521d4a9d867b85a1cc1ce97556faf8edad263a51efd2403f6a2a4e4f87",
+              "oldValue": "1a923d910206ecd11a26a42bb1be4cfac7c2fe611e1bc598618db38356126fc3"
+            }
+          ],
+          "name": "CSGO_RemoveKeychainToolCharges_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "42bdb4f08387e9982007327358dab15c2f83091ad9473d9b8bdc6463dcb5d4a8",
+              "oldValue": "a32bc82f8823b44bd59be3e0b4337c2068e186fef61047ab10cc628eb856a762"
+            }
+          ],
+          "name": "CSGO_RemoveKeychainTool_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "be8e197812d4ff1a32f156c8816972592dc674c8886773604063930b9cce4f5b",
+              "oldValue": "2b6bfeb53f4d82f3f58e3095164359aad56524dec4dca15e645b4edfb9f5b2bc"
+            }
+          ],
+          "name": "CSGO_RemoveKeychainTool_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d1ea00e1071f4854931653c3f762b1848fccf2982d4a4c1c7d929e8f75e0caa3",
+              "oldValue": "a0e64432fe6354511ed2addf43446cf6ab53a8f76718d29caede605cbc6a889f"
+            }
+          ],
+          "name": "CSGO_Tool_Keychain_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b3d8b0268507c592b598bab4cb66c2d117e43162a3ca49e0251e4c121d71f049",
+              "oldValue": "b54c667a2e4276fedb88a1d1fbc8d8511274109de552e3f8e813c1cf459c5f08"
+            }
+          ],
+          "name": "CSGO_Workshop_Mode_retakes"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fb25877335d2efde532d61adc349a54a34d595b0adeeb140561ac5857d64e315",
+              "oldValue": "33ee9077618ab2a4af38967d226c43c972c71448cd406e1d61b0596af5627093"
+            }
+          ],
+          "name": "GameUI_GrenadeCrosshairFire"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6601f363f43897e7c3410d1422918f1b41bdab4281cbbf25334f93972645abbb",
+              "oldValue": "a41ca0f1aa12ba2fec7e93963319c4e6255db4e8f47d753823419c7107c3ec20"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_apex2kinclutchvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "73dc1f12176ed1afdb1b2b491e4c78d233516bf30545290c1ed00b25b06dac0b",
+              "oldValue": "836866457cd2b50335faf0676d1614bfaaadd917e1b5c6c6de4cdf06efe0acd9"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_apex2kvsnavionvitality"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0b426fa628c39ca30c4322c755586c7255dda72e18d6e58520f7789546b39962",
+              "oldValue": "30a4a26b07334e2bdb4794f9ef33f5b84bb0362054f3073a6241ed9a13710a94"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_apexblockingsmokesvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "28e6e17c11add06611ca8c0054a3adc8683950bfcf0896ceaae885f9fdab5104",
+              "oldValue": "91e4ed3ff7266883ebc25feb5c1e6c94189eec5d91cb1997e96735e994e47d3f"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_apexforgotreloadvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2a7619f9ee496c53333081a0d7f9950fd6ae0b42ce2284da92e2014602119260",
+              "oldValue": "696368cc84253355f039583997f320c3d8342ff17d10b0ca1d909b22a2feb700"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_apexwhiffvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8311aded5fd91ff462d01d5f2895e85b4df994be2916c8e7108fbf1b2cadd97a",
+              "oldValue": "1e7a176ddf580f14dac8b7c75c25c43f0b7c7a78ac303f8dd15f4db9bdafb092"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_b1t2kpistolvsvitalityonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2115f2514a7bb7faf473e27bd73a339e4b54070c217e3474edfd00883c5e8c97",
+              "oldValue": "6d803fa7d51c36bf244974032d05584ffd627067c3ee208f83e64bd56d0adb63"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_b1tdoubledualieentryvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2f1172a4bb4d59b9d13a52503154ef2d535c03b8175566b5673cfa1f7d72f41b",
+              "oldValue": "c1e19b53020eb133b2bc50c8d1009cfbd70d5e19ce8bdb6fbfb5eed01e2c77fe"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_b1tdoubleentryvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5626d6f1e5f58cdea3a720c87a0c6cba43850fd396af1236e7603ec91f292a80",
+              "oldValue": "9e83aa892214f86df8b2ef4cf755981a17bb037013a0128cc39e676086872a37"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_b1tfast2ecosvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9cda821057adc26569be3c9af6eca83cbc5f8ff413be29c27ea5a06a9741961d",
+              "oldValue": "96ba16b569a09e35df6026bda37dd6c51f57a585008409b19dc5522108ebb537"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_biguzera2kvsfuriaonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d746f5878a96ac965566dff3297aa2c9f2a8908050741665a08a7433fef7b32a",
+              "oldValue": "d9723f54dfd0356a59c398a8193fd2bd46bee4ed53a1c5c3376d3a3f91504ae5"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_biguzera3kvsfuriaonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "82badfeacb4d6d5fbd0bc46f1e401d79090a439e5c32110254ecd108ee8329f6",
+              "oldValue": "42944cafcc3cfd83c35e00bf28c9bd0d868f321a3f3d8c9057b22a147dba6eb8"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_biguzeradiesvsfuriaonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "04ace6e7ae641b679e5c466bdd1f26022fd5ed499f394bd8a79ae0e7672d69be",
+              "oldValue": "62432ceb9eb37a4fe110e113de3eb2805ce87b6ed103222884cb41b0bbf4663e"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_blitz2kvsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d5041895272b4e8c15c9133a1f103c7b1dc9da9a5c961a87a7815c55c23e285a",
+              "oldValue": "88754a060874f7e4878b26bb1a224b48e0ad8a7e9eada56d47b84953d73256d0"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_blitzalmostkillsallvsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "65b5f499350cc6f8df15cd420497e5a4b2b22529ed4687c5d3ff92a2e984b4ef",
+              "oldValue": "a32c63bc2d512f6634b7ee73d548c8f6a2de00b37ce53313034522a65c258250"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_chopperwins1v1vsbrollanonmiragemouz"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a2edaf8786d6b0c27d4c2b641ab957e1e1e91ee4e4f2de5c099c477e5a0bf53a",
+              "oldValue": "6517588e5128c08a19c9cde59fb39b13808a41703c22486266efdacf03cc609b"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dav1desecofragsvsfuriaonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9038ad7f24f4a4ee3ae1f8f69bb1878070854f06c20f47707eabe556b3371ba8",
+              "oldValue": "cbbdda33759288383f1c6f7b6a40a0238b38f08cc4ea6c5e459d74f31fad3a30"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dav1deus1v2vsfuriaonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dd9862b5ecaabfd7272a940d2e8602058f4b23c1d471db2b7a552072bbce36ed",
+              "oldValue": "2c3df08e1ac6821f7bdb75bdc48911bd9c09a1f59b6d71e933de710f0ebbeefe"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dav1deus2kvsfuriahoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a6eeb75213fdd801d66ab4f3f843e333ba14c05acac746ea5eef19d37dbbc1a",
+              "oldValue": "a257c6ecd8e9efa4cd6499073bdc88557953dd3866423c77908174f9d53628fc"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dav1deus2kvsfuriaonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0c5f22dadce56a24ab143b8b36dac35b182fd932e571053d96d7b35995a0fc3e",
+              "oldValue": "b07eb5289c1c1e8d95484f049b7a4f5d943d54106258245754044532490849e2"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dav1deusclutchvsfuriaonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8bd68ba560f85e98329d0f69b9f6844e5b9ff1a05f6e3cd94d828487041cd075",
+              "oldValue": "c164c19e397769df8fb9f873b73b0b42e005fdaf4f404a1afcb71bc8ec75eae5"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dgt2kvsfuriaonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a94f3d35c15bb21fc87de470538f508212c89c5c780481875c6a869cb1fee0dc",
+              "oldValue": "4c38b2e6ea03164e9a06acb25d2c25e6e589a44b630bb4b723e54dedfc44d1ae"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dgt3kvsfuriaonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c447714ca2c834f08196e6868c556ae597e352bbf244562874dbcca61de7d3ae",
+              "oldValue": "eb6b76c983092e8a7ea12a57076dda3c8498571b778d5da57a67862eefdb4540"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dgtclutchattemptvsfuriaonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0d85257a72d60ac94f990e91f16e024901285e0c2ecb096a84faeeceed009970",
+              "oldValue": "687c0937b5e6b65a6b7572dc77ffdd76dbcbd3b4b47864cba9243a3be6964358"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_dgtpistolgodvsfuriaonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0468f4f9b708cfb32027081171f01ea39a9bd6e4f2ece9c61810d28c5063a15a",
+              "oldValue": "29cb25adf21ee710d55f2d599f896f86021bdd5d00e59e70b7a70db05fde7b81"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_fallen2kpistolvspainoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "57732bf82b74f4988eaec4b504eb7bc0cc5941799e00084fb5b07a274fc6bb48",
+              "oldValue": "075d2e014cfd15c109674adfb0461c7b2650eb97ada203878d83ab4732948a57"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_fallencloservspainonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6c8bfa0ab1cf3ecfbfd58d89c76dd91887736e5f2afe50856314d972cb06bf0e",
+              "oldValue": "429da5f2ced8a6adf3b0cf6a6d3a57f6fb0f2270b282a2075d787d13e0934592"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_fallenlowerdefensevspainonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d94ce5bd77df67aba55d19465bc6995b06cd0400e21251603d54363a6a1e9093",
+              "oldValue": "8159e7e515ebfa643a01856ae143c5663d49e3a52d3507b920cfe152bde0abde"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_fallentec9mastervspainonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b6e3e518e84e2cfa74e49bab5985215738af5c8669f220351e60a17e7aee3b9f",
+              "oldValue": "b51d260b2dc6c0e7f5ccb6a7760907c011b92fcd27d25b0f2c79c4d16b9d81c3"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_flamesdoublentryvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c692befd1b577d491195b0d740735a758447fba3056b22189f6fc5a7e93771e5",
+              "oldValue": "a66e0da967afaaf764b4104d9855f12e2ea8e4075719cde405f4ae2baf9094e0"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_flamez2kinnervsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "20fa6d9ae9603a6883ec206d4f71b9d8b2435889c1c503cf6bf7c253605f2d5d",
+              "oldValue": "96baf2070ed07999e774c0b5dceb8845040b9bfe446f8ede5e0080f765a30cf8"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_flamezspraytransfervsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "da730d45f234268eb985949a406cef79fa7e457e21ae786be48428f82c6ab6aa",
+              "oldValue": "62a05ad7a3c8737f277ba66ec9f581857b0b5b1801ff95f8b7d287d79a068466"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_flameztripleentryvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce2cf0fb57e1ee811f902796ccac0e61b02e7d9bf3263c09959a9f34363bd2f9",
+              "oldValue": "556c15d79d3009574f902ea10d6ee956ca1a37581c89b6153c685338c0c035f7"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_imquadkillvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "308a1b5093068ac29e821489d7c05d6e290aa8a28120bcd349105face4ed4281",
+              "oldValue": "12cf167fed1f89749c5f8e5de713c26ac2d39fe13bb9bd7ef85529f6226d308b"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_imsilmtaneousdeathvsvitalityonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ea04b37a70698e71f2c8fa81ebc77bb6c3994c8b317b5f2040e9d828b927d206",
+              "oldValue": "5a9a02760c041e933c36663349719d6f456e01f5ce6cfdf85e370a6b26ec530d"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_jlentryandhevsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "76155f5c9f1b24d3958559a3cf45e1f3f1fc3fe6a93082e3b7e2d4b6cfcb4b53",
+              "oldValue": "12c0d3db6bbf3986c7e85491cadaf126510e8af8b658561e779ce24397d152ca"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_jltriplehsvsecovsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "24cb78ce6478e5aed94a0525e52fcbaef6fe1d5edc83e87fa73cae2b1c4dfecb",
+              "oldValue": "b7295f34580507e8d8293a6b0b2f2b862b559ec13fdefbc0ce72d2f6b2621afb"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mezi2kinnervsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7189ecec29a5aee6021864ee309eb5aca75874e1493466a1ca280bdb71f5a859",
+              "oldValue": "76b0eba26e78c50f6a105e767af63d5fd7fb5b43a4a175b2ec5d97dfec5f6b91"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mezii2kpistolvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dcda5c1c7b518d86892ea56ad01c4a9f112794186b2309672de7e48fb50e5b37",
+              "oldValue": "a1cecb2e3721906c185a8548658eba79cd131c7e428ce4d64798ec1f1f3e422f"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mezii3kpistolvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9bf3e75a9e18647b672a2f99e3209f16fa5511def9e50781af77b4ad060aded7",
+              "oldValue": "71106381ab9efcab05f0afa82d31a960b8c00b8269dd1871ce4546b75a309f18"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mezii3kvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ad6295fbc1bd34a788724201d6358c96995160a83639029bfe5755bc78e7f3ae",
+              "oldValue": "6f8dd083233694d425b48ce2523d0997ffd885411ca6a429d254476b3e60a2d4"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mezii4kclutchvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a7fea71089b23e532e8871816211a18b0c1c838682ae662046b4ae2007daa939",
+              "oldValue": "194175694a5485476988f5332886645f1457df568da2866c579feecf3fc8aca7"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mezii4kshutdownvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "83f04155a2be55653c2c0a615efcfa5b2503770f1be6a7e59237b2fa80b57771",
+              "oldValue": "31e988afc5c32c953eac7601c3d9a7cd246a057ba6002433d8caa1ff1fb8def6"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_meziiflickvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5b1f562bda82fce59c8c74261e6a84f5791fe090c081b5eaa32362ca03bff88f",
+              "oldValue": "d137f890e6bc531a479e1463c0cf1076974e902e588dc410216d5aeb2a5cce9f"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_meziiladderkillvsnavionuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "358e0f538d81ced0a828a1bf6d3d7452e44e137e58f14c086fc3e7f4b6304a09",
+              "oldValue": "93de08325bd78c58b6f9ab87c12b7724ba458fd5a2548ca49fb96e12ed9f5aed"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_meziitkvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f300881e130336bcd26606e3283a755c2a27ab204e97087db857945634b27e22",
+              "oldValue": "caaada297826bccab4356f0d66f98cfad34c169943c739decdbe37ea138158e0"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_molodoy2kandfailedclutchvspainoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0baffa115e7a319ba8ee4ce98d4a48e83036a1507fc6baa33e9f68616e91443d",
+              "oldValue": "8df8144cb38bcb644ce9e991765cbfcd25013dbb616514272989e7ec2a7241e9"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_mzinhodoubleentryvsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "efc03e18b317a39d2c42d93bdb9a9c0aa2efd403d2684284307ed4e85dc7b9a6",
+              "oldValue": "73a5ec3f4f30c91c95cce29f4f4eb79ab6b0ac74d0480126607cfa2fa77eea2e"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_nqz1kvsfuriaonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "17b70d6706ad9701f06023555c50c6f05c0686439026fad5177aff961d3a159f",
+              "oldValue": "f4281e23315e673b50a75e3811203d4216a96aa2f59a7b36b0c29e2075525e15"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_nqz2kvsfuriaonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ecfcd1695993957276b1c352dca080f0760558fdf3a1c15b79a5628db5cc087b",
+              "oldValue": "e3005900d4769c51c3807af0a009daad1c34fbaabff92875829c043048fedb9c"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_nqzdenyretakevsfuriaonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1b1b980a9ed206ab1190609ae9f98e04f1e62319c6a371c7e1c6cbe63343d415",
+              "oldValue": "45a7a97ea1f995945774584b6be435eefc7a08c9163f9d2789a44df31e2cb4ff"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_nqzjustonevsfuriaonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a4be1740b82bd2d62b05cfad6d6a891a851bcd1f3d0ed01d2b707a722562cc7",
+              "oldValue": "53d1614e923141c07dc162bc41ea73f92cf7de8605c96377712456989c7ee678"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_ropz2kvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b176a6cdd4ba6e506ea28f3472652e71b5b15d59d87ea083d3250e932bd24b39",
+              "oldValue": "581eb77d12fa653b68df40003cbb11be3cfa4fdc274718b301782a03c8087e7b"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_ropzbholdvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8c1577f189403a5d9a45759611298a30d24bdee0d1b5cdb56280b8a7fe94e4a7",
+              "oldValue": "4a87b3ef4e0d596aa5222e0fa08f22f0a8b0dfe5d643bc875903af994f495115"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_ropzdoublesprayvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5070a2b18e016164b0d703fab1a19a6a3d73b7ec5c90a74e9f476e5192e03ffd",
+              "oldValue": "274e1762dd8635e55fdc1dccd5531c7d7da0b958ed919a9e79ecbd2936803f51"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_s1mple2kdualiesvsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ae13dca6e6d43c6637efbd2fc61b983662f66354d8f1b8e14de0852e430a9ee",
+              "oldValue": "bbd10c65943ee78f45f93ba0d7bf9b9b234f95e74e2ff5adf3d47da3ec4f0b35"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_snow3kvsfuriaonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5b87b7b0c78871e89ebf755d8fd4710c2d2bd69722430d3610ad52f00d8baa47",
+              "oldValue": "dc182e64a3ab3e0460003c734dc231060ef627b7a6fd324ec2e5125b03106094"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_wonderful2kandcluchvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1a17f4970c44388bd3cc401e48bdca8b6c89c2c86a941abccd90785f559f6c2f",
+              "oldValue": "984a561a20966300ec5236f49622a3d5827686d266c4ad68d473c2af95330ced"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_wonderful2kawpvsvitalityonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bdeef1074f4a7219f00acb7359f4972cfd7867b2e91bd7104cc4135206105f30",
+              "oldValue": "37d56f0a3c172bd27b15d50fd6226a19b9e2ce129f048cf3d14b89bf56886fbf"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_wonderful2kdeagvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c29c875e22c305980c063a5ac3bcb5fcb5b0301730923171fe350f55a4929092",
+              "oldValue": "d5b6b7019065e97f03e4f859899e47609b9e2615cd829675c4b7f9d733d639ac"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_wonderful3kawpvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1c0ee95d5eab1a1d2a230fabc736f0c1b1dc8a73719aed456b7c3eb167b3bb90",
+              "oldValue": "a407619fba5fa5f1106c12b01faf7bf5cc4146a646153c1d1dd9c6c372419ba8"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_wonderful3kecovsvitalityonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0eec8d8c9dd3de40888171f4aaf94e87dc8c40b096483589a38ced3931997457",
+              "oldValue": "ae05216c867472023a049d97c96b40bdbab21738e3cb1bc7095ad12c3ee6d424"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_wonderfulfailedclutchvsvitalityonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "448991648685990f93416ae93bde3b2c370ccd62018180359f429d4813ddacd0",
+              "oldValue": "c51a02ce702b01a8070baa0ff3a934710ef8af59cfcaa1f8872cac661269543e"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_wonderfulgamblevsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0cfd978d0196e7959a74934c78eccc254d8c24eb65db5c3b20ce0bcdd1dc9a7f",
+              "oldValue": "a693c3cdeeee3746c5a28303a009630522b235e72036e1b78a63e9ba6902dc0f"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_wonderfulteamkillvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "96e5c1165666cac947ef542142b30584ff9fa69c7a2398d4f23dc52b192d2430",
+              "oldValue": "c5555a9e56630c1bf6e172f86072fece5f188d40404d401956b0069398df2cfb"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_yekindar2kvspainonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fcadd0df137ed1895cdc5fe0487450c0f4820fc65ce027591ef5d4385eff02dc",
+              "oldValue": "30e21e34d7537e3013e3666eb002e9cd771cd57589076968faa1cd2b4fb18a90"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_yekindarpistolkillsvspainonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d72c8088aacbff1be1c0117e7512c89bd21a2843626e13e0a4dabe73985c46be",
+              "oldValue": "66e5fab860cb9152437e47415309126f90d210774c504c91eecaeca01aa53ffa"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_yuurihanchor2kvspainonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2ad4b1d7bb20bb521832ca34dfe4af652f88d2c04e1fac07cb7f408b68349959",
+              "oldValue": "ef6db9cbbc8a45425386bba7db3631db17ea3fc1951d2f79773ba2fc16038c4e"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_yuurihentriesvspainonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9c8d9696919c33a59cfde5e38c33109588bfb9487cc171162027b4d101d3abba",
+              "oldValue": "3b59f4ddb5e587f0212ab3d3397c16849d4783d0553ea3dbfab888fe94fbe0b9"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywoo2kentryvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f34825902de927185ec34c32f99fbc24640eecbe6fcbe182d15f184d0617ad46",
+              "oldValue": "0105cca61181d45c4f6181167697a7c52bafb31c189cc6ffbe2b03b2804dcade"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywoo2kvsecovsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "887092dd772194315c3e4f8565468acdfc5297f09ea6e2d5cfca4aea29a8dd85",
+              "oldValue": "fa3b26c5f3affbd477393fbcd595605d44e5c8ff023ce827130a57e1aac0dcd3"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywoo2kvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "69dbcdc9645ff18f088bd89d29a156b2ca9d8798ea20aba0edc03e5ffc2560ae",
+              "oldValue": "540c6882adfe88d71d28756ddd5fba913b9358ee412f70efb0729b2ac8b64490"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywoo2kvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3273f4ef59ac8184a26d161015b0d0bda3b5fd575976b36094a497a8234e5aff",
+              "oldValue": "ddb3d41a76ef632e09d6d80dbd5c62a1af379acabf06933c965a4078bf70ffce"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywoo3konsaversvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c7ec3d1600c4ddec494990b359a0780aedbb37e0a0ae355ab8cfa8fa2c8b5b6d",
+              "oldValue": "c46b0b8dc25c1a99b43880278559997c1156aec1b7f472fcd1904a17ea008583"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywoo3krampvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3d46d190d15cc532d7c406ed6b00c60b01a421a2fef79fd44c7f0b3456f6775f",
+              "oldValue": "754a74be9eebff2585b442392ee85a6efec1cc3c4a95a19543b048b7214896b9"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywoo4kakvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9cad3c7cd23aba9dc9c2ee438ff266550562695a1e2a285096a83e58388dfd2a",
+              "oldValue": "559337def3334e401c597cfb7bf40c6030039c4996ba73c030a5077556621c8c"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywoodeniestheaceclutchvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "32c736fb25811bd006075958584811b6e4309c7446d45a37c6a7c1e6e0d494c0",
+              "oldValue": "94119d7f42860fe2b71d68dfdd9836351b68897a5ac6259da2864845d8234a8f"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywooknifekillvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e87dac3e15a0410984d3201f6149011b0d9f8e057d20bc68bf4da3190e991d5e",
+              "oldValue": "7972b9be27ad5b23419a3d9014e58fbb35df6b8941e1f12ab89a39451d033581"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_zywooraremissesandaflickvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8e546e8a9b66ef287a076a2b3a72bc6129fabd9bc06c703b1ef3ee086907683c",
+              "oldValue": "447543f4212001c1f26a6f93260abce1b7960a2e99f21d028b77b62458180bf9"
+            }
+          ],
+          "name": "HighlightReel_aus2025_9103ktowinmapvsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7e00ba3cdc00b3cd28114f8fc29bcd01cf307689f9ffb2aa734c1326000a069f",
+              "oldValue": "2aa0df8cba20dee9b0c2b6bab9efde01a46893e923955dce40a8d3e420e49282"
+            }
+          ],
+          "name": "HighlightReel_aus2025_910doubledeaglevsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d813c3f715cad0105a5851153c825ebe48ef062ff1e355258a91876a31b6215",
+              "oldValue": "420f82e33b5fe710e824b447578a01f6d59a2fae43e7e922a5c932f673c22e07"
+            }
+          ],
+          "name": "HighlightReel_aus2025_910triplekillvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8f829295aead8d556624d42f22737d20e57e8a4b78a9160061ad19462a173f68",
+              "oldValue": "9b2c1fc24fba72e21f168226e548d596d68c4d360f12df178502f3266fd76ebb"
+            }
+          ],
+          "name": "HighlightReel_aus2025_apex2kinclutchvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d87acf5a1565ac84d8bbee38b016435c3bbe2cd4b3fb71aa5afa296162de0927",
+              "oldValue": "75f76958cd9935951407a3fd3a19fc4d58d82560d0273033bf94fb4f1def69cb"
+            }
+          ],
+          "name": "HighlightReel_aus2025_apex2kvsnavionvitality"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e8e56e07c597c2f26dec0d7ecaecaf71187536906626bb85d6cd6851a244c36a",
+              "oldValue": "8b7c80a6727b60514885f59fa57cfd251245c903e3ab9d0f0ac57f294c1f4d4f"
+            }
+          ],
+          "name": "HighlightReel_aus2025_apexblockingsmokesvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3e97b9a6d99adfa9fc98daa7780600c8c9ba4f68ce1a1cbf1fb15911acfb66ee",
+              "oldValue": "a842557a11a7ceb257d0735cbab7d92349c6d4a159bd60940ff55b6c109d5f06"
+            }
+          ],
+          "name": "HighlightReel_aus2025_apexforgotreloadvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a16d9c04bfe1914d76067807ffc54a3ccfcd8f697c6d68d651ed9dc9fc8530c7",
+              "oldValue": "e562436b0013019237b028a2ca78dd525bc41ec4d4b9c31e25fdb6b0c1fa297e"
+            }
+          ],
+          "name": "HighlightReel_aus2025_apexwhiffvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "77a71985a07a7393839b93eff7b72e4da1679f093abe8f9ec93ea6a468fe27af",
+              "oldValue": "21bac9dedf621661e3d1032aeebcf7d0ec90b399ab1168e7b20e6872bfcef7a9"
+            }
+          ],
+          "name": "HighlightReel_aus2025_b1t2kpistolvsvitalityonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "79909aa17ddbcc938484a22c8c1530522bc0698982e232e25ad945affff52c10",
+              "oldValue": "987f0d118b588c5ec90d55c7a5e38b593ff083f9ba7648b668dbf61f11e0de42"
+            }
+          ],
+          "name": "HighlightReel_aus2025_b1tdoubledualieentryvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce4a94ddc0687b59a07a3a823818f4d488ad96d69756a355fcf666b157817491",
+              "oldValue": "f232b2e56defb07c09282627414c74f07b7fbaa20e967a8c0710f98bf19135c1"
+            }
+          ],
+          "name": "HighlightReel_aus2025_b1tdoubleentryvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c989010e84d0e801c87ca2d80a80e772d92a5f51aaed1411bc6c6419a99c761d",
+              "oldValue": "382205d6e24ea8021cd16eff8689e2cb124d86dba1def00719b38db8d6caa949"
+            }
+          ],
+          "name": "HighlightReel_aus2025_blitz2kvsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8a93e14ebef37b9ac2b8564e0c1867d1570d6e74da2f0cafdb14a3d4d0705a8a",
+              "oldValue": "927de2ce8bf7019e0b54da6258fd23aed5d81b95cf4c54e659001f6eb69c53b6"
+            }
+          ],
+          "name": "HighlightReel_aus2025_blitz2kvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2d62932dc3a3aee27832efa0a9ce7ab57f168124f86f5271e36f9c515c7b0134",
+              "oldValue": "6e147eb6168c9548a395dcc187213ba63d50a8c8fed2cf88218be349a2a6b76c"
+            }
+          ],
+          "name": "HighlightReel_aus2025_blitz3kvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e3c4fb3a854e988a36ef24487eb12df357e03d51dd7cc518b13bce544d5d917f",
+              "oldValue": "de2b3f194a71b0f4de76f7f6c615346ba39b8385405aaa992ab69265e07401ac"
+            }
+          ],
+          "name": "HighlightReel_aus2025_blitzalmostkillsallvsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d0cd1eceb6725f080a11d7fa72c2344dc14de6245a28eb94ff0631b22d205790",
+              "oldValue": "e75a2192cdb8373c28c13b956ef7367d4633dce8e06e3309fe797fc4167117f9"
+            }
+          ],
+          "name": "HighlightReel_aus2025_blitzfast2kvsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1d78afa6984b9c586c6e96b130f81476bd4b40e2b7785da272c19bf505534eae",
+              "oldValue": "a34f24d9f2cfc2571f2b15c08c5ac624b45d5c293bd5a2d20e7db9a696f159c7"
+            }
+          ],
+          "name": "HighlightReel_aus2025_blitztrytoknifevsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c91f039c780c4d656c74941404d8dac8ce165ee49c33ac431bc8d67cd78bf163",
+              "oldValue": "d626536fe4bcc9d917c5002caa9f654d03a14cb0dccf4579389bc30a9b96ad01"
+            }
+          ],
+          "name": "HighlightReel_aus2025_flamesdoublentryvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cb8ef8d3dd282121c14aa713714c59a79b2c6a6521ec2014c0bb718bad84dd96",
+              "oldValue": "e19ea716f4f9c30f62d7795d3544ebfdaf03cd21fa4992c3710de8b8a39ae712"
+            }
+          ],
+          "name": "HighlightReel_aus2025_flamezspraytransfervsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "67f60e69b2b19d78529931833dfb3ecfe0a87f04aab559a8c2e4389ffccaf6c7",
+              "oldValue": "d4c086e893cfa860007b091fcbf63d9897751e58ebc0e218b7f2c88a498885ab"
+            }
+          ],
+          "name": "HighlightReel_aus2025_flameztripleentryvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d5580c83313ef12484d017943e1f818d8b4f360cc5b63f9ba2210e706788b83b",
+              "oldValue": "be05e6628059a201424a7ff760aefe2414331f7abc6abe2576694b8cbdf5a11d"
+            }
+          ],
+          "name": "HighlightReel_aus2025_frozen2kvsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "37ef312ee00c228fc21530d8ff26b54d9cc3562e2031ee1ee55fbed208a0979c",
+              "oldValue": "9c28d244d45f682d0aad742b8c3d4db97bd34df35fd3c496bb0d4861392eaf2a"
+            }
+          ],
+          "name": "HighlightReel_aus2025_imsilmtaneousdeathvsvitalityonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "be3f106beb281726e06db2f120866a111bc83ea5aa4fc720eaea6ed6f2e0b099",
+              "oldValue": "4f3966de75739a023a1d7aa931bdd5bdf0aa4d38d60d91a88bd57211ca8f9099"
+            }
+          ],
+          "name": "HighlightReel_aus2025_jlentryandhevsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "94b81846076acd37800d901bf6d0e0482af187e26eca98af8c99be09ffef1b05",
+              "oldValue": "d00562a47aef90fe0bf26958990a82c167964d0c35f27bdee3bb3fc450e4f85e"
+            }
+          ],
+          "name": "HighlightReel_aus2025_jltriplehsvsecovsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9b8ad47dc3c16cbecc0b09cefaadb0bb58e305abe8ea722e2df0f882a6b9f231",
+              "oldValue": "f23690f7ae9750703c912b82fb4bb259e815dcbbb92c1828c69c49c34d1a8cc2"
+            }
+          ],
+          "name": "HighlightReel_aus2025_karrigan2kentryvsmongolzonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "889a592e7b10b127c474eeb07df8238a1641fee63162fc30e62d835ede280a02",
+              "oldValue": "972122d14c1902094c0306ba35e6081fa12917b0a3136b8ae20e8f328fe2b714"
+            }
+          ],
+          "name": "HighlightReel_aus2025_karrigandefensevsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e07045d40d96d7c06599729dd3e1ff26de789ed465f5ae16f3258e27f1fb7e4b",
+              "oldValue": "75b2e2ff9e73778dad9bad5e08d3aabb0ca99511b6f14131835c5e6f478bff6d"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mezi2kinnervsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b334c0ca0079645404b6c20237a3d40f82e7bb30498a1215ee81a8352ee2eeac",
+              "oldValue": "335c9c3d51b6e0f4a4d908fa6e97aa61eb2e3bab0f84bad735b597d94afab403"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mezii3kvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4a58092865c740d9715610691bb18ceab37d609541ff5c0cb650633685e53239",
+              "oldValue": "f78c155fe21a7038074b965c45bb067592029b6accbde5a482575541430e4063"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mezii4kclutchvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "49cad3640ad5cada9e65a3da027cd8aa2b22dfbe1b4f8862b613db7c67a51284",
+              "oldValue": "3170ed94c295655c1faef42c11b1ffe3ea147256381692fa6e99336e1bbf7406"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mezii4kshutdownvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2c455851e1ff831a6943f1d85d70ae6ee5ed53cafe2a6b2c798e9de7a781ee77",
+              "oldValue": "c98b7c887d3a9c94d45834ab08ae00ba1faf4382387d7cf26e6d99d99a202b2b"
+            }
+          ],
+          "name": "HighlightReel_aus2025_meziiflickvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1308a565c43f1234f9680f6bbafc53b83792bfa945dd0f2e09c9b18090c2a92f",
+              "oldValue": "defd53eaadcb0443ff6091e0d5609fcc036e314352ebc7f4ea9ba1a3f28d5cc2"
+            }
+          ],
+          "name": "HighlightReel_aus2025_meziiladderkillvsnavionuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d71ba3d6febeb12d0ebcb2d5f000f6239d18422b77f55f11155b88471eb2286a",
+              "oldValue": "a17191d27845f5f782cde95330b492ff22c951f6f9ecd243631a7fc70e0705d4"
+            }
+          ],
+          "name": "HighlightReel_aus2025_meziitkvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "364d0a449a840908349797ba3592c5724d9773e587c8aa32e94f4b007ad52fd9",
+              "oldValue": "cf605d9bd762cd3cde5b8bfc7b8089f61c0e8339b764a9501ad615253610166d"
+            }
+          ],
+          "name": "HighlightReel_aus2025_mzinhodobleentryvspainonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b6c091be6fc1d624f96dbc6ff9a9fd946081376e69922c6021105cb95483fcc3",
+              "oldValue": "1daf5d0c132245b4f49a363172b7d260f5069f51c6e3682edbd244dca2377606"
+            }
+          ],
+          "name": "HighlightReel_aus2025_ropzbholdvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "451b5aaf3a70625961b5b70461690976b680c9511e6da4b298992031082f7631",
+              "oldValue": "5b67d6c4d6d655a838d7015f5e0d1ed9927b131e8497f4eeef3ee2ac86f96ad8"
+            }
+          ],
+          "name": "HighlightReel_aus2025_ropzdoublesprayvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1aff9d02b5a2f2282c1cbd727e4727f057e7e6c202f448b0a49a3e344e356ccd",
+              "oldValue": "f7fbd21941cff0836fc8ccd831d8e7ba90873944a77da21954f5ef1a63747e40"
+            }
+          ],
+          "name": "HighlightReel_aus2025_s1mpleawarenessvsmongolzonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0451de34c3a6e7935b527ceccb1c2799b49f94e2d996d9095df3b8310d86b7a7",
+              "oldValue": "ae2762a4e0ddafd5f2b9cf209a336f64a2c0ea45f56df6d929b02fb4659241c5"
+            }
+          ],
+          "name": "HighlightReel_aus2025_senzu2kandclutchvsfazeonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6e0e427c2fca6dee6d8e74cc495a3ded5437d7ff6571c32d5526fc209d71fcf4",
+              "oldValue": "5102a50f8cc6d1190b18a1821db557176e210465d1bd75eaf19e4b23dae09a60"
+            }
+          ],
+          "name": "HighlightReel_aus2025_senzudoubleentryvsfazeonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "50a0d69c9fb4acc4ea3bf5506d33e20865da0cba5d3f582f563881c8394a9d0d",
+              "oldValue": "39899a52cfc771450290ffe504650b7804f1e01eda4ab1e19c6c7c91cd369185"
+            }
+          ],
+          "name": "HighlightReel_aus2025_senzuswift2kvsfazeonanubis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07ae9961fa0e588d9102a220282ca187b7ab3259363e5886aad4fef6a34a1575",
+              "oldValue": "293147871bd59e8b9b73848b3c5b0dd4a636e37ed22f25e2c07237818f5ccea2"
+            }
+          ],
+          "name": "HighlightReel_aus2025_snowspraytransferivspainoninferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3389a7a9ac0d2fe6e39339fe2d433d4032b5c54aa2bbf4093cda39c6981b09f2",
+              "oldValue": "19c7d89f10a23fc9ef7183aeb8fa50fecf5ae24217849d7fd4f27d666198447d"
+            }
+          ],
+          "name": "HighlightReel_aus2025_wonderful2kandcluchvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aa4ea3c4478e1552ae345abf26a41e5e16fe83b078a441b23e8086d31e359655",
+              "oldValue": "95326d3136ef48879b9c2587a9b34c436c567edda49ede10b73a6207fcec6fe1"
+            }
+          ],
+          "name": "HighlightReel_aus2025_wonderful2kdeagvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ca3fbf73b00f709077df2c284d095778e4ed08bc0516df079c477a2f23e270cc",
+              "oldValue": "48f32c999aadb6b7b3f5f4286ffaf2541a499b97ead0a72049374c5612fd6b85"
+            }
+          ],
+          "name": "HighlightReel_aus2025_wonderful3kecovsvitalityonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0d5fa82580fa3dd6e829c17bdad8a9d9ca34d67712f3a426260ebce229bf4031",
+              "oldValue": "3b5cab6db85c428315c233aa0b85e9a0f010acf9a60d45d81c75c7021f65d6db"
+            }
+          ],
+          "name": "HighlightReel_aus2025_wonderfulfailedclutchvsvitalityonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9ebd19ee683eef003e2ef42ab60aa3ba99747e988c266e21c049832b72f7a88c",
+              "oldValue": "f9b110b9ca48033e967101626eef39ab78320bf4d3e622b6ba69a5966d7777e7"
+            }
+          ],
+          "name": "HighlightReel_aus2025_wonderfulgamblevsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e3311a056dba5cc5a626646f18b5b7f0d8b5d11daea489e26d5dbeabd0f273aa",
+              "oldValue": "19943a4392d38c83212a1fee4c237758c961b836178a81ecfa9c43a7b652a7be"
+            }
+          ],
+          "name": "HighlightReel_aus2025_wonderfulteamkillvsvitalityonmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "096d68085740434c0801e70b4b9bafaad1901ab295b6e2624cea8bae6bdcef38",
+              "oldValue": "7a17c4dfa51c467750b1c113d4ed7fd0c56ee35af3eb9543e34eb28c1d742d03"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywoo2kdualiesvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "123654c0ba4b4947728bfc9a47c4cf1fefb858e234cb0701cc60a403091c1751",
+              "oldValue": "8d70565b3c16b625f647347a105e9d3eb0a1790feda8600da5b871312f470ec3"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywoo2kvsecovsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f3c115c4f58b77ab9a30932d7c3df8d6deed83fed177b1a7d9bb3a4d628cf6b7",
+              "oldValue": "c7559718d535491cbc2ba7427514db137127dc739c61b862029963983012e05d"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywoo3konsaversvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7adbe61b3e25b11c7f8cf38aa0093cb78cf7c4f1e6ff156c930e5b9fa22acd64",
+              "oldValue": "e6b5dcddf8524b9c8ec112244e387dd09fd7102752a15b9037a7ff0bf4eab372"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywoo4kakvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b749e81a0de2396a11c72108c060e56ec07efbf6ee52181a34dd0cbbc03f2517",
+              "oldValue": "eaa7adc3f618fc36bf4a81c1e0e06b4308e322c196b21eedd673326b4674ea22"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywoodeniestheaceclutchvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4f29fb70d1b7f135b6a1db2aff43b9cde28f72b7d2e503daeac1eb30d0764cec",
+              "oldValue": "2e9353ffab590493b5fe392d1464f1547762dfc50bec325b28b0006c528f28cd"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywoofailedclutchvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "622123c126b0819834582896ed2ad09647a4b7eef1cc1c3e217c84c4b4ee5056",
+              "oldValue": "a43e0ce88ba5cf32dacd747af7e5d0dc4b38b13d25105eb884f7fff88f89d945"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywooknifekillvsnavionnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "78ad855dd529df10ac82b8523f56f079ff47248e99f974b8330f117c71bedcb1",
+              "oldValue": "1acb084a37a9e5ca55af7ed45a2897629ec27f1c5cc0a25b0ced1358d28e8890"
+            }
+          ],
+          "name": "HighlightReel_aus2025_zywooraremissesandaflickvsnavionmirage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "169b583c06ecdc5743d19a37c8da1cd14cd8317cb1a53831b6f58a956f33a328",
+              "oldValue": "4e44a205961bd32a6f55b25022eb0cefb32581335f5016633dcea9f7c11d5954"
+            }
+          ],
+          "name": "KillEaterDescriptionNotice_Kills"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a088eb9aa600c747b3b1c05c55cf9e0c1f9421a53d7f24b9cf21dda5280fbd15",
+              "oldValue": "88027ad002e54b76aef1b5f4a12e6b7f93461128b91d4641bfd6e2420a6d0d49"
+            }
+          ],
+          "name": "KillEaterEventType_Kills"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f34d41032d91b9b30a80b9c014bdc0c68a22d065cb1abc9d23fe1978f14cb64e",
+              "oldValue": "f263283baa3593cc7fa2dce35133bb88d888c8724b3e695e289944dc254172cd"
+            }
+          ],
+          "name": "Notify_KeychainRemoveTool_ChargesUseToRemove"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6b6b94f510a886a2bd78c25901dd6f40fd8f9154f81b23ad4ae7d4cdf263c849",
+              "oldValue": "97bd5a013f983d6b33e830450c09bed94ef894fd9ae376e59c506c4fd9e40661"
+            }
+          ],
+          "name": "Quad"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6471f35b0a47b5cdc49af34964abe10e0346372fa326ab6c62b71e2127715a36",
+              "oldValue": "76d86e48c84a9ee2848f23f57fbe55105b2b839a532167014f61aa5e55e98151"
+            }
+          ],
+          "name": "RI_R7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9589a02aac899eddab4f0fead2e116c74c38b6b3985bf74d73c253a8195ed0cc",
+              "oldValue": "8e6c8e70b08065b13ce4f549bb74aa06c5da114715e494ce7b439469cf182ad8"
+            }
+          ],
+          "name": "RI_R7p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2b21318163e23b946baa5d04e13599f50944f7f9eaaa9b3d388da9197279d5bc",
+              "oldValue": "fdcb912316f5300bfafda1d2be8d884e1c5e03736ae692cbd78d021c7ee72ec1"
+            }
+          ],
+          "name": "SFUI_GameModeRetakes"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7222167f1309d4389c1d6ebdada290883803d09c51753e54af5119c32168c467",
+              "oldValue": "bbba451b5ec07788d92df4497452fa4596c86e738625a6f066bc68e70fbf309c"
+            }
+          ],
+          "name": "SFUI_GameMode_retakes"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "59ed56c69ee32965975af5fb1607c9d02dae8cfb96e263ee7a394921e088bae9",
+              "oldValue": "2088db054ae8409d6882cf5a372f1296228043ead21760a2e8dd77c22263390f"
+            }
+          ],
+          "name": "SFUI_HowToPlay_TacticsContents"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4166d26f254e5dd15ad392b763dd22979134286a08f7650df4d9c731c9189c87",
+              "oldValue": "b1dd4c98b9997b257fae38d18e52f499017a20420a83005e24f8eac78fffdb13"
+            }
+          ],
+          "name": "SFUI_InvUse_Warning_use_can_stick_keychain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b2ad822d473d3d7ba62c9d5b561f852dcacbed95bd2452d67ba7151c3ccf10cb",
+              "oldValue": "209a6907d0a2e7703398cf3ab78fbe967b5b778b1b79b1128340e3e6ddb5354d"
+            }
+          ],
+          "name": "SFUI_Keychain_Remove_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "256ac61ae62b4a9936be6f0d48d3b3acbf89c1dd5644ebb09c83fa6b90fc18cd",
+              "oldValue": "8897829b031b78a20441da39243e655bdff19e9afaa4ed57556b0af16695b25b"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_casual_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2aadaf41dfafa6396d2984907c7d659e0aa4170d083021ab1cf56958dd4e8746",
+              "oldValue": "af0552bd9fb5206a60200c596e4f3e2850a2450e8689683eaeb953dcdaab7623"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_casual_review_bravo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ec41022b47964d68bf8601c74db13d47c5d07dd5ec7d970f06d9e0beb20b1959",
+              "oldValue": "2425e5ff2abd36502ce7c3febde01ef5d52a607e7935271ff93c8f14f4bdd9d7"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_casual_review_breakout"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6ce9c97c3341fa20e2b45b069ad23ca74ee3c6393d6b6088b269709aa35b413d",
+              "oldValue": "84fc66e10e8586bd25c2821a6b0a48dcd92a3e1c3926034a8c01430cdda68d0f"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_casual_review_op06"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c0126edb9f409621ce219b71994b304fbdea0f97847caae95dd3494c14ba69cf",
+              "oldValue": "e90bad76d866bd3af74a46bbb137a492564395359617195c8a53dcbfe8ee0c16"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_casual_review_op07"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ef14681838016f850beccd49e0d4a43075936ea468be719259faa3e91c340bb7",
+              "oldValue": "de085c2013d108dd493a8711b8c8325723b2be10504bbbce26fc3425e7533844"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_casual_review_op08"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "71ebe7648d33b7c98ae01ba50cf41ed6e82916d68a1dc608475b1b9abcddb883",
+              "oldValue": "d04b4971447923d6c31062a8c82f5dbd4f1ab3d993459d0955e4da7adb75b62a"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_casual_review_payback"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "437c424ae3cc2f1e045ed95e11f30fee45e2e3dcc06f2090086d6f0e1c36f299",
+              "oldValue": "bf79397da7ae0ce3b44ce4ce5626a64ce48e4ca310d5718ef8119576b820d727"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_casual_review_phoenix"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c6d9d27d2194a6f991f53f2ff53041d9a013fdcc793a0c7d14298cc3afcbf329",
+              "oldValue": "0bb1cffcf20ff599f8397be45804ea8ea9c552c9092134032fa2e8645f7816d1"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_casual_review_vanguard"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5aa4ef01e8b7dde493c17a0d58f0349a4d123dad72655bcd7f70b104ebf4b744",
+              "oldValue": "8397148279d0054055114ad3b8d1f82bab16d541389589889908ec3633717a69"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_competitive_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e800a7b9e229d626a2f473db41f6ccaecf1c2404ab8288db6a79f47437bb55ae",
+              "oldValue": "7b11c1dddea9e6358af6272570d110f71647bff2146029323f58f9effd002605"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_cooperative_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "734073c8915a1b47d91a7aefdd26a7db901bd71728fb56d191937ca9b37de6b7",
+              "oldValue": "e066c7429fd80d877e9c84935fe7d7a7c092395959bd54724037692743965daa"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_coopmission_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "87d3bc3979238ac164e96a879b341594c4c53f70e2d2b04848138dddd5be6f3a",
+              "oldValue": "a63708808d90429333ff7d4b1e5fe1e8d025e2c19bd14599dc165d45a39192dd"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_custom_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "67056b0bba6abb993d4d51f837a40cabd85275f33db0bc3b80be6af71d042937",
+              "oldValue": "c92b9c3bb5a88d98b6695f53ced9c472d57a37ea254ae24900cc64e6c343a155"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_deathmatch_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0f4c92af955dd06ea9d4dbdcc88aed73a146d037d05f50d1680b595e2fea67f8",
+              "oldValue": "665fbc22fd51b4a52e01b7193faac295c033e825ebe67cb23e839fade08f3191"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_deathmatch_review_bravo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b6504dbff95871ecf93254d70265e2607540f9b264dd38baf8e2dbb004698cff",
+              "oldValue": "6fe7d18948c674e199813eb3e43ccabfb7000966d8d74e7c5ea20fbc25f583ad"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_deathmatch_review_breakout"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2f7385138338648f922714b982185ced21fbc13c493a6287b750306b988f8681",
+              "oldValue": "8afe9fc3ba8d7989cd749f4243e8c6a4dafcdf21ff9c7950d00c19aab8b09f65"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_deathmatch_review_op06"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a36f3d52cbd92af8a2c35d496f4d9359c26e16736a5d81109b736d701d1a4c1f",
+              "oldValue": "c9b618534421619463f0c81ba5ad9506cfef27633e4929ed4fdbf6da26bca3c3"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_deathmatch_review_op07"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c9ec328c126594dbe44623d9941189be2f73472c30b7c2bd3bbdf4dd237aa1b",
+              "oldValue": "8fa9a3ca6bbfcbb9d1fa32225632e60866431b4c981779d949d5a44634d7f591"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_deathmatch_review_op08"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f138d31dc4c9da0ad20302fa7b8143cae6f587277982c5a78f0e2a31e94d7d24",
+              "oldValue": "5636b2ab2a3d6ca357b6a1c95bf1cfbafb84e2ee21668d9455e272c97a86ee17"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_deathmatch_review_phoenix"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "232c92ccd86593c39c4001b0589d646f40b5e15e085aa2d2880b876ac52cac9f",
+              "oldValue": "5f7a7df5cb76fc3fa23e4ea28168a75e79f997b0f41b1eb292f4ae20a5d055fa"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_deathmatch_review_vanguard"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2d4a15bcade10672b9d1fa8406f87e254d74e3712c20af4f439fb70888d91956",
+              "oldValue": "17e8eaa2a3103684885ff6b5e0c5ce8dc4b6c6a1352e92a0d949efade5f4a97a"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_gungameprogressive_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1ae1188a15383fd4fb21a899423ee58462248af63c0d3c7c5d366c94d9cba9e9",
+              "oldValue": "131f536ac7b36594f79e14522539ca2a12ac5d4c2365a778fa7675bfd816c776"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_gungametrbomb_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8e55f4d61d252f26a8332486d9a13553f35d9a83a0576645eccd5b828f01a70a",
+              "oldValue": "ad63067f3d0e4aa801386f6724abc9707fdd40329c7a938811efc603791c0463"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_new_user_training_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "edde4e73822f448c49a87fc68c8f9a561d7f86d7a117c42906987007b29508e8",
+              "oldValue": "a6c74aa8ba2d0fc5f94ab6c09779fac7e450813d02f34c444eaf8a838614f671"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_retakes_community"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2cc94a9a35b6d2d8cf1bcbe75b2fb93dafd485b40e7734dfeef9382325de39a6",
+              "oldValue": "e94d4fa94bfcef3f0ceb53e3ae1d181e56c7ec42d6dc14d795eedbd777788aff"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_retakes_game"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "45e0b862306066ee4c8b96052983352121aa52b87f199b4725ce3c6efa886446",
+              "oldValue": "476a731e1210d471775aff4d1b0446ad91683a6de9aea9416bd22c8f683109c1"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_retakes_lobby"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7fa7f8ee6a8f6074526297ebb558684a7ac7646faa76c1055e026e3d370192ac",
+              "oldValue": "5b96457045afa00c61f9457e0fa8724230a7dc30312e550ccb19b778d5d120de"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_retakes_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f8b5f4432c911ac0dc51d13c23f2d5058f034957ad9b22ca7ee2aacf0bcb8717",
+              "oldValue": "93ef936b89e2a585803a69a4447054480da76c0e10fe15e2f30aff9894129f53"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_retakes_watch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c5fcf15ab13f2685571b7b42822518671a55b4f92532658489326ad06de3c383",
+              "oldValue": "1a8909b32dd04964c296b3759312fd766a022ade222b9621c237c01c4f81ca3b"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_scrimcomp2v2_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a4eeb88dde445b73754632f8412dce1afe15186d313dbad01ff35820a49ac31b",
+              "oldValue": "022bc8905038588cc33318bdabcdbb3e05fc0c1b54b0f17199bb5cc55d76966b"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_scrimcomp5v5_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "43f24ced0444426c39f0612b2338e5cf48b5c32f227fe736b4b48af323a0749d",
+              "oldValue": "0b3a4a6d9b617fa0892f4488784a694b8b9d03d8878de02ae6935a72d75c9e9b"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_skirmish_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "949e3fd6360657be9fbe70b27f31b247374dfa364abc5448f737237626458c64",
+              "oldValue": "71ef6a0eb925281f37991e7946a3e7484fd3adfb51498e3e169e3275477259b5"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_survival_review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f259c89b6d68e1c1af5d0c07c79022d5e4847e8fafd8d9df63850b95c0196245",
+              "oldValue": "6e8bda06b211640c347ee966cde938b8b772b037cef3845cb1145917a439705c"
+            }
+          ],
+          "name": "SFUI_MolotovSlot"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c374a3411f0ec912e2603b86e21a96ce472df6f5b2916b29911a5150ff8bf1f5",
+              "oldValue": "dd12d0dc5e1a296679101128c8643ce6eb61f490d32b1d7d8f59f3bf5f9f9083"
+            }
+          ],
+          "name": "SFUI_Rules_Bomb_Loading_Competetive"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "244d421b09cefefc912a999ce0dc615aba3c950995cc024be6a3a64902d528ab",
+              "oldValue": "57dd515c099050edd4a3fa3065a31b26babb27f9f5f6ed41069e20edc985600f"
+            }
+          ],
+          "name": "SFUI_Rules_Retakes_Loading"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "36d5ff0196243444f588151e010c7298d92d5190f98dcbafb28ff1e528a56e81",
+              "oldValue": "57c710f714f3a545e9a82913bf893810f9e2e275ac8eabcf6978633028cd200b"
+            }
+          ],
+          "name": "Scoreboard_Mouse_Enable_Instruction"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2b21318163e23b946baa5d04e13599f50944f7f9eaaa9b3d388da9197279d5bc",
+              "oldValue": "fdcb912316f5300bfafda1d2be8d884e1c5e03736ae692cbd78d021c7ee72ec1"
+            }
+          ],
+          "name": "Skirmish_CC_RT_name"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f01f2e47ff9fe9f23160bee656da2f23f66d9406fc6b4c77c1a5dfdbae611ff0",
+              "oldValue": "c1ce2a16f0de57d531d553d1fe940af3309a1f24f6ab6793b279b1113587d232"
+            }
+          ],
+          "name": "crate_community_15_unusual_lootlist"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "49aad2e948bef2c6249a151118a3b00c61a89a2ac2f526f5eabc8daaafd5a5d0",
+              "oldValue": "901bc3a785c7915d9d70e0a1811b78d4f2fe41adbe778d076a488db2d13335f8"
+            }
+          ],
+          "name": "crate_community_9_unusual_lootlist"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5bf6bfa8951595a4e015d0c877f498db86f647dbbbcd1e5b1d71cd09dd92b0fd",
+              "oldValue": "e750ffe2f2024b501c1799d74d07214a12e2000d90f86f2f48723526fea2b34c"
+            }
+          ],
+          "name": "popup_useitem_button_getkeychaincharges:p{item_count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac9dc4d8303ccd3d9ef3a2011565e621c2ce29f566d457e7ffd6606cef4e7df9",
+              "oldValue": "3375637b6c5b3a095d8d49a761e8b49a9c9fd249cb239565e5bccd5c19ea3bb2"
+            }
+          ],
+          "name": "settings_new"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7ba7eda308f3a6ae62f2712410cf38365244949c411ebe371412297ffea749c3",
+              "oldValue": "631b0cdd3279d1b4a63f56d0aa377304056a0b9e4bc869271d52d8503dac24db"
+            }
+          ],
+          "name": "xpshop_upsell_desc"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "20535897",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "20596740"
+}

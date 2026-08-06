@@ -1,0 +1,469 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_inv_volatile_limits",
+        "cl_radar_show_all_players_when_spectating",
+        "cl_radar_square_when_spectating",
+        "sv_sellback_enabled"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "Attrib_TradeProtectedEscrowMarket",
+        "ItemHistory_Action_GSCreate",
+        "ItemHistory_Action_Market_Sealed",
+        "ItemHistory_Action_Market_SoldSealed",
+        "ItemHistory_Action_Market_Unsealed",
+        "SFUI_InvContextMenu_marketlisting",
+        "SFUI_Settings_Volatile_Limit_Unlimited",
+        "dealer_message_limit_0",
+        "dealer_message_limit_1",
+        "dealer_message_limit_2",
+        "dealer_message_limit_3",
+        "dealer_message_limit_4",
+        "dealer_message_limit_5",
+        "dealer_message_limit_6",
+        "dealer_message_limit_first_time_0",
+        "dealer_message_limit_first_time_2",
+        "dealer_message_limit_first_time_3",
+        "dealer_message_limit_first_time_unlimited_0",
+        "dealer_message_limit_first_time_unlimited_1",
+        "dealer_message_limit_unlimited_0",
+        "dealer_message_limit_unlimited_1",
+        "dealer_message_limit_unlimited_2",
+        "dealer_message_limit_unlimited_3",
+        "dealer_message_set_offer_limit_0",
+        "dealer_message_set_offer_limit_1",
+        "dealer_message_set_offer_limit_2",
+        "inv_context_marketlisting",
+        "inv_session_prop_marketlisting",
+        "laptop_max_offer_tooltip",
+        "offer_limit_setting",
+        "offer_limit_setting_interface",
+        "popup_offer_limit_desc",
+        "system_user_updated_offer_limit_0",
+        "terminal_offer_limit_tooltip",
+        "user_message_limit_0",
+        "user_message_limit_1",
+        "user_message_limit_2",
+        "user_message_limit_3",
+        "user_message_limit_unlimited_0",
+        "user_message_limit_unlimited_1",
+        "user_message_limit_unlimited_2",
+        "user_message_limit_unlimited_3",
+        "user_message_limit_unlimited_4"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d76336cfccf983e5e33f0afb522ccff9c7818c46c2c643040523feab5ac227b2",
+              "oldValue": "043059e75966e16223af89abacd8ca8521d88d6a40a7d266cfd7597b7c53b637"
+            }
+          ],
+          "name": "CSGO_CustomPlayer_ctm_sas_variantg"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3a64fd2da0ae045aedcd0366a43a0e11ea13371909786fee9e274bf6acac5db6",
+              "oldValue": "e1f6934097d936d9f51f2c44cbedeed2d8986ff9b8a4e13f716a712fba636fbe"
+            }
+          ],
+          "name": "CSGO_CustomPlayer_ctm_st6_variantn"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7871c92535a2dbeba761283c3f3a46eeb370b15651607d78c83599971a672f13",
+              "oldValue": "705bd6720b5014eafaff75a5d2777a03f0b1daa2f7528aad8d38ff88904a1d86"
+            }
+          ],
+          "name": "CSGO_CustomPlayer_ctm_swat_variantk"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bbc2f7f46c973c29bcfb160a1a5d66d823cd53238c0bb7b48ab5e56f6e6253d9",
+              "oldValue": "1b69769ee02b538aaa111d27309403fa9a4dd65eff374475f68bc2ffc07e3213"
+            }
+          ],
+          "name": "CSGO_Customplayer_ctm_diver_variantb"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3638f8c036671e62b406c9ffb4fe3443e12b65cb70e0e74f6d33d93a25da48bd",
+              "oldValue": "0bc39c5490491a92dd36ef39bab5d63486073872a7ccd2185bf161f1845b0438"
+            }
+          ],
+          "name": "CSGO_Customplayer_ctm_diver_variantc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c046088c3c41a8b03fc6cb515d242ae39fa13ad62d3c5da306fb4d30967e4500",
+              "oldValue": "8c38cefa35768deba92cecb75b4e3840b874366a3cd42d2309aa7e1b49d01981"
+            }
+          ],
+          "name": "CSGO_Customplayer_ctm_gendarmerie_varianta"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f6c0ea1e5534a2a44f22750a75d991d78d3b6b7a20dc71ab5dcccb65e64152b0",
+              "oldValue": "37e6b21ea531c69341778e58c72e826a55b30458b2e446d6eb250ebd18bfaf4f"
+            }
+          ],
+          "name": "CSGO_Customplayer_ctm_gendarmerie_variantc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9a8f22183f88242210e4dc483ba573b54c9faa7917e4a65b03977f27eb3e2c9b",
+              "oldValue": "d7233ab23bd0b67a45ce8517e316bcc1aeaf77d2212fb223e8d040ab1004ed98"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_jungle_raider_varianta"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5c38aec3363720176b319531b7fcf7f30083ea136aba4e2d1b06c90c49060357",
+              "oldValue": "cc97b65963e93546b325a2acaf0f713689fde1f1a5f6175a9f91efdec228d7a6"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_jungle_raider_variantb"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "82158d0c6d1bfa46ae52ee4ce77f24494729f45ee4c6d056b592343bd2485a5e",
+              "oldValue": "fbb5fc29cda885f70e6146e362a3998a2b05617dae8157e0f07c0006bac2d814"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_jungle_raider_variantb2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ae29871991a736a6113d501921231e97784c9136d5a354956fc881010adcd8b9",
+              "oldValue": "ce7e6ada3307e5476370bb77e9937b63d5a14b09e7b79da65c57572569d34d5a"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_jungle_raider_variantc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b463e8b32dcbfc015aa6ba3ef4822e264d2f91f1e60194dcd7f9b385d023d6f8",
+              "oldValue": "abe7e6018c9c4b7c259b2c9b8a82c8d62fae2b4f8c4b6edf3d77d1e3078657d1"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_jungle_raider_variantd"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "068253f45e46b6fb3157a0621a5a59ca3e5f8dc4b93f8625b90e44774de412b1",
+              "oldValue": "e30fd044b1255335f85e0781be834a2aa104a04b04d2f57d6997b6923513d77a"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_jungle_raider_variante"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "138fddecc9af6c148c7dd018607ec02f8d7c501e54ed1fd70bfb2949ddcb2fa3",
+              "oldValue": "cdb43bb55790d60692f2010657675077bfea016921592985185f894634658b22"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_jungle_raider_variantf"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e0d5a4547878556bed7d57bcc6bb0785fb0b47f5816cfc75f5ca73690ca30089",
+              "oldValue": "2378f616dc84edf58ade79acf6ecffe7ef7479063288fcfc297db4147365e392"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_jungle_raider_variantf2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c8183491601cc4ca8251d3fdbaacd071b798bb944d6e09e337b2a3c26327b718",
+              "oldValue": "211e1b58b1a0604234ca2bdbe0d277ad3247b57b576360fe239ac1cf86a1e313"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_professional_varf5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0f8795de5595882a0e4492658fc11822dab11d0e0a157c9e78168387c3a216f2",
+              "oldValue": "09787bd952491231b1117327c319a6f8aec697d2b38d08025819d837551e0782"
+            }
+          ],
+          "name": "CSGO_Demo_Highlight"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9b0d994b5d365e54b6d322e5542a75b2820f47382184649689e54bfea8796cb7",
+              "oldValue": "44c3673d59a5a2c3f344287c816f3a3d7ebb685ab172e346d1fe6ca239fcd4ec"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_aus2025_challengers"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2f3e7aab9e36065f431adc9bc0bf9b0f031c8dffef5b72591fd3fe1757801bb8",
+              "oldValue": "e357548775999f5564ef247d6a8f13fe99e6a839efb1c00b51d89da53f4ccca9"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_aus2025_contenders"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ddadd92602f2c71df111b36e309ed1ab8e41fde3ca23fc5e5793ba854682fbb2",
+              "oldValue": "ef35041668f6bedeedf32311f356e216cc089b7af5157a77ffbc790cd4610caa"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_aus2025_legends"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d4f4c2c1742dc82e536a5f08f28fc95b48b1024a83b7a09acc2dc9b2f2175ce",
+              "oldValue": "55349e7c82398107eada9e9e35d31a1c4bca3523def57bf03c0813746782db96"
+            }
+          ],
+          "name": "GameUI_Confirm_Write_Setting_Text"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e67594706e97d1e050d9bb5db9924e61f7f52df5094393ce935ee5630f8e59da",
+              "oldValue": "7f332c91f4751d985c212a5fe00704fd3a44827c46bc72adc82321c5598d2c1d"
+            }
+          ],
+          "name": "GameUI_Confirm_Write_Setting_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "369fb4da6422627349237862da2ffb765cd7f903473ae205e397fe08238931dc",
+              "oldValue": "a6e84fbfa79fbc3b13da88b09feef70b05079f0d7aeae71a26307ae72ea3a9ba"
+            }
+          ],
+          "name": "Mid"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bad4ad0f6b21c8ea774442bfb1dbaae3cb581f0637eeb4012c22e6a76e6de8e9",
+              "oldValue": "97c96d5598e4029ff7a14ba895ab1af05e785c0732a7f683541ec9a2f0a83fa7"
+            }
+          ],
+          "name": "SFUI_GameModeCompetitiveDescSPList"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1a229b26dff9fcdef995b309a2e0221fd066ddc6f436be8044254d7f121333a5",
+              "oldValue": "79ffebf26977ee31bd8cc17b601e4d3510dc38aa295fe2eb152f7371bc756dde"
+            }
+          ],
+          "name": "SFUI_InvTooltip_Wear"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "50ed67da35516a813d3924db9fc823a0df5ad7ec0125a4cdac8218db0c9fc7a8",
+              "oldValue": "9a772235d62c39ec8e56d9bca20ec5337ac047784609ef0a25c16932e123e015"
+            }
+          ],
+          "name": "SFUI_InvTooltip_WearTag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ca6643954c355d7f91bf186313c4bda0cd5c6b3e3c814d075ba59b42ecd5681f",
+              "oldValue": "ec044cccc2e656ac7257e24832dc01637920e7cb192cb279d4c40d28b80f1370"
+            }
+          ],
+          "name": "SFUI_Rules_Bomb_Loading_Competetive"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ecd05a13cdbd913f6c0a65aaa5a4413c831bf9aa5303d9e5b7bdde307c784032",
+              "oldValue": "0d94076800f64f272a8c33d0dae33652c568aeb77db84c9481753c73da2ade1f"
+            }
+          ],
+          "name": "SFUI_Rules_ClassicComp_Unknown"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ba25daf12bc388d75962d05f44701e3e5c078370d47254f445da9e0c8a74139",
+              "oldValue": "c99d1c564743f5e3727b3bb8c20df0b0c9d0acf350030c6c266827631694e9fa"
+            }
+          ],
+          "name": "SFUI_Rules_Hostage_Loading_Competetive"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "787fbdd7cd3d9e577e36bb06733199bf0a9aa0d732a2545bd8821b7ce21bd836",
+              "oldValue": "3e7ba9016f906855749c19c8cd166fd0659ebc855ee73c65f8dcdf02dde10091"
+            }
+          ],
+          "name": "StoreCheckout_NotEnoughRoom_TooManyStorageUnits"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "My other clients always want to know how I got what I'm selling. I hate that.<!--.25-->All you ever want to know is if it's the best stuff on the market.<!--.25-->Guess what: It is.",
+              "oldValue": "Good. It's you.<!--.25-->My other clients always want to know how I got what I'm selling. I hate that.<!--.25-->All you ever want to know is if it's the best stuff on the market.<!--.25-->Guess what: It is."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "94eeec25565cf38433d7b03bdebef3de219421b5cfd5083ba7d4d795bb4a5b50",
+              "oldValue": "01d4aec5e032077fab8569bd14231999203ae3b9bd4e2f0c41cfb28bce353618"
+            }
+          ],
+          "name": "dealer_message_start_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "37305328f6af7630a87587958d25a506335ac679b8f1022f8f0d2aa4cb160a7b",
+              "oldValue": "29a8b1011c8b43b6eadad419eec25e6ae4e244a31eb775617e6e3ed476c2b86f"
+            }
+          ],
+          "name": "inv_header_grade"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "131179ea145601b3702f29e82cac357ac81d5222e0a65534293df323c3ec06f8",
+              "oldValue": "1495fcbf72d8d3e2724747fdc2ddd6dd11e334137638a5fea056e308163ca69e"
+            }
+          ],
+          "name": "popup_delete_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3a0734963e83a7a47a75363837f25f2bc31c1416c9de78056e12aa82d1934c43",
+              "oldValue": "e06234781c6cd3f1fd79cfbc74f50ca5f6d3582affedfdebdaae4a3f3de3f050"
+            }
+          ],
+          "name": "popup_delete_warning"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "<b>Final Offer</b>",
+              "oldValue": "<b>Final Offer</b> - Suggested Responses"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d10328d50bd6128c1eb605227e72899e4efe6bca32bbb7e3816a941812f52f98",
+              "oldValue": "90fb49449f2db248ee0bb47ac9e4b86c1c5c553c4be1a65b297961544abfc156"
+            }
+          ],
+          "name": "user_btn_purchase_final_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "{s:offer-count} - Offer",
+              "oldValue": "<b>{s:offer-count} Offer</b> - Suggested Responses"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0180fb161160c92828e7ffbede8c9789ab5ef72cc1e71e1e1c056b8ba6c08486",
+              "oldValue": "9bf4ce8b47570913cd2802d3cb2c3d9a58eeed094b86213e180feecad7534bd6"
+            }
+          ],
+          "name": "user_btn_purchase_title"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "22099296",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "22202104"
+}

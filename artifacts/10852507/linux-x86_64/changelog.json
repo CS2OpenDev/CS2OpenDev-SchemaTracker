@@ -1,0 +1,64 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "composite_material_use_gpu",
+        "soundsystem_device_used"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,userinfo",
+              "oldValue": "clientdll,userinfo,cheat"
+            }
+          ],
+          "name": "cl_cq_min_queue"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,userinfo",
+              "oldValue": "clientdll,userinfo,cheat"
+            }
+          ],
+          "name": "cq_netgraph"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "cl_righthand"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "10835290",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "10852507"
+}

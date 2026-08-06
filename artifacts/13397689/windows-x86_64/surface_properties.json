@@ -1,0 +1,3843 @@
+{
+  "buildId": "13397689",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "surfaces": [
+    {
+      "name": "Balloon",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Default.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Metal_Box",
+      "properties": [],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Metal_Box",
+      "properties": [],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Metal_Box",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.5"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "Plastic_Box",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Plastic_Box.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Plastic_Box.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Plastic_Box",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Plastic_Box.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Plastic_Box.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Plastic_Box",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.75"
+        },
+        {
+          "name": "gamematerial",
+          "value": "L"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "Plastic_Box",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_plastic.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_plastic_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Plastic"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "WeaponFlashbang",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_GlassBottle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_GlassBottle.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "WeaponFlashbang",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_GlassBottle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_GlassBottle.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "WeaponHEGrenade",
+      "properties": [],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "WeaponHEGrenade",
+      "properties": [],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "WeaponIncendiary",
+      "properties": [],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "WeaponIncendiary",
+      "properties": [],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "WeaponMolotov",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_GlassBottle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_GlassBottle.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "WeaponMolotov",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_GlassBottle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_GlassBottle.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Wood.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Wood.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Wood.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Wood.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.6"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.9"
+        },
+        {
+          "name": "gamematerial",
+          "value": "W"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "Wood",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_wood.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_wood_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Wood"
+        },
+        {
+          "name": "impactGrazingDecalName",
+          "value": "Impact.Wood_Grazing"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "Wood_Basket",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Wood_Basket.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Wood_Basket.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Basket",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Wood_Basket.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Wood_Basket.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Basket",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.9"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "Wood_Box",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_WoodBox.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_WoodBox.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Box",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_WoodBox.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_WoodBox.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Box",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.9"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "Wood_Crate",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Wood_Crate.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Wood_Crate.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Crate",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Wood_Crate.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Wood_Crate.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Crate",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.9"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "Wood_Dense",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Wood_Solid.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Wood_Solid.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Dense",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Wood_Solid.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Wood_Solid.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Dense",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.3"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.5"
+        },
+        {
+          "name": "gamematerial",
+          "value": "13"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "Wood_Ladder",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Wood_Ladder.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Wood_Ladder.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Ladder",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Wood_Ladder.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Wood_Ladder.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Ladder",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.9"
+        },
+        {
+          "name": "climbable",
+          "value": "true"
+        },
+        {
+          "name": "gamematerial",
+          "value": "X"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "Wood_Panel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Wood_Panel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Wood_Panel.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Panel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Wood_Panel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Wood_Panel.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "Wood_Plank",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.85"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "Wood_Solid",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.8"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "alienflesh",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "H"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "armorflesh",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.3"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.5"
+        },
+        {
+          "name": "gamematerial",
+          "value": "M"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "asphalt",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.3"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.55"
+        },
+        {
+          "name": "gamematerial",
+          "value": "Q"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "asphalt",
+      "properties": [
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Asphalt"
+        },
+        {
+          "name": "impactGrazingDecalName",
+          "value": "Impact.Asphalt_Grazing"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "audioblocker",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "X"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "blockbullets",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.001"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.01"
+        },
+        {
+          "name": "gamematerial",
+          "value": "X"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "bloodyflesh",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "B"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "brick",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.3"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.47"
+        },
+        {
+          "name": "gamematerial",
+          "value": "R"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "cardboard",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Cardboard.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Cardboard.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "cardboard",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Cardboard.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Cardboard.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "cardboard",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.99"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.95"
+        },
+        {
+          "name": "gamematerial",
+          "value": "U"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "carpet",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Carpet.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Carpet.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "carpet",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Carpet.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Carpet.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "carpet",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.75"
+        },
+        {
+          "name": "gamematerial",
+          "value": "7"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "carpet",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_carpet.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_carpet_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Upholstery"
+        },
+        {
+          "name": "impactGrazingDecalName",
+          "value": "Impact.Upholstery_Grazing"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "ceiling_tile",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Ceiling_Tile.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Ceiling_Tile.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "ceiling_tile",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Ceiling_Tile.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Ceiling_Tile.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "chain",
+      "properties": [],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "chainlink",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_ChainLink.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_ChainLink.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "chainlink",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_ChainLink.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_ChainLink.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "chainlink",
+      "properties": [
+        {
+          "name": "allowsmokethrough",
+          "value": "true"
+        },
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.99"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.99"
+        },
+        {
+          "name": "gamematerial",
+          "value": "G"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "chainlink",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_chainlink.vpcf"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "clay",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.6"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.95"
+        },
+        {
+          "name": "gamematerial",
+          "value": "1"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "computer",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.45"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.4"
+        },
+        {
+          "name": "gamematerial",
+          "value": "P"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "computer",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_computer.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_computer_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Computer"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "concrete",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Concrete.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Concrete.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "concrete",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Concrete.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Concrete.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "concrete",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.25"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.5"
+        },
+        {
+          "name": "gamematerial",
+          "value": "C"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "concrete",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_concrete.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_concrete_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Concrete"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "concrete_polished",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Ceiling_Tile.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Ceiling_Tile.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "concrete_polished",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Ceiling_Tile.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Ceiling_Tile.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "default",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Default.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Default.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "default",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Default.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Default.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "default",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.5"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.5"
+        },
+        {
+          "name": "climbable",
+          "value": "false"
+        },
+        {
+          "name": "gamematerial",
+          "value": "C"
+        },
+        {
+          "name": "jumpfactor",
+          "value": "1"
+        },
+        {
+          "name": "maxspeedfactor",
+          "value": "1"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "default",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_concrete.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_concrete_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Concrete"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "default",
+      "properties": [
+        {
+          "name": "highFreqAbsorption",
+          "value": "0.098"
+        },
+        {
+          "name": "highFreqTransmission",
+          "value": "0.01"
+        },
+        {
+          "name": "lowFreqAbsorption",
+          "value": "0.02"
+        },
+        {
+          "name": "lowFreqTransmission",
+          "value": "0.04"
+        },
+        {
+          "name": "midFreqAbsorption",
+          "value": "0.04"
+        },
+        {
+          "name": "midFreqTransmission",
+          "value": "0.02"
+        },
+        {
+          "name": "scattering",
+          "value": "0.01"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_steamaudio.txt"
+    },
+    {
+      "name": "default_silent",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "X"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "dirt",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Dirt.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Dirt.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "dirt",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Dirt.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Dirt.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "dirt",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.3"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.6"
+        },
+        {
+          "name": "gamematerial",
+          "value": "D"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "dirt",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_dirt.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_dirt_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Dirt"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "dufflebag_survivalCase",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Silent.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "dufflebag_survivalCase",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Silent.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "flesh",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Flesh.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Flesh.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "flesh",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Flesh.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Flesh.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "flesh",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.9"
+        },
+        {
+          "name": "gamematerial",
+          "value": "F"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "foliage",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Foliage.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Foliage.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "foliage",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Foliage.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Foliage.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "foliage",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.95"
+        },
+        {
+          "name": "gamematerial",
+          "value": "O"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "foliage",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_leaves.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_leaves_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Leaves"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "fruit",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Flesh.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Flesh.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "fruit",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Flesh.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Flesh.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "fruit",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.9"
+        },
+        {
+          "name": "gamematerial",
+          "value": "F"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "glass",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Glass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Glass.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "glass",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Glass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Glass.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "glass",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.99"
+        },
+        {
+          "name": "gamematerial",
+          "value": "Y"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "glass",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_glass.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_glass_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Glass"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "glassbottle",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_GlassBottle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_GlassBottle.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "glassbottle",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_GlassBottle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_GlassBottle.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "glassbottle",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.99"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "glassfloor",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Glass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Glass.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "glassfloor",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Glass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Glass.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "glassfloor",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.99"
+        },
+        {
+          "name": "gamematerial",
+          "value": "Y"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "glassfloor",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_glass.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Glass"
+        },
+        {
+          "name": "impactGrazingDecalName",
+          "value": "Impact.Glass"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "grass",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Grass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Grass.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "grass",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Grass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Grass.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "grass",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "J"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "grass",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_grass.vpcf"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "gravel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Gravel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Gravel.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "gravel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Gravel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Gravel.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "gravel",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.4"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "grenade",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Grenade.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Grenade.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "grenade",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Grenade.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Grenade.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "ice",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.75"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "ladder",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Ladder.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Ladder.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "ladder",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Ladder.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Ladder.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "ladder",
+      "properties": [
+        {
+          "name": "climbable",
+          "value": "true"
+        },
+        {
+          "name": "gamematerial",
+          "value": "X"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metal",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.4"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metal_barrel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalBarrel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalBarrel.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_barrel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalBarrel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalBarrel.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_barrel",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.01"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.01"
+        },
+        {
+          "name": "gamematerial",
+          "value": "12"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metal_barrelSoundOverride",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalBarrel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalBarrel.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_barrelSoundOverride",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalBarrel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalBarrel.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_barrel_explodingSurvival",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalVehicle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalVehicle.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_barrel_explodingSurvival",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalVehicle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalVehicle.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_sand_barrel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalBarrel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalBarrel.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_sand_barrel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalBarrel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalBarrel.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_sand_barrel",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.01"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.01"
+        },
+        {
+          "name": "gamematerial",
+          "value": "12"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metal_shield",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Weapon.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Weapon.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_shield",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Weapon.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Weapon.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_shield",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "14"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metal_survivalCase",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Silent.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_survivalCase",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Silent.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_vehicleSoundOverride",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalVehicle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalVehicle.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metal_vehicleSoundOverride",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalVehicle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalVehicle.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metaldogtags",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.4"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metalgrate",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalGrate.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalGrate.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalgrate",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalGrate.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalGrate.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalgrate",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.99"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.95"
+        },
+        {
+          "name": "gamematerial",
+          "value": "G"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metalgrate",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_metal_grate.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_metal_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Metal"
+        },
+        {
+          "name": "impactGrazingDecalName",
+          "value": "Impact.Metal_Grazing"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "metalpanel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalVehicle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalVehicle.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalpanel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalVehicle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalVehicle.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalpanel",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.45"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.5"
+        },
+        {
+          "name": "gamematerial",
+          "value": "V"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metalrailing",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalRailing.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalRailing.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalrailing",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalRailing.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalRailing.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalrailing",
+      "properties": [
+        {
+          "name": "allowsmokethrough",
+          "value": "true"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metalvehicle",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalVehicle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalVehicle.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalvehicle",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalVehicle.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalVehicle.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalvehicle",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.5"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metalvent",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_MetalVent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_MetalVent.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalvent",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_MetalVent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_MetalVent.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "metalvent",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.45"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.6"
+        },
+        {
+          "name": "gamematerial",
+          "value": "V"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "metalvent",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_metal_vent.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_metal_vent_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Vent"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "mud",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Mud.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Mud.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "mud",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Mud.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Mud.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "mud",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "11"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "no_decal",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "-"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "no_decal",
+      "properties": [
+        {
+          "name": "impactDecalName",
+          "value": ""
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "plaster",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Concrete.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Concrete.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plaster",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Concrete.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Concrete.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plaster",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.6"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.7"
+        },
+        {
+          "name": "gamematerial",
+          "value": "2"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "plaster",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_plaster.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_plaster_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Plaster"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "plaster_drywall",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Drywall.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Drywall.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plaster_drywall",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Drywall.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Drywall.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_plastic.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_plastic_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Plastic"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "plastic_autoCover",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Plastic_autoCover.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Plastic_autoCover.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic_autoCover",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Plastic_autoCover.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Plastic_autoCover.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic_barrel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Plastic_Barrel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Plastic_Barrel.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic_barrel",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Plastic_Barrel.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Plastic_Barrel.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic_barrel",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.7"
+        },
+        {
+          "name": "gamematerial",
+          "value": "L"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "plastic_barrel",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_plastic.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_plastic_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Plastic"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "plastic_dumpster",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Plastic_Box.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Plastic_Box.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic_dumpster",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Plastic_Box.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Plastic_Box.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic_milkCrate",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Plastic_milkCrate.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Plastic_milkCrate.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic_milkCrate",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Plastic_milkCrate.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Plastic_milkCrate.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic_solid",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "plastic_survivalCase",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Silent.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "plastic_survivalCase",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Silent.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "player_control_clip",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "1"
+        },
+        {
+          "name": "gamematerial",
+          "value": "I"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "porcelain",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.95"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "pottery",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.6"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.95"
+        },
+        {
+          "name": "gamematerial",
+          "value": "1"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "pottery",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_pottery.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_pottery_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Tile"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "potterylarge",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.6"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.95"
+        },
+        {
+          "name": "gamematerial",
+          "value": "1"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "potterylarge",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_pottery.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_pottery_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Tile"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "puddle",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Water.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Water.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "puddle",
+      "properties": [
+        {
+          "name": "runright",
+          "value": "T_Water.StepLeft"
+        },
+        {
+          "name": "walkleft",
+          "value": "T_Water.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Water.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "puddle",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "10"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "quicksand",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.2"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "rock",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.25"
+        },
+        {
+          "name": "gamematerial",
+          "value": "3"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "rock",
+      "properties": [
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Rock"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "rubber",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Rubber.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Rubber.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "rubber",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Rubber.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Rubber.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "rubber",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.5"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.85"
+        },
+        {
+          "name": "gamematerial",
+          "value": "4"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "rubber",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_rubber.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_rubber_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Rubber"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "sand",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Sand.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Sand.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "sand",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Sand.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Sand.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "sand",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.25"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.3"
+        },
+        {
+          "name": "gamematerial",
+          "value": "N"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "sheetrock",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Drywall.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Drywall.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "sheetrock",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Drywall.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Drywall.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "sheetrock",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.6"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.85"
+        },
+        {
+          "name": "gamematerial",
+          "value": "5"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "sheetrock",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_plaster.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_plaster_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Sheetrock"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "slime",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_SlipperySlime.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_SlipperySlime.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "slime",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_SlipperySlime.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_SlipperySlime.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "slime",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "S"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "slipperyslide",
+      "properties": [
+        {
+          "name": "jumpfactor",
+          "value": "0.7"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "slipperyslime",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_SlipperySlime.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_SlipperySlime.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "slipperyslime",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_SlipperySlime.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_SlipperySlime.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "slipperyslime",
+      "properties": [
+        {
+          "name": "jumpfactor",
+          "value": "0.7"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "slowgrass",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Grass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Grass.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "slowgrass",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Grass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Grass.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "slowgrass",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "J"
+        },
+        {
+          "name": "maxspeedfactor",
+          "value": "1"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "slowgrass",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_wet_grass.vpcf"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "snow",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Snow.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Snow.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "snow",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Snow.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Snow.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "snow",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.85"
+        },
+        {
+          "name": "gamematerial",
+          "value": "K"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "snow",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_snow.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_snow_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Snow"
+        },
+        {
+          "name": "impactGrazingDecalName",
+          "value": "Impact.Snow_Grazing"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "soccerball",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Rubber.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Rubber.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "soccerball",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Rubber.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Rubber.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "soccerball",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "-"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "solidmetal",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_SolidMetal.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_SolidMetal.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "solidmetal",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_SolidMetal.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_SolidMetal.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "solidmetal",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.3"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.27"
+        },
+        {
+          "name": "gamematerial",
+          "value": "M"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "solidmetal",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_metal.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_metal_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Metal"
+        },
+        {
+          "name": "impactGrazingDecalName",
+          "value": "Impact.Metal_Grazing"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "stucco",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "2"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "sugarcane",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Grass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Grass.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "sugarcane",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Grass.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Grass.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "sugarcane",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "J"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "tile",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Tile.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Tile.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "tile",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Tile.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Tile.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "tile",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.3"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.7"
+        },
+        {
+          "name": "gamematerial",
+          "value": "T"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "tile",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_tile.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_tile_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Tile"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "tile_survivalCase",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Silent.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "tile_survivalCase",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Silent.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "tile_survivalCase_GIB",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Silent.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "tile_survivalCase_GIB",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Silent.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Silent.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "upholstery",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.75"
+        },
+        {
+          "name": "gamematerial",
+          "value": "9"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "upholstery",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_upholstery.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_upholstery_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Upholstery"
+        },
+        {
+          "name": "impactGrazingDecalName",
+          "value": "Impact.Upholstery_Grazing"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "wade",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "ct_wade.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "ct_wade.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "wade",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "t_wade.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "t_wade.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "wade",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "X"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "water",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Water.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Water.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "water",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Water.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Water.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "water",
+      "properties": [
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.3"
+        },
+        {
+          "name": "gamematerial",
+          "value": "S"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "water",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/water_impact/water_splash_03.vpcf"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "watermelon",
+      "properties": [
+        {
+          "name": "bulletPenetrationDamageModifier",
+          "value": "0.6"
+        },
+        {
+          "name": "bulletPenetrationDistanceModifier",
+          "value": "0.95"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "weapon",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Weapon.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Weapon.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "weapon",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Weapon.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Weapon.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "weapon_magazine",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "M"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "wet",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_WetTile.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_WetTile.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "wet",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_WetTile.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_WetTile.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "wet",
+      "properties": [
+        {
+          "name": "gamematerial",
+          "value": "S"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_game.txt"
+    },
+    {
+      "name": "wet",
+      "properties": [
+        {
+          "name": "effect",
+          "value": "particles/impact_fx/impact_concrete.vpcf"
+        },
+        {
+          "name": "effect_simplified",
+          "value": "particles/impact_fx/impact_concrete_cheap.vpcf"
+        },
+        {
+          "name": "impactDecalName",
+          "value": "Impact.Concrete"
+        }
+      ],
+      "scope": "",
+      "sourceFile": "surfaceproperties_impact_effects.txt"
+    },
+    {
+      "name": "wet_sand",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "CT_Wet_Sand.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "CT_Wet_Sand.StepLeft"
+        }
+      ],
+      "scope": "ct_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    },
+    {
+      "name": "wet_sand",
+      "properties": [
+        {
+          "name": "walkleft",
+          "value": "T_Wet_Sand.StepLeft"
+        },
+        {
+          "name": "walkright",
+          "value": "T_Wet_Sand.StepLeft"
+        }
+      ],
+      "scope": "t_player",
+      "sourceFile": "surfaceproperties_footsteps.txt"
+    }
+  ]
+}

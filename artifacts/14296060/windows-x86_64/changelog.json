@@ -1,0 +1,64 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/EventClientPredictionPostNetupdate_t"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_skip_hierarchy_update_for_unchanged_entities"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "2",
+              "oldValue": "8"
+            }
+          ],
+          "name": "cl_parallel_readpacketentities_threshold"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "cl_parallel_readpacketentities_type",
+        "cl_profilereadpacketentities"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": [
+        "rpestats"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "14249031",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "14296060"
+}

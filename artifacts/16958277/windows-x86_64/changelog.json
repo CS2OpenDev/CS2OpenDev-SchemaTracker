@@ -1,0 +1,60 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            },
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "cl_net_buffer_ticks_use_interp"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "16933364",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "16958277"
+}

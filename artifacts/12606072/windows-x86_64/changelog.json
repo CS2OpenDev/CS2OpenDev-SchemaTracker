@@ -1,0 +1,374 @@
+{
+  "families": [
+    {
+      "added": [
+        "client.dll/C_WeaponCZ75a",
+        "client.dll/C_WeaponM4A1Silencer",
+        "client.dll/C_WeaponMP5SD",
+        "client.dll/C_WeaponRevolver",
+        "client.dll/C_WeaponUSPSilencer",
+        "server.dll/CGameMoney",
+        "server.dll/CWeaponCZ75a",
+        "server.dll/CWeaponM4A1Silencer",
+        "server.dll/CWeaponMP5SD",
+        "server.dll/CWeaponRevolver",
+        "server.dll/CWeaponUSPSilencer"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "11",
+              "oldValue": "12"
+            }
+          ],
+          "name": "!GlobalTypes/CSmartPropOperation_Trace"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "14",
+              "oldValue": "15"
+            }
+          ],
+          "name": "!GlobalTypes/SceneObject_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "66",
+              "oldValue": "67"
+            }
+          ],
+          "name": "client.dll/CLightComponent"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "31",
+              "oldValue": "32"
+            }
+          ],
+          "name": "client.dll/C_BaseModelEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "28",
+              "oldValue": "26"
+            }
+          ],
+          "name": "client.dll/C_BasePlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "51",
+              "oldValue": "50"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "66",
+              "oldValue": "61"
+            }
+          ],
+          "name": "client.dll/C_CSWeaponBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "1"
+            }
+          ],
+          "name": "client.dll/C_DecoyProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "24",
+              "oldValue": "25"
+            }
+          ],
+          "name": "client.dll/C_EnvCombinedLightProbeVolume"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "18",
+              "oldValue": "19"
+            }
+          ],
+          "name": "client.dll/C_EnvCubemap"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "17",
+              "oldValue": "18"
+            }
+          ],
+          "name": "client.dll/C_EnvLightProbeVolume"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "13"
+            }
+          ],
+          "name": "client.dll/shard_model_desc_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "52",
+              "oldValue": "54"
+            }
+          ],
+          "name": "server.dll/CBarnLight"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "14"
+            }
+          ],
+          "name": "server.dll/CBaseCSGrenadeProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "25",
+              "oldValue": "26"
+            }
+          ],
+          "name": "server.dll/CBaseModelEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "24",
+              "oldValue": "25"
+            }
+          ],
+          "name": "server.dll/CBasePlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "77",
+              "oldValue": "76"
+            }
+          ],
+          "name": "server.dll/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "47",
+              "oldValue": "46"
+            }
+          ],
+          "name": "server.dll/CCSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "58",
+              "oldValue": "54"
+            }
+          ],
+          "name": "server.dll/CCSWeaponBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "server.dll/CDecoyProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "24",
+              "oldValue": "25"
+            }
+          ],
+          "name": "server.dll/CEnvCombinedLightProbeVolume"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "18",
+              "oldValue": "19"
+            }
+          ],
+          "name": "server.dll/CEnvCubemap"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "17",
+              "oldValue": "18"
+            }
+          ],
+          "name": "server.dll/CEnvLightProbeVolume"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "2"
+            }
+          ],
+          "name": "server.dll/CGamePlayerEquip"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "1",
+              "oldValue": "0"
+            }
+          ],
+          "name": "server.dll/CKnife"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "67",
+              "oldValue": "68"
+            }
+          ],
+          "name": "server.dll/CLightComponent"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "13"
+            }
+          ],
+          "name": "server.dll/shard_model_desc_t"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_force_next_signon_to_reset",
+        "cl_player_visibility_stencil_bloat_amount",
+        "cl_smooth_targetspeed",
+        "cl_workshop_map_download_timeout",
+        "sv_late_commands_allowed",
+        "sv_maxuptimelimit"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "cl_player_visibility_stencil_bloat_amount_box",
+        "cl_player_visibility_stencil_bloat_amount_ellipsoid",
+        "knife_damage_scale",
+        "slope_drop_blend_max_distance",
+        "slope_drop_blend_max_speed",
+        "slope_drop_blend_min_distance",
+        "slope_drop_blend_min_player_speed",
+        "slope_drop_blend_min_speed",
+        "slope_drop_debug_draw",
+        "slope_drop_on_land_blend_time",
+        "sv_knife_attack_extend_from_player_aabb"
+      ]
+    },
+    {
+      "added": [
+        "ds_workshop_changelevel",
+        "ds_workshop_listmaps"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "host_workshop_collection"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "host_workshop_map"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release,vconsole_fuzzy_matching,vconsole_set_focus",
+              "oldValue": "developmentonly,clientdll,vconsole_fuzzy_matching,vconsole_set_focus,defensive"
+            }
+          ],
+          "name": "map_workshop"
+        }
+      ],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12547359",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12606072"
+}

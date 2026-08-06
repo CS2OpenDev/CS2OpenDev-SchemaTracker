@@ -1,0 +1,778 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "2",
+              "oldValue": "3"
+            }
+          ],
+          "name": "server.dll/CCSPlayerController_DamageServices"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "sv_jump_precision_enable"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "99636e80855c69a5f1c03802b4f5cf16d678eae2f0c0c29bcf730283ea6622b5",
+              "oldValue": "8bde5594b51a1807b63f943289bc76acabb84b158e8fe0d9082ddaac785605c1"
+            }
+          ],
+          "name": "420"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3b9278df6848fb1e03b6bd39a9c38f670b92818ef4cd9335747af2ba0631cc02",
+              "oldValue": "20dfa71cb114fe8661192c126cc70157fa74324a3f50a776c2fa3aba0ecff0b2"
+            }
+          ],
+          "name": "AKayak"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6189b285c24ef0049a34a78dfb009455a779604fbaf4349b6f37ebac838f6b8a",
+              "oldValue": "f9f6b5cd608693706c18e1766570943669ff001854982e70151b5f2354fdc39a"
+            }
+          ],
+          "name": "AMain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "969f8e700c1cb3112eda8b4e471ca4ecbd126a5a9ce4db592cf985ed10766c93",
+              "oldValue": "3c59a71f9aa98a3775c241d4ffad0f528c14930de1389a4db49392487b3bbfe8"
+            }
+          ],
+          "name": "AShort"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c85fe3578a955cd807a82b3c04221559c6c94163dfe9e7740d26c8846faf5ffe",
+              "oldValue": "a14f7e51f5a4506adf24cee7139572c7977e873c8bb5c20c503fbb31db46795e"
+            }
+          ],
+          "name": "ASite"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dd7ebc197c47446ec7b26b03947016370c459178d1dd11306f6c17348dd2d69e",
+              "oldValue": "2906cf551cc7d5f059a8a8fc1356da9323322eb8f6bb61e80972abde5cf16b3d"
+            }
+          ],
+          "name": "BBridge"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "440b535f7250ff9386bb88e396ea5bc527492777e055a4fea9b3e13d2abd7415",
+              "oldValue": "e2e4eede74d2503cac58e245ac822203d2e676c593129934b3dc46a686036816"
+            }
+          ],
+          "name": "BKayak"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a21665bb854cae128fe297a866615a570e0a7e8aca4fe2307f30b68bb942435e",
+              "oldValue": "c8d62f120a048990296334ded29789200fd53aeecd53af3a72563c2cd365b523"
+            }
+          ],
+          "name": "BMain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dedc685c471a391eccefb8d330de5bd888b9bbe3d932190bc2482133f70cb37a",
+              "oldValue": "7b4248e5194fa5e691bd065c53f6638d6befe3df3426c07b4f4e8b2eb9e85baf"
+            }
+          ],
+          "name": "BRamp"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8581cfe9fb70fea64c6d3788700437a9e7958b967511a810ce5d3293ec523c35",
+              "oldValue": "880dc030d8c96a2694f74c3c1ec93b2fcb792ad2c616131164f85cb21b8eb857"
+            }
+          ],
+          "name": "BSite"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bbafa0ce057a1277f54fb7293a42d2d458afc9c692abb3a330d0ab2de6a657b8",
+              "oldValue": "1b3d46acee8748665fcbad4b4492b2e1e8ec3d02b34a24a792e305807bf04012"
+            }
+          ],
+          "name": "Bags"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1adc6dce71cf3bc1dbd3837fa31ded95364bf6135130e2bebb8f1d0769ac91a9",
+              "oldValue": "833ad9638ac2fb197a404546e07314747ab9a83c1f581451b17ef7fdf20b1bd9"
+            }
+          ],
+          "name": "Bikes"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "60b75598139c98a2568cde94d9b6e12b8d48611432ca48bd49ab6ebe2e2b047b",
+              "oldValue": "1b19ea82af3d8a498facf85d92039cfc761aa88ece1fe2950827d7a849f89c79"
+            }
+          ],
+          "name": "Birdhouse"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c1f12aa011e924eaa3d336a8ccbab71806b7f6b88d9b423a843e652b4ce10c7",
+              "oldValue": "1dd4470be92ca0de141be651b87fad2d645268b38537f3f67c4515ca9955f17d"
+            }
+          ],
+          "name": "Boards"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d524cc623185be7e0af4bc104a6e73933bd5a0377f45f74c9121cab1e74fb47c",
+              "oldValue": "b95223d930bbda89045ce454822ac99a7fe767fb398a7fa0bcfd3033f8402201"
+            }
+          ],
+          "name": "BoostBox"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b99fdbc5b43fbea387519ecb85ac7202bf6c705ccaa23631747d8ba289eb6e54",
+              "oldValue": "f52a9952a0ce16c78aaf080cb7f581542be1dd5239675adc689e300e5c34f592"
+            }
+          ],
+          "name": "Bread"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6970ef33e27eaeb1e1ea75b41c36a9153494df93f76d7fce646789d9b1f3160d",
+              "oldValue": "cefff3304cda8a1e634c579d5b27a062eed19b640b5696f0a47a01318565188d"
+            }
+          ],
+          "name": "CSGO_RemoveKeychainToolCharges_Desc3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "96b350dac919a14216018fdb441a86200e095b6a5f2e4081755a7c39dc8b91c0",
+              "oldValue": "b0a047622ccf8acf40848b3a3dd69bf0d5bd6aeb65d8cf505a063b6dcce62bdc"
+            }
+          ],
+          "name": "CSGO_RemoveKeychainTool_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "94fd9316ba6d7e1af33a839f1b5e5d0566793d65e0693e7f2e0cdfdcb9dd0d3f",
+              "oldValue": "58e3a2dc42dccd33949173589fd8677a8dfe72fdcdde15fe4ec037e7284001f3"
+            }
+          ],
+          "name": "Chatwheel_segment_bottom"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "24240035ee09910c37ab84a3714ed6c8e56edd7cca2d9305338c408d589e5f5f",
+              "oldValue": "94473edb9d618d50f504f6852e5faa0a1d7557b5bdf4f03ef3c319cdc8a4cfca"
+            }
+          ],
+          "name": "Chatwheel_segment_top"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "030ecdacd26a508c33b39323c49755dd4f04da2a6a6edfcc858f838c47f8c88a",
+              "oldValue": "9f0fd88df632124af236894c587c1e60e196345717f353de6cfcbb277315c53b"
+            }
+          ],
+          "name": "Drinks"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "59b537990562ef077a51f161c76df260b9224512e6109c4f1df9c76b25a4349e",
+              "oldValue": "7307e3b19f1a559cd2eb8a93f82aae6bede6283a7896de8908eaddb17ce57c6b"
+            }
+          ],
+          "name": "Engine"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07d8f9d5c38118ab8df494729bbdf4fabb92d2f3c325a30ff5a8c2ad68c79359",
+              "oldValue": "4dafe694311cc2a3be322e373341cc0005ed53303af7e20d59f5cc35f7f9e372"
+            }
+          ],
+          "name": "Fish"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "701f6520709daee97a6be5cdf0acc00f55e35a83d5c4ba9922e06084e195c48d",
+              "oldValue": "862ac9bc533940d024a1cd23e48bc121b80a3b2c3eb21b2abd35d70ec7318847"
+            }
+          ],
+          "name": "Football"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "54a0ce036fc2f6a1ea760f1dffeda3bfece19fdae8f965920c02e8aeefd813ed",
+              "oldValue": "89c6cf1859b4374bcf9f98404e82486f1bc40d565fa9be00319e18aa1011abc2"
+            }
+          ],
+          "name": "GarageDoor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7cba16b2e0d8c176057f8eb56c1a00e9b3b90ae1011d1a8cc6b8a8f213f04371",
+              "oldValue": "51cc8be77f9ae3a636eb3e5800c45f496c825d04e7ed93839a3da392e2c1370b"
+            }
+          ],
+          "name": "Green"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1ff4324def7f609ea8c1b430dcf9d44c348f0eb2ecdb20154ea9ee78da096df2",
+              "oldValue": "60e02ba475543df98e5d4d421c9afb3a31c13fdaf8d1e609a4d45b833e6b58eb"
+            }
+          ],
+          "name": "Hotel"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f8c6a0c91534cd824abe9d65c27ab55b7652ee92017d96a4d96b1afcb1ac4d6d",
+              "oldValue": "21ef8787746ab2eae263da8dd419cd7a0c15d4ec31319208b231bfcbd1bf2fbb"
+            }
+          ],
+          "name": "IceCream"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "029fdb99599055d7ca13293536054b2c4851cd0e6d7bcac99bdb490473f5e18a",
+              "oldValue": "4f235f8f149e24793afcba50b577c58da3cb2f1e71d97a389c2306f72891150e"
+            }
+          ],
+          "name": "Import"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "576bbd0e499fbaba474dfb4042da296b0cd8b0f3d5b144a0fc43c670d76a88c1",
+              "oldValue": "d5a0e973e6a4b9da3fcba16a31f88fb7c46777d45dcb0d51aa52eb6b12a7f1ce"
+            }
+          ],
+          "name": "LongA"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "065d5d02d8ab791ebe038651db6241e74d6141c7acf6ed05977bc0d0aba9899f",
+              "oldValue": "d3f735f690159f95315a39f80106669b09f904aa44237424243baf4b2786d610"
+            }
+          ],
+          "name": "MidBridge"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "80a760726a9cf65f876ba9400ad0cef21979ab44d7226eee4931966af1e5042d",
+              "oldValue": "e1de5a761d70f8332f04598d6aaf65a9dc35d487b9a5820f9d985dcd48f16a88"
+            }
+          ],
+          "name": "Milk"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "46624e8748e856ddb3653066580b3dcfd0d46eee19efc7563ee12f389d248183",
+              "oldValue": "f73fe4a2ce8870b56342e4696e63a3ccea7a2d4599985b27493633c324c42b72"
+            }
+          ],
+          "name": "OutsideLong"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0287154335d4b984d3e192f3a6244bb7742c50fd38aed18cccd3d03d0baad7fc",
+              "oldValue": "4385d4b3d1035491f53afc76e6a0bd8dd10a01320fe725c2e81cab643fbe4f5a"
+            }
+          ],
+          "name": "Oven"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "876489b7db0c0a64239ace8b1b7a284c4a0b30c45f699a58abdf96d027108670",
+              "oldValue": "fa8c087a5dcdb0941d67916d1befc1b033dbc281466e51f0e6430c5fa3499b58"
+            }
+          ],
+          "name": "PaintKit_ak47_t_bus"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b400951d877b69770a0fe081b5da5be65d43134ed51bbfc2b94aacd9ca17155a",
+              "oldValue": "d401f815ef9676a9dc7f70bb2597c01cfbe38f5c73f92380d9fb6ede3ab6f46e"
+            }
+          ],
+          "name": "PaintKit_aq_titanium_rainbow"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fc61e01a6c43bc30f8d5be7a1e5d2844524aa3af17ff57a43717a1620c15cfcc",
+              "oldValue": "7c990ed7739270de7d1d048c4e829f7c04c9ed4d63c193377a381ed3b2d57bca"
+            }
+          ],
+          "name": "PaintKit_cu_overpass_baby_dualies"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "91bc7605915380f913289c56a137f447c5128afb7ff248758bbb16baa43d0dd3",
+              "oldValue": "ef27656d324d5cfb7d6f95d8c19fa1e84c0171e1792eca011a5fb3f6374594b1"
+            }
+          ],
+          "name": "PaintKit_cu_overpass_crakow_awp"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1ed090816068a1a679316535228dcf05166333009153bdcc459082cb9585f5b1",
+              "oldValue": "b08cfa898a8a3c7545c2b420bd5f37838b944ead0b17980d72b7b5423297878d"
+            }
+          ],
+          "name": "PaintKit_cu_overpass_graf_negev"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e80f2a86ade8dfb0f015d4b00cc01e9f87f633c9d0d727e9b2a535012c8cbdb1",
+              "oldValue": "ceba3e0a7edb5725dd9bd1b990049aa4a44e5e4997984107532a888dfc04a9a6"
+            }
+          ],
+          "name": "PaintKit_cu_overpass_monster_ak47"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5562f2bb99c97492a9c4d1dd7dd2b2f5cd0884cb981984cafa16f7956ea86eee",
+              "oldValue": "f78a9d1fdb7f008fd6cd2a81bf253e5d058c3d53d1766656d7f144796df67581"
+            }
+          ],
+          "name": "PaintKit_cu_overpass_monsters_xm"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a03a294dd798e27406773af9ac92b97ebe5f8b70d514dce04091e745afb04e17",
+              "oldValue": "840bb82ef3f59b2b974c0d1e06b8b2e90c2d4848f4ca5979db8a8ad42aac8f21"
+            }
+          ],
+          "name": "PaintKit_gs_arctic_mp9"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b4a0b3e04cc9ad8a41bb20e310c9ae6c3150b2a5edec04483d706134ef24eb3f",
+              "oldValue": "c38d6f4b2ac8785a38a6aa6dc34cc853225670344399fe1617d75b1c504ac525"
+            }
+          ],
+          "name": "PaintKit_gs_constellation_dark_mp7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bb74a5a0bd93bda7188ed9e48acdfd496d20cbe5ffae448202df76a429ac957b",
+              "oldValue": "8e881eb648e640216c1b4daa550c577311f8d1c7493b19a8320eb7cd83c5666a"
+            }
+          ],
+          "name": "PaintKit_gs_independe_awp"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cf29af498191876ab9ae39982f1206fd7a908bf4298002eda8a3b7fbcdddd595",
+              "oldValue": "9ddb3fba83e9db5aecd3ddb6381b04e8e0ead5199f4298dca8b3e8640b3b5499"
+            }
+          ],
+          "name": "PaintKit_ht_poly_camo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "951993634ce32d609f14a6ebe05c3c1e0d0f560b41d4692b88fb62f848f8aa04",
+              "oldValue": "4e0d585368dcffa70494365fa7f5c0ed23bcbf0c81b518c733226efedf37962e"
+            }
+          ],
+          "name": "PaintKit_hy_overpass_doodle_m4a1s"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "82124a3509fdaae0ad94b3b2a363eea5141b0c28989ad36e4fc7c086442233dc",
+              "oldValue": "fc5b3b2f06ddcdd608b3cb067c918bf0524179cb169bf7ecfff1f1962a4d0b5b"
+            }
+          ],
+          "name": "PaintKit_hy_overpass_tagged_teal"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9c4360c783ba660273612c638bffd7fc193bb985bb739b87479b7ac655414d59",
+              "oldValue": "8fdab4c398677c8213d44494a2f85447f211bb87e054a692d4002ecbb8975ea2"
+            }
+          ],
+          "name": "PaintKit_p250_impact"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e20f14d7e2eef68348f140dd0527b8e5b9d1f50227ffbe396dfadf01a7ca4942",
+              "oldValue": "d67452cbb99a106b77af8755227ea24b8961a4dedf25c2da73ff1a165e74063f"
+            }
+          ],
+          "name": "PaintKit_soch_tiger_stencil"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b678e788d49edb9263fd961ecc78b941a17a7de618277087a9f8ef7fdd72afea",
+              "oldValue": "cdc74f81535f2ca0a21908c90a2734d780fc2e9567ec4b2e70fa5dfb04ceedf3"
+            }
+          ],
+          "name": "PaintKit_soch_wildwood"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "49dc68e02e8b86341feda1f8baa92bbf1edcaf54943dfa874194800653f4cddb",
+              "oldValue": "9ee49c2abd4fec369467204df4f61f33ab498983a2ffec5b3125bff697e3a674"
+            }
+          ],
+          "name": "Post_Round_Damage_Report_Given:p{s1}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4594975560b09737ba4a2493e90f86d48f01ad0124df4631ae388344583e66ce",
+              "oldValue": "740952c459438d22d22c39510b59b124ed3b3773be9145002453ab074b98a923"
+            }
+          ],
+          "name": "Rat"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "af06a603fb81ce2ad302cb667500fc2252c2458d922c6f2f1873a61fc69255dd",
+              "oldValue": "37edae4d9c2e5cb20066ecf9ea6aeffacce1a866b0c873413c0489007ceab863"
+            }
+          ],
+          "name": "SFUI_InvUse_Warning_use_can_stick_previewonly_keychain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ac328615b70ab2b57daff039247b41664ba187377da79477571fef05a8b3a9d",
+              "oldValue": "80c33cc9fee2d0758322626a10a66c03e38fad22373b54a34709ade9020b5ba2"
+            }
+          ],
+          "name": "SFUI_InvUse_Warning_use_can_stick_previewonly_patch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4b5a6740f164b027b9644946428d0ae60dd7c3f5f83c6ded67cfd1ca3093a5c6",
+              "oldValue": "2e7a2451e656cd63e127044165557ee7dc743b06898afb87e8b0463363957381"
+            }
+          ],
+          "name": "SFUI_InvUse_Warning_use_can_stick_previewonly_sticker"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1b9b31d048e31331a1c742be01e7f215fdcffa220572991c8c59144a65b47839",
+              "oldValue": "34f62ad367f711961acd8a87d964f0a98237501b944867cc6c4574ac9cdcc6ff"
+            }
+          ],
+          "name": "SFUI_Settings_Display"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "29a5457758909aab826c402b9dcc428f174050fc5dd4b58b277eed5e2b277e5e",
+              "oldValue": "424ce8990bbffa0493b6e09e0b0266dd28f8406067fca59744c94c93f1e50407"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkQualityGraph_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7aa100aef5014c4ad18051e2714e47e752d86df627d5868e3607892579e80082",
+              "oldValue": "38251d2bd498cd87999c7a2037b4a500c84ff162d6b5de716ece40ae8aa77f8c"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cde24e7407bb52b77abbba0fa45d9a28b3aaa57559d30a0ec9f90c4770e51212",
+              "oldValue": "eaa08bcecf59550dd2925ddb7ccde8532901f9acd85e2682575aec1a74b557ca"
+            }
+          ],
+          "name": "SFUI_match_abort_match_vac_live"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9b55295c4f621793706a858cf5f3ca66dcfa1a1bf6cc9273ebad7ab5fa5a9592",
+              "oldValue": "3134613cc193cfcd6aadd8564fc0b2fd670562c7bdfa5a6ac1ea3194a1d10848"
+            }
+          ],
+          "name": "StickerKit_elemental_craft_paper_fire_two"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "33faaa70784bd699923260b913f95626c8b8a074bd1386b68b4caab09a44f35e",
+              "oldValue": "85c8a501b522394ad75e9be6063488d4d38720cbb3abeb399042796783a4a93f"
+            }
+          ],
+          "name": "TUpper"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aeb51faadd239f0963211c7fa12015b46b5f4f7b694a0077c7808332be0a93d0",
+              "oldValue": "2ff48e93f407f0299b351577714dd9f02b853a9f1616c4265f4090e13c16d8c7"
+            }
+          ],
+          "name": "Terrace"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9cdb373f887e7b1e468b33f4e828bdcef5ee61771da4ea007e83f76382e4aecf",
+              "oldValue": "f3018499303cfde9f078c7f884fddd0fdfb99fc9c830bb64baad81742c64793a"
+            }
+          ],
+          "name": "Trash"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3de2014e8f84aac0ef3ad428e459cafc36cb576bd3cae9727b6939d1f6f46e1e",
+              "oldValue": "4266557af0eda0ac58916ec5e37fe7efdb6d9871f3756af573d2698ec966ea00"
+            }
+          ],
+          "name": "Yard"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c3f1d60e9a78c30375ed46a5654d143ce1a642eaf2436871ec79eb2bc0a400d6",
+              "oldValue": "bc213da3daa1c15a41da3d9a34a54caf9af7863a78f43a7df84293ff54b1a6bd"
+            }
+          ],
+          "name": "popup_can_stick_scrape_full_keychain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "29800701b13f3793cb25f9a2321c469388610525aeef017a418f05851be097d4",
+              "oldValue": "b9ab075a5783a6e6df3703ac7d75e3aec8f03e34a9452e44bd5b10d9568352ca"
+            }
+          ],
+          "name": "popup_can_stick_warning_marketrestricted_keychain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "705d0c2b18120b13cf2e6d1b078679fbf22e9e2aec4aed6b45f5bb555d12781c",
+              "oldValue": "66cc1969aa5edc6403f115ec3f481fc386197d5e30acb9f4762da81d211585f6"
+            }
+          ],
+          "name": "popup_can_stick_warning_traderestricted_keychain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "74c1f8b16c88d9773e98741cd430e2df4a261e87e278f9caaf0ffd2f02b18c77",
+              "oldValue": "1e76956d03c7ac108a1374905463b475f8405645560ffe74fbac339acc3b64bd"
+            }
+          ],
+          "name": "popup_useitem_desc_getkeychaincharges"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "47f62021ecbe5175580e86a4da187cf68dee94a7a5dd99c9bc93793ee8e2be79",
+              "oldValue": "bc642dc0d41706465615af2f42b594854fe8d6f8aea17f0c01fed7380daacd48"
+            }
+          ],
+          "name": "popup_useitem_title_getkeychaincharges"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c1ea7404813c288d8da6fb3666247362647c96c69d0645d159630f95521f04fc",
+              "oldValue": "43fd969321ae47950478e869bb3bb7b9b91ab699528c3ee502fab6bb064cf41f"
+            }
+          ],
+          "name": "xpshop_pass_extra_pass"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9316f9f00a1137cedc27677e4b655bfb013ce884eab6b96396959c7b88f5f142",
+              "oldValue": "adf930f3e8250788af2afb77a155343048abbb4b05f7baa0eda19d2db1dfe6ec"
+            }
+          ],
+          "name": "xpshop_redeem_flags_notice_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "648255956b90105279bb2f382d3f3499df55dd93a6593630a4348f576c7d8581",
+              "oldValue": "953827313c346cda787f4613e14705dafbb90db7b20d70f322b0fd5af753cb83"
+            }
+          ],
+          "name": "xpshop_redeem_not_enough_stars:p{stars_needed}"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "16213816",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "16228412"
+}

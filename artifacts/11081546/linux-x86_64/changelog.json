@@ -1,0 +1,99 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,dontrecord,defensive",
+              "oldValue": "dontrecord,release"
+            }
+          ],
+          "name": "blink"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,cheat",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "getpos"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,cheat",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "getpos_exact"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,defensive",
+              "oldValue": "release"
+            }
+          ],
+          "name": "pop_var_values"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,defensive",
+              "oldValue": "release"
+            }
+          ],
+          "name": "push_var_values"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,cheat",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "spec_pos"
+        }
+      ],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "10905515",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "11081546"
+}

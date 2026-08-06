@@ -1,0 +1,2694 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/CSprayedDataPreset",
+        "!GlobalTypes/CSprayedDataPresetElement",
+        "!GlobalTypes/CSprayedDataSettingsBlock",
+        "!GlobalTypes/ColorOptionsEditableData_t",
+        "!GlobalTypes/EMaterialLayer_t",
+        "!GlobalTypes/EMaterialVariable_t",
+        "!GlobalTypes/EMaterialVariables_t",
+        "!GlobalTypes/GeneralOptionsEditableData_t",
+        "!GlobalTypes/ImportExportOptionsEditableData_t",
+        "!GlobalTypes/TexturesOptionsEditableData_t",
+        "!GlobalTypes/ToolsOptionsEditableData_t",
+        "!GlobalTypes/View2DOptionsEditableData_t",
+        "!GlobalTypes/View3DOptionsEditableData_t",
+        "assetrename.dll/CEntityComponent",
+        "assetrename.dll/CEntityIdentity",
+        "assetrename.dll/CEntityInstance",
+        "assetrename.dll/CScriptComponent",
+        "hammer.dll/CEntityComponent",
+        "hammer.dll/CEntityIdentity",
+        "hammer.dll/CEntityInstance",
+        "hammer.dll/CScriptComponent",
+        "modeldoc_editor.dll/CEntityComponent",
+        "modeldoc_editor.dll/CEntityIdentity",
+        "modeldoc_editor.dll/CEntityInstance",
+        "modeldoc_editor.dll/CScriptComponent",
+        "pet.dll/CEntityComponent",
+        "pet.dll/CEntityIdentity",
+        "pet.dll/CEntityInstance",
+        "pet.dll/CScriptComponent",
+        "postprocessingeditor.dll/CEntityComponent",
+        "postprocessingeditor.dll/CEntityIdentity",
+        "postprocessingeditor.dll/CEntityInstance",
+        "postprocessingeditor.dll/CScriptComponent",
+        "sfm.dll/CEntityComponent",
+        "sfm.dll/CEntityIdentity",
+        "sfm.dll/CEntityInstance",
+        "sfm.dll/CScriptComponent",
+        "toolscenenodes.dll/CEntityComponent",
+        "toolscenenodes.dll/CEntityIdentity",
+        "toolscenenodes.dll/CEntityInstance",
+        "toolscenenodes.dll/CScriptComponent"
+      ],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [
+        "!GlobalTypes/ImportExportOptionsEditableData_t::ExportDefaultFormat_t",
+        "!GlobalTypes/ImportExportOptionsEditableData_t::ExportEncoding_t",
+        "!GlobalTypes/ImportExportOptionsEditableData_t::ExportFbxUnit_t"
+      ],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "spec_lock_to_accountid"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.000000",
+              "oldValue": "60.000000"
+            }
+          ],
+          "name": "cl_embedded_stream_audio_volume"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [
+        "mp_modify_timeouts",
+        "spec_goto",
+        "spec_lock_to_current_player",
+        "spec_player"
+      ],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [
+        "schema_enum:!GlobalTypes/ImportExportOptionsEditableData_t::ExportDefaultFormat_t/ImportExportOptionsEditableData_t::ExportDefaultFormat_t::DEFAULT_FORMAT_DMX",
+        "schema_enum:!GlobalTypes/ImportExportOptionsEditableData_t::ExportDefaultFormat_t/ImportExportOptionsEditableData_t::ExportDefaultFormat_t::DEFAULT_FORMAT_FBX",
+        "schema_enum:!GlobalTypes/ImportExportOptionsEditableData_t::ExportDefaultFormat_t/ImportExportOptionsEditableData_t::ExportDefaultFormat_t::DEFAULT_FORMAT_OBJ",
+        "schema_enum:!GlobalTypes/ImportExportOptionsEditableData_t::ExportEncoding_t/ImportExportOptionsEditableData_t::ExportEncoding_t::EXPORT_ENCODING_BINARY",
+        "schema_enum:!GlobalTypes/ImportExportOptionsEditableData_t::ExportEncoding_t/ImportExportOptionsEditableData_t::ExportEncoding_t::EXPORT_ENCODING_TEXT",
+        "schema_enum:!GlobalTypes/ImportExportOptionsEditableData_t::ExportFbxUnit_t/ImportExportOptionsEditableData_t::ExportFbxUnit_t::FBX_UNIT_CENTIMETERS",
+        "schema_enum:!GlobalTypes/ImportExportOptionsEditableData_t::ExportFbxUnit_t/ImportExportOptionsEditableData_t::ExportFbxUnit_t::FBX_UNIT_INCHES"
+      ],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "SFUI_Settings_HudTelemetry_FrameTime",
+        "SFUI_Settings_HudTelemetry_FrameTimePoor",
+        "SFUI_Settings_HudTelemetry_FrameTimePoor_Info",
+        "SFUI_Settings_HudTelemetry_FrameTimePoor_Slider_Display",
+        "SFUI_Settings_HudTelemetry_FrameTime_Info",
+        "SFUI_Settings_HudTelemetry_PacketMisdelivery",
+        "SFUI_Settings_HudTelemetry_PacketMisdeliveryPoor",
+        "SFUI_Settings_HudTelemetry_PacketMisdeliveryPoor_Info",
+        "SFUI_Settings_HudTelemetry_PacketMisdelivery_Info",
+        "SFUI_Settings_HudTelemetry_Ping",
+        "SFUI_Settings_HudTelemetry_Ping_Info",
+        "SFUI_Settings_HudTelemetry_Show_Always",
+        "SFUI_Settings_HudTelemetry_Show_Never",
+        "SFUI_Settings_HudTelemetry_Show_OnlyInPoorConditions",
+        "settings_telemetry_section",
+        "settings_telemetry_section_info"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "59482e755602890ee016e9cdf0c331a211afa5b459a9efc6ac09cfc3940f0938",
+              "oldValue": "69feddf70cb4ce0d55c1ef6cb33e6c4802bedc87c96b79e7a7349f679fb3527b"
+            }
+          ],
+          "name": "BuyMenu_Promoted"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c2fc3fe4eee0129db7ea391f49218a7cbd1d15cc3aa958566238b3daf2f239a3",
+              "oldValue": "7f576b18504b80649028dd5ff38117068994be01719de66047cb8ac0352a1d98"
+            }
+          ],
+          "name": "CSGO_crate_community_33"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5d0b110ffd1bb4df1ce6e09998d508b80b9242554e7e7375c5055ba72f509a38",
+              "oldValue": "5f63d48d5608b08a444f8b61670788a75a5d8ac2a336336cf0b9a4b07eb569fa"
+            }
+          ],
+          "name": "CSGO_crate_key_community_33"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f5576230b73f5642722569c9d13bd45dc8b0c11a27e91d07634dc35e5d2e90fd",
+              "oldValue": "da517784266e013a22842d87db632fddb98f7a63117bf351bb0f4c616b4441af"
+            }
+          ],
+          "name": "CSGO_crate_key_community_33_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8570dc146f108428e2112137344ff0da2495558931b22036c0cff7c86ed5e329",
+              "oldValue": "38e2a2c4beb53fcbe0d66d3da40627590a03e76593423d3e9307252009011c43"
+            }
+          ],
+          "name": "CSGO_crate_signature_pack_paris2023_group_champions_tinyname"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "197c925e6f9fc751d8e4673f9e399526d0dfe6a9cf7bba27023edbab4131c5b5",
+              "oldValue": "b04308341ec65d5be68f3130db0bd0216ffb8c420ca2a4021edb8a0e33d83e79"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_community_2024_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "585b9cafc7a2cdb88423bf78d915e0952515dfd3b53a325e9b7ec4fe404247a2",
+              "oldValue": "2c9a3cd53da7ce18d44b7df9846662f960057b4ad84986f2197774b71e09c2f8"
+            }
+          ],
+          "name": "CSGO_set_community_33"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "97aeed227af4a7559fd247ff34dc1bd87a4b507ee3389d73414e64835b6b8e97",
+              "oldValue": "ece8ab9db312068fb95116f9a617d3087a94540f165a7ad9ebccb16d69077f89"
+            }
+          ],
+          "name": "Cstrike_Chat_All"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "54b81bd99dbbce8df2c43ac9460bf67baacfbd0a87f2d139dfd5485e8a8579dc",
+              "oldValue": "411f986f275e55cfcda7757e76f2c6b56d221692ec254e0a140359a47bd58b7b"
+            }
+          ],
+          "name": "Cstrike_Chat_AllDead"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3a509722b902182a25bcda470d05da1ecbe0f99f42c1815d2266b83c15dea184",
+              "oldValue": "bf465263fd689b7f964c64514e07dc3a1b45af3e5edd10601ac9b4a4086b01f7"
+            }
+          ],
+          "name": "Cstrike_FirstPersonTracers"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2935154b21fe23382f11ecaf7fcbc50d1f8d80ba62e518c09e43cc98cb52b5b9",
+              "oldValue": "b0f695744e8a33b54d21d229d20fd6d89c7c8255d5a47da2f186d454af2e7df4"
+            }
+          ],
+          "name": "Cstrike_FirstPersonTracers_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "82386b94e89dcd6d0f853454d46717065b3aebf4d9537100e1a00899ea7bd84a",
+              "oldValue": "b43727964c840a289823992d303520fa572f77912bf49bc17a600694073a7d2f"
+            }
+          ],
+          "name": "LoadingProgress_CompilingShaders"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "067e6ef065d12301f0dbce01191bd70a9428435b9ae5db74fb790ff43823fe4b",
+              "oldValue": "18ba5e94c8a5c93c3955755125be3365c390457ae1363d56b75b682c9071c750"
+            }
+          ],
+          "name": "LoadoutLockedPopupTitle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a91d8071f332b479c44554473144fe608bf0723f21d841b13ea268b12d52c06e",
+              "oldValue": "9bcc99bd4daa747d1b626e000ed66cceb61928913c496cb24bd84dd24b8ced77"
+            }
+          ],
+          "name": "PaintKit_ak_porcelain_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "64a916ebb7dade78e60fd2a6fc96224479b2fdfbe70a7435bdccafc71e0e829f",
+              "oldValue": "545bd0d5ccd0fa77e57a9b86b178a20bc34be5c0272551cb324e05d1c93120c6"
+            }
+          ],
+          "name": "PaintKit_awp_tempered_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "915b47a55e1f277aa27d2934ea2fa46998a84fac8333ca4f518728bf13e6e89c",
+              "oldValue": "c6209593024cdd47cc29f88067c083235317a2fcd32a6257acc760b8329abac0"
+            }
+          ],
+          "name": "PaintKit_dual_berettas_lethal_grin_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f2f87c7b8f4c8b429ef67f31611570a58452e955e9b2ac8aea19851f8c641f0",
+              "oldValue": "364e6f8948cdfb1821280b2e94eda9e05d2108cff27f6fa46ce68242a914e72e"
+            }
+          ],
+          "name": "PaintKit_fiveseven_hybrid_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d62de94b288c71fbd4c0d43c5bddac2beb706875ee6375e8efb6372daf14b1af",
+              "oldValue": "c3f294a588be3b2e46d55ec89dcbf160930e72276517a9337c70bae6843bde0f"
+            }
+          ],
+          "name": "PaintKit_glock_brick_mondrian_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4cc0f79bea769020ae156952e56f4bfb9b72c920e3b0139235cd026f26c9c741",
+              "oldValue": "49662f33c9bfe0f759dcf899934b3fb4cd12e05e216fea43f1a94c490d66b932"
+            }
+          ],
+          "name": "PaintKit_m4a4_snakebite_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "48470b4fe28b9e096455c4b8b41c387cc1c7465849b4bd5c31d3ce9536978339",
+              "oldValue": "7f88bccfba3785f486d075381962dbf353196dcdff6eadc06aa8960c1f3aa641"
+            }
+          ],
+          "name": "PaintKit_mac10_illusion_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f3b9fab3adf589d7c6a0d964886d879081e52eb89889dd7a678baf398be968cc",
+              "oldValue": "ac0fe874b938a40718fffb12e91e64ecd88936c3ead569285411769e5def072a"
+            }
+          ],
+          "name": "PaintKit_mp7_just_smile_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ef6979987d7c6ab283c278f4cdd288ff42c6f3ffadd5911be62087ed18757575",
+              "oldValue": "2431135a4432fa660af6d953b25e92e0964ffbd58fc5b61efab9e9765bfdb752"
+            }
+          ],
+          "name": "PaintKit_nova_drakkar_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "652e7661bac59ab2d92342c9b0d0ba1781c34027dfe48a12b68c20c6f51480fd",
+              "oldValue": "2c6b188e70955a08a19bcb83c870feedb965db8dc1bafce26267def55f70bd24"
+            }
+          ],
+          "name": "PaintKit_sawedoff_gamer_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6c96c82ee518ea93f5317e4449814b2c6aca650b4b04cc63c20fdb300a1cdd18",
+              "oldValue": "a058963e4b85a00c2876d372c3c44bd7a48bfdda725ea43325e40b1609b6f676"
+            }
+          ],
+          "name": "PaintKit_tec9_junkyard_engineering_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07b5cdcfa1caa39d29b219719b134fe2a7350da3385ba51daccbe73463bbe293",
+              "oldValue": "d9d077e4b77caba70ed5e85400fe3a2a3fbb390a95f84e632d570b9c9c3fa354"
+            }
+          ],
+          "name": "PaintKit_ump45_assembled_engine_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "348ce20ec32cf796401be469ed9994fa812d117c5e301437f95bd6a73d5e69e2",
+              "oldValue": "e4814d434d03d81ffd1a36f6c60a82499068f08ce72dce888cc591b4d1377831"
+            }
+          ],
+          "name": "PaintKit_usps_doggy_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "13e96f0211e7ff799cf9c2070a6cb07766782e2d7d7658a1238f65fac2d406e2",
+              "oldValue": "6b64e901c1a2c9c9c62741ff3bc0a7b04567383dab61923147bd70c25750793d"
+            }
+          ],
+          "name": "PaintKit_xm1014_irezumi_Tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ffeaa031ab8ffc86080e1eb383c0fb4761731fed56178f393fb244ae69d686a8",
+              "oldValue": "8ae06d8bf69a8bb6839598fefadfbc49e5407f5a30c4cc288d530b10206dbd42"
+            }
+          ],
+          "name": "Panorama_Vote_Text_AutoInstantSurrender"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7aac19d5c5f82d89a1e0b78064756ce328436dd46e3d33681f30c361977d45d6",
+              "oldValue": "941c457f360a5db9a6d03bea13b3d8546151aa630a6170b7f2aafcab8a07a592"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverLink_AMD"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5768a6eb36d047130f1fa81535a864bf0281aff025c0ea2cade2bd9166a2d346",
+              "oldValue": "51ca1076d77bc94911c17244d90ef4b0cb80005f4d7c57779a98cd88eba61ed5"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverLink_Nvidia"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7993e933598d21524e3de1f4cd58b68da129d73ea11e5f052361386b20c31838",
+              "oldValue": "ed35ff2bfb44db5e920853473bdb6bfc265b0613ddbb158b97b3ef26b0a11bbe"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverWarning_AMD"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ed000a100c24f54401a9c672338740f0eab484dec118bbf3e708f404c4cb3c0",
+              "oldValue": "0804d9da7b5fe138ff7660c2beec9496cf5b766e8b638a65e381fd28bfd7179a"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverWarning_DontShowAgain"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5c8e42eb28f8cddbb654c494e6a509eed2a02b57c47d23222e9e3e26b11ec749",
+              "oldValue": "2c748ff8a92dd414520d0baef7c414905982f965ed29855f8c22cf988fbccf09"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverWarning_Nvidia"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6a36cac3efb495822582f2d0013e301ab6d8ee23ff72af78769b02d5d63c3a6d",
+              "oldValue": "ec9e2e1104e38a659915854dffd24bf23e244aa45fec6ae2296858a241ea2096"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverWarning_RemindMeLater"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "243c25d090b403f4817e252e08b97eff9af055a1f6108f2b21a502f46d78b3ea",
+              "oldValue": "baa63a48887843d4ec8881df24341d85bf51aecf7bbea3cf80a015038262dabd"
+            }
+          ],
+          "name": "PlayMenu_GraphicsDriverWarning_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3fdd2feeae0f6c0a630ae74b07852f0f0b29c257b45637a8ddd5d2a5e0b3735d",
+              "oldValue": "517f90d4fc9bbe5f3aefc4feb2a4e70a27c1c547dd238751782126370f361737"
+            }
+          ],
+          "name": "SFUI_GameModeGGProgressiveDesc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fff8f0a45411538689faa905a09b81a07403c511481a84821b47eec2d78bbede",
+              "oldValue": "9879bb05f571454a3e3a13626ed4173f0e810f4a379ebded852dc67312c2364e"
+            }
+          ],
+          "name": "SFUI_GameModeGGProgressiveDescList"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "785b55cca288c25c9958a2435f9ea6da74833644eca3b7a3651def9c375f4fb8",
+              "oldValue": "e8042ef947120270420d3987df9aaafe7a3f661910676b53ebb2666cc580d4b3"
+            }
+          ],
+          "name": "SFUI_GameModeGungameProgressiveDesc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3be297eb66d446d4c037e7044a04833474b94d8112465ff2dca750912d2231b8",
+              "oldValue": "02239f8987aa35ffd07187cffc07d1d3a27cd9842c7add7282dbef4d14876e82"
+            }
+          ],
+          "name": "SFUI_GameModeGungameProgressiveDescList"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0066a553c39146a129ce727c5d9410076241d17673c6618fbe012a030e39c5b7",
+              "oldValue": "f4da852123c274d51c4ddc13c8c682678252d25cc732c416e49b424590c8ef24"
+            }
+          ],
+          "name": "SFUI_Gyro_Acceleration_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c56cba63192bf9f61501828beb2ca000ca2cfd75e622561fffd749f49b6bf7dd",
+              "oldValue": "0677fc0dae6ed9d1179a18f90501a972b7960834f0dc0c54bc5eab6dee015d5b"
+            }
+          ],
+          "name": "SFUI_InvContextMenu_nameable"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aba0395ef15151d4454eaa1d4db94bf7d6aebffc4e6e325b8a524a5e3d2fdb37",
+              "oldValue": "f378baeafc3ec51120b344745230b805e963761b45c892e0048335d2df49f0c9"
+            }
+          ],
+          "name": "SFUI_LOBBYLEADER"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "25d6aeff2815ed9d285a3f0c068d1626ba5d387fad2ac8b62fa391f1bdd9ca29",
+              "oldValue": "c56c0cff2a8d711b391fe0d2b19d11c10a5df5b33580218cc4fdc71d0e03ace1"
+            }
+          ],
+          "name": "SFUI_Lobby_LeaderEnteredQueue"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "632220bddce715001519a98e4bf22c56d22365169bbc8730dd7a1af9f76d4fed",
+              "oldValue": "9688a6ae04e6fad0270a2cc23574d1f283aa0d185eb867a446f44f459f4dc94b"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_StreamTitle_19_11"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a2fd6a27e7f23572ace93c3598cea114a0007170ec54237c5fae03cfef10a93c",
+              "oldValue": "147925d99f306b4189de9a9d4782fa86489d03c1b0a448a3cbc566fd12033c67"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_StreamTitle_21_11"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4876ba637d25e06d1ff2603475d36700a19c6eb846cd11e4d5ab26b2f0a19007",
+              "oldValue": "591900907d9d992796f78d6c2f9df98b5a29d9bf186291574d5b83fcc1ebb0dc"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_StreamTitle_22_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "14f70d6aa640fa07944be064243174fbc8f6db268dc9d278275c567313ea6da0",
+              "oldValue": "7b0364fce8c54f7c7ba2650c4cfa40072b8fe1564f7d397fb749f1bbe78d9f4f"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_Subtitle_22_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4bc0f55a4ff68a79f90b0bd8da4c645f0d9e9aa2e80f4bb8f0bfd02368f38de9",
+              "oldValue": "1167e1f02e3a99bf1093a92c8f4f547501b972102d892f8ed3060849d1df593d"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_Title_22_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "483fef5a35df89cc5423f454b1858bae1fd14eec58edcb447fd2d61a684c6cdb",
+              "oldValue": "338720d72e0e8e662b8d6e6f10c262680b080c58e9cbf09534c1086d82bbcf45"
+            }
+          ],
+          "name": "SFUI_Map_de_depot"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7b909f16ace085f60a880897185da871d19d2a2b56f627d3d7d2c1f66ef9b620",
+              "oldValue": "07024dd1f4f65b16786ff9e922834ede7f531c966b2ee0e67abe9a250e659aa8"
+            }
+          ],
+          "name": "SFUI_Map_warehouse"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f237d0dc445d951cf5b6955aa5497245948983fadb5c495738b78c10476587ee",
+              "oldValue": "fbc3c1df834cfbf35da3a140545d3b076ba74e6c38661540e9f8b3864d597ee0"
+            }
+          ],
+          "name": "SFUI_Map_workshop_preview_ancient"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "57fac955c39b8390279a1250697a3d84638b3f09ea1f49414319a5b2ccfa98ee",
+              "oldValue": "1ff7baf5dbd3263f99ee77ca725f6ffb6c358bb3f377bf1d9c8efb8f9b9f33e9"
+            }
+          ],
+          "name": "SFUI_Map_workshop_preview_dust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5da34f2122af516111541359f33edb53f797e35714a178a24a95e5520be9dc1c",
+              "oldValue": "700f399bc76289d39a06189083a14855990147439b812c1169d86bb6f59d1b51"
+            }
+          ],
+          "name": "SFUI_Map_workshop_preview_inferno"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f577b683640a91c85fd65c1d5085b88230029c226125095ae0426da02b1398d",
+              "oldValue": "5be9ab3cbbe11139f04cf51c1580a270c0683c08f19c03710ee1b3c650751683"
+            }
+          ],
+          "name": "SFUI_Rules_GunGame_Progressive"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0d29b43172912ff0f25bdbf002d0d0413f278c8c199e1e8b0801bb0f818b1828",
+              "oldValue": "de4d258ddd04c62b4003e053326cb1cb3116108f9f180e6847cf16c2db53c4a9"
+            }
+          ],
+          "name": "SFUI_Settings_AdvertiseBeaconAtLaunch_Last"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1b5af0e1be9354c200d7b4a1713496115575e2a3d3982ed13a0734c014a05f78",
+              "oldValue": "f20526a956a0071b7f15eb1e205ee19c1a8a10f88d070242aceeddf8d59a3f7b"
+            }
+          ],
+          "name": "SFUI_Settings_Audio_FOV_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fecb50d92b3d5b6885c64fcbb33bf1a2ebb2fd6a8b5f8e4a9eef8261e082f02d",
+              "oldValue": "7c1ed4261760721b54f5ea9a8b6f512e0dec5c7f7a30625d58eb580bb557b69e"
+            }
+          ],
+          "name": "SFUI_Settings_Enable_Audio_HWCompat_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c6facdc2002453c2987aa546e156c0b9aed87c240d2ed6d1d1a5eec71cbe9a17",
+              "oldValue": "61ec33aabed9041c0d11ced113a853b2ca448017a1701b8dd1f907132252ca7e"
+            }
+          ],
+          "name": "SFUI_Settings_Enable_Mic_Monitor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0d97a88682ad88a9bd43dffa882b13b8b8cfdcd0279cacb245ddbc3d98de852f",
+              "oldValue": "f12f715c5479cf41c55215e9388adc35466fd57f3d196d8396e2f6172da7b9a9"
+            }
+          ],
+          "name": "SFUI_Settings_Headphone_EQ_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "80e5428695f9f0164c1055a681839fa68acd44aba353a76385f45e08a8ca272a",
+              "oldValue": "6ba958a697d599aa4981c6835a98eec4ea006932bd8c9f96ef147996e84618a1"
+            }
+          ],
+          "name": "SFUI_Settings_MiniScoreboardPlayerCount_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "37f35d6df3175d48b179ff420356a83dea78497ebb262c859d5cacb65860d0a9",
+              "oldValue": "2fe6d1ccb513c320a435dc574f61b978f7970c718de9c56f1a577aa06088b2f5"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "26a6f8c75ac9b924b0ea0b4aa4550363e0f0f61e646fcdd07c7ddb7d932bda1c",
+              "oldValue": "5904242480828de80af43aaee371f2bbca8716186378f9c40a28c08690531230"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "03d4d381f7c0ba7727dbcec738529dbe68311e8cd619203eae265c018c99dbe4",
+              "oldValue": "514819f1ad55a883ea068bce48ae30428962bcd6adf1517190fdd8c9200abdfe"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "64eb69adaa8960f4aeacbfde289da1a97bcfa8dfb2e6f9256465247d5682d796",
+              "oldValue": "071a112548a15f02a8ffd4fedd2c275290c9e7c2a8f86d51d7654e3ad0e9c27e"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7a407139af23d67431a8b8b7dbf1b885def122ed8f6489db1d506f829045fa35",
+              "oldValue": "f4c5f91ff9caa396b15eaa2a5afa7ae508c40c4cce50cb46e5dd2ecc0718534e"
+            }
+          ],
+          "name": "SFUI_Settings_Pan_Behavior_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ece5346d34168aad0c7fc1c1eecf0ceafefb198e68b39433d98d511ad1227d69",
+              "oldValue": "9e3df7adecbc84b9744976acab1fb55ebe8ce309581ad5512658b299a36cc359"
+            }
+          ],
+          "name": "SFUI_Settings_TripleMonitor_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "360553ba0915f09c8adc8243dd57b7430ec5530f227a64371164619a3c7e5849",
+              "oldValue": "35246913a6cd857f64a637f1753d00e97277bba7e238eec53078395511bfd239"
+            }
+          ],
+          "name": "SFUI_UserAlert_Unreachable_Reason0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cc700670d3a53c9abf24fac1afb0ada62e3a44e8bad6786c2daa7fcee3b02bb8",
+              "oldValue": "07d9d9cce2ce7d67e881055d5b16b0cc9fc4832c7dbf04795e574dc33d667361"
+            }
+          ],
+          "name": "SFUI_WPNHUD_knife_kukri"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fff50971d2dd3a90c52aa59b5f9cce38614e1ca58e8bb6b25aadf756127846d7",
+              "oldValue": "5d2c388dc054def2824c577637f7d476cbaf9d14213dddd7bb57ac9cf29025a3"
+            }
+          ],
+          "name": "Scoreboard_knifekills"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e71b8728d10d353d6c94fbf97bee11b8f7bd4cb428b788b32375bf3750ebdbba",
+              "oldValue": "e16088721e559d8674abadf28b3e3a2e3cab5d44f964d1540506f9eb5a417c15"
+            }
+          ],
+          "name": "StickerKit_community_2024_foil_lost_in_smoke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d04de6a6b16acbe5e7a0e3bdda572e4fc5cd750532a0c791f6805e90205fa380",
+              "oldValue": "6c38f54ab7a143884604c4f676325a859ce98f4e98595e68eded1b92895306de"
+            }
+          ],
+          "name": "StickerKit_community_2024_foil_ouchie"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "306c4d8f80f965e470d4d45b013573dcdb5c6ae8a41bea41fb4420f8715b5a34",
+              "oldValue": "08faecf5e650a805792b46bdc200ab817d7f3d98471f4148e580494fdb951c5d"
+            }
+          ],
+          "name": "StickerKit_community_2024_glitter_lotus"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "69f4e506223786199388f06a0650596527fdc0e051c1a064c66da618ba8059a0",
+              "oldValue": "08baa6dde9420c3fc4134d405a6229042ff4ba9d06036c8c2594990efc4029fe"
+            }
+          ],
+          "name": "StickerKit_community_2024_glitter_pushing_smokes"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4d67b581ac28012df73ae81e65e94db7715283744c87345a65771ba4171b35de",
+              "oldValue": "4e7b05cf24b145555ceaafe8ba4ab0eadfd9d9406a8d00bf86d8905bbf92abdd"
+            }
+          ],
+          "name": "StickerKit_community_2024_glitter_true_love"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ee930a28de5b7a017f548a91e855d47c74aadb2c16abd0548cb7b97c0ae61ffe",
+              "oldValue": "7e8c30da5fddd5c9a0e1a5e0b3143757fab55c2e556ba6d98c2201564c44f788"
+            }
+          ],
+          "name": "StickerKit_community_2024_holo_cedar_creek"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a6120d06fb102bfcafab7ddc417cf58eec963e7d94d2464d34eaa6f7cf5cff3d",
+              "oldValue": "dec1f2be9ba20ed12764ba09f25260baf831bb3c6ba9c0aee9d293eee853dae9"
+            }
+          ],
+          "name": "StickerKit_community_2024_holo_lit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cc7786b5c926a86eef5cd6ead77210955695a0e31dee95d864ef3d788868fc03",
+              "oldValue": "9296375c40386393efca551e37f8057285f2763eb61de719cadb86e859a03cb2"
+            }
+          ],
+          "name": "StickerKit_community_2024_holo_loving_eyes"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4420a4e0fd8d035bc31072d547d6bf5dec7c40ecfe7e94d5635a776f351e7007",
+              "oldValue": "ca5322752b262f384298a4f58bc76c1043c607b42028285ed0ab7ee58b6f26da"
+            }
+          ],
+          "name": "StickerKit_community_2024_lenticular_econometer"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d956a38f5b4db459436cf869841574ff678c391fb0aad0f6c0103ba28510586",
+              "oldValue": "be314da4aeb72380e28d0c53942db05e5ee8eb2823d61e419b725832f0bc7c13"
+            }
+          ],
+          "name": "StickerKit_community_2024_lenticular_old_school"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "05bcfc82d1465412db08e21cbc08e5064a87ebbc51a1159357941048401d21c3",
+              "oldValue": "e6764288479305c7438b30ee405fcaa82396a6b884570f585db5b66e52abd290"
+            }
+          ],
+          "name": "StickerKit_community_2024_paper_angry_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f06682e0eb8eca649349bd54bcc0901abcc8b11e70def8c85002375abcfc46ba",
+              "oldValue": "10d9d557ed651c4b4ef0e910aa32787de2a7a9b0fabfccaecc47c4b6ba50f729"
+            }
+          ],
+          "name": "StickerKit_community_2024_paper_kickflip_47"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "66d71be223a47c8a8968e43fad4c157ff84cbb6d253bdbe58af7338d93234cb6",
+              "oldValue": "47226219ae3ff6c20642d735f5787c45c3434a2db6bec69bb32cd83fa5d69009"
+            }
+          ],
+          "name": "StickerKit_community_2024_paper_peek_a_boo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5d25e752ad14dcf86b996d06cc8d0fc6a838984bb635a5a5d00a3a7257895803",
+              "oldValue": "b28cb66047cfe9cc9bb82a378a6176f5663c655f9749282079cde48ed0ae7e20"
+            }
+          ],
+          "name": "StickerKit_community_2024_paper_please_return"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9cc39bbdaf8387d55ddafbfd600763cea5f400ad18b55e7de7ab87671b3afbeb",
+              "oldValue": "7c83496ad744e7c6d8d9e1e6429877de7f01186a0353594b254af49b4ca5da9d"
+            }
+          ],
+          "name": "StickerKit_community_2024_paper_this_is_fine_chicken"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f6c2182b1d28aca23420f710588fc1fc2530a8cd3b9ab46e026075cdadcc3038",
+              "oldValue": "678c56de0b0bef6d0e65eab3ab087c45684539a270a479f0fc5dc1afa19bc2d2"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_aleksib"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d50a0e1c0ba60a15a675db91a8a7612db6eeccec3c3139ff3ae07e524a6186cd",
+              "oldValue": "f4feaef8d57634e23495909bc76b9c8fbb36d72c01896ce3839c57e05459caf4"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_aleksib_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "860b2f3bd56f5bb68aaeca681192002db526a1485137c64174527c829d6c744e",
+              "oldValue": "e3591b8199c0e6f490f4f3e5ba7b784b02e7a46793025ba86b58ea4dd79cb057"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_aleksib_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "efcd44b2717433ad701e01f17787ae2c731ab0dae4a2177deb8b61c88b7cc0ac",
+              "oldValue": "64780dc1920f59df9ab15f479d9ba1f73e638eb3391793625b4f218a1e3342b9"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_aleksib_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e6b7e88433a58f2b01e4fa871c0c36e03eb1056814f67905de97cded801c1d46",
+              "oldValue": "9e4eb45060815d774f9dfc51570c8d9cb65b057b33f6cc553d2cdb3c0cb28d16"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_apex"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f0280aa2148ec8b16fcea90ea0bd8a7d820421245c26b881b20543462add5e44",
+              "oldValue": "451176bc13e539c5af13fad176628a7dc0c702f4700a448c49fb8b0f35d62c42"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_apex_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b7eac9b95374630fef1bf875482678bbe9e05eebaff5accb027e50bf7f21a226",
+              "oldValue": "283e206629095f7a93bc3384a19f3ff1fcac4b911c512bac7bf283be0ea9c7b9"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_apex_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f6d8202bf3fe012a48193a2d8c3f8cccf01b76ff800eb675a15fb83704e7ef1",
+              "oldValue": "f26e5a477af4d61957091b47f29fc92ff7aa39b0ea780d7995c8ea7fd00e82df"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_apex_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f342d9735f149bf26f1ca673f2db572dc6a17a4d0a7a2fbb270fd9d3eb6a0a4b",
+              "oldValue": "4ae27ac1f178fdec2375262fea637342cf5d15936cf9ec619ee2b9afe3c38997"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_brollan"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e7168990ac1ca3001bd13af997e79dac9cda3a787ff30a2f6400d3733d9eae2",
+              "oldValue": "08642356e47f9c9f10a0dcb8c61b243d54eaa8dfe232b9f1de3400484bc908d1"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_brollan_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d5645ef7ef2dc62620919998fd43b1e0ac8b8b8fcb6b390df20b66ea657017f8",
+              "oldValue": "a7e807953dc960e401ba288237ee4982c8c01a78d3c119f408eba656e3106a64"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_brollan_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "86a9a1a483156f26ab3efc59d5842f2db3a4ba02deeda9f17208d4613bcc4107",
+              "oldValue": "fd236c50284d850fcd25cb81fdfbe528b313cc7b6338d390e40d97e037ac53c4"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_brollan_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "328e6457df3e71e1f3e595843bf28f4e729faed531da7eaafb38a12e9a02219c",
+              "oldValue": "c70cbadd317704af4fe6a70de94411530b770af32dbb5aefb7edd98f3b98abff"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_cruc1al"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ca3b8fe74461f0f55c554bca54e7a499b1dc3a0cc240a7b6f80ed90e9b9a48c5",
+              "oldValue": "349b4aaa4942411704523ef6ccf1f078a9b2ff7b8c08485e668a4dc7da80d64f"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_cruc1al_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3991b5198f7e8a3f855acfc08dd32422e0e1708d7425b30088c63cafbfc9027e",
+              "oldValue": "3bea52469b4e07ea227506f98253e907430d0b79ac4cd61e9e31e3c64c2e95bc"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_cruc1al_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a1fd39de3d97ea93bf501186b0410e8c0d7c68d46b204040da7bab049fcd7246",
+              "oldValue": "5a20b8f211ceb3a283ed01b6598136c07535ca0106aac452a3fcb5c29838193e"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_cruc1al_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a7acf53f5a135aaf9b54be6937c7a0be3c0b48ab8a3b616b974e5258f2bbd31b",
+              "oldValue": "3aa91fae3d0c03fe89f9e4c5f04f48fa304ea02767cee3368f5517566a19728d"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_cypher"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "132c1d5bc5e4252596e3a7758f1c45af995d1903d7eced61e3ac02bd10f77e12",
+              "oldValue": "5b0b617caee9dd23b23b96cb1e0d523f31b2aac10f26dfec93ef6e660bb03313"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_cypher_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "539ae7100fa262820b256efe0e7941260709726cee1ac6aa3d9c22a77c5480ff",
+              "oldValue": "8098aedc2bf7fa6c5fe6315e46d07b5ded5b4864441e9f7801d4a157f87c68cf"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_dupreeh"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ee3ee275d475664c93c4e8510732ae5d0e209e25f45cd97daae6e0b1ac4d156e",
+              "oldValue": "9aaeb345b9f76678a19421d8d70b2d1f49162e7533d4df113704f618cad8a86f"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_dupreeh_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4a1750e474ceb7b354a2ffff8f4e5a836eb4296c1b47f0623db9d9f67549b5b8",
+              "oldValue": "2ad997e032f3c29e1447404651f2f382ceba589b380af98e92c7923efdc2ebe2"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_dupreeh_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e0f9fdf0088bb852f69a0b529cd30c74ee8f9a915bf5cf1c5c809364b595f7bd",
+              "oldValue": "b47cdc7aaf8f379565e2dbe707aa0b797250aff7873b1100ff44ed235c873b12"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_dupreeh_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a30f11e75f03d60fd5c3cd8eca1aa86d182d09b928b896ebc2ef264c084fa168",
+              "oldValue": "91a38e51ca3664a075df37c6b3acfa29f2be3876af12106888e21ef362bfd86d"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_gxx"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b7d8d942bde49ecf7df11226fabc40363576ef0e130ef10813e101166b6a68c6",
+              "oldValue": "bec0d64949dc49af9a89cb115ff97a4e10ca89e3750cfc232b8a38014855a737"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_gxx_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15439fa7936fb96133a8d142955d313c76fc25087f6dfd2c9435bea49a06431a",
+              "oldValue": "26e136a8fe4385630cf98a85bf6222add21b04243dd8e34939e7fb422e29d29c"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_gxx_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e9c55175bfae100be67628dc1931928d8f310772f0e182c059a0803752b503a6",
+              "oldValue": "b5969aa8ced252fb9d425c87cfa3ea4f43c1eb975632ad20643575db288517c0"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_gxx_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a005b5896df3e279f8efcd008e6985ee157f3d3bbf5061038dae57bcffb0786d",
+              "oldValue": "c24bf61a8a0f4ca3284b81b9d5076ecee06c51caf1b21bd08b7f4f90e3951954"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_headtr1ck"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "415a9dff29c459120dd5cabcd3e798e8fef64fdb31253091ff3398cd218ec66c",
+              "oldValue": "b3d09bd78f70ab2887b9b63c1e0a21226b33f94782b88dd29646f5626e72e4a7"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_headtr1ck_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bf55ab92b30362651d46b899ad0de4240a184314b8852f65873e2573c1a505bc",
+              "oldValue": "818229005422be647e448857f1b1ae134689c53d1f18cf3eb38750eb71ebb2eb"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_headtr1ck_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "105333424a8c9e009e21f2902be8d68b7f40aa74fa3e0ce5751fc5611a79ac55",
+              "oldValue": "0e315f12d537724b32e54f0181b9cf89b411e65067a8f72f6cedcf9ae9546b84"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_headtr1ck_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "63a2d25916e00ffc66a5df5294f4ee4ca404c3cd6c79040d87fc91021ee17516",
+              "oldValue": "b657be5446f0a564f3085afe6e66996d20795cc48fe6304c817ad4d81e5dd03c"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_juanflatroo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2fe7f53749e5585627b9978cacbd7ce31cf8dca2ed52c61a86feabe3357f6994",
+              "oldValue": "e2dd8da724269c76cafc7659599e083473acdfb7edebb1b951618dcb843c5fda"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_juanflatroo_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e8453cdbfade4fba855f60afe8bfbe82867e0e4ec41f6dfcbd837a0730e6d916",
+              "oldValue": "ca997c8ad411208c59fde26a1dde17a37d91c0ca950b34588182862c9acfe742"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_juanflatroo_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f26688c76a599f515577280b1ddcc2f7abe64185fd68da0c3ec18f001273fea",
+              "oldValue": "1ebd36442f95bb5e21b4d8cc6ce06875540d6a01321b22817f0ef6b261253a2a"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_juanflatroo_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1eb8a35ae7caa9371f95f270a51e59499a0fbaff87862dfebb8f4e1780ac0955",
+              "oldValue": "7963869406a6ad72518ac49535f8adca883a38567a94553e029ba88b30c9c09f"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_k0nfig"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a5371ae1d61c8e365959fcd69e6ac496d15a680994d7152651d5d379802a154c",
+              "oldValue": "666cc2d9f89e5f34e3ef1ad9d5855ae26a13a80fff1688827eb289918f0c8653"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_k0nfig_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "94ec4fa39604e028a1f7c2bfc354697ed4e40ce17991e3bcf2e7d0a25755a89d",
+              "oldValue": "74772908346bf48310580398efffd1b7f4a6a2c8b0db690a5e1bd73b4ee72542"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_k0nfig_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3ceb4b858b0803e3e9817075629c2565b119a4a88eb4d25de25d2ee6739daad9",
+              "oldValue": "8665b82e535751a588252d53b8e1fa0a78186b10df4129e715a25f3a6705602e"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_k0nfig_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fd70a3b2fbfd3051ff25ef78b574dd1bf172b39e20b2cfcdf1ade0694c035175",
+              "oldValue": "9de92d5887215455248a4c06e9752ea972ff91602ec348b4b193ed21d1ef8118"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_kei_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "41a7a9a3eb6ea491a4f350811c18419592f6574072535c8a397147cd476a5b3f",
+              "oldValue": "77a4d82b3945637df248d94ab50b394c99f6e2cd82d9e804d6d6c98da7a62390"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_kylar"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a4a66432d946b78f9c5272326911794a935d8c10ef836cb6bf139bd1ca19a98",
+              "oldValue": "e89f0ca93f69a0a9acb92f450bbc338fe296730004695b13ab7fcaf1ee7836dd"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_kylar_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ff9640e2d23e1b1ac3230062d49879603d18b33ae6a4784fc4060b44a801a97c",
+              "oldValue": "11934478aa8cc36db50ff819fab19971f588d25503aa3b934ed13340a095ca45"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_kylar_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d46fa97c210746af1fe8999b67eac94a06c9a4c874f58e2418c7ee23b6889e5e",
+              "oldValue": "cab2b863e1846178a0c3c03a41f70b3733b311b476806db015b8b40f68e2d76c"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_kylar_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "de48e47dd531c71f92127d431b2ee8557d9ab62526b8f363264c539ee1e3a6aa",
+              "oldValue": "7b6e2c245158fb6ca9414bf49ec18b2804c3862967187b4d3528e2b79b1be0f6"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_magisk"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fad5b4a6ae0713269636a3eb3ad85543867d3803f64a9bc4c42f1afe143d7c6c",
+              "oldValue": "ec9c002a21eff2be4e7bc2d9043811674f9d2de3c243097e551ff8144dbb033c"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_magisk_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "99c9a106f1bf58a5f78174ef11ec58ef56177057e57115be59faf61e06f3699b",
+              "oldValue": "e75135fb7da8babd6bfbc32254a91faf44f88a41388ba267aa01d2c93d010554"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_magisk_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "85a35dc70d1a738113740891d05ef44c3b6303cf360fac9b264cab7ec561174b",
+              "oldValue": "a01506019a45784d451920e8b7d9ada4866490d5434dd43f377203343a8132e1"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_magisk_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7d92e4586dcc839c7807fc4e5e44b8a88bc7c51c6253a7c10759ce1ba866706a",
+              "oldValue": "98b649f43c478f6417702f63ce56791fe58a82577838fe64e9cde650a2aeed7a"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_mynio"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8cfb143c9d0d48b1d68b55cb793646ce1fa613b272160df2557345a23d370814",
+              "oldValue": "6b2b0ed96458d1248fe5610f86659d0206943f1d092c2d410c9c67f9d7f7c487"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_mynio_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9616ec8c78f1605c32bea826d6ac92e8136932eeb13de54c13c97fe6bc68ce47",
+              "oldValue": "d32a72b78c6502e392b01e3c3e9390dc08abd2d17aec97962aa7b28ee7fbb84f"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_mynio_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "da8bd4d9bb3544a84ffd80c723de05dfaf9f857bb525efab973cb2816dd0c5f2",
+              "oldValue": "9d6a65ef377a97bd4b91bf8482934f2354abda31dd9f3778f8a5e9e8ba419c97"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_mynio_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "df537363d512aeb100a55e5ea5799dbb6c5c7a744ab521cebb58c337a6af7688",
+              "oldValue": "eb6ff5db6864847b4186900abf430e18e8240d98c9b0edf79ce35f1883e86534"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_rigon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cc86b1e953bfdfab5df8328771ca09d173aee304ae6f57a9a07a3d7d4e5fe60d",
+              "oldValue": "59f8154263327ffe82cdd2abdca367cc25caec3f3ed595be8696117789d3e331"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_rigon_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "990f2d70b5cd40f786cc33210794d9170c6d6fb4cc636be9bab35a3b457b8156",
+              "oldValue": "31e4baae90d94d574689b292ba7294c4c647a30a01d1848651df4f22006efd4d"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_rigon_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3ed1a52741006d09f26f82cdca686ecda82b30dbe393e4baf06c52cc9e4a2718",
+              "oldValue": "8743be0305cc99d8c15953bd9ea9506f1d35074d193ea78bcdf49be40108f34f"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_rigon_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15cf3fe306e79588d6c114f2575f92059ef52b3ecabee111aec07db81372d3f5",
+              "oldValue": "4107efda64be40e8407e0bc9b0de65b54b4d329f40ae1f17cb9cac7fe2b0b4a0"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_sener1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "40b39c91ab5e03d7e349cb0064506bd9b51a06f4c0dc41ccd160ec361c5c156c",
+              "oldValue": "54211e36ac1ae749d36d32cbf199735f950bedf5682a29ff36c84a9026c36c62"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_sener1_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e3a4d4518a860738683b5492e92fcca744a6f730edd22616539aac6b19103f4a",
+              "oldValue": "5d02394672c403de531e683dcaf3de67289b01a331f5fcb0f2b774a93e8479be"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_sener1_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0764be82c1357d70eddf31fc268df8900e20203b653a2a89bb2515c92ac48f07",
+              "oldValue": "111359b8886eb39235e8f9c4fa019470dbc158a339c398524f2c2bc3c5ba1527"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_sener1_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9670a019b9f4476437706c4dc15c3cfbe10805cb798a7b96f06446484338e62c",
+              "oldValue": "a435082477b791eec699770b4a4e462f664505897890b09de964576b727e022f"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_sinnopsyy"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "70222e9244e3ed1160627f581186df0b6c859f5f83564d855574689bb37d07d9",
+              "oldValue": "55062b3858e88c0659a94b57023142209a2b42c3ea2935fedca4e635fdceba7d"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_sinnopsyy_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "83e5ef325b3001bb76b0bf9fd9f0eac0af976c0d1c66470cee06e78c3852c7ce",
+              "oldValue": "8790c65c9fe1c86e01fc34d532beff37982ba287cf1caee328b6893f8d904d3e"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_sinnopsyy_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9abaf065272d590a595c67c5c311628627bd76afbe0a4ca508af1fa8bea78099",
+              "oldValue": "64e5a0e797348a026b2192a64e496dfe1692375f4886a142e806a12b72a5db94"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_sinnopsyy_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "be59dd136d4142c3b45640a2c1d69275dcb1767d78396fde98d64b9ae8121ee3",
+              "oldValue": "a0d90988f79f6e7d9a0e9ba153ed2d218e886f07d0ff69e01659b38ddf4c32ac"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_spinx"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0324d7d22ae90605adb26bd70f3ecce16f399cd293d704cb2db0caa9103b3f8b",
+              "oldValue": "a73eaf5fdec257b880829431f2735ae56e900b886c5abe784b111d59c34cbf02"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_spinx_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "704f5b8ad3eff662bf50050c6abeb4d521873ac018bd2de034cf69314c9f0ac5",
+              "oldValue": "47516a5d9efb440bc9024afec40ac6578f90d5d7cc71936a7ef4e14f4e99c3a7"
+            }
+          ],
+          "name": "StickerKit_desc_paris2023_signature_teses_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53a365ecd57e763fa638944854242794a2ccb6a41ab9a0774021ce1b0026621e",
+              "oldValue": "fa11c72488b656e95f4c6ae311aea5ccce1fbec55af55c532b3bbc33e45be525"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_aleksib"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e2ea0db54432d201370354936137d0da127051127f5fcb92b7a6fd1c368b4f3b",
+              "oldValue": "c14e9cd877b3000d814cfa6f541f6098be783bac8549bd4a6ea56e2352d887be"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_aleksib_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ba791e2a5fd5b28a0b0c7c00c1b99d316c501bcb5513dd7106efde7c41c92e38",
+              "oldValue": "a8ba899e4c47745f1ed552b94f5422720059a6392573b64aa108ca553ccbcc11"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_aleksib_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cac9e8e0c04548a7a0e8041e90f2806032f1a36ff35b507069b58e44d6ae2685",
+              "oldValue": "6582ddd328a49db3b09e53e56eba786368317bb5ee41983d1b2972be6f8f603d"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_aleksib_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "65b8a6558e6ae1635a982ee41475e99a06863c03968bf506c13fe1fc350607df",
+              "oldValue": "9e9acf94a21ba06be4d7b86acdc830444fdd84dcae46b9707e06ea495f0af4ef"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_apex"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5db1b8332d0bb2e391e13e1f87b3e5dcf4354dd6def59005b9f6904e0d8fb955",
+              "oldValue": "cbb8d324b7b9aa00e79228ed7ced377154eb587693e175dec865f39376fafea9"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_apex_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "22a192003d7040bb4ba27d4eb26f0e2accd2cb7c534a777ab1e17e63a9577511",
+              "oldValue": "4435dcea759eeb2662182157390913bdf2f0b0bc1750aee6d439af0ee68dc7e1"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_apex_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "05c08b921cad3e5b1a008baa2e192235d0a5eb439ae74027a87a0bb6eefb5ad5",
+              "oldValue": "3dfb39e3a857daec56d86bad246c5f7d6086f57c4b1143993766c5d1c7bc2054"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_apex_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cd8974b04972cafcc2179e5289f26139a6b14288f290d7775687fa727c23c73a",
+              "oldValue": "139a87c126ef3bcb1cfe7309fb771257878f0528c32bebac73ff1c3188b8fc76"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_brollan"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b7e4d868c43826b7c3a3cefe83d206b9fad7f41746922f1fb7f69a6a00e94ba6",
+              "oldValue": "c3e7e85beb32d1de9e39c1a247f336aea40975dfd950a4f3b917df2adbcdc9c9"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_brollan_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "68d18883a4f441a1a0a9d34e660c75913a60e1a13d79cf7357f26e5d325a7206",
+              "oldValue": "47ad1c406e145072618de28701f749321776c171e523a86e7eb6d17225fbdce4"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_brollan_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1ed162fc2ea3a0edbcb0ebf73162d5758016fb050752fdb90ab67bc97202cf0b",
+              "oldValue": "952ec961adb391696049b9c1bdb1d876e3c6cde3cbc882d8ac972331b95f45dd"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_brollan_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c26f45f8a98f158a88aefbd1168f01312f9181d05abdbc4814aab2b11abbf9da",
+              "oldValue": "3b48ddc7f594b2488aff2729e490812b646ae7a1b854c00ae4856950d71c0397"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_cruc1al"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "301203a4736225905b30016986665eb9864abcefa5e562f5b9cf5db82005e143",
+              "oldValue": "5126a3a391c6381b059da60a0eddd95ca35dfd0d3b3da9e9ac37f7f099fa279d"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_cruc1al_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "92d8ba61ea12463c890f9448b11947dc2e7c82d687e53e5269f3484a562ca692",
+              "oldValue": "2d6f53a9e122b20141246b04ab1c4130caa5a85b8813f903be85982e0ccadb34"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_cruc1al_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c826cb633642c8897b8e78deadbabbac84c858e9924eab0b0598f003e05ddea1",
+              "oldValue": "68e220d382e325d508904f034a846812c8918d7068010b09332679abc7e4eac1"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_cruc1al_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "640ca7e2e751d32044ebf087667558c5656675687826afd1c5c9893308efa2aa",
+              "oldValue": "8db20a1cf57919f50f38b35d226aaeddc3a165f6ebc47b714b8e8b724196e652"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_cypher"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "42dec59451cae01961282d1fc872642be772d8003eeacf3ab1e1d1a9770b264e",
+              "oldValue": "1d1b9d6a59c0586d18a7d33da4c837ddf8662f2962e846d3ae8a76d14036ee78"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_cypher_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b39c8e31335145977c0fa59fe36632c44b5b2fc1cfdd73d2490f91caf17b24e7",
+              "oldValue": "3172629924aed9718d200984e9a0b7bb84627147587d24e75600737a6c44edb4"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_cypher_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cede304f8b56f49bd2df11f552940c013abcf19d26f9db6e42108799ae465ef7",
+              "oldValue": "6aa3d6d1435030aa75b28c0517e062359211eccd4c07a86aa2f07b25eeec9aed"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_dupreeh"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2096f96a19944546555ec8424462d3849f340ac25aafb66da0ebec1e99d0ef83",
+              "oldValue": "720d1fb89cdd80621070e8d749a9a201aefa047c4b6ce0b7c06cc7b0a93b1925"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_dupreeh_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fffba3e1a0c13395d029c79ae83bbacf2eb09504ca040dc41386ffac82093db5",
+              "oldValue": "83f1f9cf269152aa0bd4ea98be2c611ed41c722cd25728c5234669cf72141c7d"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_dupreeh_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ee3c74a45a5815fcaa6079b4ae81423b21cdcbb571fda8f37c9cc67b90291cba",
+              "oldValue": "a0e2c3997a18ed5b27f84e10530b527a33be3d517a0cbaa0ac5fb155b99dbfdf"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_dupreeh_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "401b48d174733732a8c425d71115c778a61efb89ad4c6fd78a085895d6ec8f4d",
+              "oldValue": "cd4e0fd2ae752cb263421e5769d3d255078cc4e96289bbe2e1883c7d9f4e9d42"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_fashr"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bf728c5b87a554e0cf085755d30ff022b5a4a330ac9c996d5a550145db58bd06",
+              "oldValue": "52430d6d57482d0ccb70033085123ae50ed6ce16c3cf2f4dd915f181074aeb80"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_headtr1ck"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cb5f93f3daf6e0c67cee2ec7602d43567fff0e68c3df6a542257d17d4f5c8f07",
+              "oldValue": "30abbef2dceeae7b1b9cbfaf1d33432abadc6e0490ebd9ac78d1f92c90c01a3d"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_headtr1ck_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "32302d36342a1c56183dac54d601d6df07cc884e758dc6f7c85baae6f1ab9aa2",
+              "oldValue": "8726cfa078e09ea4c98467d0f5efa6073795f285530c694c4b47d51e43d69545"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_headtr1ck_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4e3a2c11bfafae28d176fa5b4ae64cd6ad65eec354524867b7436b785c5f253f",
+              "oldValue": "6b4039dfadec194fc0a93f3b25855a56080b66666910143b955974a4df9b7b30"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_headtr1ck_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5e287c8a3a73f750862961c177ebe03cd178691f41412f7b54597e88da0b2830",
+              "oldValue": "b5d99d84b6d3b73857efb8a645dea9c120269afbc288359dd08a416f1a0739f4"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_juanflatroo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e595cfd78ee71aaf413afc2ef9cc4d19832ac8081111a616ded28b092a52fdac",
+              "oldValue": "03a1568d2d017f04a992417af5b8e2bb0d367906b6d2373f99b06ee107a228f9"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_juanflatroo_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b5f40a1726f7a5b5fd0ced1cd89336f27ff6f55f3e3778648baa50fe10bf220a",
+              "oldValue": "079c7939abc6fe820cab55e84f9c29b88bcae36b618463fed48dfd1a97d37521"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_juanflatroo_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c4e168872e3ff0023fdaaa9701ecd62b19e430d5e5353f7bb566ca679bc9af50",
+              "oldValue": "6289b24ef8f4bf46ef3c071fa290daa5c70adcacee626823a775d0ae45e29af9"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_juanflatroo_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53f30ea47e899bce0b21edeafc0ce43d60ca223bcc73abca9d1dc997f5b91a00",
+              "oldValue": "34002144403ebdef61d917069e9a736573e7ea0336f0086ffc1567ae734056b4"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_k0nfig"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ddb39570792ea0498631e62d34baf1312d9f639461156905a3b99f48356aecc2",
+              "oldValue": "7e9554a7287b0c3b5dc541f2d35f658ec3024a8524013f3c8549dcf96c9b36c7"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_k0nfig_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f62892b5c28c2c86f75c0e519c21da4f277216cf426201d5f92840eeb63fe21",
+              "oldValue": "4ffac700571ca00cd1fdea15f9dfe353b73bca04736d7f66fac8b8cd07dc2017"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_k0nfig_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c9349a348dcc97767d1679d6f8243a998991040f0de2e719e1b8cb7aa79d4354",
+              "oldValue": "de3d5c60940f8a1b715c4861969f9c008a1b4606fdecc25493b32375601d1d23"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_k0nfig_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a6bb565c1838af806e87f4025695b794255b7a2cc2c0e5585b08314d1088e519",
+              "oldValue": "d9defce3bed4a9dc047beed6c9005e72acc076664b1e042cc254d2f4cc5f4d7f"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_kylar"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d7a0f213c23b49ac945c88085790fb07dc13bd260a58cd78a848d0a8a74ab4f7",
+              "oldValue": "cee06e26e14a61a05c59aeffc0693d34eddfd594300dfa9221484ea6a690ca78"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_kylar_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "10e981128da49139cd668237412c46ae8bb859419b8dcc5aeefb4dffa2470057",
+              "oldValue": "97cd519928caf9a16b0473a061ce29c8c16899d672ea2ccf1049392f2b9959e6"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_kylar_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "293affe842991a7630dc483a82993115ec09e9e2b238ff807c0bb1f7e053a581",
+              "oldValue": "1eb7373b53c449c7317e3a4099542beca2e7b0b37e8e31644462fab2d0a6ebe1"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_kylar_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dbc92dd8d732754a8191a39cb277e141dc8181adfb4c5c8fa136ecd1e7b13ea9",
+              "oldValue": "6a70cdf80db18759a4a031b82adac549eaf20f9647a37028201a0c5fdefa1037"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_magisk"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ed964f4036abbba9c07f9da61a79cf049df2c35aa9f4a40d7cdf6a1a260a2edb",
+              "oldValue": "823a15d511372e469a269c9cb3c7bbe8da6e855dbc10dec04792e5da4aff5cf4"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_magisk_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "37990f79407e4e9073bf0096513415a9085953543f9bff6a8a66f1091c296d8e",
+              "oldValue": "22684c1bc96a90c77944ee324f1051a7725c0ab81cc34083f56b56890bebec66"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_magisk_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ef0e0b0cd3e68a6158a0f689d41c48cecc55af049b966f0c7dae06a36432104a",
+              "oldValue": "5e9e1922bbae7d5a0cb639987729934823ed42711110958ee0ac9e2014526475"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_magisk_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "511f26d4dec8314383e6e09c0ae3fa423a1712d0962e5edcf7b9fb6a61b27f70",
+              "oldValue": "3c12499d0882b3692fbc106f145c3e91deaa72c1c7e999c808d19f8bf4f36fdb"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_mynio"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6585baee1c7f37f9d1b5663b50ced2791d08fbe5af3190ee47be538b9ea6f743",
+              "oldValue": "9d5beee3ebd5c53cc3163dcf5ba11ca8e72f43830af891b057095c35de156400"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_mynio_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dcbf19b228519a8cafb30d10ee2d2265d36a3b17d0a2b32ea4ea0c7b7957682a",
+              "oldValue": "295fb9d05b9f1cf287cc7406e7c2a77a074e8b7016a06aef1b88d33a60313dfd"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_mynio_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fbee4186586a7867e8f4733ad3a8b69e7e18005926534b5095eeb9d0baa56997",
+              "oldValue": "a00a44b781dc6bc2dd0540f4000bdd42a4355e897090a92bb2d9c8c5c153ddee"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_mynio_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2ce69e907d791ab2392f387e9c4b1efa5db219e7aed640f525fcce5ccea06487",
+              "oldValue": "bac50d4bd9126d75214caa155616adc6c4ff710972b037f43fc3174c83827d76"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_rez"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4e6c992ea66c459811ed78ec9136c03cbf1f0ab8b2ed3b0944001f3222b7d5b4",
+              "oldValue": "bf4237dbb6cb0d7def6215f6ca1bec80ab3f17203d1f17ef807978193f254c62"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_rigon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5393f6f9b8df82b7c57229cbd31e17b4c26de803c8a1dee36c9d2992ad33e9a6",
+              "oldValue": "61b8d53a54f28e351d781ac42fe7d18dd4d253d407058054ee7f2f2fa31fa50f"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_rigon_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5780f42580bf2965f46b6e9054d9c39998549aa9c085fb0e9005030bb248dae9",
+              "oldValue": "2a3ec96dc08352331928c4824e37ca6c406f9f99eb39de3fea06311f32f7e949"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_rigon_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "10fcf452e6ee27a59ad8294c1570e7348651579827ae74f559d7d9b918bcbddb",
+              "oldValue": "b093b9b6db089579ce79970665894df5d4ba624e3833e1361f60ac8bf836b9b7"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_rigon_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d745190053e38fd2469e0eeb8e3a9f2b628009c33b2efa99d74046bdbfd1f240",
+              "oldValue": "f5d76610716546d1c65a61cb926cb6bfbce3d0e18687a73e70dcf120fbdc7251"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_sener1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a0eedc5c91feaa7e27f077dfe116663f0e2118e90c2bb0464baf32a8bf9ba8b5",
+              "oldValue": "6fd68ac8bc1e12c3d5ac2a5647da2e478921510ba2ad706581d949ba40cd62d3"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_sener1_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d450e9bb00a1491861bcc83bc043e89eafdde5d741b62c93a3e18ab9ac780d4f",
+              "oldValue": "351d60d69ac1694e1ec502af5ed45e182905b84034d600b00695f53e0ada6012"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_sener1_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "36cd260a1138b60e690ced208813beb6d41de8052e4a5b1487417aa59526cb57",
+              "oldValue": "86ed22971da2cc6ab34a0e7bd76232729a8bcfeb39d368c40786d6d55cd9f608"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_sener1_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8c3f197973c21e5d7fd59860326dbd68fe0863ad987d100c392ef715194ab865",
+              "oldValue": "7bc27992f0131f8d34084fba6d505560414455c038f9ea081a7bbd166c0f3af8"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_sinnopsyy"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0c5490c2199e74c31c016fac94e2a58e604ee9c7089c15a5ba6552ffcdd982f6",
+              "oldValue": "39df3bd89a374cbd03517f02a393107b50ae08cbda020b38154ec5d574898c71"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_sinnopsyy_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e904902700ec253662cec7ed319b25c8f347be227663a74d3503e37eafe01faf",
+              "oldValue": "49d91c88a1e5b055ab4e42c2a648c891ae45bbaa4146ea12b4c83dfb16f2febb"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_sinnopsyy_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3fb872ef5077378d30e1c68b1c7702e7e262f320e743b16eda9286ca5930a5a1",
+              "oldValue": "e55cc80cbfd9b85f264dc11ffb156880383b0a15359b3ec9dd45d010763962b7"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_sinnopsyy_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "984f676d86bb4718863251030a200bd233f553783533b9648715f19434603fca",
+              "oldValue": "adafb042c4bebf456d8241557c0b917dbab1f6029df61b5108535de27a97fc70"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_spinx"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4998cca0665c6576c8683216e9baadbd477c79852809db572e6d6791d95ddb19",
+              "oldValue": "52e6dbbbca5b6c05edee1ac95cc02d2807ace84bdacad8fc3bffbd688839c1c2"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_spinx_glitter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d258e47b2b2865a9e573fd162332345f4382f97a8e50c2fe45457ba25abc7d18",
+              "oldValue": "88a231ec3496a9e6dd54b9ceca3b14e32a103b74fe29bb34e6cbbb8e5bfb8b65"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_spinx_holo"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f8494b24af473b05d26e25f7b36ded08abe5d981b4c38eef2438b536fe6ec3cf",
+              "oldValue": "a81144f908f5ce60875ff51298abddd82de6a186b5ac982588d0a04b4262dd0b"
+            }
+          ],
+          "name": "StickerKit_paris2023_signature_yuurih_gold"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "718956a1f68d4a9cc98848e00c72f44ecb304202445a3c903745c79d0065d43f",
+              "oldValue": "163c3ea27db2bc63e329497d085760199af28f48f7d4839fa8c2f1e98796bb62"
+            }
+          ],
+          "name": "Workshop_Confirm_Download_Popup_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "80d7df1ad4dc3b99f94254639f8adf6bb7013597f13202e845ad10ef27206fb3",
+              "oldValue": "4125d3b78cb1794c54242dd183c4dd0550df0ef636ab09d1cf3ede1d1287f5b2"
+            }
+          ],
+          "name": "Workshop_tournament_item_error_image"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "607c42e081a5f6fba42a8ffd3c1b90bc7e3d0f30f5845d6d8806d984f2e8a2be",
+              "oldValue": "f471ed67464d921022884f1e0c728163db620269fdd3e8b4bfdc8ce22a5d899f"
+            }
+          ],
+          "name": "Workshop_tournament_item_error_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "db79716b3514647e31c5316560252114230058fec043b2f0f245b2ecb7af888e",
+              "oldValue": "4d784db8925c3f381b20c4f401171c632d7f13837ea487f9ce4a91b84b68de6f"
+            }
+          ],
+          "name": "Workshop_tournament_item_ready"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "124c0c4ef2617b52b705eab21fb0b9dc65d16c2fdd4d40a5b09e170b8d8bb334",
+              "oldValue": "963cb5364db4b1aa0da6df758a74c587eedb3463a5d3a724c6efd365ed07fa42"
+            }
+          ],
+          "name": "Workshop_tournament_item_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "18c74a9781001d4b8b7c9872f6ce769ae8ba7deca0fe64ae81e852e24c34909d",
+              "oldValue": "b2b30dc399ecebad1ead50b23f993d49978e67d7db9df8edbfcf7420f7209a98"
+            }
+          ],
+          "name": "accolade_knifekills_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b8e400120bbb5e376042b7a3d78e5fa98ac546248bdf41c3fe997faa4fb81e49",
+              "oldValue": "d03ba3a598f9e9905e0b015d3cfdc4c8d7b0a366a282fb557823aeb4447261b9"
+            }
+          ],
+          "name": "accolade_knifekills_desc_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "197c925e6f9fc751d8e4673f9e399526d0dfe6a9cf7bba27023edbab4131c5b5",
+              "oldValue": "b04308341ec65d5be68f3130db0bd0216ffb8c420ca2a4021edb8a0e33d83e79"
+            }
+          ],
+          "name": "coupon_community_2024_sticker_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6bd689e3346658aaa9552b5cde1775e64a499a198b93b9da2e770e080b982658",
+              "oldValue": "19a3f5eff8a3659ced6066cca1d89e55b6da20faf2fb32c8253bcafbfde71196"
+            }
+          ],
+          "name": "coupon_twerl_01"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "64de6d80759911ea736a015c7fa4b3cb44363f9067ad35c76051c5fcab90e98b",
+              "oldValue": "7c2cb85f9573d74acfc60e7ecd9609b39effe74283b870155bb695280e02c585"
+            }
+          ],
+          "name": "coupon_twerl_01_stattrak"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "33d0f47377216c14e963040d9d132fc5414ff7ef651d7a87757cb85589028208",
+              "oldValue": "fb9d32c7d40d1ff468a3e6aa2397a4c31e71a28e2eb87328439d6e00a5ea087e"
+            }
+          ],
+          "name": "crate_community_33_unusual_itemname"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cd66d493c5ec552be4c84fc851de6329cf81bcc70ca2d100766068b787faa117",
+              "oldValue": "639f21376fcac8e13a48b1badf473db74f0db71eb2037e6e6e8878969069ccd0"
+            }
+          ],
+          "name": "crate_community_4_unusual_lootlist"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2cea9a2c27e40bfd452700edc9072c90f375039363cd6e5f3a9b0b7267d94caa",
+              "oldValue": "3b73b01d39d762e2d4acf74f2a468d161fbada5b2a98779f44501e98b0625bbf"
+            }
+          ],
+          "name": "eom-result-loss3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "961c61dd8f706454a4eeb7260aef8ebd42e850acd2e1ed4e18254fe4988aeb9c",
+              "oldValue": "d2952512396f3949f2e7ddc1001bb95280545f5ee20cc36b22942e994ffc1961"
+            }
+          ],
+          "name": "eom-result-win3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6facd2208afb264945b4d80dfd4c3b63de552d6db8da97d9b800695b5fd9f88a",
+              "oldValue": "f72a3a4e0c9d97ad7002b2448d2100b79c7f822c42e538805bc24b1f2834e632"
+            }
+          ],
+          "name": "game_radio_team_prefix_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e6ed8b83ecdb0428c5450f836aa0c059ead2a8015acddd5db91415143276cbb5",
+              "oldValue": "d7a087fb3822cf2435743d411f6e6bd34d1ff32b55e5dc312e3165a1a8ff8425"
+            }
+          ],
+          "name": "game_radio_team_prefix_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f643b71033859390276a182fb0ff9e89611960aef396ca263b97d41c6135e1f",
+              "oldValue": "24bcaa39965fe6ada5d5d65f2ce17324adad451298382cfa0acb1e0466900a27"
+            }
+          ],
+          "name": "gamemode_ggprogressive_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "447df813b66fc150eaa55ff302f0b82afa79c37ed5e12fb9ff50ec2259a3a237",
+              "oldValue": "3663862f4dcb224750a602c4c11c806e88c2e8d8b2fcab36272a32d8066bbcbb"
+            }
+          ],
+          "name": "gamemode_ggprogressive_desclist"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "29c1fa86264dd446b1dad62f70ad4bdc7aa58dfcb07e657cc6578f7b527d455f",
+              "oldValue": "7e548b091d3e52fe50c09ac7c9e24e687e6e79f8e503aa3666e584dabe757bcb"
+            }
+          ],
+          "name": "gamemode_gungameprogressive_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "16b64ca64c5689fda824b99f8bd2ff242d4f921bd47fffec9c18ba096127ddd0",
+              "oldValue": "e3843d5591a56f2e80457735db903a2f8adc013dcff556f9391b8633af8e62e7"
+            }
+          ],
+          "name": "gamemode_gungameprogressive_desclist"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e25889c25b5e5b10ae1ad82d19b10e23ac502656b37fc03cabd5c12ff0f2aee8",
+              "oldValue": "235a66371af22bf4da1be0465caf22d399f4de27e5e3e25d95c723e732d4fcff"
+            }
+          ],
+          "name": "honor_icon_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c56cba63192bf9f61501828beb2ca000ca2cfd75e622561fffd749f49b6bf7dd",
+              "oldValue": "0677fc0dae6ed9d1179a18f90501a972b7960834f0dc0c54bc5eab6dee015d5b"
+            }
+          ],
+          "name": "inv_context_nameable"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "914ceaa01cbae5509efea080f183cec6243d0d1ea396651fd70108db6145fa20",
+              "oldValue": "6e8dce135c5e0571983578277e1b1b037dc13933402c30856270a72976ba32ea"
+            }
+          ],
+          "name": "mainmenu_change_vanity_map"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dc083c8d076cca28cb3ef35c48f40314f6ee5267a7b61bd8bf599e904d3fde2",
+              "oldValue": "8f0048fa0758c72d73dca879094dd4ae9f205fffb195cebd80fcd5034d609ce2"
+            }
+          ],
+          "name": "musickit_dryden_01_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b9bc51597fe639eca9d64c9a1ffab8a6bf75478879c7575cff701283cadd1f65",
+              "oldValue": "5fac75f968a42cc1f4076259439a15e0021681500bddd585d111ea11b50566ce"
+            }
+          ],
+          "name": "musickit_isoxo_01_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "25224d749649be9d51ea8b5e34cb651579b39a8dc3523697d983d8cb1afdccfd",
+              "oldValue": "8657dd7f9df0e8eb8e90726814ae131e162a9dcd9450452f0e185f68db709c90"
+            }
+          ],
+          "name": "musickit_killscript_01_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "88dc4a04a1bf43db758fbd087a2ca411a61d454624ed03a602be83ae87de5764",
+              "oldValue": "dd676bb8423549b1ee2db38ff1e2de2729d78c5c9ceb980aa9aed58ed141aca7"
+            }
+          ],
+          "name": "musickit_knock2_02_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "507a9ed1be9a44bc7eb1ebe915277fcfaacb5c4f00c680874ada63ccc2b38792",
+              "oldValue": "d26741bfb11e9b7ec54e166cdf28b3f9319b79ebd8bae3bde42a534af31425fb"
+            }
+          ],
+          "name": "musickit_radcat_01_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1477377ff5f356d23a19b25feeaf7aa42a7783f1a360e05c9cb20cf902ce6447",
+              "oldValue": "3b4f2039cf9c3fb268acb7323b0fbfceda1c3c14320706bb0e513049b1842183"
+            }
+          ],
+          "name": "musickit_twerl_01"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f73839ddb184395511e371aad2f979c1d62b34fe0321dbd00350b54b7409648c",
+              "oldValue": "ed330954875f4e875faae9bc9d43d42489bd01244ff2cc470840aa8860b81c65"
+            }
+          ],
+          "name": "playercardstats_gglevel_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "160a014682ca39aece1df3d7f4d0a0a8dbd990cbdaaee21b34b2c18031317f3e",
+              "oldValue": "2ed6bae13321cdddb71ba54566463efb9c998fdce215031f73ec291f4b106115"
+            }
+          ],
+          "name": "popup_decodeable_async_xray_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "736120e289de2c1340b7439231a0e660c7a68d96d72cbed289c83fd55cfd9fb5",
+              "oldValue": "1ff49823857461b29001a244e5f4b11cfabd51da1f3399b6fd441f35d013031e"
+            }
+          ],
+          "name": "popup_xray_first_use_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "736120e289de2c1340b7439231a0e660c7a68d96d72cbed289c83fd55cfd9fb5",
+              "oldValue": "c3ec87e00b5b4b649e1e85b9777c3b60cf46ebfc57ae2df43d330ef99f9cc345"
+            }
+          ],
+          "name": "popup_xray_in_use_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fba9c907b006c33bfd70e2a19cd65be404bfcaddd49df59ab952adb7c3ba4abf",
+              "oldValue": "b1ad1db2c100cd1ab753178b7a0e2e6ed2a067e8c3270410cf2f50368c14c31d"
+            }
+          ],
+          "name": "popup_xray_ready_for_use"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a1290a1f156d5638123bade14cbb8876b4c8e2a94828df86f6e8d68f0c51ef84",
+              "oldValue": "b3d4653ee1f54d138a2daa2a0c0d211c1fc552ab2640af4a73896b95e3d60931"
+            }
+          ],
+          "name": "popup_xray_reveal_warning"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8276fded712d1b47d8797686e3ff710da8690ef4b6a3112c5e381cae93bc3464",
+              "oldValue": "b7688d5c6cc20bf911a57f85911712258d1adf4a27798b91dcf19fff8b7ea46b"
+            }
+          ],
+          "name": "popup_xray_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "87c092c0f68458b299c09934e165e4b893178019275bf656aa7ba668ed095a82",
+              "oldValue": "86e8aa05024630c08e1951781102389de79e4518c15da694af7618340a38f7bb"
+            }
+          ],
+          "name": "practicesettings_grenades_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c19188a1a18d288ff97f717ffe073c04fac98f3e4879a659007d9c24471aab08",
+              "oldValue": "462f2d0c2a8d4d58dc8ef126d0c090bed108575f12b7eeab8b7628756dc30b76"
+            }
+          ],
+          "name": "practicesettings_infammo_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f1aa0f66bcf3761b34932149bfb24d312158e173c705cd1340b373bbfd9a3669",
+              "oldValue": "f09daa1e00db66f70ccdb5b6293b034edf971ede813e15aec062bf1222f4ee01"
+            }
+          ],
+          "name": "practicesettings_infwarmup_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "332e48809886f537ae27e64df5b3b9d043acf8bbe103baea6a94da8172b22a51",
+              "oldValue": "ea2dae3944fea76b21987f43dae348f347391a48542821e7ee434bc76858f38b"
+            }
+          ],
+          "name": "practicesettings_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "16b515815be9f1f9650484be5e1a63b106d9fed19fecf88b2f7f5ed4118d4cdf",
+              "oldValue": "f1267d25102297c0a6fb7952072e148b0b18c1bcacf5a44d6097948fd0a654bd"
+            }
+          ],
+          "name": "rankup_redemption_store_popup_desc"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "13439412",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "13460160"
+}

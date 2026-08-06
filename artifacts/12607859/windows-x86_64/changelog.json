@@ -1,0 +1,139 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,defensive",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_adjust_deadzone_ticks"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_buffer_bloat_msecs"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,defensive",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_dropped_command_msecs"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_logging"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_logging_interval"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_min_queue_size"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,defensive",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_queue_sample_count"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,defensive",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_resolve_commands_per_second"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,defensive",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_starve_hold_msecs"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,defensive",
+              "oldValue": "developmentonly,gamedll"
+            }
+          ],
+          "name": "cq_starve_increment_msecs"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12606072",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12607859"
+}

@@ -1,0 +1,865 @@
+{
+  "buildId": "11593506",
+  "cs2Build": {
+    "builtFromCl": "",
+    "schemaRevision": "hl2sdk-cs2/b8dcaf14c603076300cab3861c99b44878d65db4/v1/3d1200e346019c59",
+    "steamBuildId": "11593506"
+  },
+  "inputs": [
+    {
+      "fileSize": "143488",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/OpenImageDenoise.dll",
+      "sha256": "306b9bc6b18901e9ae91dd657c7485bc06da9043d51c9974d492aa6a32a0a2e6"
+    },
+    {
+      "fileSize": "22415488",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/OpenImageDenoise_core.dll",
+      "sha256": "196afa570d281387df0c6a4d08f5b4b124ed8cf3e80fcaa9c1ee7ee7b00aad1e"
+    },
+    {
+      "fileSize": "2501248",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/OpenImageDenoise_device_cpu.dll",
+      "sha256": "6dc49ca841c26b50c151b661d03fdfcc8609fa5118930873dda62ed118dcdd71"
+    },
+    {
+      "fileSize": "2901632",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/OpenImageDenoise_device_cuda.dll",
+      "sha256": "515224f6d22c4fcabe4ec8bc6d0ef3283b176f7865c89d463f59d431540c9f2d"
+    },
+    {
+      "fileSize": "1629824",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/OpenImageDenoise_device_hip.dll",
+      "sha256": "cc751cdd680e1e6f2f48f6851b97c28d1b3eb121e2fc55c8dd72025903017a5c"
+    },
+    {
+      "fileSize": "7330944",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/OpenImageDenoise_device_sycl.dll",
+      "sha256": "fe61803e8e921fa00a3861d6390dbed997bd9cdfded1fca5851b5a13c9f4903a"
+    },
+    {
+      "fileSize": "2209920",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/OpenImageDenoise_device_sycl_xehpg.dll",
+      "sha256": "e5690ecec571ad04a277471fd503a121e8742bddb2e635144b7e91efea3ff80b"
+    },
+    {
+      "fileSize": "2411136",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/OpenImageDenoise_device_sycl_xelp.dll",
+      "sha256": "dc87e4f9b540fcc5c31236812706874c14ababe7350e9d6b2e0d89ed1afb3f0e"
+    },
+    {
+      "fileSize": "119808",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/Qt5Concurrent.dll",
+      "sha256": "e8c0ae674b2298c78db8a6f4f37c6087978a4f3f01d888b3a05ae2c183af89ff"
+    },
+    {
+      "fileSize": "6277120",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/Qt5Core.dll",
+      "sha256": "16b516a99a3bf7437ed2b625ba84b2cda415ad855294fd2a442177e5fe06ead1"
+    },
+    {
+      "fileSize": "6995456",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/Qt5Gui.dll",
+      "sha256": "044bac8e909dbabedf6a41c2c67a3d525ac463f1dca76a6f89366b25ed25248b"
+    },
+    {
+      "fileSize": "5612544",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/Qt5Widgets.dll",
+      "sha256": "fd5e2527133910a8e1a5dc85291288a9ed0294c84c23902040192620687a72cf"
+    },
+    {
+      "fileSize": "1498472",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/SDL3.dll",
+      "sha256": "a54d739d43d5a239fc8fe697a5f6e59faf0ae56e16aabb3e9925280313995a3e"
+    },
+    {
+      "fileSize": "169984",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/amd_ags_x64.dll",
+      "sha256": "aa97376e26b672293800e92821e47ec4c0bbdcee5ebe626bc28f4c78dfccd703"
+    },
+    {
+      "fileSize": "5751656",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/animationsystem.dll",
+      "sha256": "44f5558c1e1791fb95d67bf2c972fd216cf5ab46a45e1772d2875b7f91ad82bd"
+    },
+    {
+      "fileSize": "1576296",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/assetbrowser.dll",
+      "sha256": "a86219263c6e957e291d865a191fdf2e144a11a24de4f6bc6f6e8c651e7e2a20"
+    },
+    {
+      "fileSize": "4704104",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/assetpreview.dll",
+      "sha256": "30cd2474e855fda1856d28a4220cb9932235e977bcb5a361436ed51fc3e3c03d"
+    },
+    {
+      "fileSize": "24080232",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/assetrename.dll",
+      "sha256": "db3a2e35aecb835b64838f1977eed5978d63d4a7637e01934fda73e789d085ae"
+    },
+    {
+      "fileSize": "3333480",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/assetsystem.dll",
+      "sha256": "49d7154bb3260b28f82773946d026b603603cf206bea15c015fe5e37685ce2d3"
+    },
+    {
+      "fileSize": "742400",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/ati_compress_wrapper.dll",
+      "sha256": "72a84537bcc5d13a2d10f95ebb825cf34bb20a84b4c5e41659b8d338d65b6637"
+    },
+    {
+      "fileSize": "1529856",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/bc7e.dll",
+      "sha256": "a340167d3d9e2576b7d0d1ade6d9a290c10b9c747ac7f621e4da3b4dfc1196ee"
+    },
+    {
+      "fileSize": "153448",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/bugreporter_filequeue.dll",
+      "sha256": "f89428b0a531f6829e2bf81a4f828545835d5da1c81498df72b68ec1901104c7"
+    },
+    {
+      "fileSize": "1322856",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/cairo.dll",
+      "sha256": "8e901379cd47d4c99e406308ea3665f87a7fec04172f5b50e4b35f3b3e87acf1"
+    },
+    {
+      "fileSize": "4346120",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/d3dcompiler_47.dll",
+      "sha256": "4432bbd1a390874f3f0a503d45cc48d346abc3a8c0213c289f4b615bf0ee84f3"
+    },
+    {
+      "fileSize": "1558912",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/dbghelp.dll",
+      "sha256": "13f0c74845318b52b76e6000564b1a99c37de48422b44ac74d034fa222c65a23"
+    },
+    {
+      "fileSize": "21985280",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/embree3.dll",
+      "sha256": "e9ed24920d9dc6e439357a16e24c7310aa4658faa182fe526cb5cb9c257ad7fa"
+    },
+    {
+      "fileSize": "5058408",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/engine2.dll",
+      "sha256": "c484609a531f5d992d5713ee77465c24e26334099f4cb5812149a7c267a07579"
+    },
+    {
+      "fileSize": "3386728",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/exportsystem.dll",
+      "sha256": "5b7ecf116a7dbc316ca34b00fe1696644e6ad5fbdc5f2afc6fd8cdade5177cb5"
+    },
+    {
+      "fileSize": "311656",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/filesystem_stdio.dll",
+      "sha256": "5b35a0fe47595a9ca5461191daff93863be85d12fa445e578571c35ae1d23b6f"
+    },
+    {
+      "fileSize": "1234432",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/gfsdk_aftermath_lib.x64.dll",
+      "sha256": "953ff37269f50573abdacd5c1970504e254d437c31b1b90095591b7c177c90d8"
+    },
+    {
+      "fileSize": "399720",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/helpsystem.dll",
+      "sha256": "5ecabefbc1c7123545dd90aca21ad7925ef178fa71446a0de6da05320f10972c"
+    },
+    {
+      "fileSize": "3869184",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/icui18n.dll",
+      "sha256": "cdcc7283281323d98ec3b52860befad59aef27dda38b7e87e8cba0541ed8f12d"
+    },
+    {
+      "fileSize": "2785280",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/icuuc.dll",
+      "sha256": "7a0e95367bc19b78f28e95096183ce8c803e5a81fba67dad9a0028fdbe3acbf6"
+    },
+    {
+      "fileSize": "115048",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/imemanager.dll",
+      "sha256": "fe6ca01e11001f17f130cf62db39c4b50c0450edf64ec1a4b8494037173e7ede"
+    },
+    {
+      "fileSize": "136040",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/inputsystem.dll",
+      "sha256": "1f390ea3ea73d692b1b7429608ddb804854d5a40a041a603ca06bd4aafddd6f9"
+    },
+    {
+      "fileSize": "1418240",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/ispc_texcomp.dll",
+      "sha256": "6f4a0c7316c0098ea6eaf93b659b46e39c425212429c84f247fa5ffcd1787b35"
+    },
+    {
+      "fileSize": "6627176",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libavcodec-58.dll",
+      "sha256": "0984e89dce98008fcdfe82ba398ecbda8356ca9374fe40a784c5d25056558870"
+    },
+    {
+      "fileSize": "1847656",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libavformat-58.dll",
+      "sha256": "9a7e0abf5a09e983d7f46999b6b413a31f0b70dfb8cca1072ec6b88f790c0d0d"
+    },
+    {
+      "fileSize": "756584",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libavresample-4.dll",
+      "sha256": "b2a72526916f00748fc8957d8186d1756c8eb2d0628102135d0244bed2773c45"
+    },
+    {
+      "fileSize": "1572712",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libavutil-56.dll",
+      "sha256": "114622d5f56bc8c27d2dc01059e4ea975069643f5d0f24da585f62854191bb1b"
+    },
+    {
+      "fileSize": "9938944",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libfbxsdk_2020_3_1.dll",
+      "sha256": "a3bf4af3769dde936e4369086aa1b1dbb76d6a2febb9b5adc6c2a300c7afaf11"
+    },
+    {
+      "fileSize": "481280",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libfontconfig-1.dll",
+      "sha256": "6acba336c5f2ddb343636b06facddbf95b6de92a9a5d1853697d8447d5bda00a"
+    },
+    {
+      "fileSize": "1058304",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libfreetype-6.dll",
+      "sha256": "bf346466aa3542c855dd7b93e725d9d0f4df4f20db67c3426e01bfe110d56d2a"
+    },
+    {
+      "fileSize": "1537536",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libglib-2.0-0.dll",
+      "sha256": "6f6b96a239b649df788844f2df5d8c0f6ce2dd7956728590799076dfc3f2ccbe"
+    },
+    {
+      "fileSize": "89088",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libgmodule-2.0-0.dll",
+      "sha256": "cf027931001480f77e87c5f36ae82f7d4c9ac62ae8aa9925f387eb10202944c6"
+    },
+    {
+      "fileSize": "323072",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libgobject-2.0-0.dll",
+      "sha256": "7e7310949e825ba82e96586427dc34fbe56d2d187b737eb19e9ab4c7c1254b8f"
+    },
+    {
+      "fileSize": "82944",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libgthread-2.0-0.dll",
+      "sha256": "cb18c52490f5522af605625da6031e3fb69f245fe1b7d29d537b929e30f062e4"
+    },
+    {
+      "fileSize": "340565",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libmpg123-0.dll",
+      "sha256": "702bb84fbe7ad59042368d2c42983b9ddc68945187c2ce91b0b3ce27d82cf88e"
+    },
+    {
+      "fileSize": "389120",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libpango-1.0-0.dll",
+      "sha256": "2e6218f630f8488217bcc9c0bf6070ca92a468b1ef38257509a1652e6d30c0f2"
+    },
+    {
+      "fileSize": "378368",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libpangoft2-1.0-0.dll",
+      "sha256": "6ca67c3b546df468217810456324e3aad154d42b1f0e87e0b992ca819a9df41c"
+    },
+    {
+      "fileSize": "1283432",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/libswscale-5.dll",
+      "sha256": "0ef8ffe68f41957b36a3f0390e8fb13e400b41cc7e0f63c2bb43d18ab8c5419c"
+    },
+    {
+      "fileSize": "163688",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/localize.dll",
+      "sha256": "3a7fc69e59e825220f8c9ea5bde3de3f646342f14fcd296d4eea19546d6e59f7"
+    },
+    {
+      "fileSize": "1146728",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/materialsystem2.dll",
+      "sha256": "c623b403ef6937af465710111f2dfd162f18f9fef1f286fadfca4f6c810608b3"
+    },
+    {
+      "fileSize": "1121128",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/meshsystem.dll",
+      "sha256": "2a020d34aef17bb1ef9b932cfa1057c4a24b8fa0da4c9a13d2333d0a2106b412"
+    },
+    {
+      "fileSize": "12122984",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/modeldoc_utils.dll",
+      "sha256": "4fa57ce3e3224494801cb93c186e06d2c37e069fdd92a7ce58af6548328b2890"
+    },
+    {
+      "fileSize": "732520",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/navsystem.dll",
+      "sha256": "75ffa243c0b3f2d26f8aa3cc72792d14674a1fb350a3a2bde111eb86e85d1ff0"
+    },
+    {
+      "fileSize": "2594152",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/networksystem.dll",
+      "sha256": "ba7816beccd2f8dbf672706fa6e10f62fc3d81d632bf6fe6e0878a07bc799f80"
+    },
+    {
+      "fileSize": "156640",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/nvlowlatencyvk.dll",
+      "sha256": "99b7a6926bbc47eb804af11cadd8685ddbea93c6ea42ef495f623e07ffdf2957"
+    },
+    {
+      "fileSize": "36712",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/p4lib.dll",
+      "sha256": "4dbff772652b273bf52bb304c8cefa6da43b15d5e2d00334c591fcef12318a99"
+    },
+    {
+      "fileSize": "5137256",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/panorama.dll",
+      "sha256": "43e3133e556dea00c6acaed04068ff1ca8eabe0d3da2f64fe3818e218c09b1f9"
+    },
+    {
+      "fileSize": "2962792",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/panorama_text_pango.dll",
+      "sha256": "ae812ddbee4c960a705ddff5eb13de41d2fe29920692a1b9bbe60cd2c4a8da9d"
+    },
+    {
+      "fileSize": "2833256",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/panoramauiclient.dll",
+      "sha256": "f3a03e03fb1b09489f5da021357f8844a73685b4f7a82c08b78c1e938ee6adcc"
+    },
+    {
+      "fileSize": "5000040",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/particles.dll",
+      "sha256": "0e79397e0659bfe0f7548e6fda690b7f7c7f4436a4bc86377bca81154cb7c480"
+    },
+    {
+      "fileSize": "30055272",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/phonon.dll",
+      "sha256": "8ac005634d216f74dadc416262a6f2a877638f56301b15490a6386eebf5819e3"
+    },
+    {
+      "fileSize": "556032",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/phonon4.dll",
+      "sha256": "a869e53d0b8d91c3e8ae3baffe617f75efc23afd9613f717c257b561309492c7"
+    },
+    {
+      "fileSize": "10305384",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/physicsbuilder.dll",
+      "sha256": "7f71b4b30b632a119a4144dccaf7c94ce96a719deed98bbd603750928f778650"
+    },
+    {
+      "fileSize": "533120",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/pi_level_zero.dll",
+      "sha256": "0dd76c94c9c0d896563b1b041ff71e0f973bdbdb0466bd8fc788d3216f0be6f7"
+    },
+    {
+      "fileSize": "1403752",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/propertyeditor.dll",
+      "sha256": "c70529796ac3ccd03d53bb5bf2e1b5659eef57c60a4d36c2881ff92bd6a0417b"
+    },
+    {
+      "fileSize": "583016",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/pulse_system.dll",
+      "sha256": "8d456fb7bd56215636f76faa57bdfef0e631c87d073fe334b66da87c2c50d7e3"
+    },
+    {
+      "fileSize": "112640",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/qt5_plugins/imageformats/qgif.dll",
+      "sha256": "df50647b02abf30cda040460e9be6d903cc7a3d07fd79c229ce136997beafd96"
+    },
+    {
+      "fileSize": "110592",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/qt5_plugins/imageformats/qico.dll",
+      "sha256": "ddafd14ac6215b2ba8af3cbb0a251dffc4d76b7c5d0f419d614991fe9d16a093"
+    },
+    {
+      "fileSize": "550400",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/qt5_plugins/imageformats/qjpeg.dll",
+      "sha256": "4d0201f4dd243bd1fd29417b57901eb03b50bb3bc2603f3a6641d12b4eb3fd81"
+    },
+    {
+      "fileSize": "104448",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/qt5_plugins/imageformats/qtga.dll",
+      "sha256": "fce0a0c801f8be7799c12947d42bc0d975760f85934e9a3bfdf08e9f021ff6ab"
+    },
+    {
+      "fileSize": "523264",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/qt5_plugins/imageformats/qtiff.dll",
+      "sha256": "a13b60ffad79e982148e757e622afe7176b0790a74a5982083c542bb6176bac6"
+    },
+    {
+      "fileSize": "1616384",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/qt5_plugins/platforms/qwindows.dll",
+      "sha256": "e9b4e3c270d7b64eb06871e8d5022d4ea768d93bdd205faab070c6fae695e550"
+    },
+    {
+      "fileSize": "231424",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/qt5_plugins/styles/qwindowsvistastyle.dll",
+      "sha256": "be29d91c9eac2bb826a011357d13593f216a68b55d8914effc480b61ea4348a5"
+    },
+    {
+      "fileSize": "3942248",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/rendersystemdx11.dll",
+      "sha256": "99aa4004488406ce39d5abf31e07d033d3a60c14d7a5acdef56b08d86d2ea607"
+    },
+    {
+      "fileSize": "1087336",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/rendersystemempty.dll",
+      "sha256": "277506e4c1f110a5c0642273f1ffdd8fe342a062908189edbae85ae6f4c32866"
+    },
+    {
+      "fileSize": "9159016",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/rendersystemvulkan.dll",
+      "sha256": "e88c5e681250025cf03e64fc02328d525723a21162e73ac982d07bb16d63867b"
+    },
+    {
+      "fileSize": "33540456",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/resourcecompiler.dll",
+      "sha256": "33171a7d22b9eb094a322e8b4d4b10a1ce8ebd118b377189517a239428027c15"
+    },
+    {
+      "fileSize": "363368",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/resourcesystem.dll",
+      "sha256": "7e2f51371363a195037a5c2e5b0c3d2304fa1a7822224e2585af195bdc43ab3c"
+    },
+    {
+      "fileSize": "319336",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/scenefilecache.dll",
+      "sha256": "a22d84b5c59ce0d7d1b5caf98a815b0f6dde360cb6bf9ba9206dd14d796295da"
+    },
+    {
+      "fileSize": "6004072",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/scenesystem.dll",
+      "sha256": "cb99b4033b205a7301ceaa764483e56d79372aaac93ea2918da20103026fc27b"
+    },
+    {
+      "fileSize": "255848",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/schemasystem.dll",
+      "sha256": "5940d9ca53866dcfac21070fcd828ace77ed0ae41971875e14dde0f32d6fc6a3"
+    },
+    {
+      "fileSize": "2582888",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/soundsystem.dll",
+      "sha256": "5f344720758eb0eb15e2839806a1702d5cdcc2151f42595dcec5eddf8a131567"
+    },
+    {
+      "fileSize": "298856",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/steam_api64.dll",
+      "sha256": "a44e5537939ae4eebc69000589aa9b2437a667813a1657cc779198bae9b815a9"
+    },
+    {
+      "fileSize": "222056",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/steamaudio.dll",
+      "sha256": "1df96e208b2f18f320e7b537694291ada3d7fb66d8fd34de8789dd62ada9c35f"
+    },
+    {
+      "fileSize": "4269888",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/steamnetworkingsockets.dll",
+      "sha256": "612fa3b8b1705a9ead8329d71c71255d7e9ed0ce1a587f33c683291319486bfe"
+    },
+    {
+      "fileSize": "314216",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/subtools/convarhelper_subtool.dll",
+      "sha256": "6e3d2c1484a5d1795af86f95c7a1295bf71a910c101c5bb4c722c54ae65980a8"
+    },
+    {
+      "fileSize": "196456",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/subtools/dashboard_subtool.dll",
+      "sha256": "35d61d028df65225c412a7d091237f84bf47d64fbed7766dfd1ad2feb4a99eb1"
+    },
+    {
+      "fileSize": "329576",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/subtools/netgraph_subtool.dll",
+      "sha256": "ad3d888fe0dd13cf5a77bfbd388a5ba861034d7e99958cc81b86c15be3e23c94"
+    },
+    {
+      "fileSize": "332648",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/subtools/soundviewer_subtool.dll",
+      "sha256": "eb6ce0165fcb6197b85e7007ae243d83fc3afb006e08304a485c95e6ec4fad69"
+    },
+    {
+      "fileSize": "379240",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/subtools/vprof_subtool.dll",
+      "sha256": "7d6f0e7ef8612e61bda455cb700fe19b7afaabc3c1b854eb6180243f4972e033"
+    },
+    {
+      "fileSize": "3030656",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/sycl6.dll",
+      "sha256": "76fa7679c82d10fa26e730ae88a5ff8fa91126f81abd0188311ebd6d85b4191a"
+    },
+    {
+      "fileSize": "149264",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/symsrv.dll",
+      "sha256": "c67be7d3f54d44ac264a18e33909482f1f8ca7b7fbaaf5659ef71ed9f8092c34"
+    },
+    {
+      "fileSize": "290944",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tbb12.dll",
+      "sha256": "0dc5c6904afbdf1336e2a554a325f09ac4bf144688347354a5f4052cccc7f1b2"
+    },
+    {
+      "fileSize": "47232",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tbbbind.dll",
+      "sha256": "9e4776475386133b1aef3a95bfc2d1e3ac3ebdf187eca8b14e85838bfbee500d"
+    },
+    {
+      "fileSize": "45696",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tbbbind_2_0.dll",
+      "sha256": "2cec45992d1f4baf91fe01dbb8428093a12e81f1c3666458cf9da0ce844c0d51"
+    },
+    {
+      "fileSize": "46208",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tbbbind_2_5.dll",
+      "sha256": "fc1a51f228d8a0e730a050559488aab225f01713e5d29162859a294b7ef58c24"
+    },
+    {
+      "fileSize": "3749224",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tier0.dll",
+      "sha256": "362d6f2d6b2f4ee42ad2798b89f33017a634b15e8ce0222af2aab30d2c8a0832"
+    },
+    {
+      "fileSize": "9430376",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/toolframework2.dll",
+      "sha256": "49d5ded0bc41e8f4a5732973d3062b532af54ba8796eef14f82e6bb2a15a798c"
+    },
+    {
+      "fileSize": "5656936",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tools/cs2_item_editor.dll",
+      "sha256": "75b0b1feddeb3cc532239a91b33fb71a432d5fe767cd916f61b9478d1c2bcc2f"
+    },
+    {
+      "fileSize": "12442472",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tools/cs2_workshop_manager.dll",
+      "sha256": "2cce9a278a3ea99cdde30413daf1c31166dcd66aab95f3d1cb4421726fd70665"
+    },
+    {
+      "fileSize": "29393256",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tools/hammer.dll",
+      "sha256": "009e2493210f249866811e7879a729e1b09f99873ea4c893d4557e80eafbefa3"
+    },
+    {
+      "fileSize": "3557736",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tools/met.dll",
+      "sha256": "ab3207a3e6db2bf78164e22b085f48c0598eb782e8657fe15473461a145dfa67"
+    },
+    {
+      "fileSize": "17294696",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tools/modeldoc_editor.dll",
+      "sha256": "8019d128e2dd78d3ff48f1e3ce94669f75bb7bf1864414646aa4c918ea9ff831"
+    },
+    {
+      "fileSize": "12711784",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tools/pet.dll",
+      "sha256": "1ce1a01c5b1a2c798540b41779a94304a15270080b74e664fae9e401f12713e7"
+    },
+    {
+      "fileSize": "6493032",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tools/postprocessingeditor.dll",
+      "sha256": "4f5218a27d8bfe1e1e2a2bd41a54d676e58bfd6996ffd7c4d04a5171b3250cbe"
+    },
+    {
+      "fileSize": "10428776",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tools/sfm.dll",
+      "sha256": "9acbbe22dfb72f651831928670b868f234d50267d363b8454903ab396b9bd6e0"
+    },
+    {
+      "fileSize": "1319272",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/tools/subrecteditor.dll",
+      "sha256": "2db269ac921694c72704d2fd6fe3fa9b8972053e1f716ebf40d33d7928248982"
+    },
+    {
+      "fileSize": "10292584",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/toolscenenodes.dll",
+      "sha256": "e71a4c3ecc2ccde0f948a95a3e759cdae8cab12d7e3a56ae40816a48c8edd346"
+    },
+    {
+      "fileSize": "41528320",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/v8.dll",
+      "sha256": "cca6409316dab335607b0c8ff22d4afe1e22286e36251d7144c4507bdd866c93"
+    },
+    {
+      "fileSize": "1601536",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/v8_libbase.dll",
+      "sha256": "c40d3afc1831397f62d7b34711a12d65146eae742a0e7096804c3045879ce647"
+    },
+    {
+      "fileSize": "1403904",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/v8_libplatform.dll",
+      "sha256": "3a9ceb82381ff66456f05529662e17273196d64c71b3a6aa20dff806005d8c7b"
+    },
+    {
+      "fileSize": "829440",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/v8_zlib.dll",
+      "sha256": "b16de767dc4ba615daee9fe7a0ae000c9b4682a7abfd4979ce38429f24afbc82"
+    },
+    {
+      "fileSize": "136040",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/v8system.dll",
+      "sha256": "969aae877037c5ec8ee45ac2bee4e7b3f320b0a0d95090ec873048275f104ccf"
+    },
+    {
+      "fileSize": "59752",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/valve_avi.dll",
+      "sha256": "011d17f110e8dae66f77a54e7061488e5d6519773351d3d009945b3c5cdf1759"
+    },
+    {
+      "fileSize": "44904",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/valve_wmf.dll",
+      "sha256": "47aa5dabb6e60972381679bb5c07d7d6dfbabb9e4f094718c2f80cda6ae1cb31"
+    },
+    {
+      "fileSize": "111976",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/vconcomm.dll",
+      "sha256": "a793428ed2cb9396bf41292bb9cc526b7eb3fc90ff686576b1b080cd0f0de504"
+    },
+    {
+      "fileSize": "1127272",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/vfx_dx11.dll",
+      "sha256": "5bba8513532ce59ac9386e33678cb838c5069ab158eae51c93d0b4249d4046c1"
+    },
+    {
+      "fileSize": "4610448",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/video64.dll",
+      "sha256": "bd0b26c5ce10647ab04bdedc8d33d7850e678f1a285748b46290c669e2f187fb"
+    },
+    {
+      "fileSize": "1684328",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/visbuilder.dll",
+      "sha256": "6c08dd0aa197f9db479e1008fc7c742531b823d84bf16cbdc6546974f365d052"
+    },
+    {
+      "fileSize": "3586408",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/vphysics2.dll",
+      "sha256": "93e1c39a4edee3ea2819f3566c1f7415970ddae9595b5065fd9b54122b1017d1"
+    },
+    {
+      "fileSize": "3772776",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/vrad3.dll",
+      "sha256": "22fad8975a461710f9afaa54571c57f29dabf72f0003a7a44f2c388038227412"
+    },
+    {
+      "fileSize": "1349480",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/vscript.dll",
+      "sha256": "f4a948289261b67cc2076d71bd3e969dc8d3847dc67e0847ce468359c77155b8"
+    },
+    {
+      "fileSize": "1161064",
+      "mtimeUtc": "",
+      "path": "game/bin/win64/worldrenderer.dll",
+      "sha256": "8432770f91fb2c2b7a89175eb48e27db168a0984f5f7ccf76948a12abf827d21"
+    },
+    {
+      "fileSize": "24265576",
+      "mtimeUtc": "",
+      "path": "game/csgo/bin/win64/client.dll",
+      "sha256": "3799a93cd0004b70da419852efc04e4a7cc647504df02e391d9111418f8bd94d"
+    },
+    {
+      "fileSize": "1327976",
+      "mtimeUtc": "",
+      "path": "game/csgo/bin/win64/host.dll",
+      "sha256": "1ed4baa7e1919d02ffa2b9106c90d2564c01d948635b67667250f8989bed737d"
+    },
+    {
+      "fileSize": "2019176",
+      "mtimeUtc": "",
+      "path": "game/csgo/bin/win64/matchmaking.dll",
+      "sha256": "3f4130e96744ea1966e51534ba92f3372e225112421a885ec590d638393d36fa"
+    },
+    {
+      "fileSize": "22164840",
+      "mtimeUtc": "",
+      "path": "game/csgo/bin/win64/server.dll",
+      "sha256": "fe7cc6270992e9ee35f3820d4459148277e1aae3ff2afa0c5ffd9d4c59af7df0"
+    },
+    {
+      "fileSize": "434176",
+      "mtimeUtc": "",
+      "path": "game/csgo/import_scripts/bin/filesystem_stdio.dll",
+      "sha256": "60986087fe1ba50ff438c35dccfb72f9b4cdedcc0e7d9ee8c3dd546d95693085"
+    },
+    {
+      "fileSize": "881664",
+      "mtimeUtc": "",
+      "path": "game/csgo/import_scripts/bin/materialsystem.dll",
+      "sha256": "8d4e1aebcf25b780994b5712599f8af38c267c44a9ee7cf5ed7138d370bf6516"
+    },
+    {
+      "fileSize": "85504",
+      "mtimeUtc": "",
+      "path": "game/csgo/import_scripts/bin/shaderapiempty.dll",
+      "sha256": "339e9879e4d6a6b46a715affc9f76860a012ba4028f796bf1b5f3bf9441011d0"
+    },
+    {
+      "fileSize": "260096",
+      "mtimeUtc": "",
+      "path": "game/csgo/import_scripts/bin/stdshader_dbg.dll",
+      "sha256": "53a579b0073a16d484383fb9dc2ae6d3208bceb47e31d122434eca91976a0ef5"
+    },
+    {
+      "fileSize": "982016",
+      "mtimeUtc": "",
+      "path": "game/csgo/import_scripts/bin/stdshader_dx9.dll",
+      "sha256": "be3d1f7c940d98db171679a2fc126384227b88fc98f3b41bd510d2ce6133b0ee"
+    },
+    {
+      "fileSize": "355328",
+      "mtimeUtc": "",
+      "path": "game/csgo/import_scripts/bin/tier0.dll",
+      "sha256": "99185beff5eb8d5103e3e01935301e189e7947e7725aa49d60bf0c7cd2c53a26"
+    },
+    {
+      "fileSize": "1095168",
+      "mtimeUtc": "",
+      "path": "game/csgo/import_scripts/bin/vphysics.dll",
+      "sha256": "0acb45821a371fbff02ece3e14264bab9262f357d9802221a921a354e3eddd1b"
+    },
+    {
+      "fileSize": "246272",
+      "mtimeUtc": "",
+      "path": "game/csgo/import_scripts/bin/vstdlib.dll",
+      "sha256": "59713f30d8faf61324bf631c3aaa52f18d1d4eca77f7d57e03280e277873bdc2"
+    }
+  ],
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "steam": {
+    "appId": 730,
+    "depots": [
+      {
+        "depotId": 2347770,
+        "manifestId": "3864476401627506266"
+      },
+      {
+        "depotId": 2347771,
+        "manifestId": "2519456234678493914"
+      },
+      {
+        "depotId": 2347779,
+        "manifestId": "2600984163371577443"
+      }
+    ],
+    "manifestCreatedUtc": "2023-06-29T23:46:33Z",
+    "steamBuildId": "11593506"
+  },
+  "tool": {
+    "gitCommit": "a75981da32889cc2e5dce4f343b257b6341ee81a",
+    "semver": "0.5.0",
+    "walkerGitSha": "a75981da32889cc2e5dce4f343b257b6341ee81a",
+    "walkerSrcFingerprint": "808bdaae43653703231e1265b49f97fd3fab83a3967de60ce62cbac8f019a496"
+  }
+}

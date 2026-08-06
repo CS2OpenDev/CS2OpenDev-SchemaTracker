@@ -1,0 +1,842 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "17",
+              "oldValue": "16"
+            }
+          ],
+          "name": "client.dll/CBasePlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "50",
+              "oldValue": "51"
+            }
+          ],
+          "name": "client.dll/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "25",
+              "oldValue": "24"
+            }
+          ],
+          "name": "server.dll/CBasePlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "52",
+              "oldValue": "53"
+            }
+          ],
+          "name": "server.dll/CCSPlayer_MovementServices"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "debugoverlay_enable_dotted_dashed"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "8",
+              "oldValue": "10"
+            }
+          ],
+          "name": "mp_dm_kill_base_score"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "SFUI_match_abort_match_abnormal_behavior_pano",
+        "coupon_alrt_01",
+        "coupon_alrt_01_stattrak",
+        "coupon_altare_01",
+        "coupon_altare_01_stattrak",
+        "coupon_borne_01",
+        "coupon_borne_01_stattrak",
+        "coupon_pirapus_01",
+        "coupon_pirapus_01_stattrak",
+        "coupon_repiet_01",
+        "coupon_repiet_01_stattrak",
+        "coupon_shockone_01",
+        "coupon_shockone_01_stattrak",
+        "musickit_alrt_01",
+        "musickit_alrt_01_desc",
+        "musickit_altare_01",
+        "musickit_altare_01_desc",
+        "musickit_borne_01",
+        "musickit_borne_01_desc",
+        "musickit_pirapus_01",
+        "musickit_pirapus_01_desc",
+        "musickit_repiet_01",
+        "musickit_repiet_01_desc",
+        "musickit_shockone_01",
+        "musickit_shockone_01_desc",
+        "store_nav_section_coupon_nightmode2",
+        "store_nav_shop_all"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cd2e40298c980a1749a8993bfdd745a420c3c22d9634ecee5b195d61c27e9784",
+              "oldValue": "2f824fa1aa3badd58baa25d3a8eba99575fd3545e60fe8775640a9e93901baf0"
+            }
+          ],
+          "name": "ABoost"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3e4defe257138fbef2ee589177c59e892962bec403c502997a88329c2c1ebe7d",
+              "oldValue": "54a745a56d864a5ac544bcd5edf5cf11dd8d7bae4d45e1151ef6a7b4706b24df"
+            }
+          ],
+          "name": "AHalls"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fbd6762a55ce1b9395a142ce65f46e16c9c13a6d2dc56f98daeaf3fab70de832",
+              "oldValue": "be089192a2c5888635d041d77f06f373a78674e02ca5cf31bf6dc1c2de7d3107"
+            }
+          ],
+          "name": "AStairs"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1c3c2ad71bff4cd3390f02055567c3d7293e49b1aa0b200cf19eb636681dd7cf",
+              "oldValue": "18934edca22a9c8fdad606b00444891fbf3cfe1e80c1cbc7c76630124b189980"
+            }
+          ],
+          "name": "BHalls"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cde9a1b861ae7adc82f7f74ac2986956d36d6f1c61a5a87793f9373daf460d7d",
+              "oldValue": "3781dfbc7469f1e007fd7a67562e8d5118643682b84b4b0230960d7ab67b2d6a"
+            }
+          ],
+          "name": "Bear"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aab6f6aa3f688d170a1604c9247e93a49f2e5992c7f3e4d6695015bb2422f8a3",
+              "oldValue": "8ab3f331839fa5689a9ddcdf29ffea4a0c75d31d44271f35f2393e6281665d50"
+            }
+          ],
+          "name": "Boost"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce56a7387b1376faecdf1cc19a8b48003d33470da5b9213dd6f98b2186322a66",
+              "oldValue": "9994d7a76b14f41b2b029cb2d6d298fdbb78dd0e7529d29b4fa2cf87cc01baad"
+            }
+          ],
+          "name": "BusStop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dc47df05def2fc7bee269f89db9c16773be1fe1989dff26a9b53842160e36c99",
+              "oldValue": "46613e59cb6efcbbbda1994759e6dd27d65d429f2ffe436560dee57de8ba011a"
+            }
+          ],
+          "name": "CTLane"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4467e6e58a570bb366991511a4cf0d7d1eea2124b1dc6d094a964b0c83dca937",
+              "oldValue": "3365160073415bfa2041dd7a79d4c7c86acac31bdb1b1a94dc83208ca46fe56f"
+            }
+          ],
+          "name": "Checkers"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a655e884d48f620fe6b644be8e6a405593ca6aa3fb7e8a830b69b5cb60e7c843",
+              "oldValue": "3373719e1edaa74541143975dc158cac7a594517e8b726376cf442765a77a2c0"
+            }
+          ],
+          "name": "Corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e43f7f8ea5d207497abf45308345571298e5f461d5eed77ab1c8e210cb37b600",
+              "oldValue": "ab567c2101970a102df5d7adf0b6b27a434dc4a39f9fc02b1b808d22fcc80445"
+            }
+          ],
+          "name": "Cstrike_PreferredHandedness"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07c8710133a9fd67d5aa9ce77e335bc055cdc396c5427b4e509f4a00ddec8c58",
+              "oldValue": "75fad5f0ed96a5a325cb5187fd024960d3c96768aeacb00bf3e4bf400f22c0fe"
+            }
+          ],
+          "name": "Cstrike_PreferredHandedness_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9d10a7aa253df748dacdf7257b515f21bd77adb027803e64973e27e63d904b97",
+              "oldValue": "0c032656105e829174bbaf367f982107c5ca9272eaa5a8f32de7d3f3774ea6ad"
+            }
+          ],
+          "name": "Cstrike_SwitchHandedness"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7d0949bb9838a8b9c3268caa7ca221e0eb0508c107428160306d32baa23e3658",
+              "oldValue": "2caab2fafe74b98972dafb6abd829521392dc7e5b5e785aeee4ee0bdf3bb5200"
+            }
+          ],
+          "name": "Cubby"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "72569298964d262e5868b37027da6e95fbac5d4229f9eb20cc93da6f3d1dd92d",
+              "oldValue": "9a09e251f4cddb4a3bf4dfdaad6ee399b895595982f092832d7851fb0b59d25b"
+            }
+          ],
+          "name": "Econ_DateFormat_GMT:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f4dc565657df48b6ba5a6cb07e8366179e29ed33a2fc6d9dd30123ad069b0b5e",
+              "oldValue": "db947a37a81b3b580f8caf8deafee78cf55830ed1b4e0a27a291c31042d2161a"
+            }
+          ],
+          "name": "Econ_DateFormat_GMT_DateOnly:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ad009ef0bdc5ffe0caa48ee1881349b3b4fc0224fa33f6bb018dcb66da686c6",
+              "oldValue": "e437c1711822c4598e81d508581093127367132de9df9b6361326ed59d42977f"
+            }
+          ],
+          "name": "ElectricalBox"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "20cf949b45e455e6829b96f826e19c2b9a6dacd61d3bc64dcb609259a4abca98",
+              "oldValue": "c213598d63f6657e7197262dc4729968eae029744a93f42f989087fa6cfa0108"
+            }
+          ],
+          "name": "Headshot"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4548b1534dcd304613746aae29c03a7c448f56b83cf8c81f0f71c71145a5682b",
+              "oldValue": "136c9a1286a59a7ffc670647e77e9315eff09d4d90fa5df394ce4209cd2e9f45"
+            }
+          ],
+          "name": "Highway"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5b42bb2efc755b71c4c3b4aa6f00701ea17f257078ebbfb65e05c66f7c006efa",
+              "oldValue": "8d71e1ba5a86f12ba14b31103bdc839ffffd6ec9a6f5184abaf69e78922f2c1e"
+            }
+          ],
+          "name": "Lockers"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "862fae48c085c597ec8a1f1affcd866588bd0e8e785fc97f3b3f32fcc6a42fde",
+              "oldValue": "b0c588a133c1b5c2760a0471a940d670a3b603c811f91fff6e5a4bcf1459abf1"
+            }
+          ],
+          "name": "MidRoof"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3c4bdb3c319504ee334e1158236f0c88ada5431d976aa93763ed29658317c3ea",
+              "oldValue": "0d6222b966f4081fa31dd42bd518c5caa2da5be4d74ad77e88744312681153cd"
+            }
+          ],
+          "name": "OutsideA"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4aa094b6fbd9c2b3eede420ce13218924a91d62e6c224b126cfa8dfe71dad036",
+              "oldValue": "50a92049800813f5f8770097ff9ac34d9d4ca22d3629174926e2cde7c9637962"
+            }
+          ],
+          "name": "OutsideB"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6c8c214676298a76a79bd18130cee94f4206f49c08d3ecfe47076e1427b69550",
+              "oldValue": "70a65fa23405303504a6b90d3694d2c5fbc42e3732b2bb9d0b2d4c9e020512ab"
+            }
+          ],
+          "name": "Post_Round_Damage_Report_Given:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ceb657e70e9cfccbfd2066b52c1db8c44ed4a788b5b531fc533d8d9b3c75bbaa",
+              "oldValue": "1cf8733ab3f9be25dd508b847bc19ef53fb2772149c91ec984cd2995110afbcb"
+            }
+          ],
+          "name": "Post_Round_Damage_Report_Taken:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3c7b156a13e3e166c19d59503e4747ca8999e77524d1ec03d7ea231842312bf2",
+              "oldValue": "c02136de720237a175e54e587f1d4aa4bb3f5be5612036898c0d33f4591ad62e"
+            }
+          ],
+          "name": "SFUI_Settings_AOProxy"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "816db3ed5ad5bc843ccd74a382c76bb58ef896b73203b2ab03a6c0db72776f48",
+              "oldValue": "3e8cc2b9ed5beab07e8c1a69c5266e970890579d6f813f2d02a55acf738068bd"
+            }
+          ],
+          "name": "SFUI_Settings_AOProxy_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8dbcdc940652212a925952fb3112f3cb9e391b9209f508cfc26fd1191b30297f",
+              "oldValue": "00c27e5e3e8a30c1c4283fa549fd1a494c5d25c91f0532d8b5e09ff3693a9105"
+            }
+          ],
+          "name": "SFUI_Settings_ViewmodelPos"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce02a2909bee4a299949f500df9ab878af41ea570e0d87b1f0a8dc3606fa8498",
+              "oldValue": "7f14218d54b4cd1a1846cc02d5e1fd13f8c9bc583c9a50fd823c5b4b21c9d0e7"
+            }
+          ],
+          "name": "SFUI_Settings_ViewmodelPosCouch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "238698c25efc636bfed57faef4d012c2e1090a77740b149af5f78b0bb47cb469",
+              "oldValue": "d8c047b4f04802aa9da982be09e04aa779df04f9273982461fb41c3755602b6a"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersR:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53d88a1d811c5eff5847aae6b02e15ae22a37a9f454369cbd8000f93caebaea0",
+              "oldValue": "47c5ce0283b48cbfa5f98e5ee890caf4b0ec3bbe6619221460b8d8e885c42833"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersY:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "%s1 and any party members have received VACNET cooldowns.",
+              "oldValue": "VAC has detected irregular gameplay and has canceled the match.\nThe player who was flagged by VAC and their party have received a cooldown."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "124aeaae68757e49f4e6d2796300bf0dfb07d5c6657119c61604673ee039108b",
+              "oldValue": "efa19f99df2127a0c580c813e2e7d6d684ad043da5fcdfbde5af3b5d7bfe65c2"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "847486d15fb50d43cdacce9fdaa237a4422f74f15f28b5a2bada17680bf663d7",
+              "oldValue": "ecf1316a02b495f326dc8f0c4367708d7e2381cc3d5e05945cce2524cd5bd1f2"
+            }
+          ],
+          "name": "Sandbags"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b94cb1e565b5b09c1cc5843fe69a3da4ab0dae8d129669e004c31861b6385dc7",
+              "oldValue": "c740f4e26d7d68ab4fe7818f1343d25fb3e1e459630f8fa0c1fc611972854b5f"
+            }
+          ],
+          "name": "Squeaky"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cbe3ecc57e37cb47c6b420b21beb36cedce558b9f8d176a0be009c6df4a3ddf0",
+              "oldValue": "50098abf5ca7508049476b1f55e0a40cc26a6894466b753f8f969b98dbdecc47"
+            }
+          ],
+          "name": "SunRoom"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "66a59e4dfa7d0240075754f4adba658ae18acc2fd3bc27206bd11fcd5d45e485",
+              "oldValue": "099a72b8ddeb17f60ac118b55e5f869bee5e5ef3f93afd8da6548e25e4e8b4b6"
+            }
+          ],
+          "name": "TTruck"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e7a9ba65dbe6e63c9e0760e546fa84a6fc7ec56dabecd6d1eaea0116f547b96c",
+              "oldValue": "16d48e17a524f9ce025c945786ceea0bf21ab2ee06fd89fcb02a48bfd7cae6c9"
+            }
+          ],
+          "name": "TYard"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4451f403d5f1cac61d607f10e4750b770410aa10fa6c3ede58056210ace951cc",
+              "oldValue": "541bb06169ec47ffadb783f2b1265f6b381e8a616ae5304eca8a69a024374b93"
+            }
+          ],
+          "name": "TreeRoom"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e84f78f6b6b8ddaf33b2c3a5f0888916c5f5401f9be6eb28d246773b417277c7",
+              "oldValue": "8902168954fad845101de11d93d3a8f50249df33f1f1a46840806ea53ebe7edf"
+            }
+          ],
+          "name": "Useless"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1d64bd247071a3057e5ed7edbf9555b0ed27fbe3c85308cb00978b98267c5e56",
+              "oldValue": "25290755a1ab869ac076b93ab64e858b7a41195e1e61cd080b70ffdfeaf599a1"
+            }
+          ],
+          "name": "quest_11001_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "71404e41a84619d8952824b15e5d1229ae1c91e640e17be15a8eb2299367ca31",
+              "oldValue": "90f518ee534d3cfc8cfbab853c7f839abc187b659e693fa32021d45ce0ec597b"
+            }
+          ],
+          "name": "quest_11001_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "762053633aaa5b037b8ea81e9515e13974977a5407a6aaad8a85cb81b49eba0d",
+              "oldValue": "74a79899ff28bd2dd0b70c3c85b7a3aefc9cdd1476b855e0c15e6f3b7763c498"
+            }
+          ],
+          "name": "quest_11002_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9629d78a0c0c4468f2dcfff21c0c1627fdf42a23c8a1eebe5fd00804e5d100d1",
+              "oldValue": "5b126f279908da06b6147d011da90b75d70108f08b285807121bbb325d9142b0"
+            }
+          ],
+          "name": "quest_11002_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "762053633aaa5b037b8ea81e9515e13974977a5407a6aaad8a85cb81b49eba0d",
+              "oldValue": "74a79899ff28bd2dd0b70c3c85b7a3aefc9cdd1476b855e0c15e6f3b7763c498"
+            }
+          ],
+          "name": "quest_11003_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9629d78a0c0c4468f2dcfff21c0c1627fdf42a23c8a1eebe5fd00804e5d100d1",
+              "oldValue": "5b126f279908da06b6147d011da90b75d70108f08b285807121bbb325d9142b0"
+            }
+          ],
+          "name": "quest_11003_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9f7814e597aa51bcf9e454ecc0e0cf9d421ec831d5eae1c4b6f6025b47c1a3fa",
+              "oldValue": "c71b1dc0102d07578a5f2065028e49cb7e4e3d37c28a4ca794bcd0af340d8ffd"
+            }
+          ],
+          "name": "quest_11004_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "97fb9d7e14ea14076cb2ee853562bd72ea38c8ddb6d70eb67aeebe76f0805562",
+              "oldValue": "77f41cef236deb7e352a1fdcb9c88891d8386da5303ddc806db54e0561931ed5"
+            }
+          ],
+          "name": "quest_11004_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7287c85e1a836e639fa452708dfe186b13c517dcc46cbada13b5b68e0809ffde",
+              "oldValue": "4068e5f3197976d19fb931e75fca15d077342d7451e7211cf3e4533b53187165"
+            }
+          ],
+          "name": "quest_11005_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "97fb9d7e14ea14076cb2ee853562bd72ea38c8ddb6d70eb67aeebe76f0805562",
+              "oldValue": "77f41cef236deb7e352a1fdcb9c88891d8386da5303ddc806db54e0561931ed5"
+            }
+          ],
+          "name": "quest_11005_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fa6fd43e2dfea5eaa8249fdcedd839226dd57c07b77e2521882194285f94c3f1",
+              "oldValue": "83acc6b3aabd15875d9fad80102a5bf639e1df973caa23cc947954d9a3636f87"
+            }
+          ],
+          "name": "quest_11006_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dc17254a8e9167d6d0d4b804037f85e3ec339b6cd86d0049c413286324677bb",
+              "oldValue": "4f7c3e041c15ad50c531fb877e5306b14a50c3ca5101489fb4985dcbc09d7e0c"
+            }
+          ],
+          "name": "quest_11006_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "762053633aaa5b037b8ea81e9515e13974977a5407a6aaad8a85cb81b49eba0d",
+              "oldValue": "74a79899ff28bd2dd0b70c3c85b7a3aefc9cdd1476b855e0c15e6f3b7763c498"
+            }
+          ],
+          "name": "quest_11007_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a6114716e71196693ac937dde51548894b6007745232a2ce2db38a943b5a4fd",
+              "oldValue": "5fb7ed2e50abcb204206cefc3ca0200a179737a5e14877276bca992992768a82"
+            }
+          ],
+          "name": "quest_11007_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7287c85e1a836e639fa452708dfe186b13c517dcc46cbada13b5b68e0809ffde",
+              "oldValue": "4068e5f3197976d19fb931e75fca15d077342d7451e7211cf3e4533b53187165"
+            }
+          ],
+          "name": "quest_11008_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dc17254a8e9167d6d0d4b804037f85e3ec339b6cd86d0049c413286324677bb",
+              "oldValue": "4f7c3e041c15ad50c531fb877e5306b14a50c3ca5101489fb4985dcbc09d7e0c"
+            }
+          ],
+          "name": "quest_11008_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fa6fd43e2dfea5eaa8249fdcedd839226dd57c07b77e2521882194285f94c3f1",
+              "oldValue": "83acc6b3aabd15875d9fad80102a5bf639e1df973caa23cc947954d9a3636f87"
+            }
+          ],
+          "name": "quest_11009_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dc17254a8e9167d6d0d4b804037f85e3ec339b6cd86d0049c413286324677bb",
+              "oldValue": "4f7c3e041c15ad50c531fb877e5306b14a50c3ca5101489fb4985dcbc09d7e0c"
+            }
+          ],
+          "name": "quest_11009_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4cc8193a271f6e58f14a850fa714fecbf491b7bac40c06f4ee4c3ca1b0ce4c8d",
+              "oldValue": "f946d1fe23d8d84fcf8a17d09c756e8486469987dc11cabbc4a40a90421c3bef"
+            }
+          ],
+          "name": "quest_11010_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f910286e7e637030950da60f259fc9cddf77a7bd54eeef2405911b1887efac57",
+              "oldValue": "86d799b5a0e2608103e39f46b17f4d61f72306233292b3d1c0f2c2dd9c42022b"
+            }
+          ],
+          "name": "quest_11010_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fa6fd43e2dfea5eaa8249fdcedd839226dd57c07b77e2521882194285f94c3f1",
+              "oldValue": "83acc6b3aabd15875d9fad80102a5bf639e1df973caa23cc947954d9a3636f87"
+            }
+          ],
+          "name": "quest_11011_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dc17254a8e9167d6d0d4b804037f85e3ec339b6cd86d0049c413286324677bb",
+              "oldValue": "4f7c3e041c15ad50c531fb877e5306b14a50c3ca5101489fb4985dcbc09d7e0c"
+            }
+          ],
+          "name": "quest_11011_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fa6fd43e2dfea5eaa8249fdcedd839226dd57c07b77e2521882194285f94c3f1",
+              "oldValue": "83acc6b3aabd15875d9fad80102a5bf639e1df973caa23cc947954d9a3636f87"
+            }
+          ],
+          "name": "quest_11012_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dc17254a8e9167d6d0d4b804037f85e3ec339b6cd86d0049c413286324677bb",
+              "oldValue": "4f7c3e041c15ad50c531fb877e5306b14a50c3ca5101489fb4985dcbc09d7e0c"
+            }
+          ],
+          "name": "quest_11012_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fa6fd43e2dfea5eaa8249fdcedd839226dd57c07b77e2521882194285f94c3f1",
+              "oldValue": "83acc6b3aabd15875d9fad80102a5bf639e1df973caa23cc947954d9a3636f87"
+            }
+          ],
+          "name": "quest_11013_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dc17254a8e9167d6d0d4b804037f85e3ec339b6cd86d0049c413286324677bb",
+              "oldValue": "4f7c3e041c15ad50c531fb877e5306b14a50c3ca5101489fb4985dcbc09d7e0c"
+            }
+          ],
+          "name": "quest_11013_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4d548507eb20dda5201a8878b60de1814a1e9a262afa5b36e942f30f3bc0eeaa",
+              "oldValue": "83acc6b3aabd15875d9fad80102a5bf639e1df973caa23cc947954d9a3636f87"
+            }
+          ],
+          "name": "quest_11014_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dc17254a8e9167d6d0d4b804037f85e3ec339b6cd86d0049c413286324677bb",
+              "oldValue": "4f7c3e041c15ad50c531fb877e5306b14a50c3ca5101489fb4985dcbc09d7e0c"
+            }
+          ],
+          "name": "quest_11014_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8940a2ff139f5a14bbb125ce08cf3a8d5fc2dd5a1778916a702f2812c8746617",
+              "oldValue": "83acc6b3aabd15875d9fad80102a5bf639e1df973caa23cc947954d9a3636f87"
+            }
+          ],
+          "name": "quest_11015_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dc17254a8e9167d6d0d4b804037f85e3ec339b6cd86d0049c413286324677bb",
+              "oldValue": "4f7c3e041c15ad50c531fb877e5306b14a50c3ca5101489fb4985dcbc09d7e0c"
+            }
+          ],
+          "name": "quest_11015_var_ingame:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ad5d3cc79e1a757d6babe80c4ea44faffb9a9d04b9bdea571df576c563442c50",
+              "oldValue": "ba46f12bdb88c13beaf6832b0ca79ba602554659eee8e20df87222fc8b5aaa7f"
+            }
+          ],
+          "name": "quest_11016_var_desc:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b9dc2849fbeaa9c0ba071d5a26fb38a07544682f47408ab0f1b7c12be5918735",
+              "oldValue": "53cedcbf58b0156f426882938e9f9e4c999a0522ca0aba8c6c3d208003efc7a1"
+            }
+          ],
+          "name": "quest_11016_var_ingame:f"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "23118419",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "23135875"
+}

@@ -1,0 +1,97 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "69",
+              "oldValue": "68"
+            }
+          ],
+          "name": "libclient.so/C_CSWeaponBase"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "audio_input_test_signal",
+        "imgui_show_sound_window",
+        "opus_decode_test_signal",
+        "opus_encode_test_signal",
+        "opus_unittest_test_signal",
+        "voice_bypass_noise_gate",
+        "voice_device_override",
+        "voice_in_process",
+        "voice_loopback_no_networking",
+        "voice_threshold_attack",
+        "voice_threshold_hold"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "sv_nonemesis"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "-120.000000",
+              "oldValue": "4000.000000"
+            }
+          ],
+          "name": "voice_threshold"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "1.500000",
+              "oldValue": "0.500000"
+            },
+            {
+              "field": "flags",
+              "newValue": "clientdll,archive",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "voice_threshold_delay"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12934552",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12956327"
+}

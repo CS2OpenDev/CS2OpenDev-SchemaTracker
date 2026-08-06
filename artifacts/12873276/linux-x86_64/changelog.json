@@ -1,0 +1,71 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "14",
+              "oldValue": "12"
+            }
+          ],
+          "name": "libclient.so/C_BaseCSGrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "11"
+            }
+          ],
+          "name": "libserver.so/CBaseCSGrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "25",
+              "oldValue": "24"
+            }
+          ],
+          "name": "libserver.so/CBasePlayerController"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "cq_dropped_command_msecs"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12854667",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12873276"
+}

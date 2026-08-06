@@ -1,0 +1,318 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/CSosGroupActionSetSoundeventParameterSchema",
+        "libclient.so/CBombTarget"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "14"
+            }
+          ],
+          "name": "!GlobalTypes/CHitBox"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "64",
+              "oldValue": "63"
+            }
+          ],
+          "name": "!GlobalTypes/CParticleSystemDefinition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "6"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_CurlNoiseForce"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "58",
+              "oldValue": "54"
+            }
+          ],
+          "name": "libclient.so/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "2",
+              "oldValue": "3"
+            }
+          ],
+          "name": "libclient.so/CCSPlayerController_DamageServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "libclient.so/CCSPlayer_ActionTrackingServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "6"
+            }
+          ],
+          "name": "libclient.so/C_CSGO_TeamPreviewCamera"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "libclient.so/C_CSGO_TeamPreviewCharacterPosition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "107",
+              "oldValue": "105"
+            }
+          ],
+          "name": "libclient.so/C_CSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "21",
+              "oldValue": "16"
+            }
+          ],
+          "name": "libclient.so/C_Hostage"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "27",
+              "oldValue": "25"
+            }
+          ],
+          "name": "libclient.so/C_PlantedC4"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "59",
+              "oldValue": "58"
+            }
+          ],
+          "name": "libclient.so/C_WeaponCSBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "libserver.so/CCSGO_TeamPreviewCharacterPosition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "202",
+              "oldValue": "200"
+            }
+          ],
+          "name": "libserver.so/CCSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "70",
+              "oldValue": "66"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "17",
+              "oldValue": "16"
+            }
+          ],
+          "name": "libserver.so/CPropDoorRotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "22",
+              "oldValue": "21"
+            }
+          ],
+          "name": "libserver.so/CSoundOpvarSetPointEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "15",
+              "oldValue": "14"
+            }
+          ],
+          "name": "libserver.so/CVoteController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "52",
+              "oldValue": "51"
+            }
+          ],
+          "name": "libserver.so/CWeaponCSBase"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "anim_damped_move_speed_timewindow",
+        "cl_predict_bomb_defusal",
+        "mp_overtime_limit",
+        "particle_debug_creation_filter",
+        "phys_dump_filter_body_name",
+        "phys_mesh_sdf_generic",
+        "phys_skip_creating_trivial_islands",
+        "phys_solve_in_parallel_with_island_build",
+        "player_competitive_maplist_8_10_0_0",
+        "snd_boxverb_simd_svf",
+        "snd_calc_distance_debug_visualize_paths",
+        "snd_calc_distance_debug_visualize_paths_duration",
+        "snd_diffusor_simd",
+        "snd_sos_hide_simple_parameter_overwrite_warnings",
+        "snd_steamaudio_enable_reverb",
+        "snd_steamaudio_reverb_level_db",
+        "sv_force_team_intro_variant",
+        "sv_mapvetopickvote_rnd",
+        "tool_spawned_model_scales",
+        "ui_mainmenu_bkgnd_movie_CEBFC540"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "mp_only_cts_rescue_hostages"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "snd_boxverb_simd"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            }
+          ],
+          "name": "snd_calc_distance_pathing_enable_validation"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "[1:5][2:15][3:20][4:10][5:10][6:5]",
+              "oldValue": "[1:5][2:10][5:10][6:5]"
+            }
+          ],
+          "name": "sv_mapvetopickvote_phase_duration"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "16",
+              "oldValue": "0"
+            }
+          ],
+          "name": "ui_playsettings_flags_listen_competitive"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "16",
+              "oldValue": "0"
+            }
+          ],
+          "name": "ui_playsettings_flags_official_competitive"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "player_competitive_maplist_8_10_0_D650B7E4",
+        "snd_calc_distance_visualize_paths",
+        "ui_mainmenu_bkgnd_movie_ABEE17B1"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "11887584",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "11949605"
+}

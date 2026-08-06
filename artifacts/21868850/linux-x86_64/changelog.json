@@ -1,0 +1,112 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "49dc68e02e8b86341feda1f8baa92bbf1edcaf54943dfa874194800653f4cddb",
+              "oldValue": "ea7ac480053cafbbe91314dc8824fb603095cbdeb1dc57f1ba3d3c55fe72a6a0"
+            }
+          ],
+          "name": "Post_Round_Damage_Report_Given:p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b86049b7b5086b858d98393749e41e233a97f40c8f45cb37cb77930245dd66d2",
+              "oldValue": "f8bd9738c7d3b9e79cde303657e8e8ab0d6103a501d237415f44b8b14f765e15"
+            }
+          ],
+          "name": "Post_Round_Damage_Report_Taken:p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2e4db514275e5c19a18b6d76d123669334248fae255d422d03aa73c4bd9039c1",
+              "oldValue": "e5258732306e35c891d43007e7165aacca4510cde475a5959d6fe88eca0fe463"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersR:p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0932e50bb5fc8040f966de689dd76d00a7f5972061ed6ee27adcd06e09de1b8e",
+              "oldValue": "e79e50ff98b8129ca86bba8a1e3e4ff5d9c565e1bb5066672ae0b65e62e7b9c9"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersY:p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "601b13bded7b1c56ee51c08c459b62bb766994f9a45b8cfc516e1454ba0b2dbd",
+              "oldValue": "ba3dedc9b7b256bc8c4d289702152c3cab5fa69bb239367b67a12c90fabb1f12"
+            }
+          ],
+          "name": "Team_Cash_Award_Dead_CTs:p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6e0f67f95ca6a6630758aeae584d94e4d7d5cc5f662a27c39e23be250e6d708e",
+              "oldValue": "f3eed7b244416642685eb99424d28d3fabd553134df6d90b20846d46499c6b68"
+            }
+          ],
+          "name": "Team_Cash_Award_Dead_Terrorists:p"
+        }
+      ],
+      "family": "localization",
+      "removed": [
+        "Post_Round_Damage_Report_Given:p{s1}",
+        "Post_Round_Damage_Report_Taken:p{s1}",
+        "SFUI_UserAlertNoteType_LowPlayersR:p{players}",
+        "SFUI_UserAlertNoteType_LowPlayersY:p{players}",
+        "Team_Cash_Award_Dead_CTs:p{s2}",
+        "Team_Cash_Award_Dead_Terrorists:p{s2}"
+      ]
+    }
+  ],
+  "fromBuild": "21856620",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "21868850"
+}

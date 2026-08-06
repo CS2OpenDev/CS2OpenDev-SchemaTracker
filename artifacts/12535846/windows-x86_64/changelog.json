@@ -1,0 +1,58 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/RnVertex_t"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "!GlobalTypes/RnHull_t"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "phys_enable_gjk_clipping",
+        "phys_find_incident_face_wedges_fix",
+        "phys_query_last_features_enabled",
+        "phys_query_last_features_vertex_separation",
+        "ragdoll_resolve_initial_conflict",
+        "ragdoll_resolve_separation"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12494887",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12535846"
+}
