@@ -1,0 +1,149 @@
+{
+  "families": [
+    {
+      "added": [
+        "libclient.so/ServerAuthoritativeWeaponSlot_t",
+        "libserver.so/ServerAuthoritativeWeaponSlot_t"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "8"
+            }
+          ],
+          "name": "libclient.so/CCSPlayerController_InventoryServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "6"
+            }
+          ],
+          "name": "libclient.so/C_CSGO_TeamPreviewCharacterPosition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "101",
+              "oldValue": "100"
+            }
+          ],
+          "name": "libclient.so/C_CSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "50",
+              "oldValue": "49"
+            }
+          ],
+          "name": "libclient.so/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "6"
+            }
+          ],
+          "name": "libserver.so/CCSGO_TeamPreviewCharacterPosition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "195",
+              "oldValue": "194"
+            }
+          ],
+          "name": "libserver.so/CCSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "9"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerController_InventoryServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "46",
+              "oldValue": "45"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerPawn"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_teamcounter_playercount_instead_of_avatars",
+        "csm_cascade3_override_dist",
+        "r_aoproxy_cull_dist",
+        "r_morphing_enabled",
+        "r_stereo_multiview_instancing"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "cl_teamid_overhead_colors_show"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "archive,cheat",
+              "oldValue": "archive"
+            }
+          ],
+          "name": "splitscreen_mode"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12416747",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12427908"
+}

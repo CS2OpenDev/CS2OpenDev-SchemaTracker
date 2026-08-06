@@ -1,0 +1,489 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "alias"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "benchframe"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "bot_add"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "bot_add_ct"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "bot_add_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "bot_all_weapons"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "bot_kick"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "bot_knives_only"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "bot_pistols_only"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "developmentonly,gamedll,defensive"
+            }
+          ],
+          "name": "bot_snipers_only"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "dontrecord,release",
+              "oldValue": "developmentonly,dontrecord,defensive"
+            }
+          ],
+          "name": "clear"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "dontrecord,release",
+              "oldValue": "developmentonly,dontrecord,defensive"
+            }
+          ],
+          "name": "clearall"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "dontrecord,release",
+              "oldValue": "developmentonly,dontrecord,defensive"
+            }
+          ],
+          "name": "consoletool"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demo_goto"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demo_gotomark"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demo_gototick"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demo_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demo_marktick"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demo_pause"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demo_resume"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demo_timescale"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demo_togglepause"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "demolist"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "echoln"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "grep"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "dontrecord,release",
+              "oldValue": "developmentonly,dontrecord,defensive"
+            }
+          ],
+          "name": "hideconsole"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "dontrecord,release",
+              "oldValue": "developmentonly,dontrecord,defensive"
+            }
+          ],
+          "name": "kick"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "dontrecord,release",
+              "oldValue": "developmentonly,dontrecord,defensive"
+            }
+          ],
+          "name": "kickid"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "dontrecord,release",
+              "oldValue": "developmentonly,dontrecord,defensive"
+            }
+          ],
+          "name": "kickid_hltv"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "listdemo"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "nextdemo"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "playdemo"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "radio"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "radio1"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "radio2"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "radio3"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "repeat_last_console_command"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "dontrecord,release",
+              "oldValue": "developmentonly,dontrecord,defensive"
+            }
+          ],
+          "name": "showconsole"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "startdemos"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "stop"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "stopdemos"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "sv_pure"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "timedemo"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "timedemoquit"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "dontrecord,release",
+              "oldValue": "developmentonly,dontrecord,defensive"
+            }
+          ],
+          "name": "toggleconsole"
+        }
+      ],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "10898038",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "10905515"
+}

@@ -1,0 +1,4081 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/CNmBodyGroupEvent",
+        "!GlobalTypes/CNmClipDocEvent_BodyGroup",
+        "!GlobalTypes/CNmGraphDocIsInactiveBranchConditionNode",
+        "!GlobalTypes/CNmGraphDocStateNode::StateEvent_t",
+        "!GlobalTypes/CNmGraphDocVariationIDComparisonNode",
+        "!GlobalTypes/CNmGraphDocVariationIDComparisonNode::CData",
+        "!GlobalTypes/CNmGraphParameterArchetype",
+        "!GlobalTypes/CNmIsInactiveBranchConditionNode::CDefinition",
+        "!GlobalTypes/CNmSnapWeaponNode::CDefinition",
+        "!GlobalTypes/CNmSnapWeaponTask",
+        "!GlobalTypes/CSmartPropVariable_SurfaceProperty",
+        "!GlobalTypes/CSteamAudioProbeGrid",
+        "!GlobalTypes/CSteamAudioProbeLineSegment",
+        "!GlobalTypes/CnmGraphDocSnapWeaponNode",
+        "!GlobalTypes/CnmGraphDocVariationConstFloatNode",
+        "!GlobalTypes/CnmGraphDocVariationConstFloatNode::CData",
+        "!GlobalTypes/DestructibleHitGroupToDestroy_t",
+        "!GlobalTypes/InfoForResourceTypeCChoreoSceneFileList",
+        "!GlobalTypes/InfoForResourceTypeCChoreoSceneResource",
+        "hammer.dll/CParticleBindingRealPulse",
+        "hammer.dll/CParticleCollectionBindingInstance",
+        "modeldoc_utils.dll/CBasePulseGraphInstance",
+        "modeldoc_utils.dll/CParticleBindingRealPulse",
+        "modeldoc_utils.dll/CParticleCollectionBindingInstance",
+        "modeldoc_utils.dll/CPulseArraylib",
+        "modeldoc_utils.dll/CPulseCell_Base",
+        "modeldoc_utils.dll/CPulseCell_BaseFlow",
+        "modeldoc_utils.dll/CPulseCell_BaseLerp",
+        "modeldoc_utils.dll/CPulseCell_BaseLerp::CursorState_t",
+        "modeldoc_utils.dll/CPulseCell_BaseRequirement",
+        "modeldoc_utils.dll/CPulseCell_BaseState",
+        "modeldoc_utils.dll/CPulseCell_BaseValue",
+        "modeldoc_utils.dll/CPulseCell_BaseYieldingInflow",
+        "modeldoc_utils.dll/CPulseCell_BooleanSwitchState",
+        "modeldoc_utils.dll/CPulseCell_CursorQueue",
+        "modeldoc_utils.dll/CPulseCell_FireCursors",
+        "modeldoc_utils.dll/CPulseCell_Inflow_BaseEntrypoint",
+        "modeldoc_utils.dll/CPulseCell_Inflow_EntOutputHandler",
+        "modeldoc_utils.dll/CPulseCell_Inflow_EventHandler",
+        "modeldoc_utils.dll/CPulseCell_Inflow_GraphHook",
+        "modeldoc_utils.dll/CPulseCell_Inflow_Method",
+        "modeldoc_utils.dll/CPulseCell_Inflow_ObservableVariableListener",
+        "modeldoc_utils.dll/CPulseCell_Inflow_Wait",
+        "modeldoc_utils.dll/CPulseCell_Inflow_Yield",
+        "modeldoc_utils.dll/CPulseCell_InlineNodeSkipSelector",
+        "modeldoc_utils.dll/CPulseCell_IntervalTimer",
+        "modeldoc_utils.dll/CPulseCell_IntervalTimer::CursorState_t",
+        "modeldoc_utils.dll/CPulseCell_IsRequirementValid",
+        "modeldoc_utils.dll/CPulseCell_IsRequirementValid::Criteria_t",
+        "modeldoc_utils.dll/CPulseCell_LimitCount",
+        "modeldoc_utils.dll/CPulseCell_LimitCount::Criteria_t",
+        "modeldoc_utils.dll/CPulseCell_LimitCount::InstanceState_t",
+        "modeldoc_utils.dll/CPulseCell_Outflow_CycleOrdered",
+        "modeldoc_utils.dll/CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+        "modeldoc_utils.dll/CPulseCell_Outflow_CycleRandom",
+        "modeldoc_utils.dll/CPulseCell_Outflow_CycleShuffled",
+        "modeldoc_utils.dll/CPulseCell_Outflow_CycleShuffled::InstanceState_t",
+        "modeldoc_utils.dll/CPulseCell_PickBestOutflowSelector",
+        "modeldoc_utils.dll/CPulseCell_Step_CallExternalMethod",
+        "modeldoc_utils.dll/CPulseCell_Step_DebugLog",
+        "modeldoc_utils.dll/CPulseCell_Step_PublicOutput",
+        "modeldoc_utils.dll/CPulseCell_Timeline",
+        "modeldoc_utils.dll/CPulseCell_Timeline::TimelineEvent_t",
+        "modeldoc_utils.dll/CPulseCell_Unknown",
+        "modeldoc_utils.dll/CPulseCell_Value_Curve",
+        "modeldoc_utils.dll/CPulseCell_Value_Gradient",
+        "modeldoc_utils.dll/CPulseCell_Value_RandomFloat",
+        "modeldoc_utils.dll/CPulseCell_Value_RandomInt",
+        "modeldoc_utils.dll/CPulseCell_WaitForCursorsWithTag",
+        "modeldoc_utils.dll/CPulseCell_WaitForCursorsWithTagBase",
+        "modeldoc_utils.dll/CPulseCell_WaitForCursorsWithTagBase::CursorState_t",
+        "modeldoc_utils.dll/CPulseCell_WaitForObservable",
+        "modeldoc_utils.dll/CPulseCursorFuncs",
+        "modeldoc_utils.dll/CPulseExecCursor",
+        "modeldoc_utils.dll/CPulseGraphDef",
+        "modeldoc_utils.dll/CPulseMathlib",
+        "modeldoc_utils.dll/CPulseTestScriptLib",
+        "modeldoc_utils.dll/CPulse_BlackboardReference",
+        "modeldoc_utils.dll/CPulse_CallInfo",
+        "modeldoc_utils.dll/CPulse_InvokeBinding",
+        "modeldoc_utils.dll/CPulse_OutflowConnection",
+        "modeldoc_utils.dll/CPulse_ResumePoint",
+        "modeldoc_utils.dll/OutflowWithRequirements_t",
+        "modeldoc_utils.dll/PulseNodeDynamicOutflows_t",
+        "modeldoc_utils.dll/PulseNodeDynamicOutflows_t::DynamicOutflow_t",
+        "modeldoc_utils.dll/PulseObservableBoolExpression_t",
+        "modeldoc_utils.dll/PulseSelectorOutflowList_t",
+        "modeldoc_utils.dll/SignatureOutflow_Continue",
+        "modeldoc_utils.dll/SignatureOutflow_Resume",
+        "pulse_system.dll/CPulseGraphInstance_TestDomain_UseReadOnlyBlackboardView"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "10",
+              "oldValue": "9"
+            }
+          ],
+          "name": "!GlobalTypes/CDestructiblePart_DamageLevel"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "33",
+              "oldValue": "32"
+            }
+          ],
+          "name": "!GlobalTypes/CNewParticleEffect"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "11",
+              "oldValue": "8"
+            }
+          ],
+          "name": "!GlobalTypes/CNmGraphDocStateNode"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CNmGraphDocStateNode::TimedStateEvent_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "11",
+              "oldValue": "10"
+            }
+          ],
+          "name": "!GlobalTypes/CNmStateNode::CDefinition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "49",
+              "oldValue": "48"
+            }
+          ],
+          "name": "!GlobalTypes/CParticleFloatInput"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "11",
+              "oldValue": "10"
+            }
+          ],
+          "name": "!GlobalTypes/CSmartPropElement_Model"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "17",
+              "oldValue": "16"
+            }
+          ],
+          "name": "!GlobalTypes/CSteamAudioBakedReverbData"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "22",
+              "oldValue": "21"
+            }
+          ],
+          "name": "!GlobalTypes/CTakeDamageInfo"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "6"
+            }
+          ],
+          "name": "!GlobalTypes/CTakeDamageResult"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "7"
+            }
+          ],
+          "name": "!GlobalTypes/CTextureSheetDoc_SequenceDecalParams"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/CVectorAnimParameter"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/C_INIT_VelocityRadialRandom"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "6"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_DecayMaintainCount"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "23",
+              "oldValue": "22"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_RenderCables"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "30",
+              "oldValue": "29"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_RenderSprites"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "7"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_SetControlPointsToParticle"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "1",
+              "oldValue": "0"
+            },
+            {
+              "field": "parent",
+              "newValue": "CNmGraphDocFlowNode",
+              "oldValue": "CNmGraphDocVariationDataNode"
+            }
+          ],
+          "name": "!GlobalTypes/CnmGraphDocAimCSNode"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "29",
+              "oldValue": "28"
+            }
+          ],
+          "name": "!GlobalTypes/CompMatPropertyMutator_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/ParticleNamedValueSource_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "17",
+              "oldValue": "16"
+            }
+          ],
+          "name": "!GlobalTypes/ParticlePreviewState_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "22",
+              "oldValue": "21"
+            }
+          ],
+          "name": "client.dll/CBaseAnimGraphController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "30",
+              "oldValue": "29"
+            }
+          ],
+          "name": "client.dll/CBasePlayerWeaponVData"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "83",
+              "oldValue": "81"
+            }
+          ],
+          "name": "client.dll/CCSWeaponBaseVData"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "12"
+            }
+          ],
+          "name": "client.dll/CTriggerFan"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "83",
+              "oldValue": "82"
+            }
+          ],
+          "name": "client.dll/C_BaseEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "37",
+              "oldValue": "39"
+            }
+          ],
+          "name": "client.dll/C_BaseModelEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "6"
+            }
+          ],
+          "name": "client.dll/C_CSGO_PreviewModel"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "2",
+              "oldValue": "3"
+            }
+          ],
+          "name": "client.dll/C_CSGO_PreviewPlayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "127",
+              "oldValue": "128"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "11"
+            }
+          ],
+          "name": "server.dll/CBaseAnimGraph"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "22",
+              "oldValue": "21"
+            }
+          ],
+          "name": "server.dll/CBaseAnimGraphController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "10",
+              "oldValue": "11"
+            }
+          ],
+          "name": "server.dll/CBaseCombatCharacter"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "41",
+              "oldValue": "43"
+            }
+          ],
+          "name": "server.dll/CBaseModelEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "30",
+              "oldValue": "29"
+            }
+          ],
+          "name": "server.dll/CBasePlayerWeaponVData"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "122",
+              "oldValue": "124"
+            }
+          ],
+          "name": "server.dll/CCSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "83",
+              "oldValue": "81"
+            }
+          ],
+          "name": "server.dll/CCSWeaponBaseVData"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "5"
+            }
+          ],
+          "name": "server.dll/CLogicCollisionPair"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "server.dll/CPhysConstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "27",
+              "oldValue": "26"
+            }
+          ],
+          "name": "server.dll/CPlantedC4"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "26",
+              "oldValue": "27"
+            }
+          ],
+          "name": "server.dll/CRagdollProp"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "14",
+              "oldValue": "11"
+            }
+          ],
+          "name": "server.dll/CSplineConstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "25",
+              "oldValue": "24"
+            }
+          ],
+          "name": "server.dll/CTriggerFan"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/CCS2UIPawnGraphController",
+        "!GlobalTypes/C_CSGO_PreviewModel_GraphController",
+        "!GlobalTypes/C_INIT_RemapCPtoScalar",
+        "!GlobalTypes/C_INIT_RemapScalar",
+        "!GlobalTypes/C_INIT_RemapSpeedToScalar",
+        "!GlobalTypes/C_OP_RemapSDFDistanceToScalarAttribute",
+        "!GlobalTypes/C_OP_RemapSDFDistanceToVectorAttribute",
+        "!GlobalTypes/C_OP_RemapSDFGradientToVectorAttribute",
+        "!GlobalTypes/C_OP_SDFConstraint",
+        "!GlobalTypes/C_OP_SDFForce",
+        "!GlobalTypes/C_OP_SDFLighting",
+        "!GlobalTypes/CnmGraphDocAimCSNode::CData",
+        "!GlobalTypes/InfoForResourceTypeCChoreoSceneFileData",
+        "client.dll/CCSPointScriptEntity",
+        "server.dll/CCSServerPointScriptEntity"
+      ]
+    },
+    {
+      "added": [
+        "!GlobalTypes/AnimGraphDebugDrawType_t",
+        "!GlobalTypes/AnimParamVectorType_t",
+        "!GlobalTypes/CNmGraphDocStateNode::TimedStateEventType_t",
+        "!GlobalTypes/ESceneObjectVisualization",
+        "!GlobalTypes/SosActionLimitSortType_t",
+        "!GlobalTypes/SosActionSetParamSortType_t",
+        "modeldoc_utils.dll/PulseBestOutflowRules_t",
+        "modeldoc_utils.dll/PulseCursorCancelPriority_t",
+        "modeldoc_utils.dll/PulseMethodCallMode_t"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "member:kDecalCloakDamage",
+              "newValue": "2",
+              "oldValue": ""
+            },
+            {
+              "field": "member:kDecalInvalid",
+              "newValue": "255",
+              "oldValue": ""
+            },
+            {
+              "field": "member:kDecalMax",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/DecalMode_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:AE_CL_EJECT_MAG",
+              "newValue": "36",
+              "oldValue": "37"
+            },
+            {
+              "field": "member:AE_CL_WEAPON_TRANSITION_INTO_HAND",
+              "newValue": "33",
+              "oldValue": "34"
+            },
+            {
+              "field": "member:AE_DESTRUCTIBLE_PART_DESTROY",
+              "newValue": "32",
+              "oldValue": "33"
+            },
+            {
+              "field": "member:AE_DISABLE_PLATFORM",
+              "newValue": "29",
+              "oldValue": "30"
+            },
+            {
+              "field": "member:AE_ENABLE_PLATFORM_PLAYER_FOLLOWS_YAW",
+              "newValue": "30",
+              "oldValue": "31"
+            },
+            {
+              "field": "member:AE_ENABLE_PLATFORM_PLAYER_IGNORES_YAW",
+              "newValue": "31",
+              "oldValue": "32"
+            },
+            {
+              "field": "member:AE_GRENADE_THROW_COMPLETE",
+              "newValue": "39",
+              "oldValue": "40"
+            },
+            {
+              "field": "member:AE_PULSE_GRAPH_AIMAT",
+              "newValue": "",
+              "oldValue": "27"
+            },
+            {
+              "field": "member:AE_PULSE_GRAPH_IKLOCKLEFTARM",
+              "newValue": "27",
+              "oldValue": "28"
+            },
+            {
+              "field": "member:AE_PULSE_GRAPH_IKLOCKRIGHTARM",
+              "newValue": "28",
+              "oldValue": "29"
+            },
+            {
+              "field": "member:AE_SV_ATTACH_SILENCER_COMPLETE",
+              "newValue": "34",
+              "oldValue": "35"
+            },
+            {
+              "field": "member:AE_SV_DETACH_SILENCER_COMPLETE",
+              "newValue": "35",
+              "oldValue": "36"
+            },
+            {
+              "field": "member:AE_WPN_COMPLETE_RELOAD",
+              "newValue": "37",
+              "oldValue": "38"
+            },
+            {
+              "field": "member:AE_WPN_HEALTHSHOT_INJECT",
+              "newValue": "38",
+              "oldValue": "39"
+            }
+          ],
+          "name": "!GlobalTypes/GameAnimEventIndex_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:NUM_LIFESTATES",
+              "newValue": "5",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/LifeState_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:PARTICLE_LIGHTING_ADD_EXTRA_LIGHT",
+              "newValue": "4",
+              "oldValue": ""
+            },
+            {
+              "field": "member:PARTICLE_LIGHTING_OVERRIDE_COLOR",
+              "newValue": "3",
+              "oldValue": ""
+            },
+            {
+              "field": "member:PARTICLE_LIGHTING_OVERRIDE_POSITION",
+              "newValue": "2",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/ParticleLightingQuality_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:PARTICLE_SET_PARENT_ROOT",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "!GlobalTypes/ParticleParentSetMode_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:INVALID",
+              "newValue": "-1",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/PreviewCharacterMode"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:INVALID",
+              "newValue": "-1",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/PreviewEOMCelebration"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:PVAL_COUNT",
+              "newValue": "31",
+              "oldValue": "30"
+            },
+            {
+              "field": "member:PVAL_PARTICLE_EHANDLE",
+              "newValue": "30",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/PulseValueType_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:RENDER_BUFFER_IMMOVABLE_ALLOCATION",
+              "newValue": "8192",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/RenderBufferFlags_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:DFLAG_FORCE_PHYSICS_FORCE",
+              "newValue": "32768",
+              "oldValue": ""
+            },
+            {
+              "field": "member:DFLAG_IGNORE_ARMOR",
+              "newValue": "65536",
+              "oldValue": "32768"
+            },
+            {
+              "field": "member:DFLAG_SUPPRESS_UTILREMOVE",
+              "newValue": "131072",
+              "oldValue": "65536"
+            },
+            {
+              "field": "member:DMG_LASTDFLAG",
+              "newValue": "32768",
+              "oldValue": "16384"
+            }
+          ],
+          "name": "!GlobalTypes/TakeDamageFlags_t"
+        }
+      ],
+      "family": "enums",
+      "removed": [
+        "!GlobalTypes/SosActionSortType_t"
+      ]
+    },
+    {
+      "added": [
+        "ag2_use_networked_serialization_context_demo",
+        "ag2_use_networked_serialization_context_game",
+        "always_perform_full_spatial_partition_update",
+        "cl_async_restore_server_authoritative_state",
+        "cl_async_usercmd_send_recvmargin_min",
+        "cl_debug_build_recvmargin_min",
+        "cl_particle_create_duplicate_work_for_profiling",
+        "cl_particle_newinit",
+        "debug_destructible_parts_radius_damage",
+        "debug_font_size",
+        "nav_ignore_vpk_navdata",
+        "nav_obstruction_async_update",
+        "nav_recorder_enabled",
+        "r_new_character_decals",
+        "r_particle_cables_dynamic_roundness",
+        "r_particle_cables_dynamic_roundness_threshold",
+        "r_particle_explicit_fetch",
+        "r_threaded_particle_creation",
+        "r_vulkan_validation_filter_in",
+        "r_vulkan_validation_filter_out",
+        "sc_show_object_browser"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.000000",
+              "oldValue": "-0.500000"
+            }
+          ],
+          "name": "r_csgo_gpu_culling_camera_offset"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,gamedll,clientdll,replicated,defensive",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "r_decals"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "3.000000",
+              "oldValue": "1.000000"
+            }
+          ],
+          "name": "r_decals_default_fade_duration"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.100000",
+              "oldValue": "0.500000"
+            }
+          ],
+          "name": "r_texture_budget_update_period"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "SCENEOBJECT_VIS_NONE",
+              "oldValue": "0"
+            }
+          ],
+          "name": "sc_visualize_sceneobjects"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "cs_test_inspect_panzoom",
+        "csgo_mappreview_transparent_background_col_performance",
+        "csgo_mappreview_transparent_background_col_quality",
+        "func_mover_use_velocities",
+        "sv_allow_burst_holster",
+        "sv_burst_shot_count",
+        "use_fx_queue"
+      ]
+    },
+    {
+      "added": [
+        "ent_reveal_in_hammer",
+        "getposcopy",
+        "getposcopy_exact",
+        "lightbinner_precompute",
+        "lightbinner_test_computesumsilhouette",
+        "voice_toggle_open_mic"
+      ],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [
+        "schema_enum:!GlobalTypes/AnimGraphDebugDrawType_t/AnimGraphDebugDrawType_t::MsDirection",
+        "schema_enum:!GlobalTypes/AnimGraphDebugDrawType_t/AnimGraphDebugDrawType_t::MsPosition",
+        "schema_enum:!GlobalTypes/AnimGraphDebugDrawType_t/AnimGraphDebugDrawType_t::None",
+        "schema_enum:!GlobalTypes/AnimGraphDebugDrawType_t/AnimGraphDebugDrawType_t::WsDirection",
+        "schema_enum:!GlobalTypes/AnimGraphDebugDrawType_t/AnimGraphDebugDrawType_t::WsPosition",
+        "schema_enum:!GlobalTypes/AnimParamVectorType_t/AnimParamVectorType_t::ANIMPARAM_VECTOR_TYPE_DIRECTION_LS",
+        "schema_enum:!GlobalTypes/AnimParamVectorType_t/AnimParamVectorType_t::ANIMPARAM_VECTOR_TYPE_DIRECTION_WS",
+        "schema_enum:!GlobalTypes/AnimParamVectorType_t/AnimParamVectorType_t::ANIMPARAM_VECTOR_TYPE_NONE",
+        "schema_enum:!GlobalTypes/AnimParamVectorType_t/AnimParamVectorType_t::ANIMPARAM_VECTOR_TYPE_POSITION_LS",
+        "schema_enum:!GlobalTypes/AnimParamVectorType_t/AnimParamVectorType_t::ANIMPARAM_VECTOR_TYPE_POSITION_WS",
+        "schema_enum:!GlobalTypes/CNmGraphDocStateNode::TimedStateEventType_t/CNmGraphDocStateNode::TimedStateEventType_t::TimeElapsed",
+        "schema_enum:!GlobalTypes/CNmGraphDocStateNode::TimedStateEventType_t/CNmGraphDocStateNode::TimedStateEventType_t::TimeRemaining",
+        "schema_enum:!GlobalTypes/DecalMode_t/DecalMode_t::kDecalCloakDamage",
+        "schema_enum:!GlobalTypes/DecalMode_t/DecalMode_t::kDecalInvalid",
+        "schema_enum:!GlobalTypes/ESceneObjectVisualization/ESceneObjectVisualization::SCENEOBJECT_VIS_INSTANCING",
+        "schema_enum:!GlobalTypes/ESceneObjectVisualization/ESceneObjectVisualization::SCENEOBJECT_VIS_LOD",
+        "schema_enum:!GlobalTypes/ESceneObjectVisualization/ESceneObjectVisualization::SCENEOBJECT_VIS_MATERIAL",
+        "schema_enum:!GlobalTypes/ESceneObjectVisualization/ESceneObjectVisualization::SCENEOBJECT_VIS_NONE",
+        "schema_enum:!GlobalTypes/ESceneObjectVisualization/ESceneObjectVisualization::SCENEOBJECT_VIS_OBJECT",
+        "schema_enum:!GlobalTypes/ESceneObjectVisualization/ESceneObjectVisualization::SCENEOBJECT_VIS_TEXTURE_SIZE",
+        "schema_enum:!GlobalTypes/LifeState_t/LifeState_t::NUM_LIFESTATES",
+        "schema_enum:!GlobalTypes/ParticleLightingQuality_t/ParticleLightingQuality_t::PARTICLE_LIGHTING_ADD_EXTRA_LIGHT",
+        "schema_enum:!GlobalTypes/ParticleLightingQuality_t/ParticleLightingQuality_t::PARTICLE_LIGHTING_OVERRIDE_COLOR",
+        "schema_enum:!GlobalTypes/ParticleLightingQuality_t/ParticleLightingQuality_t::PARTICLE_LIGHTING_OVERRIDE_POSITION",
+        "schema_enum:!GlobalTypes/PreviewCharacterMode/PreviewCharacterMode::INVALID",
+        "schema_enum:!GlobalTypes/PreviewEOMCelebration/PreviewEOMCelebration::INVALID",
+        "schema_enum:!GlobalTypes/PulseValueType_t/PulseValueType_t::PVAL_PARTICLE_EHANDLE",
+        "schema_enum:!GlobalTypes/RenderBufferFlags_t/RenderBufferFlags_t::RENDER_BUFFER_IMMOVABLE_ALLOCATION",
+        "schema_enum:!GlobalTypes/SosActionLimitSortType_t/SosActionLimitSortType_t::SOS_LIMIT_SORTTYPE_HIGHEST",
+        "schema_enum:!GlobalTypes/SosActionLimitSortType_t/SosActionLimitSortType_t::SOS_LIMIT_SORTTYPE_LOWEST",
+        "schema_enum:!GlobalTypes/SosActionSetParamSortType_t/SosActionSetParamSortType_t::SOS_SETPARAM_SORTTYPE_HIGHEST",
+        "schema_enum:!GlobalTypes/SosActionSetParamSortType_t/SosActionSetParamSortType_t::SOS_SETPARAM_SORTTYPE_LOWEST",
+        "schema_enum:!GlobalTypes/TakeDamageFlags_t/TakeDamageFlags_t::DFLAG_FORCE_PHYSICS_FORCE",
+        "schema_enum:modeldoc_utils.dll/PulseBestOutflowRules_t/PulseBestOutflowRules_t::SORT_BY_NUMBER_OF_VALID_CRITERIA",
+        "schema_enum:modeldoc_utils.dll/PulseBestOutflowRules_t/PulseBestOutflowRules_t::SORT_BY_OUTFLOW_INDEX",
+        "schema_enum:modeldoc_utils.dll/PulseCursorCancelPriority_t/PulseCursorCancelPriority_t::CancelOnSucceeded",
+        "schema_enum:modeldoc_utils.dll/PulseCursorCancelPriority_t/PulseCursorCancelPriority_t::HardCancel",
+        "schema_enum:modeldoc_utils.dll/PulseCursorCancelPriority_t/PulseCursorCancelPriority_t::None",
+        "schema_enum:modeldoc_utils.dll/PulseCursorCancelPriority_t/PulseCursorCancelPriority_t::SoftCancel",
+        "schema_enum:modeldoc_utils.dll/PulseMethodCallMode_t/PulseMethodCallMode_t::ASYNC_FIRE_AND_FORGET",
+        "schema_enum:modeldoc_utils.dll/PulseMethodCallMode_t/PulseMethodCallMode_t::SYNC_WAIT_FOR_COMPLETION"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/DecalMode_t/DecalMode_t::kDecalMax"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "36",
+              "oldValue": "37"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_CL_EJECT_MAG"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "33",
+              "oldValue": "34"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_CL_WEAPON_TRANSITION_INTO_HAND"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "32",
+              "oldValue": "33"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_DESTRUCTIBLE_PART_DESTROY"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "29",
+              "oldValue": "30"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_DISABLE_PLATFORM"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "30",
+              "oldValue": "31"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_ENABLE_PLATFORM_PLAYER_FOLLOWS_YAW"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "31",
+              "oldValue": "32"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_ENABLE_PLATFORM_PLAYER_IGNORES_YAW"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "39",
+              "oldValue": "40"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_GRENADE_THROW_COMPLETE"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "27",
+              "oldValue": "28"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_PULSE_GRAPH_IKLOCKLEFTARM"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "28",
+              "oldValue": "29"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_PULSE_GRAPH_IKLOCKRIGHTARM"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "34",
+              "oldValue": "35"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_SV_ATTACH_SILENCER_COMPLETE"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "35",
+              "oldValue": "36"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_SV_DETACH_SILENCER_COMPLETE"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "37",
+              "oldValue": "38"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_WPN_COMPLETE_RELOAD"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "38",
+              "oldValue": "39"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_WPN_HEALTHSHOT_INJECT"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/ParticleParentSetMode_t/ParticleParentSetMode_t::PARTICLE_SET_PARENT_ROOT"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "31",
+              "oldValue": "30"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/PulseValueType_t/PulseValueType_t::PVAL_COUNT"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "65536",
+              "oldValue": "32768"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/TakeDamageFlags_t/TakeDamageFlags_t::DFLAG_IGNORE_ARMOR"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "131072",
+              "oldValue": "65536"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/TakeDamageFlags_t/TakeDamageFlags_t::DFLAG_SUPPRESS_UTILREMOVE"
+        },
+        {
+          "fields": [
+            {
+              "field": "value",
+              "newValue": "32768",
+              "oldValue": "16384"
+            }
+          ],
+          "name": "schema_enum:!GlobalTypes/TakeDamageFlags_t/TakeDamageFlags_t::DMG_LASTDFLAG"
+        }
+      ],
+      "family": "engine_constants",
+      "removed": [
+        "schema_enum:!GlobalTypes/GameAnimEventIndex_t/GameAnimEventIndex_t::AE_PULSE_GRAPH_AIMAT",
+        "schema_enum:!GlobalTypes/SosActionSortType_t/SosActionSortType_t::SOS_SORTTYPE_HIGHEST",
+        "schema_enum:!GlobalTypes/SosActionSortType_t/SosActionSortType_t::SOS_SORTTYPE_LOWEST"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9d201c3f84e47b41264aca8b7ce68a70c71d11aa8839561eed4d685d9926446c",
+              "oldValue": "e811adbf93c75ff3b7410cd5199e3a2e91eaef420b3fb5e5bc242e50e294452d"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenAgencyCS2_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1db49b64eca4605e2cade5679fd048e0c8904a9726d9ea4522c25a4ad657c627",
+              "oldValue": "dd6dcc2f6fa8bfa9ee5212cf50184e6a3b7ec83502b9a869137a5e89d0d2620f"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenAssembly_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ff4aad17692f4b427f2ffeefe3700c23420a74cce8632e2b61d23b06408f7ecd",
+              "oldValue": "1e9a26750b8b1a3c12d558716cee53af0eb9f45d6418006e4cbed880b5c585a4"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenBasaltCS2_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "05d29a9e17826350459fb8e4089076882633fdd42d9e95a24a81c7fcf4ef14aa",
+              "oldValue": "951b370c30a9afeaae6c43b1ae7b8b829c6c98ac662a99736430aeb60115839e"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenBrewery_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15979f816fc8203f5bd3fcb9b18a521a374c90235cebc2afe053f2d4bd483aff",
+              "oldValue": "ae8d2dc5d10c2b2ee868f1b42d7d319d142f115e485e74d799b18ea70b0fc77c"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenDogtown_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9ae74cc6caf5b356d572d012de6745bbb3cebf398b5d7bcb3744eaaa6f995df4",
+              "oldValue": "ab0a00d230490ae7a636977f719ea2b494e6deb67f505a2d4d5737940b3dabf6"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenEdin_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "27cdb85b54d9b18f4972e52eaa2a435c9d73b6982fcfd2080cd920855bcde9c5",
+              "oldValue": "59105641c3acca42b3c792f5657dd4df3a7dcdea244d0cc0169275e85b6e4dd9"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenGolden"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0cd2d5984546931af44375c3229ca5f06ca3cb5465d8a50a9ad29e2a68770b52",
+              "oldValue": "177fa11af4063f505bb37bcc0dcf3851e48c03f0111994a61d1b256aecb25192"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenGolden_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aaec27fa4b8353f56416e7ecc8cc94ec0064080e93f1f186bfdd4795123aacbc",
+              "oldValue": "b06221263c82c5714c53f49be2347968fbc363f4b9c2df64ed9073cb18917eec"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenGrail_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d9aece203d0d8b73a771410b049d6531b2afdc37c5796503ea3f31cc17da1766",
+              "oldValue": "9ebf8b9abda707d5564280ce932f364103f36fbd03e608fbfc1e4dddcee64859"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenJura_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d140565ed00800d36d12aac86320a15639b225b3e85eb8b18aebde45b9d2fb05",
+              "oldValue": "62ad8c61b027077cf4b911fedab8c79eb1a98446f41b3b81d26e10dcbc4fa2f2"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenMemento_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ab743b79a851125e172100d542688eca18e52b5b16c0c2e2c97345c64f4f184",
+              "oldValue": "99e61bdb1031555222e4557a50a77555d724450e9ee3b7a4768567683fad9b9d"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenMills_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "39f7aadcd4bef53de09726b7700f24980ba23a2741e8a580fbc6842648311739",
+              "oldValue": "8fcaf6183bc71121445786fe60ac1ef01f1029f5d323fb455ebe8b8fa7e6aeba"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPalacio"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "215f109de56af75a8268d653c5732a04d168ccd46f00dea4ea8a1b6825ed4d6f",
+              "oldValue": "93173e8234c595c1633df065121207851f6356bcfb7f857e2d68569a62a3d743"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPalacio_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f99c84d4a75322567b2c4fcf853bf1da5090c3ad59cdb89c10c8a7938aa618f0",
+              "oldValue": "d0a2a5a5ca86326afa05fa3b8fdf7902010aa5a25fe72754459576f9fbb7bd7a"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPalais_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15ad66bea3ba1c71f7e78a2a91a46d070a7941486d25f3e3c400c54b7b81b1bd",
+              "oldValue": "a3197d15b7ef6681a44d60939b157d9d99f7e336ff3f47979a7ef9fa8f8305b8"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenPoolDay_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5889ee2a0335e65042578efd7b2c503631cf7dbc5e138fd7b5c67b7bab5b6067",
+              "oldValue": "8708607f4dde30e3f692ca796ad1e66a5c8f53b09d6918a43a94d1782144d169"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenRooftop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e2cba8de097edc3f86b4a4eb22e89abc9bfc2a024b76fb322e2b352c71cd2316",
+              "oldValue": "405345604bb5e184c766f4d5ffebc8c688e4360bc4eab53860aca2999d51b366"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenRooftop_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "87afe45ff868210475989aa143f52262c703d35ec14ad7a05bec6aab0ea18b94",
+              "oldValue": "2eeeb7fee060e27611b35dfb4a7d0354a6e2570294229d2c83baf4991da6f482"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenThera_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "28dd10f12fd823d51f81a187f6ceaefec9f0861ad2e0ff38807683ebaccd05cd",
+              "oldValue": "4159c3db4d433b4b0e4cde828124413e9cb18b752d3f4a796bbaddab62124f73"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenTransit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "66626c44bb418ecc976bb746ccb9471ce9c6ec429f49f64552e24f80c69d381e",
+              "oldValue": "dc57bc10ddda13b466024e3298fe0fd64858e28d82e11e816051cfc1861279c8"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenTransit_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e288abfeee8452557f4df75fb864a80ddfa93b1f1920e44ffee53677ebf3a50",
+              "oldValue": "09b1b00b9785d260132b5f50e1159f4e0937d48901434d22cc533d47f9d7f480"
+            }
+          ],
+          "name": "CSGO_Collectible_MapTokenWhistle_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0661af800e85ada3731f15a6f5f63a655c91d7de3c41f18c605430345dc58644",
+              "oldValue": "36061add72e456933a3c36bda70aa6af198d77e536bc15227cd7320c12c3b322"
+            }
+          ],
+          "name": "CSGO_CustomPlayer_ct_map_based_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "117cc939959cdeff6418024401b4b36bd7f3a9c9841988135ebb48f1595b381e",
+              "oldValue": "f92643e68813b72ef5ef120b5578de4c319d349ab942d44f44e9211fb78f795d"
+            }
+          ],
+          "name": "CSGO_CustomPlayer_ctm_sas_variantf_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5910058cc7ced3bd597c6d85ca5da289985fcd52d0dda473365c50aeb17035bc",
+              "oldValue": "58ef0820461f65f69cb3c0d314956a87350c8b6cbc6bb6862ff1f6e62fc09e15"
+            }
+          ],
+          "name": "CSGO_CustomPlayer_ctm_sas_variantg_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "df025250284ec0b8e4aa17e302f91b24badc3cb17349373d20deaf0ab3987b9a",
+              "oldValue": "ce5fda997b4af61f3823654dba4e43069a4e17a45e17020bb544db081c32a44c"
+            }
+          ],
+          "name": "CSGO_Workshop_WeaponTags"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5e4aa00e76bbfada4aed5f1c97c268b4dad3848b497bf4de185bb775b1320158",
+              "oldValue": "8c8c523e32914f9dea7bbec30f48aa0a4f8dd48d6227f0b899b99104bced8c1c"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_drboom_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8e438377671b42045a3b356814893a9f99e64acf83675752807251e64b5baf89",
+              "oldValue": "2d52e982d66afddd6809ffd96d24baa160a1196d680a58448a712334abba0fae"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_drboom_capsule_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d5a8d7861b86d18e2495f98d5fe0b756c8696e42e708298ee0a9369e19fae6c",
+              "oldValue": "9501fd36bee8f05255bca2dbeccf24fc456f4e46e1421421cc4da4e829b12e7c"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_drboom_capsule_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1f616e57ff0a00b3267abffaa2d8369ff01d3ac0845344ac3391e145fa35b85",
+              "oldValue": "873d8df761aab3a3416800cf293a08a495e6f5bb534aae1e91d01eefe99cebfb"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_ml_community_01_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5406f00bb66c9659b5a78d4fd9a0a0d485f8f0d6b43e77dc33db88f21fb38907",
+              "oldValue": "a0c0e742946ec69f31c1c96c8db581d09fa4c103e74dd39db40eaee0888d0d52"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_ml_community_01_capsule_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "56e552ad8dcc97138e9cc22108da63b2072c60b657d639a2bf54e5b1bce41c21",
+              "oldValue": "2f7b8ea5da798580a849ae31c9ad604b91afaf5a250b2c93256e515797ee9d63"
+            }
+          ],
+          "name": "CSGO_crate_keychain_pack_kc_ml_community_01_capsule_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3550daf7d01e285593de72a35971e4edfed73b6246fab1758a4b49a63c4b4141",
+              "oldValue": "6eb3ec2c7c38abc35a591bd2da5bba882e49cf52770fc6e4851de9884892293e"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_community2025_capsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b6e1f8fcaeced8d971a83a698801c542b07da57cd1c6bbe394f047a60e92c8ae",
+              "oldValue": "ce03c03b3be590ec136f2f2fc76008ae4f9cd7bd048caa5763f33e9ef2b53c4c"
+            }
+          ],
+          "name": "CSGO_crate_sticker_pack_community_2025_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5006b82d3b08ec2f5f3afa96bb64bf80d0494cfc6dfcbbc274835dbdde6fc8d0",
+              "oldValue": "a674252698670112014d6f9ed3c24209d275100116e80fed17cd6b2dc8c16464"
+            }
+          ],
+          "name": "CSGO_set_community_25"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4c26a3c7a70dee333dd2f3fd013b18283232b1a0317834aaf87c3d919f9ae88d",
+              "oldValue": "7204d417a7c7e856cf35ca2077acddd04484143950d4a62696277e84a5b46b39"
+            }
+          ],
+          "name": "Cstrike_Auto_Rezoom_Sniper"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9f8c85f5cc92e63282ebdb987eab2a2dff016e1ad063a5dc3879d9ae3161dda8",
+              "oldValue": "a640d92306d72ace43f7259cbb06d7fa9bb9b85dd3f7182a1986ff92fce00bf2"
+            }
+          ],
+          "name": "Cstrike_Show_Inaccuracy_Sniper"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e45352d6e4bbfb2fbcb13279bf7447308d301c916e2d339b051c075efffce284",
+              "oldValue": "0f0ba7326f00b32ca1cb9d41503dc21db587d526db82b58faf4679984e863836"
+            }
+          ],
+          "name": "DirectChallenge_CodeSourceLabelClan2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "58c8747de471e9530a451fb8cabd30654d3a95e222f1a2b2dab4c81eacd38b19",
+              "oldValue": "06116ef08a6ed44b4259fce4254ed6ec5fc5764277596113dd346c394a8191eb"
+            }
+          ],
+          "name": "DirectChallenge_CodeSourceLabelUser2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a53f9aca5033a70bae2f1a7d204ea6f716832b39894a93b0471a72c2d5439dec",
+              "oldValue": "e188af88aee2a9a331f110bbfeff79a9de9aef9757ab495b1528514efb79b9a5"
+            }
+          ],
+          "name": "DirectChallenge_Copied2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e4194c8b3efc97d0f267db6adf81cb0e4f66cb3572cf4716bf43c97a7f01414a",
+              "oldValue": "6fcef2006e618ab1229adcbb7d1b371f1d59828c90e92d4d445c939345ebb154"
+            }
+          ],
+          "name": "DirectChallenge_CopyCode2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f3d147e233953b5cff760fd567d9fa9f636ad6a1f1b6013a3496e92e6f1bc4ee",
+              "oldValue": "383310449885afc70018b02f9285f9d012fb0955e8a1aa9af614f5e5ba093e0e"
+            }
+          ],
+          "name": "DirectChallenge_CreateNewKey2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "55c6b8de09512ad9f2ec1f5843269da54068b66c6276370763b08a48d88da684",
+              "oldValue": "ba30423995007b608bf5df09fc8df303c4371e85faf474dabe96ce6b31326c3c"
+            }
+          ],
+          "name": "DirectChallenge_EnterKeyField2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0d2dbaf8328e467cf1df4175e5a3226e5ad92ef977f282e16886e8552e4f5bb6",
+              "oldValue": "2b7d11d1633b61fd4ee5d5242df0b3d61c7d3192e2acd3bc0c05fd6079054ff9"
+            }
+          ],
+          "name": "DirectChallenge_Help_personal_title2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f03f145ab78dff21b18f7aae5b7f378d8ad0d38a0cddddf7e3d13457358872b3",
+              "oldValue": "1db900db63201207e1b57c15d790d5df0685b60ae224e46878d38093a22c6d7a"
+            }
+          ],
+          "name": "DirectChallenge_Random2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "00738d8d91d759098122e9aa27f8318397daad7dbae335247f0756abfc62a074",
+              "oldValue": "8afe3cccfe791b04760d7287a2e38e494b4e2809d653ad0fb721671ca5d57c81"
+            }
+          ],
+          "name": "DirectChallenge_clan_text2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce2a6aa0a1f4bbf5943705a13a2caf6c8d383be3567db8f11a3e6cb5a38f4150",
+              "oldValue": "ab5a16afc413200f63c1367cc5bfcfb9f4d0c3f1c581cfd985f66fb4272635e8"
+            }
+          ],
+          "name": "DirectChallenge_clan_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c1af3abe71157e8503244a9b8853c30598094563dae42a92aa83e309ceb67773",
+              "oldValue": "c01e563ffa072fb810a43c4c91bf6228a5c7a0cb1815706883ab99f25b837f26"
+            }
+          ],
+          "name": "DirectChallenge_not_member2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cb611440047408aa26fae1381014bb526886e8c010699999bba0c209e3d02d65",
+              "oldValue": "55c7f15053be5eb1528dac73ea1cab6092fd733c3bf61ea83ca1a33408d63257"
+            }
+          ],
+          "name": "Econ_Revolving_Loot_SecureConnectionLine"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e58b4246aac462f3e2fbedc0e8f973f38795cb5f445711a290e56ce4d0c1aa13",
+              "oldValue": "dfffa2cf57303b471e3ec8d243dab59bf5ad1bbb6ae87e9aac5713710327d734"
+            }
+          ],
+          "name": "GameUI_IronsightScale"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "60d05b823ea7c5c5e34ec2426af2103cc8bd9521c686becc2bbcfc8c613247c4",
+              "oldValue": "0c8f53796df609bee641e33418071705f30e76a09f9da704209feeb27edd0a00"
+            }
+          ],
+          "name": "GameUI_Retake_Card_BurstBullpup"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aded9dba810c4b1aa939c43e1d35e44e2f6e95e7dae94e6fe9f0ff27cb56e8ea",
+              "oldValue": "570776bf017d7fa1b077e5985e416b8b2c21b8e74a726c5638b0ceddaedd720a"
+            }
+          ],
+          "name": "GameUI_SniperCrosshairThickness"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "19100a26966d02bf3094e37c83c3b8ec7717a70214d0893554d8a219b067be77",
+              "oldValue": "3b9423d9ad14973bf009f6ea44facf922a41c9dd92ab9dd58832016b0e203614"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_brollandiesfrom100to0fromutilityvsspiritondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e191ec3c8d3db456b1d71495e0784b58bc5121b223e035334440b5f9cef87f5e",
+              "oldValue": "024ede530e61ea8a26ae6d99d1972b534bd9e5af10b6d3e298ef3b78e120d0ce"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_chopper3kmp9vsspiritondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4e1b037c76cb2221ce2a48c3d34cfff46b21ab18904a3ac1283ab09211c60f7b",
+              "oldValue": "377b0bdf5b0c170c9d63f6be82d42e901c12e9478870a413f6d7d5ac5232563d"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_chopperfailstohearthedoordiesinthesidevsmouzonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "80e3b887abfb7bbce872fec75bbdf400191266bf4304ceeb5a9061583d3ed952",
+              "oldValue": "e6303762ccb898f2da38f279d5a13b12ffc93ea6fc9c0ff673bba89c8e7d78ea"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_donk4kandfailed1v1vsmouzondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c1fca4bf6b8228b012d94a6a88b262e343d7dab7cc3b1d1264e8ccb33bbe0da6",
+              "oldValue": "bb95a8039712d3ff5473a0cd9c1ee530338443c4f18dcd850d977a3d51ad227c"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_jimpphat2kmp9vsspiritonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e874c65877275a2d015831dad0af33954c78035b89a385b670e8e0aec3e268d",
+              "oldValue": "1c367f1a7f061c89831b5f33fd10c2d5bd4400dd1738d66438c3b32abe3c2334"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_jimpphat2konnukevsspirit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "960b7a4f1a27326362371308930cf522dc4a432ca673dd4bc7f0a16e92ca1f5d",
+              "oldValue": "837905a6a949106a088ca6b51c8ec12085b254b35137982beaf111ff29c76160"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_shiro3kscoutvsmouzondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "acde647beb33653d43f041e0baea91bbeaf500cf02d17a93a1953dec19e18f2b",
+              "oldValue": "6da94be1635836eb05db4bcacefb7dc5299dac9f7b89b67d77c9e6f060f4f895"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_shirofailedhetomissfreekillvsspiritondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9d4c68aae74f96eb64b53170a9f9ca8057f883d006cf9f9a28dd2a8f9c7e1f56",
+              "oldValue": "c024a01a77e3bf2881329750192372b5901a4830f698fbbf5a6085d9d1eeb139"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_shirolose1v2tolosemapvsmouzonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aff48396046ad0d5511621630fda99cd68c73b8b4693aef25bd703b51534f571",
+              "oldValue": "a6cf26fc29b3d044a9585a6ff2d4b9fd0e0a17da068724534e8d8faad1368f43"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_shirothrowawayawpin1v2ondust2vsmouz"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cc9a5680f4f3bb149f8b6fd723b373a76ea4dc1d4543eecaa9b6fb6fe15ff77f",
+              "oldValue": "845b27244200c2a88747e91434540c94c6da969d69bd597ffae683f1f2c89f0f"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_spinx2kandwinmapvsspiritonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "eb760714ec541fa05440d27ed26140482a8404e515c77a9be536454538400904",
+              "oldValue": "ba94f4555e3834a0fc980d5aff15fd60c1d0a9ec7afa978e220e32f0d6e6e5a2"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_spinx2konbvsspiritonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6194b12d94b3e536feb285fefc1ee98d18abfa1f38f61c3381bc9fa87d43ce81",
+              "oldValue": "f8a8a50ce063105eab1ce3df514b2f46bddff588fffd268fa05305d0e3107782"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_spinx2kvsspiritonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2ab6ca71e3cc64d01e7995edb3117f5cef5e99c0794069d117c16d48fdda3389",
+              "oldValue": "7182d1965ee0126b8c9a5d49938ca4825fc13f17cc33acc8ddc6dcf0bcfca7c2"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_spinx3kvsmouzonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a1210e7d4131dd5b68d7f050f0b8f0cf4da9e59cf00f18234aad910fb9170634",
+              "oldValue": "cfe810f39bf32fe892132e15796ceb7334b8c4a873ff2071d46240e42cdb5a78"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_spinxclosedefuse"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b4004f745917182f352028cb170b41be3dbafe242f7fd3f26923268e3b60e762",
+              "oldValue": "ee2f994651365339b3f60aed6f5062c838877afdb145042312b1caae1e556264"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_spinxfast2kentryvsspiritonnuke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f0ded440af1a83c102fcb0d20bf6299e1453f476282c087c00467a6fcdb6999e",
+              "oldValue": "7edacc0c2d068fa339db85ff0452366941b7a715de2337c1e275e24daeab2fcc"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_spinxmisplaysroundvsspiritondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fbf7b9e0c3cf831ce84fdf01c20a9b5e8604c8ffec93b57228acf90d37709e21",
+              "oldValue": "226951f9341b080dc97b648dfd9c7c3a43569790af9fba2b3fafc88d8dfd570c"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_spinxquadkilltowinmapvsspiritondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "374595194516f16bff988c3145fa5312cfe657ace3517e9a28f9795c5f489c75",
+              "oldValue": "8600cdc1d47337857435cc6572fdf9e346b2634db45425075eddca91eb6ed690"
+            }
+          ],
+          "name": "HighlightDesc_aus2025_xertionclean3konasitevsspiritondust2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0c52d1f093f4a752d1add93395b3ef68059d7a3b92f1581295c265770fee7062",
+              "oldValue": "42fb3afbc1d1b428ddd3568ac5a6939f337642f6419f6cc1c2e68159f76f7733"
+            }
+          ],
+          "name": "LoadingProgress_CompilingShadersRemaining"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "caec28de7790ad99def4b8db417122e6f38ec002f23ab9c16e4c0f865ba5baff",
+              "oldValue": "d2f7a37c5391fe0313eb217a5b6d330ef9ecfe6270c2844283fc771474d08f0a"
+            }
+          ],
+          "name": "PaintKit_hy_labrat_mp5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "70802f6b3dbbdf22e863b596a506e83e7db77aa24ecd88420f9e1d66e599fded",
+              "oldValue": "1c344fff0d680257c0a3a2e5a8268ebaa4ce59da9992c1f3d1f3bd2c1628d308"
+            }
+          ],
+          "name": "PatchKit_desc_patch_supreme"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d325675f33fec1d7d20e51433b7e4bb852303b1cd39d9ab4a80d911aab73a606",
+              "oldValue": "61afb40da41feda5d71ce82b4684cd0ab00ef092a4996709945bfdaa5ec46c76"
+            }
+          ],
+          "name": "SFUIHUD_Spectate_SpecMode_Transmitting"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07cc06ac0bfe415eeb8875b4552dc0f3799f461829e8bd09a2d1c04b7d94f642",
+              "oldValue": "28c8aa06db5ae22cdb54887d218c542ff0b30fbc9de93781925b6db435c63956"
+            }
+          ],
+          "name": "SFUI_CatagoryStrings0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2885a5b11ac00001447e0d7e476cb02c47fb84b08774e2474b4fdf2bbe9a5873",
+              "oldValue": "d2e165367493c8d7f3b7e1c24a1c8fdd1d82a001d4e931d159df13399a749ff0"
+            }
+          ],
+          "name": "SFUI_CatagoryStrings1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "00d1ecc9e1e56c187b1c18a89f1c19b065bbf5311f88e4ca4bc0fcaadcd8d84d",
+              "oldValue": "4626b2e928de989d895172165d963a1bf994bfe699f718f98e3baa2ca3c11660"
+            }
+          ],
+          "name": "SFUI_CatagoryStrings2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "04b1cea99de5c89e652f16dfde2af7cfd9715c2a4505881e5095c73848ce4011",
+              "oldValue": "ebeefd9a74f9305fa24306de8632fe1e3c2423aa98ea2de2f4df0e351b5f65c7"
+            }
+          ],
+          "name": "SFUI_CatagoryStrings3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "38d208892c588e16617197e085e20c41017bda2ee56587d7757f8c1baebfc058",
+              "oldValue": "92d916f30fdc4c96a9b272f6405cc0cc8cd099cdf0c429e7204734318a7eccb5"
+            }
+          ],
+          "name": "SFUI_CatagoryStrings4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "204e4d5fd6ecd9d25610b3de86e7a3ce21cc0a9212fca76b0c68e86d85d71600",
+              "oldValue": "5671483bc97f318430ced7cfb6525ed8a5a23c7c297e7568c8fd537fa3ab3491"
+            }
+          ],
+          "name": "SFUI_DeadzoneMax"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b3a9bdba22ca25539e285e04b170bdf9c78881fae2e247c5a3b7108920b1361c",
+              "oldValue": "682325b7b7b235efd3d0f46d109b9caf84ee50292233e4a40ac3ee56422eb7ca"
+            }
+          ],
+          "name": "SFUI_DeadzoneMin"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3e361f75fb10bead4ae053ac90f192a596cd4f27cb60b3aeaeb701003762f303",
+              "oldValue": "1acc12561314c0201fd84463d671642e4070fccee71a88aa0c35bf01e1796efd"
+            }
+          ],
+          "name": "SFUI_DisconnectReason_OnClientInsecureTitle_tools"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d6d6012ea20803277eabc76f2e40f709d2310cab0fbfb52c577c63acc243e194",
+              "oldValue": "2b453cdfe3c481ce3cca1c1cf091abc801bffab9a8fd6831868a30b139a89202"
+            }
+          ],
+          "name": "SFUI_GameUI_GOTV_Theater_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3669e7b7ffb7df8056c9cfc0666a188e8324e9d160347f3309b9f727ba4e889d",
+              "oldValue": "7cfec622cf2bf9e5b56f2d95c6c5b800c45001854bf3af9872bb93a0b35ecea1"
+            }
+          ],
+          "name": "SFUI_GameUI_NoWatchSlots"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "462c319637185d95eefeed903de8b89931ae5ace7474094e44dfa7fb0b5414c4",
+              "oldValue": "b17aa3530eec746c22f933f7ad1985d910edfae4024b03e5b0223874f9a6b635"
+            }
+          ],
+          "name": "SFUI_InvertPitch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d921fbf8855b40437181d3cd266bcd48819b023f62b78455bce9b42b52f03612",
+              "oldValue": "f288644be943068be8c4e25c5c5c30c4a25c44b4338324c196d19c1d62f3e631"
+            }
+          ],
+          "name": "SFUI_InvertYaw"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d05e069ea89cf6705ba2f4836baa1df9561b99b0d0e4e5001750754028a7d791",
+              "oldValue": "f6b8656b9f30321f8317ce124759aac315948106eca01824e00f35ea06659a15"
+            }
+          ],
+          "name": "SFUI_JoystickMoveSquareDeadzoneForward"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4e304fcc68dbd1c7d7fdaccce1fbe90470d8ce64b1eb81b1e07b8b34c096a17c",
+              "oldValue": "d10fff4ed62f967e1f39a2d0c2742dd0cb2319fecc5dc50fe38f951c474ef7d4"
+            }
+          ],
+          "name": "SFUI_JoystickMoveSquareDeadzoneForward_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "02a1227bf42a016c533b4d5dd7447b92ef77015adc5d17124e21ac7f80ec30af",
+              "oldValue": "7767b067fce0ded8d0ae96fd06c81cb65feee812f8ea029d9792ac919b5ff961"
+            }
+          ],
+          "name": "SFUI_JoystickMoveSquareDeadzoneStrafe"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6989235fb84468d01a8c17b1868cde86f5badca184d167afca57ef87e14a17cb",
+              "oldValue": "5417c3cfde7b2a2d2565359c50b9d418cda421dd2d4789ed5b561add4939acbc"
+            }
+          ],
+          "name": "SFUI_JoystickMoveSquareDeadzoneStrafe_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d0554c0470c463be2fc44c356e910fbe38fbd8af8765c463396a6e01ce4ca6d6",
+              "oldValue": "230ead714b56d98b66107705de523af07becc5ce0b12ae4c3ca70c793b5eec1b"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_competitive_lobby_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "686100d02a04be50961d22f8e3548471b67de3700760411b988854cc71106abf",
+              "oldValue": "97d973b9a4a56a712c386185211fe60993b3a8c249a5114a950db1a44c10d416"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusRichPresence_new_user_training_game"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6282b8e9bf7f9de7042256262d1b290d92083c7f24cfc97f13aafa1affd03df9",
+              "oldValue": "3a91e0e0ded967431e89f1e0b8dd60528c4a8f88d4971545532770cb94c9f4f6"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_StreamTitle_19_11"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "77be89fc7e7346d34f71eabf1066fc389c93c5ab92fee852953cbea4da4fbd28",
+              "oldValue": "1ebfff9d80e01dc65316a5b4391bea330e9c3e92825450f40ee6d7ba9c81cfc2"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_StreamTitle_19_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "11aef6cd3c6b638b7a876f0a6c8a5711895700e7a72206dfd331ab7c70a92abc",
+              "oldValue": "4e5b8d285697bfbd2f2ae742a38a2a657f286cae56ce557a038b7bffa81bb5ed"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_StreamTitle_20_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6f07b02d8709ab70bee0c4d2be8b3a85e68dba1624152f14c00d48d46329174b",
+              "oldValue": "6438c6c9078f6ed99e20b2058a393cf7ecc051e01150523af37ea88a7bfa8e3a"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_Subtitle_19_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c31702701dabd538b7abfaa26de73154f44b36faa910d56f851fa89a1e8b38f7",
+              "oldValue": "041d4b3d0a733d08f198c6bb83ec896acbb95540bdf2cc4b6b8a42e0f09641ba"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_Subtitle_20_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7d1c49771bce293ff75164f02d48b7cf12ab226897209bf5da9b953c9773f68e",
+              "oldValue": "0581da216040596b06fdc2067df19d907c40e2b38192c9bd1604d822d8faca7a"
+            }
+          ],
+          "name": "SFUI_MajorEventVenue_Subtitle_21_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4f428cc3dd16fc2e9e6d2b520dd454fc7f2cd794b3086470721ef288238667ed",
+              "oldValue": "b79f8a3e80da2a245cfe9a09f28539b6fca00f6795064a7c90bcd8f54380ca7f"
+            }
+          ],
+          "name": "SFUI_Map_de_golden"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c6662ea26fbc351d5546024255bd6b6f5ef8a5db3fcad5f23255ae0e32692772",
+              "oldValue": "a46d27becd0cd69800a82ae13a9db9583c087df9ce82b05091f1a9c5877eb88c"
+            }
+          ],
+          "name": "SFUI_Map_de_palacio"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "079c5d54cfe18da9842904d8c60c1a3f1aab2d892e972ed91dbc0c975cca1382",
+              "oldValue": "47820c895e86530bdbe402fb3587ee4f3d710ccdb10aafbaffc668bd9a49b489"
+            }
+          ],
+          "name": "SFUI_Map_de_rooftop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4d85262b2dd8f20e1cc775ce22e618213a47758056ef4bf99cd11df430721823",
+              "oldValue": "49f4636c92e4c7c6593cbec3d8c5564913f5873735cb8750c86fcd490e24ee2f"
+            }
+          ],
+          "name": "SFUI_Map_de_transit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6509ddc5a590fd214a0c569b6c2a562624b079be84f2692ee6b95e581e6c21da",
+              "oldValue": "5263b2124c9c144c279b00f75581339531b30f56f4d510ba8b80515d63601fcf"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_1_InsufficientLevel05"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1751b2c709f8f77959d3c3910014a842f35a7a54b3846f2a220c4eb86bd2dfbb",
+              "oldValue": "029348a117b0934d3a208a39bc0463d1813b9a0122b1a022bffbb8aafea5879a"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_1_InsufficientLevel06"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "87ff0148c749d68c375768c399b0deeaccfc81534b11c652a2cc713db7a1d4d0",
+              "oldValue": "35f480387870492def5f67d3c0ff505a48ad0c3a8194b37b601e3f6d6b636198"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_1_InsufficientLevel07"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "489706bcd9873552060371612cf8a84949f11b7937693fce6005aa6ee544ad9c",
+              "oldValue": "7c374b99c39816a0431211518775ff923475d6cbaaf76dd7d49836aabb4d76b0"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_1_InsufficientLevel08"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b5f25e85272245e4f8f09689ef52fe827f08ab64d24579c9c391b14583cc176c",
+              "oldValue": "f04b87f80ec0c33dea249db691fce9661e976eae2e5e8adad81b5f7a7a616be1"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_1_InsufficientLevel09"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3c665a39e9c64c517c615f031ab26722264d3f89bf95429e5dd83ac05fe992aa",
+              "oldValue": "d1b7da05b504f396db01a6455d14f3bb44611c7d36c91534cdd7fc8ef8b821ce"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_1_InsufficientLevel10"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fbd2250469020df8e79a66b8d4b61f09afe89705e7dae4219ed07e1bb641878f",
+              "oldValue": "50d07a2718ee444ca1fe1d0af5f5771d8bdad55549e37420bfe87cb360b5117d"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_1_InsufficientLevel11"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5932d77e3f40aee274be89125bb3deaf341057143b454188a7ff9f8b2e998788",
+              "oldValue": "bc643d6bc483bed51e732d9a142294e1b10aa0247c981fc24d6e41995f3a48d7"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_PremierRatingLargeDelta5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2343fca555ef81ea3cd3a6de05ac5d279b28c9df1412305d8c763926138c2e9f",
+              "oldValue": "0dfe8a7149cc0f9bc32f24cdace4f8afb3d67ff0407d6dd9662e30db5ec49948"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_SkillGroupLargeDelta"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5dd696583568173eae3c69e13b8c80558bd9b257ab7814f79c5bb28e0b2055ae",
+              "oldValue": "5b69c4868b04e557d4fd55857f1b29a41396bfc55085e242f4caa99ee8460456"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_SkillGroupMissing"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "25d1b21ed6ead7cb985dc20a8bc2c9313024279769011e79c696c1bdceed8b6e",
+              "oldValue": "68ba19f0a21043ebd1bc89b6eec4ede2b21b3514539fd39be06d55ee645fe13d"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_InsufficientLevel05"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9caf479da1cd762ac4f2f88cf0501730fe50e216ff26ca731ed823a64a4f49d2",
+              "oldValue": "d210ab4d0ba3c3c940d28403ad4fb845c6888383a1550a54f5ab856ae54760e8"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_InsufficientLevel06"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1b00e0dd6a72a62b309e582e6476dc4d361fac3895ac73f5863cede408d36873",
+              "oldValue": "97b1095c947765df3c2a6153c39eeb7ed020d80084087847f502ecab5c896323"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_InsufficientLevel07"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "961a4b114f0d890996a9ddf6c914896d26f576c71fbd1df1886e45b3c8b43215",
+              "oldValue": "f6a1e5abbec6e3112cc3343fc2cf82a9e50e20ae7ea3c91f028bfd06d0570021"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_InsufficientLevel08"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "243bf0788ac913e181f9cab4b0f571b5d562995b96ca9ebd6f6fd20b5a7531fa",
+              "oldValue": "6d3f2048a41b437ec70fa0b0b253c28ccefacc9d5cb9837e5cac34cd96f6d3cc"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_InsufficientLevel09"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7f61997dd20e421919b72be798d46e29e7e4b6683ef64db9f210ed3ca7f6e3e9",
+              "oldValue": "b0026114eb9bedededed611a19dcaae389370a71399c12b5a7ecd02935528900"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_InsufficientLevel10"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "350029c4e9ddf465a427d8e00adeb9c59eb9323b2354a0201aabb60e8d419cc8",
+              "oldValue": "f936a33003ed0aaacf2e4dafda082a66d7b995568890692c29fafebf174b84cf"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_InsufficientLevel11"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "674115e57e02a254b4d761fe16595a5a77aa8b86f94c14dc00f61ea7eb83c051",
+              "oldValue": "7ef21670647239314c8882c358d9708f5536e5d7f52bc520b57b945c2557b34d"
+            }
+          ],
+          "name": "SFUI_Settings_ColorMode"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8011fad59b84129b477c039efa1371fd26033243f807b882e48772ec31129943",
+              "oldValue": "5e98bcd25ae509d86db6dfc0c5a827c08adaa855174006e578f1e6fc590c0415"
+            }
+          ],
+          "name": "SFUI_Settings_MiniScoreboardPlayerCount_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a4366d01f588c8978cd0a634bd03b26308912732cff7172157ec9d934c1350c",
+              "oldValue": "dff3369e10b55d801d1f5d2c37ea6c1b33066824def67c32005b8495ab474b5f"
+            }
+          ],
+          "name": "SFUI_Settings_TeammateColorsLetters"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "388afd8fec3dd357068271df95f96f404537a55d1b66c1773a74547ef4943787",
+              "oldValue": "496372dfada1e2bd5c2eafe1c67aeb7b85acf53ee3a1530ed81830e3e7d2c697"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cd3e4adb58bc24e7aaa8ea8824f1fb25a4a280279e7aa2f2468a5268b9ca402c",
+              "oldValue": "734d2aab6ede951f71bac1a4444e4ed76866b67bb511f62d185c5f3e36d032cc"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_bid:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a84990fbfd6f187d1d50596164a04b4f509e996eed23b86d65acf9bd945d049f",
+              "oldValue": "2d81eb650d517be7523712be9b89581cf6a6a2f902262c06d0be23e558e2c8d4"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_claim:p{daysremaining}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "78a45322ead76622f370c68f572f454a1662a9fafb690b6896e0a8969475ef62",
+              "oldValue": "3b68bc5a353522b33122059d4df6fdd7fa97d128b38fafd73e3eaed6b1d0a464"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_last_bid"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a56ce9cb389e548ec64a028c2178136b6b95ef61c56581a446a1ba14b14589fa",
+              "oldValue": "eae659f2ee44fb6f842356b474b3cc1f982ca04fd85bc6aeacfc37ba919f82d5"
+            }
+          ],
+          "name": "SFUI_Store_Offer_Days_Remaining_last_claim"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "db762b13fa13c01b8fe6d6ce36120be52ae916bd307511d83118a1551819ba86",
+              "oldValue": "a573187b3dd68f5e8f4d4d6a7244d66ec4b36e3c84d9727e7ddd516336f71dd2"
+            }
+          ],
+          "name": "SFUI_ToggleOpenMic"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "95b07c10010d1ee6769a533cc9f76c47e5d28614c90d3349b09f65a603308855",
+              "oldValue": "42917da708ba8882e79efc8ba77f548f23501c82da11d8d81691b6b23631c3ab"
+            }
+          ],
+          "name": "SFUI_TouchPadMoveSensitivityForward"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "233363bd1e625dab7b26aad82c78519921bc38596a1a615f2ad61d9ea7d33d63",
+              "oldValue": "f034fa28ae8f31944da0ddf20fceb01bbdb6d808f778320ce7d91b7cc1f426c8"
+            }
+          ],
+          "name": "SFUI_TouchPadMoveSensitivityStrafe"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "94acdf4d6619ceff3cb1a84fa44927e94f3d52b655fd27a648ca3d9fc364b354",
+              "oldValue": "bb294015bc11233ac8b0303cf2b0e15468d6db78f7b72a0f4c194cabc4b41452"
+            }
+          ],
+          "name": "SFUI_YawDeadzone_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0fa382c1ccad05776845ca50c0e351d9f3de73c7d99a4c01800878aa31e4677e",
+              "oldValue": "452c828aa593b9663ea115874a1e8e0e1ab5fa8289332677fbffef8232cc5741"
+            }
+          ],
+          "name": "Skirmish_AR_details"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e6cb9bb58e6076d659fed143a10f25ef43f34871afbc17b5ffa645bae6dda298",
+              "oldValue": "c8bd529c3523d1651df3d6a1aad5f1f29c38bc8d88f4df7350d363e7c7be810a"
+            }
+          ],
+          "name": "StickerKit_community_2025_foil_aint_a_rental"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f9af7a2c2af4d9cf777784c932c513c226edfdbd427a27ad39e06bfd2686a2ee",
+              "oldValue": "b7ba1a0009fc32da449792d0c4f04563433f01bb4d117fedf8eaeeb455a943da"
+            }
+          ],
+          "name": "StickerKit_community_2025_foil_eyes_sky"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d4c2555d1edad64cf2045ebaafd003b3528fda1c298bfa4a862bfbc30ffb9c72",
+              "oldValue": "e25f6dd002fea9cfd126b1d4c6270004d4baab591e19989b6041dfefc32cb5c6"
+            }
+          ],
+          "name": "StickerKit_community_2025_foil_good_as_new"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "11561ba93516cd7a00a13d926a1bdc023f44d2190cd41656d6a0b4934e5ba1ef",
+              "oldValue": "e4bb9399dfdff699bd2e1a0986dcd5fe1c603c3af9d6759f09a63e58c2aede0d"
+            }
+          ],
+          "name": "StickerKit_community_2025_foil_hands_off"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2fab1e522b411e0e1d59cbbf980453762153bb71826be9ff2ec589d09e87dcb7",
+              "oldValue": "76de3bd7f0fdf26e0f4e627705b025ab59b7f05641d631be45dcf347a29c1988"
+            }
+          ],
+          "name": "StickerKit_community_2025_foil_king_crasswater"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "231ed92ba095dc836a3d5642b2593660d3bec0078a2a0164c1a4b914d8e36daf",
+              "oldValue": "ad4b5f7536dbbf3f44121cd68257ff89a69415a2fed7b318b46beafdf81e7833"
+            }
+          ],
+          "name": "StickerKit_community_2025_foil_queen_ava"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f49e79a44d856f70ba444430c586f74e21b4c3b8a77a215abb7faca52a73523a",
+              "oldValue": "5089b0cddb8d0c61af0efddd2255e52d6fb4c65cc6d4f2151345441945a87fb2"
+            }
+          ],
+          "name": "StickerKit_community_2025_glitter_ct_tracks"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1f384ca4a414c9a08fce4a59918dfd111377d6608c22ad51b58d2cccba1396f7",
+              "oldValue": "5ec8b8cf7035284cc09cb3360409c82cf979442167e9ea98de8625ad63919e4f"
+            }
+          ],
+          "name": "StickerKit_community_2025_glitter_overloaded"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1bf74b2469be723c5bce44b7c5e3ac5f68a55d5ff27b13f00c82cb4a49a28f6c",
+              "oldValue": "e300a4c7201ddea0c864cc9dbd70de58010adee168b099eef0ee0d27e3d6b6c5"
+            }
+          ],
+          "name": "StickerKit_community_2025_glitter_t_tracks"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "23e5375bc48bd9315384d5d577eafaeca6323589d6f485a3471f862bf8f73783",
+              "oldValue": "e6c34dd1d6063d9032d793022fde7c55a2b04ee87367a84ad484ece8a37c1d7e"
+            }
+          ],
+          "name": "StickerKit_community_2025_holo_bomb_planted"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d1e7423d124be2ce1540d625f65bd05af7ec36d780640065757824e629cee91",
+              "oldValue": "668152f6905a5aa209b8bfd41aa3adfabbbafba7deb3f28380e96798729fc15d"
+            }
+          ],
+          "name": "StickerKit_community_2025_holo_chrome_dome"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "88ce0082a76807686cd2dae1f9c14ea2d995b8323646d108146f64454f51dd27",
+              "oldValue": "edaaad6de19670152207266f8e992c4fc6a3d2921a6df79380a6ec49fd8442e7"
+            }
+          ],
+          "name": "StickerKit_community_2025_holo_cutie"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "93eaf64aa61c9cd84ddd2daf36a115f5a8ffcb407bc85f6383637a0c711e4500",
+              "oldValue": "fab20009083d8e2e525fe1ae46490de0cbb2b8675830e431d2f5d25fdb3bc60f"
+            }
+          ],
+          "name": "StickerKit_community_2025_holo_evidence"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8a23e880b22c1a8a3e5cd5fcc2d0a926d5103c8b0e8d5cdfe34ef090ed809fa8",
+              "oldValue": "a68fb1b6a293ca68d4c57b614ec28c29e5e8393f075af4382a25b87649e7e724"
+            }
+          ],
+          "name": "StickerKit_community_2025_holo_froggles"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "690531194ac4b93c2f2db8cb7c2e8c2ac7148261a2591b0518421b745e527263",
+              "oldValue": "5e4b9e92a570cafc1225d460a1e28950855a7a3dfb53be909006b41d59d3f5d0"
+            }
+          ],
+          "name": "StickerKit_community_2025_lenticular_bullhit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07193dcfb722a81e879982c486ebb9a0db04334711ffcc00743de6dd62e7671f",
+              "oldValue": "b62d0efc343b6676e6b42f4cdc5f9e272c0ff0c42eb22d3943b11f74267c43bb"
+            }
+          ],
+          "name": "StickerKit_community_2025_lenticular_digistrike"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4ea9cb986395856a02da838110ea0deb198164c0778ae1e263efb985737fd901",
+              "oldValue": "5a10b70bd720222e70cc65935f5c08a233e29aa4ea1c58413ba1cbe6eacd0369"
+            }
+          ],
+          "name": "StickerKit_community_2025_lenticular_mvp"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5e84ab4b2d6d29c77ea91417d34f879c5a45542d79eefe9dccdd5bccef28a9e1",
+              "oldValue": "5a07a722ee8ded09d32be45cea4cde596165c6b3e430f072f5106188a78e318e"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_candy_apples"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "232e93e76c2e0bbbfe71bf9cb1317311a2575d8e0deaebefeb01dc59274b045d",
+              "oldValue": "7f762b0a95e948c5d4576f2c659c5abc0b0ff4f65d9139aef73669b236629445"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_cubix_connexion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "525102d6544b8fba6bb641328667ad7f23d55c7425cea787417e382c94f38bd8",
+              "oldValue": "673bac6b3393d2a9c9e2fab4f84a68853b3dc534b96cc1eb615650847c8d7f1f"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_eyes_of_farlow"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5f4d5d6df5de9474675d165e63fe89563aa379f9dd6ddc51dfc6a99bc22428ee",
+              "oldValue": "9e5254f56200673f3fde9942306c8c408fec92908434602446965aba29b8868d"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_fade_mangos"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e9cc93533cfc4c7535777f0250867336472656cd51a0b7096f861ebd8541adfa",
+              "oldValue": "d8ddbc6e9bae5cd234b96b4b6603bb547d9fe1eb441a9f33df27f16992126f01"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_gloves_on"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "80089a0753ebf12c22b46dec9f3c5f7e769216c53f446b6f23ed656f306e79d6",
+              "oldValue": "8f06a3849edcc256fa630d81dc7af09574dd8a95160a09a379e74d54996ce3a0"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_lock_in"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "030daa4a252bac3e5ec77dbbe413dd77e464bcf6a8a9e589120775fe31c427a5",
+              "oldValue": "22a54acbe77c93dccda8dcaac2c9b011f9a1eb858c4b3f04cc5a4061313962bd"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_mimicapsule"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f721721287f34e8cfe63a6f170498f53c840cf6be8e47a7f47b8b9bd360d7e6b",
+              "oldValue": "84ab08b0c617fb5e6497f53376e7c8bf06455a2328465665edd76c8d66021331"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_pop_pup"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ff3365bb5d6c3c7983e9fce37b205594b52e2f01ba0c65ad8860324668ff1c6d",
+              "oldValue": "ad7aba5e55c8709016368fb736b52741d62755bdb739961c04e679ad07716b8c"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_pots"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c5f8f1903d7df2b36540820fe0a038a46c81555600060c9f2b30df0a240da067",
+              "oldValue": "9d56d6ba19d8a1fee4bbd3fc75642c8c12feb3569636106042a310444530525a"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_sent_with_love"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a988f921293cf9dd3593ff36772eac7983b80ee012d4a8b1622a3b66b59c820d",
+              "oldValue": "edbf3e5ac2176667f518997fc2756c7685209ad8145324c2c25bea7d9836ef9c"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_skelly_stab"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "29e95bec8a860005523563fc22515392bd580d48d11cc9a5ee167ebf7d228876",
+              "oldValue": "131131d9c484e530d3f6bb3fb11b94e937717e0387ef91df176447b13bebfd40"
+            }
+          ],
+          "name": "StickerKit_community_2025_paper_vice_cursor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2d2fc5fe453b3578e8c4733edb0cb64829934b148b8e9765b8b3cbf42b82a57b",
+              "oldValue": "b7c43393bd875ce119790acd82fd6164ec014079ca0cfc0b5b6524b5b7a7f3dc"
+            }
+          ],
+          "name": "StickerKit_sugarface2_foil_clavis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b8f8e5d6dd6781695b08060d82d806a9166dbb05d14f8dcf457b4e03295d96e3",
+              "oldValue": "2779af1bfdfe7d22bce33ab2c0749f822596df32dde2de11e69467bb1f4d5e43"
+            }
+          ],
+          "name": "StickerKit_sugarface2_foil_lorena"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5c6bbd6d5e4570b6a407765900e79daa513f5c4fc962ca3dab5840a4a8826420",
+              "oldValue": "83589301a7159ba2cca5c6eb08faba436e96d1b6d8dc5cb9f819c907a7b786f6"
+            }
+          ],
+          "name": "StickerKit_sugarface2_foil_lucas"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9790a5cfbcdc939c707c874642213d5f875cdfd2edf662f753e1824a90b8abda",
+              "oldValue": "b97cd8ee25a2ea6b187829fe55b8b0d95d34cb382e2e9e0cc469312866dfa3cf"
+            }
+          ],
+          "name": "StickerKit_sugarface2_holo_clavis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c4b5212fda496adf252fe5c07a0f6ac06f51d6b041b5190035351af32afd40ba",
+              "oldValue": "21b39ff84b5157d1ca190f6bc8a682124c18488a41eef4936aaa3ab8d85b70a3"
+            }
+          ],
+          "name": "StickerKit_sugarface2_holo_lorena"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b7dde83131998e6b822874618575e3539ddcd635b44b5a976b9afbc93e99cce4",
+              "oldValue": "ab4952436b687210c10e5847bc329d39ed1237713eba5e5ca1c8f23a2c316bbc"
+            }
+          ],
+          "name": "StickerKit_sugarface2_holo_lucas"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1bd38db65298ab57809327ee2da425ebfa39b04b75077fd7386467524f7074ed",
+              "oldValue": "5d15cc0b01625e436da87be722fa84c1b76c0022b8014936aec0a8083bfafd7d"
+            }
+          ],
+          "name": "StickerKit_sugarface2_paper_clavis"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dbe294686f57f81d3c6979669ea2332e4036ac692b6df46e161f94ccd8df31d6",
+              "oldValue": "e588a8b0e7dc94da6f6b4bfa9f2f5a3a083256915dff85c96938d02dc5c33ea5"
+            }
+          ],
+          "name": "StickerKit_sugarface2_paper_lorena"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c559d890520010c460796d926e492d3d0cc0ee5afed495f86d98517cc7a083fb",
+              "oldValue": "c174a4a259d9c326cc39be737b0ec887936983818be619e23f17ec775b5b823d"
+            }
+          ],
+          "name": "StickerKit_sugarface2_paper_lucas"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7fb115a4462e2bc66131743f751a6ae1badc68d17ea952cab549f267cacfd184",
+              "oldValue": "caf7a6405945a556b220073a7ee0b0b6045bcfe1c89955eada7a258de5021ad0"
+            }
+          ],
+          "name": "cs_rating_expired"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e0a640968d330f9511454ab78d1582de90f3615f0e8515f28e6dba47ca1cb33f",
+              "oldValue": "73a71294a65d6ceed0324ba0c5a87b6c9db05a7d6269635bae2004b8f1576729"
+            }
+          ],
+          "name": "cs_rating_none"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f8d8aa91550214baa520d1d3a43654063963604fbff80a298feebe1fc65883df",
+              "oldValue": "71bd32ee73b5da6dba80c5ec22e299672fb9b2a56541bec488f5a41b751d02f7"
+            }
+          ],
+          "name": "cs_rating_promotion_match"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "deaa7cf5132efff2920fde8bf3c253f76a32f2296c37cbb522636f0f170338ea",
+              "oldValue": "1c93dede914c3f2e4e0155f33a8e6b5d679ba62050da3711ef9e2528a9b99e54"
+            }
+          ],
+          "name": "cs_rating_relegation_match"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4262c2267303d658a3cd286901677433708dda2c6a891d670679534638002b0b",
+              "oldValue": "d73c64abb6bcb1a5989659ad5e943767b3b1f705fbd9abf7dfb602400e67f15d"
+            }
+          ],
+          "name": "dealer_message_covert_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "18a6ca7ce1f01175b86f9154654f075c8a0ceb34b60a553663cff88ab0bec34c",
+              "oldValue": "76ba1fc61656823cb3f43a98c79efa827ada89ac672ed1dd28e3557910f93049"
+            }
+          ],
+          "name": "inv_context__DEV_DELETE_ITEM"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0cee8d1021c1f39c57dbd9672bb073d44ac59f6e87dc312758f2665f69856f92",
+              "oldValue": "3c15e6843115ad7158de5a0a256301542e027e90ccc69667f3eaff178ee96feb"
+            }
+          ],
+          "name": "inv_context_disable_shuffle_slot"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c2a270be366d67a2bf202b9a7cd42066784f1644fba5f25b55563628a6bc2a65",
+              "oldValue": "f7ad9eb5924bd1031daaa84cbdbc80709353960ab0de983cc9442f471f9344db"
+            }
+          ],
+          "name": "inv_context_disable_weapon_shuffle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e1553d6ba73abf5754cd1b2e6181a7bfcd796897cc800b10b188ab0ad28d23e9",
+              "oldValue": "2bc10a732897fd8ff10ea3aedc69e845a156d4b17a0740d3e7235eb189709503"
+            }
+          ],
+          "name": "inv_context_enable_weapon_shuffle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ef570b3a48456c093ea25305d76fdce16079b0fdfe90876cf9a955ba36a8e272",
+              "oldValue": "1b19d58a959365707174fdbf6cbfee4409db1889166f35d8b5e09a4ef234fa2d"
+            }
+          ],
+          "name": "inv_context_equip_replace"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b41f353eeba169cb1659aa27ec53af0105ff52872d334c93e405372b7074b694",
+              "oldValue": "a2bb91ea593e0ee825fdc672efdb2eca8f9388e9b98ccc2c5cb1fb5f5949fc84"
+            }
+          ],
+          "name": "inv_context_loadout_slot_reset_ct"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07979ee86da7f13fa8d972a2c361f35460c49eb5f74c3e5fe4d12b319d2b4e54",
+              "oldValue": "25efd20d68224a4445dc28407497e4d7b85b25846676d98bc936543267d52f4e"
+            }
+          ],
+          "name": "inv_context_loadout_slot_reset_finish_ct"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07979ee86da7f13fa8d972a2c361f35460c49eb5f74c3e5fe4d12b319d2b4e54",
+              "oldValue": "25efd20d68224a4445dc28407497e4d7b85b25846676d98bc936543267d52f4e"
+            }
+          ],
+          "name": "inv_context_loadout_slot_reset_finish_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8b5e9ad0a66b84899abef1104db630c1dcfeb05d8efaf07cbdd9e50ac82413a4",
+              "oldValue": "b663261e5fca3ced879fa4ab36e23845248931dc5584cc6fb6f1d65e980a1ae0"
+            }
+          ],
+          "name": "inv_context_loadout_slot_reset_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a88146277dc109062e11be8bf01d122447f298687f2921017f1357ee098c2555",
+              "oldValue": "530475e1a5725bf912343d283e6a7b015a4b47eeb165b0170ec8d28298ac2948"
+            }
+          ],
+          "name": "inv_context_loadout_slot_reset_weapon_ct"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a88146277dc109062e11be8bf01d122447f298687f2921017f1357ee098c2555",
+              "oldValue": "530475e1a5725bf912343d283e6a7b015a4b47eeb165b0170ec8d28298ac2948"
+            }
+          ],
+          "name": "inv_context_loadout_slot_reset_weapon_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07c9872377592283f71eed06fc41a1003e027d26fc69149c893d374923f4a244",
+              "oldValue": "242e3e2e911862048ccbd13c8740e595f547fca4081df8e0b0c9693541b4cc20"
+            }
+          ],
+          "name": "inv_context_swap_finish_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "817bb4ad5215522821a4cb6d54ba8d0c0a19b1473e72bac1ffb93beaf7aba9ff",
+              "oldValue": "bd45cea2e0b9e95251e516fac1bd1e3e9b9b56f946d53363453c6addf96f5f33"
+            }
+          ],
+          "name": "inv_empty_lister_for_stattrackswap"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3e16f303a7466b14665aaf4a913b2427ed62cd573f93b54d35f7293553dcbcaf",
+              "oldValue": "fa13bed631448adc3b847cd4a747e8e3911afae8e346378000c3e9aff06456ac"
+            }
+          ],
+          "name": "inv_select_item_stattrack_swap_capability"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "11c9b74ec61ef2322e5b020b0968908b05c970eb992cb07d9ac1d44b28a20bd6",
+              "oldValue": "18a19c7d56b6ea4705849a5a5a7a60e5b6138d1b3235e2c1fc6f3ece9d420eac"
+            }
+          ],
+          "name": "inv_select_item_use_capability"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a64bd595d9acbee51711c7629860e2ee8110ba971baf57f6e88479897617f62e",
+              "oldValue": "ca788833ef820a10577ffba4ff08bcc9726f69a289bca3c7e6350bd127c3617e"
+            }
+          ],
+          "name": "inv_sort_slot"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9585798e4b977b7ad23360e5152beec043ab2522e07e16383289dcdfc597ebda",
+              "oldValue": "194e09bdcf0a68a5aa3abe8cd05690fa8f509b1a36f57044a762fe662da18da8"
+            }
+          ],
+          "name": "keychain_kc_db_200iq"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cc2b9dd497cafecc3a12345c34a3a0b7af24a087c9c8e9822836609dcb4c055b",
+              "oldValue": "965e33c343dae1a8f513232d0077b288dd186d5dbbbadb8e280dc68416636607"
+            }
+          ],
+          "name": "keychain_kc_db_8ball"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ef3996df34c476cfc0cb6f993602cc4fdf56633d4f339f63f2672bddf5c69b2d",
+              "oldValue": "b1bb7498cfa16504cf8a748c8bee683471170f231200fed985ef26b346735468"
+            }
+          ],
+          "name": "keychain_kc_db_aztec"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1a7c35a0ee16a0b3725d277fea289b365f7a0f966c416153b7b4b445c3d1743e",
+              "oldValue": "0ae01813442b927e716f601d28e8ccaf13be5ded2196c7debc0db676b9e020e8"
+            }
+          ],
+          "name": "keychain_kc_db_biomech"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b5ee7adedb60410fae8441e7c2f0df30c255f289281ad477278ee781d31bd71a",
+              "oldValue": "1b74beba393d23979e9463e86c32670e449afba1ab7e81dfb420972330753736"
+            }
+          ],
+          "name": "keychain_kc_db_bombacat"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2dfb6853e52232b6420d4c18db6aa1d126eb26d4fcc1cbf8c690b7e28ec18b81",
+              "oldValue": "de69cd45535a6d9edc451b744628007a968e2eff1a0b6c90527c35a6a73ebe3f"
+            }
+          ],
+          "name": "keychain_kc_db_clown"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0f1c96c806edd211eaaa048df4d6812782d4d32c5acd91c51387df22d38dc5dd",
+              "oldValue": "e8f0be9b05bc2957988b1a836cd0eee0d095459b8f0ad165a39efda36d12a8ba"
+            }
+          ],
+          "name": "keychain_kc_db_dimsum"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0083b96214585d5e1ab6e6fbfd32a098e27b154255135d87daa4a7b705d2302c",
+              "oldValue": "a850ff9ca1ceaee027cf22174da9e557b49d5b4d5b0415cde2a9440909edfc38"
+            }
+          ],
+          "name": "keychain_kc_db_drbrian"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6340dd3ae48eb499f04012bab40c77b7b6c43714a0d2febdee3cbc9a4f4adb6d",
+              "oldValue": "65a7e1bafe39e76596b330b53a54d24cae3c845bd92b77548de342c47023289b"
+            }
+          ],
+          "name": "keychain_kc_db_dripfade"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aef78f1096d976c9ae2496621deb476453245449974b80036620ff5f8b7e22ad",
+              "oldValue": "e37d1a1306e509bf30e8503f276747061681b332f96847c0195cc2fa559a7623"
+            }
+          ],
+          "name": "keychain_kc_db_eco"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cc1d893df01fd31e68b1cfb9b16204b3a3f1a891f297b83dba40f99eeeb958ea",
+              "oldValue": "7c576ce9f66bb1bdbe6da41bd68b94016b09611814e82e9bc50fff00072c6b54"
+            }
+          ],
+          "name": "keychain_kc_db_eviscerate"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5d4c91918af273bd4d4b39411089b1ad5dd8b317ac61934d88487d5c2adfb600",
+              "oldValue": "01d5f13ba33b91a238933ca0d228aa860db8bb426beff4ee4b5478c3d9fe118b"
+            }
+          ],
+          "name": "keychain_kc_db_eyecritter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "45bd1973e2ae1dd90cd1d878fd3ae616a70300d11ffdeb5baf162dee9fb2472f",
+              "oldValue": "428802917857697b3b3d8bdb157b33d1e78b1ba3294b7fa2bb4f7268ecc45a9a"
+            }
+          ],
+          "name": "keychain_kc_db_flash"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bfc761733c1cb93d898a4ce03bec8bcc00f0dd03802e4c2fd51ee13f261e9ec8",
+              "oldValue": "a036cd39e27bf0ee2f919eff41959f8d918b105a8dd2570ff2daa7b5647870ba"
+            }
+          ],
+          "name": "keychain_kc_db_hellcat"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "079f3daae11432d06e331aa60dacf3e3d65b9961466d0be343e22e0b059816b4",
+              "oldValue": "41bfa8e13da81e5d94c3f18dbd63be9a82006504c54dd5cc6f515c24a21f15e3"
+            }
+          ],
+          "name": "keychain_kc_db_incendiary"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1c25812399ddff334370066e6d097ab4c4c8c2fdd990d5d2488d436f103d8a7",
+              "oldValue": "b2592c49665b3d09dae524526c4e4250896105a9d7a4d78a44e2ad38c2c1b198"
+            }
+          ],
+          "name": "keychain_kc_db_lighter"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cdbc17a98ef7b4c283ff00817711cb67e161f87570214d0305b7ada34029e5a5",
+              "oldValue": "e6879a6e2ea2f3c5759ae00e3d49fbd4ca366ed4fe922e4228541b88d1f73daa"
+            }
+          ],
+          "name": "keychain_kc_db_occult"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ddf4c640b29e43752bbdba93f5cf082894bba5898ea4e47b612d19ba74b73a4c",
+              "oldValue": "d531dce2b5478552e17382c32e4966e8f6eb6a6c67ac332ba3f7265e41f40f3e"
+            }
+          ],
+          "name": "keychain_kc_db_terror"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4fbf6e94d6aadc55a88d29a7b0d0ae3ba9a9380c92c4073616d4aaf82ffc2f80",
+              "oldValue": "10889261a7ee01d63b6c2b7d4e783f061affd41876fe0b6e977e83421b655611"
+            }
+          ],
+          "name": "keychain_kc_db_ugly"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "341e3c9f79c14ae08735b5aaef873d17921b319c3ccbc065e32aa03d8aacba8f",
+              "oldValue": "56ebaa0d3b0c955db32ae7c38d0f76856ffc6e24cd2b07ed6f64b37402a26fe5"
+            }
+          ],
+          "name": "keychain_kc_db_wood"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5319244879a367d7b7ee3ef27891dcf766f1ee198167fa1cda5f9d62de0b08f1",
+              "oldValue": "6e99e8a91f883fd0e9cf2491abf4149c87e62d210a5a75c85ecad86e350f2fb4"
+            }
+          ],
+          "name": "keychain_kc_db_yeti"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "372a8b40584a3463dfb3f842f17e6aa0b4e6ee96ae9474e97fb94ffa78d0ad94",
+              "oldValue": "3bc2cd29b5ca4cd2c59dfbaec8c69312e431421f9652770c4e49e6f9b44aed36"
+            }
+          ],
+          "name": "keychain_kc_db_yinyang"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bf39a08ac81e0bb1600b43350f8db93536a478343599cf4ae9dbf506605202de",
+              "oldValue": "41503a4d458850743cf4aaab5ac0604775f6fbecba732432e8c4bd738c7b15cc"
+            }
+          ],
+          "name": "keychain_kc_missinglink_ancientcurse"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "408c7ca227161dec818120583dec5459f0b01e58140b88e707e86ff87b2b838a",
+              "oldValue": "da0f7df9ff3bd5f21c46fad97cb92b8f537650d1f8378bb186f4e68f20297b54"
+            }
+          ],
+          "name": "keychain_kc_missinglink_babyserpent"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7fa959a68eb9599e006452145e93048adb6234486015409d66eb4758c137c22c",
+              "oldValue": "08402e0127393129974e223007d4175375129cf15e7284458688b85a3b1677ea"
+            }
+          ],
+          "name": "keychain_kc_missinglink_basketball"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "20b78ef1efc4a78c60fa2d3e1916de11adf99939763ad475a921c8091ade5878",
+              "oldValue": "032c3b3fee9da0b118268f5ab202cc6927e1832c4d913a320fa48364e69fa3e3"
+            }
+          ],
+          "name": "keychain_kc_missinglink_bodybag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9dffaa54369a2a7c248416214364ee58b80aa16fd8805da44f9e9f1a0e75807a",
+              "oldValue": "cb671b4cb06a0a7b573e07448e02c6423d1cf43891162ab7e0b6beb0bc5608ff"
+            }
+          ],
+          "name": "keychain_kc_missinglink_cactus"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a0bf724b090af889fe2496a7c509277e0ff2d4b1507098e87b4af9022e0b4538",
+              "oldValue": "785055f628595037bf8dccc8fac190e9ec2c5e25d3b70dc342394d650517465a"
+            }
+          ],
+          "name": "keychain_kc_missinglink_charmburger"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "29b5e8fb60f2fd8b2f1dcbfa26132747c3fde4e2da34e8fd7755ccb173680d89",
+              "oldValue": "a7719571428de06b33bfc789c645f019caaa2f6a4d96264519bfedaf465652a5"
+            }
+          ],
+          "name": "keychain_kc_missinglink_cigar"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7f26ed28184ca9ada4097942b66d1f85c6f20559b022c3c670c2552977229e18",
+              "oldValue": "e74074bd0c784d681e1b88124001f2108b4d27d9d3744185a40a5feb664bc9b1"
+            }
+          ],
+          "name": "keychain_kc_missinglink_cthulhu"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "26bbe97a70c1f19259f1d611206c6c5d940d81dd27ffa70d9c154bcc36414636",
+              "oldValue": "9dc05a694d65cde1d28dd4e22bb8d629cfac3ce9416e67862bfa31f4de76c584"
+            }
+          ],
+          "name": "keychain_kc_missinglink_happy"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c01a0c7a5b1dab264acef10f3c52b75f8a1c0c8273ecd62fb04e65ef7411f35f",
+              "oldValue": "d9fa2f3fe81a81e9f107309f715926b0ee8c12d425a4d357bc49b30d5edfd2cf"
+            }
+          ],
+          "name": "keychain_kc_missinglink_lilhatchling"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e7707f8dd197f842a4986857dd0604c1d838c8e2075de3f3c0b1e1a972b62de1",
+              "oldValue": "9dc62f5a1d8fc73eb51d1696d2ae7a6e912277aebbcc5a13af08ca93da6d7e30"
+            }
+          ],
+          "name": "keychain_kc_missinglink_lilhothead"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9f709c1585c68b4425020a386a9507dd8e23e7992f0833e6595e287aa1bd7bce",
+              "oldValue": "6d30e9d63d9cf7e787a2ab19df54bfb9a1059aa0b28ab901a5b3620de8cb917d"
+            }
+          ],
+          "name": "keychain_kc_missinglink_lillol"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "985b4c5c752fe21e1e5cce32fb65b90816b03ce55a082be279c975c75ca7417a",
+              "oldValue": "5c4fb77a69bd29cceb71b6fd49ce044ccffd84b479c511932530baa3e95f8175"
+            }
+          ],
+          "name": "keychain_kc_missinglink_melted"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9c1a64281b63d6c41f4cf5439baf2c0b1221112cb16d2a777ed43440cf2fa646",
+              "oldValue": "0afb908ba8a0187c9184c31116a92e08f284f8771a1d4a4b9b6bc8f43e17447d"
+            }
+          ],
+          "name": "keychain_kc_missinglink_muteghost"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0653f828d2129f9ce5db3cf911078b50543906437bc06e79576d4b08570a4f1c",
+              "oldValue": "055c3559251e051b18e5f9660c334c8e732334c2acf93d75e8f3e04631d69a9e"
+            }
+          ],
+          "name": "keychain_kc_missinglink_pencil"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0da2c8ec722e13fb6d942f7eaa090636d7bc85c37f4c20caa968bcfdd55b8601",
+              "oldValue": "7b22898be4aa1e17116775c9b1e2b6497d8dd543a0025236806a0e3b419bea88"
+            }
+          ],
+          "name": "keychain_kc_missinglink_pinata"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f90bd0ecd23bc8b9538f02e707569be14392814b73a794892d30ece2d772f4e7",
+              "oldValue": "b2076f00a3f6d3b52d2e2216b40bda179d7f3203d33eebc750b8a71622ac8f78"
+            }
+          ],
+          "name": "keychain_kc_missinglink_popsicle"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1397077cae38d0240634cbe0303f125328c1acce097c6154da73fd60b8e6f6b0",
+              "oldValue": "c189caf29cf4e126b86ce0459db83e1b6a33e4fcc89ec13f58a7108ac5d9e8db"
+            }
+          ],
+          "name": "keychain_kc_missinglink_retrovision"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ad9b5f2d386ea6b73dea591c9f9237eeb0aca38c552aa38ec8e2c27e8ac71c1",
+              "oldValue": "259d104a8bb93bfdae90ca53022419d84f1f17c1fd562c5174e3c465b838392d"
+            }
+          ],
+          "name": "keychain_kc_missinglink_sentai"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "48655fa804150dc29a7266cce22f9a22f6eda5c0801a3eee80e0dc67061ef7ea",
+              "oldValue": "5ae291248a18ff0f5dc0b6d3f7e34ab51cc1ba69d4537c030352f07a9a7d2932"
+            }
+          ],
+          "name": "keychain_kc_missinglink_sillyelephant"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f0b0ca517e4d70fbce4acbcfb0466c5a4b6b1c1ca48c70dd40e7800950035321",
+              "oldValue": "be8749ba7f106ff7676bf3aaa97a770282ded995088f9dcc35098826171927d2"
+            }
+          ],
+          "name": "keychain_kc_missinglink_slime"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6cfa1e6fca577e5c8d00e172dc9a7c854e1b0b69a93fe760fad924cf1c89e836",
+              "oldValue": "d7fbdae4888cd0492cca3ec4ad457e3cc28ff97d8bf55ba56ebde947b91f10a9"
+            }
+          ],
+          "name": "keychain_kc_missinglink_surfsup"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0ed46f23b124d0485a6fc67d5e34c6faf0f822245e605f66950c0d251c918d1b",
+              "oldValue": "9e9525a3586b1d79354e5a669e036516a41e317dcd58ef970d7da8a036467fb4"
+            }
+          ],
+          "name": "keychain_kc_missinglink_winemaker"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e4e30812ee4286926f6513dffde332ad651f880d9f9efb44f480895ce87adb28",
+              "oldValue": "f818c0ccb7263e1602a2babb129983cb90c5c8e0a64e6b946253497f07b0305f"
+            }
+          ],
+          "name": "laptop_pan_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3e35b9de0f0a259bf67d8790340ed2b7c2803060843cf4e7d48f702b1e69ba0f",
+              "oldValue": "183e0a2f80d31c05fcabcf8a5072a9f02a23e965f63a0b0b83b529d79130b0d4"
+            }
+          ],
+          "name": "laptop_pricing_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4834612c45e24442337eea5f5f3440ab83ddb039b96f828eab440aebd98861ed",
+              "oldValue": "966d602877d30d02645fa13b7c5a1eb73a35e939ccd6bacee9442cba0629b210"
+            }
+          ],
+          "name": "laptop_window_currentoffer_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "43808756c8ec253636452e2a3b70344c90fcbc61f1b83c046491d3a5187bc216",
+              "oldValue": "1d5d667433fcc1057d6150c78810480894e9b9e6c8a5bc1c2485f9b5a6b47ac4"
+            }
+          ],
+          "name": "laptop_window_seal_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d77a657402615af91b209ca1c4376fdeab098b334df3299b90179d6bd6a22f79",
+              "oldValue": "d2973f79aaee213a761fa0170427dc8ee853c0ee1db20879ff6133cf4ed0745c"
+            }
+          ],
+          "name": "laptop_zoom_tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f484acabf121aef7d1ffca3775aab4c0d18d0dc8a92801d3387575f078c65360",
+              "oldValue": "5b09e3d56c752a36fe7a5d7b9b2368ad1bb25b8eec76f22f4eea1d8bf0630ae3"
+            }
+          ],
+          "name": "loadout_equip_ct"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2d9fedaa7871bbc788148b71f6a24f8aece9ff60274acf0d653f0549430e9f39",
+              "oldValue": "3d24072979dc5a4b0f5bf3a9bbd68d4c557f0b67b23f79eed48fbba6a2751ba3"
+            }
+          ],
+          "name": "loadout_equip_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8112b1f735d2511c95a8e5f5eb57822f7333492b80c3b3a70822158f455b5b46",
+              "oldValue": "e2850ea7777f05d9da4bdf1c8a8dc436631938cfcc74f8772c23b72ef277eb8e"
+            }
+          ],
+          "name": "mainmenu_go_to_character_loadout"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a87ce09d48f7e1bc805065f1afc090241c269bef92d6f21d5093bf1b60d85461",
+              "oldValue": "626de635bd6130fa15a71274c8fcc3b4700995775c8e06dee0a97a19fd05454d"
+            }
+          ],
+          "name": "matchdraft_phase_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "790fc6406b0a9f4180fdbab2ae25750c2a41311370c9197f2eabe96c2c36e912",
+              "oldValue": "b362829de01e223fcd925e9007f73651dfb590f6ba3bbc8a2fc1b883ab0b27fd"
+            }
+          ],
+          "name": "matchdraft_phase_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "df533f100d7c39c51cbd766c21a4918bc7d8266b766a3dd38740898b0fbf9c24",
+              "oldValue": "a97a85fe37d8433b75f85b697acbbc3a226a2318f1bc0180cd3ded014f2cb18a"
+            }
+          ],
+          "name": "matchdraft_phase_action_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "be7cc2f97657c0e610f6fac22c984bdd24e6ec8e2fc87c1eaf2ed2280ba2f051",
+              "oldValue": "4b4a5400463f155294131725f0da01be817105821d2a7d8bf29c5a0b36c4f12d"
+            }
+          ],
+          "name": "matchdraft_phase_action_wait_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "790fc6406b0a9f4180fdbab2ae25750c2a41311370c9197f2eabe96c2c36e912",
+              "oldValue": "b362829de01e223fcd925e9007f73651dfb590f6ba3bbc8a2fc1b883ab0b27fd"
+            }
+          ],
+          "name": "matchdraft_phase_action_wait_7"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7538106f112d680966479ce3fcd11241ee9bab235a7ca67e6d8fef8a0bbbacff",
+              "oldValue": "60f6780dfa35be20c6dd3951fd77271a209220f13952422e71d3d67cd102c682"
+            }
+          ],
+          "name": "op_reward_claimed"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a4d93feeca18df0a7197292e5861625669717503acd6aa59f5cc05cd842a2563",
+              "oldValue": "1c2785fe3e1e24d0711cf131040f17129f40709e6a57067b44048b6c4b6d2588"
+            }
+          ],
+          "name": "op_stars_shop_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5bd1c97c5a9936eb5cee9a3dffbf2440065ad30f2d97bcfd8da6e3db11ab03bb",
+              "oldValue": "1e86946282b1de8078e4f320c02f0b6230b8a74a20be8cb4465efe82ffc7afbe"
+            }
+          ],
+          "name": "os_default_device"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "10c602e84768e4ded778d1c927ecae301fd77d8334a30fc299775b5a7f50e3c8",
+              "oldValue": "1a1463d1eb06d87b72c02bb9e68340140c13f40358544efb98d0208db7e23fff"
+            }
+          ],
+          "name": "play_maps_section_capt_maps_header"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8a0bc9f637a43b75837848fbaf04ff4b57bfc19edd6c2a7757d62d067df9c0cc",
+              "oldValue": "54f6a0d7fb2565d0ff5e26dd43813830952604df5a6d70f338ff7458b1a7fdfb"
+            }
+          ],
+          "name": "play_maps_section_tooltip_capt"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d9bdf1212a12e50a7f574e0cd1d2604b2c05a8db9e00ed0cd25e7369c437a262",
+              "oldValue": "35e8188d0e08efebca735a8b290b113597580ca3230db6885ab77f524d829e58"
+            }
+          ],
+          "name": "playerstat_name_10_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2673c428eabd19100e8ac4fcf6051908de0b6dae2a0702eca95eb4daf51c9be4",
+              "oldValue": "6dfaf00d9c89f0df4b85164be723219907414f4833ef5d3977c58efe44639b9a"
+            }
+          ],
+          "name": "playerstat_name_11_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3266191f88e220f410b00598fdd15237eb137cb955d80aa12b2b8077a0cee41e",
+              "oldValue": "44945506f39f6ce1e8676f49f73014b2cc0d84dc070f6d8bf2cecfb9a665bbe9"
+            }
+          ],
+          "name": "playerstat_name_7.5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2af4b992b68f1205a61a31db74233909c248b1278e549f2fb1a66c2fabb95e18",
+              "oldValue": "46660aa3b7b819ae6ccb5c79c1674f3219c57a8813966b4537e715da8b65a50e"
+            }
+          ],
+          "name": "playerstat_name_8_long"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "89c8bf942f098d8a6d3501a1be9a375757c64d965e393da82fb6b3a692c760fe",
+              "oldValue": "f7562377753a066603f7a5d9a73e2c18fcf9cac338dae7bec274f8939ffe8185"
+            }
+          ],
+          "name": "popup_equip_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "97cfb10dbfc341624599797d8e157cde7f8af481c54964c352463bbe2603830e",
+              "oldValue": "5b66d9a399b97a8b544c93a08de650b6d5fe2449a42b93861efd43693c8af9e3"
+            }
+          ],
+          "name": "popup_inv_lootlist_inspect_all"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aebb1d244cfd60e2302ee95928a94891e95fcbe5d4be407dd951451d9e68981a",
+              "oldValue": "6d651183795b6b0d02ccc315f27cf772bdcaf62b87e79e718cdbeae05a5b3c49"
+            }
+          ],
+          "name": "popup_lootlist_claim_xp"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8b9678b3e661ece4e8cc120a3f42ece4b26eea4b803d4f9117a6fe5420c26e1e",
+              "oldValue": "dc2acfd40f89a7159decb51731a4fdc286e166d84e9ee1298a1e7209f0ef4f2e"
+            }
+          ],
+          "name": "popup_subscription_lastmatch_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c1b4c6f4f9f78f63f42cac34c8761a412cd8f3ec0a22d4febae741dcd615d85e",
+              "oldValue": "bd6779dfedfff5dc52942c5fd913670997b8cf25d72355a50ddbe4d034f5ba45"
+            }
+          ],
+          "name": "practicesettings_infammo_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9c159b702a89f71ca3aaa602d3c06f6b434ee2348018dfc672df8735215759ec",
+              "oldValue": "5a20c3aa047df4ca51741475dfd551d084e3ed5134e38d0e8ddb605025d5101f"
+            }
+          ],
+          "name": "rankup_redemption_case_warning"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "443836f296fb49d9f71cafcbed2d3f706940fffb7f359f6888a2f1d09fec2a96",
+              "oldValue": "b3bf8238c0e2b709d6c379687f92655fe2845f95fcb65062d2563f0b59585625"
+            }
+          ],
+          "name": "rankup_redemption_store_closed"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a25b47de17d35b3969faea3922b3d096b476d36f6a903c1f602d914270867516",
+              "oldValue": "f068738b302b661b2d642f12ae0e8fc1ad68ee89b4cd22edfac7f33459d26c2b"
+            }
+          ],
+          "name": "scoreboard_timeline_ot:p{scoreboard_ot}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5858dc1e7db9df1e813b88918c1327f42429592b146711edb24ab28d28ef5df6",
+              "oldValue": "65a7af891424c5ccd68d26581a448c48616268c4f4aa14bd6bace8b69963a484"
+            }
+          ],
+          "name": "settings_grenadecrosshair_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce65ea9136a0760d69d03f32ccb96f2b493e7022485017f13a839e3ce4c77aea",
+              "oldValue": "244e1e72b6e468bf6c93e3c7ef20a20d31fbb7ed7e80567cc44ffc9571a87593"
+            }
+          ],
+          "name": "settings_snipers_xhair"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d7ba9f3bc34f481a1610bd0bf68a609cb7bc56e5c32c3a06081313ee66b7af14",
+              "oldValue": "ca063c165b39fde68db68cad5bdda977c8afbd44134a7bb9589a6bb98aa7b143"
+            }
+          ],
+          "name": "settings_steam_input_aim_gyro"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "30c2f5cb3427426eec470649d8cd3fadf4b8c9c02f78372bbabc3588b509fbf8",
+              "oldValue": "9e49345e50029a0edb7fc445c2b3813ed8e0891ebe6f5ac36853fe9044b541a8"
+            }
+          ],
+          "name": "settings_steam_input_aim_stick"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e293bc086f7b163365fb18956a55018ea7facd05bbc58e632aa20727e5570c91",
+              "oldValue": "32746c63752b277e3b6d09faca62cd78568ad3431d1562041f0ed8c145b438b1"
+            }
+          ],
+          "name": "settings_steam_input_bindings_launch_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53fbee8156b1cf9c696c7ba44a90cb8398aeb2a0d77d0def4b518fc4549c596d",
+              "oldValue": "0b82858215bb4ee4d229807d985dba1797dde46922503265c5683ef3119e0345"
+            }
+          ],
+          "name": "settings_steam_input_flick_stick"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "aa61d7d1b8f46196fa8f26ac30246f33ddaace8e837b63d2eeeb87e5a9355fe4",
+              "oldValue": "00eabba2004900cd14e202bde6d8d8dae9ad2eca4ed72117b11d7b7f743ad0aa"
+            }
+          ],
+          "name": "settings_steam_input_move_stick"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "35e2a5b14c8453154311ffa96363cc2f54a13fde57ef3538e650c7d2bc63db8c",
+              "oldValue": "86af6bfe3fca37c115b19eb766a373fa29625046b67d41e76da38a80f4c03a92"
+            }
+          ],
+          "name": "settings_steam_input_move_touch_pad"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c67212d426fb441145630f845a94bdd05d3df745c88f6918d5678f43861ed29e",
+              "oldValue": "7affb125da3e60e0397686053f439bf6c22894b72f2c277d9c413c0a07db9087"
+            }
+          ],
+          "name": "settings_steam_input_touch_pad_aim"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b2a971fd5ae186eaa7bc934d39efa83389465bcfa2ec78a12ad6a44591adb212",
+              "oldValue": "1e3ffaa499f84b397fb780d9299384d095c04333dd144ca11001e72fffd2676e"
+            }
+          ],
+          "name": "skillgroup_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f04b3299545fe314416a9baa1aee5cd8c6a0786d5ba948056ae135fc3b37337c",
+              "oldValue": "26ee57ba03a353cfedd1e923cac294449c457c89292db0d9f6fdcac8fe732b06"
+            }
+          ],
+          "name": "skillgroup_0wingman"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "04932b4bc720b3979e61ac982b823a8a4d2d3ad687035bdcef56c344b92c8342",
+              "oldValue": "f56e1d4bc1c12241bcf67c1ba13dc72f82524a772c851d815cecc98ffb02d0e6"
+            }
+          ],
+          "name": "skillgroup_recalibratingdangerzone"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "97c1ce7b755333133aa93eb579ea5cdd958bc42edfc07de9ada5be7a5a2873d5",
+              "oldValue": "a33e7a098fda9a8816029e2902e54827530f69266fc3d2673ce81336158aaf6a"
+            }
+          ],
+          "name": "skillgroup_recalibratingwingman"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "085e67c4ceac219788c5e6a36b14d54fdc416be5a1a151858b0aef2eec8a7c6c",
+              "oldValue": "053a3e1829091efe71696765591d5712bcdaad6a5aea9521845fc64f15c62668"
+            }
+          ],
+          "name": "tooltip_cs_rating_generic"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cca0c0f7cef13cfc6e9b0512d2185606241e0f786d5e914c815397c195158024",
+              "oldValue": "2d501147128971c66c038c6d702d537e8f9efe91165dad4db4266c437d06cef2"
+            }
+          ],
+          "name": "tooltip_cs_rating_none:p{winsneeded}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "088a00e6af60aa55b977c34cbcbab0f35d338865b4ff7a7429a7243813d7938d",
+              "oldValue": "2e58a8545080fbe2b835c3f6bffb1a4aa216d46066bc5c4065396f36d559870b"
+            }
+          ],
+          "name": "tooltip_navbar_loadout"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bc6fd953d56888991a0160e5b73b45152af7dfdf12aa4a82f08f65e5d2aefa39",
+              "oldValue": "1276e54b034ae3cb9ec6e2e97bee3f220a6507815aeb78fe5f81bc2643a76d0f"
+            }
+          ],
+          "name": "tooltip_navbar_store"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "258e45177ee155ebfbb2f5751092941c5a5fcb12d85dc43322519d1443f21cb6",
+              "oldValue": "6a443b8c95f981c39bf9caee945bf460604dbece94904aaf6e86107b8cfc3efe"
+            }
+          ],
+          "name": "tooltip_prime_not_enrolled_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b4c71114db68284f186bebe0c1028021986d28b6c0b4ff0928cb3cddf29b0218",
+              "oldValue": "a65d1f39729c7161600b004977afe118622f170ba4adc9339c00002c7b68a5b6"
+            }
+          ],
+          "name": "tooltip_short_borrowmusickit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "43eea3222b70e9d632de5c7a45ade513fb2a14bc68d93a70956208320426c3d6",
+              "oldValue": "738236ef4db0b74096cb7fcee0b6d54ca047a8371476badbf26b58f315aeee38"
+            }
+          ],
+          "name": "tooltip_short_discard_invite"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15eaf57d97047eecc4eb529aeec6113f3b7adbb4be2d3375c8eef250055b0b0f",
+              "oldValue": "e26374318aa7868bb00eafe20d9489ed061eb0f0747afcd07bd77ebf35dd301c"
+            }
+          ],
+          "name": "tooltip_short_friendaccept"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4416d98e25e55240bdecec9eacbc70b206d332e6fcafed08c6209f76c38d379f",
+              "oldValue": "ea967aa8e91ed99d52ebf0e3b69899c1824f89ecbe425c483fd2cc04f8357637"
+            }
+          ],
+          "name": "tooltip_short_friendignore"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "458682b1a199c03d316d4678e74e9795c16be386d8787b07bc19e8b22f7fbd35",
+              "oldValue": "1c427eb143ceeca73525029fe280432646cc9f0e402f9b4f80b6368079d6768f"
+            }
+          ],
+          "name": "tooltip_skill_group_expireddangerzone"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8bdaa77d0ccfa41bdaa43be86c532b933a55952d4c9a087b32d4d7b576071c79",
+              "oldValue": "4d9c2d1e42f5cf26f2a73c4080b06f2e63e627bb0f29eed822fbbb3ef348ab66"
+            }
+          ],
+          "name": "tooltip_skill_group_nonedangerzone"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0dcadd9f5084a46cda30ef848b8abc4883dcc9388f77676eba332d3fb7010d3a",
+              "oldValue": "4d7f468dfaa5e616a060f6ea406d80792d1aa6439bf1601e5e62e01614f4fc4f"
+            }
+          ],
+          "name": "tooltip_skill_group_recalibrating"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8424872754c6d2404c414ade40e486282952dbd1154948a4b2d1a0f81f50ed67",
+              "oldValue": "cae460136e23621193aa916e7811562992f974734a3ec86c7f28cdff37ad5ed3"
+            }
+          ],
+          "name": "tooltip_skill_group_recalibratingdangerzone"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e3ac70d04fc6d58e415a9c5236fec77ee510ba09f1c5245646849c7c1d8c0bf3",
+              "oldValue": "9390bacb01b75d344da6e8cbe9c0f38e8ef1d5169410fb52b17a8778f41ff72d"
+            }
+          ],
+          "name": "tournament_items_not_released"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c2668d706c127a9163792dbe645c76f1873a876e8cd595baa17263d6150db26b",
+              "oldValue": "68f9363d6ca17e3f6c857e32804b4be3028add8b7ba1e0fcfe13eb8c87a6b1b8"
+            }
+          ],
+          "name": "tournament_items_not_released_1"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "20278147",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "20392228"
+}

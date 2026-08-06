@@ -1,0 +1,535 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "sv_banid_dev_enabled"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "CSGO_Recipe_Count_Items_Remaining:p{count}",
+        "CSGO_Recipe_Count_Items_Selected:p{count}",
+        "CSGO_Recipe_TradeUp_Items_Inv:p{count}",
+        "CSGO_Recipe_TradeUp_Items_Remain:p{count}",
+        "season_expiration_hint_expires_soon",
+        "season_progress_rating_expired",
+        "season_progress_tooltip-expiration_time"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9b7ed4aaa0ec7693d1ec7e0e8ed28e3659313cdb08bbd05ad628f3007678b7c6",
+              "oldValue": "8b3fd8918e2e3bdb7503d5f2eced2fdf18267b8d63bffd23b7a644a145988dc7"
+            }
+          ],
+          "name": "CSGO_CollectibleCoin_sha2024_Quarterfinalist"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e63c883a1debddbd1d6475377ae295376966a842dfb7be3ac975896fdc38ab66",
+              "oldValue": "95e143ca5fb5d184c54d95a4f185aa929bc893bee8a1770b09e25ccf6cf89180"
+            }
+          ],
+          "name": "CSGO_Customplayer_tm_professional_varf2_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "05f8d4d1a5b2823f5cc768bc2517021483855b0423a08d6ff080e1b845a82cd1",
+              "oldValue": "224c3d30b60f0d9d9ec218c356163ef1c6571dcf1ee41cccc2d045a7d1c8d64a"
+            }
+          ],
+          "name": "CSGO_Recipe_Count_Items_Remaining:p{d:count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "71943423e8ac7ffe160524bd088db21f61ac733f0dd09597e12885ee14a572df",
+              "oldValue": "b8e4bcb6459eae6cc88cdf64fec029a269cd7868fc3de2f22e1c3748f9969030"
+            }
+          ],
+          "name": "CSGO_Recipe_Count_Items_Selected:p{d:count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d30f52df289a456c45cf48736516e53b0765c3b1dbfc12b13e94acb2e448b160",
+              "oldValue": "90b7cddce5950cfe24c3a2cb7cd130d524cdf729351b68b7d20c1c8637462b2a"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUp"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fe4713e4d3be5d57a136bad43bf6c4eb157d7916e32feee262f4dbf112c674b1",
+              "oldValue": "fb7b19323c257c50a4072673cc867fd5b6db6ed83659bdfd0767cc5ab6d35046"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUp_Items_Confirm"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "879a2c677f2a437fa79ba7b9dce053b8fe3e73df4d09c456b495190a205d3152",
+              "oldValue": "7791cdefe1a703cde78bfc13473cf838834f3916d40b6d772e78da4be827b0fb"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUp_Items_Inv:p{d:count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3445fc250f231e56df81bbc7b03dbe304ff6b0f3c3090f154b3c2e51edafc638",
+              "oldValue": "d1cd2b094ddf6a9b223681da1cddd6b905ad2d5793750c5cbf298c6ce5d29039"
+            }
+          ],
+          "name": "CSGO_Recipe_TradeUp_Items_Remain:p{d:count}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bb5270829416a786531c95ec8dc45a042bd3584be02385f133e11c1e4c0532d0",
+              "oldValue": "d4363805c790b894d9a1704937a3562b6c0ee4845b033e4686e158cf47790d83"
+            }
+          ],
+          "name": "CSGO_TournamentJournal_antwerp2022_Silver"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1f0d91f9ab0905471651a0bc826049e011485d4ae702dbd475aa5b928ad87f10",
+              "oldValue": "cf34bbd4989f04d3e4bf9003408f1ad82eb06cfd6397cf990031ecc957743d0e"
+            }
+          ],
+          "name": "CSGO_TournamentJournal_berlin2019_Silver"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "434495966e8e8e3a3cd13976f1e786aeb8d68c78aa21141959c2e6af2540359b",
+              "oldValue": "33fa74bea9a666855bbeec1fcfa1bce0fe7da423f0a277324c513104af9e00a6"
+            }
+          ],
+          "name": "CSGO_TournamentJournal_paris2023_Silver"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3e9e5647adf93e54234cba1aefc44a66dd0917a8d2964c4e4d335f1ad29cce59",
+              "oldValue": "23398d83e101556bec49dc1ce607814ab8a3c9f6fc1085c7eee04739867caf90"
+            }
+          ],
+          "name": "CSGO_TournamentJournal_rio2022_Silver"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e8a2b06136c35c059f947e5d12fcf48d509df335136f45188d815602e2473cb4",
+              "oldValue": "5629399e87c574677a05061c3d2ccc64dd2ffb95017b668f93127fee96da20cb"
+            }
+          ],
+          "name": "CSGO_TournamentJournal_stockh2021_Silver"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ab567c2101970a102df5d7adf0b6b27a434dc4a39f9fc02b1b808d22fcc80445",
+              "oldValue": "32760ef02fbc819000a4c683ed89330970fc74cf5509e9fbd0783ff3b12958b5"
+            }
+          ],
+          "name": "Cstrike_PreferredHandedness"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b25fe2fb7b4fb0ad2c9cd950c4fcc8808e6f9d62f81c61eb1c30c2645753f537",
+              "oldValue": "efd207812b10c4f135b8672f8b9a8af3e8491abce3ebdbb3aa22c52d00a9927e"
+            }
+          ],
+          "name": "Cstrike_PreferredHandedness_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0c032656105e829174bbaf367f982107c5ca9272eaa5a8f32de7d3f3774ea6ad",
+              "oldValue": "3743641d5e1889c6778e854474044162fbb3aa8cc4ce02cd30ca1441b7028416"
+            }
+          ],
+          "name": "Cstrike_SwitchHandedness"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "74a03966505ad8c188ef23f0edcdc7fd180435863daa37aa6344f275aee75910",
+              "oldValue": "8b6ae1f772f032af032e8db9e85a8175a38d740b3b649311f8ae45d47b1bef32"
+            }
+          ],
+          "name": "Cstrike_TitlesTXT_Weapon_Pickup"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ece089dafef922e07bcec1e444655192c08364a91365e70d3ff36ff771ebe1ed",
+              "oldValue": "c8a3a8f4026eb2813220cbda7e5b8c5243ff34570f6a6403a469a29ef9c9c026"
+            }
+          ],
+          "name": "GameUI_CrosshairStyle_Friendly"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Steam user is banned",
+              "oldValue": "STEAM UserID is banned"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "6e218e4dfedd30717de5c1e59c9c86de6239231435fb43a1322b255e988e32b5",
+              "oldValue": "c961e2024422553850744efddd7f3cfdd4202c08e2d40926381360bcbdc6974b"
+            }
+          ],
+          "name": "GameUI_Disconnect_SteamIDBanned"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Steam user is already in use on this server",
+              "oldValue": "STEAM UserID is already in use on this server"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "62ce53df374436cb3103617f077d7cda431c7d93078099608b75b28893dc187e",
+              "oldValue": "30a0900be801dd7003b0b93899ef4a78bee894210627ee100b07dbd9d42792ec"
+            }
+          ],
+          "name": "GameUI_Disconnect_SteamIDInUse"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Steam user ticket is invalid",
+              "oldValue": "STEAM UserID ticket is invalid"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "fe791fb0651412151e8ce0aaf3e64ce7fd596c67c3d38123d558d0643461133b",
+              "oldValue": "2959e4431ed979647b75a2fb9b3c7679315a7abbdbf0db8bdb0dfd73b866fa8d"
+            }
+          ],
+          "name": "GameUI_Disconnect_SteamTicket"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3c7a407c2b01f7b6a8138c438e4295f9205d23dad36a5b29374e58a58b19dd47",
+              "oldValue": "3b2998e1e1203010499825db4555d447cd798adf95a4ba9b3cdcd76ed3219476"
+            }
+          ],
+          "name": "ItemHistory_Action_CraftDestroy"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4fcba5d25de8aebefbddf152a5c8d633336185dcc85099d6daa83d40a1fd8389",
+              "oldValue": "3d4bb2dad54c49498d4a40431e67f23afaadbb3a7f23b6cb1b014f35e733bc81"
+            }
+          ],
+          "name": "PaintKit_am_bloom_blue"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "633bd41728786c5672132c29fce1a8aba22d92585fe267401bc546d040242919",
+              "oldValue": "2ce0bb77ff2caf4dfe468cb22973459d7298eaaa17b082bd0e5c7035ec35a86a"
+            }
+          ],
+          "name": "PaintKit_hy_kami_tag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5f0ff1f26bc8543138536dce2fe0d03e0823ef45876453d51cfe514bac79506c",
+              "oldValue": "dc1b4e020612612187a880ad00bfd26d3a79903237dd78277c8baab533554b0e"
+            }
+          ],
+          "name": "RT_MP_A"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dda50cbd4bce9f8a5b795f7863bb112d70e7066f84ea036bf9b81b02df4eb66a",
+              "oldValue": "bf30828c8ff0dcd532420a39bce461040852082cf1351ae9e98e2db902e26851"
+            }
+          ],
+          "name": "SFUI_Crafting_Items_Inv"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6c3ec026803479ad8a7fb78cc92737cd645f8b4bc13e5a657a127ca51f7af8fe",
+              "oldValue": "a42939619f3ce22c59346928cd78dd33cac5e2243614dee951123607036f012f"
+            }
+          ],
+          "name": "SFUI_GameModeScrimComp2v2Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8c6682388a769c6aaa8a404adadc9b549ebb3ac61371c4ccc02ff2ef9033c8fe",
+              "oldValue": "ad33cd6f237b6cb69732038bd4922fd21c0107ef376a18f40744f95f88048ec2"
+            }
+          ],
+          "name": "SFUI_InvContextMenu_tradeup"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8693cde219b5df4bdd66fcc011535aa714163467a88cf0648945541ce5ed2671",
+              "oldValue": "6dc4ae4eae567fa29e817bfb95274a417831b90cb794c40fda7483d14d64ed68"
+            }
+          ],
+          "name": "SFUI_InvContextMenu_tradeup_More"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7448af3a29f8a833dd1fdd609a6d5c3a8f8b97ecc21bb7125e82ed8f51300249",
+              "oldValue": "fcde7e336abf6a351e7908f787a7a9a8117a5f3ceacbeb304d0127e20ead7bf9"
+            }
+          ],
+          "name": "SFUI_Notice_SprayPaint_OutOfRange"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "77384fd477b0941b4e7f4b6d79ce5673f1cfe173f46a378b394b08173ac1c2ec",
+              "oldValue": "359dbf9f2beda02b5f12f28c8cb4f59fc38b139ab849a2337655bc09344ea567"
+            }
+          ],
+          "name": "SFUI_Notice_SprayPaint_OutOfRange_Short"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "279912ec1f8cee4d40d5569a816ced1ad718259e511a7a3f10d1e971b7b6f098",
+              "oldValue": "e9992f0490ea3864f3679a4775f00a0f8f77f37779aec5dfa7e142eb7c898efd"
+            }
+          ],
+          "name": "SFUI_Notice_YouDroppedWeapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c11f8c82cb7e868399b483484b7358a60530e6059759f4313b4b31b7a6b05085",
+              "oldValue": "f4ec3b1b10c87b29d22861d26b54b5c094a1b82519548e0ac8e4aed4f69f4939"
+            }
+          ],
+          "name": "SFUI_Rules_ScrimComp2v2_Loading"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3cc78affa41039365680c560476016b3aa0b0e132b9e3c4ea1eaa53581277347",
+              "oldValue": "c4dad4afddec0d1a86642b8906017eeda939fbf3d70df004a3e77e4b07a733f0"
+            }
+          ],
+          "name": "SFUI_Rules_TRBomb_CT"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cb118828ff70ad14838d8cca58c0ca72de83b22ff102805c585b3b951036cda8",
+              "oldValue": "627b022372bc8f2a036850a9b8ec572706bac0bb1ae3ff35ce23ad197749d6d0"
+            }
+          ],
+          "name": "SFUI_Rules_TRBomb_T"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "46eb287b475e267f2aa8784f5881b8567bef1a427b236ffffb19459604fe8059",
+              "oldValue": "329c218b05ac4ecbc4bf8b6a6b0e13aba60fd987b1b5176a7f61bd797b203644"
+            }
+          ],
+          "name": "SFUI_Settings_FSR_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "00c27e5e3e8a30c1c4283fa549fd1a494c5d25c91f0532d8b5e09ff3693a9105",
+              "oldValue": "87c6491e9ee62571c9926da56c0d18dfb44cca5b2bfe9eb33e589e1b1cf0eddf"
+            }
+          ],
+          "name": "SFUI_Settings_ViewmodelPos"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e8e0c86cbfb90495f7be74be5043e6e3970fa5df2aed3e91b07f049d079826d6",
+              "oldValue": "b81153d4939956465907ce4e31ffa450b04863c6fae2a6a0a9f005399f285740"
+            }
+          ],
+          "name": "SFUI_TitlesTXT_Incendiary_in_the_hole"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "15878b0d3ac26aeecf8ce1271cbd7721efd6229bdbbe70578f84cd3438d05292",
+              "oldValue": "f40c78c9b739f4d334471ec6d1e8090fcf25388ed7b7597cba0bd81c962ae3aa"
+            }
+          ],
+          "name": "inv_context_tradeup_add"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "375134cbcb48f567001ab615076e2c21b37246ccd51b481b891c397ec1268416",
+              "oldValue": "67e34016d6f5f65a0ac9b12190ac9570bc6993e1d57f2502117fdcf38f89a8cb"
+            }
+          ],
+          "name": "inv_context_tradeup_remove"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "27f93b011dae1b99864a173fde7afb187038c486211f5cd7ff43b001cabac179",
+              "oldValue": "1c878ebb7868c3b8e330b5434e19346e1f645c08dcd13dd5c7424194dd4093f2"
+            }
+          ],
+          "name": "playerstats_map_tooltip_match_winrate"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6d58488335c9bda22af6d75f019f6613106c7605c4db0e67e1138db0f0ee9fbe",
+              "oldValue": "041c976b2538f6077d700caf51e5cd77f3a2751b0fc282ec96bea9707f03d22a"
+            }
+          ],
+          "name": "playerstats_map_tooltip_round_winrate"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "97a95beec342ff72d061dbd98df9c075cbd5fad31fb27892a3612024d022eec0",
+              "oldValue": "f301f9c18d6d9c2df3276ff718724ecb502254f700f59ab8568a282734d43407"
+            }
+          ],
+          "name": "popup_purchase_replace"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "When the Season ends, players who meet the requirements will be awarded a Premier Season Medal.<br><br>The color will correspond to your highest CS Rating achieved during the season, and the bars will reflect your total wins, with one bar for every 25, up to five bars.<br><br>To earn the current Premier Season Medal, you'll need an account in good standing, 25 Premier match wins, and an active CS Rating at the end of the season.",
+              "oldValue": "When the Season ends, players who meet the requirements will be awarded a Premier Season Medal.<br><br>The color will correspond to your highest CS Rating achieved during the season, and the bars will reflect your total wins, with one bar for every 25, up to five bars.<br><br>To earn your Premier Season Two Medal, you'll need an account in good standing, 25 Premier match wins, and an active CS Rating at the end of the season."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "23b7e9e6c68a3114484e7921600e6bd49d4dcdfe8e20780a5e10f12d1d62c49b",
+              "oldValue": "91b6a62a8d09be3468fc9f7492aa1f5f2530ade12e0d007c0044b0b9627c37d1"
+            }
+          ],
+          "name": "season_progress_tooltip-body"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1aa80d96922421336a614e06d23a77eb6ea82ec5e3ec5f8ed7824af425f0a703",
+              "oldValue": "1b99c3cf05dec83e187788d939b3ab5e0e2de7ac34db2ecafed5a2d143bd7966"
+            }
+          ],
+          "name": "season_stat_title_assists"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d9570d5a1a11a2b640fc43f65a0c49c40115ac0921c2e3ea80f59d2b119ed086",
+              "oldValue": "1a205e0326c24459ec73c2b8aaac2c2f02fa88994fb6d7a93d137881db964265"
+            }
+          ],
+          "name": "season_wins"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "17538224",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "17581511"
+}

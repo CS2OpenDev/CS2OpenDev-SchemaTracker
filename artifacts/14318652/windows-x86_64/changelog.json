@@ -1,0 +1,947 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_teamid_overhead_fade_near_crosshair"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1fa9e21b6193c90c3428d1e51305fde8f00372588e381adf0d1487482dabaa15",
+              "oldValue": "7b954d71c9076e48be896e18cb3ff7f950ecc4774d7c8c38862f07d0b6674286"
+            }
+          ],
+          "name": "CSGO_Demo_End_Playback"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9c1e2dc2f4d932ddee298ce5ba1e95a49ec4b8f084a3cc2575323d2c5f6b4dae",
+              "oldValue": "4ee3a542048eef23925f739a3c07895adf68ebfe9e2e86ebc1daa664a54dfdff"
+            }
+          ],
+          "name": "CSGO_Demo_End_Playback_Overwatch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d121d51a884566e1bd12f130dfbe67f2d6750a4d658193e3f6e05b1ee8d0047e",
+              "oldValue": "cf25a7316e64c7263854a1f238e664da5517b2ea6e18b836dfc990536821b0f0"
+            }
+          ],
+          "name": "CSGO_Demo_End_Playback_Overwatch_Finished"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e1f55cb240e9f2ff5b95d160ac23dc0d41dcf43a86b81e85836944375744e4c",
+              "oldValue": "7147c6d38532aa8a1efcdb9338668b5f3317ec78ba36b78b4cb277d4daabe400"
+            }
+          ],
+          "name": "CSGO_Journal_Mission_Faq8"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b1aca7542007b102b9556cc6747672064f7fbc61809cc5156a076f319e9058ec",
+              "oldValue": "d0d8ca02f327783fe7e2cdb0a977a367e3a0a6330b2eec5fa26037469cfbc2d4"
+            }
+          ],
+          "name": "CSGO_LoadingScreen_Overwatch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "52ebd785c66096831cd78bfad85c03e96720b023792e6c226c4578b90e2cb7e6",
+              "oldValue": "046f66bd05ed435dd159b119a36345d74ab0fa0d4b88234877f8ad46e4661d42"
+            }
+          ],
+          "name": "CSGO_Operation_Xp_Skirmish"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8d48ab9971a9f75f99e982f3eca4a6cf9621b3f2a10c3a7b91e372d4af74b853",
+              "oldValue": "f09b77a73e409965b8126d77e47cb6f5e4159aa1723e4e83db80ce93efcd032c"
+            }
+          ],
+          "name": "CSGO_Skirmish_XP_Status_NoDrop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "362429820d219ca3955b16e2ec4d0c93ad8adc19ce432404f387381fb387e0b4",
+              "oldValue": "599f26d4c4fd9228eb9c0bc86a571d6e3eabbb0abcbcd6a036b8d8d35d32c441"
+            }
+          ],
+          "name": "CSGO_Skirmish_XP_Tooltip_EarnXp"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f92882bb32490a8c7342b424f74cc8510f8a5731850ec9274da0265ddec47eae",
+              "oldValue": "dc899056099c0487f4b7e196da2a9429133eb9929a6a69391372b6e19c6700e3"
+            }
+          ],
+          "name": "CSGO_Skirmish_XP_Tooltip_NoDrop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b8ebdb31ac58f0cfb53b3c7d858fe14f862f647d8ec9a64a7cdd6912df522d7f",
+              "oldValue": "cb0055675b5ba8edbb69b7b80d6fdbbacc86217efac842829aed5d32c01d7665"
+            }
+          ],
+          "name": "CSGO_Workshop_Mode_gungameprogressive"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d0cf74a808b2b1819ffd6877710e92413727d632793dc15085d2d4c57bbf46b0",
+              "oldValue": "6f50e757db3abeae1eb85e1d55346be5e76de7d64cf92738de856c2b7f9f7d2c"
+            }
+          ],
+          "name": "CSGO_crate_atlanta2017_bundle_of_all_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "72f6602abdd99cc019b1bb75395def5c0d7988cf18b7f510ed666aef01bf5014",
+              "oldValue": "29c1ced73dfb015f5fe886065ec66a1e580d7cb8e524a0fc79b0dcdf2332e708"
+            }
+          ],
+          "name": "CSGO_crate_boston2018_bundle_of_all_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e378f5fcb7ec85fc7d48737a5798f54e727a3d8666b56baec476ff424dfb779b",
+              "oldValue": "a0a721bac66d89334210a288357109309c537191f357c16194c784f925d4a521"
+            }
+          ],
+          "name": "CSGO_crate_krakow2017_bundle_of_all_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "99f066dbdef7b74dc0678c0263bdc3b5d67f2a75a8b7d7bca1e6d3b8f0e8f099",
+              "oldValue": "9f727a0a5793bd97e740a97832ec2160461130b7b6e3bd7531cb37b4a5598f12"
+            }
+          ],
+          "name": "CSGO_crate_london2018_bundle_of_all_desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "66f847721d888e54f0d03de3fecf9490d4471e9aca46571d85a8fce09ec6e082",
+              "oldValue": "60d983719d861e8563c9e10aba4d453047b2c1fb88339c7c7e5bc302f6c8b56c"
+            }
+          ],
+          "name": "CSGO_official_leaderboard_season_7_xp_events"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "63f8317ba41c1577a4cd6aed7e3f3e8c477e609b9164308443e57225da8a2805",
+              "oldValue": "ffbdd73c8030cc1dcff2d20a818aa1e500927fe6571747079cbe4dd1c27a4b7d"
+            }
+          ],
+          "name": "GameUI_Disconnect_SteamOwnership"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9207c4233610239cef9c5f363ebc4147d0f9cebaccefa760de6b14ad6d479cc7",
+              "oldValue": "b7613aa4dc699c2c5e2c1ba070c57a773e47144a0bc1c9e99d1d7dc9312f62bb"
+            }
+          ],
+          "name": "PaintKit_gs_m249_combine"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2773e9612083547b023d9cd4671bb8f9c66aa93949d4b6d719b803561f1767d9",
+              "oldValue": "1a9475e0da5f4b8ad3c89103edc4d6f53ea29c93867aab9ee699ebf14e86a720"
+            }
+          ],
+          "name": "Panorama_Overwatch_Review"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1c3413b1d57af1c41db223f0bb0833004cbfe48ac168cd877d7c2674414198b6",
+              "oldValue": "7c5734c5e82108804a062ae135a3a4cda826951826c3a120d34de3d7d5e8f166"
+            }
+          ],
+          "name": "Panorama_Overwatch_Tooltip_p1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "61c8dc42a49ce651aeca3087a96b5e65e84a1aa1f21675eb66588a1cbef6c275",
+              "oldValue": "f9f5cb049960af88fc2014bb04b4d154f58554804a8ddb32b14ae82f051dd891"
+            }
+          ],
+          "name": "Panorama_Overwatch_Tooltip_p2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "08d1546f21eaaddede2fb9a42b2b280ea0dcee853a07be343dbb8437fde3ebf1",
+              "oldValue": "a918ff7302286be87ce568e4f67a295ec3aaa0d5b379e51eb91315e789e695a5"
+            }
+          ],
+          "name": "Panorama_Overwatch_Tooltip_p3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d47d78cc0f15a11083fcbcf7c00fb7c343d545d6978be7d6731c633472c2642a",
+              "oldValue": "23bbd29cd13c6ccff2c1dff77d19cb0f85476abf7c9af0e048d8b9e7175c3e8b"
+            }
+          ],
+          "name": "Panorama_Overwatch_Tooltip_p4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ee631758f96d046f308e60eb9a65c8d9ba93d4de2d9ed35372ad1aab28b58695",
+              "oldValue": "5fc76e71d02966ed4e4f582ee16edbea46b175d13e49dd5f58392a24975689b3"
+            }
+          ],
+          "name": "Player_DisconnectReason_ConvictedAccount"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e1e1b415370b50b73423e28135370f9cb52fa756266cb9dffe868dca7f9f908",
+              "oldValue": "10083e412646564c246f5001be88651e4bf3c2d98acc6605857dced0ba362ce5"
+            }
+          ],
+          "name": "SFUIHUD_Spectate_SpecMode_SuspectReview"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce5b743c83d3df74213d0bbe0c7127146c32987803377c81a3af46b4f616a74e",
+              "oldValue": "eded183bb00674fbc5814dfdfddce720cb53bdfbcfe523d52c4dd80e1ca63f38"
+            }
+          ],
+          "name": "SFUI_CooldownExplanationReason_ConvictedForBehavior"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "267ec482e5e73edce0f54230d284c02d6c6b6066c10cdcc420e8994ee0dd5cb3",
+              "oldValue": "c058e2d37ccb1637eecd2110f4f418bdd4ceb65907e7c393dc1115ca3c56a36a"
+            }
+          ],
+          "name": "SFUI_CooldownExplanationReason_ConvictedForCheating"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "124029d21d80da82c13221dbe31c6671222a60093a9fc7d2e53edab07f589461",
+              "oldValue": "06164d9ff7d813c3432c53d92b203da31877144cd0f4bd98fa4c4ce53104ad81"
+            }
+          ],
+          "name": "SFUI_CooldownExplanationReason_VacNetAffiliate"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c70af604aadd7ece1e71f55dca0bb3a843bf809b7f6b8e6e08f0d15a158ee78",
+              "oldValue": "7cfaf6fd2f4144c64eb3540c8b81a264e2a6096a6177a92d18b581b63ecac40e"
+            }
+          ],
+          "name": "SFUI_CooldownExplanationReason_VacNetCulprit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c01a91e771cbc843a463426c5d5e36d4b5a25a6b03ac479455534a0e291455f5",
+              "oldValue": "533f8c0fd37dcd5b7bb463aa8cadda1f3ec743d5e4b3ecdd5c7692df22c2d7ad"
+            }
+          ],
+          "name": "SFUI_LobbyPrompt_TitleOverwatch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b3aad56c3a11a9811634860032fbe08588aa51e433f3232477fc09d19eed93cf",
+              "oldValue": "8726f9dade88460b507fea9dc8813b5858f54e0ccc311253626baf6dc79e3ac1"
+            }
+          ],
+          "name": "SFUI_Lobby_StatusOverwatch"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e84f8d5c3691cfa8df21b2cac4fb92c9705d2e8cf6a1fa5bdb7d6c8745333b6a",
+              "oldValue": "15ac6281f69842957a3a067a9c5caf9b9541754bb79835ee10043219e271a36d"
+            }
+          ],
+          "name": "SFUI_MainMenu_Competitive_Ban_Confirm_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "019a463938cadda03b9d21b7b318c94d13cbca5deae45bda4c147d86153a5e40",
+              "oldValue": "5f96fb37a645b5a93a01796e0faf5205bfd43e5f5abcd0926585bfcc43fa0cb9"
+            }
+          ],
+          "name": "SFUI_MapSelect_Upsell_season6_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce3273ee652f7670ae77e2b1211d0a915225bccfce7fdcf95528796236ceafcf",
+              "oldValue": "aa3c95ecd0f3de8e9cf4f2923ce9a2e008919ef45a269b6cc7075d3596b1fc1a"
+            }
+          ],
+          "name": "SFUI_Overwatch_Download"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "45393a001d99086ffbf569ea4e181c552ecd5639746cc9ea7d87c70ca59f21cb",
+              "oldValue": "b88882ed4da2455b002996794ca05c02c826949b0b55cb175089c97b08ee00f4"
+            }
+          ],
+          "name": "SFUI_Overwatch_Res_AimHacking_Desc"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8098aef1e5e4eb8ad53b186a978697b8cd8d860c7d30602630efa84165689407",
+              "oldValue": "2719c901b2fd93c2613a2b8a23215536e654f5857f18180303d57f1b82d562a5"
+            }
+          ],
+          "name": "SFUI_Overwatch_Res_Major_Label"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dd455bd0f4ec755efb42a26dec5a533b67b558d547263999446fb504a8835f97",
+              "oldValue": "f72b1dacda058b68e84e2eb1cec32afc8daf437994f073443ab4815311db7e05"
+            }
+          ],
+          "name": "SFUI_Overwatch_Res_NotGuilty_Label"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "54f88ff43887089308b9a140c150f8ca0e80990ca218e87be3cd16a760069597",
+              "oldValue": "de4a2e8b5ef96977e07e0cba932f80f2f5030651a655afa58fd93c22c8627181"
+            }
+          ],
+          "name": "SFUI_Overwatch_Res_Postpone_Label"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "25dcbe80d8c978ba8b465a8d9e62c2c94844d222627d9d947fbfb91eeb921f2c",
+              "oldValue": "5b51f9843a472c07ba58a44439661679c7214db9bc627ac7dbd240b0af51d132"
+            }
+          ],
+          "name": "SFUI_Overwatch_Resolution_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d76e47971ef8025587fe88a57fba64df94314f0738df62bb18c01e078c61350a",
+              "oldValue": "f78d357397eb820e89b5b6b6e62cc16cf2b4da35b84f4b344e5e0fafc9d3cc5c"
+            }
+          ],
+          "name": "SFUI_Overwatch_Submit_Thanks"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5aa4a195cae3f1aa0251c9032eb2c01ad6bf08282268d8823856361472af0a81",
+              "oldValue": "9db682349c181f16d6c64ab7ab8bad284d2aaca17fdcebbc9c452399c9aaf3cf"
+            }
+          ],
+          "name": "SFUI_Overwatch_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7735e9610d8e263fc940b5e80f84bae83219ba8cbe878acbdddf30bf10209687",
+              "oldValue": "e048d2568c5e14961716416674a455c86ce06e2ecebeaffcad451672e24954eb"
+            }
+          ],
+          "name": "SFUI_PersonaNotification_Msg_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ee49f171a2804aa993acfe5444d754f65b69ce4ac7511aa399b75c51f60b8a2d",
+              "oldValue": "7b083c62c0c2376cfc494c3e4dc5d95bd5b0dd35b5871d782c8e6eba5c48f308"
+            }
+          ],
+          "name": "SFUI_PersonaNotification_Title_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "93ad2f07ed42c9bb9edb4a0466ff8c75597e885344a95e4919bf1b657fa76490",
+              "oldValue": "2e41d94db70b523fccc37a24d6528d51ee2c3dd98d156b2081bf6b700373a6b8"
+            }
+          ],
+          "name": "SFUI_Settings_Arms_Race_EQ"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cbc08dc378537a9c48903f47ac317c63af0f6f82bf56a96c7e49c56904da9289",
+              "oldValue": "c6efa6b30b8d5aa1be2e0a361655cb7aabae6adbac56d354a64cca8948c1d0c4"
+            }
+          ],
+          "name": "SFUI_Settings_Arms_Race_EQ_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7e80501f41c050081ac27d9d5059143acd48fcf1ab7829b571d70270760c6618",
+              "oldValue": "2b1f784397bd59269f8ebff5cbe44d814f800be9dc88761de09da665bdff2243"
+            }
+          ],
+          "name": "SFUI_Settings_Arms_Race_Volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ce7331628a8de5a9141047a9be787135f23b7ba0e87bb3f51796a44d4a3de37",
+              "oldValue": "9e27a2a0b922fa66f4d19e55f3b0a136fcb5076bda8ef344bdd3bdcdd34daf3a"
+            }
+          ],
+          "name": "SFUI_Settings_Casual_EQ"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "190eef1d95e49776bff4afff00a3c59ec9783f5343ffa750364c59e7cd92807e",
+              "oldValue": "360f1cefd0cc14f651ebfb4bb1cd2bc60629f45fc86c1068d29c793610926ac9"
+            }
+          ],
+          "name": "SFUI_Settings_Casual_EQ_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6e77b7cab5c3eb4d3ce02a4f77af167a09011c1840ecb32f1874c696c516d5e3",
+              "oldValue": "4bd6d519493600737d69057fedf3b831d2a2dc1abead0dbd7b2a33926d4f70e7"
+            }
+          ],
+          "name": "SFUI_Settings_Casual_Volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fb388fe66b2bd54c3fe91fffe85007a2bb000c2327426849711949e37e5190ee",
+              "oldValue": "e9c093ba088c9c4dad39a2324ddfe9d59bc7713401e16ff0a84fa2a71e4dddb9"
+            }
+          ],
+          "name": "SFUI_Settings_Competitive_EQ"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b18a05645e30c66cda6aa1b6674d67b962588be8b3221a23cb96469660001433",
+              "oldValue": "867a4685728e31cc0fc8dc177f31408d01e0e247d607a690741467113cfef4e2"
+            }
+          ],
+          "name": "SFUI_Settings_Competitive_EQ_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b2248a0ff4a06aaaef5201cb370001310704ddb7c7d7bdaa95acd38cd070d532",
+              "oldValue": "7cf462960f47339d9215057eee226766d5dceeb3349fbb8bf16cd6fadc8fc16c"
+            }
+          ],
+          "name": "SFUI_Settings_Competitive_Volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "393cdcddb6aec1b9eb3748928508ac619ce02288ba1fd7e783042797ee720260",
+              "oldValue": "91fc005b330b550d8953acf4243bb6fbcd93fd8971cfeb222e3553fc4cd81c95"
+            }
+          ],
+          "name": "SFUI_Settings_Deathmatch_EQ"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "20b70827b5450d27ecc0d03a81219f19b60ab96074a565b62267effea27b2db6",
+              "oldValue": "f9237a6f2d36d6d14374bd208cc78379c4819a676835d7a06d874c88a8afd385"
+            }
+          ],
+          "name": "SFUI_Settings_Deathmatch_EQ_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6f0c0fa8d6c95b935084478c58ef586c47bca4da7ceedd4ea87dcaf776e2abc9",
+              "oldValue": "db77bc206a5af1a84a531855f8d11b598d41ffc5e48f83e3be9d359df14e9d3a"
+            }
+          ],
+          "name": "SFUI_Settings_Deathmatch_Volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "80b7f50dcef320e8d298b2b99d01018b1b422617aec6421f239013712ea99af3",
+              "oldValue": "ef3459f47319550b431168cfecc60c788a49e95f040d5cb3b95b06921b2fd4de"
+            }
+          ],
+          "name": "SFUI_Settings_GameModeEQ_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4ea814cfc0ac7df9f0b3aa22196c4d9a72fa6c7cdeea604627eddfd189dd0f16",
+              "oldValue": "84dd18b5c5511e79ccc5c2a5811a231545362693c45bebff9a05f061395b999f"
+            }
+          ],
+          "name": "SFUI_Settings_GameModeVolume_Armsrace_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6246034219f35e8f40837c6b22050c423812bd00c509ce76bb170d96c21ec78d",
+              "oldValue": "0dc198156f6c3869368b1abed54a192d172eec09b5edb24e6225b13b4b7bb4e9"
+            }
+          ],
+          "name": "SFUI_Settings_GameModeVolume_Casual_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c71050e3557677e4019a07e6210cf9c748a79306a7ba43e52be732b0d1d58aac",
+              "oldValue": "2f62708be6a78e78e2c1b88992f2efdae53af52b8b2dd88dad889f17d107f215"
+            }
+          ],
+          "name": "SFUI_Settings_GameModeVolume_Competitive_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "86a5df5a4464ccb816125e59750ccae34d7f43fe77f61c3869e069e8164fee92",
+              "oldValue": "04d1cc90c1bbc59ddf65b0285ad19a31ec5a9bfd30521851887f11ad26258938"
+            }
+          ],
+          "name": "SFUI_Settings_GameModeVolume_Deathmatch_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7c7ddeee7a5810e81b4ffd8e06c8474b5674a9005a7bc006e1ed4550b0c2131a",
+              "oldValue": "e5d6d3aa2d8dee7e63a3485aafae40761e8fedc53d66e634f918699110fef0da"
+            }
+          ],
+          "name": "SFUI_Settings_GameModeVolume_Spectator_Tip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7acc1126fd8c9f44e41fe118afc4aa40f90ff9d1c267c26b08e876a65e6f2c03",
+              "oldValue": "d053de2ffb0837aba4d7c3067f52b38775a35985b7ea6f1492c6f94cf8e42c6c"
+            }
+          ],
+          "name": "SFUI_Settings_Headphone_NoOverride"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d7f0a7564a4713022e41a0f07effb4701e49c3372e7b84ae576b51853eecb23a",
+              "oldValue": "8e4d11db9a1e094a1104c2ac7eeecea545d48ea94661462a4c81cfc54240f6a7"
+            }
+          ],
+          "name": "SFUI_Settings_HideAvatars_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "025c724ed9c65d6c4e2d57a2e37a2ff8227ea8a81ff44f0c5f12907866171125",
+              "oldValue": "1efca5a84e265969761ff32a469de5296ef424286d2296823e800438ef204f53"
+            }
+          ],
+          "name": "SFUI_Settings_Spectator_Volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "507bd84468ad7e71da2a33e09d0759dc2ce7ef0a3a6fd43f7564999e309112b6",
+              "oldValue": "66b345d31ce4ffbb7ae8147d4f7ef9a44d6f3034acc53870660635ebc633dffa"
+            }
+          ],
+          "name": "SFUI_Store_Hint_CommunitySeasonSeven2016"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8d36a80ca333008221b8af0742b1cf157cc37203fb21ac03f7067a67a1a0c8a2",
+              "oldValue": "36c7239102fce52c67b496dc87b678f5a9a57282e11cec9d1032ce95e5d33376"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d1b98de6520da178aef62861dd45131281f87fcec839a35b29fbe15a0ab02fb7",
+              "oldValue": "cdf84dc79ddc062d1c4d29cabf38566731e46b2de5031bab4a81e82c06f112f2"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0d92da6f8f8072643696813c9618492a295003ede44e55030996cbc0c732f673",
+              "oldValue": "2d3337db6ff814aa82f563bfb733c775e11829b1c0df0d56c9799628d1979648"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_10"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "40f1c5702771a6ffb4d3f67e3b9f958174e8685097afc39525e4b5a39f7bbcda",
+              "oldValue": "cd39e0bce79fb327d40a9e7379e5855510bc9b6c1813f9fcb3094e8d72a29673"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ece115144ab3eb82b80812ca0c56f12be215b432df287616d9b0353ccc7285d1",
+              "oldValue": "5eb4ede2be889e0d495d30308b00e12d7d49a105c13bbedbcb0917274545557c"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "043017a732cbba44d1717b2a117dc5c639823f834d73d89f7fa0fe7c6df2a757",
+              "oldValue": "9f08db599fdd4128b1d31718e170ad49622ae0d06452b23f2420a469838b2287"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fd0c4c5d74231819c25bdb4081ffa126bfee20f3704a907b41347c5a016e19ef",
+              "oldValue": "cc4996c838df17e31562208b737ce338178fecde69d8ad2b9bb54d8f80151aea"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_51"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e6f6ed760cd9f35e6f25c2306059a3775c54207da00a4290b0a94e442210e5ab",
+              "oldValue": "4f8552dab5b296a9b7a5fb615e183070c1b8984c6696fea14adcd69b2cf46a51"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_52"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac371c4b8fc1044d00fa035ea746a51f6a16b7e12ebf46086da2c7416967b330",
+              "oldValue": "8965c30b9753a47ac88194a589eee38af60ba8f2659e8e86499670c1cdbf6fc1"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_54"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "90957e59781d04472d6ba5fb59839cdd90d6d478cd3989d92a13637524f9a018",
+              "oldValue": "d13abd1c2f1cabd8112b26cfad83e15ad5c3492c3967fe4eada6774a6634c42f"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_58"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "faa0c01dcfd0ec1029593247a4c9dabe2eb6928d391ed2d926d6d9689950fc0d",
+              "oldValue": "04b704c5aab380cc560abc1436ebb81bd9656bd4a95faca1718ff2b6ee027cf3"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_59"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f6634957d1d2dc5f873e4e3ea0c2424011fa6736e7a241356264a6cb36924928",
+              "oldValue": "54b4d673a712f0e0fe5b562d6f2949779b3038d85557523684ff9fb220ae0ef0"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_81"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e9d598322fb7687c0821dd480c07f09b14d5a74176acdb404147f677bfd2487f",
+              "oldValue": "8a7b3cfc945da34529cf94dd1009851c5debcea6f42905b40fa9fd453e0eeacb"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_82"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fe1a3188105b1a5d643e3020c39fc3b68498354874712bf716a6d749062fa520",
+              "oldValue": "678b9a4e1f24e72c26f125377da487fa7bcbb51388bf0bd45fa3cee9e3c57a70"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_88"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "010177c72eb90bbcf9b0fff4920f8949ffa16572bb3eca48fcf87bf4ebbb4781",
+              "oldValue": "a5d668a68c6cbf3231528aadd76de97f3da4bc66cef41000925a39f5c281d6b2"
+            }
+          ],
+          "name": "SFUI_XP_Bonus_RankUp_9"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d2f5db7182b58dc3209350ec8fe0873174dfd0379a3da80fb363b406e014a913",
+              "oldValue": "a9c3934090455ce968f757b613077472957ecf88927f18bc007d754f861cf84b"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b0271d1358df7df08165db65a9ef1be5b923291d133ab53405a2e03f2680c9ec",
+              "oldValue": "ad64fa317115bb2cce3e9c667f910569f4b41c732f994e020449392362561a6c"
+            }
+          ],
+          "name": "Store_MegaBundle_PreviewDesc_14"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fa39246e38bd510d9e4616082409430162c789ca676c92abdd7286df8ec1d00e",
+              "oldValue": "51808ee9e87526b0f09c943fd5cff752bd492597eb107a62c85371934aa9a3b5"
+            }
+          ],
+          "name": "WinPanel_RoundLost"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "da03a48bf211973a41743f51732dde4dfb2763404f41eee8aca8589ef1e8f4c5",
+              "oldValue": "50025f389c13e87d9f64e809d3f17a8c65b412e289c0174691fa252e6e2bbc8d"
+            }
+          ],
+          "name": "WinPanel_RoundWon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9ff0e15730b5f03d90f2912ac57011deb58882142058d3a5973f93c0a5468e5e",
+              "oldValue": "1bcbf310e1eb116880981f9c4f5c4735447346769693cb59fa8d82bd50dbeb3c"
+            }
+          ],
+          "name": "XP_Bonus_RankUp_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4b7ca01a908aa4a66f71946c6d64769d85aa2400f89cbaef3b299562c1418987",
+              "oldValue": "879313e668892d3f9da5cb628b9bebbe4b6ef146173ec96bf6c56392b1699ccd"
+            }
+          ],
+          "name": "XP_Bonus_RankUp_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "61885ab984c043bdc5ce515c008e1bb750a374b9166fb4c3669d7c3edf050ab1",
+              "oldValue": "3954d4208b1153832e58248d9bca04e183c2db2d0f56e8d4a2bcc12805ad50ec"
+            }
+          ],
+          "name": "inv_session_prop_recent"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "446205c83ed412b68fcc9e6f4c8dd20317f20b22572e4fd5cf110bbc2ea566b5",
+              "oldValue": "0202db36f615225928415c7d667a02dd577d43acb0a1cd1d04822f3b63bd1189"
+            }
+          ],
+          "name": "settings_audio_advanced_section"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5134d3796bdd6728e4873ff1dd470e481d63f73002be4407c6030a957189df4b",
+              "oldValue": "f0004543e3d96100ff9998647c568159247c689b30c483d5ac64ca291025e907"
+            }
+          ],
+          "name": "settings_telemetry_section_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9b393e97ecaa5e9d34a94af67c98d21e8601760178b6b39f6b614036a5b2b641",
+              "oldValue": "e34b206f541b7dedb7aa926180d88c944b961ecb45586c7160b5f282dd8495a3"
+            }
+          ],
+          "name": "settings_voice_section"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b4115dabddd7a33601808c520f819665e70c6d121f89af85ba06a264193e6d91",
+              "oldValue": "5425b267440ace7356a5b784cc60876d6c6cc6e990b2d04014c28a829b0a7010"
+            }
+          ],
+          "name": "tooltip_xp_bonus_4"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "14308545",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "14318652"
+}

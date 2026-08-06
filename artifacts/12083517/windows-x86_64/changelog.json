@@ -1,0 +1,510 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/CComicBook",
+        "!GlobalTypes/CPulseTestScriptLib",
+        "client.dll/CCSGO_WingmanIntroCharacterPosition",
+        "client.dll/CCSGO_WingmanIntroCounterTerroristPosition",
+        "client.dll/CCSGO_WingmanIntroTerroristPosition",
+        "client.dll/CCSGameModeRules",
+        "client.dll/CCSGameModeRules_Noop",
+        "client.dll/CCSGameModeRules_Scripted",
+        "client.dll/CCSGameModeScript",
+        "client.dll/CHostageRescueZone",
+        "client.dll/CHostageRescueZoneShim",
+        "client.dll/C_CSGO_CounterTerroristWingmanIntroCamera",
+        "client.dll/C_CSGO_TerroristWingmanIntroCamera",
+        "server.dll/CCSGO_WingmanIntroCharacterPosition",
+        "server.dll/CCSGO_WingmanIntroCounterTerroristPosition",
+        "server.dll/CCSGO_WingmanIntroTerroristPosition",
+        "server.dll/CCSGameModeRules",
+        "server.dll/CCSGameModeRules_Noop",
+        "server.dll/CCSGameModeRules_Scripted",
+        "server.dll/CCSGameModeScript"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/CAnimParameterManagerUpdater"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "1"
+            }
+          ],
+          "name": "!GlobalTypes/CLookComponent"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "6"
+            }
+          ],
+          "name": "!GlobalTypes/CMovementComponent"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/CPulse_PublicOutput"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "7",
+              "oldValue": "1"
+            }
+          ],
+          "name": "!GlobalTypes/CSlopeComponent"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "0"
+            }
+          ],
+          "name": "!GlobalTypes/CVRInputComponent"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "10",
+              "oldValue": "9"
+            }
+          ],
+          "name": "!GlobalTypes/C_INIT_InitFromCPSnapshot"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_ClampVector"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_SetControlPointToCenter"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "34",
+              "oldValue": "32"
+            }
+          ],
+          "name": "!GlobalTypes/CompositeMaterialInputLooseVariable_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "5"
+            }
+          ],
+          "name": "!GlobalTypes/FeRigidColliderIndices_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "98",
+              "oldValue": "100"
+            }
+          ],
+          "name": "!GlobalTypes/PhysFeModelDesc_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "8"
+            }
+          ],
+          "name": "!GlobalTypes/RnMesh_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "5"
+            }
+          ],
+          "name": "client.dll/CPlayer_ObserverServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "5"
+            }
+          ],
+          "name": "client.dll/C_CSGO_TeamPreviewCharacterPosition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "184",
+              "oldValue": "186"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "23",
+              "oldValue": "21"
+            }
+          ],
+          "name": "client.dll/C_Hostage"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "14"
+            }
+          ],
+          "name": "server.dll/CBaseCombatCharacter"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "8"
+            }
+          ],
+          "name": "server.dll/CBombTarget"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "5"
+            }
+          ],
+          "name": "server.dll/CCSGO_TeamPreviewCharacterPosition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "38",
+              "oldValue": "39"
+            }
+          ],
+          "name": "server.dll/CHostage"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "server.dll/CNavLinkAreaEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "server.dll/CPointTeleport"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/AnimParamName",
+        "!GlobalTypes/AnimTagName",
+        "!GlobalTypes/CCSGameModeRules",
+        "!GlobalTypes/CCSGameModeRules_Noop",
+        "!GlobalTypes/CRagdoll",
+        "!GlobalTypes/FeCollisionSphere_t"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "ammo_grenade_limit_bumpmine",
+        "ammo_grenade_limit_snowballs",
+        "camera_datadriven_debug",
+        "cl_clutch_mode_gain",
+        "cl_debounce_zoom",
+        "cl_import_csgo_config",
+        "filter_player_simulation_time",
+        "fov_cs_super_ultrawide_near_z",
+        "nav_draw_space_cells",
+        "nav_draw_space_radius",
+        "nav_pathfind_draw",
+        "nav_pathfind_draw_blocked",
+        "nav_pathfind_draw_costs",
+        "nav_pathfind_draw_fail",
+        "nav_pathfind_draw_total_costs",
+        "phys_mesh_notify_force_generic",
+        "phys_mesh_notify_ignore_sdf",
+        "player_competitive_maplist_8_10_0_F13E6930",
+        "r_cs2_show_icon_editor",
+        "r_csgo_water_reflections",
+        "r_icon_custommaterial_maxres",
+        "r_icon_player_equip_gloves_from_loadout",
+        "r_icon_rendering_height",
+        "r_icon_rendering_msaa_mode",
+        "r_icon_rendering_width",
+        "r_icon_use_kv3_camera",
+        "r_vma_defrag_algorithm",
+        "r_vma_report_fragmentation",
+        "snd_steamaudio_source_pathing_debug",
+        "snd_steamaudio_source_pathing_debug_duration",
+        "snd_steamaudio_source_pathing_enable_validation",
+        "spec_chasedistancespeed",
+        "sv_force_team_intro_random",
+        "sv_show_teammate_death_notification",
+        "sv_unify_random_seed",
+        "ui_mainmenu_bkgnd_movie_47C62B23",
+        "ui_party_msg_sound_enabled"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "3",
+              "oldValue": "7"
+            }
+          ],
+          "name": "cl_crosshair_dynamic_splitdist"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "cl_crosshair_recoil"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            }
+          ],
+          "name": "cl_crosshairdot"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "-2.200000",
+              "oldValue": "1.000000"
+            }
+          ],
+          "name": "cl_crosshairgap"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "cl_crosshairgap_useweaponvalue"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "10.000000",
+              "oldValue": "5.000000"
+            }
+          ],
+          "name": "cl_crosshairsize"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.600000",
+              "oldValue": "0.500000"
+            }
+          ],
+          "name": "cl_crosshairthickness"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            }
+          ],
+          "name": "cl_use_opens_buy_menu"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "4.000000",
+              "oldValue": "1.000000"
+            }
+          ],
+          "name": "fov_cs_ultrawide_near_z"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,cheat",
+              "oldValue": "gamedll,cheat"
+            }
+          ],
+          "name": "hostage_debug"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,cheat",
+              "oldValue": "gamedll,cheat"
+            }
+          ],
+          "name": "hostage_is_silent"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,archive,release,clientcmd_can_execute",
+              "oldValue": "clientdll,archive,clientcmd_can_execute"
+            }
+          ],
+          "name": "voice_modenable"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            }
+          ],
+          "name": "volume_fog_clipmaps_enabled"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "cl_debounce_attack2",
+        "cl_steamcontroller",
+        "nav_draw_space_bounds",
+        "nav_pathfind_debug_draw",
+        "nav_pathfind_debug_draw_costs",
+        "nav_pathfind_debug_draw_errors",
+        "nav_pathfind_debug_draw_total_costs",
+        "navspace_draw_cluster",
+        "navspace_draw_cluster_neighbor",
+        "panorama_debug_dead_pad",
+        "panorama_steampad_button_repeat_curve_time",
+        "panorama_steampad_button_repeat_interval_end",
+        "panorama_steampad_button_repeat_interval_start",
+        "phys_mesh_sdf_generic",
+        "phys_ragdoll_force_magnitude",
+        "player_competitive_maplist_8_10_0_0",
+        "r_csgo_render_alpha_immunity",
+        "ragdoll_sleepaftertime",
+        "ui_mainmenu_bkgnd_movie_CEBFC540"
+      ]
+    },
+    {
+      "added": [
+        "camera_cut_to_datadriven_camera",
+        "demoui",
+        "drop_hostage",
+        "econ_item_icon_create",
+        "import_csgo_config",
+        "snd_sos_print_operator_stack_operator"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "voice_modenable_toggle"
+        }
+      ],
+      "family": "commands",
+      "removed": [
+        "snd_sos_print_operator_stack_opeator",
+        "tenfoot_match",
+        "tenfoot_pickle_dictionaries",
+        "tenfoot_pickle_single_dictionary",
+        "tenfoot_text_hotspots"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "11979365",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12083517"
+}

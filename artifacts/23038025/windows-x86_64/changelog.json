@@ -1,0 +1,420 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "51",
+              "oldValue": "50"
+            }
+          ],
+          "name": "client.dll/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "105",
+              "oldValue": "106"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "53",
+              "oldValue": "52"
+            }
+          ],
+          "name": "server.dll/CCSPlayer_MovementServices"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "quest_11016_var_desc:f",
+        "quest_11016_var_ingame:f",
+        "quest_11016_var_partial:f"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2f824fa1aa3badd58baa25d3a8eba99575fd3545e60fe8775640a9e93901baf0",
+              "oldValue": "775e2c20e70fe14fc3f0c5e4dc3d76be61bb7b9e81b73667c0797d24bf987cb3"
+            }
+          ],
+          "name": "ABoost"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "54a745a56d864a5ac544bcd5edf5cf11dd8d7bae4d45e1151ef6a7b4706b24df",
+              "oldValue": "638ff34cf8496bf6f1e5b0df1c1e7918b88ad8a27c771f24eed5c9e6411effcc"
+            }
+          ],
+          "name": "AHalls"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "be089192a2c5888635d041d77f06f373a78674e02ca5cf31bf6dc1c2de7d3107",
+              "oldValue": "40c908676742919dd6b0eca9997bc862e27ceea810ee47caf7bdf632de252afe"
+            }
+          ],
+          "name": "AStairs"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "18934edca22a9c8fdad606b00444891fbf3cfe1e80c1cbc7c76630124b189980",
+              "oldValue": "def81b3f2883b7f2ee9dc976e297ab3ce22b61e95a7d0ec9802d3c6d0b2bcc30"
+            }
+          ],
+          "name": "BHalls"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "92516c2fa07dca14322f2e72253248889610e58ce735b97f943167f0fa7fa98b",
+              "oldValue": "b06bdbaff3b29c30c0ece57cf6e97b9b84b611589f7a9dea02bb32fbee115731"
+            }
+          ],
+          "name": "BackHall"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3781dfbc7469f1e007fd7a67562e8d5118643682b84b4b0230960d7ab67b2d6a",
+              "oldValue": "b8aacec53b9d31a1986b97da6fad35ceebae4eb474c8d72245092598b5d0d8ee"
+            }
+          ],
+          "name": "Bear"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ab3f331839fa5689a9ddcdf29ffea4a0c75d31d44271f35f2393e6281665d50",
+              "oldValue": "2dcfbc9c4407543be72da33852d3d548fa0ceb04cb75b0ce3d45df3acf96b1d0"
+            }
+          ],
+          "name": "Boost"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9994d7a76b14f41b2b029cb2d6d298fdbb78dd0e7529d29b4fa2cf87cc01baad",
+              "oldValue": "3aae0ae3b42887edb22674428d2df751e9f53219e9133d0827684a79af875a97"
+            }
+          ],
+          "name": "BusStop"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "46613e59cb6efcbbbda1994759e6dd27d65d429f2ffe436560dee57de8ba011a",
+              "oldValue": "bced37db15a6333be2a3d3945875c1b468c2e5add5c6714e99bcac9d260413fe"
+            }
+          ],
+          "name": "CTLane"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3365160073415bfa2041dd7a79d4c7c86acac31bdb1b1a94dc83208ca46fe56f",
+              "oldValue": "26d25393d6dcad07f96325e996f63397871a91e1c5adbeaf3e0286fb9e46ed18"
+            }
+          ],
+          "name": "Checkers"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3373719e1edaa74541143975dc158cac7a594517e8b726376cf442765a77a2c0",
+              "oldValue": "6463ccf1aa69648d38c43517bf596bd9106dfb6ae8af7b1b050bd65e020190cb"
+            }
+          ],
+          "name": "Corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2caab2fafe74b98972dafb6abd829521392dc7e5b5e785aeee4ee0bdf3bb5200",
+              "oldValue": "068fb03082b874e6fd6c880a9c698213f3bad18712a4deb875cd1817e1d0c421"
+            }
+          ],
+          "name": "Cubby"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e437c1711822c4598e81d508581093127367132de9df9b6361326ed59d42977f",
+              "oldValue": "6610963998bd8ef61e6cb1461d6cdda138cf1266e4fb7121d7d13471a73d9de9"
+            }
+          ],
+          "name": "ElectricalBox"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "fec01c19f05b3d3b6e911df3d751d0fe2e3ceb079392f538f10727d7eec83cfc",
+              "oldValue": "5678d1e5597bc4b935853481f2e224d9f7de8ddacb20e6dbd371c8a362763f7a"
+            }
+          ],
+          "name": "Forklift"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9bad2b039e695a5db511044aef4aba0f9d3e4422f48cbb9bd90cfd2de9f5928f",
+              "oldValue": "5889ab69db682e1e7386801e5fe025989150446dd84a72b36d5022c4f5d09628"
+            }
+          ],
+          "name": "GAMEUI_Stat_G3SG1hits"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "538e7a0935315ee26034931ab202dfb976e332814752d574d3d3bf618a804558",
+              "oldValue": "fdebf26f6f7f79eedea2cb286509b983eba0096a69a935e4fa38430d1c9440b6"
+            }
+          ],
+          "name": "GAMEUI_Stat_M249hits"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c213598d63f6657e7197262dc4729968eae029744a93f42f989087fa6cfa0108",
+              "oldValue": "8b3d2310767eaefb9942ef1ebaed38c83ffacc05c116f82b77bad33407cdb312"
+            }
+          ],
+          "name": "Headshot"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "136c9a1286a59a7ffc670647e77e9315eff09d4d90fa5df394ce4209cd2e9f45",
+              "oldValue": "ed0dfdc535a24e76c4f6bd900b0755f1b3216af9f3b68687ee5fcedff72fbbe7"
+            }
+          ],
+          "name": "Highway"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8d71e1ba5a86f12ba14b31103bdc839ffffd6ec9a6f5184abaf69e78922f2c1e",
+              "oldValue": "02f754dd34ffc44019883cffdf52f4facb48d5bcfcfe8df1744eceb2989b2c85"
+            }
+          ],
+          "name": "Lockers"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b0c588a133c1b5c2760a0471a940d670a3b603c811f91fff6e5a4bcf1459abf1",
+              "oldValue": "32f6c942b79e5e4ef1af265b781e4f4473bf00ca800a44b608bb2b78f2b59b6c"
+            }
+          ],
+          "name": "MidRoof"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0d6222b966f4081fa31dd42bd518c5caa2da5be4d74ad77e88744312681153cd",
+              "oldValue": "c9f076946eda5ac3f2b13029b84845a5af222bcb971f1e00694bb1ca2f641801"
+            }
+          ],
+          "name": "OutsideA"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "50a92049800813f5f8770097ff9ac34d9d4ca22d3629174926e2cde7c9637962",
+              "oldValue": "580b67724277a3a358c15f3536c7dd0c0059d1d32d8224a3a9c8a1d2d7d16fad"
+            }
+          ],
+          "name": "OutsideB"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e65879fc2a8892d9dbc93d56e3d1caa44388185da9859551dd4cb6992c9ffba9",
+              "oldValue": "6cad5576a006f99f7c346cd007653612acb348b50a930a7ae2c0fa4b3b5fa9f3"
+            }
+          ],
+          "name": "SFUI_Hint_Headhot1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1a8ae3541ed43884255548aadbbc0fc0337ffc7ba5f6bf866df8477d8326db47",
+              "oldValue": "722df8e0016f0a24187a7368d91e91604ca65df80bfa17ad4c1a48718e637dbe"
+            }
+          ],
+          "name": "SFUI_Overall_WeaponStats"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ecf1316a02b495f326dc8f0c4367708d7e2381cc3d5e05945cce2524cd5bd1f2",
+              "oldValue": "bc9e501ec52f34321543230c6f0b06589643a3c13950bc9cc63602b01f05ba71"
+            }
+          ],
+          "name": "Sandbags"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "50098abf5ca7508049476b1f55e0a40cc26a6894466b753f8f969b98dbdecc47",
+              "oldValue": "851b150822b68f3a9d387dcc739f3e21e5a6703b252e908478ccc0b3982a139f"
+            }
+          ],
+          "name": "SunRoom"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "099a72b8ddeb17f60ac118b55e5f869bee5e5ef3f93afd8da6548e25e4e8b4b6",
+              "oldValue": "f9996558fc4ee40429d2b2edc2c31b918a9ab084ffb040e8a32e6a0c31982d99"
+            }
+          ],
+          "name": "TTruck"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "16d48e17a524f9ce025c945786ceea0bf21ab2ee06fd89fcb02a48bfd7cae6c9",
+              "oldValue": "ec81386e86874c979f8528d51210658b50362fddf1a0700edd1ab79c8bc328eb"
+            }
+          ],
+          "name": "TYard"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dc3452615bf8056af73fe06fde1b7cd27463614403e4a46fe4f6743f19ce02d5",
+              "oldValue": "ece5b937df79fc4ba6b1e624d099a1234bccadc3ddfbcda125aafe628f0b610b"
+            }
+          ],
+          "name": "Toxic"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "541bb06169ec47ffadb783f2b1265f6b381e8a616ae5304eca8a69a024374b93",
+              "oldValue": "28d6a6d65569b4e107c441ad31d630fc755016b917406eb2ffdf8a75bba42378"
+            }
+          ],
+          "name": "TreeRoom"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8902168954fad845101de11d93d3a8f50249df33f1f1a46840806ea53ebe7edf",
+              "oldValue": "d4de089ae12b0f952eadca954a69ac11fb0f51360c2bac6aa843014826868f98"
+            }
+          ],
+          "name": "Useless"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c157642db2ece4ea56944738ca64932c604b8ea12f16c0cdbb8feb04ffaf6cc5",
+              "oldValue": "68ebe8b540e072c62cef28696af450f7682cedbd83c5b706155f56bf25e0fd92"
+            }
+          ],
+          "name": "Yard"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b2799483c8d1adbf9871e28d347bb0a88233cddbe851a507513e6fe159be46f5",
+              "oldValue": "663df855b232329b47ea582083be9829c8bd6d9243839125bc109b6f018014cb"
+            }
+          ],
+          "name": "accolade_headshotkills_desc_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4df6db3312481a7d74f2193ad1286226fc1b354b1abbf522591527aa96163c1b",
+              "oldValue": "16ec3612b779353d398e33c215f3addb83ee00f1054dc3c7b172f75a3173279b"
+            }
+          ],
+          "name": "system_user_reject_offer_0"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "23018732",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "23038025"
+}

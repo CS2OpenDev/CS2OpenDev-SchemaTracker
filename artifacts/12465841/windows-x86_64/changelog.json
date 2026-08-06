@@ -1,0 +1,85 @@
+{
+  "families": [
+    {
+      "added": [
+        "client.dll/C_FlashbangProjectile"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "client.dll/CCSPlayerController_ActionTrackingServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "140",
+              "oldValue": "141"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "server.dll/CCSPlayerController_ActionTrackingServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "136",
+              "oldValue": "137"
+            }
+          ],
+          "name": "server.dll/CCSPlayerPawnBase"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cq_netgraph_problem_show_auto"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "sv_flashbang_strength"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12438553",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12465841"
+}

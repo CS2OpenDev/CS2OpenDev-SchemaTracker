@@ -1,0 +1,132 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/EventClientProcessInput_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "10"
+            }
+          ],
+          "name": "client.dll/C_BaseCSGrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "68",
+              "oldValue": "66"
+            }
+          ],
+          "name": "client.dll/C_CSWeaponBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "1"
+            }
+          ],
+          "name": "client.dll/C_Melee"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "11",
+              "oldValue": "9"
+            }
+          ],
+          "name": "server.dll/CBaseCSGrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "60",
+              "oldValue": "58"
+            }
+          ],
+          "name": "server.dll/CCSWeaponBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "3"
+            }
+          ],
+          "name": "server.dll/CMelee"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/CDotaAssetTypeWorkshopFileFilter",
+        "!GlobalTypes/CDotaAssetTypeWorkshopFileFilterBase",
+        "!GlobalTypes/CDotaChildAssetTypeWorkshopFileFilter",
+        "!GlobalTypes/CDotaCollectionWorkshopFileFilter",
+        "!GlobalTypes/CFileTypeWorkshopFileFilter",
+        "!GlobalTypes/CKeyValueTagWorkshopFileFilter",
+        "!GlobalTypes/COnlyUnimportedWorkshopFileFilter",
+        "!GlobalTypes/CReviewStatusWorkshopFileFilter",
+        "!GlobalTypes/CTagsWorkshopFileFilter",
+        "!GlobalTypes/CTitleWorkshopFileFilter",
+        "!GlobalTypes/CUpdatedAfterWorkshopFileFilter",
+        "!GlobalTypes/CUpdatedBeforeWorkshopFileFilter",
+        "!GlobalTypes/CWorkshopBatchImporterConfig",
+        "!GlobalTypes/EventHostTimescaleChanged_t",
+        "!GlobalTypes/IWorkshopFileListerFilter",
+        "cs2_workshop_manager.dll/CEntityComponent",
+        "cs2_workshop_manager.dll/CEntityIdentity",
+        "cs2_workshop_manager.dll/CEntityInstance",
+        "cs2_workshop_manager.dll/CScriptComponent"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "anim_scale_wasd_input_arm_pump",
+        "mp_weapon_melee_touch_time_after_hit"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12756335",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12843950"
+}

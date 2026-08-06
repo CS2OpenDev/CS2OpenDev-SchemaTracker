@@ -1,0 +1,842 @@
+{
+  "buildId": "16213816",
+  "channels": [
+    {
+      "messages": [
+        {
+          "id": 16,
+          "protoMessageType": "CBidirMsg_RebroadcastGameEvent"
+        },
+        {
+          "id": 17,
+          "protoMessageType": "CBidirMsg_RebroadcastSource"
+        }
+      ],
+      "name": "Bidirectional"
+    },
+    {
+      "messages": [
+        {
+          "id": 20,
+          "protoMessageType": "CCLCMsg_ClientInfo"
+        },
+        {
+          "id": 21,
+          "protoMessageType": "CCLCMsg_Move"
+        },
+        {
+          "id": 22,
+          "protoMessageType": "CCLCMsg_VoiceData"
+        },
+        {
+          "id": 23,
+          "protoMessageType": "CCLCMsg_BaselineAck"
+        },
+        {
+          "id": 25,
+          "protoMessageType": "CCLCMsg_RespondCvarValue"
+        },
+        {
+          "id": 26,
+          "protoMessageType": "CCLCMsg_FileCRCCheck"
+        },
+        {
+          "id": 27,
+          "protoMessageType": "CCLCMsg_LoadingProgress"
+        },
+        {
+          "id": 28,
+          "protoMessageType": "CCLCMsg_SplitPlayerConnect"
+        },
+        {
+          "id": 30,
+          "protoMessageType": "CCLCMsg_SplitPlayerDisconnect"
+        },
+        {
+          "id": 31,
+          "protoMessageType": "CCLCMsg_ServerStatus"
+        },
+        {
+          "id": 33,
+          "protoMessageType": "CCLCMsg_RequestPause"
+        },
+        {
+          "id": 34,
+          "protoMessageType": "CCLCMsg_CmdKeyValues"
+        },
+        {
+          "id": 35,
+          "protoMessageType": "CCLCMsg_RconServerDetails"
+        },
+        {
+          "id": 36,
+          "protoMessageType": "CCLCMsg_HltvReplay"
+        },
+        {
+          "id": 37,
+          "protoMessageType": "CCLCMsg_Diagnostic"
+        },
+        {
+          "id": 75,
+          "protoMessageType": "CCLCMsg_HltvFixupOperatorTick"
+        }
+      ],
+      "name": "ClcMessages"
+    },
+    {
+      "messages": [
+        {
+          "id": 280,
+          "protoMessageType": "CClientMsg_CustomGameEvent"
+        },
+        {
+          "id": 281,
+          "protoMessageType": "CClientMsg_CustomGameEventBounce"
+        },
+        {
+          "id": 282,
+          "protoMessageType": "CClientMsg_ClientUIEvent"
+        },
+        {
+          "id": 286,
+          "protoMessageType": "CClientMsg_ListenForResponseFound"
+        }
+      ],
+      "name": "ClientMessages"
+    },
+    {
+      "messages": [
+        {
+          "id": 201,
+          "protoMessageType": "CMsgPlaceDecalEvent"
+        },
+        {
+          "id": 202,
+          "protoMessageType": "CMsgClearWorldDecalsEvent"
+        },
+        {
+          "id": 203,
+          "protoMessageType": "CMsgClearEntityDecalsEvent"
+        },
+        {
+          "id": 204,
+          "protoMessageType": "CMsgClearDecalsForSkeletonInstanceEvent"
+        }
+      ],
+      "name": "Decals"
+    },
+    {
+      "messages": [
+        {
+          "id": 0,
+          "protoMessageType": "CNETMsg_NOP"
+        },
+        {
+          "id": 3,
+          "protoMessageType": "CNETMsg_SplitScreenUser"
+        },
+        {
+          "id": 4,
+          "protoMessageType": "CNETMsg_Tick"
+        },
+        {
+          "id": 5,
+          "protoMessageType": "CNETMsg_StringCmd"
+        },
+        {
+          "id": 6,
+          "protoMessageType": "CNETMsg_SetConVar"
+        },
+        {
+          "id": 7,
+          "protoMessageType": "CNETMsg_SignonState"
+        },
+        {
+          "id": 8,
+          "protoMessageType": "CNETMsg_SpawnGroup_Load"
+        },
+        {
+          "id": 9,
+          "protoMessageType": "CNETMsg_SpawnGroup_ManifestUpdate"
+        },
+        {
+          "id": 11,
+          "protoMessageType": "CNETMsg_SpawnGroup_SetCreationTick"
+        },
+        {
+          "id": 12,
+          "protoMessageType": "CNETMsg_SpawnGroup_Unload"
+        },
+        {
+          "id": 13,
+          "protoMessageType": "CNETMsg_SpawnGroup_LoadCompleted"
+        },
+        {
+          "id": 15,
+          "protoMessageType": "CNETMsg_DebugOverlay"
+        }
+      ],
+      "name": "NetMessages"
+    },
+    {
+      "messages": [
+        {
+          "id": 256,
+          "protoMessageType": "CP2P_TextMessage"
+        },
+        {
+          "id": 257,
+          "protoMessageType": "CP2P_Voice"
+        },
+        {
+          "id": 258,
+          "protoMessageType": "CP2P_Ping"
+        }
+      ],
+      "name": "PeerToPeer"
+    },
+    {
+      "messages": [
+        {
+          "id": 208,
+          "protoMessageType": "CMsgSosStartSoundEvent"
+        },
+        {
+          "id": 209,
+          "protoMessageType": "CMsgSosStopSoundEvent"
+        },
+        {
+          "id": 210,
+          "protoMessageType": "CMsgSosSetSoundEventParams"
+        },
+        {
+          "id": 211,
+          "protoMessageType": "CMsgSosSetLibraryStackFields"
+        },
+        {
+          "id": 212,
+          "protoMessageType": "CMsgSosStopSoundEventHash"
+        }
+      ],
+      "name": "Sounds"
+    },
+    {
+      "messages": [
+        {
+          "id": 205,
+          "protoMessageType": "CMsgSource1LegacyGameEventList"
+        },
+        {
+          "id": 206,
+          "protoMessageType": "CMsgSource1LegacyListenEvents"
+        },
+        {
+          "id": 207,
+          "protoMessageType": "CMsgSource1LegacyGameEvent"
+        }
+      ],
+      "name": "Source1Legacy"
+    },
+    {
+      "messages": [
+        {
+          "id": 40,
+          "protoMessageType": "CSVCMsg_ServerInfo"
+        },
+        {
+          "id": 41,
+          "protoMessageType": "CSVCMsg_FlattenedSerializer"
+        },
+        {
+          "id": 42,
+          "protoMessageType": "CSVCMsg_ClassInfo"
+        },
+        {
+          "id": 43,
+          "protoMessageType": "CSVCMsg_SetPause"
+        },
+        {
+          "id": 44,
+          "protoMessageType": "CSVCMsg_CreateStringTable"
+        },
+        {
+          "id": 45,
+          "protoMessageType": "CSVCMsg_UpdateStringTable"
+        },
+        {
+          "id": 46,
+          "protoMessageType": "CSVCMsg_VoiceInit"
+        },
+        {
+          "id": 47,
+          "protoMessageType": "CSVCMsg_VoiceData"
+        },
+        {
+          "id": 48,
+          "protoMessageType": "CSVCMsg_Print"
+        },
+        {
+          "id": 49,
+          "protoMessageType": "CSVCMsg_Sounds"
+        },
+        {
+          "id": 50,
+          "protoMessageType": "CSVCMsg_SetView"
+        },
+        {
+          "id": 51,
+          "protoMessageType": "CSVCMsg_ClearAllStringTables"
+        },
+        {
+          "id": 52,
+          "protoMessageType": "CSVCMsg_CmdKeyValues"
+        },
+        {
+          "id": 54,
+          "protoMessageType": "CSVCMsg_SplitScreen"
+        },
+        {
+          "id": 55,
+          "protoMessageType": "CSVCMsg_PacketEntities"
+        },
+        {
+          "id": 56,
+          "protoMessageType": "CSVCMsg_Prefetch"
+        },
+        {
+          "id": 57,
+          "protoMessageType": "CSVCMsg_Menu"
+        },
+        {
+          "id": 58,
+          "protoMessageType": "CSVCMsg_GetCvarValue"
+        },
+        {
+          "id": 59,
+          "protoMessageType": "CSVCMsg_StopSound"
+        },
+        {
+          "id": 60,
+          "protoMessageType": "CSVCMsg_PeerList"
+        },
+        {
+          "id": 61,
+          "protoMessageType": "CSVCMsg_PacketReliable"
+        },
+        {
+          "id": 62,
+          "protoMessageType": "CSVCMsg_HLTVStatus"
+        },
+        {
+          "id": 63,
+          "protoMessageType": "CSVCMsg_ServerSteamID"
+        },
+        {
+          "id": 70,
+          "protoMessageType": "CSVCMsg_FullFrameSplit"
+        },
+        {
+          "id": 71,
+          "protoMessageType": "CSVCMsg_RconServerDetails"
+        },
+        {
+          "id": 72,
+          "protoMessageType": "CSVCMsg_UserMessage"
+        },
+        {
+          "id": 74,
+          "protoMessageType": "CSVCMsg_Broadcast_Command"
+        },
+        {
+          "id": 74,
+          "protoMessageType": "CSVCMsg_HltvReplay"
+        },
+        {
+          "id": 76,
+          "protoMessageType": "CSVCMsg_UserCommands"
+        }
+      ],
+      "name": "SvcMessages"
+    },
+    {
+      "messages": [
+        {
+          "id": 400,
+          "protoMessageType": "CMsgTEEffectDispatch"
+        },
+        {
+          "id": 401,
+          "protoMessageType": "CMsgTEArmorRicochet"
+        },
+        {
+          "id": 402,
+          "protoMessageType": "CMsgTEBeamEntPoint"
+        },
+        {
+          "id": 403,
+          "protoMessageType": "CMsgTEBeamEnts"
+        },
+        {
+          "id": 404,
+          "protoMessageType": "CMsgTEBeamPoints"
+        },
+        {
+          "id": 405,
+          "protoMessageType": "CMsgTEBeamRing"
+        },
+        {
+          "id": 407,
+          "protoMessageType": "CMsgTEBSPDecal"
+        },
+        {
+          "id": 408,
+          "protoMessageType": "CMsgTEBubbles"
+        },
+        {
+          "id": 409,
+          "protoMessageType": "CMsgTEBubbleTrail"
+        },
+        {
+          "id": 410,
+          "protoMessageType": "CMsgTEDecal"
+        },
+        {
+          "id": 411,
+          "protoMessageType": "CMsgTEWorldDecal"
+        },
+        {
+          "id": 412,
+          "protoMessageType": "CMsgTEEnergySplash"
+        },
+        {
+          "id": 413,
+          "protoMessageType": "CMsgTEFizz"
+        },
+        {
+          "id": 415,
+          "protoMessageType": "CMsgTEGlowSprite"
+        },
+        {
+          "id": 416,
+          "protoMessageType": "CMsgTEImpact"
+        },
+        {
+          "id": 417,
+          "protoMessageType": "CMsgTEMuzzleFlash"
+        },
+        {
+          "id": 418,
+          "protoMessageType": "CMsgTEBloodStream"
+        },
+        {
+          "id": 419,
+          "protoMessageType": "CMsgTEExplosion"
+        },
+        {
+          "id": 420,
+          "protoMessageType": "CMsgTEDust"
+        },
+        {
+          "id": 421,
+          "protoMessageType": "CMsgTELargeFunnel"
+        },
+        {
+          "id": 422,
+          "protoMessageType": "CMsgTESparks"
+        },
+        {
+          "id": 423,
+          "protoMessageType": "CMsgTEPhysicsProp"
+        },
+        {
+          "id": 424,
+          "protoMessageType": "CMsgTEPlayerDecal"
+        },
+        {
+          "id": 425,
+          "protoMessageType": "CMsgTEProjectedDecal"
+        },
+        {
+          "id": 426,
+          "protoMessageType": "CMsgTESmoke"
+        },
+        {
+          "id": 452,
+          "protoMessageType": "CMsgTEFireBullets"
+        }
+      ],
+      "name": "TempEntities"
+    },
+    {
+      "messages": [
+        {
+          "id": 101,
+          "protoMessageType": "CUserMessageAchievementEvent"
+        },
+        {
+          "id": 102,
+          "protoMessageType": "CUserMessageCloseCaption"
+        },
+        {
+          "id": 103,
+          "protoMessageType": "CUserMessageCloseCaptionDirect"
+        },
+        {
+          "id": 104,
+          "protoMessageType": "CUserMessageCurrentTimescale"
+        },
+        {
+          "id": 105,
+          "protoMessageType": "CUserMessageDesiredTimescale"
+        },
+        {
+          "id": 106,
+          "protoMessageType": "CUserMessageFade"
+        },
+        {
+          "id": 110,
+          "protoMessageType": "CUserMessageHudMsg"
+        },
+        {
+          "id": 111,
+          "protoMessageType": "CUserMessageHudText"
+        },
+        {
+          "id": 113,
+          "protoMessageType": "CUserMessageColoredText"
+        },
+        {
+          "id": 114,
+          "protoMessageType": "CUserMessageRequestState"
+        },
+        {
+          "id": 115,
+          "protoMessageType": "CUserMessageResetHUD"
+        },
+        {
+          "id": 116,
+          "protoMessageType": "CUserMessageRumble"
+        },
+        {
+          "id": 117,
+          "protoMessageType": "CUserMessageSayText"
+        },
+        {
+          "id": 118,
+          "protoMessageType": "CUserMessageSayText2"
+        },
+        {
+          "id": 119,
+          "protoMessageType": "CUserMessageSayTextChannel"
+        },
+        {
+          "id": 120,
+          "protoMessageType": "CUserMessageShake"
+        },
+        {
+          "id": 121,
+          "protoMessageType": "CUserMessageShakeDir"
+        },
+        {
+          "id": 122,
+          "protoMessageType": "CUserMessageWaterShake"
+        },
+        {
+          "id": 124,
+          "protoMessageType": "CUserMessageTextMsg"
+        },
+        {
+          "id": 125,
+          "protoMessageType": "CUserMessageScreenTilt"
+        },
+        {
+          "id": 128,
+          "protoMessageType": "CUserMessageVoiceMask"
+        },
+        {
+          "id": 130,
+          "protoMessageType": "CUserMessageSendAudio"
+        },
+        {
+          "id": 131,
+          "protoMessageType": "CUserMessageItemPickup"
+        },
+        {
+          "id": 132,
+          "protoMessageType": "CUserMessageAmmoDenied"
+        },
+        {
+          "id": 134,
+          "protoMessageType": "CUserMessageShowMenu"
+        },
+        {
+          "id": 135,
+          "protoMessageType": "CUserMessageCreditsMsg"
+        },
+        {
+          "id": 137,
+          "protoMessageType": "CEntityMessageScreenOverlay"
+        },
+        {
+          "id": 138,
+          "protoMessageType": "CEntityMessageRemoveAllDecals"
+        },
+        {
+          "id": 139,
+          "protoMessageType": "CEntityMessagePropagateForce"
+        },
+        {
+          "id": 140,
+          "protoMessageType": "CEntityMessageDoSpark"
+        },
+        {
+          "id": 142,
+          "protoMessageType": "CUserMessageCloseCaptionPlaceholder"
+        },
+        {
+          "id": 143,
+          "protoMessageType": "CUserMessageCameraTransition"
+        },
+        {
+          "id": 144,
+          "protoMessageType": "CUserMessageAudioParameter"
+        },
+        {
+          "id": 145,
+          "protoMessageType": "CUserMsg_ParticleManager"
+        },
+        {
+          "id": 146,
+          "protoMessageType": "CUserMsg_HudError"
+        },
+        {
+          "id": 148,
+          "protoMessageType": "CUserMsg_CustomGameEvent"
+        },
+        {
+          "id": 150,
+          "protoMessageType": "CUserMessageHapticsManagerPulse"
+        },
+        {
+          "id": 151,
+          "protoMessageType": "CUserMessageHapticsManagerEffect"
+        },
+        {
+          "id": 153,
+          "protoMessageType": "CUserMessageUpdateCssClasses"
+        },
+        {
+          "id": 154,
+          "protoMessageType": "CUserMessageServerFrameTime"
+        },
+        {
+          "id": 155,
+          "protoMessageType": "CUserMessageLagCompensationError"
+        },
+        {
+          "id": 156,
+          "protoMessageType": "CUserMessageRequestDllStatus"
+        },
+        {
+          "id": 157,
+          "protoMessageType": "CUserMessageRequestUtilAction"
+        },
+        {
+          "id": 160,
+          "protoMessageType": "CUserMessageRequestInventory"
+        },
+        {
+          "id": 162,
+          "protoMessageType": "CUserMessageRequestDiagnostic"
+        },
+        {
+          "id": 165,
+          "protoMessageType": "CUserMessage_NotifyResponseFound"
+        },
+        {
+          "id": 166,
+          "protoMessageType": "CUserMessage_PlayResponseConditional"
+        },
+        {
+          "id": 301,
+          "protoMessageType": "CCSUsrMsg_VGUIMenu"
+        },
+        {
+          "id": 317,
+          "protoMessageType": "CCSUsrMsg_SendAudio"
+        },
+        {
+          "id": 318,
+          "protoMessageType": "CCSUsrMsg_RawAudio"
+        },
+        {
+          "id": 321,
+          "protoMessageType": "CCSUsrMsg_Damage"
+        },
+        {
+          "id": 322,
+          "protoMessageType": "CCSUsrMsg_RadioText"
+        },
+        {
+          "id": 323,
+          "protoMessageType": "CCSUsrMsg_HintText"
+        },
+        {
+          "id": 324,
+          "protoMessageType": "CCSUsrMsg_KeyHintText"
+        },
+        {
+          "id": 325,
+          "protoMessageType": "CCSUsrMsg_ProcessSpottedEntityUpdate"
+        },
+        {
+          "id": 327,
+          "protoMessageType": "CCSUsrMsg_AdjustMoney"
+        },
+        {
+          "id": 330,
+          "protoMessageType": "CCSUsrMsg_KillCam"
+        },
+        {
+          "id": 334,
+          "protoMessageType": "CCSUsrMsg_MatchEndConditions"
+        },
+        {
+          "id": 335,
+          "protoMessageType": "CCSUsrMsg_DisconnectToLobby"
+        },
+        {
+          "id": 336,
+          "protoMessageType": "CCSUsrMsg_PlayerStatsUpdate"
+        },
+        {
+          "id": 338,
+          "protoMessageType": "CCSUsrMsg_WarmupHasEnded"
+        },
+        {
+          "id": 345,
+          "protoMessageType": "CCSUsrMsg_CallVoteFailed"
+        },
+        {
+          "id": 346,
+          "protoMessageType": "CCSUsrMsg_VoteStart"
+        },
+        {
+          "id": 347,
+          "protoMessageType": "CCSUsrMsg_VotePass"
+        },
+        {
+          "id": 348,
+          "protoMessageType": "CCSUsrMsg_VoteFailed"
+        },
+        {
+          "id": 349,
+          "protoMessageType": "CCSUsrMsg_VoteSetup"
+        },
+        {
+          "id": 350,
+          "protoMessageType": "CCSUsrMsg_ServerRankRevealAll"
+        },
+        {
+          "id": 351,
+          "protoMessageType": "CCSUsrMsg_SendLastKillerDamageToClient"
+        },
+        {
+          "id": 352,
+          "protoMessageType": "CCSUsrMsg_ServerRankUpdate"
+        },
+        {
+          "id": 360,
+          "protoMessageType": "CCSUsrMsg_GlowPropTurnOff"
+        },
+        {
+          "id": 361,
+          "protoMessageType": "CCSUsrMsg_SendPlayerItemDrops"
+        },
+        {
+          "id": 362,
+          "protoMessageType": "CCSUsrMsg_RoundBackupFilenames"
+        },
+        {
+          "id": 363,
+          "protoMessageType": "CCSUsrMsg_SendPlayerItemFound"
+        },
+        {
+          "id": 364,
+          "protoMessageType": "CCSUsrMsg_ReportHit"
+        },
+        {
+          "id": 365,
+          "protoMessageType": "CCSUsrMsg_XpUpdate"
+        },
+        {
+          "id": 366,
+          "protoMessageType": "CCSUsrMsg_QuestProgress"
+        },
+        {
+          "id": 367,
+          "protoMessageType": "CCSUsrMsg_ScoreLeaderboardData"
+        },
+        {
+          "id": 368,
+          "protoMessageType": "CCSUsrMsg_PlayerDecalDigitalSignature"
+        },
+        {
+          "id": 369,
+          "protoMessageType": "CCSUsrMsg_WeaponSound"
+        },
+        {
+          "id": 370,
+          "protoMessageType": "CCSUsrMsg_UpdateScreenHealthBar"
+        },
+        {
+          "id": 371,
+          "protoMessageType": "CCSUsrMsg_EntityOutlineHighlight"
+        },
+        {
+          "id": 372,
+          "protoMessageType": "CCSUsrMsg_SSUI"
+        },
+        {
+          "id": 373,
+          "protoMessageType": "CCSUsrMsg_SurvivalStats"
+        },
+        {
+          "id": 374,
+          "protoMessageType": "CCSUsrMsg_DisconnectToLobby"
+        },
+        {
+          "id": 375,
+          "protoMessageType": "CCSUsrMsg_EndOfMatchAllPlayersData"
+        },
+        {
+          "id": 376,
+          "protoMessageType": "CCSUsrMsg_PostRoundDamageReport"
+        },
+        {
+          "id": 379,
+          "protoMessageType": "CCSUsrMsg_RoundEndReportData"
+        },
+        {
+          "id": 380,
+          "protoMessageType": "CCSUsrMsg_CurrentRoundOdds"
+        },
+        {
+          "id": 381,
+          "protoMessageType": "CCSUsrMsg_DeepStats"
+        },
+        {
+          "id": 383,
+          "protoMessageType": "CCSUsrMsg_ShootInfo"
+        },
+        {
+          "id": 385,
+          "protoMessageType": "CCSUsrMsg_CounterStrafe"
+        }
+      ],
+      "name": "UserMessages"
+    }
+  ],
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0"
+}

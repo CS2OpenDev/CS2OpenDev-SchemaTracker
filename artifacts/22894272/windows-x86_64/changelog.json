@@ -1,0 +1,79 @@
+{
+  "families": [
+    {
+      "added": [
+        "client.dll/CCSPlayer_AimPunchServices",
+        "server.dll/CCSPlayer_AimPunchServices"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "106",
+              "oldValue": "109"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "108",
+              "oldValue": "112"
+            }
+          ],
+          "name": "server.dll/CCSPlayerPawn"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bdd8a1b6230f4a7a118e0789d88afca830a19522f111445f738fe413f1b9e802",
+              "oldValue": "6863969cc87249990870dd1ef5bab817218d6c6be6d2e91ea389df5a0becbc6e"
+            }
+          ],
+          "name": "user_btn_accept"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "22880072",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "22894272"
+}

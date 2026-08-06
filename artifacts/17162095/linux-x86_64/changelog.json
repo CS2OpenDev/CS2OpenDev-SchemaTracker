@@ -1,0 +1,120 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_ironsight_filter_alpha",
+        "cl_ironsight_min_channel_color",
+        "cl_ironsight_usecrosshaircolor",
+        "cl_radar_scale_dynamic"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "de_anubis,de_inferno,de_mirage,de_train,de_dust2,de_nuke,de_ancient",
+              "oldValue": "de_anubis,de_inferno,de_mirage,de_vertigo,de_dust2,de_nuke,de_ancient"
+            }
+          ],
+          "name": "sv_mapvetopickvote_maps"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "CSGO_Collectible_PremierSeason1Coin",
+        "CSGO_Collectible_PremierSeason1Coin_Desc",
+        "CSGO_Operation_Leaderboard_NewSeason",
+        "CSGO_Operation_Leaderboard_NewSeason_Friends",
+        "GameUI_IronsightColor",
+        "SFUI_Settings_Radar_Scale_Dynamic",
+        "SFUI_Settings_Radar_Scale_Dynamic_Info",
+        "inv_context_open_season_stats_panel",
+        "official_leaderboard_premier_season2_name",
+        "season_section_graph_x_axis_label_max",
+        "season_section_graph_x_axis_label_min",
+        "season_section_rank",
+        "season_section_rank_activity",
+        "season_section_rank_history",
+        "season_section_rank_map_stats",
+        "season_section_rank_map_wins_graph",
+        "season_section_season_stats",
+        "season_stat_title_achieved_week",
+        "season_stat_title_assists",
+        "season_stat_title_best_map",
+        "season_stat_title_deaths",
+        "season_stat_title_headshots",
+        "season_stat_title_hs_percent",
+        "season_stat_title_kd",
+        "season_stat_title_kills",
+        "season_stat_title_kpr",
+        "season_stat_title_losses",
+        "season_stat_title_matches_played",
+        "season_stat_title_mvps",
+        "season_stat_title_rounds",
+        "season_stat_title_rounds_3k",
+        "season_stat_title_rounds_4k",
+        "season_stat_title_rounds_5k",
+        "season_stat_title_ties",
+        "season_stat_title_win_percent",
+        "season_stat_title_wins",
+        "season_stat_value_hs_percent",
+        "season_stat_value_kd",
+        "season_stat_value_win_percent",
+        "tooltip-no-map-stats",
+        "tooltip-season-rank-week-idx",
+        "tooltip-season-rank-week-name",
+        "tooltip_inspect_open_season_stats"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "• A rechargeable one shot kill at short range<br>• Attempt at your own risk<br><i>• Difficulty: <font color=\"#BF4040\">★★★★</font></i>",
+              "oldValue": "• A single-use one shot kill at short range<br>• Attempt at your own risk<br><i>• Difficulty: <font color=\"#BF4040\">★★★★</font></i>"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b078230ec8dfa40f3c30ee186b7cee6c8df65be8bbca854eaa90bb33b8852077",
+              "oldValue": "f60c1d4a37cdd02521d76d1a10ebef3e77e51920c032fedf8ab72cf9921dd3ca"
+            }
+          ],
+          "name": "csgo_item_usage_desc_taser"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "17148705",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "17162095"
+}

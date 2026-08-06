@@ -1,0 +1,162 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/CAnimGraphTagRef",
+        "client.dll/CCSPlayer_BuyServices",
+        "client.dll/SellbackPurchaseEntry_t",
+        "server.dll/SellbackPurchaseEntry_t"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "0",
+              "oldValue": "1"
+            }
+          ],
+          "name": "!GlobalTypes/CTaskStatusAnimTag"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "6"
+            }
+          ],
+          "name": "client.dll/CCSPlayer_ItemServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "35",
+              "oldValue": "36"
+            }
+          ],
+          "name": "client.dll/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "21",
+              "oldValue": "20"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "185",
+              "oldValue": "184"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "58",
+              "oldValue": "59"
+            }
+          ],
+          "name": "client.dll/C_WeaponCSBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "6"
+            }
+          ],
+          "name": "server.dll/CCSPlayer_ItemServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "37",
+              "oldValue": "38"
+            }
+          ],
+          "name": "server.dll/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "51",
+              "oldValue": "52"
+            }
+          ],
+          "name": "server.dll/CWeaponCSBase"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/CAnimGraphTag"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "sv_show_move_collisions"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,notify,replicated,release,commandline_enforced",
+              "oldValue": "gamedll,notify,replicated,release,commandline_enforced"
+            }
+          ],
+          "name": "sv_autobuyammo"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "sv_allow_thirdperson"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release,execute_per_tick",
+              "oldValue": "developmentonly,clientdll,execute_per_tick,defensive"
+            }
+          ],
+          "name": "firstperson"
+        }
+      ],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "11437123",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "11472786"
+}

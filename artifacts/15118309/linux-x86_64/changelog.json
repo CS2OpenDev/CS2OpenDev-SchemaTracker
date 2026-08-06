@@ -1,0 +1,59 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "demo_pause_at_end"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "clientdll,cheat"
+            }
+          ],
+          "name": "cs_minimap_create_output_size"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "SFUI_OfficialDatacenterID_45"
+      ],
+      "changed": [],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "15069316",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "15118309"
+}

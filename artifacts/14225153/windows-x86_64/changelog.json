@@ -1,0 +1,775 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "215",
+              "oldValue": "216"
+            }
+          ],
+          "name": "server.dll/CCSGameRules"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_frametime_summary_report_detailed",
+        "demo_highlight_fade_duration",
+        "demo_highlight_seconds_after",
+        "engine_frametime_amnesty_debug",
+        "engine_frametime_warnings_enable"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.500000",
+              "oldValue": "32"
+            }
+          ],
+          "name": "cl_clock_recvmargin_minsamples_speedup"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "engine_enable_frametime_warnings"
+      ]
+    },
+    {
+      "added": [
+        "engine_frametime_print_report"
+      ],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "SFUI_Settings_Arms_Race_EQ",
+        "SFUI_Settings_Arms_Race_EQ_Tip",
+        "SFUI_Settings_Arms_Race_Volume",
+        "SFUI_Settings_Casual_EQ",
+        "SFUI_Settings_Casual_EQ_Tip",
+        "SFUI_Settings_Casual_Volume",
+        "SFUI_Settings_Competitive_EQ",
+        "SFUI_Settings_Competitive_EQ_Tip",
+        "SFUI_Settings_Competitive_Volume",
+        "SFUI_Settings_Deathmatch_EQ",
+        "SFUI_Settings_Deathmatch_EQ_Tip",
+        "SFUI_Settings_Deathmatch_Volume",
+        "SFUI_Settings_GameModeEQ_Tip",
+        "SFUI_Settings_GameModeVolume_Armsrace_Tip",
+        "SFUI_Settings_GameModeVolume_Casual_Tip",
+        "SFUI_Settings_GameModeVolume_Competitive_Tip",
+        "SFUI_Settings_GameModeVolume_Deathmatch_Tip",
+        "SFUI_Settings_GameModeVolume_Spectator_Tip",
+        "SFUI_Settings_Headphone_NoOverride",
+        "SFUI_Settings_Spectator_Volume",
+        "settings_audio_advanced_section",
+        "settings_voice_section"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2875b7fedd398f621cef5c457f865382f88d6967bfcebf343e55d7eea300fe6f",
+              "oldValue": "0d452534e8ce2176deced13be682f6261cacb61e5c2c75300f2d5b35f4732240"
+            }
+          ],
+          "name": "BuyMenu_BuyForTeammate"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "73c8968e1a819676b6fe520d5404477fdc3af14c4ea1c76d27a864bcf1de8c9b",
+              "oldValue": "9e0cf7bdaddd1d8aa2659d888a89f2e5eebc0f3c7aab8d9dfd74dae3f9fde776"
+            }
+          ],
+          "name": "BuyMenu_MinMoneyNextRound"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Skip To Verdict",
+              "oldValue": "Submit Verdict"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d64ccb462644ccb5de7a00893320e4a3f805300c3d5bd601737483815d18e991",
+              "oldValue": "a5fd7b0966c45ab1a4f5a464092dd7884135f2ccf7f8cd1f83675340fe7a8f0c"
+            }
+          ],
+          "name": "CSGO_Demo_End_Playback_Overwatch"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Unable to verify game ownership on this Steam account.",
+              "oldValue": "This Steam account does not own this game.\nPlease login to the correct Steam account"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "235dae5dcc0d271cf3585b63ece5a378ed453a7d9aebcc67d991ef83b4a07ae0",
+              "oldValue": "61fb1b4c61c8d20ca548c0f3574a84fda8284cc58e9d6e5146bad904b3de7245"
+            }
+          ],
+          "name": "GameUI_Disconnect_SteamOwnership"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1b81df6a194d8cd755d7cfbb96f0f9c994af3b42374ddbdfc1417d4447315dd5",
+              "oldValue": "80c0663d14365d0a3d063ae335b8ac7b1ef907a3cf6c0211d99f207a665af411"
+            }
+          ],
+          "name": "GameUI_GrenadeCrosshairInfoTooltipDecoy"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f90142d552de9b92b10e58c8376d0b327e5f4f2e2b270da2571d14057c11f496",
+              "oldValue": "974e09d2ba6a5ae3112b493213e865869a16d619e7a1aa1b06657c38e05ab994"
+            }
+          ],
+          "name": "GameUI_GrenadeCrosshairInfoTooltipFire"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "dbaac32bfc242c1bd6be74086a27cf48e7af18c66022d8d93a2dae1ae200711e",
+              "oldValue": "dc6ab96751b995ab1f8d67977421d838aa502c27ab22029bf02c6913bfea3bc6"
+            }
+          ],
+          "name": "GameUI_GrenadeCrosshairInfoTooltipFlash"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "026e1a9cec905fed339ec4b42e5be47cf001782a8bb7ef212023ef9555fccb1c",
+              "oldValue": "9965ec818842b8480ee9c40eaa4d8c93abb411e6e1fa45b9c3e63ad505457743"
+            }
+          ],
+          "name": "GameUI_GrenadeCrosshairInfoTooltipHE"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6ecac03cab7a238d7df90e9ad0f5b0a983c79f721284c0e8068bafac5f7f7b6c",
+              "oldValue": "47929a67fa18c4ff2be874ae62df86aa52d38d1ec9c59768ea3b1d1eaaa3823f"
+            }
+          ],
+          "name": "GameUI_GrenadeCrosshairInfoTooltipSmoke"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2bb3c74f60c74ff7887eab5802d18c6908cd337f3be83b4317a6f96ede1dc736",
+              "oldValue": "86d33a49df1598962cd9f80446ceb16df10858322cda05ca27fe2c8b663a0465"
+            }
+          ],
+          "name": "GameUI_KeepCrosshairInfo"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "There are no other players present in your current game to receive your gift!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "86481058115d22742bcea479bde6001b0b9c4acf06aa832255afadd9edc91012",
+              "oldValue": "08ea7d0780f63f4f7e61d8df7aee52f7131071fad10e290a551f5588f0ae8ba5"
+            }
+          ],
+          "name": "Item_GiftNoPlayers"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "\u0003%s1\u0001 has given a gift to \u0003%s2!\u0001"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "22c8d2baf32ad22957582756d423cb36e0f8820af3e4825945f45c79ecc2a9af",
+              "oldValue": "f144a6cbc97664a11c776149ee0f579364bd1bdbf892ac73f682d636bcf436ff"
+            }
+          ],
+          "name": "Item_GiftedItems"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "\u0003%giver%\u0001 has given out a bunch of gifts!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "82ab6385ee83139e2e9786bdf6364f48311bf6daa43cad73e68cd2a2cb76ae2c",
+              "oldValue": "2793f6937228ee45203c7575925eb2be7b12f8ad924d3e4687f321ba9ce797c2"
+            }
+          ],
+          "name": "Item_GifterText_All"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "\u0003%recipient%\u0001 was selected at random to receive a gift from \u0003%giver%\u0001!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "7b025325752a4843d9e227c2072fe1baca4a1e8c05ba29cac9a3fe0b5ca866de",
+              "oldValue": "d6e55a755bfaea1017cac4cc666db68088a9599ba69f8d85f7af60b9513f5865"
+            }
+          ],
+          "name": "Item_GifterText_Random"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "\u0003%giver%\u0001 has opened a package!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f0f5141f51bb1285d36501cba0dd7c4067bd6b0047db7af9f06e1c5187d7fe2f",
+              "oldValue": "0063d5377ba0f7882e128ec83b64fb1919a0ee459fcf72288855b9976f143c32"
+            }
+          ],
+          "name": "Item_GifterText_SelfOpen"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": " \u0003%s1\u0001 has given out a gift!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b5dae200582de5bd5aabf57d1d132d223fefe90fc0d4537cdb2310bd216016fd",
+              "oldValue": "db46c32d21c502a1099f112b4945b29dbc09cc310744653d1a3bf1002abfbe3a"
+            }
+          ],
+          "name": "Item_GiftsSent1Anon"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": " \u0003%s1\u0001 has given out a gift, delivered to \u0006%s2\u0001!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "33b522a62ec0f7f4e187f0ab4cc7ad929521839ab544a35144c9e25d380da71f",
+              "oldValue": "36a35ad60f088210a565c33ace276b8d9e67d42ff55513980be1542866c70503"
+            }
+          ],
+          "name": "Item_GiftsSent1Name"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": " \u0003%s1\u0001 has given out \u0006%s2\u0001 gifts!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "9d86212255b6094cee145a16a8beab8f514b4898d5a954b49e811c0075e74eff",
+              "oldValue": "b054e67e30230d4d0c39250efa4b68424d8cb4c5257fb450cf379afcd44a97b4"
+            }
+          ],
+          "name": "Item_GiftsSentMany"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": " \u0006You got a gift from %s1\u0001!\u0001 The gift is now in your inventory waiting to be acknowledged."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0231d7feb924f409bd6c2c114af5f509be1515b8648d53ef22a9a2a082447df6",
+              "oldValue": "28425dafdadbb4a4d61157b2b8bd559448a6a342cd835efb691776aa6afba86e"
+            }
+          ],
+          "name": "Item_GiftsYouGotGift"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": " Your gift was delivered to \u0006%s1\u0001!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "eeeb97fbafa628238ab6cfee9e9f87da3a4c7e27273fb640f168ee3f80378e68",
+              "oldValue": "6a655613919b5c0bf89ee35805fc46c70d76da8312592d85144895a3a7007842"
+            }
+          ],
+          "name": "Item_GiftsYouSentGift"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "408d26aabf58540042c4d503c6195f555506262f9404f84764402efbbaa77361",
+              "oldValue": "165eda7ea070fa0562274457961482aa4fd585222517e36362676df6e5050908"
+            }
+          ],
+          "name": "Item_NeedSpectators"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c2991d9bccaf58cdde5910818b869ce5fbbf13c2d9ab73c9509c6e67b48dfbf4",
+              "oldValue": "3891126ee59ca9d13d014fb1f2c19c7664f87ac8b5119bc2d959a0f2a30e306c"
+            }
+          ],
+          "name": "Panorama_Overwatch_Tooltip_p1"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "...and 1 other generous player!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "a748df149ce1bd305c323049845a807177d18dd9cc60c1ed28b65ce2e035f6b8",
+              "oldValue": "55908bf53e1b285d75e4486c6b93ae63dbfb1f42c5b318463899ee35b8ab0634"
+            }
+          ],
+          "name": "SFUIHUD_GiftDrop_AndOtherPlayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "...and %s1 other generous players!"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "11353422208a8d910db00391d163c86f3b2dea97c4e4ee462d26aa65deb60f67",
+              "oldValue": "e408165bdc50c5562d39fa4fede2d9da183783141a7c7a72ca51d15183e77610"
+            }
+          ],
+          "name": "SFUIHUD_GiftDrop_AndOtherPlayers"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<font color='#e3e3e3'>%s1 gifts</font>"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "90510ce0325cee4d3463fd4049c6870c5ccf44aa7dd450e4a81227311fcfd89d",
+              "oldValue": "85aecd951b62229fe3cf8f418c59622d9d8daaaeb5f9001f5149d1dff27f5d9b"
+            }
+          ],
+          "name": "SFUIHUD_GiftDrop_GiftAmountFormat"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "In the last %s1 hours, 1 gift was given by..."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "384c2173f3bb361ab8fcf169a8c09b0494936316da0d18e73637afcf61983f4c",
+              "oldValue": "995516bc0c92f69424501ca8fef12b651a7a23f3e0474ec8f012b0c16ae50213"
+            }
+          ],
+          "name": "SFUIHUD_GiftDrop_GiftGivenLastXHours"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "In the last %s1 minutes, 1 gift was given by..."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b60d2c39526e34f042febfa7e55fcd409ed68a35c2d8ec25aa03223109bb6121",
+              "oldValue": "4171c51911c723badaae8032f930aa9357d89910658051567897ef4ff370a86b"
+            }
+          ],
+          "name": "SFUIHUD_GiftDrop_GiftGivenLastXMinutes"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "In the last %s1 hours, %s2 gifts were given by..."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "4409b67838a122803095a5acdc57dbae64c270dd83079188ff4db8e33185465a",
+              "oldValue": "9b243ff2438955a4d6d2ca5822a9d911572ee9019815835d5b21a7f0ec331035"
+            }
+          ],
+          "name": "SFUIHUD_GiftDrop_GiftsGivenLastXHours"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "In the last %s1 minutes, %s2 gifts were given by..."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2f46fa1f4222b40bc9e55af6fe51ab9a19630ad640764cedb90373ff8ae6aee1",
+              "oldValue": "f1be1ef44f61367772dcf4dc6307f91ce8a9da2e8151eed34b472a23e4ef31cf"
+            }
+          ],
+          "name": "SFUIHUD_GiftDrop_GiftsGivenLastXMinutes"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "%s1%s2</font>"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0f5e35d93c7a23ed275dc216289c26ca841fb47e44a93222c583a169a88fdf35",
+              "oldValue": "abe07b704c086557117f230a1a7b5c6e06526e208e28a2eabb82fb55e242cd35"
+            }
+          ],
+          "name": "SFUIHUD_GiftDrop_NameGiftGiverFormat"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<font color='#e3e3e3'>1 gift</font>"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "eb0a62c87a508f726f81833fed5453f4560c2b7b9cf6e1eabec451efdb03bb8c",
+              "oldValue": "3f846ae5b3f7c665b41231576f9d70de56c119eb5f0779e67efc4350d677b894"
+            }
+          ],
+          "name": "SFUIHUD_GiftDrop_SingleGiftFormat"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d448882a02da82224a19f8e842c89740e2535f8bfcc6b2d83573625fd33c2638",
+              "oldValue": "7a431336fced7e34b7cc8670004205fd37c8ed0fda7e64cd1a04864a272f1fde"
+            }
+          ],
+          "name": "SFUI_BuyMenu_CanOnlyCarryXGrenades"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2c2d0e9071fa3f25f48216ab442777a0269a30af55543c7453cbc4ae5aa53f89",
+              "oldValue": "7ac1fe8e3c7fe83d31ca67150bfdebe7a088a0320938bc244a225e6ea636cc5f"
+            }
+          ],
+          "name": "SFUI_BuyMenu_MaxItemsOfType"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "eded183bb00674fbc5814dfdfddce720cb53bdfbcfe523d52c4dd80e1ca63f38",
+              "oldValue": "faaf80eb56bba690bda51e5f58097e4917abebae3a54de661bc5e749562d9333"
+            }
+          ],
+          "name": "SFUI_CooldownExplanationReason_ConvictedForBehavior"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c058e2d37ccb1637eecd2110f4f418bdd4ceb65907e7c393dc1115ca3c56a36a",
+              "oldValue": "14c2f4387fcf404f25cb5059b3861100a84fc12fb60825fe1b8913b2aaff0cb9"
+            }
+          ],
+          "name": "SFUI_CooldownExplanationReason_ConvictedForCheating"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "50eceffd7d38692bcbeeb133e03bcec7fbccec4eb552f144971411839960cff3",
+              "oldValue": "ec24d4ac5b8b70a01279df4ac1d15e70737118aebefbacf43a4c85b6b7e1c59c"
+            }
+          ],
+          "name": "SFUI_CooldownExplanationReason_VacNetAffiliate"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "770f0247c8227bc6577b21c1bed17875f99415a2af39e00930df90493e42d8d5",
+              "oldValue": "88f95f77da10282830e85bb5641a95e1d7286705d28553c5ea3630070a69b348"
+            }
+          ],
+          "name": "SFUI_CooldownExplanationReason_VacNetCulprit"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2848a6092f567823829e51ca5370720fabfb14cd1f838a8e7e972f363dd63f61",
+              "oldValue": "5a4449c8ef4263cdb94eb156b6865c4a2e4ef0e5efe4375adf7d2fc9ef45b5b5"
+            }
+          ],
+          "name": "SFUI_ItemInfo_FinishStyle_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4b197839ae1d57c9ef29dff777ed71ec6ab55a007cf14dd9db4f946d92a270d4",
+              "oldValue": "104940720beff92bcf2dfd46624902e7400b49cfdd546899da5485dcbcf2fc31"
+            }
+          ],
+          "name": "SFUI_ItemInfo_WearAmount"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Hide Avatar Images and Customized Items",
+              "oldValue": "Hide Avatar Images"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "a1f84a58c03bfc1ccb385007edec5a7abe5c933eece0b6d962aa38aa2f9d5b14",
+              "oldValue": "b7934e174f5978cf14398a79177072d53a4b4346159bf13afae58b5db4185bba"
+            }
+          ],
+          "name": "SFUI_Settings_HideAvatars_Title"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Display Network Connection Issues"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0a38cec4594fc266cf71114ced427732139a133fd452f3672d8aeea487c0a8c2",
+              "oldValue": "9d70b1b0a23d7d155d993ec045f078c43f32033e4c771b0372e0e0cd76db29f0"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ProblemAutoShow"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Automatically"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "edc900d57d8289d7e5914f6c39fbf4b73a5c7885f380a0901a6b512d49a2d37a",
+              "oldValue": "15a832eb98a048264f42ed41eb52b86ebb07e9e5b27c78678e458711259f19f5"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ProblemAutoShow_Auto"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Allows the game to automatically display network connection issues indicator in top-right corner when player is experiencing high packet loss or general network instability."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "333ec1a0e65e74714a407b68ecbecce59d2a59c496ac10c36e214b9adc816a4c",
+              "oldValue": "0acc7dedce6ebde50e27af33cb4b4c4510e035239a9b772a5d07e3f7872c1716"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ProblemAutoShow_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Disabled"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "e06b8956dd34c9f3ff293e41e7aa644ef7460de792ad5f7ce867cb8e357ca053",
+              "oldValue": "3bc3d99d065af3cfa653032b4e2dd6c6cc2c7138494f379836c3346578c94ed5"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ProblemAutoShow_Off"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b16afe39d242f3dd60a266524027cd47f58d5969bb223fae4653db3b60fda142",
+              "oldValue": "6f1dca5316259a476efd94a802479ed1cebb812f78eef5fbdd6feb61f86ab268"
+            }
+          ],
+          "name": "SFUI_Settings_Spec_InterpCameraSpeed"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53a3b6fe2fb856309db059492d945ff7f7eae671e86225f1029146831dcb5b16",
+              "oldValue": "a736de186fa8199cb6494d114703ec3cbb2cb9b04e906a4477a4a2d4a9be17c2"
+            }
+          ],
+          "name": "SFUI_Settings_Spec_InterpCameraSpeed_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4a5caba1c34f8e15bc475682a931fcfa5198f6dcb52f48682fcef3fee0178ab5",
+              "oldValue": "1509098da0874d8344fef5bfcebd19162e4dfdb3234b0443eaf11e06d486f2d3"
+            }
+          ],
+          "name": "SFUI_Settings_Spec_InterpCamera_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "07f28dcf390439c72bf2bfa4ab673a421fc150686886b195b7ea66601a8ff878",
+              "oldValue": "bf7bf0f3aba5e529d37019d0b28a0c696991654325253a84b30b9aa9443097ce"
+            }
+          ],
+          "name": "SFUI_Spectator_Use_Raw_Number_Keys"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b35e55bf1d3a4adcfa29598d1af94e91fd9642914bf2aed52e0aa25b8573a382",
+              "oldValue": "9e625fcec778ff4155c699b9ce02017acb200b9ee8acf8ba2a592f74862e11cc"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ffd13ade4ac3c4ff9a28f4cdfaeed416dfdcbde1172251fa2797971b128147aa",
+              "oldValue": "fc1f32e25db84bc43831f3adcc80f1adfa21e83d0003fdb7134adfbabd802851"
+            }
+          ],
+          "name": "buymenu_groundweapons"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7af26bf13954f35d42dd433100f0ed7ab14c0801d9fc24079b2a74bf0b7d80c1",
+              "oldValue": "a86e551387dd464b581e5f63ca7cd52d8c1aff2fabeaaf00ddfa08883f01e1f9"
+            }
+          ],
+          "name": "settings_grenadecrosshair"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "767e45d32d381f21becbf2e08f5256c58c5e06454922adb30b5466a8655291d9",
+              "oldValue": "b8f5f757e3fa7f70e5310371795c5e35504442e93ebfcaeed471f374681cb4a8"
+            }
+          ],
+          "name": "settings_grenadecrosshair_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ae101214f014afff0a1ab3c061721760efdd1c26eebdfa68bf2c00854b58542",
+              "oldValue": "c3e2ee14c22cee258c2f1a031982fe3515614fc644cf78d5ede7e1cd23a074de"
+            }
+          ],
+          "name": "settings_spectator_section"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Customize which performance metrics such as FPS, ping, and packet loss are shown in the HUD.",
+              "oldValue": "Customzie which performance metrics such as FPS, ping, and packet loss are shown in the HUD."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "6e777fc6a04c094a75144475f1410c67d7c0bc7563aac126b6b80a87df512fbc",
+              "oldValue": "947611bcb20c9ee738b82b9e0da1806e5dc45c37dade8707c9c7303218bc453a"
+            }
+          ],
+          "name": "settings_telemetry_section_info"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "14191516",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "14225153"
+}

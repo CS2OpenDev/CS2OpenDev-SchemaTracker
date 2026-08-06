@@ -1,0 +1,196 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_hud_telemetry_net_detailed",
+        "cl_ticks_net_print_threshold"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "4.000000",
+              "oldValue": "1.000000"
+            }
+          ],
+          "name": "cl_clock_recvmargin_window"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,userinfo",
+              "oldValue": "developmentonly,clientdll,userinfo"
+            }
+          ],
+          "name": "cl_interp_ratio"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "SFUI_Settings_HudTelemetry_NetworkMissedTicks",
+        "SFUI_Settings_HudTelemetry_NetworkMissedTicksPoor",
+        "SFUI_Settings_HudTelemetry_NetworkMissedTicksPoor_Info",
+        "SFUI_Settings_HudTelemetry_NetworkMissedTicks_Info",
+        "SFUI_Settings_HudTelemetry_NetworkQualityDetailed",
+        "SFUI_Settings_HudTelemetry_NetworkQualityDetailed_Info"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Show network loss / misdelivery"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "20eb735c3bcf27f032055c1f978eecc325225ef18ee918a778c6a10226da9a06",
+              "oldValue": "c18ef93efc5d676c758963638280ca20b2f76eb874d677c134753a1defe20809"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdelivery"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Network misdelivery warning threshold"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "e0ee07b97a9b76d10cdc205f6ce29876c39a9966fd41ea6971afbf58f1a3a5ae",
+              "oldValue": "1167f87fa6474e42d20f7b8406571cf44fef312a5739a049be0ac66a45ce7b7e"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdeliveryPoor"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "When the percentage of network frames misdelivered exceeds this value, conditions are considered 'poor'."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "dcc457504011e039fce160c2d2c590c87f0308b764882660234db83b48534324",
+              "oldValue": "97a911c97664e57e178482788b42b2e85fcbe7cf6fb368493f088dc081b440cc"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdeliveryPoor_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Shows the percentage of network frames lost, delivered out-of-order, or jittered excessively.\nThe rate in each direction (upstream to the server and downstream from the server) is displayed.\n\nNetwork misdeliveries can often be automatically corrected.  This number will only include misdeliveries that negatively impact gameplay."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "a921964153bb69fdbed3a5c86c732933a45a49884bfaee4b3294bf6ad189d240",
+              "oldValue": "8d59eac7322057dad5340b093c8113838b595c3033d45cda74442830432ab198"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdelivery_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Buffering to smooth over packet loss / jitter",
+              "oldValue": "Buffering to smooth over packet loss"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "58a0b1fe7dc9d581dd3d1f589e2ea50e8adbcb00a45396114215107b0c7403d9",
+              "oldValue": "f33156fc90ba1dbaeb311384b9bfc43a452c3ee7775374ae0b4b87724c43f97f"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "1 tick",
+              "oldValue": "1 packet"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "76a8ca6a08e956acc5aea53b0c2286096a5387e90561ee3a78c4ae050dad42ed",
+              "oldValue": "cfba2cdc37eda4364653f52e37d0e0ff2c9b01555cc0d61a90cb2548f7adb94f"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "2 ticks",
+              "oldValue": "2 packets"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "034fc79a4460bfbf96fb1203f5a4a535633df8c7798ec323cb4df0cea09df378",
+              "oldValue": "96b4a925881207235a9055383e809f91ca93bc403bd0d948dd92995eb7fc8aeb"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Buffer snapshots from the server and commands from the client.\n\nThis reduces the rate of missed ticks but increases your effective ping time.",
+              "oldValue": "Buffer snapshots from the server and commands from the client.\n\nThis decreases the amount of stuttering caused by packet loss, but increases your effective ping time."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "573d44894d437bf06277c6dd45356021a9c000539d5bfd1c4e899ef1f6e07a3a",
+              "oldValue": "af80d90326418009184aa35061483b3b90899123d40c529ae9904c8677acaf20"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering_Info"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "16333861",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "16382602"
+}

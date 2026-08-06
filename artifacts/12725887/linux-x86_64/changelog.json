@@ -1,0 +1,171 @@
+{
+  "families": [
+    {
+      "added": [
+        "libserver.so/CLogicEventListener",
+        "libserver.so/CTriggerHostageReset"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "10"
+            }
+          ],
+          "name": "!GlobalTypes/CDecalInfo"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "16",
+              "oldValue": "15"
+            }
+          ],
+          "name": "libclient.so/C_BaseCSGrenadeProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "11"
+            }
+          ],
+          "name": "libclient.so/C_C4"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "18",
+              "oldValue": "15"
+            }
+          ],
+          "name": "libserver.so/CBaseCSGrenadeProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "80",
+              "oldValue": "78"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "48",
+              "oldValue": "47"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "39",
+              "oldValue": "38"
+            }
+          ],
+          "name": "libserver.so/CHostage"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_deathnotices_show_numbers",
+        "cl_graphics_driver_warning_dont_show_again",
+        "cq_adjust_deadzone_ticks_faster",
+        "cq_adjust_deadzone_ticks_slower",
+        "cq_buffer_bloat_msecs_max",
+        "csm_cascade0_override_dist",
+        "csm_cascade1_override_dist",
+        "csm_cascade2_override_dist",
+        "csm_cascade_viewdir_shadow_bias_scale",
+        "csm_max_dist_between_caster_and_receiver",
+        "csm_viewdir_shadow_bias",
+        "r_aoproxy_min_dist",
+        "r_aoproxy_min_dist_box",
+        "r_csgo_viewmodel_csm_pushback_distance",
+        "r_csgo_viewmodel_csm_pushback_distance_d16",
+        "r_decals_overlap_threshold",
+        "r_icon_csm_pushback_distance",
+        "r_icon_reload_map",
+        "sc_aggregate_fragment_merging",
+        "sc_aggregate_gpu_culling_conservative_bounds",
+        "sc_aggregate_material_solo",
+        "sv_disconnected_players_cleanup_delay",
+        "sv_reliableavatardata",
+        "sv_standable_normal",
+        "sv_walkable_normal"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0",
+              "oldValue": "1"
+            }
+          ],
+          "name": "cq_min_queue_size"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,clientdll,replicated,clientcmd_can_execute",
+              "oldValue": "developmentonly,gamedll,clientdll,replicated,clientcmd_can_execute"
+            }
+          ],
+          "name": "debug_hltv"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "1",
+              "oldValue": "0"
+            }
+          ],
+          "name": "r_csgo_shadow_map_allocation_failure_policy"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "cq_adjust_deadzone_ticks"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12693482",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12725887"
+}

@@ -1,0 +1,496 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/CBoneConstraintDotToMorph",
+        "!GlobalTypes/CCSGameModeRules",
+        "!GlobalTypes/CCSGameModeRules_Noop",
+        "!GlobalTypes/CPulseExecCursor",
+        "!GlobalTypes/CPulseTurtleGraphicsCursor",
+        "!GlobalTypes/CTestDomainDerived_Cursor",
+        "!GlobalTypes/C_OP_RemapSDFDistanceToVectorAttribute",
+        "!GlobalTypes/C_OP_SDFConstraint",
+        "!GlobalTypes/C_OP_SetGravityToCP",
+        "client.dll/CCSGameModeRules_Deathmatch",
+        "client.dll/C_PlayerVisibility",
+        "server.dll/CCSGameModeRules_Deathmatch",
+        "server.dll/CPlayerVisibility"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "1",
+              "oldValue": "0"
+            }
+          ],
+          "name": "!GlobalTypes/CPulseGraphInstance_TestDomain_Derived"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "18",
+              "oldValue": "16"
+            }
+          ],
+          "name": "!GlobalTypes/CTakeDamageInfo"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "5",
+              "oldValue": "4"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_BoxConstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "6",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_EnableChildrenFromParentParticleCount"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_MaxVelocity"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "8",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/C_OP_RemapSDFDistanceToScalarAttribute"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "105",
+              "oldValue": "108"
+            }
+          ],
+          "name": "client.dll/C_CSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "185",
+              "oldValue": "186"
+            }
+          ],
+          "name": "client.dll/C_CSPlayerPawnBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "200",
+              "oldValue": "203"
+            }
+          ],
+          "name": "server.dll/CCSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "182",
+              "oldValue": "184"
+            }
+          ],
+          "name": "server.dll/CCSPlayerPawnBase"
+        }
+      ],
+      "family": "classes",
+      "removed": [
+        "!GlobalTypes/CPulseTurtleGraphicsLib",
+        "client.dll/C_PointHMDAnchor",
+        "client.dll/C_PointHMDAnchorOverride",
+        "client.dll/C_PointHintUIArrowHighlightModel",
+        "client.dll/C_PointHintUIButtonHighlightModel",
+        "client.dll/C_PointHintUIHighlightModel",
+        "client.dll/C_PointHintUi",
+        "server.dll/CPointHMDAnchor",
+        "server.dll/CPointHMDAnchorOverride",
+        "server.dll/CPointHintUi"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_debounce_attack2",
+        "mp_dm_healthshot_killcount",
+        "phys_use_position_based_toi_test",
+        "player_competitive_maplist_2v2_10_0_1FB74A9F",
+        "player_competitive_maplist_8_10_0_1FB74A9F",
+        "r_csgo_render_dither_scale",
+        "r_csgo_render_post_bloom",
+        "r_csgo_render_post_colorcorrection",
+        "r_csgo_render_post_film_grain",
+        "r_csgo_render_post_mirror_horizontal",
+        "r_csgo_render_post_mirror_vertical",
+        "snd_calc_distance_disable_pathing",
+        "snd_calc_distance_visualize_paths",
+        "sv_gameinstructor_enable",
+        "sv_suppress_friendlyfire_decals",
+        "tv_enable_dynamic",
+        "ui_mainmenu_bkgnd_movie_ECEDB29C"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release",
+              "oldValue": "gamedll,replicated,release"
+            }
+          ],
+          "name": "mp_dm_bonus_length_max"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release",
+              "oldValue": "gamedll,replicated,release"
+            }
+          ],
+          "name": "mp_dm_bonus_length_min"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release",
+              "oldValue": "gamedll,replicated,release"
+            }
+          ],
+          "name": "mp_dm_time_between_bonus_max"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release",
+              "oldValue": "gamedll,replicated,release"
+            }
+          ],
+          "name": "mp_dm_time_between_bonus_min"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            }
+          ],
+          "name": "net_async_clientconnect"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "reference",
+              "oldValue": "cheat"
+            }
+          ],
+          "name": "r_cubemap_debug_colors"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            },
+            {
+              "field": "flags",
+              "newValue": "reference",
+              "oldValue": "cheat"
+            }
+          ],
+          "name": "r_shadows"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.000000",
+              "oldValue": "0.500000"
+            },
+            {
+              "field": "flags",
+              "newValue": "reference",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "r_ssao_bias"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            },
+            {
+              "field": "flags",
+              "newValue": "reference",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "r_ssao_blur"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.000000",
+              "oldValue": "30.000000"
+            },
+            {
+              "field": "flags",
+              "newValue": "reference",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "r_ssao_radius"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0.000000",
+              "oldValue": "1.200000"
+            },
+            {
+              "field": "flags",
+              "newValue": "reference",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "r_ssao_strength"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "developmentonly,initial_setvalue,performing_callbacks,defensive",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "sc_hdr_enabled_override"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "csgo_render_dither_scale",
+        "csgo_render_post_bloom",
+        "csgo_render_post_colorcorrection",
+        "csgo_render_post_film_grain",
+        "csgo_render_post_mirror_horizontal",
+        "csgo_render_post_mirror_vertical",
+        "debugoverlay_draw_current",
+        "debugoverlay_force_respect_ttl",
+        "debugoverlay_ignore_source",
+        "debugoverlay_show_text_outline",
+        "hint_controller_use_hand_origin",
+        "hint_panel_fadein",
+        "hint_panel_fadeout",
+        "lb_allow_time_sliced_shadow_map_rendering",
+        "lb_bin_slices",
+        "lb_convert_to_barn_lights_falloff_match_point",
+        "lb_csm_cascade_size_override",
+        "lb_csm_draw_alpha_tested",
+        "lb_csm_draw_translucent",
+        "lb_csm_override_staticgeo_cascades",
+        "lb_csm_override_staticgeo_cascades_value",
+        "lb_csm_receiver_plane_depth_bias",
+        "lb_cubemap_normalization_max",
+        "lb_cubemap_normalization_roughness_begin",
+        "lb_debug_light_bounds",
+        "lb_debug_shadow_atlas",
+        "lb_debug_silhouette",
+        "lb_debug_tiles",
+        "lb_enable_baked_shadows",
+        "lb_enable_binning",
+        "lb_enable_dynamic_lights",
+        "lb_enable_envmaps",
+        "lb_enable_lights",
+        "lb_enable_shadow_casting",
+        "lb_enable_stationary_lights",
+        "lb_enable_sunlight",
+        "lb_low_quality_shader_fade_region_rescale",
+        "lb_max_visible_barn_lights_override",
+        "lb_max_visible_envmaps_override",
+        "lb_mixed_shadows",
+        "lb_shadow_map_culling",
+        "lb_shadow_texture_height_override",
+        "lb_shadow_texture_width_override",
+        "lb_show_light_fog_clipmap_cb_cost",
+        "lb_sun_csm_size_cull_threshold_texels",
+        "lb_tile_pixels",
+        "lb_use_ellipsoid_bounds",
+        "lb_use_illumination_silhouette",
+        "mat_tonemap_bloom_scale",
+        "mat_tonemap_bloom_start_value",
+        "mat_tonemap_csgo_bloom_scale",
+        "mat_tonemap_csgo_bloom_start_value",
+        "mat_tonemap_csgo_debug",
+        "mat_tonemap_csgo_force_accelerate_exposure_down",
+        "mat_tonemap_csgo_force_average_lum_min",
+        "mat_tonemap_csgo_force_max",
+        "mat_tonemap_csgo_force_min",
+        "mat_tonemap_csgo_force_percent_bright_pixels",
+        "mat_tonemap_csgo_force_percent_target",
+        "mat_tonemap_csgo_force_rate",
+        "mat_tonemap_csgo_force_scale",
+        "mat_tonemap_csgo_force_use_alpha",
+        "mat_tonemap_csgo_uncap_exposure",
+        "mat_tonemap_debug",
+        "mat_tonemap_force_accelerate_exposure_down",
+        "mat_tonemap_force_average_lum_min",
+        "mat_tonemap_force_log_lum_max",
+        "mat_tonemap_force_log_lum_min",
+        "mat_tonemap_force_max",
+        "mat_tonemap_force_min",
+        "mat_tonemap_force_percent_bright_pixels",
+        "mat_tonemap_force_percent_target",
+        "mat_tonemap_force_rate",
+        "mat_tonemap_force_scale",
+        "mat_tonemap_force_use_alpha",
+        "mat_tonemap_uncap_exposure",
+        "mp_dm_bonus_respawn",
+        "mp_tdm_healthshot_killcount",
+        "player_competitive_maplist_2v2_10_0_DBAEB932",
+        "player_competitive_maplist_8_10_0_DC064984",
+        "point_hint_ui_dpi",
+        "point_hint_ui_height",
+        "point_hint_ui_large_height",
+        "point_hint_ui_large_width",
+        "point_hint_ui_width",
+        "r_aoproxy_cull_dist",
+        "r_aoproxy_min_dist",
+        "r_aoproxy_min_dist_box",
+        "r_character_decal_renderdoc_capture",
+        "r_character_decal_resolution",
+        "r_cpu_light_binner_32bit_shadows",
+        "r_cpu_light_binner_allow_sun_shadows_on_spots",
+        "r_cpu_light_binner_default_spec_env_fade_time",
+        "r_cpu_light_binner_shadow_target_size",
+        "r_cpu_light_binner_spot_shadow_size",
+        "r_cpu_light_binner_use_gpu",
+        "r_directional_lightmaps",
+        "r_dither_scale",
+        "r_dopixelvisibility",
+        "r_draw_overlays",
+        "r_drawpixelvisibility",
+        "r_fallback_texture_lod_scale",
+        "r_fullscreen_quad_single_triangle",
+        "r_lightBinnerFarPlane",
+        "r_light_probe_volume_debug_colors",
+        "r_light_probe_volume_debug_grid",
+        "r_light_probe_volume_debug_grid_bbox",
+        "r_morphing_enabled",
+        "r_pixelvisibility_partial",
+        "r_pixelvisibility_spew",
+        "r_reset_character_decals",
+        "r_skinning_enabled",
+        "r_texture_lod_scale",
+        "sc_aggregate_gpu_culling",
+        "sc_aggregate_gpu_culling_conservative_bounds",
+        "sc_aggregate_gpu_culling_show_culled",
+        "sc_aggregate_gpu_occlusion_culling",
+        "sc_aggregate_material_solo",
+        "sc_allow_dynamic_constant_batching",
+        "sc_batch_layer_cb_updates",
+        "sc_cache_envmap_lpv_lookup",
+        "sc_check_world",
+        "sc_clutter_density_full_size",
+        "sc_clutter_density_none_size",
+        "sc_clutter_draw",
+        "sc_disableThreading",
+        "sc_disable_baked_lighting",
+        "sc_disable_procedural_layer_rendering",
+        "sc_disable_spotlight_shadows",
+        "sc_disable_world_materials",
+        "sc_draw_aggregate_meshes",
+        "sc_dump_lists",
+        "sc_enable_discard",
+        "sc_force_lod_level",
+        "sc_force_materials_batchable",
+        "sc_force_push_constant_update_every_draw",
+        "sc_force_translation_in_projection",
+        "sc_keep_all_layers",
+        "sc_lod_distance_scale_override",
+        "sc_mesh_backface_culling",
+        "sc_new_morph_atlasing",
+        "sc_only_render_opaque",
+        "sc_only_render_shadowcasters",
+        "sc_override_shadow_fade_max_dist",
+        "sc_override_shadow_fade_min_dist",
+        "sc_reject_all_objects",
+        "sc_shadow_depth_bias",
+        "sc_shadow_depth_bias_clamp",
+        "sc_shadow_depth_bias_state_override",
+        "sc_shadow_slopescale_depth_bias",
+        "sc_show_cs_skinning_stats",
+        "sc_show_gpu_profiler",
+        "sc_show_texture_visualizer",
+        "sc_skip_identical_rt_binds",
+        "sc_skip_traversal",
+        "sc_spew_cmt_usage",
+        "sc_throw_away_all_layers",
+        "sc_use_clear_subrect",
+        "sc_visualize_batches",
+        "sc_visualize_sceneobjects",
+        "screenmessage_show",
+        "snd_steamaudio_pathing_enablevalidationvis",
+        "snd_steamaudio_pathing_enablevis",
+        "ui_mainmenu_bkgnd_movie_B42D9173"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": [
+        "UpdateBinarySizes",
+        "hmd_anchor_rotate"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "11602641",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "11723163"
+}

@@ -1,0 +1,122 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "sv_hoststate_quit_syscall"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "2147483647",
+              "oldValue": "-1"
+            }
+          ],
+          "name": "r_texture_stream_max_resolution"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "archive,release",
+              "oldValue": "archive"
+            }
+          ],
+          "name": "sv_log_onefile"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "archive,release",
+              "oldValue": "archive"
+            }
+          ],
+          "name": "sv_logbans"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "archive,release",
+              "oldValue": "archive"
+            }
+          ],
+          "name": "sv_logecho"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "archive,release",
+              "oldValue": "archive"
+            }
+          ],
+          "name": "sv_logfile"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "archive,release",
+              "oldValue": "archive"
+            }
+          ],
+          "name": "sv_logflush"
+        },
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "archive,release",
+              "oldValue": "archive"
+            }
+          ],
+          "name": "sv_logsdir"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "release",
+              "oldValue": "developmentonly,defensive"
+            }
+          ],
+          "name": "log"
+        }
+      ],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12303607",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12312218"
+}

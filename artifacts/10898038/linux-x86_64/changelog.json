@@ -1,0 +1,65 @@
+{
+  "families": [
+    {
+      "added": [
+        "libclient.so/WeaponPurchaseCount_t",
+        "libclient.so/WeaponPurchaseTracker_t",
+        "libserver.so/WeaponPurchaseCount_t",
+        "libserver.so/WeaponPurchaseTracker_t"
+      ],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "gamedll,release,commandline_enforced",
+              "oldValue": "developmentonly,gamedll,commandline_enforced,defensive"
+            }
+          ],
+          "name": "sv_max_deathmatch_respawns_per_tick"
+        }
+      ],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "flags",
+              "newValue": "clientdll,release",
+              "oldValue": "developmentonly,clientdll,defensive"
+            }
+          ],
+          "name": "impulse"
+        }
+      ],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "10894923",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "10898038"
+}

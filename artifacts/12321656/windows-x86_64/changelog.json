@@ -1,0 +1,67 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "101",
+              "oldValue": "100"
+            }
+          ],
+          "name": "client.dll/C_CSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "194",
+              "oldValue": "193"
+            }
+          ],
+          "name": "server.dll/CCSGameRules"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "logaddress_token_secret",
+        "sv_log_http_record_before_any_listeners"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [
+        "logaddress_add_http",
+        "logaddress_add_http_delayed",
+        "logaddress_delall_http",
+        "logaddress_list_http"
+      ],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12312218",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12321656"
+}

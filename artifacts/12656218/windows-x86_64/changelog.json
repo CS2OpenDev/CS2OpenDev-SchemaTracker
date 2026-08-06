@@ -1,0 +1,124 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "58",
+              "oldValue": "57"
+            }
+          ],
+          "name": "client.dll/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "38",
+              "oldValue": "36"
+            }
+          ],
+          "name": "client.dll/CCSPlayer_MovementServices"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "78",
+              "oldValue": "77"
+            }
+          ],
+          "name": "server.dll/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "39",
+              "oldValue": "37"
+            }
+          ],
+          "name": "server.dll/CCSPlayer_MovementServices"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "debug_hltv"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "48",
+              "oldValue": "40"
+            }
+          ],
+          "name": "sv_max_change_offsets"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            },
+            {
+              "field": "flags",
+              "newValue": "gamedll,release",
+              "oldValue": "gamedll,clientdll,replicated,release"
+            }
+          ],
+          "name": "sv_usercmd_custom_random_seed"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "0",
+              "oldValue": "1"
+            }
+          ],
+          "name": "tv_record_immediate"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "cl_lagcompensation",
+        "cl_predict",
+        "cl_predictweapons",
+        "sv_client_predict",
+        "sv_force_transmit_ents",
+        "sv_unify_random_seed"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "12617548",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "12656218"
+}

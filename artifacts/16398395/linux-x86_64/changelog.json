@@ -1,0 +1,743 @@
+{
+  "families": [
+    {
+      "added": [
+        "libclient.so/CMapInfo"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "3",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/IKSolverSettings_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "1",
+              "oldValue": "2"
+            }
+          ],
+          "name": "!GlobalTypes/SolveIKChainPoseOpFixedSettings_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "65",
+              "oldValue": "64"
+            }
+          ],
+          "name": "libclient.so/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "17",
+              "oldValue": "12"
+            }
+          ],
+          "name": "libclient.so/C_PointWorldText"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "89",
+              "oldValue": "88"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerController"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "9",
+              "oldValue": "8"
+            }
+          ],
+          "name": "libserver.so/CMapInfo"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "16",
+              "oldValue": "11"
+            }
+          ],
+          "name": "libserver.so/CPointWorldText"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [
+        "!GlobalTypes/EIKEndEffectorRotationFixUpMode"
+      ],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "annotation_auto_load",
+        "cl_firstperson_legs_aoproxy",
+        "cl_hud_radar_background_alpha",
+        "cl_hud_radar_map_additive",
+        "cl_predict_body_shot_fx",
+        "cl_predict_head_shot_fx",
+        "cl_predict_kill_ragdolls",
+        "csm_bias_override_1",
+        "player_competitive_maplist_2v2_10_0_CCC21262",
+        "player_competitive_maplist_8_10_0_E5CC76A3",
+        "r_decals_additional_offset",
+        "sv_allow_annotations",
+        "sv_give_item",
+        "ui_inspect_bkgnd_map_9CA40421",
+        "ui_mainmenu_bkgnd_movie_9CA40421",
+        "ui_playsettings_listen_annotations",
+        "ui_playsettings_listen_grenades",
+        "ui_playsettings_listen_infammo",
+        "ui_playsettings_listen_infwarmup"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "false",
+              "oldValue": "true"
+            }
+          ],
+          "name": "cl_smoke_player_particle_effect"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "30.000000",
+              "oldValue": "0.000000"
+            },
+            {
+              "field": "flags",
+              "newValue": "developmentonly,defensive",
+              "oldValue": "reference"
+            }
+          ],
+          "name": "r_ssao_radius"
+        },
+        {
+          "fields": [
+            {
+              "field": "default",
+              "newValue": "true",
+              "oldValue": "false"
+            },
+            {
+              "field": "flags",
+              "newValue": "gamedll,clientdll,replicated,release",
+              "oldValue": "gamedll,clientdll,hidden,replicated,release"
+            }
+          ],
+          "name": "sv_damage_prediction_allowed"
+        }
+      ],
+      "family": "convars",
+      "removed": [
+        "player_competitive_maplist_2v2_10_0_12FCB095",
+        "player_competitive_maplist_8_10_0_CAE97738",
+        "ui_inspect_bkgnd_map_B0B70CFF",
+        "ui_mainmenu_bkgnd_movie_B0B70CFF"
+      ]
+    },
+    {
+      "added": [
+        "annotation_append",
+        "annotation_clear",
+        "annotation_create",
+        "annotation_delete_previous_node",
+        "annotation_load",
+        "annotation_reload",
+        "annotation_reload_language_file",
+        "annotation_save"
+      ],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [
+        "schema_enum:!GlobalTypes/EIKEndEffectorRotationFixUpMode/EIKEndEffectorRotationFixUpMode::Count",
+        "schema_enum:!GlobalTypes/EIKEndEffectorRotationFixUpMode/EIKEndEffectorRotationFixUpMode::LookAtTargetForward",
+        "schema_enum:!GlobalTypes/EIKEndEffectorRotationFixUpMode/EIKEndEffectorRotationFixUpMode::MaintainParentOrientation",
+        "schema_enum:!GlobalTypes/EIKEndEffectorRotationFixUpMode/EIKEndEffectorRotationFixUpMode::MatchTargetOrientation",
+        "schema_enum:!GlobalTypes/EIKEndEffectorRotationFixUpMode/EIKEndEffectorRotationFixUpMode::None"
+      ],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "Attrib_KeychainSeed",
+        "CSGO_Collectible_MapTokenBasaltCS2",
+        "CSGO_Collectible_MapTokenBasaltCS2_Desc",
+        "CSGO_Collectible_MapTokenEdin",
+        "CSGO_Collectible_MapTokenEdin_Desc",
+        "CSGO_Collectible_MapTokenPalais",
+        "CSGO_Collectible_MapTokenPalais_Desc",
+        "CSGO_Collectible_MapTokenWhistle",
+        "CSGO_Collectible_MapTokenWhistle_Desc",
+        "GameUI_PredictBodyShotEffects",
+        "GameUI_PredictBodyShotEffects_Tooltip",
+        "GameUI_PredictHeadShotEffects",
+        "GameUI_PredictHeadShotEffects_Tooltip",
+        "GameUI_PredictKillRagdolls",
+        "GameUI_PredictKillRagdolls_Tooltip",
+        "LongDog",
+        "SFUI_Map_de_edin",
+        "SFUI_Map_de_palais",
+        "SFUI_Map_de_whistle",
+        "SFUI_OfficialDatacenterID_49",
+        "SFUI_Settings_HUD_Radar_Background_Alpha",
+        "SFUI_Settings_HUD_Radar_Background_Alpha_Info",
+        "SFUI_Settings_HUD_Radar_Map_Additive",
+        "SFUI_Settings_HUD_Radar_Map_Additive_Info",
+        "annotations_grenade_info",
+        "annotations_grenade_info_guides_off",
+        "mainmenu_debug_lobby_of_five",
+        "practicesettings_annotations_button",
+        "practicesettings_annotations_tooltip",
+        "settings_damage_prediction",
+        "settings_damage_prediction_info"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "41d6fb60d481acee9f726a7cce2cab01a881b77671e96ba66872fce35b6fa009",
+              "oldValue": "bb6ffc6938ea514fb21e6a3f6e7f86565a0937cf38dbc2c75aaf69ddcf7ece73"
+            }
+          ],
+          "name": "CSGO_Purchasable_XpShop_Ticket_Desc40_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ac274b3cc39e7e3ef150de7eec5c63d6b4bfff123154f9669fe87b84c3e3d0b",
+              "oldValue": "e909201ed171d88cac15478479d16945635795297d55dab1b828cf85f4343534"
+            }
+          ],
+          "name": "GameUI_SystemInfo_Attention_Low_System_Memory"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9a5be56affc02b9719dc7f0386381a35532e91c4cfb7762ee2f248d4de150d1f",
+              "oldValue": "01c67049d379caa7e8fb32095b5654438a9bd42a9c66e4b4947e16ac643f6684"
+            }
+          ],
+          "name": "SFUI_CONNWARNING_Bandwidth_Choking"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "040b18d5829ea2c5a2db9395f6718126d129be90c03b0388073eddf82ff41a0a",
+              "oldValue": "20eb735c3bcf27f032055c1f978eecc325225ef18ee918a778c6a10226da9a06"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdelivery"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "69d86192a976fc27dd32620dadbf1a0e33a814aba0d98954652dedc4d4e96da0",
+              "oldValue": "e0ee07b97a9b76d10cdc205f6ce29876c39a9966fd41ea6971afbf58f1a3a5ae"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdeliveryPoor"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "29b99ba1cc0c67b1e42a23b4acacf8abfe7ab10feee71f7e4ca05f59bef6762f",
+              "oldValue": "dcc457504011e039fce160c2d2c590c87f0308b764882660234db83b48534324"
+            }
+          ],
+          "name": "SFUI_Settings_HudTelemetry_NetworkMisdeliveryPoor_Info"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2028bf99ab7acf0f3b59262e478238998e2c3be40f08fd8f8de352263a9ae8cf",
+              "oldValue": "58a0b1fe7dc9d581dd3d1f589e2ea50e8adbcb00a45396114215107b0c7403d9"
+            }
+          ],
+          "name": "SFUI_Settings_Network_ExtraBuffering"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cf9e8991c32480278dae4175a912787089807a2bd69988b0caefc5dbd65f3bfb",
+              "oldValue": "f5241b75acbce55ffb8a0893cebe2d248f962d805252a9ce194a713960f5dbf2"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersR:p{players}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "27031cc2a63a0cb10f28de20f5cff35b1e1145d5caa6915686194470d57ae2e6",
+              "oldValue": "7cd7b56511dad65a9c95b117d4b2ef4509ba524fc2627d06c06a53cf66e07d29"
+            }
+          ],
+          "name": "SFUI_UserAlertNoteType_LowPlayersY:p{players}"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "668a773b6036b9a6ca402c85c8c4b9f47592407455bd6ca0bea60b4f2a8ab3d7",
+              "oldValue": "483cd69d843bee59b3f88d8972be0f1175559844d55c7b58eb3239b8bd2088ee"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_aleksib_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "60060b5ae28f29706df9d6146562f7205a84314f39e84f58edb0c9b939fc34e7",
+              "oldValue": "03f06e9d49714c4bba91be914f6295a2753f546747cc7b2d6f6255875d9f7ef7"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_aleksib_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac628f5f531ee821e4eb693c4a0f8f0ec23972d0ca010ca1f42c65841387c392",
+              "oldValue": "5505278acbeacb9c6ca576fcc804247f117606824f5f35e917247059ff837932"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_aleksib_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a3a8280fb967696a8992abafdf69c644bab0c3af05caa836299bf0439e31d78b",
+              "oldValue": "f52d59c654fab6101ccf4ed0278f077a5a94187158fb52e638f2e10cc8d8de8a"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_aleksib_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3cb706b7241ab72825cb8ebd8455a8430d3e8baef17d4fcddad8c88f80360dc0",
+              "oldValue": "ecfe66f4090421a86fe5f581543e4f401efa5cf56306b077b6f9b9a916ab13a8"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_b1t_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6278fd9bce172d9937f2000e684bb265700a35eef1ee5b0f41c366702034f80c",
+              "oldValue": "93f8a601423d50157e0e1caa417c8a0fc1b5e85e0f4915c68a3c9625ebffc91a"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_b1t_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "617e0c295abcea31979c64d0b0a7612436a448dd014382ac2b3babf09e8f23dd",
+              "oldValue": "e7471ad086be932370bd9ab0d6f71d736dc1e5fbcbbcdd20555acc2e89e4c896"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_b1t_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ab1d33afec988e0eab2a8fad7b8b65d7ffa4c39febfdbf5c7851bb89815a4c1c",
+              "oldValue": "7763753df3ee1b3668044395f2517026530a555c5e07ffcd430305389491c0a2"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_b1t_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1e628d69b89acc7a8b68abb0a31ea0ef2022fa7719f0b7f8ad3538a38a51fa72",
+              "oldValue": "67303cfb14ab2caaf65a963172e6b4b5f31e72997a4e3cf3f8bc3847765bf155"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_im_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "0a7532b2743903401daa6baccd105f7f9edd5091faa4cfdf15d4e17943ccee25",
+              "oldValue": "b26c8df48e72efcf565d675d41377c0e79bb2d94d51799f87b60324e906d902c"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_im_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "eaf4b2959b6e69cd38529c074a3de52c3dde3b3b3d34d0b8bc20386ba9cc25cf",
+              "oldValue": "6d81d4f2d2f8e86a927789ee130d7f444739d4ff0400474f0adb0c3be2552592"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_im_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "35484b51551ccad2a9626dbdb90bc7d62f4fd461ac66086f13aba3389c9cd99d",
+              "oldValue": "3b267bcc19c44e27a0a898fa7649716c00c3f77b3fcafe67f9a0598dca25bec4"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_im_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ccf1d0fb32d322e803fd1d16662ec232174fa3a2b25bc1649cfad72a1e488c23",
+              "oldValue": "edc9b68390eb579c47bfcb0b64f62395800469a79f4a9f83459b6883c0d0d2dd"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_jl_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1753876332b1d69bc0782e2514fc999bd5b1f3c424dd47e0f4b6b36d33a7ef78",
+              "oldValue": "7955b8978600c7129d59c2f740fb577411ea92b63d2291db40bc339e556db2b9"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_jl_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9b2f1f76aac833472a0903e117d4016cff47e5fafb5f7f18ef7547e4f9be086b",
+              "oldValue": "96ceaa66d1b761efcb08c96972ebfcfa774c20a10dc5f8fb3c2213186ae5e69a"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_jl_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ca57eb4fa95696d80905c8fb2d34728edaff99a17af0cdfc01e323320f833711",
+              "oldValue": "6f5596a6c3bcdb83642fe915447ab690736d40593e813cc383ad188fe76ef7f5"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_jl_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9bae5599199099bc9e1f1f2529384a5312a6686cd7bf1a878f0952e174bc2ff4",
+              "oldValue": "208f0a75adf562cf5e27a862a37daa2c6b56b61d97aad4a9d2f78e244f20a8d9"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_w0nderful_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ae6c1e8e0238b0c871ce20eb1d76caa1f7383d1ecbc8c1a932ecf1ee6d32b146",
+              "oldValue": "fabe9f0eb64d8354b47ee39599719380e5bdb87bd5e3f08f398b52a777100269"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_w0nderful_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cb1838865206900737ebb4fd40479d8a9ebb7b01c51f690609edf59ff84b0cb4",
+              "oldValue": "0c0d936d3d9cc961a5e06e9356a0c15bd5db87014cd235a7529e1607e17dd251"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_w0nderful_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "513c23147482c73eb37ea70195d5434bfbc9e3dea950cf640cb3d4cc029c7545",
+              "oldValue": "f76b8f3ed0ddcf687b52311e21cc9f7e3cc7bc6ce0f32b0abf26d4bcb690151e"
+            }
+          ],
+          "name": "StickerKit_cph2024_signature_w0nderful_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f06c28a696fae3f19c8ab326a58a2384190b814f241f71764818cc6bdce19f8a",
+              "oldValue": "19228edd6d52d8df346b0b1c16bcceae8b6163935e834bb0ddbe7b639c320746"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_aleksib_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f0608b163617ea82aff5b262bb8e330efb4f63b1091c4d581f47c509ab2e7959",
+              "oldValue": "48c816800c05ddc421a35ada779032799a5448b9674961110bda90d5a1a9db20"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_aleksib_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "64fff7667d5128df91a1436b798f925930a3bdf53aa2e3b41706fb97ff90c3bb",
+              "oldValue": "1ccaddb350eb905d4396588673e498d2d2336f42716df772593e8aec2c59cb5c"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_aleksib_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d83f2860b4c80701bab90e86c0bec582b3de138521220e6d48503598dbd4f301",
+              "oldValue": "b8dd92a62fa597cc72927bd022352b976527789b190f84a6c63db4686997c357"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_aleksib_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c91d9a169097c9c26b8b1e4e47c29f67743d3483d1ad0e8ba03385c2248bdfc0",
+              "oldValue": "aa0eac58c56bf9077e6788bcc0ea5cb4dda9cc486b0536f6edc4355aca703ef0"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_b1t_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "48c46de22303272598341d80d9a3c2e502512405a476b5fa82f4e34eae30b347",
+              "oldValue": "af842b7757326cc9bda32361615c8c7d3aa4696f3d3f5d3412e9a327d9a05561"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_b1t_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8b14549a1f1b0edf52ba410cf92a268b43ae1548ad0e3ad759841776775676ca",
+              "oldValue": "97cade1a0eccc54c3b5d2aaead477d47dea710e4b4cb266d9d7d9661c36482fd"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_b1t_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "22f44370d999630c296d95958721ab2b24babf26fa053bad26c26fd3bf5ed70b",
+              "oldValue": "f0eeb41ceb5c600c897ebc2b43acc9e5d925581a5f389b30a2ea7f605a08fdaa"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_b1t_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3d94253bd0021dff57dcd622bed101ca1509fdec0686f097703534e00c1111ed",
+              "oldValue": "9e5a1caa92d35a8bb661029cba0be3196ca04337dca19b9cbca5d6bd37c99926"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_im_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "22b74c55a3fd18d0def98437966b68886d0f12f4e5ce164425d6779ed1d018e3",
+              "oldValue": "8fcddeb987b011ebcbde219f53609c755d35b42c8712fbad82bc1844476f877e"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_im_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "12498fe4f00af436616527131d1d6ec808c32ee54f8cafe1a670feabf4d43cb9",
+              "oldValue": "9d0d036d87eab83f9b651466dcc8bb55fa5e96cc1d2a0d99bf40d95a6c7b9430"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_im_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c08ad01fc934a4fe0afd9a19073d3bbf691282cb696180f69801e368451c8100",
+              "oldValue": "ac244fc86552e6942443fa97f6430d198d34fa267fdb909014e98f4ea981b7c6"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_im_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ed96cc9d5d4a6b65d6ba75461a826c24986f33b77f00096cb0b827e316685494",
+              "oldValue": "44dd4f1cd9e3a4b3dd091907d719cdb076dbcde04eec3e4860ba9cc932f3d922"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_jl_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3bb3aaa264e994b1a694684d7ed0f565730a17877a502e03731ee6c53ffeb4dd",
+              "oldValue": "7eace417e27852386de95126b40d257a9c528699a2092aee8c97f35bbf5be039"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_jl_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bdb409908b7b2ed422d3dcd305a78a8fc4a4b32a1dc1ae2543eed10dadfb7a13",
+              "oldValue": "d2a14a34f8d5474626a44a7d9f17f9967e41c11d637cde43047b0152c9ce2870"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_jl_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f2662714a28115d59a8b19e3d2576dad0541aad83654061785a31411ca6ab47c",
+              "oldValue": "68f057451d6d0cd5247ad3e2dc5e634df2958c0f017b5f710150140b6b22b696"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_jl_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b9c746f12bcbf69cc78b2ef9c65d089b6f0ffaae62283876072d76be89a4f2e2",
+              "oldValue": "fb0cacee1c206baecb116279f910d51985c36dd944e0d423f07f5070c2d47eee"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_w0nderful_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "de8283221881dbda84b2dc2014b72bfdd9d4251612f0edea019406cf2acab972",
+              "oldValue": "0422a14838c30008b1a0792cf158b6cf10f6ce8cc7f2b21e70d99245bfc1f75f"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_w0nderful_glitter_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f23b8eccac192e0978e8bb06636ffea735c8381f8b8208610a2a6df9c350ceb0",
+              "oldValue": "b5a3161eff03ff352476a612a6ae749ad6919104b86fe1079b260ccf5ccaa9c8"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_w0nderful_gold_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "63b7ca7b8f876fc1af926f77a997b6838d813f2f052d6a17fadf72b7c24e86be",
+              "oldValue": "667003920ff8cc86ce71227239dd24b2add4e2ff7f98945ee2cef7a04a37e5b0"
+            }
+          ],
+          "name": "StickerKit_desc_cph2024_signature_w0nderful_holo_champion"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cd37671d2c66d02c7b72c207950e83286113422a5147c4d89b72d933d3b0d0d4",
+              "oldValue": "95fc845473df3cafb11a8709f1ec438485986020224210937959f24ba18049fa"
+            }
+          ],
+          "name": "VariableRefreshRateRecommendation_Nvidia"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a4504761f2cc0ad8acb9320eba4fc4a1da9b95f2c0a0d90717cc5d895adf7303",
+              "oldValue": "518419effd1c7f1eb314d2f2f03d851eeb2aa8edb34a6e45ac0e5295db6572d9"
+            }
+          ],
+          "name": "matchmaking_stat_playersLockedIn:p{stat}"
+        }
+      ],
+      "family": "localization",
+      "removed": []
+    }
+  ],
+  "fromBuild": "16382602",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.5.0",
+  "toBuild": "16398395"
+}
