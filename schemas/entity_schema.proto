@@ -57,6 +57,7 @@ message SchemaClass {
 
   // Raw Source2 class-info flags bitmask, verbatim from SchemaClassInfoData_t. Carried as
   // opaque bits — consumers decode; this field is NOT an interpreted/decomposed form.
+  // Bit meanings (SchemaClassFlags1_t): docs/SCHEMA_FLAGS.md.
   uint32 flags = 8;
 
   // The class's static fields (SchemaClassInfoData_t.m_pStaticFields), reusing SchemaField.
@@ -65,7 +66,8 @@ message SchemaClass {
   repeated SchemaField static_fields = 9;
 
   // Second class-flags word (SchemaClassInfoData_t.m_nFlags2), opaque raw bits.
-  // Distinct from `flags` (field 8); often 0.
+  // Distinct from `flags` (field 8); often 0. SchemaClassFlags2_t is declared upstream as an
+  // EMPTY enum — no bit in this word has a name today. See docs/SCHEMA_FLAGS.md.
   uint32 flags2 = 10;
 
   // Inheritance-depth counters from SchemaClassInfoData_t.
@@ -138,6 +140,8 @@ message SchemaEnum {
   repeated SchemaEnumMember members = 4;
 
   // Raw enum-info flags bits (SchemaEnumInfoData_t.m_nFlags) — opaque; consumers decode.
+  // Bit meanings (SchemaEnumFlags_t): docs/SCHEMA_FLAGS.md. Note there is NO flag-enum
+  // ("[Flags]") marker bit, and undeclared bits are observed set — mask what you read.
   uint32 flags = 5;
 
   // Underlying-type byte width (SchemaEnumInfoData_t.m_nSize) — the raw numeric width,

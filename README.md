@@ -30,6 +30,8 @@ The point is to give downstream tools a **stable, diffable snapshot of every CS2
 
 Each `artifacts/<build_id>/<platform>/` set contains the following. Every file's exact shape is defined by a proto3 schema under [`schemas/`](schemas) — the single source of truth for consumers, which compile the same schemas to typed bindings in any language via `protoc`.
 
+`entity_schema.json` carries the schema system's runtime flag words (`flags`, `flags2`) as raw bits rather than as interpreted booleans; **[docs/SCHEMA_FLAGS.md](docs/SCHEMA_FLAGS.md)** is the decode table for them.
+
 ### Extracted from the game binaries (always present)
 
 | Artifact | What it is | Sourced from |
