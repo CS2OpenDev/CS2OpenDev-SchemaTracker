@@ -414,6 +414,11 @@ public sealed class EntitySchemaEmitter
             // (m_nSize), distinct from `alignment` which is the derived type-name string.
             Flags = src.Flags,
             Size = src.Size,
+            // Owning project (SchemaEnumInfoData_t.m_pszProjectName) — the enum-side
+            // counterpart of SchemaClass.project_name, copied through verbatim and
+            // UNVALIDATED for the same reason the class path leaves it unvalidated: an
+            // untagged record is a truthful "" rather than an artifact-wide failure.
+            ProjectName = src.ProjectName,
         };
         // Members keep declared order (value order is meaningful and stable).
         foreach (SchemaEnumMember m in src.Members)

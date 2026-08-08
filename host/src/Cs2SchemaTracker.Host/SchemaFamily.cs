@@ -1,6 +1,6 @@
 // single source of the schemas/*.proto FAMILY version in host code.
 //
-// This is the schemas/*.proto family version (currently 0.5.0). Every per-tuple artifact
+// This is the schemas/*.proto family version (currently 0.5.1). Every per-tuple artifact
 // emitter stamps this string into its `schema_version` field (entity_schema.json,
 // modules.json, ...). It is intentionally ONE constant so a single edit here flows to every
 // emitter and no literal "0.x.y" is scattered across the host. Emitters MUST source the
@@ -28,5 +28,10 @@ public static class SchemaFamily
     // to ~3.6k classes and 15 to ~590 enums (strictly additive; shape unchanged).
     // Globally-registered types carry module "!GlobalTypes" with their owning
     // project in projectName. See CS2OpenDev-Docs SCHEMA_COVERAGE_GAP_EVALUATION.md.
-    public const string Version = "0.5.0";
+    //
+    // 0.5.1: entity_schema enum records gain projectName (SchemaEnum.project_name,
+    // SchemaEnumInfoData_t.m_pszProjectName) — the same attribution class records already
+    // carried. Strictly additive; module keeps its existing binary-scope meaning, which
+    // alone collapses every globally-registered enum into "!GlobalTypes".
+    public const string Version = "0.5.1";
 }

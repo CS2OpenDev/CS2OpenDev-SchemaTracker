@@ -50,6 +50,8 @@ public class EntitySchemaEmitterTest
             // byte width. Distinct from `alignment` (the derived type-name string).
             Flags = 0x0002,
             Size = 1,
+            // Owning project — the enum-side counterpart of SchemaClass.project_name.
+            ProjectName = "server",
         };
         entity.Members.Add(new SchemaEnumMember { Name = "MOVETYPE_NONE", Value = 0 });
         entity.Members.Add(new SchemaEnumMember { Name = "MOVETYPE_WALK", Value = 2 });
@@ -292,6 +294,7 @@ public class EntitySchemaEmitterTest
             // Batch-1 additive enum-info enrichments copy through (uint32 -> JSON number).
             Xunit.Assert.Equal(0x0002u, en.GetProperty("flags").GetUInt32());
             Xunit.Assert.Equal(1u, en.GetProperty("size").GetUInt32());
+            Xunit.Assert.Equal("server", en.GetProperty("projectName").GetString());
             var members = en.GetProperty("members");
             Xunit.Assert.Equal(3, members.GetArrayLength());
             // int64 value -> JSON string.
@@ -401,6 +404,58 @@ public class EntitySchemaEmitterTest
             var sfMeta = sf.GetProperty("metadata");
             Xunit.Assert.Equal(1, sfMeta.GetArrayLength());
             Xunit.Assert.Equal("MNotSaved", sfMeta[0].GetProperty("name").GetString());
+        }
+        finally
+        {
+            Directory.Delete(workDir, recursive: true);
+        }
+    }
+
+    [Xunit.Fact]
+    public void Enum_ProjectName_Distinguishes_Globally_Registered_Enums()
+    {
+        // The case the field exists for: `module` is the BINARY a scope belongs to, so every
+        // globally-registered enum reports "!GlobalTypes" there and the whole set collapses into
+        // one bucket. project_name keeps the per-project attribution, exactly as it already does
+        // for classes. An enum whose record carries no project string emits "" rather than
+        // failing the artifact (FormatDefaultValues keeps the key present either way).
+        var workDir = NewWorkDir();
+        try
+        {
+            var walk = new EntitySchemaWalk();
+            walk.Enums.Add(new SchemaEnum
+            {
+                Name = "EParticleFalloffFunction_t",
+                Module = "!GlobalTypes",
+                ProjectName = "particles",
+            });
+            walk.Enums.Add(new SchemaEnum
+            {
+                Name = "FieldNetworkOption_t",
+                Module = "!GlobalTypes",
+                ProjectName = "animgraphlib",
+            });
+            walk.Enums.Add(new SchemaEnum { Name = "Untagged_t", Module = "!GlobalTypes" });
+
+            var outPath = Path.Combine(workDir, "entity_schema.json");
+            NewEmitter().Emit(new WalkerOutput { Platform = Platform, EntitySchema = walk }, outPath);
+
+            using var doc = JsonDocument.Parse(File.ReadAllText(outPath));
+            var enums = doc.RootElement.GetProperty("enums");
+            Xunit.Assert.Equal(3, enums.GetArrayLength());
+
+            // Ordered by (module, name) Ordinal — module is identical, so name decides.
+            Xunit.Assert.Equal("EParticleFalloffFunction_t", enums[0].GetProperty("name").GetString());
+            Xunit.Assert.Equal("particles", enums[0].GetProperty("projectName").GetString());
+            Xunit.Assert.Equal("FieldNetworkOption_t", enums[1].GetProperty("name").GetString());
+            Xunit.Assert.Equal("animgraphlib", enums[1].GetProperty("projectName").GetString());
+            // Same module for all three: without project_name they are indistinguishable.
+            Xunit.Assert.Equal("!GlobalTypes", enums[0].GetProperty("module").GetString());
+            Xunit.Assert.Equal("!GlobalTypes", enums[1].GetProperty("module").GetString());
+
+            // Untagged record: key present, value empty — not an emit failure.
+            Xunit.Assert.Equal("Untagged_t", enums[2].GetProperty("name").GetString());
+            Xunit.Assert.Equal("", enums[2].GetProperty("projectName").GetString());
         }
         finally
         {

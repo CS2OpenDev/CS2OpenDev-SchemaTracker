@@ -540,6 +540,8 @@ WALKER_REC_MEMBER_OR(ClassStaticMetadataCount, m_nStaticMetadataCount, 0)
 
 // ---- SchemaEnumInfoData_t enrichment members ----
 WALKER_REC_MEMBER_OR(EnumFlags, m_nFlags, std::uint8_t{0})
+WALKER_REC_MEMBER_OR(EnumProjectName, m_pszProjectName,
+                     static_cast<const char*>(nullptr))
 
 // ---- SchemaClassFieldData_t enrichment members ----
 WALKER_REC_MEMBER_OR(FieldStaticMetadata, m_pStaticMetadata,

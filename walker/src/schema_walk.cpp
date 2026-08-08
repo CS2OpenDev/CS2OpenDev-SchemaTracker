@@ -1445,6 +1445,14 @@ bool EmitEnum(const CSchemaEnumInfo* ei, wpb::SchemaEnum* out, std::string* err,
     // EnumFlags falls back to 0 on any future pin lacking m_nFlags.
     out->set_flags(static_cast<uint32_t>(rec::EnumFlags(ei)));
     out->set_size(static_cast<uint32_t>(rec::EnumSize(ei, era)));
+    // Owning project (m_pszProjectName, @+16 in SchemaEnumInfoData_t) — the enum-side
+    // counterpart of the class record's project_name, read through the same
+    // member-presence accessor idiom (rec::EnumProjectName falls back to nullptr on any
+    // pin lacking the member, and the 1-arg Str() maps that to ""). `module` above is the
+    // scope's BINARY, which collapses every globally-registered enum into "!GlobalTypes";
+    // this is the field that keeps per-project attribution for enums. proto3 omits an
+    // empty string on the wire — PURELY ADDITIVE.
+    out->set_project_name(Str(rec::EnumProjectName(ei)));
   }
 
   const SchemaEnumeratorInfoData_t* enumerators = rec::EnumEnumerators(ei, era);

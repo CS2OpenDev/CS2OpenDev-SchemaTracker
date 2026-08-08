@@ -148,8 +148,11 @@ internal static class EraParity
         }
         foreach (var e in enums)
         {
-            // Enums carry no project attribution — a pseudo-scope enum can only be counted
-            // in the unattributed global bucket.
+            // Enums now carry project_name (schema family 0.5.1), so a pseudo-scope enum IS
+            // attributable — but this report still counts it in the flat global bucket. The
+            // by-project split the class branch does above is deliberately not mirrored here:
+            // it would change PlatformSchemaCounts and the report's row set, which is a parity-
+            // report change rather than the artifact-field change this version makes.
             if (IsPseudoOrEmpty(e.Module))
             {
                 globalEnums++;
