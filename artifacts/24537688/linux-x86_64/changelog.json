@@ -29,83 +29,7 @@
     },
     {
       "added": [],
-      "changed": [
-        {
-          "fields": [
-            {
-              "field": "member:k_EMsgGCTradingBase",
-              "newValue": "",
-              "oldValue": "1500"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_CancelSession",
-              "newValue": "",
-              "oldValue": "1510"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_ConfirmOffer",
-              "newValue": "",
-              "oldValue": "1512"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_InitiateTradeRequest",
-              "newValue": "",
-              "oldValue": "1501"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_InitiateTradeResponse",
-              "newValue": "",
-              "oldValue": "1502"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_ReadinessResponse",
-              "newValue": "",
-              "oldValue": "1508"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_RemoveItem",
-              "newValue": "",
-              "oldValue": "1505"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_SessionClosed",
-              "newValue": "",
-              "oldValue": "1509"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_SetItem",
-              "newValue": "",
-              "oldValue": "1504"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_SetReadiness",
-              "newValue": "",
-              "oldValue": "1507"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_StartSession",
-              "newValue": "",
-              "oldValue": "1503"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_TradeChatMsg",
-              "newValue": "",
-              "oldValue": "1511"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_TradeTypingChatMsg",
-              "newValue": "",
-              "oldValue": "1513"
-            },
-            {
-              "field": "member:k_EMsgGCTrading_UpdateTradeInfo",
-              "newValue": "",
-              "oldValue": "1506"
-            }
-          ],
-          "name": "!GlobalTypes/EGCItemMsg"
-        }
-      ],
+      "changed": [],
       "family": "enums",
       "removed": []
     },
@@ -136,26 +60,11 @@
       "added": [],
       "changed": [],
       "family": "engine_constants",
-      "removed": [
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTradingBase",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_CancelSession",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_ConfirmOffer",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_InitiateTradeRequest",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_InitiateTradeResponse",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_ReadinessResponse",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_RemoveItem",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_SessionClosed",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_SetItem",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_SetReadiness",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_StartSession",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_TradeChatMsg",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_TradeTypingChatMsg",
-        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCTrading_UpdateTradeInfo"
-      ]
+      "removed": []
     }
   ],
-  "fromBuild": "24304127",
+  "fromBuild": "24442510",
   "platform": "linux-x86_64",
-  "schemaVersion": "0.5.0",
+  "schemaVersion": "0.5.1",
   "toBuild": "24537688"
 }
