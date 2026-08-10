@@ -43,6 +43,14 @@ public sealed class ProtoDescriptorExtractor
     private const string SupplementalSourceLabel = "<hl2sdk:wire_descriptors.pb>";
 
     /// <summary>
+    /// The one file pruned to its referenced closure before emission. Named rather than inferred:
+    /// this is the only descriptor in CS2's set whose unreferenced bulk is large enough to matter
+    /// (~74k lines of generated C# downstream, about a third of a demo-scope codegen), and pruning
+    /// every file by default would be a much larger behavioural claim than the evidence supports.
+    /// </summary>
+    private const string GcClosureTargetFile = "cstrike15_gcmessages.proto";
+
+    /// <summary>
     /// Leading comment prepended to the .proto text of an SDK-sourced wire descriptor, so the
     /// artifact is self-documenting about its non-binary provenance. Valid proto (a comment before
     /// the syntax line); ends in a blank line so the syntax line stays visually separated.
@@ -156,6 +164,39 @@ public sealed class ProtoDescriptorExtractor
             .OrderBy(g => g.Key, StringComparer.Ordinal)   // sort canonical output by Name
             .Select(g => ResolveCollision(g.Key, g.ToList(), warningSink))
             .ToList();
+
+        // 3. Prune cstrike15_gcmessages down to the closure the rest of the set actually references,
+        //    and drop the imports that closure no longer needs (steammessages, engine_gcmessages,
+        //    gcsdk_gcmessages — Steam matchmaking/inventory/item-schema traffic, none of it on the
+        //    demo wire path). Derived on every run, never a committed stub: a hand-written stub is
+        //    silently restored by the next refresh and the build still succeeds. See
+        //    DependencyClosurePruner and CS2OpenDev-SchemaTracker#3.
+        //
+        //    Runs AFTER collision resolution so it prunes the canonical copy, and BEFORE emission so
+        //    both protos/<file>.proto and protos.descriptorset carry the pruned form. A no-op
+        //    (target absent, unreferenced, or already minimal) returns null and changes nothing.
+        var prunable = ordered.Select(c => c.Fdp).ToList();
+        var pruneOutcome = DependencyClosurePruner.Prune(prunable, GcClosureTargetFile);
+        if (pruneOutcome is not null)
+        {
+            for (var i = 0; i < ordered.Count; i++)
+            {
+                if (!ReferenceEquals(ordered[i].Fdp, prunable[i]))
+                {
+                    ordered[i] = ordered[i] with { Fdp = prunable[i] };
+                }
+            }
+
+            warningSink.WriteLine(
+                "ProtoDescriptorExtractor: pruned " + pruneOutcome.File + " to the "
+                + pruneOutcome.KeptTypes + " top-level type(s) the rest of the set references, "
+                + "removing " + pruneOutcome.RemovedTypes
+                + (pruneOutcome.DroppedDependencies.Count > 0
+                    ? "; dropped now-unused import(s): "
+                      + string.Join(", ", pruneOutcome.DroppedDependencies)
+                    : "")
+                + ".");
+        }
 
         // 4. Build to a temp directory first, then atomically rename.
         var tempRoot = Path.Combine(
