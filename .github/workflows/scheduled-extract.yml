@@ -416,6 +416,30 @@ jobs:
           }
           Write-Host "dispatched publish-latest.yml"
 
+      - name: Verify committed tree (fail-loud observability)
+        # WHY THIS RUNS HERE (CS2OpenDev-SchemaTracker#7 item 5): the push above is made
+        # with the ambient GITHUB_TOKEN, so ci.yml's push-triggered verify-artifacts gate is
+        # suppressed for exactly the commits this workflow lands. Meanwhile the cumulative
+        # schema-evolution refresh inside commit-dump.ps1 is deliberately NON-FATAL (a rare,
+        # retryable refresh failure must not forfeit a time-sensitive forward capture), which
+        # means a stale artifacts/schema_evolution/<platform>.json could otherwise be pushed
+        # with no red anywhere. This step closes that loop: it re-runs the same repo-level
+        # gate ci.yml uses — including the evolution staleness check — and FAILS THE JOB if
+        # anything regressed. It runs AFTER the push and the latest-channel dispatch on
+        # purpose: the capture is already safe, the channel refresh is not suppressed, and a
+        # failure here is pure observability (the run goes red; the operator re-runs
+        # `evolution` and pushes the refreshed file).
+        if: success() && steps.resolve.outputs.is_new == 'true' && github.ref == 'refs/heads/main'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          & dotnet $env:HOST_DLL verify-artifacts --artifacts artifacts --inventory data/cs2-assets-inventory.json
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "verify-artifacts reported violations on the tree just pushed (see VIOLATION lines above). The artifact set is already safely pushed; fix the reported drift (e.g. re-run 'evolution' and push) before the next capture."
+            exit $LASTEXITCODE
+          }
+          Write-Host "verify-artifacts: committed tree is clean."
+
       - name: No new build (clean no-op)
         if: success() && steps.resolve.outputs.is_new != 'true'
         # a clean exit-0 when the public branch has not advanced. The 6h cron re-checks.

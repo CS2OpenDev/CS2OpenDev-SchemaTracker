@@ -4,11 +4,14 @@
 // SINGLE cumulative file per platform at a FIXED path (NOT under any per-build dir):
 //   artifacts/schema_evolution/<platform>.json
 // A fixed path means there is nothing to move or git-rm build-to-build; git delta-compresses the
-// near-identical successive versions. NOTE: `extract` does NOT write this file — a re-walk pass must
-// be followed by `evolution` to refresh it. The verify-artifacts gate is dormant until the file
-// exists, then requires it to be consistent with the committed chain: platform matches, baseline_build
-// == the floor build, latest_build == the newest committed build, and transition count == builds - 1
-// (a mismatch reports "stale — re-run `evolution`").
+// near-identical successive versions. NOTE: `extract` does NOT write this file. The routine refresh
+// is scripts/commit-dump.ps1, which runs `evolution` (incremental) before each artifact commit so
+// the updated file rides that commit; a re-walk or backfill must be followed by `evolution --full`.
+// The verify-artifacts gate is dormant until the file exists, then requires it to be consistent
+// with the committed chain: platform matches, baseline_build == the floor build, latest_build ==
+// the newest committed build, and transition count == builds - 1 (a mismatch reports "stale —
+// re-run `evolution`"). ci.yml runs that gate on operator pushes; scheduled-extract.yml re-runs it
+// itself post-push (its GITHUB_TOKEN push suppresses ci.yml's trigger).
 //
 // It is "Layer A" of the Schema Lens: the
 // objective, machine-derivable record of how the C++ entity schema evolved across every in-scope

@@ -5,8 +5,17 @@
 //   <artifacts>/schema_evolution/<platform>.json
 //
 // A fixed path (not under the latest build) means there is nothing to move or delete build-to-build:
-// the inline extract refresh and the commit just overwrite one file. Git delta-compresses the
-// near-identical successive versions in history all the same.
+// each refresh just overwrites the one file, and git delta-compresses the near-identical successive
+// versions in history all the same.
+//
+// WHO WRITES IT (kept in sync with the schema_evolution.proto header): `extract` NEVER writes this
+// file. The routine writer is scripts/commit-dump.ps1, which runs this command (incremental mode)
+// before each artifact commit so the refreshed file rides that commit — NON-FATALLY, because a
+// rare, retryable refresh failure must not forfeit a time-sensitive forward capture. The stale-file
+// backstop is the verify-artifacts evolution gate: ci.yml runs it on operator pushes, and
+// scheduled-extract.yml re-runs it post-push itself (GITHUB_TOKEN pushes suppress ci.yml's
+// trigger). Operators invoke this command directly for the one-time seed and after any backfill
+// (`--full`).
 //
 // MODE. --full forces a from-scratch backfill (the one-time seed). Otherwise, if the fixed artifact
 // already exists and is CONTIGUOUS with the chain (its latest_build == the second-newest committed
