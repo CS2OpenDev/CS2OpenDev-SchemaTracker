@@ -129,6 +129,14 @@ public sealed class SchemaEvolutionContractTest
         var dir = Path.Combine(root, snapshot.BuildId, Platform);
         Directory.CreateDirectory(dir);
         AtomicWrite.WriteCanonical(snapshot, Path.Combine(dir, "entity_schema.json"));
+        // Every committed set carries provenance; the emitter joins steam.manifest_created_utc
+        // from it for the transition calendar axis. Deterministic per-build fixture time.
+        var provenance = new Schemas.Provenance
+        {
+            Steam = new Schemas.SteamIdentity
+            { ManifestCreatedUtc = $"2026-01-01T00:00:{snapshot.BuildId[^1]}0Z" },
+        };
+        AtomicWrite.WriteCanonical(provenance, Path.Combine(dir, "provenance.json"));
     }
 
     private static SchemaEvolutionEmitter Emitter() => new(SchemaVersion, Platform);
@@ -247,7 +255,7 @@ public sealed class SchemaEvolutionContractTest
             // Prior cumulative as of B2, then append B2 -> B3.
             var prior = Emitter().BuildFull(root, ChainB1B2);
             var incremental = AtomicWrite.SerializeCanonical(
-                Emitter().BuildIncremental(prior, SnapB2(), B2, SnapB3(), B3));
+                Emitter().BuildIncremental(root, prior, SnapB2(), B2, SnapB3(), B3));
 
             Assert.Equal(full, incremental);
         });

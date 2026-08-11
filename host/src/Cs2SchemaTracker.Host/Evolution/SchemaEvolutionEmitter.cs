@@ -35,6 +35,7 @@ public sealed class SchemaEvolutionEmitter
         new(JsonParser.Settings.Default.WithIgnoreUnknownFields(true));
 
     private const string EntitySchemaFile = "entity_schema.json";
+    private const string ProvenanceFile = "provenance.json";
 
     private readonly string _schemaVersion;
     private readonly string _platform;
@@ -65,14 +66,19 @@ public sealed class SchemaEvolutionEmitter
 
         var transitions = new List<Transition>(chain.Count - 1);
         var prev = LoadSnapshot(artifactsRoot, chain[0]);
+        var prevManifestUtc = LoadManifestCreatedUtc(artifactsRoot, chain[0]);
         var acc = FieldHistoryAccumulator.Seed(prev, chain[0]);
 
         for (var i = 1; i < chain.Count; i++)
         {
             var cur = LoadSnapshot(artifactsRoot, chain[i]);
-            transitions.Add(SchemaSnapshotDiff.Diff(prev, cur, chain[i - 1], chain[i]));
+            var curManifestUtc = LoadManifestCreatedUtc(artifactsRoot, chain[i]);
+            var transition = SchemaSnapshotDiff.Diff(prev, cur, chain[i - 1], chain[i]);
+            StampManifestTimes(transition, prevManifestUtc, curManifestUtc);
+            transitions.Add(transition);
             acc.Fold(cur, chain[i]);
             prev = cur; // the older snapshot is now GC-eligible (window slides)
+            prevManifestUtc = curManifestUtc;
         }
 
         return Assemble(chain[0], chain[^1], transitions, acc);
@@ -86,10 +92,12 @@ public sealed class SchemaEvolutionEmitter
     /// <see cref="BuildFull"/> over the resulting tree.
     /// </summary>
     public SchemaEvolution BuildIncremental(
+        string artifactsRoot,
         SchemaEvolution prior,
         Schemas.EntitySchema predSnapshot, string predBuild,
         Schemas.EntitySchema latestSnapshot, string latestBuild)
     {
+        ArgumentException.ThrowIfNullOrEmpty(artifactsRoot);
         ArgumentNullException.ThrowIfNull(prior);
         ArgumentNullException.ThrowIfNull(predSnapshot);
         ArgumentNullException.ThrowIfNull(latestSnapshot);
@@ -108,9 +116,61 @@ public sealed class SchemaEvolutionEmitter
 
         var transitions = new List<Transition>(prior.Transitions.Count + 1);
         transitions.AddRange(prior.Transitions);
-        transitions.Add(SchemaSnapshotDiff.Diff(predSnapshot, latestSnapshot, predBuild, latestBuild));
+        var appended = SchemaSnapshotDiff.Diff(predSnapshot, latestSnapshot, predBuild, latestBuild);
+        StampManifestTimes(
+            appended,
+            LoadManifestCreatedUtc(artifactsRoot, predBuild),
+            LoadManifestCreatedUtc(artifactsRoot, latestBuild));
+        transitions.Add(appended);
 
         return Assemble(prior.BaselineBuild, latestBuild, transitions, acc);
+    }
+
+    /// <summary>
+    /// Stamp the calendar axis on a freshly-diffed transition. The one stated exception to
+    /// snapshot-only derivation (see schema_evolution.proto): the values join the two builds'
+    /// committed provenance records — input data recorded by Steam, never the wall clock.
+    /// </summary>
+    private static void StampManifestTimes(Transition transition, string fromUtc, string toUtc)
+    {
+        transition.FromManifestCreatedUtc = fromUtc;
+        transition.ToManifestCreatedUtc = toUtc;
+    }
+
+    /// <summary>
+    /// Read a committed build's <c>steam.manifest_created_utc</c> from its provenance.json.
+    /// Fail-loud on a missing/corrupt file or an empty value — every committed set records it,
+    /// so absence means the tree (or the build id) is wrong, never a legitimately dateless build.
+    /// </summary>
+    public string LoadManifestCreatedUtc(string artifactsRoot, string build)
+    {
+        var path = Path.Combine(artifactsRoot, build, _platform, ProvenanceFile);
+        if (!File.Exists(path))
+        {
+            throw new FileNotFoundException(
+                $"SchemaEvolutionEmitter: required {ProvenanceFile} not found for build '{build}' " +
+                $"platform '{_platform}' at '{path}'.", path);
+        }
+        Schemas.Provenance provenance;
+        try
+        {
+            using var reader = new StreamReader(path, Encoding.UTF8);
+            provenance = StrictParser.Parse<Schemas.Provenance>(reader);
+        }
+        catch (Exception ex) when (ex is InvalidProtocolBufferException or InvalidJsonException)
+        {
+            throw new InvalidDataException(
+                $"SchemaEvolutionEmitter: {ProvenanceFile} for build '{build}' does not parse as " +
+                $"Provenance: {ex.Message}", ex);
+        }
+        var utc = provenance.Steam?.ManifestCreatedUtc;
+        if (string.IsNullOrEmpty(utc))
+        {
+            throw new InvalidDataException(
+                $"SchemaEvolutionEmitter: {ProvenanceFile} for build '{build}' carries no " +
+                "steam.manifest_created_utc — cannot stamp the transition calendar axis.");
+        }
+        return utc;
     }
 
     /// <summary>Read + strict-parse a committed build's entity_schema.json. Fail-loud on absence/corruption.</summary>

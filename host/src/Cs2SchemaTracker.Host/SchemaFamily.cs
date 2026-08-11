@@ -43,5 +43,13 @@ public static class SchemaFamily
     // EvolutionCommand forces a full backfill when the on-disk artifact's schema_version
     // differs from this constant, so a pre-candidates file is never incrementally extended
     // into a mixed shape (which would break incremental == full byte-identity).
-    public const string Version = "0.6.0";
+    //
+    // 0.7.0: schema_evolution closes the class-attribute diff blind spots and gains a
+    // calendar axis (issue #7 items 3+6): ClassDelta grows static_field_ops plus
+    // flags2/meta/cpp_name/project_name/inheritance-depth ScalarChanges, EnumDelta grows
+    // project_name, and each Transition carries the two builds' Steam manifest-creation
+    // timestamps joined from committed provenance (the one stated exception to
+    // snapshot-only derivation). Strictly additive; the same version gate forces a full
+    // backfill over any pre-0.7.0 artifact.
+    public const string Version = "0.7.0";
 }

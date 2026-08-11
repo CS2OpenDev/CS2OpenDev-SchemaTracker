@@ -105,23 +105,100 @@ public static class SchemaSnapshotDiff
         var oldFields = IndexBy(oldC.Fields, f => f.Name, "field");
         var newFields = IndexBy(newC.Fields, f => f.Name, "field");
 
+        delta.FieldOps.AddRange(ComputeFieldOps(oldC, newC, oldFields, newFields));
+
+        // Pool this class's removed/added instance fields for the transition-level field-move
+        // candidates. Statics stay out of every pairing surface by design.
+        foreach (var fname in AddedKeys(oldFields, newFields))
+            addedPool.Add((name, fname, SchemaTypeRenderer.Render(newFields[fname].Type!)));
+        foreach (var fname in RemovedKeys(oldFields, newFields))
+            removedPool.Add((name, fname, SchemaTypeRenderer.Render(oldFields[fname].Type!)));
+
+        // Static fields: the same op vocabulary over SchemaClass.static_fields (issue #7 item 3).
+        var oldStatics = IndexBy(oldC.StaticFields, f => f.Name, "static field");
+        var newStatics = IndexBy(newC.StaticFields, f => f.Name, "static field");
+        delta.StaticFieldOps.AddRange(ComputeFieldOps(oldC, newC, oldStatics, newStatics));
+
+        // Class-level scalar changes.
+        var oldParents = Parents(oldC);
+        var newParents = Parents(newC);
+        if (!oldParents.SequenceEqual(newParents, StringComparer.Ordinal))
+        {
+            var reparent = new Reparent();
+            reparent.From.AddRange(oldParents);
+            reparent.To.AddRange(newParents);
+            delta.Reparent = reparent;
+        }
+        if (oldC.Size != newC.Size)
+            delta.Resize = new ScalarChange { From = Inv(oldC.Size), To = Inv(newC.Size) };
+        if (oldC.Alignment != newC.Alignment)
+            delta.Realign = new ScalarChange { From = Inv(oldC.Alignment), To = Inv(newC.Alignment) };
+        if (oldC.Flags != newC.Flags)
+            delta.Flags = new ScalarChange { From = Inv(oldC.Flags), To = Inv(newC.Flags) };
+
+        // The attribute coverage issue #7 item 3 asked for (previously silent in this record).
+        if (oldC.Flags2 != newC.Flags2)
+            delta.Flags2 = new ScalarChange { From = Inv(oldC.Flags2), To = Inv(newC.Flags2) };
+        var oldClassMeta = RenderMeta(oldC.Metadata);
+        var newClassMeta = RenderMeta(newC.Metadata);
+        if (!string.Equals(oldClassMeta, newClassMeta, StringComparison.Ordinal))
+            delta.Meta = new ScalarChange { From = oldClassMeta, To = newClassMeta };
+        if (!string.Equals(oldC.CppName, newC.CppName, StringComparison.Ordinal))
+            delta.CppName = new ScalarChange { From = oldC.CppName, To = newC.CppName };
+        if (!string.Equals(oldC.ProjectName, newC.ProjectName, StringComparison.Ordinal))
+            delta.ProjectName = new ScalarChange { From = oldC.ProjectName, To = newC.ProjectName };
+        if (oldC.SingleInheritanceDepth != newC.SingleInheritanceDepth)
+        {
+            delta.SingleInheritanceDepth = new ScalarChange
+            { From = Inv(oldC.SingleInheritanceDepth), To = Inv(newC.SingleInheritanceDepth) };
+        }
+        if (oldC.MultipleInheritanceDepth != newC.MultipleInheritanceDepth)
+        {
+            delta.MultipleInheritanceDepth = new ScalarChange
+            { From = Inv(oldC.MultipleInheritanceDepth), To = Inv(newC.MultipleInheritanceDepth) };
+        }
+
+        // Neutral paired evidence over the removed/added field sets — NOT a rename claim.
+        foreach (var pair in PairEvidence(oldFields, newFields))
+            delta.PairedEvidence.Add(pair);
+
+        // The wider, unselected candidate surface over the same sets (see PairCandidates).
+        foreach (var candidate in PairCandidates(oldFields, newFields))
+            delta.PairCandidates.Add(candidate);
+
+        var changed = delta.FieldOps.Count > 0
+            || delta.StaticFieldOps.Count > 0
+            || delta.Reparent is not null
+            || delta.Resize is not null
+            || delta.Realign is not null
+            || delta.Flags is not null
+            || delta.Flags2 is not null
+            || delta.Meta is not null
+            || delta.CppName is not null
+            || delta.ProjectName is not null
+            || delta.SingleInheritanceDepth is not null
+            || delta.MultipleInheritanceDepth is not null
+            || delta.PairedEvidence.Count > 0;
+        return changed ? delta : null;
+    }
+
+    /// <summary>
+    /// The full op vocabulary (ADD / REMOVE / TYPE_CHANGE / OFFSET_CHANGE / META_CHANGE) over one
+    /// keyed field set — instance fields and static fields share this exactly. Matched fields emit
+    /// INDEPENDENT ops (one field may emit several). Sorted Ordinal by (field, kind).
+    /// <paramref name="oldC"/>/<paramref name="newC"/> are only for fail-loud messages.
+    /// </summary>
+    private static List<FieldOp> ComputeFieldOps(
+        SchemaClass oldC, SchemaClass newC,
+        Dictionary<string, SchemaField> oldFields, Dictionary<string, SchemaField> newFields)
+    {
         var ops = new List<FieldOp>();
 
-        // Added / removed fields (also pooled for the transition-level field-move candidates).
         foreach (var fname in AddedKeys(oldFields, newFields))
-        {
-            var f = newFields[fname];
-            ops.Add(AddOp(f));
-            addedPool.Add((name, f.Name, SchemaTypeRenderer.Render(f.Type!)));
-        }
+            ops.Add(AddOp(newFields[fname]));
         foreach (var fname in RemovedKeys(oldFields, newFields))
-        {
-            var f = oldFields[fname];
-            ops.Add(RemoveOp(f));
-            removedPool.Add((name, f.Name, SchemaTypeRenderer.Render(f.Type!)));
-        }
+            ops.Add(RemoveOp(oldFields[fname]));
 
-        // Matched fields: type / offset / metadata are INDEPENDENT ops (a field may emit several).
         foreach (var fname in MatchedKeys(oldFields, newFields))
         {
             var of = oldFields[fname];
@@ -154,8 +231,8 @@ public static class SchemaSnapshotDiff
                 });
             }
 
-            var oldMeta = RenderMeta(of);
-            var newMeta = RenderMeta(nf);
+            var oldMeta = RenderMeta(of.Metadata);
+            var newMeta = RenderMeta(nf.Metadata);
             if (!string.Equals(oldMeta, newMeta, StringComparison.Ordinal))
             {
                 ops.Add(new FieldOp
@@ -173,40 +250,7 @@ public static class SchemaSnapshotDiff
             var byField = string.CompareOrdinal(a.Field, b.Field);
             return byField != 0 ? byField : ((int)a.Kind).CompareTo((int)b.Kind);
         });
-        delta.FieldOps.AddRange(ops);
-
-        // Class-level scalar changes.
-        var oldParents = Parents(oldC);
-        var newParents = Parents(newC);
-        if (!oldParents.SequenceEqual(newParents, StringComparer.Ordinal))
-        {
-            var reparent = new Reparent();
-            reparent.From.AddRange(oldParents);
-            reparent.To.AddRange(newParents);
-            delta.Reparent = reparent;
-        }
-        if (oldC.Size != newC.Size)
-            delta.Resize = new ScalarChange { From = Inv(oldC.Size), To = Inv(newC.Size) };
-        if (oldC.Alignment != newC.Alignment)
-            delta.Realign = new ScalarChange { From = Inv(oldC.Alignment), To = Inv(newC.Alignment) };
-        if (oldC.Flags != newC.Flags)
-            delta.Flags = new ScalarChange { From = Inv(oldC.Flags), To = Inv(newC.Flags) };
-
-        // Neutral paired evidence over the removed/added field sets — NOT a rename claim.
-        foreach (var pair in PairEvidence(oldFields, newFields))
-            delta.PairedEvidence.Add(pair);
-
-        // The wider, unselected candidate surface over the same sets (see PairCandidates).
-        foreach (var candidate in PairCandidates(oldFields, newFields))
-            delta.PairCandidates.Add(candidate);
-
-        var changed = delta.FieldOps.Count > 0
-            || delta.Reparent is not null
-            || delta.Resize is not null
-            || delta.Realign is not null
-            || delta.Flags is not null
-            || delta.PairedEvidence.Count > 0;
-        return changed ? delta : null;
+        return ops;
     }
 
     private static FieldOp AddOp(SchemaField f)
@@ -518,11 +562,14 @@ public static class SchemaSnapshotDiff
             delta.Realign = new ScalarChange { From = oldE.Alignment ?? "", To = newE.Alignment ?? "" };
         if (oldE.Flags != newE.Flags)
             delta.Flags = new ScalarChange { From = Inv(oldE.Flags), To = Inv(newE.Flags) };
+        if (!string.Equals(oldE.ProjectName, newE.ProjectName, StringComparison.Ordinal))
+            delta.ProjectName = new ScalarChange { From = oldE.ProjectName, To = newE.ProjectName };
 
         var changed = delta.MemberOps.Count > 0
             || delta.Resize is not null
             || delta.Realign is not null
-            || delta.Flags is not null;
+            || delta.Flags is not null
+            || delta.ProjectName is not null;
         return changed ? delta : null;
     }
 
@@ -534,8 +581,8 @@ public static class SchemaSnapshotDiff
             ? new BuiltinWidth { Bytes = bytes }
             : null;
 
-    private static string RenderMeta(SchemaField f)
-        => string.Join(";", f.Metadata
+    private static string RenderMeta(IEnumerable<SchemaMetadata> metadata)
+        => string.Join(";", metadata
             .Select(m => (m.Name ?? "") + "=" + (m.Value ?? ""))
             .OrderBy(s => s, StringComparer.Ordinal));
 

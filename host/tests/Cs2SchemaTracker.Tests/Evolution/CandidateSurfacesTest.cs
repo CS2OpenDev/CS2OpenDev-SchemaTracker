@@ -308,5 +308,11 @@ public sealed class CandidateSurfacesTest
         var dir = Path.Combine(root, snapshot.BuildId, Platform);
         Directory.CreateDirectory(dir);
         AtomicWrite.WriteCanonical(snapshot, Path.Combine(dir, "entity_schema.json"));
+        var provenance = new Schemas.Provenance
+        {
+            Steam = new Schemas.SteamIdentity
+            { ManifestCreatedUtc = $"2026-01-01T00:00:{snapshot.BuildId[^1]}0Z" },
+        };
+        AtomicWrite.WriteCanonical(provenance, Path.Combine(dir, "provenance.json"));
     }
 }

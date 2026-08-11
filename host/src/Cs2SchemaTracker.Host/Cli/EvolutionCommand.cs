@@ -106,7 +106,7 @@ internal static class EvolutionCommand
                 var latest = chain[^1];
                 var predSnapshot = emitter.LoadSnapshot(artifactsRoot, pred);
                 var latestSnapshot = emitter.LoadSnapshot(artifactsRoot, latest);
-                message = emitter.BuildIncremental(prior!, predSnapshot, pred, latestSnapshot, latest);
+                message = emitter.BuildIncremental(artifactsRoot, prior!, predSnapshot, pred, latestSnapshot, latest);
                 mode = $"incremental (appended {pred} -> {latest})";
             }
             else
