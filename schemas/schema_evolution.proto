@@ -141,13 +141,20 @@ message ClassDelta {
   repeated FieldOp static_field_ops = 9;
 
   ScalarChange flags2 = 10;              // present iff the second class-flags word changed
-  // Class-level metadata, rendered exactly like FieldOp.from_meta/to_meta: "name=value" entries,
-  // Ordinal-sorted, ";"-joined. Present iff the rendered forms differ.
-  ScalarChange meta = 11;
+  // Field 11 was the short-lived 0.7.0 `meta` ScalarChange — the full joined metadata dumped on
+  // both sides, which carried multi-KB MGetKV3ClassDefaults payloads twice per change and drove
+  // the artifact toward GitHub's file-size limit. Replaced in 0.8.0 by the structured per-key
+  // `meta_ops` below (issue #7 item 4); reserved so the number is never reused.
+  reserved 11;
+  reserved "meta";
   ScalarChange cpp_name     = 12;        // present iff m_pszCPPName changed
   ScalarChange project_name = 13;        // present iff m_pszProjectName changed
   ScalarChange single_inheritance_depth   = 14;
   ScalarChange multiple_inheritance_depth = 15;
+
+  // Class-level metadata changes, one op per changed KEY (issue #7 item 4). See MetaEntryOp for
+  // the multiset and size-representation rules. Ordinal by (name, kind).
+  repeated MetaEntryOp meta_ops = 16;
 }
 
 message FieldOp {
@@ -170,6 +177,46 @@ message FieldOp {
   BuiltinWidth to_width    = 8;
   string       from_meta   = 9;          // joined metadata for META_CHANGE; "" otherwise
   string       to_meta     = 10;
+
+  // Structured per-key view of the same META_CHANGE (issue #7 item 4): populated ONLY when
+  // kind == META_CHANGE, alongside the frozen from_meta/to_meta dumps above (which stay for
+  // compatibility — field metadata is small in practice, so the dump costs little here).
+  // Ordinal by (name, kind).
+  repeated MetaEntryOp meta_ops = 11;
+}
+
+// A metadata value, in one of two representations decided PER VALUE by size:
+//   - value <= 256 UTF-8 bytes: carried verbatim in `value` (value_sha256/value_bytes unset).
+//   - larger: `value_sha256` (lowercase hex) + `value_bytes`; `value` empty. Change stays fully
+//     visible; the payload itself lives in the two entity_schema snapshots, which consumers of
+//     this artifact already have. Same idiom as the changelog localization family's valuesHash.
+// This is a REPRESENTATION rule, not an evidence rule — no relation is asserted or dropped by it.
+// Measured at 24662694: exactly three keys ever exceed the threshold (MGetKV3ClassDefaults,
+// max ~104 KB; MPropertyDescription; MPropertySuppressExpr), which is why the rule is a size
+// threshold rather than a key-name list.
+message MetaValue {
+  string value        = 1;
+  string value_sha256 = 2;
+  uint64 value_bytes  = 3;               // set only in the hashed form
+}
+
+// One per-key metadata op, used by ClassDelta.meta_ops, FieldOp.meta_ops, and
+// EnumMemberOp.meta_ops. Multiset rule: entries sharing a key are Ordinal-sorted by value and
+// ";"-joined into ONE logical value before comparison, so there is always exactly one op per
+// changed key (duplicate keys on one carrier are real — 3 classes at HEAD). An empty value is a
+// VALUE (marker keys like "MNetworkEnable=" exist); presence is carried by kind, never by
+// value-emptiness.
+message MetaEntryOp {
+  enum Kind {
+    KIND_UNSPECIFIED = 0;
+    ADD_KEY          = 1;                // key present in to, not from
+    REMOVE_KEY       = 2;                // key present in from, not to
+    CHANGE_VALUE     = 3;                // key present in both, joined values differ
+  }
+  Kind   kind = 1;
+  string name = 2;                       // metadata key, e.g. "MNetworkAlias", "MGetKV3ClassDefaults"
+  MetaValue from = 3;                    // present for REMOVE_KEY / CHANGE_VALUE
+  MetaValue to   = 4;                    // present for ADD_KEY / CHANGE_VALUE
 }
 
 // Byte width of a known BUILTIN primitive, from a fixed name->bytes table. A provable number — NOT a
@@ -231,11 +278,17 @@ message EnumMemberOp {
     ADD_MEMBER          = 1;
     REMOVE_MEMBER       = 2;
     CHANGE_MEMBER_VALUE = 3;
+    CHANGE_MEMBER_META  = 4;             // member metadata changed (0.8.0 — previously invisible)
   }
   Kind   kind   = 1;
   string member = 2;
   string from_value = 3;                 // invariant int string; "" = N/A
   string to_value   = 4;
+
+  // Per-key metadata ops for CHANGE_MEMBER_META (empty for the other kinds). Enum-member
+  // metadata was not diffed at all before 0.8.0 — this closes that blind spot with the same
+  // per-key vocabulary classes and fields use. Ordinal by (name, kind).
+  repeated MetaEntryOp meta_ops = 5;
 }
 
 // ---- Whole-history roll-ups (facts only) ------------------------------------------------
