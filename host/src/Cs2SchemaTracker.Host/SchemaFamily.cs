@@ -51,5 +51,15 @@ public static class SchemaFamily
     // timestamps joined from committed provenance (the one stated exception to
     // snapshot-only derivation). Strictly additive; the same version gate forces a full
     // backfill over any pre-0.7.0 artifact.
-    public const string Version = "0.7.0";
+    //
+    // 0.8.0: schema_evolution metadata changes go structured (issue #7 item 4):
+    // per-key MetaEntryOp lists on ClassDelta (meta_ops — REPLACING 0.7.0's short-lived
+    // joined-dump `meta` ScalarChange, whose double-dumped MGetKV3ClassDefaults payloads
+    // drove the artifact toward GitHub's file-size limit; field 11 reserved), on
+    // FieldOp (alongside the frozen from_meta/to_meta), and on EnumMemberOp via the new
+    // CHANGE_MEMBER_META kind (member metadata was previously not diffed at all).
+    // Values > 256 UTF-8 bytes are carried as sha256 + byte length instead of verbatim
+    // (a representation rule, not an evidence rule). Version gate forces a full backfill
+    // over any pre-0.8.0 artifact.
+    public const string Version = "0.8.0";
 }

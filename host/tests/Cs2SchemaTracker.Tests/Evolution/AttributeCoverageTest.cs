@@ -92,7 +92,10 @@ public sealed class AttributeCoverageTest
         var delta = Assert.Single(Diff(Snapshot(B1, oldC), Snapshot(B2, newC)).ClassChanged);
 
         Assert.Equal(("0", "4"), (delta.Flags2.From, delta.Flags2.To));
-        Assert.Equal(("MTag=old", "MTag=new"), (delta.Meta.From, delta.Meta.To));
+        var metaOp = Assert.Single(delta.MetaOps);
+        Assert.Equal(MetaEntryOp.Types.Kind.ChangeValue, metaOp.Kind);
+        Assert.Equal("MTag", metaOp.Name);
+        Assert.Equal(("old", "new"), (metaOp.From.Value, metaOp.To.Value));
         Assert.Equal(("CFoo", "CFoo2"), (delta.CppName.From, delta.CppName.To));
         Assert.Equal(("client", "particles"), (delta.ProjectName.From, delta.ProjectName.To));
         Assert.Equal(("1", "2"), (delta.SingleInheritanceDepth.From, delta.SingleInheritanceDepth.To));

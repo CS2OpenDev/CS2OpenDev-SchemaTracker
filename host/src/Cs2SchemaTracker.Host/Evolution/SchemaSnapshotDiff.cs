@@ -15,6 +15,8 @@
 // Ordinal by (from, to). All scalar rendering is InvariantCulture.
 
 using System.Globalization;
+using System.Security.Cryptography;
+using System.Text;
 
 using Cs2SchemaTracker.Schemas;
 
@@ -139,10 +141,7 @@ public static class SchemaSnapshotDiff
         // The attribute coverage issue #7 item 3 asked for (previously silent in this record).
         if (oldC.Flags2 != newC.Flags2)
             delta.Flags2 = new ScalarChange { From = Inv(oldC.Flags2), To = Inv(newC.Flags2) };
-        var oldClassMeta = RenderMeta(oldC.Metadata);
-        var newClassMeta = RenderMeta(newC.Metadata);
-        if (!string.Equals(oldClassMeta, newClassMeta, StringComparison.Ordinal))
-            delta.Meta = new ScalarChange { From = oldClassMeta, To = newClassMeta };
+        delta.MetaOps.AddRange(MetaEntryOps(oldC.Metadata, newC.Metadata));
         if (!string.Equals(oldC.CppName, newC.CppName, StringComparison.Ordinal))
             delta.CppName = new ScalarChange { From = oldC.CppName, To = newC.CppName };
         if (!string.Equals(oldC.ProjectName, newC.ProjectName, StringComparison.Ordinal))
@@ -173,7 +172,7 @@ public static class SchemaSnapshotDiff
             || delta.Realign is not null
             || delta.Flags is not null
             || delta.Flags2 is not null
-            || delta.Meta is not null
+            || delta.MetaOps.Count > 0
             || delta.CppName is not null
             || delta.ProjectName is not null
             || delta.SingleInheritanceDepth is not null
@@ -235,13 +234,17 @@ public static class SchemaSnapshotDiff
             var newMeta = RenderMeta(nf.Metadata);
             if (!string.Equals(oldMeta, newMeta, StringComparison.Ordinal))
             {
-                ops.Add(new FieldOp
+                var metaOp = new FieldOp
                 {
                     Kind = FieldOp.Types.Kind.MetaChange,
                     Field = fname,
                     FromMeta = oldMeta,
                     ToMeta = newMeta,
-                });
+                };
+                // The structured per-key view of the same change (0.8.0), alongside the frozen
+                // joined dumps above.
+                metaOp.MetaOps.AddRange(MetaEntryOps(of.Metadata, nf.Metadata));
+                ops.Add(metaOp);
             }
         }
 
@@ -532,20 +535,34 @@ public static class SchemaSnapshotDiff
         var ops = new List<EnumMemberOp>();
 
         foreach (var m in AddedKeys(oldMembers, newMembers))
-            ops.Add(new EnumMemberOp { Kind = EnumMemberOp.Types.Kind.AddMember, Member = m, ToValue = Inv(newMembers[m]) });
+            ops.Add(new EnumMemberOp { Kind = EnumMemberOp.Types.Kind.AddMember, Member = m, ToValue = Inv(newMembers[m].Value) });
         foreach (var m in RemovedKeys(oldMembers, newMembers))
-            ops.Add(new EnumMemberOp { Kind = EnumMemberOp.Types.Kind.RemoveMember, Member = m, FromValue = Inv(oldMembers[m]) });
+            ops.Add(new EnumMemberOp { Kind = EnumMemberOp.Types.Kind.RemoveMember, Member = m, FromValue = Inv(oldMembers[m].Value) });
         foreach (var m in MatchedKeys(oldMembers, newMembers))
         {
-            if (oldMembers[m] != newMembers[m])
+            if (oldMembers[m].Value != newMembers[m].Value)
             {
                 ops.Add(new EnumMemberOp
                 {
                     Kind = EnumMemberOp.Types.Kind.ChangeMemberValue,
                     Member = m,
-                    FromValue = Inv(oldMembers[m]),
-                    ToValue = Inv(newMembers[m]),
+                    FromValue = Inv(oldMembers[m].Value),
+                    ToValue = Inv(newMembers[m].Value),
                 });
+            }
+
+            // Member metadata was not diffed at all before 0.8.0. Same per-key vocabulary as
+            // classes and fields; an op is emitted only when some key actually changed.
+            var metaOps = MetaEntryOps(oldMembers[m].Metadata, newMembers[m].Metadata);
+            if (metaOps.Count > 0)
+            {
+                var metaOp = new EnumMemberOp
+                {
+                    Kind = EnumMemberOp.Types.Kind.ChangeMemberMeta,
+                    Member = m,
+                };
+                metaOp.MetaOps.AddRange(metaOps);
+                ops.Add(metaOp);
             }
         }
 
@@ -586,17 +603,100 @@ public static class SchemaSnapshotDiff
             .Select(m => (m.Name ?? "") + "=" + (m.Value ?? ""))
             .OrderBy(s => s, StringComparer.Ordinal));
 
+    /// <summary>
+    /// The threshold above which a metadata VALUE is carried as sha256 + byte length instead of
+    /// verbatim (see schema_evolution.proto MetaValue). A representation rule, not an evidence
+    /// rule: change visibility is identical either way, and the payload lives in the two
+    /// entity_schema snapshots. 256 keeps every observed key verbatim except the three bulky ones
+    /// (MGetKV3ClassDefaults at up to ~104 KB being the one that matters).
+    /// </summary>
+    private const int MetaValueVerbatimMaxBytes = 256;
+
+    /// <summary>
+    /// Per-key metadata ops (0.8.0): ADD_KEY / REMOVE_KEY / CHANGE_VALUE over the two entry sets.
+    /// Multiset rule: entries sharing a key are Ordinal-sorted by value and ";"-joined into one
+    /// logical value before comparison, so there is exactly one op per changed key. An empty value
+    /// is a value (marker keys); presence rides the kind. Ordinal by (name, kind).
+    /// </summary>
+    private static List<MetaEntryOp> MetaEntryOps(
+        IEnumerable<SchemaMetadata> oldMeta, IEnumerable<SchemaMetadata> newMeta)
+    {
+        var oldByKey = JoinByKey(oldMeta);
+        var newByKey = JoinByKey(newMeta);
+
+        var ops = new List<MetaEntryOp>();
+        foreach (var key in AddedKeys(oldByKey, newByKey))
+        {
+            ops.Add(new MetaEntryOp
+            {
+                Kind = MetaEntryOp.Types.Kind.AddKey,
+                Name = key,
+                To = EncodeMetaValue(newByKey[key]),
+            });
+        }
+        foreach (var key in RemovedKeys(oldByKey, newByKey))
+        {
+            ops.Add(new MetaEntryOp
+            {
+                Kind = MetaEntryOp.Types.Kind.RemoveKey,
+                Name = key,
+                From = EncodeMetaValue(oldByKey[key]),
+            });
+        }
+        foreach (var key in MatchedKeys(oldByKey, newByKey))
+        {
+            if (!string.Equals(oldByKey[key], newByKey[key], StringComparison.Ordinal))
+            {
+                ops.Add(new MetaEntryOp
+                {
+                    Kind = MetaEntryOp.Types.Kind.ChangeValue,
+                    Name = key,
+                    From = EncodeMetaValue(oldByKey[key]),
+                    To = EncodeMetaValue(newByKey[key]),
+                });
+            }
+        }
+
+        ops.Sort(static (a, b) =>
+        {
+            var byName = string.CompareOrdinal(a.Name, b.Name);
+            return byName != 0 ? byName : ((int)a.Kind).CompareTo((int)b.Kind);
+        });
+        return ops;
+    }
+
+    /// <summary>Key -> the Ordinal-sorted ";"-joined multiset of that key's values.</summary>
+    private static Dictionary<string, string> JoinByKey(IEnumerable<SchemaMetadata> metadata)
+        => metadata
+            .GroupBy(m => m.Name ?? "", StringComparer.Ordinal)
+            .ToDictionary(
+                g => g.Key,
+                g => string.Join(";", g.Select(m => m.Value ?? "").OrderBy(v => v, StringComparer.Ordinal)),
+                StringComparer.Ordinal);
+
+    private static MetaValue EncodeMetaValue(string value)
+    {
+        var bytes = Encoding.UTF8.GetBytes(value);
+        if (bytes.Length <= MetaValueVerbatimMaxBytes)
+            return new MetaValue { Value = value };
+        return new MetaValue
+        {
+            ValueSha256 = Convert.ToHexString(SHA256.HashData(bytes)).ToLowerInvariant(),
+            ValueBytes = (ulong)bytes.Length,
+        };
+    }
+
     private static List<string> Parents(SchemaClass c)
         => c.Parents.Select(p => Qualify(p.Module, p.Name)).ToList();
 
-    private static Dictionary<string, long> MembersByName(SchemaEnum e)
+    private static Dictionary<string, SchemaEnumMember> MembersByName(SchemaEnum e)
     {
-        var map = new Dictionary<string, long>(StringComparer.Ordinal);
+        var map = new Dictionary<string, SchemaEnumMember>(StringComparer.Ordinal);
         foreach (var m in e.Members)
         {
             if (string.IsNullOrEmpty(m.Name))
                 continue;
-            map[m.Name] = m.Value; // last-wins; enums are small + well-formed (matches changelog emitter)
+            map[m.Name] = m; // last-wins; enums are small + well-formed (matches changelog emitter)
         }
         return map;
     }
