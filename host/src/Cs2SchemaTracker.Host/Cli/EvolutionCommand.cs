@@ -131,8 +131,12 @@ internal static class EvolutionCommand
     /// <summary>
     /// Try to load the fixed-path cumulative artifact and confirm it is CONTIGUOUS — its latest_build
     /// equals <paramref name="expectedLatest"/> (the second-newest committed build), so appending the
-    /// newest transition is exact. Returns false (full rebuild) when absent, unparseable, or
-    /// non-contiguous (e.g. a mid-chain build was backfilled).
+    /// newest transition is exact — and CURRENT — its schema_version equals
+    /// <see cref="SchemaFamily.Version"/>. Returns false (full rebuild) when absent, unparseable,
+    /// non-contiguous (e.g. a mid-chain build was backfilled), or written by a different schema
+    /// family version. The version check is load-bearing for the incremental == full contract: an
+    /// older-shape artifact incrementally extended by newer code would carry the new surfaces only
+    /// on the appended transition — a mixed file no full backfill can reproduce.
     /// </summary>
     private static bool TryLoadContiguousPrior(string path, string expectedLatest, out SchemaEvolution? prior)
     {
@@ -143,6 +147,8 @@ internal static class EvolutionCommand
         {
             var parsed = StrictParser.Parse<SchemaEvolution>(File.ReadAllText(path));
             if (!string.Equals(parsed.LatestBuild, expectedLatest, StringComparison.Ordinal))
+                return false;
+            if (!string.Equals(parsed.SchemaVersion, SchemaFamily.Version, StringComparison.Ordinal))
                 return false;
             prior = parsed;
             return true;

@@ -77,15 +77,28 @@ public static class SchemaSnapshotDiff
         foreach (var name in RemovedKeys(fromMap, toMap))
             transition.ClassRemoved.Add(name);
 
+        // Removed/added field pools across the MATCHED classes, feeding the transition-level
+        // field-move candidates. The rendered type rides along so each field is rendered once.
+        var removedPool = new List<(string Cls, string Field, string RenderedType)>();
+        var addedPool = new List<(string Cls, string Field, string RenderedType)>();
+
         foreach (var name in MatchedKeys(fromMap, toMap))
         {
-            var delta = DiffClass(name, fromMap[name], toMap[name]);
+            var delta = DiffClass(name, fromMap[name], toMap[name], removedPool, addedPool);
             if (delta is not null)
                 transition.ClassChanged.Add(delta);
         }
+
+        foreach (var pair in ClassPairCandidates(transition, fromMap, toMap))
+            transition.ClassPairCandidates.Add(pair);
+        foreach (var move in FieldMoveCandidates(removedPool, addedPool, toMap))
+            transition.FieldMoveCandidates.Add(move);
     }
 
-    private static ClassDelta? DiffClass(string name, SchemaClass oldC, SchemaClass newC)
+    private static ClassDelta? DiffClass(
+        string name, SchemaClass oldC, SchemaClass newC,
+        List<(string Cls, string Field, string RenderedType)> removedPool,
+        List<(string Cls, string Field, string RenderedType)> addedPool)
     {
         var delta = new ClassDelta { Name = name };
 
@@ -94,11 +107,19 @@ public static class SchemaSnapshotDiff
 
         var ops = new List<FieldOp>();
 
-        // Added / removed fields.
+        // Added / removed fields (also pooled for the transition-level field-move candidates).
         foreach (var fname in AddedKeys(oldFields, newFields))
-            ops.Add(AddOp(newFields[fname]));
+        {
+            var f = newFields[fname];
+            ops.Add(AddOp(f));
+            addedPool.Add((name, f.Name, SchemaTypeRenderer.Render(f.Type!)));
+        }
         foreach (var fname in RemovedKeys(oldFields, newFields))
-            ops.Add(RemoveOp(oldFields[fname]));
+        {
+            var f = oldFields[fname];
+            ops.Add(RemoveOp(f));
+            removedPool.Add((name, f.Name, SchemaTypeRenderer.Render(f.Type!)));
+        }
 
         // Matched fields: type / offset / metadata are INDEPENDENT ops (a field may emit several).
         foreach (var fname in MatchedKeys(oldFields, newFields))
@@ -174,6 +195,10 @@ public static class SchemaSnapshotDiff
         // Neutral paired evidence over the removed/added field sets — NOT a rename claim.
         foreach (var pair in PairEvidence(oldFields, newFields))
             delta.PairedEvidence.Add(pair);
+
+        // The wider, unselected candidate surface over the same sets (see PairCandidates).
+        foreach (var candidate in PairCandidates(oldFields, newFields))
+            delta.PairCandidates.Add(candidate);
 
         var changed = delta.FieldOps.Count > 0
             || delta.Reparent is not null
@@ -253,6 +278,185 @@ public static class SchemaSnapshotDiff
             evidence.Signals.Add("typeMatch");
             yield return evidence;
         }
+    }
+
+    /// <summary>
+    /// The wider, UNSELECTED candidate surface (issue #7): every removed/added pair whose rendered
+    /// types are equal OR whose offsets are equal — N:M by design. PairEvidence's greedy 1:1 pick is
+    /// sound only because its two-signal bar makes candidates near-unique; under this wider floor
+    /// ties are common and any 1:1 selection among them would be an inference, so every qualifying
+    /// pair is emitted and carries exactly the signals that hold. "offsetAdjacent" is never emitted:
+    /// adjacency needs a distance threshold, which is consumer policy, not a fact. Ordinal by
+    /// (from, to).
+    /// </summary>
+    private static IEnumerable<PairCandidate> PairCandidates(
+        Dictionary<string, SchemaField> oldFields,
+        Dictionary<string, SchemaField> newFields)
+    {
+        var removed = RemovedKeys(oldFields, newFields).Select(k => oldFields[k]).ToList();
+        var added = AddedKeys(oldFields, newFields).Select(k => newFields[k]).ToList();
+        if (removed.Count == 0 || added.Count == 0)
+            yield break;
+
+        foreach (var r in removed) // both lists are already Ordinal-sorted -> (from, to) order
+        {
+            var rType = SchemaTypeRenderer.Render(r.Type!);
+            var rWidth = WidthOf(r.Type!);
+            foreach (var a in added)
+            {
+                var typeMatch = string.Equals(
+                    SchemaTypeRenderer.Render(a.Type!), rType, StringComparison.Ordinal);
+                var offsetExact = a.Offset == r.Offset;
+                if (!typeMatch && !offsetExact)
+                    continue;
+
+                var candidate = new PairCandidate { From = r.Name, To = a.Name };
+                // Signals appended in Ordinal order: offsetExact < sizeMatch < typeMatch.
+                if (offsetExact)
+                    candidate.Signals.Add("offsetExact");
+                var aWidth = WidthOf(a.Type!);
+                if (rWidth is not null && aWidth is not null && rWidth.Bytes == aWidth.Bytes)
+                    candidate.Signals.Add("sizeMatch");
+                if (typeMatch)
+                    candidate.Signals.Add("typeMatch");
+                yield return candidate;
+            }
+        }
+    }
+
+    /// <summary>
+    /// Removed/added CLASS pairs sharing a bare (module-stripped) name — the cross-module move the
+    /// qualified key cannot see. N:M, no selection. Signals: "bareNameMatch" (the floor),
+    /// "sizeMatch" (class sizes equal), "fieldSetMatch" (Ordinal field-name sets identical).
+    /// Ordinal by (from, to).
+    /// </summary>
+    private static IEnumerable<ClassPairCandidate> ClassPairCandidates(
+        Transition transition,
+        Dictionary<string, SchemaClass> fromMap,
+        Dictionary<string, SchemaClass> toMap)
+    {
+        var removedByBare = transition.ClassRemoved
+            .GroupBy(n => fromMap[n].Name, StringComparer.Ordinal)
+            .ToDictionary(g => g.Key, g => g.ToList(), StringComparer.Ordinal);
+        if (removedByBare.Count == 0)
+            yield break;
+
+        var pairs = new List<ClassPairCandidate>();
+        foreach (var addedName in transition.ClassAdded)
+        {
+            if (!removedByBare.TryGetValue(toMap[addedName].Name, out var removedNames))
+                continue;
+            foreach (var removedName in removedNames)
+            {
+                var oldC = fromMap[removedName];
+                var newC = toMap[addedName];
+                var candidate = new ClassPairCandidate { From = removedName, To = addedName };
+                // Signals appended in Ordinal order: bareNameMatch < fieldSetMatch < sizeMatch.
+                candidate.Signals.Add("bareNameMatch");
+                if (oldC.Fields.Select(f => f.Name).OrderBy(n => n, StringComparer.Ordinal)
+                    .SequenceEqual(
+                        newC.Fields.Select(f => f.Name).OrderBy(n => n, StringComparer.Ordinal),
+                        StringComparer.Ordinal))
+                {
+                    candidate.Signals.Add("fieldSetMatch");
+                }
+                if (oldC.Size == newC.Size)
+                    candidate.Signals.Add("sizeMatch");
+                pairs.Add(candidate);
+            }
+        }
+
+        pairs.Sort(static (a, b) =>
+        {
+            var byFrom = string.CompareOrdinal(a.From, b.From);
+            return byFrom != 0 ? byFrom : string.CompareOrdinal(a.To, b.To);
+        });
+        foreach (var pair in pairs)
+            yield return pair;
+    }
+
+    /// <summary>
+    /// Cross-class field-move candidates over the pooled removed/added fields of the MATCHED
+    /// classes: same field name AND same rendered type, different class (a hoist to a parent, a
+    /// push-down, or a sideways move between surviving classes). "parentChainUp"/"parentChainDown"
+    /// are emitted when the destination class is an ancestor/descendant of the source class in the
+    /// TO snapshot — both classes exist there, so the relation is provable. Ordinal by
+    /// (from_class, field, to_class).
+    /// </summary>
+    private static IEnumerable<FieldMoveCandidate> FieldMoveCandidates(
+        List<(string Cls, string Field, string RenderedType)> removedPool,
+        List<(string Cls, string Field, string RenderedType)> addedPool,
+        Dictionary<string, SchemaClass> toMap)
+    {
+        if (removedPool.Count == 0 || addedPool.Count == 0)
+            yield break;
+
+        var addedByField = addedPool
+            .GroupBy(a => a.Field, StringComparer.Ordinal)
+            .ToDictionary(g => g.Key, g => g.ToList(), StringComparer.Ordinal);
+
+        var moves = new List<FieldMoveCandidate>();
+        foreach (var r in removedPool)
+        {
+            if (!addedByField.TryGetValue(r.Field, out var adds))
+                continue;
+            foreach (var a in adds)
+            {
+                if (string.Equals(a.Cls, r.Cls, StringComparison.Ordinal)
+                    || !string.Equals(a.RenderedType, r.RenderedType, StringComparison.Ordinal))
+                {
+                    continue;
+                }
+
+                var move = new FieldMoveCandidate { FromClass = r.Cls, ToClass = a.Cls, Field = r.Field };
+                // Signals appended in Ordinal order:
+                // fieldNameMatch < parentChainDown < parentChainUp < typeMatch.
+                move.Signals.Add("fieldNameMatch");
+                if (IsAncestor(toMap, ancestorOf: a.Cls, candidate: r.Cls))
+                    move.Signals.Add("parentChainDown");
+                if (IsAncestor(toMap, ancestorOf: r.Cls, candidate: a.Cls))
+                    move.Signals.Add("parentChainUp");
+                move.Signals.Add("typeMatch");
+                moves.Add(move);
+            }
+        }
+
+        moves.Sort(static (a, b) =>
+        {
+            var byFrom = string.CompareOrdinal(a.FromClass, b.FromClass);
+            if (byFrom != 0)
+                return byFrom;
+            var byField = string.CompareOrdinal(a.Field, b.Field);
+            return byField != 0 ? byField : string.CompareOrdinal(a.ToClass, b.ToClass);
+        });
+        foreach (var move in moves)
+            yield return move;
+    }
+
+    /// <summary>
+    /// Is <paramref name="candidate"/> in the transitive parent chain of <paramref name="ancestorOf"/>
+    /// within the snapshot indexed by <paramref name="classes"/>? Cycle-safe; a parent whose class
+    /// record is not in the snapshot terminates that branch (nothing is inferred about it).
+    /// </summary>
+    private static bool IsAncestor(
+        Dictionary<string, SchemaClass> classes, string ancestorOf, string candidate)
+    {
+        var visited = new HashSet<string>(StringComparer.Ordinal);
+        var pending = new Stack<string>();
+        pending.Push(ancestorOf);
+        while (pending.Count > 0)
+        {
+            var current = pending.Pop();
+            if (!visited.Add(current) || !classes.TryGetValue(current, out var c))
+                continue;
+            foreach (var parent in Parents(c))
+            {
+                if (string.Equals(parent, candidate, StringComparison.Ordinal))
+                    return true;
+                pending.Push(parent);
+            }
+        }
+        return false;
     }
 
     // ---- enums ----------------------------------------------------------------------------

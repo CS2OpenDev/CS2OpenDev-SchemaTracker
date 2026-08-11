@@ -33,5 +33,15 @@ public static class SchemaFamily
     // SchemaEnumInfoData_t.m_pszProjectName) — the same attribution class records already
     // carried. Strictly additive; module keeps its existing binary-scope meaning, which
     // alone collapses every globally-registered enum into "!GlobalTypes".
-    public const string Version = "0.5.1";
+    //
+    // 0.6.0: schema_evolution gains the unselected candidate surfaces (issue #7 items 1+2):
+    // ClassDelta.pair_candidates (within-class remove/add pairs under the widened
+    // typeMatch-or-offsetExact floor), Transition.class_pair_candidates (cross-module
+    // same-bare-name class pairs), and Transition.field_move_candidates (same-name+type
+    // field moves between surviving classes). Strictly additive; paired_evidence is frozen
+    // unchanged. The version bump is also LOAD-BEARING for the evolution incremental path:
+    // EvolutionCommand forces a full backfill when the on-disk artifact's schema_version
+    // differs from this constant, so a pre-candidates file is never incrementally extended
+    // into a mixed shape (which would break incremental == full byte-identity).
+    public const string Version = "0.6.0";
 }

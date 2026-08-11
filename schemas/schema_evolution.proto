@@ -76,6 +76,26 @@ message Transition {
   repeated string    enum_added   = 6;   // "<module>/<name>" (Ordinal-sorted)
   repeated string    enum_removed = 7;
   repeated EnumDelta enum_changed = 8;   // Ordinal by name
+
+  // Removed/added CLASS pairs sharing a bare (module-stripped) name — the cross-module move a
+  // within-module key cannot see (e.g. "!GlobalTypes/X" removed + "libserver.so/X" added). Same
+  // evidence discipline as field candidates: N:M, no selection, no rename claim; the raw
+  // class_added/class_removed entries are always ALSO emitted. Signals (each independently
+  // provable from the two snapshots): "bareNameMatch" (always — the floor), "sizeMatch" (the two
+  // class sizes are equal), "fieldSetMatch" (the Ordinal-sorted field-name sets are identical).
+  // Ordinal by (from, to).
+  repeated ClassPairCandidate class_pair_candidates = 9;
+
+  // A field REMOVEd from one surviving class paired with a same-named, same-typed field ADDed to a
+  // DIFFERENT surviving class in the same transition — the hoist/move a within-class pairing
+  // cannot see. Floor: field name AND rendered type both equal (name alone across classes is
+  // noise). Scope: both classes are MATCHED (present in both snapshots) — a wholly-moved class's
+  // fields are deliberately NOT re-paired field-by-field here; class_pair_candidates already
+  // carries that linkage. Signals: "fieldNameMatch" + "typeMatch" (always — the floor),
+  // "parentChainUp" (to_class is an ancestor of from_class in the to-snapshot),
+  // "parentChainDown" (to_class is a descendant of from_class in the to-snapshot).
+  // Ordinal by (from_class, field, to_class).
+  repeated FieldMoveCandidate field_move_candidates = 10;
 }
 
 message ClassDelta {
@@ -91,6 +111,19 @@ message ClassDelta {
   // Neutral remove/add field pairings that share PROVABLE relations — evidence a downstream may use
   // to confirm a rename. NOT a rename claim; the raw ADD + REMOVE FieldOps are always ALSO emitted.
   repeated PairedEvidence paired_evidence = 7;
+
+  // The WIDER candidate surface (issue #7): every removed/added field pair in this class where the
+  // rendered types are equal OR the offsets are equal — N:M, deliberately unselected. Where
+  // paired_evidence performs a greedy 1:1 selection (sound only because its offsetExact+typeMatch
+  // bar makes candidates near-unique), a wider bar makes ties common, and any 1:1 pick among tied
+  // candidates would be an inference — so this list emits ALL qualifying pairs and lets each carry
+  // exactly the signals that hold. Every paired_evidence pair reappears here (this list is
+  // complete on its own; consumers need not union the two). Signals: "typeMatch" (rendered-type
+  // equality), "offsetExact" (byte offsets equal), "sizeMatch" (both types are known builtins of
+  // equal width — never emitted alone; the floor requires typeMatch or offsetExact).
+  // "offsetAdjacent" from the historical vocabulary is NEVER emitted: any adjacency definition
+  // needs a distance threshold, which is consumer policy, not a fact. Ordinal by (from, to).
+  repeated PairCandidate pair_candidates = 8;
 }
 
 message FieldOp {
@@ -122,16 +155,41 @@ message BuiltinWidth { uint64 bytes = 1; }
 // A removed field paired with an added field in the same class that share provable relations.
 // The pairing bar is PRE-FILTERED, not raw: the producer emits a pairing ONLY when the removed and
 // added field share the SAME offset AND the SAME rendered type, so `signals` is always exactly
-// ["offsetExact","typeMatch"] (Ordinal-sorted). The weaker signals in the vocabulary below
-// (`offsetAdjacent`, `sizeMatch`) are DEFINED but never emitted — a field that shifted a slot or
-// changed width leaves no pairing at all. Consumers cannot loosen the bar from this artifact; the
-// raw ADD/REMOVE ops are always ALSO emitted for anyone who wants to re-pair with their own policy.
-// Vocabulary (for forward-compat): signals ⊆ {offsetAdjacent, offsetExact, sizeMatch, typeMatch}.
+// ["offsetExact","typeMatch"] (Ordinal-sorted). This surface is FROZEN for compatibility — the
+// wider bar consumers asked for lives in ClassDelta.pair_candidates (unselected N:M; see there for
+// why widening and 1:1 selection cannot coexist under the facts-only mandate). The raw ADD/REMOVE
+// ops are always ALSO emitted for anyone who wants to re-pair with their own policy.
 // There is deliberately NO confidence, NO probability, and NO "rename" here.
 message PairedEvidence {
   string from = 1;                       // removed field name
   string to   = 2;                       // added field name
   repeated string signals = 3;
+}
+
+// One unselected remove/add candidate within a class (ClassDelta.pair_candidates — see there for
+// the floor and signal vocabulary). Same neutrality contract as PairedEvidence: no confidence, no
+// probability, no "rename".
+message PairCandidate {
+  string from = 1;                       // removed field name
+  string to   = 2;                       // added field name
+  repeated string signals = 3;           // Ordinal-sorted; each independently provable
+}
+
+// One removed/added class pair sharing a bare name (Transition.class_pair_candidates — see there
+// for the floor and signal vocabulary). Neutral evidence, never a move/rename claim.
+message ClassPairCandidate {
+  string from = 1;                       // removed class, "<module>/<name>"
+  string to   = 2;                       // added class, "<module>/<name>"
+  repeated string signals = 3;           // Ordinal-sorted; each independently provable
+}
+
+// One cross-class field-move candidate (Transition.field_move_candidates — see there for the floor,
+// scope, and signal vocabulary). The field name is single because the floor requires name equality.
+message FieldMoveCandidate {
+  string from_class = 1;                 // class the field was REMOVEd from, "<module>/<name>"
+  string to_class   = 2;                 // class the field was ADDed to, "<module>/<name>"
+  string field      = 3;                 // the shared field name
+  repeated string signals = 4;           // Ordinal-sorted; each independently provable
 }
 
 message EnumDelta {
