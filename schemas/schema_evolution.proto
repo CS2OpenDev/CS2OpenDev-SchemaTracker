@@ -18,7 +18,9 @@
 // build, computed by diffing consecutive committed entity_schema.json snapshots.
 //
 // FACTS ONLY (the central constraint) — every value here is derivable, deterministically, from the
-// two snapshots being compared and NOTHING else:
+// two snapshots being compared and NOTHING else, with ONE stated exception: the two
+// manifest-created timestamps on each Transition join the two builds' committed provenance.json
+// records instead (still input data recorded by Steam, never the wall clock, so determinism holds):
 //   - NO rename assertion. A rename is indistinguishable from remove-A + add-B at the schema level,
 //     so a class's remove/add field pairs that share PROVABLE relations are surfaced only as a
 //     neutral PairedEvidence{from,to,signals}; there is no `confidence` and no `rename`. Downstream
@@ -96,6 +98,14 @@ message Transition {
   // "parentChainDown" (to_class is a descendant of from_class in the to-snapshot).
   // Ordinal by (from_class, field, to_class).
   repeated FieldMoveCandidate field_move_candidates = 10;
+
+  // Calendar axis (issue #7 item 6): the Steam manifest-creation instants of the two builds,
+  // verbatim from each build's committed provenance.json (steam.manifest_created_utc, ISO 8601
+  // UTC). The one stated exception to snapshot-only derivation — see the header. Consecutive
+  // transitions overlap (to of N == from of N+1) by design, so every transition is
+  // self-contained and dating one needs no cross-file join.
+  string from_manifest_created_utc = 11;
+  string to_manifest_created_utc   = 12;
 }
 
 message ClassDelta {
@@ -124,6 +134,20 @@ message ClassDelta {
   // "offsetAdjacent" from the historical vocabulary is NEVER emitted: any adjacency definition
   // needs a distance threshold, which is consumer policy, not a fact. Ordinal by (from, to).
   repeated PairCandidate pair_candidates = 8;
+
+  // Attribute coverage (issue #7 item 3) — the class-level facts the diff previously skipped.
+  // Same op vocabulary over SchemaClass.static_fields as field_ops carries for instance fields;
+  // Ordinal by (field, kind). Statics deliberately join no pairing or candidate surface.
+  repeated FieldOp static_field_ops = 9;
+
+  ScalarChange flags2 = 10;              // present iff the second class-flags word changed
+  // Class-level metadata, rendered exactly like FieldOp.from_meta/to_meta: "name=value" entries,
+  // Ordinal-sorted, ";"-joined. Present iff the rendered forms differ.
+  ScalarChange meta = 11;
+  ScalarChange cpp_name     = 12;        // present iff m_pszCPPName changed
+  ScalarChange project_name = 13;        // present iff m_pszProjectName changed
+  ScalarChange single_inheritance_depth   = 14;
+  ScalarChange multiple_inheritance_depth = 15;
 }
 
 message FieldOp {
@@ -198,6 +222,7 @@ message EnumDelta {
   ScalarChange resize  = 3;              // underlying-size change
   ScalarChange realign = 4;              // alignment change
   ScalarChange flags   = 5;              // raw enum flags bits change
+  ScalarChange project_name = 6;         // present iff m_pszProjectName changed (same gap as ClassDelta.project_name)
 }
 
 message EnumMemberOp {
