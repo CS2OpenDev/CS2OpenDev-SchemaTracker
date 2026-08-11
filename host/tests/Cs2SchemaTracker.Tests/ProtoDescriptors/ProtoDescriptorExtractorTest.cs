@@ -508,4 +508,154 @@ public class ProtoDescriptorExtractorTest
             }
         }
     }
+
+    [Xunit.Fact]
+    public void Gcmessages_Is_Pruned_To_Its_Referenced_Closure_End_To_End()
+    {
+        var workDir = Path.Combine(Path.GetTempPath(), "prune-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(workDir);
+        try
+        {
+            var binDir = Path.Combine(workDir, "binaries");
+            Directory.CreateDirectory(binDir);
+
+            // A miniature of the real shape: gcmessages declares a referenced type and an orphan;
+            // only the orphan reaches into steamish.proto, so that import must be dropped. The
+            // consumer (cstrike15_usermessages in production) arrives as a SUPPLEMENTAL descriptor,
+            // exactly as it does in a real extract — the prune must see supplemental references.
+            var gc = new FileDescriptorProto
+            {
+                Name = "cstrike15_gcmessages.proto",
+                Syntax = "proto2",
+                Dependency = { "steamish.proto" },
+                MessageType =
+                {
+                    new DescriptorProto
+                    {
+                        Name = "KeptData",
+                        Field =
+                        {
+                            new FieldDescriptorProto
+                            {
+                                Name = "x", Number = 1, Type = Type.Int32,
+                                Label = Label.Optional, JsonName = "x",
+                            },
+                        },
+                    },
+                    new DescriptorProto
+                    {
+                        Name = "OrphanData",
+                        Field =
+                        {
+                            new FieldDescriptorProto
+                            {
+                                Name = "s", Number = 1, Type = Type.Message,
+                                Label = Label.Optional, TypeName = ".SteamThing", JsonName = "s",
+                            },
+                        },
+                    },
+                },
+            };
+            var steamish = new FileDescriptorProto
+            {
+                Name = "steamish.proto",
+                Syntax = "proto2",
+                MessageType = { new DescriptorProto { Name = "SteamThing" } },
+            };
+            var consumer = new FileDescriptorProto
+            {
+                Name = "cstrike15_usermessages.proto",
+                Syntax = "proto2",
+                Dependency = { "cstrike15_gcmessages.proto" },
+                MessageType =
+                {
+                    new DescriptorProto
+                    {
+                        Name = "CUserMsg",
+                        Field =
+                        {
+                            new FieldDescriptorProto
+                            {
+                                Name = "d", Number = 1, Type = Type.Message,
+                                Label = Label.Optional, TypeName = ".KeptData", JsonName = "d",
+                            },
+                        },
+                    },
+                },
+            };
+
+            var bin = CreateSyntheticBinary(binDir, "libgc.so", gc, steamish);
+            var outDir = Path.Combine(workDir, "out");
+            var warnings = new StringWriter();
+            new ProtoDescriptorExtractor().Extract(
+                new[] { bin }, outDir, warningSink: warnings,
+                supplementalDescriptors: new[] { consumer });
+
+            // The emitted text is the pruned closure, stamped as derived, minus the dead import.
+            var gcText = File.ReadAllText(Path.Combine(outDir, "protos", "cstrike15_gcmessages.proto"));
+            Xunit.Assert.StartsWith("// DERIVED CLOSURE.", gcText);
+            Xunit.Assert.Contains("1 of 2 top-level types kept", gcText);
+            Xunit.Assert.Contains("KeptData", gcText);
+            Xunit.Assert.DoesNotContain("OrphanData", gcText);
+            Xunit.Assert.DoesNotContain("steamish.proto\";", gcText);
+
+            // The descriptorset carries the SAME pruned form (one pass fixes both outputs), and
+            // steamish.proto itself — a real embedded descriptor — still travels in the set.
+            var set = FileDescriptorSet.Parser.ParseFrom(
+                File.ReadAllBytes(Path.Combine(outDir, "protos.descriptorset")));
+            var gcInSet = set.File.Single(f => f.Name == "cstrike15_gcmessages.proto");
+            Xunit.Assert.Equal(["KeptData"], gcInSet.MessageType.Select(m => m.Name));
+            Xunit.Assert.Empty(gcInSet.Dependency);
+            Xunit.Assert.Contains(set.File, f => f.Name == "steamish.proto");
+
+            // The prune is loud, never silent.
+            Xunit.Assert.Contains("pruned cstrike15_gcmessages.proto", warnings.ToString());
+        }
+        finally
+        {
+            if (Directory.Exists(workDir))
+            {
+                try
+                { Directory.Delete(workDir, recursive: true); }
+                catch { /* best effort */ }
+            }
+        }
+    }
+
+    [Xunit.Fact]
+    public void Unreferenced_Gcmessages_Is_Emitted_Whole()
+    {
+        var workDir = Path.Combine(Path.GetTempPath(), "noprune-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(workDir);
+        try
+        {
+            var binDir = Path.Combine(workDir, "binaries");
+            Directory.CreateDirectory(binDir);
+
+            // gcmessages present but nothing references it (no usermessages in the set): the
+            // conservative branch must emit the full file with no derived-closure stamp.
+            var gc = new FileDescriptorProto
+            {
+                Name = "cstrike15_gcmessages.proto",
+                Syntax = "proto2",
+                MessageType = { new DescriptorProto { Name = "LonelyData" } },
+            };
+            var bin = CreateSyntheticBinary(binDir, "libgc.so", gc);
+            var outDir = Path.Combine(workDir, "out");
+            new ProtoDescriptorExtractor().Extract(new[] { bin }, outDir);
+
+            var gcText = File.ReadAllText(Path.Combine(outDir, "protos", "cstrike15_gcmessages.proto"));
+            Xunit.Assert.DoesNotContain("DERIVED CLOSURE", gcText);
+            Xunit.Assert.Contains("LonelyData", gcText);
+        }
+        finally
+        {
+            if (Directory.Exists(workDir))
+            {
+                try
+                { Directory.Delete(workDir, recursive: true); }
+                catch { /* best effort */ }
+            }
+        }
+    }
 }

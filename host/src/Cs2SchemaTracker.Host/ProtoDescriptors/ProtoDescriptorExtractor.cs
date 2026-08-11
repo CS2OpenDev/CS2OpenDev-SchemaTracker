@@ -43,6 +43,29 @@ public sealed class ProtoDescriptorExtractor
     private const string SupplementalSourceLabel = "<hl2sdk:wire_descriptors.pb>";
 
     /// <summary>
+    /// The one descriptor pruned to its referenced closure before emission. Named, not inferred:
+    /// this is the only file in CS2's set whose unreferenced bulk is worth the surgery (~74k lines
+    /// of generated code downstream, plus three Steam-side imports nothing on the demo wire path
+    /// needs), and a prune-everything default would be a far larger behavioural claim than one
+    /// measured case supports. See <see cref="ReferencedClosurePruner"/> and issue #3.
+    /// </summary>
+    private const string GcClosurePruneTarget = "cstrike15_gcmessages.proto";
+
+    /// <summary>
+    /// Leading comment prepended to the .proto text of the closure-pruned descriptor, so the
+    /// artifact is self-documenting about being a derived subset (same convention as
+    /// <see cref="SupplementalHeaderComment"/>). The per-build numbers are appended at emit time —
+    /// they are a pure function of the input set, so the output stays deterministic.
+    /// </summary>
+    private const string PrunedHeaderComment =
+        "// DERIVED CLOSURE. The binaries embed the FULL version of this file; what is emitted here\n"
+        + "// is the subset of its top-level types transitively referenced by the rest of this artifact\n"
+        + "// set, with the imports the surviving closure no longer needs removed. Re-derived on every\n"
+        + "// extract (never hand-maintained) so a new referencing field re-grows the closure\n"
+        + "// automatically. The removed types are Steam matchmaking/inventory/item-schema traffic\n"
+        + "// that never crosses the demo or network wire path.\n";
+
+    /// <summary>
     /// Leading comment prepended to the .proto text of an SDK-sourced wire descriptor, so the
     /// artifact is self-documenting about its non-binary provenance. Valid proto (a comment before
     /// the syntax line); ends in a blank line so the syntax line stays visually separated.
@@ -157,6 +180,36 @@ public sealed class ProtoDescriptorExtractor
             .Select(g => ResolveCollision(g.Key, g.ToList(), warningSink))
             .ToList();
 
+        // 3. Reduce cstrike15_gcmessages to the closure the rest of the set references, dropping
+        //    the imports the closure no longer needs. Runs AFTER collision resolution (so it prunes
+        //    the canonical copy) and after the supplemental merge (cstrike15_usermessages — the
+        //    file whose references seed the closure — is itself SDK-sourced), and BEFORE emission
+        //    so protos/<file>.proto and protos.descriptorset carry the same pruned form. Every
+        //    no-op branch (target absent, unreferenced, already minimal) returns null and leaves
+        //    the set untouched.
+        string? prunedName = null;
+        var pruneOutcome = ReferencedClosurePruner.TryPrune(
+            [.. ordered.Select(c => c.Fdp)], GcClosurePruneTarget);
+        if (pruneOutcome is not null)
+        {
+            var targetIndex = ordered.FindIndex(
+                c => string.Equals(c.Fdp.Name, GcClosurePruneTarget, StringComparison.Ordinal));
+            ordered[targetIndex] = ordered[targetIndex] with
+            {
+                Fdp = pruneOutcome.Pruned,
+                Bytes = pruneOutcome.Pruned.ToByteArray(),
+            };
+            prunedName = GcClosurePruneTarget;
+            warningSink.WriteLine(
+                "ProtoDescriptorExtractor: pruned " + GcClosurePruneTarget + " to the "
+                + pruneOutcome.KeptTopLevel + " top-level type(s) the rest of the set references "
+                + "(removed " + pruneOutcome.RemovedTopLevel + ")"
+                + (pruneOutcome.DroppedImports.Count > 0
+                    ? "; dropped now-unused import(s): " + string.Join(", ", pruneOutcome.DroppedImports)
+                    : "")
+                + ".");
+        }
+
         // 4. Build to a temp directory first, then atomically rename.
         var tempRoot = Path.Combine(
             Path.GetDirectoryName(Path.GetFullPath(outputDir)) ?? outputDir,
@@ -186,6 +239,21 @@ public sealed class ProtoDescriptorExtractor
                 if (supplementalNames.Contains(fdpName))
                 {
                     text = SupplementalHeaderComment + text;
+                }
+                // Stamp the closure-pruned descriptor the same way: a reader must be able to tell
+                // this is a derived subset, not Valve's full file. The counts are a pure function
+                // of the input set, so the header is deterministic.
+                if (string.Equals(fdpName, prunedName, StringComparison.Ordinal))
+                {
+                    text = PrunedHeaderComment
+                        + "// This build: " + pruneOutcome!.KeptTopLevel + " of "
+                        + (pruneOutcome.KeptTopLevel + pruneOutcome.RemovedTopLevel)
+                        + " top-level types kept"
+                        + (pruneOutcome.DroppedImports.Count > 0
+                            ? "; imports removed: " + string.Join(", ", pruneOutcome.DroppedImports)
+                            : "")
+                        + ".\n\n"
+                        + text;
                 }
                 // UTF-8 no BOM, LF endings already in text per emitter contract.
                 File.WriteAllBytes(outPath, System.Text.Encoding.UTF8.GetBytes(text));
