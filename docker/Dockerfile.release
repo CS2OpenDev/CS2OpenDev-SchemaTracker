@@ -1,0 +1,65 @@
+# syntax=docker/dockerfile:1
+#
+# Runtime image built from a GitHub RELEASE bundle (cs2-schema-tracker-<version>-linux-x64.tar.gz)
+# instead of a locally-published host. Use this when the machine that runs the walk cannot install
+# packages (immutable OS) and the canonical release binaries are wanted as-is: the bundle already
+# carries the self-contained apphost, the Linux era walkers (+ bundled libprotobuf.so.*), the
+# inventory and appsettings in exactly the layout docker/Dockerfile assembles by hand — so this
+# image ADDs the tarball whole and adds only the system libraries. Provenance SHA and walker
+# fingerprints are the release's own; nothing is rebuilt here.
+#
+# Build context = repo root (only the tarball is read from it; .dockerignore admits dist/docker/):
+#   gh release download v<version> --pattern '*-linux-x64.tar.gz' --dir dist/docker/release
+#   docker build -f docker/Dockerfile.release \
+#     [--build-arg BUNDLE_TGZ=dist/docker/release/cs2-schema-tracker-<version>-linux-x64.tar.gz] \
+#     -t cs2-schema-tracker:<version> .
+#
+# Everything below the ADD mirrors docker/Dockerfile — same base (the walkers require Ubuntu
+# 24.04-era glibc/GLIBCXX), same system libs, same ldd fail-loud guard, same env/workdir contract.
+# See that file and BUILD.md "Docker image" for the reasoning behind each.
+
+FROM ubuntu:24.04
+
+# Same three groups as docker/Dockerfile: CS2-transitive graphics/video libs (panoramauiclient ->
+# libva chain; old-era client -> FFmpeg stack), the walker's base deps (libstdc++6, zlib1g), and
+# libicu74 for the self-contained .NET host. --no-install-recommends means the libva-drm2 /
+# libva-x11-2 backends must be named explicitly.
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends \
+      libx11-6 libbz2-1.0 libdrm2 libuuid1 libva2 libva-drm2 libva-x11-2 libvdpau1 \
+      libstdc++6 zlib1g libicu74 \
+ && rm -rf /var/lib/apt/lists/*
+
+ARG APP=/opt/cs2-schema-tracker
+ARG BUNDLE_TGZ=dist/docker/release/cs2-schema-tracker-1.3.0-linux-x64.tar.gz
+
+# ADD auto-extracts a local tar and PRESERVES its modes — the release tar is exactly what the
+# release workflow smoke-tested for exec bits, so no chmod pass is needed (and the exec-bit
+# assertions below fail loud if that ever regresses).
+ADD ${BUNDLE_TGZ} ${APP}/
+
+# Fail the build LOUD if the bundle is not runnable in this image: apphost + a walker must have
+# survived extraction executable, and a sample walker's dynamic deps must all resolve (the walkers
+# load their own libprotobuf.so.* via $ORIGIN; a non-portable natives build, or one built against a
+# newer glibc/GLIBCXX than this base, fails here instead of at run time).
+RUN set -e; \
+    test -x ${APP}/cs2-schema-tracker || { echo "FATAL: apphost not executable in bundle"; exit 1; }; \
+    W="$(ls ${APP}/natives/linux-x86_64/cs2-* 2>/dev/null | head -1)"; \
+    test -n "$W" || { echo "FATAL: no era walkers under natives/linux-x86_64"; exit 1; }; \
+    test -x "$W" || { echo "FATAL: walker not executable in bundle: $W"; exit 1; }; \
+    if ldd "$W" 2>&1 | grep -q 'not found'; then \
+      echo "FATAL: walker has unresolved libraries in this image:"; ldd "$W" | grep 'not found'; \
+      exit 1; \
+    fi
+
+# Same run contract as docker/Dockerfile: baked natives via the env var; unset CS2_REPO_ROOT ->
+# the baked ${APP}/data inventory (standalone), CS2_REPO_ROOT=/repo -> the bind-mounted repo's
+# data/ + artifacts/; WORKDIR /repo so --commit's cwd-relative artifacts/ lands in the repo mount.
+ENV CS2_WALKER_ERAS_ROOT=${APP}/natives \
+    DOTNET_CLI_TELEMETRY_OPTOUT=1 \
+    PATH=${APP}:${PATH}
+
+WORKDIR /repo
+
+ENTRYPOINT ["/opt/cs2-schema-tracker/cs2-schema-tracker"]
+CMD ["--help"]
