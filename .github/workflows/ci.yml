@@ -503,7 +503,17 @@ jobs:
             CHANGED="$(git diff --name-only "$BASE".."$HEAD" -- artifacts/)"
             echo "changed artifacts/ paths:"
             echo "$CHANGED"
-            "$VERIFY_ARTIFACTS_EXE" verify-artifacts --changed-paths "$CHANGED" --inventory data/cs2-assets-inventory.json
+            # Linux caps a SINGLE argv element at 128 KiB (MAX_ARG_STRLEN) — a corpus
+            # re-walk's changed list (~14k paths, ~650 KB) makes execve fail E2BIG
+            # before the validator runs (observed on PR #9, exit 126). Diff-scoping is
+            # only a speed optimization, so past that size validate the WHOLE tree —
+            # the strictly stronger check.
+            if [ "${#CHANGED}" -lt 100000 ]; then
+              "$VERIFY_ARTIFACTS_EXE" verify-artifacts --changed-paths "$CHANGED" --inventory data/cs2-assets-inventory.json
+            else
+              echo "changed list is ${#CHANGED} bytes (>= argv limit headroom): validating whole artifacts/ tree instead"
+              "$VERIFY_ARTIFACTS_EXE" verify-artifacts --artifacts artifacts --inventory data/cs2-assets-inventory.json
+            fi
           else
             echo "push/dispatch mode: validating whole artifacts/ working tree"
             "$VERIFY_ARTIFACTS_EXE" verify-artifacts --artifacts artifacts --inventory data/cs2-assets-inventory.json
