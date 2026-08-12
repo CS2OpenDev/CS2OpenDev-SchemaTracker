@@ -124,7 +124,12 @@ jobs:
           echo "changed files:"
           echo "$CHANGED"
 
-          has() { printf '%s\n' "$CHANGED" | grep -qE "$1"; }
+          # Herestring, NOT `printf | grep -q`: under `set -o pipefail`, grep -q exits at the
+          # first match and a change list bigger than the pipe buffer (a corpus re-walk is
+          # ~14k paths, ~650 KB) kills printf with EPIPE — turning a MATCH into a false
+          # return, silently skipping every gate on exactly the PRs that most need them
+          # (observed on PR #9). A herestring has no writer process to kill.
+          has() { grep -qE "$1" <<<"$CHANGED"; }
 
           host=false; walker=false; schemas=false; artifacts=false; everything=false
           has '^host/'      && host=true
