@@ -775,4 +775,111 @@ public class EntitySchemaEmitterTest
             Directory.Delete(workDir, recursive: true);
         }
     }
+
+    [Xunit.Fact]
+    public void Every_NonMessage_SchemaType_Field_Survives_The_Type_Copy()
+    {
+        // REGRESSION + FORWARD GUARD. The host's MapType is a field-by-field deep copy, and the
+        // first 0.9.0 capture proved the failure mode: the walker emitted atomic_category and the
+        // copy silently dropped it (every atomic node landed ATOMIC_UNSPECIFIED) while count — a
+        // field the copy knew — survived. This test sets a NON-DEFAULT value on EVERY non-message
+        // SchemaType field via descriptor reflection, runs the real emitter, re-parses the emitted
+        // JSON, and compares field-by-field — so the NEXT field added to SchemaType cannot ship a
+        // walker value the host discards.
+        var src = new SchemaType();
+        foreach (var f in SchemaType.Descriptor.Fields.InFieldNumberOrder())
+        {
+            if (f.FieldType == Google.Protobuf.Reflection.FieldType.Message)
+                continue; // inner/inner2/inner3: recursion is covered by the rich fixture
+            object value = f.FieldType switch
+            {
+                // The accessor needs the CLR enum value; derive its type from the default the
+                // accessor hands back, then box the first non-zero declared number.
+                Google.Protobuf.Reflection.FieldType.Enum => Enum.ToObject(
+                    f.Accessor.GetValue(src).GetType(),
+                    f.EnumType.Values.First(v => v.Number != 0).Number),
+                Google.Protobuf.Reflection.FieldType.String => "x-" + f.Name,
+                _ => (ulong)7,
+            };
+            f.Accessor.SetValue(src, value);
+        }
+        // The emitter validates declared refs; keep the node a plain ATOMIC so every field above
+        // stays exactly as set (module is a pass-through hint on atomics).
+        src.Category = SchemaType.Types.Category.Atomic;
+
+        var workDir = Path.Combine(Path.GetTempPath(), "ese-copy-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(workDir);
+        try
+        {
+            var walk = new EntitySchemaWalk();
+            var cls = new SchemaClass { Name = "CCopyProbe", Module = "client", Size = 8 };
+            cls.Fields.Add(new SchemaField { Name = "m_probe", Offset = 0, Type = src.Clone() });
+            walk.Classes.Add(cls);
+
+            var outPath = Path.Combine(workDir, "entity_schema.json");
+            NewEmitter().Emit(new WalkerOutput { Platform = Platform, EntitySchema = walk }, outPath);
+
+            var emitted = Google.Protobuf.JsonParser.Default
+                .Parse<Cs2SchemaTracker.Schemas.EntitySchema>(File.ReadAllText(outPath));
+            var dst = emitted.Classes.Single().Fields.Single().Type;
+
+            foreach (var f in SchemaType.Descriptor.Fields.InFieldNumberOrder())
+            {
+                if (f.FieldType == Google.Protobuf.Reflection.FieldType.Message)
+                    continue;
+                Xunit.Assert.True(
+                    Equals(f.Accessor.GetValue(src), f.Accessor.GetValue(dst)),
+                    $"SchemaType.{f.Name} did not survive the host type copy — add it to "
+                    + $"EntitySchemaEmitter.MapType (walker value '{f.Accessor.GetValue(src)}', "
+                    + $"emitted '{f.Accessor.GetValue(dst)}').");
+            }
+        }
+        finally
+        {
+            Directory.Delete(workDir, recursive: true);
+        }
+    }
+
+    [Xunit.Fact]
+    public void AtomicCategory_Reaches_The_Emitted_Json_By_Name()
+    {
+        // The concrete 0.9.0 shape consumers read: an ATOMIC node's atomicCategory rendered as
+        // the enum VALUE NAME, alongside its count.
+        var workDir = Path.Combine(Path.GetTempPath(), "ese-acat-" + Guid.NewGuid().ToString("N"));
+        Directory.CreateDirectory(workDir);
+        try
+        {
+            var walk = new EntitySchemaWalk();
+            var cls = new SchemaClass { Name = "CFixed", Module = "client", Size = 64 };
+            cls.Fields.Add(new SchemaField
+            {
+                Name = "m_fixed",
+                Offset = 0,
+                Type = new SchemaType
+                {
+                    Category = SchemaType.Types.Category.Atomic,
+                    Name = "CUtlVectorFixedGrowable< int32, 4 >",
+                    AtomicCategory = SchemaType.Types.AtomicCategory.AtomicCollectionOfT,
+                    Count = 4,
+                    Inner = new SchemaType
+                    { Category = SchemaType.Types.Category.Builtin, Name = "int32" },
+                },
+            });
+            walk.Classes.Add(cls);
+
+            var outPath = Path.Combine(workDir, "entity_schema.json");
+            NewEmitter().Emit(new WalkerOutput { Platform = Platform, EntitySchema = walk }, outPath);
+
+            using var doc = JsonDocument.Parse(File.ReadAllText(outPath));
+            var type = doc.RootElement.GetProperty("classes")[0]
+                .GetProperty("fields")[0].GetProperty("type");
+            Xunit.Assert.Equal("ATOMIC_COLLECTION_OF_T", type.GetProperty("atomicCategory").GetString());
+            Xunit.Assert.Equal("4", type.GetProperty("count").GetString());
+            Xunit.Assert.Equal("int32", type.GetProperty("inner").GetProperty("name").GetString());
+        }
+        finally
+        {
+            Directory.Delete(workDir, recursive: true);
+        }
+    }
 }

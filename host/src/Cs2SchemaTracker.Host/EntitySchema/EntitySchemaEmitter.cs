@@ -369,12 +369,16 @@ public sealed class EntitySchemaEmitter
                 + "class/enum type with no name.");
         }
 
+        // NB: this is a FIELD-BY-FIELD copy — a new SchemaType field must be added here or the
+        // walker's value is silently dropped (exactly what happened to atomic_category on the
+        // first 0.9.0 capture; SchemaTypeCopyCompletenessTest now guards every scalar field).
         var dst = new SchemaType
         {
             Category = src.Category,
             Name = src.Name,
             Module = src.Module,
             Count = src.Count,
+            AtomicCategory = src.AtomicCategory,
         };
         if (src.Inner is not null)
         {
