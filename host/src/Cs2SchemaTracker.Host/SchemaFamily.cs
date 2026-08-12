@@ -61,5 +61,12 @@ public static class SchemaFamily
     // Values > 256 UTF-8 bytes are carried as sha256 + byte length instead of verbatim
     // (a representation rule, not an evidence rule). Version gate forces a full backfill
     // over any pre-0.8.0 artifact.
-    public const string Version = "0.8.0";
+    //
+    // 0.9.0: entity_schema type nodes gain atomic_category (SchemaAtomicCategory_t,
+    // emitted by-name-canonicalized from the live record) and count is extended to carry
+    // the COLLECTION_OF_T fixed-buffer capacity (m_nFixedBufferCount, text-validated
+    // before emission) — issue #8. Takes effect per build as walkers are rebuilt; the
+    // committed corpus carries the new fields only after the coordinated era-rebuild +
+    // re-walk (issue #8 checklist). Strictly additive.
+    public const string Version = "0.9.0";
 }

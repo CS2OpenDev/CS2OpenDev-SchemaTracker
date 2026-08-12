@@ -408,6 +408,16 @@ inline std::uint64_t TypeAtomicInteger(const CSchemaType* t, Era era) {
         static_cast<const CSchemaType_Atomic_I*>(t)->m_nInteger);
   return static_cast<std::uint64_t>(Read2023I32(t, kTypeAtomicIntOff2023));
 }
+inline std::uint64_t TypeAtomicFixedBufferCount(const CSchemaType* t, Era era) {
+  if (era == Era::kModern)
+    // Probe-gated (WALKER_SCHEMA_HAS_COLLECTION_FIXED_BUFFER_COUNT): reads
+    // CSchemaType_Atomic_CollectionOfT::m_nFixedBufferCount on pins that declare
+    // it, returns 0 on the three oldest compile pins whose headers predate it.
+    return schema_compat::WSchemaCollectionFixedBufferCount(t);
+  // k2023: no RE offset has been derived for this member (the reverse-engineered
+  // tables predate the need); 0 keeps the 2023 eras' artifact bytes at status quo.
+  return 0;
+}
 
 // ---- SchemaEnumInfoData_t ----
 inline const char* EnumName(const CSchemaEnumInfo* ei, Era era) {

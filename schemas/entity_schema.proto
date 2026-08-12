@@ -118,6 +118,25 @@ message SchemaType {
     BITFIELD             = 7;          // bit-packed (uses count = bit width)
   }
 
+  // The schema system's own atomic sub-category (SchemaAtomicCategory_t), set ONLY on ATOMIC
+  // nodes (issue #8). Emitted verbatim-by-name from the live record — the walker already reads
+  // this tag to decide inner/inner2 emission; this surfaces it so consumers stop inferring the
+  // category from which keys happen to be present. ATOMIC_TF / ATOMIC_TTF exist only on
+  // pre-2025-01 SDK eras (Valve removed the enumerators and their subclasses upstream); modern
+  // builds never present them. ATOMIC_UNSPECIFIED on a node means "not an ATOMIC node" or
+  // "walked before schema 0.9.0".
+  enum AtomicCategory {
+    ATOMIC_UNSPECIFIED     = 0;
+    ATOMIC_PLAIN           = 1;
+    ATOMIC_T               = 2;
+    ATOMIC_COLLECTION_OF_T = 3;
+    ATOMIC_TT              = 4;
+    ATOMIC_I               = 5;
+    ATOMIC_INVALID         = 6;
+    ATOMIC_TF              = 7;
+    ATOMIC_TTF             = 8;
+  }
+
   Category category = 1;
   string   name     = 2;               // primitive name, template name, class/enum name
   string   module   = 3;               // for DECLARED_CLASS / DECLARED_ENUM
@@ -128,7 +147,18 @@ message SchemaType {
   SchemaType inner2 = 11;
   SchemaType inner3 = 12;
 
-  uint64 count = 20;                   // FIXED_ARRAY element count; BITFIELD bit width
+  // FIXED_ARRAY element count; BITFIELD bit width; ATOMIC_I integer template argument.
+  // From schema 0.9.0 also the COLLECTION_OF_T fixed-buffer capacity
+  // (CSchemaType_Atomic_CollectionOfT.m_nFixedBufferCount) — the `N` in
+  // CUtlVectorFixedGrowable< T, N > that was previously recoverable only by parsing the type
+  // name. 0 for growable collections with no fixed buffer, for eras whose pinned SDK headers
+  // predate the member (the three oldest compile pins), and for the 2023 runtime-variant
+  // layouts (no reverse-engineered offset derived). The walker cross-checks a non-zero value
+  // against the type-name template text and refuses to emit a mismatch (fail-safe to 0, loud
+  // on stderr), so a wrong read can never ship silently.
+  uint64 count = 20;
+
+  AtomicCategory atomic_category = 21; // set only on ATOMIC nodes (see enum above)
 }
 
 // ---- Enums ------------------------------------------------------------------------------

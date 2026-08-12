@@ -177,6 +177,36 @@ SchemaSymbolRef EnumKey(const CSchemaEnumInfo* ei, Era era) {
 // node as unspecified rather than risk a stack-overflow crash.
 inline constexpr int kMaxTypeDepth = 16;
 
+// issue #8: parse the TRAILING integer template argument out of an atomic type name —
+// the `N` of "CUtlVectorFixedGrowable< CTransform, 128 >" or "CBitVec< 10 >". Used ONLY
+// to VALIDATE the record-read m_nFixedBufferCount before emission, never as a data
+// source (parsing names as data is the inference the artifact refuses). Returns false
+// when the name does not end in "<...> " with a bare-integer last argument.
+bool TrailingTemplateInteger(const std::string& name, std::uint64_t* out_n) {
+  auto i = name.find_last_not_of(" \t");
+  if (i == std::string::npos || name[i] != '>')
+    return false;
+  // back over whitespace to the last digit
+  auto end = name.find_last_not_of(" \t", i - 1);
+  if (end == std::string::npos || name[end] < '0' || name[end] > '9')
+    return false;
+  auto start = end;
+  while (start > 0 && name[start - 1] >= '0' && name[start - 1] <= '9')
+    --start;
+  // the token before the digits (past whitespace) must open or continue the template list
+  auto prev = name.find_last_not_of(" \t", start == 0 ? std::string::npos : start - 1);
+  if (prev == std::string::npos || (name[prev] != ',' && name[prev] != '<'))
+    return false;
+  std::uint64_t n = 0;
+  for (auto k = start; k <= end; ++k) {
+    if (n > (UINT64_MAX - (name[k] - '0')) / 10)
+      return false;  // overflow: not a sane capacity
+    n = n * 10 + static_cast<std::uint64_t>(name[k] - '0');
+  }
+  *out_n = n;
+  return true;
+}
+
 void TranslateTypeDepth(const CSchemaType* t, wpb::SchemaType* out, Era era,
                         int depth);
 
@@ -241,12 +271,40 @@ void TranslateTypeDepth(const CSchemaType* t, wpb::SchemaType* out, Era era,
       out->set_name(type_name);
       // Template arguments depend on the atomic sub-category (era-gated u8 read).
       const std::uint8_t acat = rec::TypeAtomicCategory(t, era);
+      // issue #8: surface the sub-category itself. The canonical code is era-independent
+      // (mapped BY NAME through schema_compat, since the raw ordinals differ across pins)
+      // and matches the proto AtomicCategory ordinals; 0 = unrecognized tag, emitted as
+      // ATOMIC_UNSPECIFIED rather than guessed.
+      out->set_atomic_category(static_cast<wpb::SchemaType::AtomicCategory>(
+          schema_compat::WSchemaAtomicCategoryCode(acat)));
       if (acat == static_cast<std::uint8_t>(SCHEMA_ATOMIC_T)) {
         TranslateTypeDepth(rec::TypeAtomicTemplate(t, era), out->mutable_inner(), era, depth + 1);
       } else if (acat == static_cast<std::uint8_t>(SCHEMA_ATOMIC_COLLECTION_OF_T)) {
         // CollectionOfT derives from Atomic_T; the template ptr sits at the same
         // sub-offset as Atomic_T::m_pTemplateType.
         TranslateTypeDepth(rec::TypeAtomicTemplate(t, era), out->mutable_inner(), era, depth + 1);
+        // issue #8: the fixed-buffer capacity (the `N` of CUtlVectorFixedGrowable< T, N >).
+        // The m_nFixedBufferCount read is UNVALIDATED against a live binary until the #8
+        // checklist runs, so a non-zero value is emitted ONLY when the type-name template
+        // text confirms it — a wrong read must never ship silently. Every measured
+        // FixedGrowable name carries its N as the trailing template argument, so the
+        // text-confirmed path covers the entire real population; a disagreement emits 0
+        // and warns. (Zero from plain growable collections and pre-member eras is the
+        // status quo and needs no validation.)
+        const std::uint64_t rec_n = rec::TypeAtomicFixedBufferCount(t, era);
+        if (rec_n != 0) {
+          std::uint64_t text_n = 0;
+          if (TrailingTemplateInteger(type_name, &text_n) && text_n == rec_n) {
+            out->set_count(rec_n);
+          } else {
+            std::fprintf(stderr,
+                         "[walker] atomic COLLECTION_OF_T '%s': m_nFixedBufferCount=%llu "
+                         "not confirmed by the type-name template argument — emitting 0 "
+                         "(unvalidated read; see issue #8)\n",
+                         type_name.c_str(),
+                         static_cast<unsigned long long>(rec_n));
+          }
+        }
       } else if (acat == static_cast<std::uint8_t>(SCHEMA_ATOMIC_TT)) {
         TranslateTypeDepth(rec::TypeAtomicTemplate(t, era), out->mutable_inner(), era, depth + 1);
         TranslateTypeDepth(rec::TypeAtomicTemplate2(t, era), out->mutable_inner2(), era, depth + 1);

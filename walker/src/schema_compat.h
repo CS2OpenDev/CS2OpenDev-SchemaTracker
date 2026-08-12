@@ -51,6 +51,8 @@
 #ifndef WALKER_SCHEMA_COMPAT_H_
 #define WALKER_SCHEMA_COMPAT_H_
 
+#include <cstdint>
+
 #include "schemasystem/schematypes.h"
 
 namespace cs2_schema_walker {
@@ -134,6 +136,51 @@ static_assert(::SCHEMA_ATOMIC_I == 6, "old-era SchemaAtomicCategory_t reordered 
 static_assert(WSCHEMA_ATOMIC_INVALID == 7, "old-era SchemaAtomicCategory_t reordered (NONE)");
 
 #endif  // WALKER_SCHEMA_TYPES_NEW_NAMES
+
+// ---------------------------------------------------------------------------
+// Canonical atomic-category CODE for the artifact (issue #8). The values are
+// the entity_schema.proto SchemaType.AtomicCategory ordinals — ERA-INDEPENDENT
+// by construction, unlike the raw SchemaAtomicCategory_t ordinals (era-8
+// removed TF/TTF, shifting TT/I/INVALID; see the per-era asserts above). The
+// mapping compares BY NAME through the per-era constants, so each era build
+// reads its own header's ordinals and emits the same canonical code.
+// 0 = unknown tag (emitted as ATOMIC_UNSPECIFIED, never guessed).
+// ---------------------------------------------------------------------------
+inline std::uint8_t WSchemaAtomicCategoryCode(std::uint8_t acat) {
+  if (acat == static_cast<std::uint8_t>(WSCHEMA_ATOMIC_PLAIN)) return 1;
+  if (acat == static_cast<std::uint8_t>(::SCHEMA_ATOMIC_T)) return 2;
+  if (acat == static_cast<std::uint8_t>(::SCHEMA_ATOMIC_COLLECTION_OF_T)) return 3;
+  if (acat == static_cast<std::uint8_t>(::SCHEMA_ATOMIC_TT)) return 4;
+  if (acat == static_cast<std::uint8_t>(::SCHEMA_ATOMIC_I)) return 5;
+  if (acat == static_cast<std::uint8_t>(WSCHEMA_ATOMIC_INVALID)) return 6;
+#if !defined(WALKER_SCHEMA_TYPES_NEW_NAMES)
+  // Pre-era-8 pins still declare the TF/TTF enumerators (and their subclasses).
+  if (acat == static_cast<std::uint8_t>(::SCHEMA_ATOMIC_TF)) return 7;
+  if (acat == static_cast<std::uint8_t>(::SCHEMA_ATOMIC_TTF)) return 8;
+#endif
+  return 0;
+}
+
+// ---------------------------------------------------------------------------
+// COLLECTION_OF_T fixed-buffer capacity (issue #8):
+// CSchemaType_Atomic_CollectionOfT.m_nFixedBufferCount — the `N` of
+// CUtlVectorFixedGrowable< T, N >. The member exists on 8 of the 11 era pins;
+// the three OLDEST compile pins (f3b44f20, 426ae7f3, 00644551) declare the
+// class with only m_pfnManipulator + m_nElementSize. Presence is selected by
+// the WALKER_SCHEMA_HAS_COLLECTION_FIXED_BUFFER_COUNT configure probe
+// (walker/CMakeLists.txt, same pattern and cache caveats as the other probes);
+// absent-member eras return 0 — their artifact status quo.
+// ---------------------------------------------------------------------------
+#if defined(WALKER_SCHEMA_HAS_COLLECTION_FIXED_BUFFER_COUNT)
+inline std::uint64_t WSchemaCollectionFixedBufferCount(const ::CSchemaType* t) {
+  return static_cast<std::uint64_t>(
+      static_cast<const ::CSchemaType_Atomic_CollectionOfT*>(t)->m_nFixedBufferCount);
+}
+#else
+inline std::uint64_t WSchemaCollectionFixedBufferCount(const ::CSchemaType*) {
+  return 0;
+}
+#endif
 
 // ---------------------------------------------------------------------------
 // Cross-era SchemaTypeCategory_t ordinal locks. The TYPE-category

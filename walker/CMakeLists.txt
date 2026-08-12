@@ -474,6 +474,50 @@ else()
   message(STATUS "hl2sdk era: schematypes naming is OLD (SCHEMA_TYPE_PTR/m_nSize, era-9) -> schema_compat rename map")
 endif()
 
+# --- CSchemaType_Atomic_CollectionOfT::m_nFixedBufferCount member probe (issue #8) ----
+# The COLLECTION_OF_T fixed-buffer capacity (the `N` of CUtlVectorFixedGrowable< T, N >)
+# exists on 8 of the 11 era pins; the three OLDEST compile pins (f3b44f20, 426ae7f3,
+# 00644551) declare the class with only m_pfnManipulator + m_nElementSize.
+# schema_compat.h's WSchemaCollectionFixedBufferCount() reads the member when present and
+# returns 0 otherwise, selected by this macro. ORTHOGONAL to
+# WALKER_SCHEMA_TYPES_NEW_NAMES: f3b44f20 is a NEW-names era whose header predates the
+# member, so member-presence needs its own probe. Same compile context, target type, and
+# unevaluated-operand idiom as the probes above; drift is OS-independent.
+#
+# CACHE NOTE (era switching): like the other probes the result is cached — clear it when
+# switching the pinned submodule:  cmake -U WALKER_SCHEMA_HAS_COLLECTION_FIXED_BUFFER_COUNT
+set(CMAKE_REQUIRED_INCLUDES
+  "${HL2SDK_ROOT}/public"
+  "${HL2SDK_ROOT}/public/tier0"
+  "${HL2SDK_ROOT}/public/tier1"
+  "${HL2SDK_ROOT}/public/schemasystem")
+set(CMAKE_REQUIRED_DEFINITIONS ${WALKER_HL2SDK_PROBE_DEFS})
+if(NOT WALKER_CONVAR_HAS_CONVARDATA_API)
+  list(APPEND CMAKE_REQUIRED_DEFINITIONS -DPLATFORM_64BITS=1)
+endif()
+set(CMAKE_REQUIRED_FLAGS "${WALKER_HL2SDK_PROBE_FLAGS}")
+set(_WALKER_SAVED_TRYCOMPILE_TARGET_TYPE "${CMAKE_TRY_COMPILE_TARGET_TYPE}")
+set(CMAKE_TRY_COMPILE_TARGET_TYPE STATIC_LIBRARY)
+check_cxx_source_compiles("
+  #include \"schemasystem/schematypes.h\"
+  // The member is referenced in an UNEVALUATED operand (nothing ODR-used, no link
+  // dependency); the TU compiles ONLY when the pinned header declares it.
+  int main() {
+    (void)sizeof(decltype(((CSchemaType_Atomic_CollectionOfT*)nullptr)->m_nFixedBufferCount));
+    return 0;
+  }
+" WALKER_SCHEMA_HAS_COLLECTION_FIXED_BUFFER_COUNT)
+set(CMAKE_TRY_COMPILE_TARGET_TYPE "${_WALKER_SAVED_TRYCOMPILE_TARGET_TYPE}")
+unset(_WALKER_SAVED_TRYCOMPILE_TARGET_TYPE)
+unset(CMAKE_REQUIRED_INCLUDES)
+unset(CMAKE_REQUIRED_DEFINITIONS)
+unset(CMAKE_REQUIRED_FLAGS)
+if(WALKER_SCHEMA_HAS_COLLECTION_FIXED_BUFFER_COUNT)
+  message(STATUS "hl2sdk era: CollectionOfT has m_nFixedBufferCount -> COLLECTION_OF_T count emitted from the record")
+else()
+  message(STATUS "hl2sdk era: CollectionOfT predates m_nFixedBufferCount -> COLLECTION_OF_T count emitted as 0 (era status quo)")
+endif()
+
 # --- UNIX (GCC) hl2sdk compile context — DIRECTORY SCOPE --------------
 # The Source2/hl2sdk platform selection PLUS the GCC portability shims are hoisted to
 # DIRECTORY scope here (add_compile_definitions) rather than set per-target, so BOTH the
@@ -612,6 +656,15 @@ target_compile_definitions(walker_core PUBLIC
 if(WALKER_SCHEMA_TYPES_NEW_NAMES)
   target_compile_definitions(walker_core PUBLIC
     WALKER_SCHEMA_TYPES_NEW_NAMES=1)
+endif()
+
+# CollectionOfT fixed-buffer member era (see the probe above and schema_compat.h's
+# WSchemaCollectionFixedBufferCount). Defined when the pinned header declares
+# m_nFixedBufferCount; absent => the accessor returns 0 (pre-member eras' status quo).
+# Platform-independent.
+if(WALKER_SCHEMA_HAS_COLLECTION_FIXED_BUFFER_COUNT)
+  target_compile_definitions(walker_core PUBLIC
+    WALKER_SCHEMA_HAS_COLLECTION_FIXED_BUFFER_COUNT=1)
 endif()
 
 if(WALKER_CONVAR_HAS_CONVARDATA_API)
