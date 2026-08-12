@@ -102,7 +102,7 @@ What the build does **not** ship is a small set of standard system libraries the
 
 `libX11.so.6`, `libbz2.so.1.0`, `libdrm.so.2`, `libuuid.so.1`, `libva.so.2`, `libva-drm.so.2`, `libva-x11.so.2`, `libvdpau.so.1`
 
-Install them once in any Linux extraction environment (local, self-hosted, or a CI linux-extract job — they are already preinstalled on GitHub `ubuntu-latest`):
+Install them once in any Linux extraction environment (local, self-hosted, or a CI linux-extract job — GitHub's `ubuntu-latest` image no longer preinstalls the libva chain, so `scheduled-extract.yml` installs them explicitly per run):
 
 ```sh
 # Debian/Ubuntu

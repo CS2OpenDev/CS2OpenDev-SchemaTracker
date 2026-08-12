@@ -45,7 +45,9 @@
 # convars register in the render module's Init->ConVar_Register, INDEPENDENT of whether a
 # device is created. On linux, librendersystemvulkan.so has no hard Vulkan dependency and a
 # run with NO Vulkan driver present is byte-identical to one with lavapipe. So both runners
-# work as-is — windows-latest and ubuntu-latest — with nothing to install and no env to set.
+# work with no GRAPHICS setup — windows-latest needs nothing at all; ubuntu-latest needs only
+# the small walker system-lib apt install below (WALKER.md's Linux prerequisite — the image
+# stopped preinstalling the libva chain, and the current build's panoramauiclient pulls it).
 # (A D3D11/Vulkan device may still be created as a side effect — WARP is always present on
 # windows; a Vulkan driver, if present, is used on linux — which puts the engine in a
 # frame-update state; the render Init is DEFERRED past the data-subsystem phase precisely so
@@ -130,6 +132,21 @@ jobs:
           # so the large hl2sdk submodule is not needed. repoRoot discovery only needs the
           # top-level walker/CMakeLists.txt sentinel, which is present in the checkout
           # regardless of whether the submodule is initialized.
+
+      - name: Install walker runtime system libs (linux)
+        # WALKER.md "Linux runtime system-lib prerequisite": the build's own bin dirs ship
+        # the heavy multimedia stack, but a small set of standard system libs must come from
+        # the host OS or dlopen fails loud. WALKER.md claimed these were preinstalled on
+        # ubuntu-latest; that stopped being true (observed: run 31553035823 — the CURRENT
+        # build's libpanoramauiclient.so pulls libva.so.2, "cannot open shared object file"),
+        # so install them explicitly. --no-install-recommends matches the doc's lean-install
+        # note: libva-drm2 / libva-x11-2 must be listed by name.
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends \
+            libx11-6 libbz2-1.0 libdrm2 libuuid1 libva2 libva-drm2 libva-x11-2 libvdpau1
 
       - name: Set up .NET
         # Still required: every host call runs through the muxer as
