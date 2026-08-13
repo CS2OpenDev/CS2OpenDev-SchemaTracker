@@ -140,6 +140,24 @@ Docker level — any Docker host runs it regardless of its own glibc, because th
 (If you instead need walker *binaries* that run standalone on old distros, build the natives inside the
 `sniper/sdk` image against glibc 2.31 and use a Sniper base — a separate, heavier setup.)
 
+### From a GitHub release bundle (no local publish)
+
+When the canonical release binaries are wanted as-is — e.g. the target machine is an immutable OS
+that cannot install the walker's system libs — `docker/Dockerfile.release` builds the same runtime
+image directly from a release asset instead of the publish + natives above. It ADDs the
+`*-linux-x64.tar.gz` bundle whole (the bundle already has the image's exact layout) and installs
+only the system libraries; provenance SHA and walker fingerprints are the release's own:
+
+```sh
+gh release download v1.3.0 --pattern '*-linux-x64.tar.gz' --dir dist/docker/release
+docker build -f docker/Dockerfile.release -t cs2-schema-tracker:1.3.0 .
+```
+
+A different version's tarball is selected with
+`--build-arg BUNDLE_TGZ=dist/docker/release/cs2-schema-tracker-<version>-linux-x64.tar.gz`.
+"Running the image" below applies unchanged. `CS2_EXPECT_FPRINT` should be set to the
+`srcFingerprint` in the bundle's `natives/linux-x86_64/walker-manifest.json`.
+
 **The natives must be the portable build.** As noted above, the walkers load a sibling `libprotobuf.so`
 via `$ORIGIN`, and that copy is bundled only when `VCPKG_ROOT` was set at build time (release artifacts
 are). The base image's system protobuf soname differs from the walker's bundled version, so a

@@ -124,7 +124,12 @@ jobs:
           echo "changed files:"
           echo "$CHANGED"
 
-          has() { printf '%s\n' "$CHANGED" | grep -qE "$1"; }
+          # Herestring, NOT `printf | grep -q`: under `set -o pipefail`, grep -q exits at the
+          # first match and a change list bigger than the pipe buffer (a corpus re-walk is
+          # ~14k paths, ~650 KB) kills printf with EPIPE — turning a MATCH into a false
+          # return, silently skipping every gate on exactly the PRs that most need them
+          # (observed on PR #9). A herestring has no writer process to kill.
+          has() { grep -qE "$1" <<<"$CHANGED"; }
 
           host=false; walker=false; schemas=false; artifacts=false; everything=false
           has '^host/'      && host=true
@@ -187,7 +192,18 @@ jobs:
 
       - name: Install protoc (Windows)
         if: runner.os == 'Windows'
-        run: choco install protoc -y
+        # Pinned direct download from the protobuf GitHub releases, NOT chocolatey:
+        # the community feed 503'd on 2026-08-13 and `choco install` still exited 0
+        # after installing 0/0 packages — a green step with no protoc, failing only
+        # later at the protoc-dependent test. This is hermetic and fail-loud (the
+        # trailing --version dies if the binary didn't land).
+        run: |
+          $v = '35.1'
+          $zip = Join-Path $env:RUNNER_TEMP 'protoc.zip'
+          Invoke-WebRequest "https://github.com/protocolbuffers/protobuf/releases/download/v$v/protoc-$v-win64.zip" -OutFile $zip
+          Expand-Archive $zip -DestinationPath (Join-Path $env:RUNNER_TEMP 'protoc')
+          Join-Path $env:RUNNER_TEMP 'protoc\bin' | Out-File -FilePath $env:GITHUB_PATH -Append
+          & (Join-Path $env:RUNNER_TEMP 'protoc\bin\protoc.exe') --version
 
       - name: Restore
         run: dotnet restore host/Cs2SchemaTracker.sln
@@ -498,7 +514,17 @@ jobs:
             CHANGED="$(git diff --name-only "$BASE".."$HEAD" -- artifacts/)"
             echo "changed artifacts/ paths:"
             echo "$CHANGED"
-            "$VERIFY_ARTIFACTS_EXE" verify-artifacts --changed-paths "$CHANGED" --inventory data/cs2-assets-inventory.json
+            # Linux caps a SINGLE argv element at 128 KiB (MAX_ARG_STRLEN) — a corpus
+            # re-walk's changed list (~14k paths, ~650 KB) makes execve fail E2BIG
+            # before the validator runs (observed on PR #9, exit 126). Diff-scoping is
+            # only a speed optimization, so past that size validate the WHOLE tree —
+            # the strictly stronger check.
+            if [ "${#CHANGED}" -lt 100000 ]; then
+              "$VERIFY_ARTIFACTS_EXE" verify-artifacts --changed-paths "$CHANGED" --inventory data/cs2-assets-inventory.json
+            else
+              echo "changed list is ${#CHANGED} bytes (>= argv limit headroom): validating whole artifacts/ tree instead"
+              "$VERIFY_ARTIFACTS_EXE" verify-artifacts --artifacts artifacts --inventory data/cs2-assets-inventory.json
+            fi
           else
             echo "push/dispatch mode: validating whole artifacts/ working tree"
             "$VERIFY_ARTIFACTS_EXE" verify-artifacts --artifacts artifacts --inventory data/cs2-assets-inventory.json

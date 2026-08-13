@@ -128,7 +128,11 @@ public class AcquireExplicitAndProbeArgsTest
             Assert.Equal("windows-x86_64", fake.LastBinariesOnlyPlatform);
             Assert.NotNull(fake.LastBinariesOnlySpec);
             Assert.Equal(23669931u, fake.LastBinariesOnlySpec!.BuildId);
-            Assert.Equal(2, fake.LastBinariesOnlySpec.Depots.Count);
+            // The binary leg receives a BINARY-ONLY sub-spec: the real acquirer applies the
+            // BinaryBinSelector filter to every depot it is handed, and the content depot
+            // matches zero files — threading it through hard-failed the whole acquire.
+            var binDepot = Assert.Single(fake.LastBinariesOnlySpec.Depots);
+            Assert.Equal(2347771u, binDepot.DepotId);
         }
         finally
         {
@@ -161,6 +165,9 @@ public class AcquireExplicitAndProbeArgsTest
             Assert.NotNull(fake.LastContentSpec);
             Assert.Equal(23669931u, fake.LastContentSpec!.BuildId);
             Assert.Contains(fake.LastContentSpec.Depots, d => d.DepotId == 2347770);
+            // ...while the binary leg's sub-spec must EXCLUDE the content depot (zero
+            // binaries-filter matches there would hard-fail the real acquirer).
+            Assert.DoesNotContain(fake.LastBinariesOnlySpec!.Depots, d => d.DepotId == 2347770);
         }
         finally
         {
@@ -198,6 +205,36 @@ public class AcquireExplicitAndProbeArgsTest
     }
 
     [Fact]
+    public async Task From_manifest_content_only_spec_skips_binaries_leg()
+    {
+        // A spec listing ONLY the 2347770 content depot has nothing for the binaries filter —
+        // the binaries leg is skipped (not called with an empty depot list) and the content
+        // leg runs alone, merging into whatever the outDir already holds.
+        var specPath = WriteSpec("""
+            { "appId": 730, "buildId": 23669931, "depots": [
+              { "depotId": 2347770, "manifestId": "5146470907583764090" }
+            ] }
+            """);
+        var fake = new ExplicitFake();
+        try
+        {
+            var args = new[] { "--from-manifest", specPath, "--platform", "windows-x86_64" };
+            var code = await AcquireCommand.RunAsync(args, () => fake);
+            Assert.Equal(0, code);
+            Assert.Equal(0, fake.BinariesOnlyCount);              // nothing for the binaries filter
+            Assert.Equal(1, fake.ContentCount);
+            Assert.NotNull(fake.LastContentSpec);
+            Assert.Contains(fake.LastContentSpec!.Depots, d => d.DepotId == 2347770);
+        }
+        finally
+        {
+            try
+            { File.Delete(specPath); }
+            catch { }
+        }
+    }
+
+    [Fact]
     public async Task From_manifest_with_tools_depot_also_fetches_colocated_tools()
     {
         // An explicit historical spec that lists the 2347779 Workshop Tools depot ALSO fetches the
@@ -221,6 +258,8 @@ public class AcquireExplicitAndProbeArgsTest
             Assert.NotNull(fake.LastToolsSpec);
             Assert.Equal(24134959u, fake.LastToolsSpec!.BuildId);
             Assert.Contains(fake.LastToolsSpec.Depots, d => d.DepotId == 2347779);
+            // The tools depot likewise stays out of the binary leg's sub-spec.
+            Assert.DoesNotContain(fake.LastBinariesOnlySpec!.Depots, d => d.DepotId == 2347779);
         }
         finally
         {
