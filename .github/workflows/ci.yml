@@ -192,7 +192,18 @@ jobs:
 
       - name: Install protoc (Windows)
         if: runner.os == 'Windows'
-        run: choco install protoc -y
+        # Pinned direct download from the protobuf GitHub releases, NOT chocolatey:
+        # the community feed 503'd on 2026-08-13 and `choco install` still exited 0
+        # after installing 0/0 packages — a green step with no protoc, failing only
+        # later at the protoc-dependent test. This is hermetic and fail-loud (the
+        # trailing --version dies if the binary didn't land).
+        run: |
+          $v = '35.1'
+          $zip = Join-Path $env:RUNNER_TEMP 'protoc.zip'
+          Invoke-WebRequest "https://github.com/protocolbuffers/protobuf/releases/download/v$v/protoc-$v-win64.zip" -OutFile $zip
+          Expand-Archive $zip -DestinationPath (Join-Path $env:RUNNER_TEMP 'protoc')
+          Join-Path $env:RUNNER_TEMP 'protoc\bin' | Out-File -FilePath $env:GITHUB_PATH -Append
+          & (Join-Path $env:RUNNER_TEMP 'protoc\bin\protoc.exe') --version
 
       - name: Restore
         run: dotnet restore host/Cs2SchemaTracker.sln
