@@ -313,10 +313,32 @@ internal static class AcquireCommand
                 // community-addon maps the walker never touches (game/bin/<os>/ + game/csgo/bin/<os>/
                 // are the only subtrees it loads) — the unfiltered leg is still available on the
                 // acquirer for diagnostic/integration use, just no longer the CLI default.
-                var explicitResult = await acquirer.AcquireBinariesOnlyAsync(
-                    spec.AppId, spec.OrderedDepotIds, spec.BuildId, explicitOut, platform,
-                    explicitSpec: spec, CancellationToken.None).ConfigureAwait(false);
-                PrintSummary(explicitResult);
+                //
+                // The binary leg gets a BINARY-ONLY sub-spec: the content/tools depots have their own
+                // legs below, and the binaries filter matches zero files in them — passing the full
+                // spec made the acquirer's zero-match guard hard-fail every content-bearing spec
+                // before the content leg could run (observed on the PR #9 re-dumps).
+                uint explicitContentDepot = SteamAppIdMap.Cs2SharedContentDepotId;
+                var explicitBinaryDepots = spec.Depots
+                    .Where(d => d.DepotId != explicitContentDepot && d.DepotId != explicitToolsDepot)
+                    .ToList();
+                if (explicitBinaryDepots.Count > 0)
+                {
+                    var binarySpec = new ManifestSpec(spec.AppId, spec.BuildId, explicitBinaryDepots);
+                    var explicitResult = await acquirer.AcquireBinariesOnlyAsync(
+                        binarySpec.AppId, binarySpec.OrderedDepotIds, binarySpec.BuildId, explicitOut, platform,
+                        explicitSpec: binarySpec, CancellationToken.None).ConfigureAwait(false);
+                    PrintSummary(explicitResult);
+                }
+                else
+                {
+                    // Content/tools-only spec: nothing for the binary leg. NOTE the binary leg is
+                    // also what wipes-and-replaces outDir, so a skipped leg merges the later legs
+                    // into whatever the dir already holds — same contract as `--content` standalone.
+                    Console.Error.WriteLine(
+                        $"acquire: --from-manifest spec for build {spec.BuildId} lists no binary depot — " +
+                        "skipping the binaries leg (content/tools-only spec).");
+                }
 
                 // UNIFIED ACQUIRE: if the explicit spec lists the content depot, co-locate the
                 // selective content pak in the SAME outDir so one extract emits every content
@@ -324,7 +346,6 @@ internal static class AcquireCommand
                 // threaded through, so the prior build's pak01 is fetched, not PICS-current). A spec
                 // without the content depot is binaries-only by construction — nothing to fetch. A
                 // content failure aborts via the outer catch, never a silent partial set.
-                uint explicitContentDepot = SteamAppIdMap.Cs2SharedContentDepotId;
                 if (spec.Depots.Any(d => d.DepotId == explicitContentDepot))
                 {
                     Console.Error.WriteLine(
