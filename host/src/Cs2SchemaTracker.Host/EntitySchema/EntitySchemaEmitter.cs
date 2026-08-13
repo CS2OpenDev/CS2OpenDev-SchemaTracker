@@ -21,7 +21,9 @@
 //     (not sorted), so we post-process through the CanonicalJson sorter (sorted keys, LF, UTF-8 no
 //     BOM).
 //
-// Scope: this emitter performs the structural mapping AND the KV3 default-value parse. It carries
+// Scope: this emitter performs the structural mapping, the KV3 default-value parse, AND the
+// class-level effective-builtin derivation (SchemaClass.effective_builtin, issue #10) — the
+// latter computed here in the host over the mapped class set, never read from the walker. It carries
 // SchemaMetadata.value (the raw KV3 / annotation string) through verbatim for every metadata entry,
 // and for MGetKV3ClassDefaults entries also parses the raw KV3 into the structural
 // google.protobuf.Value SchemaMetadata.value_parsed. A class whose KV3 string fails to parse keeps
@@ -146,6 +148,11 @@ public sealed class EntitySchemaEmitter
             document.Enums.Add(MapEnum(en));
         }
 
+        // 1b. Derive the class-level effective-builtin facts (SchemaClass.effective_builtin,
+        //     issue #10) over the fully mapped class set. Host-derived, deterministic, and
+        //     recomputed on every emit — never carried in from the walker.
+        DeriveEffectiveBuiltins(document);
+
         // 2. Serialize via canonical proto3 JSON, then sort keys.
         string json = SerializeCanonical(document);
 
@@ -243,6 +250,9 @@ public sealed class EntitySchemaEmitter
             MultipleInheritanceDepth = src.MultipleInheritanceDepth,
             ProjectName = src.ProjectName,
             CppName = src.CppName,
+            // effective_builtin is intentionally NOT copied from the walker input: it is
+            // host-derived (DeriveEffectiveBuiltins) and recomputed over the mapped set on
+            // every emit. A walker that ever set it would be ignored here by design.
         };
 
         // Parents keep declared order (the C++ parent chain order is meaningful).
@@ -393,6 +403,184 @@ public sealed class EntitySchemaEmitter
             dst.Inner3 = MapType(src.Inner3, ownerClassName, fieldName);
         }
         return dst;
+    }
+
+    // ---- Effective-builtin derivation (SchemaClass.effective_builtin; issue #10) ------
+    //
+    // A class gets the fact iff flattening its instance fields — own plus the parent chain's,
+    // recursing by value through DECLARED_CLASS fields and through FIXED_ARRAY wrappers —
+    // yields EXACTLY ONE builtin leaf field of known fixed width. Everything else stays unset:
+    // zero or multiple leaves, ATOMIC/PTR/BITFIELD/DECLARED_ENUM leaves, a by-value target
+    // class absent from the walk, a zero-count array, an unrecognized builtin name, a cycle.
+    // Absence is the signal ("not derivable"); the derivation never guesses.
+    //
+    // Static fields are ignored throughout — they are not instance layout.
+
+    // Closed builtin width table. The schema system's builtin universe is fixed-width by name;
+    // "void" is deliberately absent (it has no data width and only occurs behind PTR, which
+    // poisons the decomposition before the leaf is reached). A name outside this table in a
+    // qualifying leaf position degrades to "no fact" with a stderr note (the KV3-parse
+    // precedent: degrade gracefully, never guess, never abort the artifact).
+    private static readonly Dictionary<string, uint> BuiltinWidths = new(StringComparer.Ordinal)
+    {
+        ["bool"] = 1,
+        ["char"] = 1,
+        ["int8"] = 1,
+        ["uint8"] = 1,
+        ["int16"] = 2,
+        ["uint16"] = 2,
+        ["int32"] = 4,
+        ["uint32"] = 4,
+        ["int64"] = 8,
+        ["uint64"] = 8,
+        ["float32"] = 4,
+        ["float64"] = 8,
+    };
+
+    // Three-valued leaf count: Zero (no builtin leaves yet), One (exactly one, with its name
+    // and total element count), Poison (multiple leaves, or anything undecidable/non-builtin).
+    // Poison absorbs; One + One = Poison (multi-member stays unresolved by design).
+    private readonly record struct LeafResolution(bool Poisoned, string? Builtin, ulong ElementCount)
+    {
+        public static readonly LeafResolution Zero = new(false, null, 0);
+        public static readonly LeafResolution Poison = new(true, null, 0);
+        public static LeafResolution One(string builtin, ulong elementCount) => new(false, builtin, elementCount);
+        public bool IsZero => !Poisoned && Builtin is null;
+        public bool IsOne => Builtin is not null;
+    }
+
+    private static LeafResolution Combine(LeafResolution a, LeafResolution b)
+    {
+        if (a.Poisoned || b.Poisoned)
+        {
+            return LeafResolution.Poison;
+        }
+        if (a.IsZero)
+        {
+            return b;
+        }
+        return b.IsZero ? a : LeafResolution.Poison;
+    }
+
+    private static void DeriveEffectiveBuiltins(Schemas.EntitySchema document)
+    {
+        // Class identity in the artifact is (module, name) — the same key OrderClasses sorts by
+        // and the key DECLARED_CLASS type nodes carry for their target.
+        var classesByKey = new Dictionary<(string Module, string Name), SchemaClass>();
+        foreach (SchemaClass c in document.Classes)
+        {
+            classesByKey[(c.Module, c.Name)] = c;
+        }
+
+        foreach (SchemaClass c in document.Classes)
+        {
+            LeafResolution r = ResolveClassLeaves(c, classesByKey, path: new HashSet<(string, string)>());
+            if (!r.IsOne)
+            {
+                continue;
+            }
+            if (!BuiltinWidths.TryGetValue(r.Builtin!, out uint width))
+            {
+                Console.Error.WriteLine(
+                    $"EntitySchemaEmitter: class '{c.Module}/{c.Name}' decomposes to builtin "
+                    + $"'{r.Builtin}' with no known width; effective_builtin left unset.");
+                continue;
+            }
+            c.EffectiveBuiltin = new SchemaClassEffectiveBuiltin
+            {
+                Builtin = r.Builtin,
+                ElementWidth = width,
+                ElementCount = r.ElementCount,
+            };
+        }
+    }
+
+    private static LeafResolution ResolveClassLeaves(
+        SchemaClass cls,
+        IReadOnlyDictionary<(string Module, string Name), SchemaClass> classesByKey,
+        HashSet<(string Module, string Name)> path)
+    {
+        var key = (cls.Module, cls.Name);
+        if (!path.Add(key))
+        {
+            // A by-value cycle cannot occur in real C++ layout; if the input presents one,
+            // the decomposition is undecidable — no fact.
+            return LeafResolution.Poison;
+        }
+        try
+        {
+            LeafResolution acc = LeafResolution.Zero;
+            foreach (SchemaClassParent p in cls.Parents)
+            {
+                if (!classesByKey.TryGetValue((p.Module, p.Name), out SchemaClass? parent))
+                {
+                    return LeafResolution.Poison; // parent absent from the walk: undecidable
+                }
+                acc = Combine(acc, ResolveClassLeaves(parent, classesByKey, path));
+                if (acc.Poisoned)
+                {
+                    return acc;
+                }
+            }
+            foreach (SchemaField f in cls.Fields)
+            {
+                acc = Combine(acc, ResolveTypeLeaves(f.Type, classesByKey, path));
+                if (acc.Poisoned)
+                {
+                    return acc;
+                }
+            }
+            return acc;
+        }
+        finally
+        {
+            path.Remove(key);
+        }
+    }
+
+    private static LeafResolution ResolveTypeLeaves(
+        SchemaType type,
+        IReadOnlyDictionary<(string Module, string Name), SchemaClass> classesByKey,
+        HashSet<(string Module, string Name)> path)
+    {
+        switch (type.Category)
+        {
+            case SchemaType.Types.Category.Builtin:
+                return LeafResolution.One(type.Name, 1);
+
+            case SchemaType.Types.Category.FixedArray:
+                {
+                    if (type.Count == 0 || type.Inner is null)
+                    {
+                        return LeafResolution.Poison; // zero-count / malformed array: undecidable
+                    }
+                    LeafResolution inner = ResolveTypeLeaves(type.Inner, classesByKey, path);
+                    if (!inner.IsOne)
+                    {
+                        return inner; // Zero (empty element class) or Poison, both pass through
+                    }
+                    try
+                    {
+                        return LeafResolution.One(inner.Builtin!, checked(type.Count * inner.ElementCount));
+                    }
+                    catch (OverflowException)
+                    {
+                        return LeafResolution.Poison;
+                    }
+                }
+
+            case SchemaType.Types.Category.DeclaredClass:
+                // By-value embedding: recurse into the target class's own decomposition.
+                return classesByKey.TryGetValue((type.Module, type.Name), out SchemaClass? target)
+                    ? ResolveClassLeaves(target, classesByKey, path)
+                    : LeafResolution.Poison; // target absent from the walk: undecidable
+
+            default:
+                // ATOMIC / PTR / BITFIELD / DECLARED_ENUM / UNSPECIFIED — not a builtin
+                // decomposition. (A pointer is a reference, not an embedding; enum widths are
+                // a separate fact consumers already have via SchemaEnum.size.)
+                return LeafResolution.Poison;
+        }
     }
 
     private static SchemaEnum MapEnum(SchemaEnum src)

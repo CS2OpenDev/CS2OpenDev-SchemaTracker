@@ -78,6 +78,35 @@ message SchemaClass {
   // nested/templated typenames; parity with source2gen / SchemaExplorer.
   string project_name = 13;
   string cpp_name     = 14;
+
+  // The class's schema-visible single-builtin decomposition, when it resolves (issue #10).
+  // HOST-DERIVED — the first class-level fact computed by the host from other facts in this
+  // same artifact rather than read off the binary (the walker never sets it; precedent:
+  // SchemaMetadata.value_parsed). Set iff flattening the class's instance fields — own fields
+  // plus the parent chain's, recursing by value through DECLARED_CLASS fields and through
+  // FIXED_ARRAY wrappers — yields EXACTLY ONE builtin leaf field of known fixed width.
+  // Unset in every other case: zero or multiple leaf fields, a leaf that is
+  // ATOMIC / PTR / BITFIELD / DECLARED_ENUM, a by-value target class absent from the walk,
+  // a zero-count array, an unrecognized builtin name, or a reference cycle. Unset means
+  // "not derivable", never "width 0". Multi-member and mixed-width decompositions are
+  // deliberately unresolved rather than guessed.
+  SchemaClassEffectiveBuiltin effective_builtin = 15;
+}
+
+// The resolved single-builtin decomposition of a class (SchemaClass.effective_builtin).
+// Motivating case (issue #10): CInButtonState wraps uint64[3] behind one struct hop, so a
+// field like CPlayer_MovementServices.m_nButtons (DECLARED_CLASS -> CInButtonState) carries
+// no reachable builtin width of its own; consumers resolve the field's declared class here.
+//
+// This is NOT a layout-equivalence claim. The struct's byte size may exceed
+// element_width * element_count (vtable pointer, alignment padding, non-schema members) —
+// CInButtonState itself is size 32 with its uint64[3] at offset 8. What it states is
+// exactly: the class's schema-visible field decomposition bottoms out in element_count
+// elements of the single builtin `builtin`, each element_width bytes wide.
+message SchemaClassEffectiveBuiltin {
+  string builtin       = 1;   // leaf builtin name: "uint64", "float32", ...
+  uint32 element_width = 2;   // byte width of ONE element (8 for uint64)
+  uint64 element_count = 3;   // total leaf elements: product of FIXED_ARRAY counts on the path (1 if none)
 }
 
 message SchemaClassParent {
