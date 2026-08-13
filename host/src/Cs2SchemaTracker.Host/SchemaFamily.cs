@@ -68,5 +68,15 @@ public static class SchemaFamily
     // before emission) — issue #8. Takes effect per build as walkers are rebuilt; the
     // committed corpus carries the new fields only after the coordinated era-rebuild +
     // re-walk (issue #8 checklist). Strictly additive.
-    public const string Version = "0.9.0";
+    //
+    // 0.10.0: entity_schema classes gain effective_builtin (issue #10) — the resolved
+    // single-builtin decomposition (builtin name, element byte width, element count) for
+    // classes whose flattened instance-field decomposition bottoms out in exactly one
+    // builtin leaf (CInButtonState -> uint64[3] is the motivating case; GameTime_t,
+    // GameTick_t and the other strong-typedef wrappers resolve too). The first HOST-DERIVED
+    // class-level fact: computed by EntitySchemaEmitter from facts already in the walk, so
+    // unlike 0.9.0 it needs NO walker/era rebuild — any build re-emitted (or newly
+    // extracted) through this host carries it. Strictly additive; unset means
+    // "not derivable", and multi-member/mixed decompositions stay deliberately unset.
+    public const string Version = "0.10.0";
 }
