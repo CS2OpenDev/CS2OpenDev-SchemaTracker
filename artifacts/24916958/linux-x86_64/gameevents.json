@@ -1,0 +1,5796 @@
+{
+  "buildId": "24916958",
+  "events": [
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "entindex of the player",
+          "name": "player",
+          "type": "player_controller"
+        },
+        {
+          "comment": "achievement ID",
+          "name": "achievement",
+          "type": "short"
+        }
+      ],
+      "name": "achievement_earned",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "non-localized name of achievement",
+          "name": "achievement_name",
+          "type": "string"
+        },
+        {
+          "comment": "# of steps toward achievement",
+          "name": "cur_val",
+          "type": "short"
+        },
+        {
+          "comment": "total # of steps in achievement",
+          "name": "max_val",
+          "type": "short"
+        }
+      ],
+      "name": "achievement_event",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "achievement_write_failed",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "numadvanced",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "numbronze",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "numsilver",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "numgold",
+          "type": "short"
+        }
+      ],
+      "name": "bonus_updated",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "botid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "p",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "r",
+          "type": "float"
+        }
+      ],
+      "name": "bot_takeover",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_pawn"
+        },
+        {
+          "comment": "BREAK_GLASS, BREAK_WOOD, etc",
+          "name": "material",
+          "type": "byte"
+        }
+      ],
+      "name": "break_breakable",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_pawn"
+        },
+        {
+          "comment": "",
+          "name": "player_held",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "player_thrown",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "player_dropped",
+          "type": "bool"
+        }
+      ],
+      "name": "break_prop",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_pawn"
+        },
+        {
+          "comment": "BREAK_GLASS, BREAK_WOOD, etc",
+          "name": "material",
+          "type": "byte"
+        }
+      ],
+      "name": "broken_breakable",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "cart_updated",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "lesson_name",
+          "type": "string"
+        }
+      ],
+      "name": "clientside_lesson_closed",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "current playback tick",
+          "name": "playback_tick",
+          "type": "long"
+        },
+        {
+          "comment": "tick we're going to",
+          "name": "skipto_tick",
+          "type": "long"
+        },
+        {
+          "comment": "CSVCMsgList_UserMessages",
+          "name": "user_message_list",
+          "type": "local"
+        },
+        {
+          "comment": "CSVCMsgList_GameEvents",
+          "name": "dota_hero_chase_list",
+          "type": "local"
+        }
+      ],
+      "name": "demo_skip",
+      "properties": {
+        "local": "1"
+      },
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "CSVCMsgList_GameEvents that are combat log events",
+          "name": "dota_combatlog_list",
+          "type": "local"
+        },
+        {
+          "comment": "CSVCMsgList_GameEvents",
+          "name": "dota_hero_chase_list",
+          "type": "local"
+        },
+        {
+          "comment": "CSVCMsgList_GameEvents",
+          "name": "dota_pick_hero_list",
+          "type": "local"
+        }
+      ],
+      "name": "demo_start",
+      "properties": {
+        "local": "1"
+      },
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "demo_stop",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "newDifficulty",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "oldDifficulty",
+          "type": "short"
+        },
+        {
+          "comment": "new difficulty as string",
+          "name": "strDifficulty",
+          "type": "string"
+        }
+      ],
+      "name": "difficulty_changed",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "Who closed the door",
+          "name": "userid",
+          "type": "player_pawn"
+        },
+        {
+          "comment": "Is the door a checkpoint door",
+          "name": "checkpoint",
+          "type": "bool"
+        }
+      ],
+      "name": "door_close",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "drop_rate_modified",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "dynamic_shadow_light_changed",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entindex_killed",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "entindex_attacker",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "entindex_inflictor",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "damagebits",
+          "type": "long"
+        }
+      ],
+      "name": "entity_killed",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "The player who sees the entity",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "Entindex of the entity they see",
+          "name": "subject",
+          "type": "long"
+        },
+        {
+          "comment": "Classname of the entity they see",
+          "name": "classname",
+          "type": "string"
+        },
+        {
+          "comment": "name of the entity they see",
+          "name": "entityname",
+          "type": "string"
+        }
+      ],
+      "name": "entity_visible",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "event_ticket_modified",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "rushes",
+          "type": "short"
+        }
+      ],
+      "name": "finale_start",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "entity ignited",
+          "name": "entindex",
+          "type": "long"
+        }
+      ],
+      "name": "flare_ignite_npc",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a message send by game logic to everyone",
+      "fields": [
+        {
+          "comment": "0 = console, 1 = HUD",
+          "name": "target",
+          "type": "byte"
+        },
+        {
+          "comment": "the message text",
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "name": "game_message",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "send when new map is completely loaded",
+      "fields": [
+        {
+          "comment": "map name",
+          "name": "mapname",
+          "type": "string"
+        },
+        {
+          "comment": "true if this is a transition from one map to another",
+          "name": "transition",
+          "type": "bool"
+        }
+      ],
+      "name": "game_newmap",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "gameinstructor_draw",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "gameinstructor_nodraw",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "gc_connected",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "helicopter_grenade_punt_miss",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a spectator/player is a cameraman",
+      "fields": [
+        {
+          "comment": "camera man entity index",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "hltv_cameraman",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "shot of a single entity",
+      "fields": [
+        {
+          "comment": "primary traget index",
+          "name": "target1",
+          "type": "player_controller"
+        },
+        {
+          "comment": "secondary traget index or 0",
+          "name": "target2",
+          "type": "player_controller"
+        },
+        {
+          "comment": "camera distance",
+          "name": "distance",
+          "type": "short"
+        },
+        {
+          "comment": "view angle horizontal",
+          "name": "theta",
+          "type": "short"
+        },
+        {
+          "comment": "view angle vertical",
+          "name": "phi",
+          "type": "short"
+        },
+        {
+          "comment": "camera inertia",
+          "name": "inertia",
+          "type": "byte"
+        },
+        {
+          "comment": "diretcor suggests to show ineye",
+          "name": "ineye",
+          "type": "byte"
+        }
+      ],
+      "name": "hltv_chase",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a HLTV chat msg sent by spectators",
+      "fields": [
+        {
+          "comment": "",
+          "name": "text",
+          "type": "string"
+        },
+        {
+          "comment": "steam id",
+          "name": "steamID",
+          "type": "uint64"
+        }
+      ],
+      "name": "hltv_chat",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "show from fixed view",
+      "fields": [
+        {
+          "comment": "camera position in world",
+          "name": "posx",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "posy",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "posz",
+          "type": "long"
+        },
+        {
+          "comment": "camera angles",
+          "name": "theta",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "phi",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "offset",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "fov",
+          "type": "float"
+        },
+        {
+          "comment": "follow this player",
+          "name": "target",
+          "type": "player_controller"
+        }
+      ],
+      "name": "hltv_fixed",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a HLTV message send by moderators",
+      "fields": [
+        {
+          "comment": "",
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "name": "hltv_message",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a camera ranking",
+      "fields": [
+        {
+          "comment": "fixed camera index",
+          "name": "index",
+          "type": "byte"
+        },
+        {
+          "comment": "ranking, how interesting is this camera view",
+          "name": "rank",
+          "type": "float"
+        },
+        {
+          "comment": "best/closest target entity",
+          "name": "target",
+          "type": "player_controller"
+        }
+      ],
+      "name": "hltv_rank_camera",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "an entity ranking",
+      "fields": [
+        {
+          "comment": "player slot",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "ranking, how interesting is this entity to view",
+          "name": "rank",
+          "type": "float"
+        },
+        {
+          "comment": "best/closest target entity",
+          "name": "target",
+          "type": "player_controller"
+        }
+      ],
+      "name": "hltv_rank_entity",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "number of seconds in killer replay delay",
+          "name": "delay",
+          "type": "long"
+        },
+        {
+          "comment": "reason for replay\t(ReplayEventType_t)",
+          "name": "reason",
+          "type": "long"
+        }
+      ],
+      "name": "hltv_replay",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "reason for hltv replay status change ()",
+          "name": "reason",
+          "type": "long"
+        }
+      ],
+      "name": "hltv_replay_status",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "general HLTV status",
+      "fields": [
+        {
+          "comment": "number of HLTV spectators",
+          "name": "clients",
+          "type": "long"
+        },
+        {
+          "comment": "number of HLTV slots",
+          "name": "slots",
+          "type": "long"
+        },
+        {
+          "comment": "number of HLTV proxies",
+          "name": "proxies",
+          "type": "short"
+        },
+        {
+          "comment": "disptach master IP:port",
+          "name": "master",
+          "type": "string"
+        }
+      ],
+      "name": "hltv_status",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "name": "hltv_title",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "version",
+          "type": "long"
+        }
+      ],
+      "name": "hltv_versioninfo",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "hostname",
+          "type": "string"
+        }
+      ],
+      "name": "hostname_changed",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "The player who this lesson is intended for",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "Name of the lesson to start.  Must match instructor_lesson.txt",
+          "name": "hint_name",
+          "type": "string"
+        }
+      ],
+      "name": "instructor_close_lesson",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "create a hint using data supplied entirely by the server/map. Intended for hints to smooth playtests before content is ready to make the hint unneccessary. NOT INTENDED AS A SHIPPABLE CRUTCH",
+      "fields": [
+        {
+          "comment": "user ID of the player that triggered the hint",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "entity id of the env_instructor_hint that fired the event",
+          "name": "hint_entindex",
+          "type": "long"
+        },
+        {
+          "comment": "what to name the hint. For referencing it again later (e.g. a kill command for the hint instead of a timeout)",
+          "name": "hint_name",
+          "type": "string"
+        },
+        {
+          "comment": "type name so that messages of the same type will replace each other",
+          "name": "hint_replace_key",
+          "type": "string"
+        },
+        {
+          "comment": "entity id that the hint should display at",
+          "name": "hint_target",
+          "type": "long"
+        },
+        {
+          "comment": "playerslot of the activator",
+          "name": "hint_activator_userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "how long in seconds until the hint automatically times out, 0 = never",
+          "name": "hint_timeout",
+          "type": "short"
+        },
+        {
+          "comment": "the hint icon to use when the hint is onscreen. e.g. \"icon_alert_red\"",
+          "name": "hint_icon_onscreen",
+          "type": "string"
+        },
+        {
+          "comment": "the hint icon to use when the hint is offscreen. e.g. \"icon_alert\"",
+          "name": "hint_icon_offscreen",
+          "type": "string"
+        },
+        {
+          "comment": "the hint caption. e.g. \"#ThisIsDangerous\"",
+          "name": "hint_caption",
+          "type": "string"
+        },
+        {
+          "comment": "the hint caption that only the activator sees e.g. \"#YouPushedItGood\"",
+          "name": "hint_activator_caption",
+          "type": "string"
+        },
+        {
+          "comment": "the hint color in \"r,g,b\" format where each component is 0-255",
+          "name": "hint_color",
+          "type": "string"
+        },
+        {
+          "comment": "how far on the z axis to offset the hint from entity origin",
+          "name": "hint_icon_offset",
+          "type": "float"
+        },
+        {
+          "comment": "range before the hint is culled",
+          "name": "hint_range",
+          "type": "float"
+        },
+        {
+          "comment": "hint flags",
+          "name": "hint_flags",
+          "type": "long"
+        },
+        {
+          "comment": "bindings to use when use_binding is the onscreen icon",
+          "name": "hint_binding",
+          "type": "string"
+        },
+        {
+          "comment": "if false, the hint will dissappear if the target entity is invisible",
+          "name": "hint_allow_nodraw_target",
+          "type": "bool"
+        },
+        {
+          "comment": "if true, the hint will not show when outside the player view",
+          "name": "hint_nooffscreen",
+          "type": "bool"
+        },
+        {
+          "comment": "if true, the hint caption will show even if the hint is occluded",
+          "name": "hint_forcecaption",
+          "type": "bool"
+        },
+        {
+          "comment": "if true, only the local player will see the hint",
+          "name": "hint_local_player_only",
+          "type": "bool"
+        },
+        {
+          "comment": "Game sound to play",
+          "name": "hint_start_sound",
+          "type": "string"
+        },
+        {
+          "comment": "Path for Panorama layout file",
+          "name": "hint_layoutfile",
+          "type": "string"
+        },
+        {
+          "comment": "Attachment type for the Panorama panel",
+          "name": "hint_vr_panel_type",
+          "type": "short"
+        },
+        {
+          "comment": "Height offset for attached panels",
+          "name": "hint_vr_height_offset",
+          "type": "float"
+        },
+        {
+          "comment": "offset for attached panels",
+          "name": "hint_vr_offset_x",
+          "type": "float"
+        },
+        {
+          "comment": "offset for attached panels",
+          "name": "hint_vr_offset_y",
+          "type": "float"
+        },
+        {
+          "comment": "offset for attached panels",
+          "name": "hint_vr_offset_z",
+          "type": "float"
+        }
+      ],
+      "name": "instructor_server_hint_create",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "destroys a server/map created hint",
+      "fields": [
+        {
+          "comment": "The hint to stop. Will stop ALL hints with this name",
+          "name": "hint_name",
+          "type": "string"
+        },
+        {
+          "comment": "entity id of the env_instructor_hint that fired the event",
+          "name": "hint_entindex",
+          "type": "long"
+        }
+      ],
+      "name": "instructor_server_hint_stop",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "The player who this lesson is intended for",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "Name of the lesson to start.  Must match instructor_lesson.txt",
+          "name": "hint_name",
+          "type": "string"
+        },
+        {
+          "comment": "entity id that the hint should display at. Leave empty if controller target",
+          "name": "hint_target",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "vr_movement_type",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "vr_single_controller",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "vr_controller_type",
+          "type": "byte"
+        }
+      ],
+      "name": "instructor_start_lesson",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "itemdef",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "itemid",
+          "type": "long"
+        }
+      ],
+      "name": "inventory_updated",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "item_schema_initialized",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "local_player_controller_team",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "local_player_pawn_changed",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "local_player_team",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "map_shutdown",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "map_transition",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "entity picked up",
+          "name": "target",
+          "type": "ehandle"
+        }
+      ],
+      "name": "physgun_pickup",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "user ID on server",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "player_activate",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "user ID on server",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "players old (current) name",
+          "name": "oldname",
+          "type": "string"
+        },
+        {
+          "comment": "players new name",
+          "name": "newname",
+          "type": "string"
+        }
+      ],
+      "name": "player_changename",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a public player chat",
+      "fields": [
+        {
+          "comment": "true if team only chat",
+          "name": "teamonly",
+          "type": "bool"
+        },
+        {
+          "comment": "chatting player",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "chatting player ID",
+          "name": "playerid",
+          "type": "short"
+        },
+        {
+          "comment": "chat text",
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "name": "player_chat",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a new client connected",
+      "fields": [
+        {
+          "comment": "player name",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "comment": "user ID on server (unique on server)",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "player network (i.e steam) id",
+          "name": "networkid",
+          "type": "string"
+        },
+        {
+          "comment": "steam id",
+          "name": "xuid",
+          "type": "uint64"
+        },
+        {
+          "comment": "",
+          "name": "bot",
+          "type": "bool"
+        }
+      ],
+      "name": "player_connect",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "player has sent final message in the connection sequence",
+      "fields": [
+        {
+          "comment": "user ID on server (unique on server)",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "player_connect_full",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a game event, name may be 32 charaters long",
+      "fields": [
+        {
+          "comment": "user ID who died",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "user ID who killed",
+          "name": "attacker",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "player_death",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a client was disconnected",
+      "fields": [
+        {
+          "comment": "user ID on server",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "see networkdisconnect enum protobuf",
+          "name": "reason",
+          "type": "short"
+        },
+        {
+          "comment": "player name",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "comment": "player network (i.e steam) id",
+          "name": "networkid",
+          "type": "string"
+        },
+        {
+          "comment": "steam id",
+          "name": "xuid",
+          "type": "uint64"
+        },
+        {
+          "comment": "",
+          "name": "PlayerID",
+          "type": "short"
+        },
+        {
+          "comment": "Was the player ever fully connected?",
+          "name": "ever_fully_connected",
+          "type": "bool"
+        }
+      ],
+      "name": "player_disconnect",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_pawn"
+        }
+      ],
+      "name": "player_footstep",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "user ID on server",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "Number of this full update",
+          "name": "count",
+          "type": "short"
+        }
+      ],
+      "name": "player_full_update",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "localizable string of a hint",
+          "name": "hintmessage",
+          "type": "string"
+        }
+      ],
+      "name": "player_hintmessage",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who was hurt",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "player who attacked",
+          "name": "attacker",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "remaining health points",
+          "name": "health",
+          "type": "byte"
+        }
+      ],
+      "name": "player_hurt",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a player changed his name",
+      "fields": [
+        {
+          "comment": "player name",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "comment": "user ID on server (unique on server)",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "player network (i.e steam) id",
+          "name": "steamid",
+          "type": "uint64"
+        },
+        {
+          "comment": "true if player is a AI bot",
+          "name": "bot",
+          "type": "bool"
+        }
+      ],
+      "name": "player_info",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "player spawned in game",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "player_spawn",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "forceupload",
+          "type": "bool"
+        }
+      ],
+      "name": "player_stats_updated",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "team id",
+          "name": "team",
+          "type": "byte"
+        },
+        {
+          "comment": "old team id",
+          "name": "oldteam",
+          "type": "byte"
+        },
+        {
+          "comment": "team change because player disconnects",
+          "name": "disconnect",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "silent",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "name",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "isbot",
+          "type": "bool"
+        }
+      ],
+      "name": "player_team",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        }
+      ],
+      "name": "ragdoll_dissolved",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "winner team/user i",
+          "name": "winner",
+          "type": "byte"
+        },
+        {
+          "comment": "reson why team won",
+          "name": "reason",
+          "type": "byte"
+        },
+        {
+          "comment": "end round message",
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "time",
+          "type": "float"
+        }
+      ],
+      "name": "round_end",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_freeze_end",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "round time limit in seconds",
+          "name": "timelimit",
+          "type": "long"
+        },
+        {
+          "comment": "frag limit in seconds",
+          "name": "fraglimit",
+          "type": "long"
+        },
+        {
+          "comment": "round objective",
+          "name": "objective",
+          "type": "string"
+        }
+      ],
+      "name": "round_start",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_start_post_nav",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_start_pre_entity",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a server console var has changed",
+      "fields": [
+        {
+          "comment": "cvar name, eg \"mp_roundtime\"",
+          "name": "cvarname",
+          "type": "string"
+        },
+        {
+          "comment": "new cvar value",
+          "name": "cvarvalue",
+          "type": "string"
+        }
+      ],
+      "name": "server_cvar",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "a generic server message",
+      "fields": [
+        {
+          "comment": "the message text",
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "name": "server_message",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "server is about to be shut down",
+      "fields": [
+        {
+          "comment": "reason why server is about to be shut down",
+          "name": "reason",
+          "type": "string"
+        }
+      ],
+      "name": "server_pre_shutdown",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "server shut down",
+      "fields": [
+        {
+          "comment": "reason why server was shut down",
+          "name": "reason",
+          "type": "string"
+        }
+      ],
+      "name": "server_shutdown",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "send once a server starts",
+      "fields": [
+        {
+          "comment": "public host name",
+          "name": "hostname",
+          "type": "string"
+        },
+        {
+          "comment": "hostame, IP or DNS name",
+          "name": "address",
+          "type": "string"
+        },
+        {
+          "comment": "server port",
+          "name": "port",
+          "type": "short"
+        },
+        {
+          "comment": "game dir",
+          "name": "game",
+          "type": "string"
+        },
+        {
+          "comment": "map name",
+          "name": "mapname",
+          "type": "string"
+        },
+        {
+          "comment": "addon name",
+          "name": "addonname",
+          "type": "string"
+        },
+        {
+          "comment": "max players",
+          "name": "maxplayers",
+          "type": "long"
+        },
+        {
+          "comment": "WIN32, LINUX",
+          "name": "os",
+          "type": "string"
+        },
+        {
+          "comment": "true if dedicated server",
+          "name": "dedicated",
+          "type": "bool"
+        },
+        {
+          "comment": "true if password protected",
+          "name": "password",
+          "type": "bool"
+        }
+      ],
+      "name": "server_spawn",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "group",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "enabled",
+          "type": "short"
+        }
+      ],
+      "name": "set_instructor_group_enabled",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "spectating player",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "spec_mode_updated",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "spectating player",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "ehandle of the target",
+          "name": "target",
+          "type": "ehandle"
+        }
+      ],
+      "name": "spec_target_updated",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "store_pricesheet_updated",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "info about team",
+      "fields": [
+        {
+          "comment": "unique team id",
+          "name": "teamid",
+          "type": "byte"
+        },
+        {
+          "comment": "team name eg \"Team Blue\"",
+          "name": "teamname",
+          "type": "string"
+        }
+      ],
+      "name": "team_info",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "team score changed",
+      "fields": [
+        {
+          "comment": "team id",
+          "name": "teamid",
+          "type": "byte"
+        },
+        {
+          "comment": "total team score",
+          "name": "score",
+          "type": "short"
+        }
+      ],
+      "name": "team_score",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "emits a sound to everyone on a team",
+      "fields": [
+        {
+          "comment": "unique team id",
+          "name": "team",
+          "type": "byte"
+        },
+        {
+          "comment": "name of the sound to emit",
+          "name": "sound",
+          "type": "string"
+        }
+      ],
+      "name": "teamplay_broadcast_audio",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "round restart",
+      "fields": [
+        {
+          "comment": "is this a full reset of the map",
+          "name": "full_reset",
+          "type": "bool"
+        }
+      ],
+      "name": "teamplay_round_start",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "fired when achievements/stats are downloaded from Steam or XBox Live",
+      "fields": [],
+      "name": "user_data_downloaded",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "team",
+          "type": "byte"
+        },
+        {
+          "comment": "entity id of the voter",
+          "name": "entityid",
+          "type": "long"
+        }
+      ],
+      "name": "vote_cast_no",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "team",
+          "type": "byte"
+        },
+        {
+          "comment": "entity id of the voter",
+          "name": "entityid",
+          "type": "long"
+        }
+      ],
+      "name": "vote_cast_yes",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "yesVotes",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "noVotes",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "potentialVotes",
+          "type": "byte"
+        }
+      ],
+      "name": "vote_changed",
+      "properties": {},
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "team",
+          "type": "byte"
+        }
+      ],
+      "name": "vote_failed",
+      "properties": {
+        "reliable": "1"
+      },
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "details",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "param1",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "team",
+          "type": "byte"
+        }
+      ],
+      "name": "vote_passed",
+      "properties": {
+        "reliable": "1"
+      },
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "issue",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "param1",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "votedata",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "team",
+          "type": "byte"
+        },
+        {
+          "comment": "entity id of the player who initiated the vote",
+          "name": "initiator",
+          "type": "long"
+        }
+      ],
+      "name": "vote_started",
+      "properties": {
+        "reliable": "1"
+      },
+      "source": "core.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "bone",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "pos_x",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "pos_y",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "pos_z",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "ang_x",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "ang_y",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "ang_z",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "start_x",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "start_y",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "start_z",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "hit",
+          "type": "bool"
+        }
+      ],
+      "name": "add_bullet_hit_marker",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "pos_x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "pos_y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "pos_z",
+          "type": "float"
+        }
+      ],
+      "name": "add_player_sonar_icon",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "begin_new_match",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_pawn"
+        }
+      ],
+      "name": "break_prop",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "client_loadout_changed",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "The length of time that this bonus lasts",
+          "name": "time",
+          "type": "short"
+        },
+        {
+          "comment": "Loadout position of the bonus weapon",
+          "name": "Pos",
+          "type": "short"
+        }
+      ],
+      "name": "dm_bonus_weapon_start",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "dmgstate",
+          "type": "long"
+        }
+      ],
+      "name": "door_break",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "Who closed the door",
+          "name": "userid",
+          "type": "player_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        }
+      ],
+      "name": "door_closed",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "Who closed the door",
+          "name": "userid",
+          "type": "player_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        }
+      ],
+      "name": "door_open",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "endmatch_cmm_start_reveal_items",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "Number of \"ties\"",
+          "name": "count",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot1",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot2",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot3",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot4",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot5",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot6",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot7",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot8",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot9",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "slot10",
+          "type": "byte"
+        }
+      ],
+      "name": "endmatch_mapvote_selecting_map",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "The player who sees the entity",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "Entindex of the entity they see",
+          "name": "subject",
+          "type": "short"
+        },
+        {
+          "comment": "Classname of the entity they see",
+          "name": "classname",
+          "type": "string"
+        },
+        {
+          "comment": "name of the entity they see",
+          "name": "entityname",
+          "type": "string"
+        }
+      ],
+      "name": "entity_visible",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "a game ended",
+      "fields": [
+        {
+          "comment": "winner team/user id",
+          "name": "winner",
+          "type": "byte"
+        }
+      ],
+      "name": "game_end",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "sent when a new game is started",
+      "fields": [],
+      "name": "game_init",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "send when new map is completely loaded",
+      "fields": [
+        {
+          "comment": "map name",
+          "name": "mapname",
+          "type": "string"
+        }
+      ],
+      "name": "game_newmap",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "a new game starts",
+      "fields": [
+        {
+          "comment": "max round",
+          "name": "roundslimit",
+          "type": "long"
+        },
+        {
+          "comment": "time limit",
+          "name": "timelimit",
+          "type": "long"
+        },
+        {
+          "comment": "frag limit",
+          "name": "fraglimit",
+          "type": "long"
+        },
+        {
+          "comment": "round objective",
+          "name": "objective",
+          "type": "string"
+        }
+      ],
+      "name": "game_start",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "gameui_hidden",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "create a hint using data supplied entirely by the server/map. Intended for hints to smooth playtests before content is ready to make the hint unneccessary. NOT INTENDED AS A SHIPPABLE CRUTCH",
+      "fields": [
+        {
+          "comment": "user ID of the player that triggered the hint",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "what to name the hint. For referencing it again later (e.g. a kill command for the hint instead of a timeout)",
+          "name": "hint_name",
+          "type": "string"
+        },
+        {
+          "comment": "type name so that messages of the same type will replace each other",
+          "name": "hint_replace_key",
+          "type": "string"
+        },
+        {
+          "comment": "entity id that the hint should display at",
+          "name": "hint_target",
+          "type": "long"
+        },
+        {
+          "comment": "userid id of the activator",
+          "name": "hint_activator_userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "how long in seconds until the hint automatically times out, 0 = never",
+          "name": "hint_timeout",
+          "type": "short"
+        },
+        {
+          "comment": "the hint icon to use when the hint is onscreen. e.g. \"icon_alert_red\"",
+          "name": "hint_icon_onscreen",
+          "type": "string"
+        },
+        {
+          "comment": "the hint icon to use when the hint is offscreen. e.g. \"icon_alert\"",
+          "name": "hint_icon_offscreen",
+          "type": "string"
+        },
+        {
+          "comment": "the hint caption. e.g. \"#ThisIsDangerous\"",
+          "name": "hint_caption",
+          "type": "string"
+        },
+        {
+          "comment": "the hint caption that only the activator sees e.g. \"#YouPushedItGood\"",
+          "name": "hint_activator_caption",
+          "type": "string"
+        },
+        {
+          "comment": "the hint color in \"r,g,b\" format where each component is 0-255",
+          "name": "hint_color",
+          "type": "string"
+        },
+        {
+          "comment": "how far on the z axis to offset the hint from entity origin",
+          "name": "hint_icon_offset",
+          "type": "float"
+        },
+        {
+          "comment": "range before the hint is culled",
+          "name": "hint_range",
+          "type": "float"
+        },
+        {
+          "comment": "hint flags",
+          "name": "hint_flags",
+          "type": "long"
+        },
+        {
+          "comment": "bindings to use when use_binding is the onscreen icon",
+          "name": "hint_binding",
+          "type": "string"
+        },
+        {
+          "comment": "gamepad bindings to use when use_binding is the onscreen icon",
+          "name": "hint_gamepad_binding",
+          "type": "string"
+        },
+        {
+          "comment": "if false, the hint will dissappear if the target entity is invisible",
+          "name": "hint_allow_nodraw_target",
+          "type": "bool"
+        },
+        {
+          "comment": "if true, the hint will not show when outside the player view",
+          "name": "hint_nooffscreen",
+          "type": "bool"
+        },
+        {
+          "comment": "if true, the hint caption will show even if the hint is occluded",
+          "name": "hint_forcecaption",
+          "type": "bool"
+        },
+        {
+          "comment": "if true, only the local player will see the hint",
+          "name": "hint_local_player_only",
+          "type": "bool"
+        }
+      ],
+      "name": "instructor_server_hint_create",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "destroys a server/map created hint",
+      "fields": [
+        {
+          "comment": "The hint to stop. Will stop ALL hints with this name",
+          "name": "hint_name",
+          "type": "string"
+        }
+      ],
+      "name": "instructor_server_hint_stop",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "inventory_updated",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "a public player chat",
+      "fields": [
+        {
+          "comment": "true if team only chat",
+          "name": "teamonly",
+          "type": "bool"
+        },
+        {
+          "comment": "chatting player",
+          "name": "userid",
+          "type": "short"
+        },
+        {
+          "comment": "chat text",
+          "name": "text",
+          "type": "string"
+        }
+      ],
+      "name": "player_chat",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_pawn"
+        }
+      ],
+      "name": "player_decal",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "players scores changed",
+      "fields": [
+        {
+          "comment": "user ID on server",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "# of kills",
+          "name": "kills",
+          "type": "short"
+        },
+        {
+          "comment": "# of deaths",
+          "name": "deaths",
+          "type": "short"
+        },
+        {
+          "comment": "total game score",
+          "name": "score",
+          "type": "short"
+        }
+      ],
+      "name": "player_score",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "player shoot his weapon",
+      "fields": [
+        {
+          "comment": "user ID on server",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "weapon ID",
+          "name": "weapon",
+          "type": "byte"
+        },
+        {
+          "comment": "weapon mode",
+          "name": "mode",
+          "type": "byte"
+        }
+      ],
+      "name": "player_shoot",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "player change his team",
+      "fields": [
+        {
+          "comment": "player",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "team id",
+          "name": "team",
+          "type": "byte"
+        },
+        {
+          "comment": "old team id",
+          "name": "oldteam",
+          "type": "byte"
+        },
+        {
+          "comment": "team change because player disconnects",
+          "name": "disconnect",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "silent",
+          "type": "bool"
+        },
+        {
+          "comment": "true if player is a bot",
+          "name": "isbot",
+          "type": "bool"
+        }
+      ],
+      "name": "player_team",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "read user titledata from profile",
+      "fields": [
+        {
+          "comment": "Controller id of user",
+          "name": "controllerId",
+          "type": "short"
+        }
+      ],
+      "name": "read_game_titledata",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "reset user titledata; do not automatically write profile",
+      "fields": [
+        {
+          "comment": "Controller id of user",
+          "name": "controllerId",
+          "type": "short"
+        }
+      ],
+      "name": "reset_game_titledata",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_announce_final",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_announce_last_round_half",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_announce_match_point",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_announce_match_start",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_announce_warmup",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "winner team/user i",
+          "name": "winner",
+          "type": "byte"
+        },
+        {
+          "comment": "reson why team won",
+          "name": "reason",
+          "type": "byte"
+        },
+        {
+          "comment": "end round message",
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "comment": "server-generated legacy value",
+          "name": "legacy",
+          "type": "byte"
+        }
+      ],
+      "name": "round_end",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_end_upload_stats",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_officially_ended",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "round_time_warning",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "The phase #",
+          "name": "phase",
+          "type": "short"
+        }
+      ],
+      "name": "survival_announce_phase",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "id of this specific content (may be image or map)",
+          "name": "hcontent",
+          "type": "uint64"
+        }
+      ],
+      "name": "ugc_file_download_finished",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "id of this specific content (may be image or map)",
+          "name": "hcontent",
+          "type": "uint64"
+        },
+        {
+          "comment": "id of the associated content package",
+          "name": "published_file_id",
+          "type": "uint64"
+        }
+      ],
+      "name": "ugc_file_download_start",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "published_file_id",
+          "type": "uint64"
+        },
+        {
+          "comment": "",
+          "name": "error_code",
+          "type": "long"
+        }
+      ],
+      "name": "ugc_map_download_error",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "published_file_id",
+          "type": "uint64"
+        }
+      ],
+      "name": "ugc_map_info_received",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "published_file_id",
+          "type": "uint64"
+        }
+      ],
+      "name": "ugc_map_unsubscribed",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "which option the player voted on",
+          "name": "vote_option",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "team",
+          "type": "short"
+        },
+        {
+          "comment": "player who voted",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "vote_cast",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "vote_option1",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "vote_option2",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "vote_option3",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "vote_option4",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "vote_option5",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "potentialVotes",
+          "type": "byte"
+        }
+      ],
+      "name": "vote_changed",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "vote_ended",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "Number of options - up to MAX_VOTE_OPTIONS",
+          "name": "count",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "option1",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "option2",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "option3",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "option4",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "option5",
+          "type": "string"
+        }
+      ],
+      "name": "vote_options",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "issue",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "param1",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "team",
+          "type": "byte"
+        },
+        {
+          "comment": "entity id of the player who initiated the vote",
+          "name": "initiator",
+          "type": "long"
+        }
+      ],
+      "name": "vote_started",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "warmup_end",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "Player who this event applies to",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "EWeaponHudSelectionMode (switch / pickup / drop)",
+          "name": "mode",
+          "type": "byte"
+        },
+        {
+          "comment": "Weapon entity index",
+          "name": "entindex",
+          "type": "long"
+        }
+      ],
+      "name": "weaponhud_selection",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "write user titledata in profile",
+      "fields": [
+        {
+          "comment": "Controller id of user",
+          "name": "controllerId",
+          "type": "short"
+        }
+      ],
+      "name": "write_game_titledata",
+      "properties": {},
+      "source": "game.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "achievement ID",
+          "name": "achievement",
+          "type": "short"
+        },
+        {
+          "comment": "splitscreen ID",
+          "name": "splitscreenplayer",
+          "type": "short"
+        }
+      ],
+      "name": "achievement_earned_local",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "achievement_info_loaded",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'",
+          "name": "item",
+          "type": "string"
+        },
+        {
+          "comment": "the weapon entindex",
+          "name": "index",
+          "type": "long"
+        }
+      ],
+      "name": "ammo_pickup",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "success",
+          "type": "bool"
+        }
+      ],
+      "name": "ammo_refill",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "announce_phase_end",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who was defusing",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "bomb_abortdefuse",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who is planting the bomb",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "bombsite index",
+          "name": "site",
+          "type": "short"
+        }
+      ],
+      "name": "bomb_abortplant",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "c4 entity",
+          "name": "entindex",
+          "type": "long"
+        }
+      ],
+      "name": "bomb_beep",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who is defusing",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "haskit",
+          "type": "bool"
+        }
+      ],
+      "name": "bomb_begindefuse",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who is planting the bomb",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "bombsite index",
+          "name": "site",
+          "type": "short"
+        }
+      ],
+      "name": "bomb_beginplant",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who defused the bomb",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "bombsite index",
+          "name": "site",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "c4",
+          "type": "short"
+        }
+      ],
+      "name": "bomb_defused",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who dropped the bomb",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        }
+      ],
+      "name": "bomb_dropped",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who planted the bomb",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "bombsite index",
+          "name": "site",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "c4",
+          "type": "short"
+        }
+      ],
+      "name": "bomb_exploded",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player pawn who picked up the bomb",
+          "name": "userid",
+          "type": "player_pawn"
+        }
+      ],
+      "name": "bomb_pickup",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who planted the bomb",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "bombsite index",
+          "name": "site",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "c4",
+          "type": "short"
+        }
+      ],
+      "name": "bomb_planted",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player index who was hurt",
+          "name": "victim",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "player index who attacked",
+          "name": "attacker",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "how far the bullet travelled before it hit the player",
+          "name": "distance",
+          "type": "float"
+        },
+        {
+          "comment": "direction vector of the bullet",
+          "name": "damage_dir_x",
+          "type": "float"
+        },
+        {
+          "comment": "direction vector of the bullet",
+          "name": "damage_dir_y",
+          "type": "float"
+        },
+        {
+          "comment": "direction vector of the bullet",
+          "name": "damage_dir_z",
+          "type": "float"
+        },
+        {
+          "comment": "how many surfaces were penetrated",
+          "name": "num_penetrations",
+          "type": "byte"
+        },
+        {
+          "comment": "was the shooter noscoped?",
+          "name": "no_scope",
+          "type": "bool"
+        },
+        {
+          "comment": "was the shooter jumping?",
+          "name": "in_air",
+          "type": "bool"
+        },
+        {
+          "comment": "shoot angle x",
+          "name": "shoot_ang_x",
+          "type": "float"
+        },
+        {
+          "comment": "shoot angle y",
+          "name": "shoot_ang_y",
+          "type": "float"
+        },
+        {
+          "comment": "shoot angle z",
+          "name": "shoot_ang_z",
+          "type": "float"
+        },
+        {
+          "comment": "aim punch x",
+          "name": "aim_punch_x",
+          "type": "float"
+        },
+        {
+          "comment": "aim punch y",
+          "name": "aim_punch_y",
+          "type": "float"
+        },
+        {
+          "comment": "aim punch z",
+          "name": "aim_punch_z",
+          "type": "float"
+        },
+        {
+          "comment": "attack tick",
+          "name": "attack_tick_count",
+          "type": "int"
+        },
+        {
+          "comment": "attack frac",
+          "name": "attack_tick_frac",
+          "type": "float"
+        },
+        {
+          "comment": "render tick",
+          "name": "render_tick_count",
+          "type": "int"
+        },
+        {
+          "comment": "render frac",
+          "name": "render_tick_frac",
+          "type": "float"
+        },
+        {
+          "comment": "total inaccuracy",
+          "name": "inaccuracy_total",
+          "type": "float"
+        },
+        {
+          "comment": "move inaccuracy",
+          "name": "inaccuracy_move",
+          "type": "float"
+        },
+        {
+          "comment": "air inaccuracy",
+          "name": "inaccuracy_air",
+          "type": "float"
+        },
+        {
+          "comment": "recoil index. Yes this is really a float.",
+          "name": "recoil_index",
+          "type": "float"
+        },
+        {
+          "comment": "lag compensation type",
+          "name": "type",
+          "type": "int"
+        }
+      ],
+      "name": "bullet_damage",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "bullet_impact",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "buymenu_close",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "buymenu_open",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "buytime_ended",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "global",
+          "type": "bool"
+        }
+      ],
+      "name": "choppers_incoming_warning",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "client_disconnect",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "steamid",
+          "type": "string"
+        }
+      ],
+      "name": "clientside_reload_custom_econ",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "cs_game_disconnected",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "cs_intermission",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "cs_match_end_restart",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "cs_pre_restart",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "next",
+          "type": "bool"
+        }
+      ],
+      "name": "cs_prev_next_spectator",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "cs_round_final_beep",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "cs_round_start_beep",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "cs_win_panel_match",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "show_timer_defend",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "show_timer_attack",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "timer_time",
+          "type": "short"
+        },
+        {
+          "comment": "define in cs_gamerules.h",
+          "name": "final_event",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "funfact_token",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "funfact_player",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "funfact_data1",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "funfact_data2",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "funfact_data3",
+          "type": "long"
+        }
+      ],
+      "name": "cs_win_panel_round",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "decoy_detonate",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "decoy_firing",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "decoy_started",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "defuser's entity ID",
+          "name": "entityid",
+          "type": "long"
+        }
+      ],
+      "name": "defuser_dropped",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "defuser's entity ID",
+          "name": "entityid",
+          "type": "long"
+        },
+        {
+          "comment": "player who picked up the defuser",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "defuser_pickup",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entindex",
+          "type": "long"
+        }
+      ],
+      "name": "door_moving",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "cargo",
+          "type": "short"
+        }
+      ],
+      "name": "drone_above_roof",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "cargo",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "delivered",
+          "type": "bool"
+        }
+      ],
+      "name": "drone_cargo_detached",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "priority",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "drone_dispatched",
+          "type": "short"
+        }
+      ],
+      "name": "drone_dispatched",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "dronegun_attack",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player entindex",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "crate entindex",
+          "name": "subject",
+          "type": "short"
+        },
+        {
+          "comment": "type of crate (metal, wood, or paradrop)",
+          "name": "type",
+          "type": "string"
+        }
+      ],
+      "name": "dz_item_interaction",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "enable",
+          "type": "bool"
+        }
+      ],
+      "name": "enable_restart_voting",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "hasbomb",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "isplanted",
+          "type": "bool"
+        }
+      ],
+      "name": "enter_bombzone",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "canbuy",
+          "type": "bool"
+        }
+      ],
+      "name": "enter_buyzone",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "enter_rescue_zone",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "hasbomb",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "isplanted",
+          "type": "bool"
+        }
+      ],
+      "name": "exit_bombzone",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "canbuy",
+          "type": "bool"
+        }
+      ],
+      "name": "exit_buyzone",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "exit_rescue_zone",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "global",
+          "type": "bool"
+        }
+      ],
+      "name": "firstbombs_incoming_warning",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "flashbang_detonate",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "new_phase",
+          "type": "short"
+        }
+      ],
+      "name": "game_phase_changed",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "user ID who died",
+          "name": "victimid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "user ID who killed",
+          "name": "attackerid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "did killer dominate victim with this kill",
+          "name": "dominated",
+          "type": "short"
+        },
+        {
+          "comment": "did killer get revenge on victim with this kill",
+          "name": "revenge",
+          "type": "short"
+        },
+        {
+          "comment": "did killer kill with a bonus weapon?",
+          "name": "bonus",
+          "type": "bool"
+        }
+      ],
+      "name": "gg_killed_enemy",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "grenade_bounce",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "weapon name used",
+          "name": "weapon",
+          "type": "string"
+        }
+      ],
+      "name": "grenade_thrown",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "guardian_wave_restart",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "hegrenade_detonate",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "hide_deathpanel",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "oldmode",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "newmode",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "obs_target",
+          "type": "long"
+        }
+      ],
+      "name": "hltv_changed_mode",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "hostage entity index",
+          "name": "hostage",
+          "type": "short"
+        }
+      ],
+      "name": "hostage_call_for_help",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who touched the hostage",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "hostage entity index",
+          "name": "hostage",
+          "type": "short"
+        }
+      ],
+      "name": "hostage_follows",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who hurt the hostage",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "hostage entity index",
+          "name": "hostage",
+          "type": "short"
+        }
+      ],
+      "name": "hostage_hurt",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who killed the hostage",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "hostage entity index",
+          "name": "hostage",
+          "type": "short"
+        }
+      ],
+      "name": "hostage_killed",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who rescued the hostage",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "hostage entity index",
+          "name": "hostage",
+          "type": "short"
+        },
+        {
+          "comment": "rescue site index",
+          "name": "site",
+          "type": "short"
+        }
+      ],
+      "name": "hostage_rescued",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "hostage_rescued_all",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who rescued the hostage",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "hostage entity index",
+          "name": "hostage",
+          "type": "short"
+        }
+      ],
+      "name": "hostage_stops_following",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "inferno_expire",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "inferno_extinguish",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "inferno_startburn",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "inspect_weapon",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'",
+          "name": "item",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "defindex",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "canzoom",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "hassilencer",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "issilenced",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "hastracers",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "weptype",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "ispainted",
+          "type": "bool"
+        }
+      ],
+      "name": "item_equip",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'",
+          "name": "item",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "silent",
+          "type": "bool"
+        },
+        {
+          "comment": "",
+          "name": "defindex",
+          "type": "long"
+        }
+      ],
+      "name": "item_pickup",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "item",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "reason",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "limit",
+          "type": "short"
+        }
+      ],
+      "name": "item_pickup_failed",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "index",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "behavior",
+          "type": "short"
+        }
+      ],
+      "name": "item_pickup_slerp",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "team",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "loadout",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "weapon",
+          "type": "string"
+        }
+      ],
+      "name": "item_purchase",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "either a weapon such as 'tmp' or 'hegrenade', or an item such as 'nvgs'",
+          "name": "item",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "defindex",
+          "type": "long"
+        }
+      ],
+      "name": "item_remove",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "0 = team_full",
+          "name": "reason",
+          "type": "byte"
+        }
+      ],
+      "name": "jointeam_failed",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player entindex",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "type of crate (metal, wood, or paradrop)",
+          "name": "type",
+          "type": "string"
+        }
+      ],
+      "name": "loot_crate_opened",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player entindex",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "crate entindex",
+          "name": "subject",
+          "type": "short"
+        },
+        {
+          "comment": "type of crate (metal, wood, or paradrop)",
+          "name": "type",
+          "type": "string"
+        }
+      ],
+      "name": "loot_crate_visible",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "frags",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "max_rounds",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "win_rounds",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "time",
+          "type": "long"
+        }
+      ],
+      "name": "match_end_conditions",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "material_default_complete",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "mb_input_lock_cancel",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "mb_input_lock_success",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "molotov_detonate",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "area",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "blocked",
+          "type": "bool"
+        }
+      ],
+      "name": "nav_blocked",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "nav_generate",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "a game event, name may be 32 characters long",
+      "fields": [
+        {
+          "comment": "",
+          "name": "nextlevel",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "mapgroup",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "skirmishmode",
+          "type": "string"
+        }
+      ],
+      "name": "nextlevel_changed",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player entindex",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "crate entindex",
+          "name": "subject",
+          "type": "short"
+        },
+        {
+          "comment": "type of crate (metal, wood, or paradrop)",
+          "name": "type",
+          "type": "string"
+        }
+      ],
+      "name": "open_crate_instr",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "other entity ID who died",
+          "name": "otherid",
+          "type": "short"
+        },
+        {
+          "comment": "other entity type",
+          "name": "othertype",
+          "type": "string"
+        },
+        {
+          "comment": "user ID who killed",
+          "name": "attacker",
+          "type": "short"
+        },
+        {
+          "comment": "weapon name killer used",
+          "name": "weapon",
+          "type": "string"
+        },
+        {
+          "comment": "inventory item id of weapon killer used",
+          "name": "weapon_itemid",
+          "type": "string"
+        },
+        {
+          "comment": "faux item id of weapon killer used",
+          "name": "weapon_fauxitemid",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "weapon_originalowner_xuid",
+          "type": "string"
+        },
+        {
+          "comment": "singals a headshot",
+          "name": "headshot",
+          "type": "bool"
+        },
+        {
+          "comment": "number of objects shot penetrated before killing target",
+          "name": "penetrated",
+          "type": "short"
+        },
+        {
+          "comment": "kill happened without a scope, used for death notice icon",
+          "name": "noscope",
+          "type": "bool"
+        },
+        {
+          "comment": "hitscan weapon went through smoke grenade",
+          "name": "thrusmoke",
+          "type": "bool"
+        },
+        {
+          "comment": "attacker was blind from flashbang",
+          "name": "attackerblind",
+          "type": "bool"
+        }
+      ],
+      "name": "other_death",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "parachute_deploy",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "parachute_pickup",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "avenger_id",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "avenged_player_id",
+          "type": "player_controller"
+        }
+      ],
+      "name": "player_avenged_teammate",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "user ID who threw the flash",
+          "name": "attacker",
+          "type": "player_controller"
+        },
+        {
+          "comment": "the flashbang going off",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "blind_duration",
+          "type": "float"
+        }
+      ],
+      "name": "player_blind",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "a game event, name may be 32 characters long",
+      "fields": [
+        {
+          "comment": "user who died",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "player who killed",
+          "name": "attacker",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "player who assisted in the kill",
+          "name": "assister",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "assister helped with a flash",
+          "name": "assistedflash",
+          "type": "bool"
+        },
+        {
+          "comment": "weapon name killer used",
+          "name": "weapon",
+          "type": "string"
+        },
+        {
+          "comment": "inventory item id of weapon killer used",
+          "name": "weapon_itemid",
+          "type": "string"
+        },
+        {
+          "comment": "faux item id of weapon killer used",
+          "name": "weapon_fauxitemid",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "weapon_originalowner_xuid",
+          "type": "string"
+        },
+        {
+          "comment": "singals a headshot",
+          "name": "headshot",
+          "type": "bool"
+        },
+        {
+          "comment": "did killer dominate victim with this kill",
+          "name": "dominated",
+          "type": "short"
+        },
+        {
+          "comment": "did killer get revenge on victim with this kill",
+          "name": "revenge",
+          "type": "short"
+        },
+        {
+          "comment": "is the kill resulting in squad wipe",
+          "name": "wipe",
+          "type": "short"
+        },
+        {
+          "comment": "number of objects shot penetrated before killing target",
+          "name": "penetrated",
+          "type": "short"
+        },
+        {
+          "comment": "if replay data is unavailable, this will be present and set to false",
+          "name": "noreplay",
+          "type": "bool"
+        },
+        {
+          "comment": "kill happened without a scope, used for death notice icon",
+          "name": "noscope",
+          "type": "bool"
+        },
+        {
+          "comment": "hitscan weapon went through smoke grenade",
+          "name": "thrusmoke",
+          "type": "bool"
+        },
+        {
+          "comment": "attacker was blind from flashbang",
+          "name": "attackerblind",
+          "type": "bool"
+        },
+        {
+          "comment": "distance to victim in meters",
+          "name": "distance",
+          "type": "float"
+        },
+        {
+          "comment": "damage done to health",
+          "name": "dmg_health",
+          "type": "short"
+        },
+        {
+          "comment": "damage done to armor",
+          "name": "dmg_armor",
+          "type": "byte"
+        },
+        {
+          "comment": "hitgroup that was damaged",
+          "name": "hitgroup",
+          "type": "byte"
+        },
+        {
+          "comment": "attacker was in midair",
+          "name": "attackerinair",
+          "type": "bool"
+        }
+      ],
+      "name": "player_death",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "damage",
+          "type": "float"
+        }
+      ],
+      "name": "player_falldamage",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "player_footstep",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "user ID who received the c4",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "player_given_c4",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player index who was hurt",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "player index who attacked",
+          "name": "attacker",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "remaining health points",
+          "name": "health",
+          "type": "byte"
+        },
+        {
+          "comment": "remaining armor points",
+          "name": "armor",
+          "type": "byte"
+        },
+        {
+          "comment": "weapon name attacker used, if not the world",
+          "name": "weapon",
+          "type": "string"
+        },
+        {
+          "comment": "damage done to health",
+          "name": "dmg_health",
+          "type": "short"
+        },
+        {
+          "comment": "damage done to armor",
+          "name": "dmg_armor",
+          "type": "byte"
+        },
+        {
+          "comment": "hitgroup that was damaged",
+          "name": "hitgroup",
+          "type": "byte"
+        }
+      ],
+      "name": "player_hurt",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "player_jump",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "urgent",
+          "type": "bool"
+        }
+      ],
+      "name": "player_ping",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        }
+      ],
+      "name": "player_ping_stop",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "slot",
+          "type": "short"
+        }
+      ],
+      "name": "player_radio",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "vote",
+          "type": "bool"
+        }
+      ],
+      "name": "player_reset_vote",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "radius",
+          "type": "int"
+        },
+        {
+          "comment": "",
+          "name": "duration",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "step",
+          "type": "bool"
+        }
+      ],
+      "name": "player_sound",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "true if restart is pending",
+          "name": "inrestart",
+          "type": "bool"
+        }
+      ],
+      "name": "player_spawned",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "splitscreen ID",
+          "name": "splitscreenplayer",
+          "type": "short"
+        }
+      ],
+      "name": "repost_xbox_achievements",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "winner team/user i",
+          "name": "winner",
+          "type": "byte"
+        },
+        {
+          "comment": "reson why team won",
+          "name": "reason",
+          "type": "byte"
+        },
+        {
+          "comment": "end round message",
+          "name": "message",
+          "type": "string"
+        },
+        {
+          "comment": "server-generated legacy value",
+          "name": "legacy",
+          "type": "byte"
+        },
+        {
+          "comment": "total number of players alive at the end of round, used for statistics gathering, computed on the server in the event client is in replay when receiving this message",
+          "name": "player_count",
+          "type": "short"
+        },
+        {
+          "comment": "if set, don't play round end music, because action is still on-going",
+          "name": "nomusic",
+          "type": "byte"
+        }
+      ],
+      "name": "round_end",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "reason",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "value",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "musickitmvps",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "nomusic",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "musickitid",
+          "type": "long"
+        }
+      ],
+      "name": "round_mvp",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "sent after all other round restart actions",
+      "fields": [],
+      "name": "round_poststart",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "sent before all other round restart actions",
+      "fields": [],
+      "name": "round_prestart",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "category",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "rank",
+          "type": "short"
+        }
+      ],
+      "name": "seasoncoin_levelup",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "action",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "data",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "slot",
+          "type": "byte"
+        }
+      ],
+      "name": "sfuievent",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "endindex of the one who was killed",
+          "name": "victim",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "entindex of the killer entity",
+          "name": "killer",
+          "type": "ehandle"
+        },
+        {
+          "comment": "",
+          "name": "killer_controller",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "hits_taken",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "damage_taken",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "hits_given",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "damage_given",
+          "type": "short"
+        }
+      ],
+      "name": "show_deathpanel",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "loc_token",
+          "type": "string"
+        },
+        {
+          "comment": "",
+          "name": "duration",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "show_survival_respawn_status",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "silencer_detach",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "silencer_off",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "silencer_on",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "paradrop",
+          "type": "short"
+        }
+      ],
+      "name": "smoke_beacon_paradrop",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "smokegrenade_detonate",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "smokegrenade_expired",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "entindex of the player",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "spec_mode_updated",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "start_halftime",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "type",
+          "type": "byte"
+        },
+        {
+          "comment": "",
+          "name": "vote_parameter",
+          "type": "short"
+        }
+      ],
+      "name": "start_vote",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "survival_no_respawns_final",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "survival_no_respawns_warning",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        }
+      ],
+      "name": "survival_paradrop_break",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        }
+      ],
+      "name": "survival_paradrop_spawn",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "survival_teammate_respawn",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "number of active players on both T and CT",
+          "name": "numPlayers",
+          "type": "short"
+        },
+        {
+          "comment": "number of spectators",
+          "name": "numSpectators",
+          "type": "short"
+        },
+        {
+          "comment": "average rank of human players",
+          "name": "avg_rank",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "numTSlotsFree",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "numCTSlotsFree",
+          "type": "short"
+        }
+      ],
+      "name": "switch_team",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "entityid",
+          "type": "short"
+        },
+        {
+          "comment": "",
+          "name": "x",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "y",
+          "type": "float"
+        },
+        {
+          "comment": "",
+          "name": "z",
+          "type": "float"
+        }
+      ],
+      "name": "tagrenade_detonate",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "team_intro_end",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "team_intro_start",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "",
+          "name": "toteam",
+          "type": "byte"
+        }
+      ],
+      "name": "teamchange_pending",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "defindex",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "totalrewards",
+          "type": "long"
+        },
+        {
+          "comment": "",
+          "name": "accountid",
+          "type": "long"
+        }
+      ],
+      "name": "tournament_reward",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player whose time has expired",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "trial_time_expired",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "update_matchmaking_stats",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who was the VIP",
+          "name": "userid",
+          "type": "player_controller"
+        }
+      ],
+      "name": "vip_escaped",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "player who was the VIP",
+          "name": "userid",
+          "type": "player_controller"
+        },
+        {
+          "comment": "user ID who killed the VIP",
+          "name": "attacker",
+          "type": "player_controller"
+        }
+      ],
+      "name": "vip_killed",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "weapon name used",
+          "name": "weapon",
+          "type": "string"
+        },
+        {
+          "comment": "is weapon silenced",
+          "name": "silenced",
+          "type": "bool"
+        }
+      ],
+      "name": "weapon_fire",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        },
+        {
+          "comment": "weapon name used",
+          "name": "weapon",
+          "type": "string"
+        }
+      ],
+      "name": "weapon_fire_on_empty",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "weapon_reload",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "weapon_zoom",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [
+        {
+          "comment": "",
+          "name": "userid",
+          "type": "player_controller_and_pawn"
+        }
+      ],
+      "name": "weapon_zoom_rifle",
+      "properties": {},
+      "source": "mod.gameevents"
+    },
+    {
+      "comment": "",
+      "fields": [],
+      "name": "write_profile_data",
+      "properties": {},
+      "source": "mod.gameevents"
+    }
+  ],
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.10.0"
+}
