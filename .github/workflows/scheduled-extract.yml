@@ -1,11 +1,12 @@
 # Scheduled CS2 forward-capture extract
 #
-# WHAT THIS IS: the forward-capture job, one leg per platform (windows-x86_64 on
-# windows-latest, linux-x86_64 on ubuntu-latest). On a cron (and on demand) each leg
-# resolves the CURRENT public-branch CS2 build, and — if that build's set for ITS
-# platform is not already committed — acquires it, walks it, emits the complete
-# artifact set + inline changelog, commits the artifact set, tags `build/<id>`
-# (first leg to commit wins the tag), and pushes.
+# WHAT THIS IS: the forward-capture pipeline: one EXTRACTION LEG per platform
+# (windows-x86_64 on windows-latest, linux-x86_64 on ubuntu-latest) plus ONE commit job.
+# On a cron (and on demand) each leg resolves the CURRENT public-branch CS2 build, and,
+# if that build's set for ITS platform is not already committed, acquires it, walks it,
+# emits the complete artifact set + inline changelog, and uploads the result as a
+# workflow artifact. The commit job then collects every leg's upload and lands the run's
+# output as ONE commit per new build (see SINGLE-COMMIT AGGREGATION below).
 #
 # NO BUILD HERE (v1.0.1+): this job no longer compiles the walker or the host. It
 # DOWNLOADS the latest GitHub Release bundle published by release.yml (the portable
@@ -22,21 +23,31 @@
 #
 # PLATFORM MATRIX: extraction loads that platform's CS2 binaries into the host
 # process, so the runner OS MUST match the platform (a linux runner cannot walk
-# Windows DLLs and vice versa) — hence one leg per (runner OS, platform) pair.
-# max-parallel: 1 because both legs commit + push to main and must not race; each
-# leg's checkout happens only after the previous leg fully finished (its push
-# included), so the second leg always starts from a tree that already contains the
-# first leg's commit. fail-fast: false so one platform's gate failure (e.g. a
-# class-band trip) never cancels the other platform's capture — the sets are
-# independent per (build, platform), exactly like the operator-run local dumps.
+# Windows DLLs and vice versa), hence one leg per (runner OS, platform) pair. The legs
+# run in PARALLEL: neither one commits or pushes, so there is nothing to serialize.
+# fail-fast: false so one platform's gate failure (e.g. a class-band trip) never
+# cancels the other platform's capture — the sets are independent per (build, platform),
+# exactly like the operator-run local dumps.
 #
-# SECOND-LEG SPECIFICS (whichever leg commits the same build second):
-#   - the annotated build/<id> tag already exists (fetched at checkout), so that leg
-#     commits WITHOUT -Tag and its tag push is an already-up-to-date no-op;
-#   - `extract --commit` re-emits the build-level pics-appinfo.json with a fresh
-#     capturedUtc (the appinfo BODY is identical — PICS is current-only and both legs
-#     capture the same change number); the committed copy is restored before the
-#     commit so the first leg's artifact is never churned by a timestamp.
+# SINGLE-COMMIT AGGREGATION: the legs used to commit + push themselves, "serialized"
+# via max-parallel: 1. That never actually worked: actions/checkout pins EVERY job of a
+# run to the SHA the run was TRIGGERED at (github.sha), so the second leg checked out a
+# tree WITHOUT the first leg's push, re-emitted the same build-level pics-appinfo.json
+# and inventory row on that stale base, and its push then died on rebase conflicts
+# (run 32795238175). Now the legs only extract and upload, and the single `commit` job
+# (scripts/commit-forward-capture.ps1 against a checkout of main's true tip):
+#   - lands every platform set the run produced for a build as ONE commit (both sets
+#     when both legs succeed), tagged build/<id> when the tag is new;
+#   - still lands a PARTIAL commit when one leg fails (the failed leg keeps the run
+#     red; the missing platform is picked up by a later run while the build is still
+#     current, exactly like the old second-leg-of-a-committed-build case);
+#   - when BOTH legs fail to extract but a PICS appinfo capture arrived, preserves the
+#     capture as data/pics-captures/<build>.json. PICS is current-only: if the public
+#     branch advances before an extract ever succeeds, an uncommitted capture is lost
+#     forever. The legs seed their capture sidecar from this file when present
+#     (earliest capture wins), so a later successful extract promotes the ORIGINAL
+#     capture into artifacts/<build>/pics-appinfo.json and the commit job drops the
+#     preserved copy in that same commit.
 #
 # RENDER DEVICE (r_*/render convars) — NO GPU OR SOFTWARE RASTERIZER NEEDED. The walk Init's
 # the render backend to flush the r_texture_*/r_dx11_*/r_vulkan_*/multigpu_* convars (see
@@ -95,7 +106,7 @@ on:
 
 permissions:
   contents: write
-  # commits + pushes an artifact set and its build/<id> tag.
+  # the commit job commits + pushes the artifact sets and their build/<id> tags.
   # The ambient GITHUB_TOKEN (persisted by actions/checkout) authorizes the push — no
   # PAT needed for git. The ONLY repo secrets this workflow consumes are the Steam
   # tooling-account credentials (secrets.STEAM_USERNAME / secrets.STEAM_PASSWORD; see
@@ -108,11 +119,10 @@ concurrency:
 
 jobs:
   forward-capture:
-    name: resolve current build, extract, commit, tag, push (${{ matrix.platform }})
+    name: resolve current build, extract, upload (${{ matrix.platform }})
     runs-on: ${{ matrix.os }} # extraction loads the platform's binaries — runner OS must match (see PLATFORM MATRIX header note).
     strategy:
       fail-fast: false  # one platform's gate failure must not cancel the other's capture.
-      max-parallel: 1   # both legs push to main — serialize so the second starts after the first's push.
       matrix:
         include:
           - platform: windows-x86_64
@@ -122,11 +132,14 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          # fetch-depth: 0 survives the no-build switch for two reasons:
-          #  (1) nbgv (Nerdbank.GitVersioning) — the BUNDLE host still stamps the provenance
-          #      git SHA via ThisAssembly.GitCommitId; at RUN time it reads the checked-out
-          #      repo's HEAD, and full history is what makes that SHA/height resolve correctly.
-          #  (2) the push carries a coherent parent chain, which needs full history.
+          # fetch-depth: 0 survives the no-build switch: nbgv (Nerdbank.GitVersioning) —
+          # the BUNDLE host still stamps the provenance git SHA via ThisAssembly.GitCommitId;
+          # at RUN time it reads the checked-out repo's HEAD, and full history is what makes
+          # that SHA/height resolve correctly.
+          # NB: this checkout is pinned to the run's trigger SHA (github.sha), like every
+          # job of the run. That is FINE for a leg: it never pushes, and both legs seeing
+          # the SAME base keeps their outputs consistent. Only the commit job needs main's
+          # true tip, and it checks out ref: main explicitly.
           fetch-depth: 0
           # NB: `submodules: recursive` is DROPPED on purpose — we no longer build the walker,
           # so the large hl2sdk submodule is not needed. repoRoot discovery only needs the
@@ -197,10 +210,10 @@ jobs:
             if ($LASTEXITCODE -ne 0) { Write-Error "tar extraction failed for $($tgz.Name)"; exit 1 }
           }
 
-          # Resolve the host dll. Every host call below (and inside commit-dump.ps1) is
-          # `dotnet <dll>` — uniform across legs and bundle flavors: the managed dll ships in
-          # both the portable bundle and the self-contained platform bundles, and the muxer
-          # resolves a self-contained layout's local runtime from the dll's runtimeconfig.
+          # Resolve the host dll. Every host call below is `dotnet <dll>` — uniform across
+          # legs and bundle flavors: the managed dll ships in both the portable bundle and
+          # the self-contained platform bundles, and the muxer resolves a self-contained
+          # layout's local runtime from the dll's runtimeconfig.
           $bundle = (Resolve-Path dist/bundle).Path
           $dll = Join-Path $bundle 'cs2-schema-tracker.dll'
           if (-not (Test-Path $dll)) { Write-Error "bundle missing cs2-schema-tracker.dll at $dll"; exit 1 }
@@ -215,7 +228,7 @@ jobs:
 
           # Point the host at the CHECKED-OUT repo's inventory (absolute path), NOT the bundle's
           # shipped copy — so forward-capture's new-build row append lands in the committed
-          # data/cs2-assets-inventory.json, which commit-dump.ps1 then stages with the artifact set.
+          # data/cs2-assets-inventory.json, which the commit job then ships with the artifact set.
           $inv = Join-Path (Resolve-Path .).Path 'data/cs2-assets-inventory.json'
           if (-not (Test-Path $inv)) { Write-Error "repo inventory missing at $inv"; exit 1 }
           "CS2_INVENTORY_PATH=$inv" | Out-File -FilePath $env:GITHUB_ENV -Append
@@ -225,14 +238,6 @@ jobs:
           # not minutes later inside the extract. Cheap: verify-natives reads local files only.
           & dotnet $dll verify-natives --natives $nativesRoot --platform ${{ matrix.platform }}
           if ($LASTEXITCODE -ne 0) { Write-Error "bundle smoke failed: verify-natives (${{ matrix.platform }}) via 'dotnet $dll'"; exit 1 }
-
-      - name: Configure git identity
-        # Needed so the commit has an author. Commits as the repo owner so forward-capture
-        # commits stay consistent with the rest of the history (single author).
-        shell: pwsh
-        run: |
-          git config user.name  "austin3459"
-          git config user.email "austin3459@gmail.com"
 
       - name: Resolve current build + skip-if-already-committed
         id: resolve
@@ -306,7 +311,29 @@ jobs:
             exit $LASTEXITCODE
           }
 
+      - name: Prefer a preserved PICS capture when one is committed (earliest wins)
+        # A previous run where BOTH extracts failed preserved its capture as
+        # data/pics-captures/<build>.json (see SINGLE-COMMIT AGGREGATION). Copy it over the
+        # sidecar the capture-pics step just wrote, so the extract promotes the ORIGINAL
+        # capture: the committed pics-appinfo.json then reflects the document taken closest
+        # to the build's release, and the commit job drops the preserved copy as redundant.
+        if: success() && steps.resolve.outputs.is_new == 'true'
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $buildId = "${{ steps.resolve.outputs.build_id }}"
+          $preserved = "data/pics-captures/$buildId.json"
+          if (Test-Path $preserved) {
+            $dir = "cache/pics/$buildId/${{ matrix.platform }}"
+            New-Item -ItemType Directory -Force -Path $dir | Out-Null
+            Copy-Item $preserved (Join-Path $dir 'pics-appinfo-capture.json') -Force
+            Write-Host "seeded the capture sidecar from committed $preserved (earliest capture wins)."
+          } else {
+            Write-Host "no preserved capture committed for build $buildId. the fresh capture stands."
+          }
+
       - name: Extract complete set + inline changelog (--commit)
+        id: extract
         # NB: a custom `if:` drops the implicit success() status check, so we re-add it —
         # a failed bundle-download or resolve step MUST stop the extract (fail-loud).
         if: success() && steps.resolve.outputs.is_new == 'true'
@@ -345,69 +372,205 @@ jobs:
             exit $LASTEXITCODE
           }
 
-      - name: Preserve the committed pics-appinfo.json (second-leg timestamp churn)
-        if: success() && steps.resolve.outputs.is_new == 'true'
-        # See SECOND-LEG SPECIFICS header note: when the OTHER platform already committed this
-        # build, `extract --commit` re-emitted the build-level pics-appinfo.json with only a
-        # fresh capturedUtc. Restore HEAD's copy so the first leg's committed artifact is not
-        # churned by a timestamp. First-leg case: the file is not in HEAD and this is a no-op.
-        shell: pwsh
-        run: |
-          $buildId = "${{ steps.resolve.outputs.build_id }}"
-          $p = "artifacts/$buildId/pics-appinfo.json"
-          git cat-file -e "HEAD:$p" 2>$null
-          if ($LASTEXITCODE -eq 0) {
-            git checkout HEAD -- $p
-            if ($LASTEXITCODE -ne 0) { Write-Error "failed to restore committed $p"; exit 1 }
-            Write-Host "restored committed $p (first platform's capture wins)."
-          } else {
-            Write-Host "$p not committed yet — this leg's capture will be the committed one."
-          }
-          exit 0
-
-      - name: "Commit + tag artifact set"
-        if: success() && steps.resolve.outputs.is_new == 'true'
-        # commit-dump.ps1 verifies set completeness, `git add`s the promoted set (+ build-level
-        # omissions.json), makes the artifact commit (one commit = one complete
-        # (build, platform) set), and writes the annotated build/<id> tag. It NEVER pushes.
-        # -Tag only when build/<id> does not exist yet: the second platform leg of the same
-        # build finds the tag already created (fetched at checkout) and must not fail on it.
+      - name: Stage leg payload for the commit job
+        # Runs even when capture/extract failed (as long as resolve said is_new): the commit
+        # job decides what can land from what actually arrived. The extract's promote is
+        # all-or-nothing, so after a failed extract there is no artifacts/<build>/ to ship
+        # and the payload degrades to meta.json + any PICS capture sidecar, which is exactly
+        # what the commit job's preservation path needs.
+        if: ${{ !cancelled() && steps.resolve.outputs.is_new == 'true' }}
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
-          $buildId = "${{ steps.resolve.outputs.build_id }}"
-          git rev-parse -q --verify "refs/tags/build/$buildId" *> $null
-          $tagExists = ($LASTEXITCODE -eq 0)
-          if ($tagExists) {
-            Write-Host "tag build/$buildId already exists (other platform leg committed first) — committing without -Tag."
-            ./scripts/commit-dump.ps1 -Build $buildId -Platform ${{ matrix.platform }}
-          } else {
-            ./scripts/commit-dump.ps1 -Build $buildId -Platform ${{ matrix.platform }} -Tag
-          }
-          if ($LASTEXITCODE -ne 0) { Write-Error "commit-dump.ps1 failed for build $buildId"; exit $LASTEXITCODE }
+          $buildId   = "${{ steps.resolve.outputs.build_id }}"
+          $platform  = "${{ matrix.platform }}"
+          $extractOk = "${{ steps.extract.outcome }}" -eq 'success'
+          New-Item -ItemType Directory -Force -Path outgoing | Out-Null
 
-      - name: Push commit + tag
-        # Guard: only push on main (this workflow is schedule/dispatch-only, both of which run
-        # on main). ONE rebase-retry: max-parallel serializes the legs, but an interleaved
-        # operator push (local re-dump, backfill) can still land between this leg's checkout
-        # and its push — rebase the one artifact commit onto the new tip and retry once.
-        # The tag push is an up-to-date no-op on the leg that did not create build/<id>.
-        if: success() && steps.resolve.outputs.is_new == 'true' && github.ref == 'refs/heads/main'
+          # inventoryBaseOid: the blob the leg's inventory edit is based on. The commit job
+          # refuses to overwrite the committed inventory when main's copy moved past this.
+          $invBase = git rev-parse "HEAD:data/cs2-assets-inventory.json"
+          @{ buildId = $buildId; platform = $platform; extractOk = $extractOk; inventoryBaseOid = $invBase } |
+            ConvertTo-Json | Set-Content -Path outgoing/meta.json
+
+          if ($extractOk) {
+            New-Item -ItemType Directory -Force -Path "outgoing/artifacts/$buildId" | Out-Null
+            Copy-Item "artifacts/$buildId/$platform" "outgoing/artifacts/$buildId/$platform" -Recurse
+            # localization.json is gitignored (~199 MB, regenerable) and must not ride the upload.
+            Remove-Item "outgoing/artifacts/$buildId/$platform/localization.json" -Force -ErrorAction SilentlyContinue
+            foreach ($f in 'pics-appinfo.json', 'omissions.json') {
+              if (Test-Path "artifacts/$buildId/$f") { Copy-Item "artifacts/$buildId/$f" "outgoing/artifacts/$buildId/$f" }
+            }
+            # Ship the inventory only when this extract actually changed it (the new-build row
+            # append), so an unchanged copy can never overwrite a newer committed inventory.
+            if (git status --porcelain -- data/cs2-assets-inventory.json) {
+              New-Item -ItemType Directory -Force -Path outgoing/data | Out-Null
+              Copy-Item data/cs2-assets-inventory.json outgoing/data/cs2-assets-inventory.json
+            }
+          }
+
+          $sidecar = "cache/pics/$buildId/$platform/pics-appinfo-capture.json"
+          if (Test-Path $sidecar) { Copy-Item $sidecar outgoing/pics-appinfo-capture.json }
+
+          Write-Host "staged payload:"
+          Get-ChildItem outgoing -Recurse -File | ForEach-Object { Write-Host "  $($_.FullName)" }
+
+      - name: Upload leg payload
+        if: ${{ !cancelled() && steps.resolve.outputs.is_new == 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: extract-${{ matrix.platform }}
+          path: outgoing
+          if-no-files-found: error   # meta.json always exists when the stage step ran.
+          # Short retention on purpose: on success the payload lands in git within minutes,
+          # and a failed run's payload is re-derivable while the build is still current.
+          # The artifact exists to reach the commit job, plus a short post-mortem window.
+          retention-days: 7
+          overwrite: true            # a re-run leg replaces its own payload.
+
+      - name: No new build (clean no-op)
+        if: success() && steps.resolve.outputs.is_new != 'true'
+        # a clean exit-0 when the public branch has not advanced. The 6h cron re-checks.
+        shell: pwsh
+        run: |
+          Write-Host "scheduled-extract: current build ${{ steps.resolve.outputs.build_id }} (${{ matrix.platform }}) already committed. No-op (exit 0)."
+
+  commit:
+    name: aggregate leg uploads, commit, tag, push
+    # Runs after BOTH legs regardless of their outcome (hence !cancelled()): a failed leg
+    # must not discard the other leg's capture, and a run where both extracts failed can
+    # still have a PICS capture worth preserving. Single committer by design: the legs
+    # never touch git, so there is no push race left to serialize or rebase around.
+    needs: forward-capture
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          # ref: main, NOT the default: actions/checkout pins every job of a run to the SHA
+          # the run was TRIGGERED at (github.sha). That pinning is what sank the old
+          # per-leg pushes (see SINGLE-COMMIT AGGREGATION). This job is the run's single
+          # committer and must start from main's true current tip.
+          ref: main
+          # Full history: the push needs a coherent parent chain, and the build/<id>
+          # tag-exists check needs the tags (fetched with full history).
+          fetch-depth: 0
+
+      - name: Set up .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          global-json-file: global.json
+
+      - name: Download latest release bundle (host dll only)
+        # The aggregation runs the host's MANAGED commands only (evolution, commit-plan,
+        # verify-artifacts): pure readers/writers of committed JSON, no walkers and no
+        # platform binding, so the linux bundle serves BOTH platforms' plans on this
+        # ubuntu runner. No verify-natives smoke here for the same reason.
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference = "Stop"
+          New-Item -ItemType Directory -Force -Path dist/bundle | Out-Null
+          gh release download --pattern '*-linux-x64.tar.gz' --dir dist --clobber
+          if ($LASTEXITCODE -ne 0) {
+            Write-Error "no GitHub Release with a *-linux-x64.tar.gz bundle asset found — release.yml must publish a bundle first (it publishes on the first push to main)."
+            exit 1
+          }
+          $tgz = Get-ChildItem dist -Filter *-linux-x64.tar.gz | Select-Object -First 1
+          if (-not $tgz) { Write-Error "release download produced no *-linux-x64.tar.gz in dist/."; exit 1 }
+          tar -xzf $tgz.FullName -C dist/bundle
+          if ($LASTEXITCODE -ne 0) { Write-Error "tar extraction failed for $($tgz.Name)"; exit 1 }
+          $dll = Join-Path (Resolve-Path dist/bundle).Path 'cs2-schema-tracker.dll'
+          if (-not (Test-Path $dll)) { Write-Error "bundle missing cs2-schema-tracker.dll at $dll"; exit 1 }
+          "HOST_DLL=$dll" | Out-File -FilePath $env:GITHUB_ENV -Append
+
+      - name: Download leg payloads
+        uses: actions/download-artifact@v4
+        with:
+          pattern: extract-*
+          path: incoming
+          # No merge-multiple: each leg lands under incoming/extract-<platform>/, which is
+          # the layout commit-forward-capture.ps1 reads. Zero matches (both legs no-op'd
+          # or died before resolving) leaves incoming/ absent; the next step handles that.
+
+      - name: Configure git identity
+        # Needed so the commit has an author. Commits as the repo owner so forward-capture
+        # commits stay consistent with the rest of the history (single author).
+        shell: pwsh
+        run: |
+          git config user.name  "austin3459"
+          git config user.email "austin3459@gmail.com"
+
+      - name: Aggregate into commits (one per new build)
+        # scripts/commit-forward-capture.ps1 assembles the uploads into the checkout,
+        # refreshes the evolution artifact, verifies + stages via the host's commit-plan,
+        # and makes ONE commit per new build (both platform sets together when both legs
+        # succeeded; a partial set when one failed; the preserved PICS capture when none
+        # did). It NEVER pushes, and it defers tagging to the push step below via
+        # incoming/tag-specs.tsv.
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
-          $buildId = "${{ steps.resolve.outputs.build_id }}"
+          if (-not (Test-Path incoming)) {
+            Write-Host "no leg payloads downloaded. nothing to commit."
+            exit 0
+          }
+          ./scripts/commit-forward-capture.ps1 -IncomingDir incoming
+          if ($LASTEXITCODE -ne 0) { Write-Error "commit-forward-capture.ps1 failed"; exit $LASTEXITCODE }
+
+      - name: Push commits + tags
+        id: push
+        # ONE rebase-retry: the legs no longer push, so the only writer that can interleave
+        # is an operator push (local re-dump, backfill) landing between this job's checkout
+        # and its push. Rebase the run's commits onto the new tip and retry once; a genuine
+        # conflict fails loud (the payloads stay downloadable for 7 days and the next cron
+        # re-extracts while the build is current).
+        # Tags are created HERE, after the push, from the script's tag-specs: tagging before
+        # the push would leave the rebase-retry path with tags pointing at pre-rebase
+        # (orphaned) commits.
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $pending = @(git rev-list origin/main..HEAD)
+          if ($LASTEXITCODE -ne 0) { Write-Error "git rev-list failed"; exit 1 }
+          if ($pending.Count -eq 0) {
+            Write-Host "nothing to push."
+            "pushed=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+            "sets=false"   | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+            exit 0
+          }
+          $base = git rev-parse origin/main
+          $subjects = @(git log --format=%s "$base..HEAD")
+          $sets = [bool]($subjects | Where-Object { $_ -match '^build \d+ \(' })
+
           git push origin HEAD:main
           if ($LASTEXITCODE -ne 0) {
             Write-Host "push rejected (non-fast-forward?) — rebasing onto current origin/main and retrying once..."
             git pull --rebase origin main
-            if ($LASTEXITCODE -ne 0) { Write-Error "git pull --rebase failed for build $buildId"; exit $LASTEXITCODE }
+            if ($LASTEXITCODE -ne 0) { Write-Error "git pull --rebase failed"; exit $LASTEXITCODE }
             git push origin HEAD:main
             if ($LASTEXITCODE -ne 0) { Write-Error "git push (main) failed after rebase retry"; exit $LASTEXITCODE }
           }
-          git push origin "build/$buildId"
-          if ($LASTEXITCODE -ne 0) { Write-Error "git push (tag build/$buildId) failed"; exit $LASTEXITCODE }
-          Write-Host "pushed build $buildId (+ tag build/$buildId)"
+
+          $specPath = "incoming/tag-specs.tsv"
+          if (Test-Path $specPath) {
+            foreach ($line in Get-Content $specPath) {
+              if (-not $line.Trim()) { continue }
+              $buildId, $tagMessage = $line -split "`t", 2
+              $sha = git log -n 1 --format=%H --grep "^build $buildId (" "$base..HEAD"
+              if (-not $sha) { Write-Error "could not locate the pushed commit for build $buildId to tag"; exit 1 }
+              git tag -a "build/$buildId" -m $tagMessage $sha
+              if ($LASTEXITCODE -ne 0) { Write-Error "git tag failed for build/$buildId"; exit 1 }
+              git push origin "build/$buildId"
+              if ($LASTEXITCODE -ne 0) { Write-Error "git push (tag build/$buildId) failed"; exit 1 }
+              Write-Host "tagged + pushed build/$buildId"
+            }
+          }
+
+          "pushed=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          "sets=$($sets.ToString().ToLower())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
+          Write-Host "pushed $($pending.Count) commit(s)."
 
       - name: Refresh latest-artifacts channel
         # The push above is made with the ambient GITHUB_TOKEN, and GitHub's
@@ -415,13 +578,13 @@ jobs:
         # publish-latest.yml's `on: push` will NOT fire for forward-capture commits.
         # workflow_dispatch is the documented exception to that guard, so we dispatch it
         # explicitly. (Operator pushes with personal credentials — local re-dumps,
-        # backfills — DO fire its push trigger; this step covers only the CI path.
-        # Runs once per leg; publish-latest is concurrency-serialized and recomputes
-        # from main's tip, so the second dispatch just picks up the second platform.)
+        # backfills — DO fire its push trigger; this step covers only the CI path.)
+        # Gated on sets: a PICS-preservation commit changes no artifact set, so the
+        # channel has nothing to pick up.
         # NON-FATAL ON PURPOSE: the artifact set is already committed + pushed above, so
         # a failed dispatch must not fail the capture — the channel self-heals on the
         # next publish (it always recomputes from main's newest committed build).
-        if: success() && steps.resolve.outputs.is_new == 'true' && github.ref == 'refs/heads/main'
+        if: success() && steps.push.outputs.sets == 'true'
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
@@ -437,16 +600,16 @@ jobs:
         # WHY THIS RUNS HERE (CS2OpenDev-SchemaTracker#7 item 5): the push above is made
         # with the ambient GITHUB_TOKEN, so ci.yml's push-triggered verify-artifacts gate is
         # suppressed for exactly the commits this workflow lands. Meanwhile the cumulative
-        # schema-evolution refresh inside commit-dump.ps1 is deliberately NON-FATAL (a rare,
-        # retryable refresh failure must not forfeit a time-sensitive forward capture), which
-        # means a stale artifacts/schema_evolution/<platform>.json could otherwise be pushed
-        # with no red anywhere. This step closes that loop: it re-runs the same repo-level
-        # gate ci.yml uses — including the evolution staleness check — and FAILS THE JOB if
-        # anything regressed. It runs AFTER the push and the latest-channel dispatch on
-        # purpose: the capture is already safe, the channel refresh is not suppressed, and a
-        # failure here is pure observability (the run goes red; the operator re-runs
-        # `evolution` and pushes the refreshed file).
-        if: success() && steps.resolve.outputs.is_new == 'true' && github.ref == 'refs/heads/main'
+        # schema-evolution refresh inside commit-forward-capture.ps1 is deliberately
+        # NON-FATAL (a rare, retryable refresh failure must not forfeit a time-sensitive
+        # forward capture), which means a stale artifacts/schema_evolution/<platform>.json
+        # could otherwise be pushed with no red anywhere. This step closes that loop: it
+        # re-runs the same repo-level gate ci.yml uses — including the evolution staleness
+        # check — and FAILS THE JOB if anything regressed. It runs AFTER the push and the
+        # latest-channel dispatch on purpose: the capture is already safe, the channel
+        # refresh is not suppressed, and a failure here is pure observability (the run goes
+        # red; the operator re-runs `evolution` and pushes the refreshed file).
+        if: success() && steps.push.outputs.sets == 'true'
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
@@ -456,10 +619,3 @@ jobs:
             exit $LASTEXITCODE
           }
           Write-Host "verify-artifacts: committed tree is clean."
-
-      - name: No new build (clean no-op)
-        if: success() && steps.resolve.outputs.is_new != 'true'
-        # a clean exit-0 when the public branch has not advanced. The 6h cron re-checks.
-        shell: pwsh
-        run: |
-          Write-Host "scheduled-extract: current build ${{ steps.resolve.outputs.build_id }} (${{ matrix.platform }}) already committed. No-op (exit 0)."
