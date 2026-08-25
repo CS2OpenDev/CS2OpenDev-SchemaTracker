@@ -1,0 +1,67 @@
+{
+  "families": [
+    {
+      "added": [
+        "!GlobalTypes/HUDPanelDialogVariableString_t",
+        "!GlobalTypes/HUDPanelHasClass_t",
+        "client.dll/CCSCustomHudLayout",
+        "client.dll/CCSCustomHudLayoutState",
+        "client.dll/CCSCustomHudLayout_API",
+        "client.dll/CCSPlayerCamera",
+        "server.dll/CCSCustomHudLayout",
+        "server.dll/CCSCustomHudLayoutState",
+        "server.dll/CCSCustomHudLayout_API",
+        "server.dll/CCSPlayerCamera"
+      ],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [
+        "!GlobalTypes/EHudPanelClassStatus_t"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "member:CS_UM_CustomHudClicked",
+              "newValue": "390",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/ECstrike15UserMessages"
+        }
+      ],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [
+        "schema_enum:!GlobalTypes/ECstrike15UserMessages/ECstrike15UserMessages::CS_UM_CustomHudClicked",
+        "schema_enum:!GlobalTypes/EHudPanelClassStatus_t/EHudPanelClassStatus_t::k_eHudPanelClassStatus_DoesNotHaveClass",
+        "schema_enum:!GlobalTypes/EHudPanelClassStatus_t/EHudPanelClassStatus_t::k_eHudPanelClassStatus_HasClass",
+        "schema_enum:!GlobalTypes/EHudPanelClassStatus_t/EHudPanelClassStatus_t::k_eHudPanelClassStatus_Undefined"
+      ],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "24828357",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.10.0",
+  "toBuild": "24916958"
+}
