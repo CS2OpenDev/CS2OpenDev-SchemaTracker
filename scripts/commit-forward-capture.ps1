@@ -170,25 +170,26 @@ try {
         $captureSrc = if ($LASTEXITCODE -eq 0) { $preservedRel }
                       else { Join-Path $sidecarLeg.Dir 'pics-appinfo-capture.json' }
         & dotnet $HostDll emit-pics --build $b --capture $captureSrc --artifacts artifacts | Out-Host
-        if ($LASTEXITCODE -ne 0) {
-          Write-Warning "emit-pics returned $LASTEXITCODE for build $b; not backfilling pics-appinfo.json."
+        if ($LASTEXITCODE -eq 0) {
+          git add -- "artifacts/$b/pics-appinfo.json"
+          if ($LASTEXITCODE -ne 0) { Write-Error "git add failed for artifacts/$b/pics-appinfo.json" }
+          git ls-files --error-unmatch -- $preservedRel *> $null
+          if ($LASTEXITCODE -eq 0) {
+            git rm -q -- $preservedRel
+            if ($LASTEXITCODE -ne 0) { Write-Error "git rm failed for $preservedRel" }
+          }
+          $cap = Get-Content $captureSrc -Raw | ConvertFrom-Json
+          $msg = "pics capture $b`n`n" +
+            "the artifact set landed without its pics-appinfo.json; promoting the current-only " +
+            "PICS appinfo (change $($cap.changeNumber), sha1 $($cap.appInfoSha1)) into the committed set."
+          git commit -q -m $msg
+          if ($LASTEXITCODE -ne 0) { Write-Error "git commit failed for the build $b pics backfill" }
+          Write-Host "committed: pics-appinfo backfill for build $b"
           continue
         }
-        git add -- "artifacts/$b/pics-appinfo.json"
-        if ($LASTEXITCODE -ne 0) { Write-Error "git add failed for artifacts/$b/pics-appinfo.json" }
-        git ls-files --error-unmatch -- $preservedRel *> $null
-        if ($LASTEXITCODE -eq 0) {
-          git rm -q -- $preservedRel
-          if ($LASTEXITCODE -ne 0) { Write-Error "git rm failed for $preservedRel" }
-        }
-        $cap = Get-Content $captureSrc -Raw | ConvertFrom-Json
-        $msg = "pics capture $b`n`n" +
-          "the artifact set landed without its pics-appinfo.json; promoting the current-only " +
-          "PICS appinfo (change $($cap.changeNumber), sha1 $($cap.appInfoSha1)) into the committed set."
-        git commit -q -m $msg
-        if ($LASTEXITCODE -ne 0) { Write-Error "git commit failed for the build $b pics backfill" }
-        Write-Host "committed: pics-appinfo backfill for build $b"
-        continue
+        # The backfill could not emit; fall through to PRESERVE the capture so the current-only
+        # document still reaches git (an operator can emit-pics from it later).
+        Write-Warning "emit-pics returned $LASTEXITCODE for build $b; preserving the capture instead."
       }
 
       git cat-file -e "HEAD:$preservedRel" *> $null
@@ -321,7 +322,7 @@ try {
       Write-Warning ("build ${b}: landing failed: $($_.Exception.Message) " +
         "discarding this build's changes and continuing with the other builds.")
       git reset -q --hard HEAD
-      git clean -qfd -- "artifacts/$b" 'data/pics-captures'
+      git clean -qfd -- "artifacts/$b" 'artifacts/schema_evolution' 'data/pics-captures'
       $failedBuilds += $b
       continue
     }

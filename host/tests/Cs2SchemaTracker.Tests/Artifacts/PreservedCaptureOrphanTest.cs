@@ -10,22 +10,26 @@ namespace Cs2SchemaTracker.Tests.Artifacts;
 public sealed class PreservedCaptureOrphanTest
 {
     [Fact]
-    public void Orphaned_Capture_Is_Flagged_Pending_Capture_Is_Not()
+    public void Orphaned_And_Stranded_Captures_Are_Flagged_Pending_Is_Not()
     {
         var repo = Path.Combine(Path.GetTempPath(), "pics-orphan-" + Guid.NewGuid().ToString("N"));
         var root = Path.Combine(repo, "artifacts");
         Directory.CreateDirectory(Path.Combine(root, "100"));
         File.WriteAllText(Path.Combine(root, "100", "pics-appinfo.json"), "{}");
+        // Build 300: a committed set WITHOUT pics-appinfo.json (nothing will ever promote).
+        Directory.CreateDirectory(Path.Combine(root, "300", "windows-x86_64"));
+        File.WriteAllText(Path.Combine(root, "300", "windows-x86_64", "entity_schema.json"), "{}");
         var captures = Path.Combine(repo, "data", "pics-captures");
         Directory.CreateDirectory(captures);
         File.WriteAllText(Path.Combine(captures, "100.json"), "{}");   // orphaned: pics committed.
         File.WriteAllText(Path.Combine(captures, "200.json"), "{}");   // pending: no build 200 set.
+        File.WriteAllText(Path.Combine(captures, "300.json"), "{}");   // stranded: set, no pics.
 
         var issues = new ArtifactSetValidator(root).ValidatePreservedCaptures(captures);
 
-        var v = Assert.Single(issues);
-        Assert.Equal("100", v.BuildId);
-        Assert.Contains("ORPHANED", v.Message);
+        Assert.Equal(2, issues.Count);
+        Assert.Contains("ORPHANED", issues.Single(v => v.BuildId == "100").Message);
+        Assert.Contains("STRANDED", issues.Single(v => v.BuildId == "300").Message);
     }
 
     [Fact]

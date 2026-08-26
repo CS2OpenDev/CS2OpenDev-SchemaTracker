@@ -530,12 +530,13 @@ public sealed class ArtifactSetValidator
     }
 
     /// <summary>
-    /// Repo-level orphan check for preserved PICS captures: every
-    /// <c>&lt;picsCapturesDir&gt;/&lt;build&gt;.json</c> whose build already has a committed
-    /// build-level pics-appinfo.json is redundant and must be removed (commit-plan names it in
-    /// removePaths so every commit path drops it in the landing commit). Dormant when the directory
-    /// is absent. A preserved capture for a build with NO committed pics-appinfo.json is the
-    /// intended pending state and raises nothing.
+    /// Repo-level checks for preserved PICS captures (<c>&lt;picsCapturesDir&gt;/&lt;build&gt;.json</c>):
+    /// ORPHANED when the build already has a committed build-level pics-appinfo.json (the landing
+    /// commit should have dropped the copy; commit-plan names it in removePaths), and STRANDED
+    /// when the build's set is committed WITHOUT a pics-appinfo.json (committed markers stop the
+    /// legs, so nothing would ever promote the capture; the fix is <c>emit-pics</c> from the
+    /// preserved file). Dormant when the directory is absent. A preserved capture for a build with
+    /// NO committed set is the intended pending state and raises nothing.
     /// </summary>
     public IReadOnlyList<ArtifactSetViolation> ValidatePreservedCaptures(string picsCapturesDir)
     {
@@ -550,13 +551,22 @@ public sealed class ArtifactSetValidator
             var build = Path.GetFileNameWithoutExtension(file);
             if (string.IsNullOrEmpty(build))
                 continue;
-            var committedPics = Path.Combine(_artifactsRoot, build, PicsAppInfo.PicsAppInfoEmitter.FileName);
-            if (File.Exists(committedPics))
+            if (File.Exists(Path.Combine(_artifactsRoot, build, PicsAppInfo.PicsAppInfoEmitter.FileName)))
             {
                 issues.Add(new ArtifactSetViolation(build,
                     $"preserved PICS capture '{file}' is ORPHANED: build '{build}' already has a " +
                     "committed pics-appinfo.json. Remove the preserved copy (the landing commit " +
                     "should have dropped it; commit-plan names it in removePaths)."));
+                continue;
+            }
+            bool setCommitted = ArtifactSet.CanonicalPlatforms.Any(p =>
+                File.Exists(Path.Combine(_artifactsRoot, build, p, "entity_schema.json")));
+            if (setCommitted)
+            {
+                issues.Add(new ArtifactSetViolation(build,
+                    $"preserved PICS capture '{file}' is STRANDED: build '{build}' has a committed " +
+                    "set but no pics-appinfo.json, and committed markers keep the legs from ever " +
+                    "promoting it. Run emit-pics from the preserved file and remove the copy."));
             }
         }
         return issues;
