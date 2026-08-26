@@ -790,7 +790,8 @@ internal static class Program
         {
             ("--build", "Build id whose promoted set is on disk."),
             ("--platform", "linux-x86_64 or windows-x86_64."),
-            ("--inventory", "Inventory path (default: the repo's data/cs2-assets-inventory.json)."),
+            ("--repo", "Repo root holding artifacts/ and data/ (default: discovered from the host dll's location)."),
+            ("--inventory", "Inventory path (default: <repo>/data/cs2-assets-inventory.json)."),
         },
         RecordBuildCommand.Run);
 

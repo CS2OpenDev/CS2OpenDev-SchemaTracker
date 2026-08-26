@@ -24,8 +24,10 @@ internal static class MergeOmissionsCommand
 {
     private const string DefaultArtifactsRoot = "artifacts";
 
-    private static readonly JsonParser TolerantParser =
-        new(JsonParser.Settings.Default.WithIgnoreUnknownFields(true));
+    // STRICT on purpose: this command rewrites a COMMITTED manifest canonically, so a field this
+    // host's schema does not know (a manifest written by a newer host than the release bundle)
+    // must refuse rather than be silently dropped by the rewrite.
+    private static readonly JsonParser StrictParser = new(JsonParser.Settings.Default);
 
     public static int Run(string[] args)
     {
@@ -63,6 +65,13 @@ Exit codes: 0 merged/no-op · 64 usage error · 65 unreadable source / corrupt t
             Console.Error.WriteLine("merge-omissions: --platform <p> is required.");
             return 64;
         }
+        if (!ArtifactSet.CanonicalPlatforms.Contains(platform, StringComparer.Ordinal))
+        {
+            Console.Error.WriteLine(
+                $"merge-omissions: '{platform}' is not a canonical platform " +
+                $"(expected one of: {string.Join(", ", ArtifactSet.CanonicalPlatforms)}).");
+            return 64;
+        }
         if (!parsed.TryGetValue("from", out var fromPath) || string.IsNullOrEmpty(fromPath))
         {
             Console.Error.WriteLine("merge-omissions: --from <path> is required.");
@@ -71,13 +80,31 @@ Exit codes: 0 merged/no-op · 64 usage error · 65 unreadable source / corrupt t
         var artifactsRoot = Path.GetFullPath(
             parsed.TryGetValue("artifacts", out var a) && !string.IsNullOrEmpty(a) ? a : DefaultArtifactsRoot);
 
+        // Both files must parse STRICTLY before any write: the reconcile rewrites the target
+        // canonically, so an unknown field in either file would otherwise vanish from the commit.
+        var targetPath = Path.Combine(artifactsRoot, build, ArtifactSet.OmissionsFileName);
+        if (File.Exists(targetPath))
+        {
+            try
+            {
+                StrictParser.Parse<Omissions>(File.ReadAllText(targetPath));
+            }
+            catch (Exception ex) when (ex is IOException or InvalidJsonException or InvalidProtocolBufferException)
+            {
+                Console.Error.WriteLine(
+                    $"merge-omissions: refusing to rewrite '{targetPath}': {ex.Message} " +
+                    "(a field this host does not know would be dropped; update the host first).");
+                return 65;
+            }
+        }
+
         var carrier = new List<ContentArtifactOmission>();
         if (File.Exists(fromPath))
         {
             Omissions source;
             try
             {
-                source = TolerantParser.Parse<Omissions>(File.ReadAllText(fromPath));
+                source = StrictParser.Parse<Omissions>(File.ReadAllText(fromPath));
             }
             catch (Exception ex) when (ex is IOException or InvalidJsonException or InvalidProtocolBufferException)
             {

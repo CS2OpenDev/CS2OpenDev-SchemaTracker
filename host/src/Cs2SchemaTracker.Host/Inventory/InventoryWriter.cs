@@ -124,15 +124,15 @@ internal static class InventoryWriter
         }
         if (binaries is { Count: > 0 })
         {
+            // Present entries are carried over VERBATIM whatever their node shape; only genuinely
+            // absent platform keys are added. Rewriting or dropping an existing value here would
+            // break the never-rewrite contract on a hand-curated row.
             var bin = row["binaries"] as JsonObject;
-            var merged = new SortedDictionary<string, string>(StringComparer.Ordinal);
+            var merged = new SortedDictionary<string, JsonNode?>(StringComparer.Ordinal);
             if (bin is not null)
             {
                 foreach (var kv in bin)
-                {
-                    if (kv.Value is JsonValue v && v.TryGetValue<string>(out var gid))
-                        merged[kv.Key] = gid;
-                }
+                    merged[kv.Key] = kv.Value?.DeepClone();
             }
             bool binariesChanged = false;
             foreach (var (plat, gid) in binaries)
@@ -146,8 +146,8 @@ internal static class InventoryWriter
             if (binariesChanged)
             {
                 var rebuiltBin = new JsonObject();
-                foreach (var (plat, gid) in merged)
-                    rebuiltBin[plat] = gid;
+                foreach (var (plat, node) in merged)
+                    rebuiltBin[plat] = node;
                 row["binaries"] = rebuiltBin;
                 changed = true;
             }

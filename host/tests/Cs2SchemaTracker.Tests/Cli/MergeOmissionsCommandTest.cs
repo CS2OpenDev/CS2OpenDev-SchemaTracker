@@ -62,6 +62,34 @@ public sealed class MergeOmissionsCommandTest
     }
 
     [Fact]
+    public void NonCanonical_Platform_Is_A_Usage_Error()
+    {
+        var (code, _, err) = RunCapture("--build", "555", "--platform", "windows", "--from", "x");
+        Assert.Equal(64, code);
+        Assert.Contains("not a canonical platform", err);
+    }
+
+    [Fact]
+    public void Unknown_Field_In_The_Target_Manifest_Refuses_The_Rewrite()
+    {
+        // A manifest written by a NEWER schema must not be canonically rewritten by this host,
+        // which would silently drop the field it does not know.
+        var work = Path.Combine(Path.GetTempPath(), "merge-om-" + Guid.NewGuid().ToString("N"));
+        var root = Path.Combine(work, "artifacts");
+        var buildDir = Path.Combine(root, "555");
+        Directory.CreateDirectory(buildDir);
+        File.WriteAllText(Path.Combine(buildDir, "omissions.json"),
+            """{"buildId":"555","omissions":[],"schemaVersion":"9.9.9","futureField":true}""");
+
+        var (code, _, err) = RunCapture(
+            "--build", "555", "--platform", Win,
+            "--from", Path.Combine(work, "leg", "omissions.json"), "--artifacts", root);
+
+        Assert.Equal(65, code);
+        Assert.Contains("refusing to rewrite", err);
+    }
+
+    [Fact]
     public void Absent_Leg_File_Is_An_Empty_Carrier_NoOp()
     {
         var work = Path.Combine(Path.GetTempPath(), "merge-om-" + Guid.NewGuid().ToString("N"));

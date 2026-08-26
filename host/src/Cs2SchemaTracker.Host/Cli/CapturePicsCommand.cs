@@ -21,7 +21,8 @@
 //   * HEAD-MATCH: a freshly fetched appinfo whose embedded public-branch buildid differs from
 //     --build (a stale or mistyped explicit id) writes NO sidecar. The raw safety-net dump is still
 //     taken, keyed by the ACTUAL head id; the exit stays 0 so a legitimate explicit extract can
-//     proceed and land honestly without a pics-appinfo.json.
+//     proceed and land honestly without a pics-appinfo.json. A body with NO readable buildid is an
+//     anomaly (appinfo shape drift), not a mismatch, and fails loud instead.
 
 using System;
 using System.Globalization;
@@ -113,12 +114,24 @@ internal static class CapturePicsCommand
             capture.WriteRawDump(AcquireCommand.BinariesStoreRoot(), rawKey);
             Console.Error.WriteLine($"capture-pics: captured raw PICS response -> {rawDumpPath}.");
 
+            // A body the reader cannot pull a head build id from is an ANOMALY, not a mismatch:
+            // treating it as benign would silently end pics capture for every future build the
+            // moment the appinfo shape drifts. Fail loud (the raw dump above is preserved).
+            if (embedded is null)
+            {
+                Console.Error.WriteLine(
+                    "capture-pics: FAILED: the fetched appinfo carries no readable " +
+                    "depots.branches.public.buildid (shape drift?). Refusing to decide head-match; " +
+                    $"the raw response is preserved at {rawDumpPath}.");
+                return 1;
+            }
+
             // HEAD-MATCH: a capture that describes a different head build gets NO sidecar (see the
             // header note); exit 0 so an explicit-build extract can still proceed without pics.
             if (!string.Equals(embedded, build, StringComparison.Ordinal))
             {
                 Console.Error.WriteLine(
-                    $"capture-pics: WARNING the live head build is '{embedded ?? "<none>"}', not '{build}'. " +
+                    $"capture-pics: WARNING the live head build is '{embedded}', not '{build}'. " +
                     "PICS is current-only; NOT writing a capture sidecar for this build (it would be " +
                     "mis-associated). The extract, if any, lands without pics-appinfo.json.");
                 return 0;

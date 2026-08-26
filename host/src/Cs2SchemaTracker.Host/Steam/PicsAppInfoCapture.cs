@@ -198,8 +198,10 @@ internal sealed record PicsAppInfoCapture(
             var buildId = node is System.Text.Json.Nodes.JsonValue v ? v.ToString() : null;
             return string.IsNullOrEmpty(buildId) ? null : buildId;
         }
-        catch (JsonException)
+        catch (Exception ex) when (ex is JsonException or InvalidOperationException)
         {
+            // InvalidOperationException: an intermediate node is a leaf/array, so the string
+            // indexer refuses; the body then carries no readable id.
             return null;
         }
     }

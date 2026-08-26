@@ -48,8 +48,19 @@ function Invoke-ArtifactSetStage {
   }
   if ($plan.PSObject.Properties['removePaths']) {
     foreach ($rp in $plan.removePaths) {
-      git -C $Repo rm -q -- $rp
-      if ($LASTEXITCODE -ne 0) { Write-Error "git rm failed for '$rp' (build $Build)"; exit 1 }
+      # commit-plan names the path from on-disk existence alone; git rm only removes TRACKED
+      # files, so an untracked copy (an operator staging a recovered capture by hand) is just
+      # deleted from the worktree instead of failing the staging.
+      git -C $Repo ls-files --error-unmatch -- $rp *> $null
+      if ($LASTEXITCODE -eq 0) {
+        git -C $Repo rm -q -- $rp
+        if ($LASTEXITCODE -ne 0) { Write-Error "git rm failed for '$rp' (build $Build)"; exit 1 }
+      }
+      else {
+        $rpFull = if ([System.IO.Path]::IsPathRooted($rp)) { $rp } else { Join-Path $Repo $rp }
+        Remove-Item $rpFull -Force -ErrorAction SilentlyContinue
+        Write-Host "removed untracked '$rp' (redundant once the build-level pics-appinfo.json is staged)."
+      }
     }
   }
   if (git -C $Repo status --porcelain -- $plan.inventoryPath) {

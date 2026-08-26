@@ -112,4 +112,26 @@ public sealed class InventoryWriterMergeTest
         Assert.Throws<InvalidDataException>(() =>
             InventoryWriter.MergeBuildFacts(path, 999, "x", null, null));
     }
+
+    [Fact]
+    public void NonString_Binaries_Entry_Survives_The_Merge_Verbatim()
+    {
+        // A hand-curated row may carry a non-string node; the merge must never drop or rewrite
+        // a present value, whatever its shape.
+        var path = NewInventory();
+        var seeded = File.ReadAllText(path).Replace(
+            "\"windows-x86_64\": \"222\"", "\"windows-x86_64\": 222");
+        File.WriteAllText(path, seeded);
+
+        var changed = InventoryWriter.MergeBuildFacts(
+            path, 24000000,
+            content: null,
+            binaries: new Dictionary<string, string> { ["linux-x86_64"] = "444" },
+            tools: null);
+
+        Assert.True(changed);
+        var after = File.ReadAllText(path);
+        Assert.Contains("\"windows-x86_64\": 222", after);
+        Assert.Contains("\"linux-x86_64\": \"444\"", after);
+    }
 }

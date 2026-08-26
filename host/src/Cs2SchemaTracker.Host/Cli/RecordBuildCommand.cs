@@ -27,12 +27,14 @@ internal static class RecordBuildCommand
 data/cs2-assets-inventory.json from the promoted provenance.json in the current checkout.
 
 Usage:
-  cs2-schema-tracker record-build --build <id> --platform <p> [--inventory <path>]
+  cs2-schema-tracker record-build --build <id> --platform <p> [--repo <root>] [--inventory <path>]
 
 Arguments:
   --build <id>       Build id whose promoted set is on disk (required).
   --platform <p>     linux-x86_64 or windows-x86_64 (required).
-  --inventory <path> Inventory path (default: the repo's data/cs2-assets-inventory.json).
+  --repo <root>      Repo root holding artifacts/ and data/ (default: discovered from the host
+                     dll's location). Pass it when the dll lives outside the target checkout.
+  --inventory <path> Inventory path (default: <repo>/data/cs2-assets-inventory.json).
 
 Behavior:
   A build absent from builds[] is appended (era resolved from the catalog, date/GIDs from
@@ -54,10 +56,21 @@ Exit codes: 0 appended/merged/no-op · 64 usage error · 65 no provenance / unre
             Console.Error.WriteLine("record-build: --platform <linux-x86_64|windows-x86_64> is required.");
             return 64;
         }
+        if (!Artifacts.ArtifactSet.CanonicalPlatforms.Contains(platform, StringComparer.Ordinal))
+        {
+            Console.Error.WriteLine(
+                $"record-build: '{platform}' is not a canonical platform " +
+                $"(expected one of: {string.Join(", ", Artifacts.ArtifactSet.CanonicalPlatforms)}).");
+            return 64;
+        }
 
         try
         {
-            var resolver = new EraWalkerResolver();
+            // An explicit --repo pins the target checkout; the default discovers it from the host
+            // dll's location, which is only right when the dll runs from inside that checkout.
+            var resolver = parsed.TryGetValue("repo", out var repo) && !string.IsNullOrEmpty(repo)
+                ? new EraWalkerResolver(Path.GetFullPath(repo))
+                : new EraWalkerResolver();
             var inventoryPath = parsed.TryGetValue("inventory", out var inv) && !string.IsNullOrEmpty(inv)
                 ? Path.GetFullPath(inv)
                 : InventoryCatalogProvider.ResolveInventoryPath(resolver.RepoRoot);

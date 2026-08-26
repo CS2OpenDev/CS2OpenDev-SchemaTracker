@@ -129,15 +129,16 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          # fetch-depth: 0 survives the no-build switch: nbgv (Nerdbank.GitVersioning) —
-          # the BUNDLE host still stamps the provenance git SHA via ThisAssembly.GitCommitId;
-          # at RUN time it reads the checked-out repo's HEAD, and full history is what makes
-          # that SHA/height resolve correctly.
+          # Shallow on purpose: a leg only needs the tip TREE (the repo-root sentinel, the
+          # inventory, the committed artifacts/ for the skip-if-committed check) and never
+          # pushes. The bundle host's provenance git SHA is baked at release build time
+          # (ThisAssembly.GitCommitId, see ToolBuildInfo), not read from this checkout, so
+          # full history buys the legs nothing and costs the whole pack every 6h tick.
           # NB: this checkout is pinned to the run's trigger SHA (github.sha), like every
-          # job of the run. That is FINE for a leg: it never pushes, and both legs seeing
-          # the SAME base keeps their outputs consistent. Only the commit job needs main's
-          # true tip, and it checks out ref: main explicitly.
-          fetch-depth: 0
+          # job of the run. That is FINE for a leg: both legs seeing the SAME base keeps
+          # their outputs consistent. Only the commit job needs main's true tip, and it
+          # checks out ref: main explicitly.
+          fetch-depth: 1
           # NB: `submodules: recursive` is DROPPED on purpose — we no longer build the walker,
           # so the large hl2sdk submodule is not needed. repoRoot discovery only needs the
           # top-level walker/CMakeLists.txt sentinel, which is present in the checkout
@@ -230,6 +231,12 @@ jobs:
           $explicit = "${{ github.event.inputs.build_id }}"
           if ($explicit -and $explicit.Trim() -ne "") {
             $buildId = $explicit.Trim()
+            # Numeric or refused: the id flows into later step interpolations and the payload
+            # meta.json, so an arbitrary string is both an injection sink and a downstream crash.
+            if ($buildId -notmatch '^\d+$') {
+              Write-Error "workflow_dispatch build_id '$buildId' is not a numeric Steam build id."
+              exit 1
+            }
             Write-Host "workflow_dispatch: explicit build_id=$buildId"
           } else {
             Write-Host "probing current public-branch build id (anonymous PICS, no download)..."
@@ -432,13 +439,15 @@ jobs:
           git config user.email "austin3459@gmail.com"
 
       - name: Aggregate into commits (one per new build)
+        id: aggregate
         # scripts/commit-forward-capture.ps1 assembles the uploads into the checkout, derives
         # the build-level files against the tip (merge-omissions, emit-pics, record-build,
         # reconcile-changelog), refreshes the evolution artifact, verifies + stages via the
         # host's commit-plan, and makes ONE commit per new build (both platform sets together
         # when both legs succeeded; a partial set when one failed; the preserved PICS capture
-        # when none did). It NEVER pushes, and it hands the push step its inputs via
-        # <incoming>/push-plan.json.
+        # when none did). Builds are fail-isolated inside the script: a nonzero exit here can
+        # still leave OTHER builds validly committed, which is why the push step below runs on
+        # this step's failure too. It NEVER pushes; its outputs ride <incoming>/push-plan.json.
         if: steps.payloads.outputs.have == 'true'
         shell: pwsh
         run: |
@@ -452,7 +461,10 @@ jobs:
         # aggregation's push-plan.json: push with ONE rebase retry, outputs written BEFORE
         # tagging, tags created after the push on the commit located by content, tag failures
         # non-fatal in the tags_failed output. See the script header for the full judgement.
-        if: steps.payloads.outputs.have == 'true'
+        # Runs whenever the aggregate step RAN, even when it failed: builds are fail-isolated
+        # there, so a partial failure can still leave other builds validly committed, and those
+        # must not die with the runner (the failed aggregate step already keeps the run red).
+        if: ${{ !cancelled() && (steps.aggregate.outcome == 'success' || steps.aggregate.outcome == 'failure') }}
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
@@ -467,11 +479,12 @@ jobs:
         # explicitly. (Operator pushes with personal credentials — local re-dumps,
         # backfills — DO fire its push trigger; this step covers only the CI path.)
         # Gated on sets: a PICS-preservation commit changes no artifact set, so the
-        # channel has nothing to pick up.
+        # channel has nothing to pick up. !cancelled(): sets that landed still refresh the
+        # channel when a fail-isolated aggregate marked the run red.
         # NON-FATAL ON PURPOSE: the artifact set is already committed + pushed above, so
         # a failed dispatch must not fail the capture — the channel self-heals on the
         # next publish (it always recomputes from main's newest committed build).
-        if: success() && steps.push.outputs.sets == 'true'
+        if: ${{ !cancelled() && steps.push.outputs.sets == 'true' }}
         shell: pwsh
         env:
           GH_TOKEN: ${{ github.token }}
@@ -496,7 +509,11 @@ jobs:
         # latest-channel dispatch on purpose: the capture is already safe, the channel
         # refresh is not suppressed, and a failure here is pure observability (the run goes
         # red; the operator re-runs `evolution` and pushes the refreshed file).
-        if: success() && steps.push.outputs.sets == 'true'
+        # Gated on pushed, not sets: a preservation-only push must be verified too (a rebase
+        # retry can replay a preservation commit onto a tip where an operator's set landed
+        # concurrently, which is exactly the orphaned-capture state the repo-level check
+        # exists to catch), and !cancelled() keeps it running after a fail-isolated aggregate.
+        if: ${{ !cancelled() && steps.push.outputs.pushed == 'true' }}
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"

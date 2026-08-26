@@ -89,6 +89,14 @@ public sealed class ReconcileChangelogCommandTest
     }
 
     [Fact]
+    public void NonCanonical_Platform_Is_A_Usage_Error()
+    {
+        var (code, _, err) = RunCapture("--build", "1000", "--platform", "linux");
+        Assert.Equal(64, code);
+        Assert.Contains("not a canonical platform", err);
+    }
+
+    [Fact]
     public void Floor_Build_Needs_Nothing_And_Rejects_A_Present_Changelog()
     {
         var root = NewRoot();

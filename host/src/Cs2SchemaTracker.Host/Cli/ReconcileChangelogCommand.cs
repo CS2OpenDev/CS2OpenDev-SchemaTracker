@@ -65,6 +65,13 @@ Exit codes: 0 in-sync/regenerated/floor · 64 usage error · 65 inconsistent tre
             Console.Error.WriteLine("reconcile-changelog: --platform <linux-x86_64|windows-x86_64> is required.");
             return 64;
         }
+        if (!ArtifactSet.CanonicalPlatforms.Contains(platform, StringComparer.Ordinal))
+        {
+            Console.Error.WriteLine(
+                $"reconcile-changelog: '{platform}' is not a canonical platform " +
+                $"(expected one of: {string.Join(", ", ArtifactSet.CanonicalPlatforms)}).");
+            return 64;
+        }
         var artifactsRoot = Path.GetFullPath(
             parsed.TryGetValue("artifacts", out var a) && !string.IsNullOrEmpty(a) ? a : DefaultArtifactsRoot);
 

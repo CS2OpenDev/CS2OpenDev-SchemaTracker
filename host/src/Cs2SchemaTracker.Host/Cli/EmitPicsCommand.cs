@@ -93,7 +93,8 @@ Exit codes: 0 emitted · 64 usage error · 65 unreadable capture / buildid misma
         }
 
         // Framing timestamp from the promoted provenance of a PRESENT platform set (never wall
-        // clock). No set on disk means there is nothing to frame the emit under.
+        // clock). A provenance without a manifest time does not satisfy the framing: keep looking
+        // at the other platform rather than committing an empty captured_utc it could have filled.
         string? capturedUtc = null;
         foreach (var platform in FramingPlatformPreference)
         {
@@ -102,8 +103,12 @@ Exit codes: 0 emitted · 64 usage error · 65 unreadable capture / buildid misma
                 continue;
             try
             {
-                capturedUtc = Cache.ProvenanceReader.ReadManifestCreatedUtc(provPath);
-                break;
+                var utc = Cache.ProvenanceReader.ReadManifestCreatedUtc(provPath);
+                if (!string.IsNullOrEmpty(utc))
+                {
+                    capturedUtc = utc;
+                    break;
+                }
             }
             catch (Exception ex) when (ex is IOException or InvalidDataException)
             {
@@ -114,8 +119,9 @@ Exit codes: 0 emitted · 64 usage error · 65 unreadable capture / buildid misma
         if (capturedUtc is null)
         {
             Console.Error.WriteLine(
-                $"emit-pics: no promoted platform set under '{Path.Combine(artifactsRoot, build)}' to " +
-                "frame captured_utc from. Emit rides a landed set; it does not create one.");
+                $"emit-pics: no promoted platform set under '{Path.Combine(artifactsRoot, build)}' " +
+                "carries a steam.manifest_created_utc to frame captured_utc from. Emit rides a " +
+                "landed set; it does not create one.");
             return 65;
         }
 

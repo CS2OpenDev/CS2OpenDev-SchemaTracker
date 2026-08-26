@@ -66,6 +66,46 @@ public sealed class EmitPicsCommandTest
     }
 
     [Fact]
+    public void NonObject_AppInfo_Body_Is_Refused_Not_Crashed()
+    {
+        // A valid-JSON body that is not the expected object tree must land in the documented
+        // exit-65 refusal (TryGetEmbeddedBuildId returns null), never an unhandled throw.
+        var work = Path.Combine(Path.GetTempPath(), "emit-pics-" + Guid.NewGuid().ToString("N"));
+        var root = Path.Combine(work, "artifacts");
+        Directory.CreateDirectory(Path.Combine(root, "555", Platform));
+        File.WriteAllText(Path.Combine(root, "555", Platform, "provenance.json"), Provenance);
+        var capturePath = Path.Combine(work, "pics-appinfo-capture.json");
+        File.WriteAllText(capturePath, """
+        { "appId": 730, "changeNumber": "1", "appInfoSha1": "", "appInfoJson": "[]" }
+        """);
+
+        var (code, _, err) = RunCapture("--build", "555", "--capture", capturePath, "--artifacts", root);
+
+        Assert.Equal(65, code);
+        Assert.Contains("mis-associated", err);
+    }
+
+    [Fact]
+    public void Empty_ManifestTime_Falls_Through_To_The_Other_Platform()
+    {
+        var work = Path.Combine(Path.GetTempPath(), "emit-pics-" + Guid.NewGuid().ToString("N"));
+        var root = Path.Combine(work, "artifacts");
+        Directory.CreateDirectory(Path.Combine(root, "555", "windows-x86_64"));
+        Directory.CreateDirectory(Path.Combine(root, "555", "linux-x86_64"));
+        // The preferred platform's provenance carries no steam block; the other has the time.
+        File.WriteAllText(Path.Combine(root, "555", "windows-x86_64", "provenance.json"), "{}");
+        File.WriteAllText(Path.Combine(root, "555", "linux-x86_64", "provenance.json"), Provenance);
+        var capturePath = Path.Combine(work, "pics-appinfo-capture.json");
+        File.WriteAllText(capturePath, CaptureJson("555"));
+
+        var (code, _, _) = RunCapture("--build", "555", "--capture", capturePath, "--artifacts", root);
+
+        Assert.Equal(0, code);
+        using var doc = JsonDocument.Parse(File.ReadAllText(Path.Combine(root, "555", "pics-appinfo.json")));
+        Assert.Equal("2026-07-01T00:00:00Z", doc.RootElement.GetProperty("capturedUtc").GetString());
+    }
+
+    [Fact]
     public void Mismatched_Embedded_BuildId_Is_Refused()
     {
         var (root, capturePath) = NewFixture("666", "555");
