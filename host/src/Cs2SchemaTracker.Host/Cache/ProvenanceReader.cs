@@ -105,6 +105,21 @@ internal static class ProvenanceReader
     }
 
     /// <summary>
+    /// The provenance's <c>steam.manifest_created_utc</c>, or "" when the file or field is absent.
+    /// This is the build-input timestamp that frames the committed pics-appinfo.json (captured_utc
+    /// is never wall clock). Fail-loud on a present-but-unparseable file.
+    /// </summary>
+    public static string ReadManifestCreatedUtc(string provenancePath)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(provenancePath);
+        if (!File.Exists(provenancePath))
+        {
+            return "";
+        }
+        return Parse(provenancePath).Steam?.ManifestCreatedUtc ?? "";
+    }
+
+    /// <summary>
     /// Parse <paramref name="provenancePath"/> and return its input-binary refs.
     /// Throws <see cref="FileNotFoundException"/> if the file is absent and
     /// <see cref="InvalidDataException"/> if it is unparseable or carries a malformed input row.

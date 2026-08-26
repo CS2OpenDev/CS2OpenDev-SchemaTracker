@@ -153,24 +153,22 @@ Exit codes: 0 plan emitted · 64 usage error · 65 incomplete set / unreadable p
         var tagMessage = $"build {build} ({platform}) schemaRevision={schemaRevision}";
         var inventoryPath = Inventory.InventoryCatalog.DefaultRelativePath;
 
-        // A preserved current-only PICS capture (data/pics-captures/<build>.json, a sibling tree of
-        // the artifacts root) is redundant the moment the build-level pics-appinfo.json is staged;
-        // the plan names it for `git rm` so EVERY commit path drops it in the same commit.
+        // A preserved current-only PICS capture (a sibling tree of the artifacts root, see
+        // PicsAppInfoCapture.PreservedRelativePath) is redundant the moment the build-level
+        // pics-appinfo.json is staged; the plan names it for `git rm` so EVERY commit path drops
+        // it in the same commit. The path is emitted in the same style as stagePaths (relative
+        // when --artifacts is relative), so git resolves both the same way.
         var removePaths = new List<string>();
         if (stagePaths.Contains(picsRel))
         {
-            var artifactsParent = Path.GetDirectoryName(
-                Path.GetFullPath(artifactsRel).TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar));
-            var preservedFull = artifactsParent is null
-                ? null
-                : Path.Combine(artifactsParent, "data", "pics-captures", $"{build}.json");
-            if (preservedFull is not null && File.Exists(preservedFull))
+            var parent = Path.GetDirectoryName(
+                artifactsRel.TrimEnd('/', '\\').Replace('\\', '/'))?.Replace('\\', '/');
+            var preservedRel = string.IsNullOrEmpty(parent)
+                ? Steam.PicsAppInfoCapture.PreservedRelativePath(build)
+                : $"{parent}/{Steam.PicsAppInfoCapture.PreservedRelativePath(build)}";
+            if (File.Exists(Path.GetFullPath(preservedRel)))
             {
-                var relParent = Path.GetDirectoryName(
-                    artifactsRel.TrimEnd('/', '\\').Replace('\\', '/'))?.Replace('\\', '/');
-                removePaths.Add(string.IsNullOrEmpty(relParent)
-                    ? $"data/pics-captures/{build}.json"
-                    : $"{relParent}/data/pics-captures/{build}.json");
+                removePaths.Add(preservedRel);
             }
         }
 

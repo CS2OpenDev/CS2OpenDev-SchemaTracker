@@ -26,21 +26,10 @@ public sealed class CapturePicsSeedTest
     private static (int Code, string Out, string Err) RunInWorkDir(string workDir, params string[] args)
     {
         var prevCwd = Directory.GetCurrentDirectory();
-        var stdout = new StringWriter();
-        var stderr = new StringWriter();
-        var prevOut = Console.Out;
-        var prevErr = Console.Error;
         Directory.SetCurrentDirectory(workDir);
-        Console.SetOut(stdout);
-        Console.SetError(stderr);
         try
-        { return (CapturePicsCommand.Run(args), stdout.ToString(), stderr.ToString()); }
-        finally
-        {
-            Console.SetOut(prevOut);
-            Console.SetError(prevErr);
-            Directory.SetCurrentDirectory(prevCwd);
-        }
+        { return ConsoleCapture.Run(() => CapturePicsCommand.Run(args)); }
+        finally { Directory.SetCurrentDirectory(prevCwd); }
     }
 
     private static string NewWorkDir()

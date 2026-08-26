@@ -1042,14 +1042,8 @@ internal static partial class ExtractCommand
     /// captured_utc (a build-input timestamp, never DateTime.Now). "" when absent.
     /// </summary>
     private static string ReadManifestCreatedUtc(string repoRoot, string build, string platform)
-    {
-        var provPath = Path.Combine(repoRoot, "artifacts", build, platform, "provenance.json");
-        if (!File.Exists(provPath))
-            return "";
-        var parser = new JsonParser(JsonParser.Settings.Default.WithIgnoreUnknownFields(true));
-        var prov = parser.Parse<Schemas.Provenance>(File.ReadAllText(provPath));
-        return prov.Steam?.ManifestCreatedUtc ?? "";
-    }
+        => Cache.ProvenanceReader.ReadManifestCreatedUtc(
+            Path.Combine(repoRoot, "artifacts", build, platform, "provenance.json"));
 
     /// <summary>
     /// Count classes in an emitted entity_schema.json by parsing it through the generated proto3

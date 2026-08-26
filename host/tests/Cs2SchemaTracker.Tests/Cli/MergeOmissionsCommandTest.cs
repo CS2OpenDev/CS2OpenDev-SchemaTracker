@@ -28,17 +28,7 @@ public sealed class MergeOmissionsCommandTest
     };
 
     private static (int Code, string Out, string Err) RunCapture(params string[] args)
-    {
-        var stdout = new StringWriter();
-        var stderr = new StringWriter();
-        var prevOut = Console.Out;
-        var prevErr = Console.Error;
-        Console.SetOut(stdout);
-        Console.SetError(stderr);
-        try
-        { return (MergeOmissionsCommand.Run(args), stdout.ToString(), stderr.ToString()); }
-        finally { Console.SetOut(prevOut); Console.SetError(prevErr); }
-    }
+        => ConsoleCapture.Run(() => MergeOmissionsCommand.Run(args));
 
     [Fact]
     public void Leg_Carrier_Merges_Without_Dropping_The_Other_Platform()

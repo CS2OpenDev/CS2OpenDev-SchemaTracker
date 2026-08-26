@@ -21,9 +21,10 @@
   inventory row, reconcile-changelog repairs a from_build the tip outran, and commit-plan
   validates and names what to stage and what to remove.
 
-  Never pushes. Tags are not created here either: the workflow tags after the push, so a rebase
-  retry cannot leave a tag pointing at a pre-rebase commit. The push step's inputs are written to
-  <IncomingDir>/push-plan.json as { sets: <bool>, tags: [ { build, message } ] }.
+  Never pushes. Tags are not created here either: push-forward-capture.ps1 tags after the push,
+  so a rebase retry cannot leave a tag pointing at a pre-rebase commit. Its inputs are written
+  to <IncomingDir>/push-plan.json as { sets: <bool>, tags: [ { build, message } ] }; the plan is
+  always written when the incoming dir exists, so the consumer reads it unconditionally.
 
 .NOTES
   Host dll: $CS2_HOST_DLL / $HOST_DLL if set, else built Release once. Operator-run local
@@ -71,8 +72,9 @@ $pendingTags = @()
 
 Push-Location $Repo
 try {
-  # Discover the leg uploads. A leg that resolved no new build uploads nothing, and the stage
-  # step writes meta.json LAST, so a payload without one is truncated and ignored whole.
+  # Discover the leg uploads. A leg that resolved no new build uploads nothing, and
+  # stage-leg-payload.ps1 writes meta.json LAST, so a payload without one is truncated and
+  # ignored whole.
   $legs = @()
   foreach ($p in $PlatformPreference) {
     $dir = Join-Path $IncomingDir "extract-$p"
@@ -85,12 +87,13 @@ try {
     $legs += [pscustomobject]@{
       Platform = $p
       Build    = "$($meta.buildId)"
-      Marker   = "$($meta.marker)"
       Dir      = $dir
     }
   }
   if ($legs.Count -eq 0) {
     Write-Host "no leg uploads under $IncomingDir. nothing to commit."
+    [pscustomobject]@{ sets = $false; tags = @() } |
+      ConvertTo-Json -Depth 3 | Set-Content -Path $pushPlanPath
     exit 0
   }
 
@@ -108,7 +111,7 @@ try {
         Test-Path (Join-Path $_.Dir "artifacts/$b/$($_.Platform)")
       })
     $alreadyLanded = @($extracted | Where-Object {
-        git cat-file -e "HEAD:$($_.Marker)" *> $null
+        git cat-file -e "HEAD:artifacts/$b/$($_.Platform)/entity_schema.json" *> $null
         $LASTEXITCODE -eq 0
       })
     foreach ($leg in $alreadyLanded) {

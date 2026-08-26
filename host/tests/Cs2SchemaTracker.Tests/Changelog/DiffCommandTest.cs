@@ -61,26 +61,8 @@ public sealed class DiffCommandTest
     /// is supplied so the happy-path test can assert an added-class delta.
     /// </summary>
     private static void MakeSet(string root, string buildId, string[] classNames)
-    {
-        var dir = Path.Combine(root, buildId, Platform);
-        Directory.CreateDirectory(dir);
-
-        var schema = new Schemas.EntitySchema { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform };
-        foreach (var c in classNames)
-        {
-            schema.Classes.Add(new Schemas.SchemaClass { Name = c, Module = "client" });
-        }
-        WriteCanonical(schema, Path.Combine(dir, "entity_schema.json"));
-        WriteCanonical(new Schemas.ConVars { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform },
-            Path.Combine(dir, "convars.json"));
-        WriteCanonical(new Schemas.Commands { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform },
-            Path.Combine(dir, "commands.json"));
-        WriteCanonical(new Schemas.EngineConstants { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform },
-            Path.Combine(dir, "engine_constants.json"));
-    }
-
-    private static void WriteCanonical(IMessage msg, string path)
-        => Cs2SchemaTracker.Host.Serialization.AtomicWrite.WriteCanonical(msg, path);
+        => ChangelogTestSets.MakeSet(
+            root, buildId, Platform, classNames.Select(c => ("client", c)).ToArray());
 
     [Fact]
     public void HappyPath_WritesChangelog_WithExpectedFromToAndAddedClass()
@@ -150,23 +132,7 @@ public sealed class DiffCommandTest
     /// pairs, plus the other three empty required source files.
     /// </summary>
     private static void MakeSetWithClasses(string root, string buildId, (string Module, string Name)[] classes)
-    {
-        var dir = Path.Combine(root, buildId, Platform);
-        Directory.CreateDirectory(dir);
-
-        var schema = new Schemas.EntitySchema { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform };
-        foreach (var (module, name) in classes)
-        {
-            schema.Classes.Add(new Schemas.SchemaClass { Name = name, Module = module });
-        }
-        WriteCanonical(schema, Path.Combine(dir, "entity_schema.json"));
-        WriteCanonical(new Schemas.ConVars { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform },
-            Path.Combine(dir, "convars.json"));
-        WriteCanonical(new Schemas.Commands { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform },
-            Path.Combine(dir, "commands.json"));
-        WriteCanonical(new Schemas.EngineConstants { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform },
-            Path.Combine(dir, "engine_constants.json"));
-    }
+        => ChangelogTestSets.MakeSet(root, buildId, Platform, classes);
 
     [Fact]
     public void MissingFromSetDir_FailsLoud_NoChangelogWritten()

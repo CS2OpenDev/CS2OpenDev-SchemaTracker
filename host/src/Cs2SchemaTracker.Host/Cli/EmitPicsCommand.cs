@@ -18,10 +18,9 @@
 // Exit codes: 0 emitted · 64 usage error · 65 unreadable capture / embedded-buildid mismatch /
 // no promoted platform set to frame captured_utc from.
 
+using Cs2SchemaTracker.Host.Artifacts;
 using Cs2SchemaTracker.Host.PicsAppInfo;
 using Cs2SchemaTracker.Host.Steam;
-
-using Google.Protobuf;
 
 namespace Cs2SchemaTracker.Host.Cli;
 
@@ -98,17 +97,15 @@ Exit codes: 0 emitted · 64 usage error · 65 unreadable capture / buildid misma
         string? capturedUtc = null;
         foreach (var platform in FramingPlatformPreference)
         {
-            var provPath = Path.Combine(artifactsRoot, build, platform, "provenance.json");
+            var provPath = Path.Combine(artifactsRoot, build, platform, ArtifactSet.ProvenanceFileName);
             if (!File.Exists(provPath))
                 continue;
             try
             {
-                var parser = new JsonParser(JsonParser.Settings.Default.WithIgnoreUnknownFields(true));
-                var prov = parser.Parse<Schemas.Provenance>(File.ReadAllText(provPath));
-                capturedUtc = prov.Steam?.ManifestCreatedUtc ?? "";
+                capturedUtc = Cache.ProvenanceReader.ReadManifestCreatedUtc(provPath);
                 break;
             }
-            catch (Exception ex) when (ex is IOException or InvalidProtocolBufferException or InvalidJsonException)
+            catch (Exception ex) when (ex is IOException or InvalidDataException)
             {
                 Console.Error.WriteLine($"emit-pics: could not read provenance '{provPath}': {ex.Message}");
                 return 65;

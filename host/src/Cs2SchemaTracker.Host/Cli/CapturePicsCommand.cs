@@ -69,7 +69,7 @@ internal static class CapturePicsCommand
 
         // SEED-FROM-PRESERVED: a committed preserved capture IS this build's earliest capture; the
         // sidecar comes from it and no fetch happens (see the header note).
-        var preservedPath = Path.GetFullPath(Path.Combine("data", "pics-captures", build + ".json"));
+        var preservedPath = Path.GetFullPath(PicsAppInfoCapture.PreservedRelativePath(build));
         if (File.Exists(preservedPath))
         {
             try

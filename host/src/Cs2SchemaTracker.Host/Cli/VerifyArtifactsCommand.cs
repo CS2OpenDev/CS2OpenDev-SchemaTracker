@@ -255,10 +255,9 @@ Exit codes: 0 all legal · 1 at least one violation · 64 usage error.");
         // Preserved-capture orphan check: data/pics-captures/ is a sibling tree of the artifacts
         // root (the preserved current-only PICS captures pending an artifact-set landing). Dormant
         // when absent.
-        var picsCapturesDir = Path.Combine(
-            Path.GetDirectoryName(root.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)) ?? root,
-            "data", "pics-captures");
-        foreach (var v in validator.ValidatePreservedCaptures(picsCapturesDir))
+        var repoRoot = Path.GetDirectoryName(
+            root.TrimEnd(Path.DirectorySeparatorChar, Path.AltDirectorySeparatorChar)) ?? root;
+        foreach (var v in validator.ValidatePreservedCaptures(PicsAppInfoCapture.PreservedDir(repoRoot)))
             messages.Add(v.Message);
 
         return messages;

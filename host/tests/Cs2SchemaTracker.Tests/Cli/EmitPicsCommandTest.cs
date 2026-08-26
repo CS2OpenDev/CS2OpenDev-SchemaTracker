@@ -41,17 +41,7 @@ public sealed class EmitPicsCommandTest
     }
 
     private static (int Code, string Out, string Err) RunCapture(params string[] args)
-    {
-        var stdout = new StringWriter();
-        var stderr = new StringWriter();
-        var prevOut = Console.Out;
-        var prevErr = Console.Error;
-        Console.SetOut(stdout);
-        Console.SetError(stderr);
-        try
-        { return (EmitPicsCommand.Run(args), stdout.ToString(), stderr.ToString()); }
-        finally { Console.SetOut(prevOut); Console.SetError(prevErr); }
-    }
+        => ConsoleCapture.Run(() => EmitPicsCommand.Run(args));
 
     [Fact]
     public void Matching_Capture_Emits_With_Provenance_Framed_CapturedUtc()

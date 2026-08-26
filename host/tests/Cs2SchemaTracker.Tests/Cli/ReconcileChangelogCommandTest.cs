@@ -30,38 +30,11 @@ public sealed class ReconcileChangelogCommandTest
     }
 
     private static void MakeSet(string root, string buildId, params string[] classNames)
-    {
-        var dir = Path.Combine(root, buildId, Platform);
-        Directory.CreateDirectory(dir);
-        var schema = new Schemas.EntitySchema { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform };
-        foreach (var c in classNames)
-        {
-            schema.Classes.Add(new Schemas.SchemaClass { Name = c, Module = "client" });
-        }
-        Write(schema, Path.Combine(dir, "entity_schema.json"));
-        Write(new Schemas.ConVars { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform },
-            Path.Combine(dir, "convars.json"));
-        Write(new Schemas.Commands { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform },
-            Path.Combine(dir, "commands.json"));
-        Write(new Schemas.EngineConstants { SchemaVersion = "0.4.0", BuildId = buildId, Platform = Platform },
-            Path.Combine(dir, "engine_constants.json"));
-    }
-
-    private static void Write(IMessage msg, string path)
-        => Cs2SchemaTracker.Host.Serialization.AtomicWrite.WriteCanonical(msg, path);
+        => Changelog.ChangelogTestSets.MakeSet(
+            root, buildId, Platform, classNames.Select(c => ("client", c)).ToArray());
 
     private static (int Code, string Out, string Err) RunCapture(params string[] args)
-    {
-        var stdout = new StringWriter();
-        var stderr = new StringWriter();
-        var prevOut = Console.Out;
-        var prevErr = Console.Error;
-        Console.SetOut(stdout);
-        Console.SetError(stderr);
-        try
-        { return (ReconcileChangelogCommand.Run(args), stdout.ToString(), stderr.ToString()); }
-        finally { Console.SetOut(prevOut); Console.SetError(prevErr); }
-    }
+        => ConsoleCapture.Run(() => ReconcileChangelogCommand.Run(args));
 
     [Fact]
     public void Stale_FromBuild_Is_Regenerated_Against_The_True_Predecessor()

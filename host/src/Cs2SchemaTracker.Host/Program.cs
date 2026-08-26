@@ -756,127 +756,77 @@ internal static class Program
     }
 
     // ---------------------------------------------------------------------------
-    // record-build  (forward-capture tooling: the commit job's inventory writer)
+    // forward-capture tooling  (record-build / emit-pics / merge-omissions /
+    // reconcile-changelog): the commit job's per-landing host commands. All four are
+    // plain value-option forwarders, declared through one shared builder.
     // ---------------------------------------------------------------------------
-    private static Command BuildRecordBuildCommand()
+    private static Command ForwardingCommand(
+        string name, string description, (string Flag, string Help)[] options, Func<string[], int> run)
     {
-        var cmd = new Command(
-            "record-build",
-            "Append or fact-merge one build's assets-inventory row from the promoted provenance.json in the checkout.");
-
-        var build = new Option<string?>("--build", "Build id whose promoted set is on disk.");
-        var platform = new Option<string?>("--platform", "linux-x86_64 or windows-x86_64.");
-        var inventory = new Option<string?>("--inventory", "Inventory path (default: the repo's data/cs2-assets-inventory.json).");
-
-        cmd.AddOption(build);
-        cmd.AddOption(platform);
-        cmd.AddOption(inventory);
-
+        var cmd = new Command(name, description);
+        var declared = new List<(Option<string?> Opt, string Flag)>(options.Length);
+        foreach (var (flag, help) in options)
+        {
+            var opt = new Option<string?>(flag, help);
+            cmd.AddOption(opt);
+            declared.Add((opt, flag));
+        }
         cmd.SetHandler(ctx =>
         {
-            var p = ctx.ParseResult;
             var a = new ArgList();
-            a.AddValue("--build", p.GetValueForOption(build));
-            a.AddValue("--platform", p.GetValueForOption(platform));
-            a.AddValue("--inventory", p.GetValueForOption(inventory));
-            ctx.ExitCode = RecordBuildCommand.Run(a.ToArray());
+            foreach (var (opt, flag) in declared)
+            {
+                a.AddValue(flag, ctx.ParseResult.GetValueForOption(opt));
+            }
+            ctx.ExitCode = run(a.ToArray());
         });
-
         return cmd;
     }
 
-    // ---------------------------------------------------------------------------
-    // emit-pics  (forward-capture tooling: build-level pics-appinfo.json from a capture file)
-    // ---------------------------------------------------------------------------
-    private static Command BuildEmitPicsCommand()
-    {
-        var cmd = new Command(
-            "emit-pics",
-            "Write artifacts/<build>/pics-appinfo.json from an explicit PICS capture file (sidecar format).");
-
-        var build = new Option<string?>("--build", "Build id to commit the capture under.");
-        var capture = new Option<string?>("--capture", "The capture file to emit from.");
-        var artifacts = new Option<string?>("--artifacts", "Artifacts root (default: artifacts).");
-
-        cmd.AddOption(build);
-        cmd.AddOption(capture);
-        cmd.AddOption(artifacts);
-
-        cmd.SetHandler(ctx =>
+    private static Command BuildRecordBuildCommand() => ForwardingCommand(
+        "record-build",
+        "Append or fact-merge one build's assets-inventory row from the promoted provenance.json in the checkout.",
+        new[]
         {
-            var p = ctx.ParseResult;
-            var a = new ArgList();
-            a.AddValue("--build", p.GetValueForOption(build));
-            a.AddValue("--capture", p.GetValueForOption(capture));
-            a.AddValue("--artifacts", p.GetValueForOption(artifacts));
-            ctx.ExitCode = EmitPicsCommand.Run(a.ToArray());
-        });
+            ("--build", "Build id whose promoted set is on disk."),
+            ("--platform", "linux-x86_64 or windows-x86_64."),
+            ("--inventory", "Inventory path (default: the repo's data/cs2-assets-inventory.json)."),
+        },
+        RecordBuildCommand.Run);
 
-        return cmd;
-    }
-
-    // ---------------------------------------------------------------------------
-    // merge-omissions  (forward-capture tooling: per-platform carrier merge)
-    // ---------------------------------------------------------------------------
-    private static Command BuildMergeOmissionsCommand()
-    {
-        var cmd = new Command(
-            "merge-omissions",
-            "Fold one platform's content-omission carrier from an external omissions.json into the build-level manifest.");
-
-        var build = new Option<string?>("--build", "Build id whose manifest is merged into.");
-        var platform = new Option<string?>("--platform", "The platform whose carrier is taken from --from.");
-        var from = new Option<string?>("--from", "The source omissions.json (a leg upload). Absent = empty carrier.");
-        var artifacts = new Option<string?>("--artifacts", "Artifacts root (default: artifacts).");
-
-        cmd.AddOption(build);
-        cmd.AddOption(platform);
-        cmd.AddOption(from);
-        cmd.AddOption(artifacts);
-
-        cmd.SetHandler(ctx =>
+    private static Command BuildEmitPicsCommand() => ForwardingCommand(
+        "emit-pics",
+        "Write artifacts/<build>/pics-appinfo.json from an explicit PICS capture file (sidecar format).",
+        new[]
         {
-            var p = ctx.ParseResult;
-            var a = new ArgList();
-            a.AddValue("--build", p.GetValueForOption(build));
-            a.AddValue("--platform", p.GetValueForOption(platform));
-            a.AddValue("--from", p.GetValueForOption(from));
-            a.AddValue("--artifacts", p.GetValueForOption(artifacts));
-            ctx.ExitCode = MergeOmissionsCommand.Run(a.ToArray());
-        });
+            ("--build", "Build id to commit the capture under."),
+            ("--capture", "The capture file to emit from."),
+            ("--artifacts", "Artifacts root (default: artifacts)."),
+        },
+        EmitPicsCommand.Run);
 
-        return cmd;
-    }
-
-    // ---------------------------------------------------------------------------
-    // reconcile-changelog  (forward-capture tooling: from_build vs the true tip's predecessor)
-    // ---------------------------------------------------------------------------
-    private static Command BuildReconcileChangelogCommand()
-    {
-        var cmd = new Command(
-            "reconcile-changelog",
-            "Regenerate one set's changelog.json when its from_build disagrees with the tree's committed predecessor.");
-
-        var build = new Option<string?>("--build", "Build id whose set is on disk.");
-        var platform = new Option<string?>("--platform", "linux-x86_64 or windows-x86_64.");
-        var artifacts = new Option<string?>("--artifacts", "Artifacts root (default: artifacts).");
-
-        cmd.AddOption(build);
-        cmd.AddOption(platform);
-        cmd.AddOption(artifacts);
-
-        cmd.SetHandler(ctx =>
+    private static Command BuildMergeOmissionsCommand() => ForwardingCommand(
+        "merge-omissions",
+        "Fold one platform's content-omission carrier from an external omissions.json into the build-level manifest.",
+        new[]
         {
-            var p = ctx.ParseResult;
-            var a = new ArgList();
-            a.AddValue("--build", p.GetValueForOption(build));
-            a.AddValue("--platform", p.GetValueForOption(platform));
-            a.AddValue("--artifacts", p.GetValueForOption(artifacts));
-            ctx.ExitCode = ReconcileChangelogCommand.Run(a.ToArray());
-        });
+            ("--build", "Build id whose manifest is merged into."),
+            ("--platform", "The platform whose carrier is taken from --from."),
+            ("--from", "The source omissions.json (a leg upload). Absent = empty carrier."),
+            ("--artifacts", "Artifacts root (default: artifacts)."),
+        },
+        MergeOmissionsCommand.Run);
 
-        return cmd;
-    }
+    private static Command BuildReconcileChangelogCommand() => ForwardingCommand(
+        "reconcile-changelog",
+        "Regenerate one set's changelog.json when its from_build disagrees with the tree's committed predecessor.",
+        new[]
+        {
+            ("--build", "Build id whose set is on disk."),
+            ("--platform", "linux-x86_64 or windows-x86_64."),
+            ("--artifacts", "Artifacts root (default: artifacts)."),
+        },
+        ReconcileChangelogCommand.Run);
 
     // ---------------------------------------------------------------------------
     // dump-appinfo  (diagnostic — not part of the public surface)

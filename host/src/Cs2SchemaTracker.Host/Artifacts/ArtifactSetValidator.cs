@@ -530,18 +530,6 @@ public sealed class ArtifactSetValidator
     }
 
     /// <summary>
-    /// Repo-level check for the fixed-path cumulative schema-evolution artifact
-    /// (<c>schema_evolution/&lt;platform&gt;.json</c>) — NOT a per-build gate (the artifact lives once
-    /// per platform, outside the build dirs). Returns a violation for each problem; empty when clean.
-    ///
-    /// DORMANT until seeded: a platform whose fixed artifact is ABSENT raises no violation (pre-seed).
-    /// Once present it must be well-formed and current: parse must succeed, <c>platform</c> must match,
-    /// <c>baseline_build</c> must equal the platform's floor, <c>latest_build</c> must equal the latest
-    /// committed build, and <c>transitions.Count</c> must equal chain length − 1 (a short count catches
-    /// a stale artifact not refreshed after a build landed). Fail-soft on malformed JSON (reported, no
-    /// throw). A platform with no committed builds is skipped.
-    /// </summary>
-    /// <summary>
     /// Repo-level orphan check for preserved PICS captures: every
     /// <c>&lt;picsCapturesDir&gt;/&lt;build&gt;.json</c> whose build already has a committed
     /// build-level pics-appinfo.json is redundant and must be removed (commit-plan names it in
@@ -562,7 +550,7 @@ public sealed class ArtifactSetValidator
             var build = Path.GetFileNameWithoutExtension(file);
             if (string.IsNullOrEmpty(build))
                 continue;
-            var committedPics = Path.Combine(_artifactsRoot, build, "pics-appinfo.json");
+            var committedPics = Path.Combine(_artifactsRoot, build, PicsAppInfo.PicsAppInfoEmitter.FileName);
             if (File.Exists(committedPics))
             {
                 issues.Add(new ArtifactSetViolation(build,
@@ -574,6 +562,18 @@ public sealed class ArtifactSetValidator
         return issues;
     }
 
+    /// <summary>
+    /// Repo-level check for the fixed-path cumulative schema-evolution artifact
+    /// (<c>schema_evolution/&lt;platform&gt;.json</c>) — NOT a per-build gate (the artifact lives once
+    /// per platform, outside the build dirs). Returns a violation for each problem; empty when clean.
+    ///
+    /// DORMANT until seeded: a platform whose fixed artifact is ABSENT raises no violation (pre-seed).
+    /// Once present it must be well-formed and current: parse must succeed, <c>platform</c> must match,
+    /// <c>baseline_build</c> must equal the platform's floor, <c>latest_build</c> must equal the latest
+    /// committed build, and <c>transitions.Count</c> must equal chain length − 1 (a short count catches
+    /// a stale artifact not refreshed after a build landed). Fail-soft on malformed JSON (reported, no
+    /// throw). A platform with no committed builds is skipped.
+    /// </summary>
     public IReadOnlyList<ArtifactSetViolation> ValidateEvolution(string platform)
     {
         ArgumentException.ThrowIfNullOrEmpty(platform);

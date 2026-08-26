@@ -247,8 +247,7 @@ jobs:
 
           # Already committed iff THIS platform's set is on disk (source of truth = artifacts/).
           # Per-platform on purpose: a windows-committed build still extracts on the linux leg.
-          # The marker path rides the payload's meta.json: the commit job re-runs the same check
-          # against main's true tip without spelling the sentinel file out a second time.
+          # The commit job re-runs the same sentinel check against main's true tip.
           $marker = "artifacts/$buildId/${{ matrix.platform }}/entity_schema.json"
           if (Test-Path $marker) {
             Write-Host "build $buildId is already committed ($marker present) — nothing to do."
@@ -258,7 +257,6 @@ jobs:
             "is_new=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           }
           "build_id=$buildId"       | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-          "marker=$marker"          | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           "detected_utc=$([DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ'))" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
 
       - name: Capture current PICS appinfo (forward-capture)
@@ -325,42 +323,20 @@ jobs:
 
       - name: Stage leg payload for the commit job
         # Runs even when capture/extract failed (as long as resolve said is_new): the commit
-        # job decides what can land from what actually arrived. The extract's promote is
-        # all-or-nothing, so after a failed extract there is no artifacts/<build>/ to ship
-        # and the payload degrades to meta.json + any PICS capture sidecar, which is exactly
-        # what the commit job's preservation path needs. The inventory never rides: the commit
-        # job records landed platforms against main's tip itself (`record-build`).
+        # job decides what can land from what actually arrived. scripts/stage-leg-payload.ps1
+        # owns the payload contract (sits next to its consumer commit-forward-capture.ps1):
+        # after a failed extract the payload degrades to meta.json + any PICS capture sidecar,
+        # exactly what the preservation path needs, and meta.json is written LAST so a
+        # truncated upload is ignored whole. The inventory never rides: the commit job records
+        # landed platforms against main's tip itself (`record-build`).
         if: ${{ !cancelled() && steps.resolve.outputs.is_new == 'true' }}
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
-          $buildId  = "${{ steps.resolve.outputs.build_id }}"
-          $platform = "${{ matrix.platform }}"
-          New-Item -ItemType Directory -Force -Path outgoing | Out-Null
-
-          if ("${{ steps.extract.outcome }}" -eq 'success') {
-            New-Item -ItemType Directory -Force -Path "outgoing/artifacts/$buildId" | Out-Null
-            Copy-Item "artifacts/$buildId/$platform" "outgoing/artifacts/$buildId/$platform" -Recurse
-            # localization.json is gitignored (~199 MB, regenerable) and must not ride the upload.
-            Remove-Item "outgoing/artifacts/$buildId/$platform/localization.json" -Force -ErrorAction SilentlyContinue
-            # The build manifest rides so the commit job can merge THIS platform's content
-            # carrier into the committed one (a whole-file copy would drop the other's).
-            if (Test-Path "artifacts/$buildId/omissions.json") {
-              Copy-Item "artifacts/$buildId/omissions.json" "outgoing/artifacts/$buildId/omissions.json"
-            }
-          }
-
-          $sidecar = "cache/pics/$buildId/$platform/pics-appinfo-capture.json"
-          if (Test-Path $sidecar) { Copy-Item $sidecar outgoing/pics-appinfo-capture.json }
-
-          # meta.json is written LAST: its presence marks the payload complete, so an upload
-          # from a mid-copy failure is ignored whole by the commit job instead of landing a
-          # truncated set.
-          @{ buildId = $buildId; platform = $platform; marker = "${{ steps.resolve.outputs.marker }}" } |
-            ConvertTo-Json | Set-Content -Path outgoing/meta.json
-
-          Write-Host "staged payload:"
-          Get-ChildItem outgoing -Recurse -File | ForEach-Object { Write-Host "  $($_.FullName)" }
+          ./scripts/stage-leg-payload.ps1 -BuildId "${{ steps.resolve.outputs.build_id }}" `
+            -Platform ${{ matrix.platform }} `
+            -ExtractOk:("${{ steps.extract.outcome }}" -eq 'success')
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
 
       - name: Upload leg payload
         if: ${{ !cancelled() && steps.resolve.outputs.is_new == 'true' }}
@@ -470,99 +446,18 @@ jobs:
           ./scripts/commit-forward-capture.ps1 -IncomingDir (Join-Path $env:RUNNER_TEMP 'incoming')
           if ($LASTEXITCODE -ne 0) { Write-Error "commit-forward-capture.ps1 failed"; exit $LASTEXITCODE }
 
-      - name: Push commits
+      - name: Push commits + tags
         id: push
-        # ONE rebase-retry: the legs never push, so the only writer that can interleave is an
-        # operator push (local re-dump, backfill) landing between this job's checkout and its
-        # push. Rebase the run's commits onto the new tip and retry once; a genuine conflict
-        # fails loud (the payloads stay downloadable for 7 days and the next cron re-extracts
-        # while the build is current).
-        # The `sets` output comes from the script's push-plan.json, never from grepping commit
-        # subjects, and both outputs are written BEFORE tagging (its own step below) so a tag
-        # hiccup can never skip the channel refresh or the verify gate.
+        # scripts/push-forward-capture.ps1 (next to the plan's producer) consumes the
+        # aggregation's push-plan.json: push with ONE rebase retry, outputs written BEFORE
+        # tagging, tags created after the push on the commit located by content, tag failures
+        # non-fatal in the tags_failed output. See the script header for the full judgement.
         if: steps.payloads.outputs.have == 'true'
         shell: pwsh
         run: |
           $ErrorActionPreference = "Stop"
-          $pending = @(git rev-list origin/main..HEAD)
-          if ($LASTEXITCODE -ne 0) { Write-Error "git rev-list failed"; exit 1 }
-          if ($pending.Count -eq 0) {
-            Write-Host "nothing to push."
-            "pushed=false" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            "sets=false"   | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-            exit 0
-          }
-          $planPath = Join-Path $env:RUNNER_TEMP 'incoming/push-plan.json'
-          $sets = $false
-          if (Test-Path $planPath) {
-            $sets = [bool]((Get-Content $planPath -Raw | ConvertFrom-Json).sets)
-          }
-
-          git push origin HEAD:main
-          if ($LASTEXITCODE -ne 0) {
-            Write-Host "push rejected (non-fast-forward?). rebasing onto current origin/main and retrying once..."
-            git pull --rebase origin main
-            if ($LASTEXITCODE -ne 0) { Write-Error "git pull --rebase failed"; exit $LASTEXITCODE }
-            git push origin HEAD:main
-            if ($LASTEXITCODE -ne 0) { Write-Error "git push (main) failed after rebase retry"; exit $LASTEXITCODE }
-          }
-
-          "pushed=true" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-          "sets=$($sets.ToString().ToLower())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-          Write-Host "pushed $($pending.Count) commit(s)."
-
-      - name: Tag pushed builds
-        id: tags
-        # Tags are created AFTER the push, from the script's push-plan: tagging before the push
-        # would leave the rebase-retry path with tags pointing at pre-rebase (orphaned) commits.
-        # The commit to tag is located by CONTENT (the newest commit touching the build's
-        # artifacts dir), never by matching message text: after a rebase retry the pre-push
-        # range is stale, and a patch-equivalent operator commit may have replaced the run's
-        # own commit (tagging the surviving identical commit is correct).
-        # Failures here are NON-FATAL inline (recorded and surfaced by the last step) so the
-        # channel refresh and the verify gate still run for sets that DID land.
-        if: success() && steps.push.outputs.pushed == 'true'
-        shell: pwsh
-        run: |
-          $ErrorActionPreference = "Stop"
-          $anyFailed = $false
-          $planPath = Join-Path $env:RUNNER_TEMP 'incoming/push-plan.json'
-          $tags = if (Test-Path $planPath) { @((Get-Content $planPath -Raw | ConvertFrom-Json).tags) } else { @() }
-          foreach ($t in $tags) {
-            $buildId = "$($t.build)"
-            $sha = git log -n 1 --format=%H HEAD -- "artifacts/$buildId/"
-            if (-not $sha) {
-              Write-Warning "could not locate a commit touching artifacts/$buildId/ to tag"
-              $anyFailed = $true; continue
-            }
-            git rev-parse -q --verify "refs/tags/build/$buildId" *> $null
-            if ($LASTEXITCODE -eq 0) {
-              Write-Host "tag build/$buildId appeared concurrently. not re-tagging."
-              continue
-            }
-            git tag -a "build/$buildId" -m "$($t.message)" $sha
-            if ($LASTEXITCODE -ne 0) {
-              Write-Warning "git tag failed for build/$buildId"
-              $anyFailed = $true; continue
-            }
-            git push origin "build/$buildId"
-            if ($LASTEXITCODE -ne 0) {
-              $remote = git ls-remote --tags origin "refs/tags/build/$buildId"
-              if ($remote) {
-                Write-Host "tag build/$buildId already exists on the remote. keeping the remote tag."
-                continue
-              }
-              Write-Host "tag push failed for build/$buildId. retrying once..."
-              git push origin "build/$buildId"
-              if ($LASTEXITCODE -ne 0) {
-                Write-Warning "git push (tag build/$buildId) failed after retry"
-                $anyFailed = $true; continue
-              }
-            }
-            Write-Host "tagged + pushed build/$buildId"
-          }
-          "failed=$($anyFailed.ToString().ToLower())" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
-          exit 0
+          ./scripts/push-forward-capture.ps1 -PlanPath (Join-Path $env:RUNNER_TEMP 'incoming/push-plan.json')
+          if ($LASTEXITCODE -ne 0) { Write-Error "push-forward-capture.ps1 failed"; exit $LASTEXITCODE }
 
       - name: Refresh latest-artifacts channel
         # The push above is made with the ambient GITHUB_TOKEN, and GitHub's
@@ -613,11 +508,11 @@ jobs:
           Write-Host "verify-artifacts: committed tree is clean."
 
       - name: Surface tag failures
-        # Tagging is non-fatal inline (see the tag step) so the channel refresh and verify gate
+        # Tagging is non-fatal inside the push script so the channel refresh and verify gate
         # always run for pushed sets; a tag that failed to land still marks the run red HERE.
         # Recreate it manually: `git tag -a build/<id>` on the commit that landed
         # artifacts/<id>/ (the tag message derives from that commit's body), then push the tag.
-        if: ${{ always() && steps.tags.outputs.failed == 'true' }}
+        if: ${{ always() && steps.push.outputs.tags_failed == 'true' }}
         shell: pwsh
         run: |
           Write-Error "one or more build/<id> tags failed to land (see the tag step's warnings). recreate them manually on the commits that landed the sets."

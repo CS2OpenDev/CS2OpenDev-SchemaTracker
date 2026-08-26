@@ -523,11 +523,10 @@ jobs:
               # The gate can run with an EMPTY base..head artifacts diff: detect-changes
               # diffs against the PR MERGE commit, so artifacts landing on main while the
               # PR is open (a scheduled capture) trip its filter even though this branch
-              # touches none. An empty list would be a usage error to --changed-paths;
-              # validate the whole tree instead (the checkout is the merge ref, so this
-              # also covers exactly those main-side artifacts).
-              echo "no artifacts/ paths in this branch's diff: validating whole artifacts/ tree"
-              "$VERIFY_ARTIFACTS_EXE" verify-artifacts --artifacts artifacts --inventory data/cs2-assets-inventory.json
+              # touches none. Those commits were already gated when they landed (the
+              # scheduled workflow's own post-push verify, or this gate's push mode), and
+              # an empty list is a usage error to --changed-paths; nothing to validate.
+              echo "no artifacts/ paths in this branch's diff: nothing to gate"
             elif [ "${#CHANGED}" -lt 100000 ]; then
               "$VERIFY_ARTIFACTS_EXE" verify-artifacts --changed-paths "$CHANGED" --inventory data/cs2-assets-inventory.json
             else
