@@ -58,6 +58,25 @@ internal sealed record PicsAppInfoCapture(
         => Path.GetFullPath(Path.Combine("cache", "pics", build, platform));
 
     /// <summary>
+    /// Repo-relative COMMITTED location of a build's preserved capture (forward slashes,
+    /// git-facing): <c>data/pics-captures/&lt;build&gt;.json</c>. Written when no artifact set could
+    /// land, seeded from by <c>capture-pics</c>, removed by the landing commit (commit-plan's
+    /// removePaths), audited by verify-artifacts. The one name every consumer derives from.
+    /// </summary>
+    public static string PreservedRelativePath(string build)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(build);
+        return $"data/pics-captures/{build}.json";
+    }
+
+    /// <summary>Filesystem directory holding the preserved captures under <paramref name="repoRoot"/>.</summary>
+    public static string PreservedDir(string repoRoot)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(repoRoot);
+        return Path.Combine(repoRoot, "data", "pics-captures");
+    }
+
+    /// <summary>
     /// Build a capture from a PICS fetch result. <paramref name="appInfoJson"/> must already be
     /// the canonical-JSON body (render it through <see cref="PicsAppInfoRenderer.RenderCanonicalBody"/>).
     /// The change_number is carried as a STRING (proto3 JSON 64-bit convention, mutable/monotonic).
@@ -160,6 +179,31 @@ internal sealed record PicsAppInfoCapture(
             ChangeNumber: doc.ChangeNumber ?? "",
             AppInfoSha1: doc.AppInfoSha1 ?? "",
             AppInfoJson: doc.AppInfoJson);
+    }
+
+    /// <summary>
+    /// The public-branch build id embedded in a rendered appinfo body
+    /// (<c>depots.branches.public.buildid</c>), or null when the body lacks one. This is the head
+    /// build the PICS response describes; a capture whose embedded id differs from the build it is
+    /// filed under is mis-associated (PICS is current-only and cannot describe a non-head build).
+    /// </summary>
+    public static string? TryGetEmbeddedBuildId(string appInfoJson)
+    {
+        if (string.IsNullOrEmpty(appInfoJson))
+            return null;
+        try
+        {
+            var root = System.Text.Json.Nodes.JsonNode.Parse(appInfoJson);
+            var node = root?["depots"]?["branches"]?["public"]?["buildid"];
+            var buildId = node is System.Text.Json.Nodes.JsonValue v ? v.ToString() : null;
+            return string.IsNullOrEmpty(buildId) ? null : buildId;
+        }
+        catch (Exception ex) when (ex is JsonException or InvalidOperationException)
+        {
+            // InvalidOperationException: an intermediate node is a leaf/array, so the string
+            // indexer refuses; the body then carries no readable id.
+            return null;
+        }
     }
 
     private Document ToDocument() => new()

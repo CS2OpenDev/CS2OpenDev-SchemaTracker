@@ -10,7 +10,11 @@
 //   - MESSAGE: the commit + tag text, derived from the promoted provenance.json (schemaRevision +
 //     depot ids), byte-for-byte what the scripts built.
 //   - STAGING SET: the repo-relative paths to `git add` (the tuple dir, the sibling omissions.json
-//     when present) plus the inventory path the script stages iff git shows it changed.
+//     when present) plus the inventory path the script stages iff git shows it changed, and the
+//     removePaths to `git rm` (a preserved data/pics-captures/<build>.json made redundant by the
+//     staged build-level pics-appinfo.json).
+//   - PROVENANCE FACTS: schemaRevision + the joined depot ids as structured fields, so a caller
+//     composing a multi-platform message never parses them back out of commitMessage.
 //
 // Output is a single JSON object on stdout (the scripts parse it). Fail-loud: an incomplete set
 // exits 65 (EX_DATAERR) with the violations on stderr and NO plan — the script must not commit it.
@@ -56,8 +60,10 @@ Arguments:
 
 Behavior:
   Validates the (build, platform) set is complete using the SAME ArtifactSet / content-depot gating
-  as verify-artifacts, reads the promoted provenance.json for the message, and emits the plan
-  (JSON: { build, platform, stagePaths[], inventoryPath, commitMessage, tagName, tagMessage }).
+  as verify-artifacts (including the changelog predecessor gate), reads the promoted provenance.json
+  for the message, and emits the plan (JSON: { build, platform, stagePaths[], removePaths[],
+  inventoryPath, schemaRevision, depots, commitMessage, tagName, tagMessage }). removePaths names a
+  preserved data/pics-captures/<build>.json to `git rm` when the staged set carries pics-appinfo.json.
 
 Exit codes: 0 plan emitted · 64 usage error · 65 incomplete set / unreadable provenance.");
             return 0;
@@ -147,6 +153,25 @@ Exit codes: 0 plan emitted · 64 usage error · 65 incomplete set / unreadable p
         var tagMessage = $"build {build} ({platform}) schemaRevision={schemaRevision}";
         var inventoryPath = Inventory.InventoryCatalog.DefaultRelativePath;
 
+        // A preserved current-only PICS capture (a sibling tree of the artifacts root, see
+        // PicsAppInfoCapture.PreservedRelativePath) is redundant the moment the build-level
+        // pics-appinfo.json is staged; the plan names it for `git rm` so EVERY commit path drops
+        // it in the same commit. The path is emitted in the same style as stagePaths (relative
+        // when --artifacts is relative), so git resolves both the same way.
+        var removePaths = new List<string>();
+        if (stagePaths.Contains(picsRel))
+        {
+            var parent = Path.GetDirectoryName(
+                artifactsRel.TrimEnd('/', '\\').Replace('\\', '/'))?.Replace('\\', '/');
+            var preservedRel = string.IsNullOrEmpty(parent)
+                ? Steam.PicsAppInfoCapture.PreservedRelativePath(build)
+                : $"{parent}/{Steam.PicsAppInfoCapture.PreservedRelativePath(build)}";
+            if (File.Exists(Path.GetFullPath(preservedRel)))
+            {
+                removePaths.Add(preservedRel);
+            }
+        }
+
         // Raw single-field emits let a shell consumer skip JSON parsing (the gate above already ran).
         switch (emit)
         {
@@ -182,7 +207,13 @@ Exit codes: 0 plan emitted · 64 usage error · 65 incomplete set / unreadable p
             foreach (var p in stagePaths)
                 w.WriteStringValue(p);
             w.WriteEndArray();
+            w.WriteStartArray("removePaths");
+            foreach (var p in removePaths)
+                w.WriteStringValue(p);
+            w.WriteEndArray();
             w.WriteString("inventoryPath", inventoryPath);
+            w.WriteString("schemaRevision", schemaRevision);
+            w.WriteString("depots", depots);
             w.WriteString("commitMessage", commitMessage);
             w.WriteString("tagName", tagName);
             w.WriteString("tagMessage", tagMessage);

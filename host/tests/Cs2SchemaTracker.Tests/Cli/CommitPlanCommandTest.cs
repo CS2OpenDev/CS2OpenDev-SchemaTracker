@@ -26,10 +26,11 @@ public class CommitPlanCommandTest
     { "cs2Build": { "schemaRevision": "rev-123" }, "steam": { "depots": [ { "depotId": 2347771 }, { "depotId": 2347773 } ] } }
     """;
 
-    /// <summary>Write a COMPLETE (build, platform) set under a fresh temp artifacts root; returns the root.</summary>
-    private static string NewCompleteSet(string build)
+    /// <summary>Write a COMPLETE (build, platform) set under <paramref name="root"/> (default: a
+    /// fresh temp artifacts root); returns the root.</summary>
+    private static string NewCompleteSet(string build, string? root = null)
     {
-        var root = Path.Combine(Path.GetTempPath(), "commitplan-" + Guid.NewGuid().ToString("N"));
+        root ??= Path.Combine(Path.GetTempPath(), "commitplan-" + Guid.NewGuid().ToString("N"));
         var dir = Path.Combine(root, build, Platform);
         Directory.CreateDirectory(dir);
         foreach (var f in ArtifactSet.RequiredFiles)
@@ -43,17 +44,7 @@ public class CommitPlanCommandTest
     }
 
     private static (int Code, string Out, string Err) RunCapture(params string[] args)
-    {
-        var stdout = new StringWriter();
-        var stderr = new StringWriter();
-        var prevOut = Console.Out;
-        var prevErr = Console.Error;
-        Console.SetOut(stdout);
-        Console.SetError(stderr);
-        try
-        { return (CommitPlanCommand.Run(args), stdout.ToString(), stderr.ToString()); }
-        finally { Console.SetOut(prevOut); Console.SetError(prevErr); }
-    }
+        => ConsoleCapture.Run(() => CommitPlanCommand.Run(args));
 
     [Fact]
     public void Complete_Set_Emits_Plan_With_Message_And_Staging()
@@ -85,6 +76,60 @@ public class CommitPlanCommandTest
 
         Assert.Equal(65, code);
         Assert.Contains("demo_messages.json", err);
+    }
+
+    [Fact]
+    public void Plan_Carries_Provenance_Fields_And_RemovePaths_For_Preserved_Capture()
+    {
+        // Repo-shaped layout: <repo>/artifacts/<build>/... with the preserved capture in the
+        // sibling <repo>/data/pics-captures/, plus a staged build-level pics-appinfo.json.
+        var repo = Path.Combine(Path.GetTempPath(), "commitplan-rp-" + Guid.NewGuid().ToString("N"));
+        var root = NewCompleteSet("555", Path.Combine(repo, "artifacts"));
+        File.WriteAllText(Path.Combine(root, "555", "pics-appinfo.json"), "{}");
+        var preservedDir = Path.Combine(repo, "data", "pics-captures");
+        Directory.CreateDirectory(preservedDir);
+        File.WriteAllText(Path.Combine(preservedDir, "555.json"), "{}");
+
+        var (code, output, _) = RunCapture("--build", "555", "--platform", Platform, "--artifacts", root);
+
+        Assert.Equal(0, code);
+        using var doc = JsonDocument.Parse(output);
+        var plan = doc.RootElement;
+        Assert.Equal("rev-123", plan.GetProperty("schemaRevision").GetString());
+        Assert.Equal("2347771,2347773", plan.GetProperty("depots").GetString());
+        var removePaths = plan.GetProperty("removePaths");
+        Assert.Equal(1, removePaths.GetArrayLength());
+        Assert.EndsWith("data/pics-captures/555.json", removePaths[0].GetString());
+    }
+
+    [Fact]
+    public void RemovePaths_Empty_When_No_Preserved_Capture_Exists()
+    {
+        var root = NewCompleteSet("557");
+        var (code, output, _) = RunCapture("--build", "557", "--platform", Platform, "--artifacts", root);
+
+        Assert.Equal(0, code);
+        using var doc = JsonDocument.Parse(output);
+        Assert.Equal(0, doc.RootElement.GetProperty("removePaths").GetArrayLength());
+    }
+
+    [Fact]
+    public void Stale_Or_Missing_Changelog_Refused_With_Predecessor_Committed()
+    {
+        // A committed predecessor (platform dir present) makes changelog.json REQUIRED with
+        // from_build == that predecessor; the plan must refuse (65) until it is reconciled.
+        var root = NewCompleteSet("556");
+        Directory.CreateDirectory(Path.Combine(root, "444", Platform));
+
+        var (code, _, err) = RunCapture("--build", "556", "--platform", Platform, "--artifacts", root);
+        Assert.Equal(65, code);
+        Assert.Contains("changelog", err);
+
+        File.WriteAllText(
+            Path.Combine(root, "556", Platform, ArtifactSet.ChangelogFileName),
+            """{ "fromBuild": "444", "toBuild": "556" }""");
+        var (code2, _, _) = RunCapture("--build", "556", "--platform", Platform, "--artifacts", root);
+        Assert.Equal(0, code2);
     }
 
     [Fact]

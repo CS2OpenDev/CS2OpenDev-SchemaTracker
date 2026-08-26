@@ -13,9 +13,16 @@
 //     acquirer auth mode the extract auto-acquire happens to select, and
 //   * FAIL-LOUD — a fetch/write failure is a non-zero exit, not a swallowed "capture skipped".
 //
-// PICS is current-only: the fetched appinfo is always the live head build. --build/--platform name
-// only the destination directory, so run this against the build that IS current (the one the
-// scheduled extract is about to walk).
+// PICS is current-only: the fetched appinfo is always the live head build. Two guarantees follow:
+//   * SEED-FROM-PRESERVED: when the repo already carries data/pics-captures/<build>.json (a prior
+//     run where no set landed preserved its capture), the sidecar is written from THAT file and no
+//     fetch happens. The earliest capture wins, and a build whose capture is already safe cannot be
+//     lost to a transient PICS flake.
+//   * HEAD-MATCH: a freshly fetched appinfo whose embedded public-branch buildid differs from
+//     --build (a stale or mistyped explicit id) writes NO sidecar. The raw safety-net dump is still
+//     taken, keyed by the ACTUAL head id; the exit stays 0 so a legitimate explicit extract can
+//     proceed and land honestly without a pics-appinfo.json. A body with NO readable buildid is an
+//     anomaly (appinfo shape drift), not a mismatch, and fails loud instead.
 
 using System;
 using System.Globalization;
@@ -61,6 +68,31 @@ internal static class CapturePicsCommand
         // location survives that, so capture-pics may run BEFORE the extract.
         var outDir = PicsAppInfoCapture.ForwardCaptureDir(build, platform);
 
+        // SEED-FROM-PRESERVED: a committed preserved capture IS this build's earliest capture; the
+        // sidecar comes from it and no fetch happens (see the header note).
+        var preservedPath = Path.GetFullPath(PicsAppInfoCapture.PreservedRelativePath(build));
+        if (File.Exists(preservedPath))
+        {
+            try
+            {
+                var preserved = PicsAppInfoCapture.ReadFromFile(preservedPath);
+                preserved.WriteToCacheDir(outDir);
+                var seededSidecar = Path.Combine(outDir, PicsAppInfoCapture.FileName);
+                Console.Error.WriteLine(
+                    $"capture-pics: seeded {seededSidecar} from preserved {preservedPath} " +
+                    "(earliest capture wins; no PICS fetch).");
+                Console.WriteLine(seededSidecar);
+                return 0;
+            }
+            catch (Exception ex)
+            {
+                Console.Error.WriteLine(
+                    $"capture-pics: FAILED reading preserved capture '{preservedPath}': " +
+                    $"{ex.GetType().Name}: {ex.Message}");
+                return 1;
+            }
+        }
+
         try
         {
             var acquirer = new SteamAnonymousAcquirer();
@@ -73,12 +105,37 @@ internal static class CapturePicsCommand
                 appId, change, sha, PicsAppInfoRenderer.RenderCanonicalBody(kv));
 
             // RAW SAFETY NET FIRST: unconditionally capture the jsonified PICS response to
-            // <binaries-store-root>/_pics/<build>.json before the curated (build, platform) sidecar
-            // write below — see AcquireCommand.TryCapturePicsAppInfoAsync for the same convention.
+            // <binaries-store-root>/_pics/<headBuild>.json before any sidecar decision, keyed by
+            // the id the response actually describes, so a mismatched request cannot mis-file it.
+            var embedded = PicsAppInfoCapture.TryGetEmbeddedBuildId(capture.AppInfoJson);
+            var rawKey = embedded ?? build;
             var rawDumpPath = Path.Combine(
-                AcquireCommand.BinariesStoreRoot(), PicsAppInfoCapture.RawDumpDirName, build + ".json");
-            capture.WriteRawDump(AcquireCommand.BinariesStoreRoot(), build);
+                AcquireCommand.BinariesStoreRoot(), PicsAppInfoCapture.RawDumpDirName, rawKey + ".json");
+            capture.WriteRawDump(AcquireCommand.BinariesStoreRoot(), rawKey);
             Console.Error.WriteLine($"capture-pics: captured raw PICS response -> {rawDumpPath}.");
+
+            // A body the reader cannot pull a head build id from is an ANOMALY, not a mismatch:
+            // treating it as benign would silently end pics capture for every future build the
+            // moment the appinfo shape drifts. Fail loud (the raw dump above is preserved).
+            if (embedded is null)
+            {
+                Console.Error.WriteLine(
+                    "capture-pics: FAILED: the fetched appinfo carries no readable " +
+                    "depots.branches.public.buildid (shape drift?). Refusing to decide head-match; " +
+                    $"the raw response is preserved at {rawDumpPath}.");
+                return 1;
+            }
+
+            // HEAD-MATCH: a capture that describes a different head build gets NO sidecar (see the
+            // header note); exit 0 so an explicit-build extract can still proceed without pics.
+            if (!string.Equals(embedded, build, StringComparison.Ordinal))
+            {
+                Console.Error.WriteLine(
+                    $"capture-pics: WARNING the live head build is '{embedded}', not '{build}'. " +
+                    "PICS is current-only; NOT writing a capture sidecar for this build (it would be " +
+                    "mis-associated). The extract, if any, lands without pics-appinfo.json.");
+                return 0;
+            }
 
             capture.WriteToCacheDir(outDir);
 

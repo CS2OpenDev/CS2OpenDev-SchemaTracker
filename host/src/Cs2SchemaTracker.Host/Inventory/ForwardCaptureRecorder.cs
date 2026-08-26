@@ -5,11 +5,12 @@
 // land. It derives the appendable facts from the freshly-promoted provenance.json (date_utc + the
 // content/binary/tools depot GIDs) and the resolved era, then appends via InventoryWriter (lossless RMW).
 //
-// A build already in the inventory is a NO-OP (this never mutates an existing row). A
-// build absent from builds[] is appended with the facts provenance carries; change_number and title
-// are not in provenance, so they are left absent (a best-effort forward-capture row, not a fabricated
-// one). Non-fatal by contract — the caller (PromoteBuildLevel) surfaces failures loudly but never
-// reverts the promote.
+// A build absent from builds[] is appended with the facts provenance carries; change_number and
+// title are not in provenance, so they are left absent (a best-effort forward-capture row, not a
+// fabricated one). A build already in the inventory has any MISSING facts merged in (the binaries
+// GID of a platform that landed later, tools/content when absent); a present value is never
+// rewritten, so a hand-curated row always wins. Non-fatal by contract when called from
+// PromoteBuildLevel (surfaced loudly, never reverts the promote).
 
 using Cs2SchemaTracker.Host.Steam;
 using Cs2SchemaTracker.Host.Walker;
@@ -18,7 +19,7 @@ using Google.Protobuf;
 
 namespace Cs2SchemaTracker.Host.Inventory;
 
-/// <summary>Records a freshly-promoted, previously-unseen build into the assets inventory.</summary>
+/// <summary>Records a freshly-promoted build into the assets inventory (append or fact-merge).</summary>
 internal static class ForwardCaptureRecorder
 {
     /// <summary>The shared cross-platform content depot (gameevents / items / localization).</summary>
@@ -35,18 +36,21 @@ internal static class ForwardCaptureRecorder
     {
         /// <summary>The build was appended to the inventory's builds[].</summary>
         Appended,
-        /// <summary>The build was already present — nothing changed (idempotent).</summary>
+        /// <summary>The build's existing row gained missing facts (e.g. a later platform's GID).</summary>
+        Merged,
+        /// <summary>The build was already fully recorded; nothing changed (idempotent).</summary>
         AlreadyPresent,
         /// <summary>The build id is not numeric / no committed provenance — nothing recorded.</summary>
         Skipped,
     }
 
     /// <summary>
-    /// Append <paramref name="build"/> to the inventory at <paramref name="inventoryPath"/> iff it is
-    /// a numeric build id absent from the current builds[]. Reads the committed
-    /// artifacts/&lt;build&gt;/&lt;platform&gt;/provenance.json for date_utc + depot GIDs and resolves
-    /// the era via <paramref name="resolver"/>. Fail-loud on a present-but-corrupt provenance or an
-    /// unreadable inventory (the caller catches + surfaces without reverting the promote).
+    /// Record <paramref name="build"/> in the inventory at <paramref name="inventoryPath"/>: append a
+    /// new row for a numeric build id absent from builds[], or merge MISSING facts (a later
+    /// platform's binaries GID, absent tools/content) into an existing row without touching present
+    /// values. Reads the committed artifacts/&lt;build&gt;/&lt;platform&gt;/provenance.json for
+    /// date_utc + depot GIDs and resolves the era via <paramref name="resolver"/>. Fail-loud on a
+    /// present-but-corrupt provenance or an unreadable inventory.
     /// </summary>
     public static Outcome RecordIfNew(
         string inventoryPath, string repoRoot, string build, string platform, EraWalkerResolver resolver)
@@ -63,15 +67,13 @@ internal static class ForwardCaptureRecorder
         }
 
         var catalog = InventoryCatalog.LoadFromFile(inventoryPath);
-        if (catalog.FindBuild(buildId) is not null)
-        {
-            return Outcome.AlreadyPresent;   // never mutate an existing row.
-        }
+        bool exists = catalog.FindBuild(buildId) is not null;
 
         var provPath = Path.Combine(repoRoot, "artifacts", build, platform, "provenance.json");
         if (!File.Exists(provPath))
         {
-            return Outcome.Skipped;   // nothing authoritative to record from.
+            // Nothing authoritative to record/merge from.
+            return exists ? Outcome.AlreadyPresent : Outcome.Skipped;
         }
 
         Schemas.Provenance prov;
@@ -119,6 +121,14 @@ internal static class ForwardCaptureRecorder
                     binaries[platform] = d.ManifestId;
                 }
             }
+        }
+
+        if (exists)
+        {
+            bool changed = InventoryWriter.MergeBuildFacts(
+                inventoryPath, buildId, contentGid,
+                binaries.Count > 0 ? binaries : null, toolsGid);
+            return changed ? Outcome.Merged : Outcome.AlreadyPresent;
         }
 
         string era = resolver.DetermineEraOnly(build, platform).Era;

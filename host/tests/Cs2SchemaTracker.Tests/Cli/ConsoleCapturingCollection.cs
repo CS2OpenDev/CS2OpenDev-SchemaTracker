@@ -14,3 +14,28 @@ namespace Cs2SchemaTracker.Tests.Cli;
 public sealed class ConsoleCapturingTestGroup
 {
 }
+
+/// <summary>
+/// Shared stdout/stderr capture for command tests: swaps Console.Out/Console.Error around the
+/// invocation and restores them. The swap is process-global, so callers must sit in the
+/// "console-capturing" collection (or another parallelization-disabled one).
+/// </summary>
+public static class ConsoleCapture
+{
+    public static (int Code, string Out, string Err) Run(Func<int> body)
+    {
+        var stdout = new StringWriter();
+        var stderr = new StringWriter();
+        var prevOut = Console.Out;
+        var prevErr = Console.Error;
+        Console.SetOut(stdout);
+        Console.SetError(stderr);
+        try
+        { return (body(), stdout.ToString(), stderr.ToString()); }
+        finally
+        {
+            Console.SetOut(prevOut);
+            Console.SetError(prevErr);
+        }
+    }
+}

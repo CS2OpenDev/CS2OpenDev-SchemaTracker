@@ -9,8 +9,9 @@
 // versions in history all the same.
 //
 // WHO WRITES IT (kept in sync with the schema_evolution.proto header): `extract` NEVER writes this
-// file. The routine writer is scripts/commit-dump.ps1, which runs this command (incremental mode)
-// before each artifact commit so the refreshed file rides that commit — NON-FATALLY, because a
+// file. The routine writers are the commit scripts, scripts/commit-dump.ps1 (operator commits) and
+// scripts/commit-forward-capture.ps1 (the scheduled pipeline's commit job); each runs this command
+// (incremental mode) before each artifact commit so the refreshed file rides that commit — NON-FATALLY, because a
 // rare, retryable refresh failure must not forfeit a time-sensitive forward capture. The stale-file
 // backstop is the verify-artifacts evolution gate: ci.yml runs it on operator pushes, and
 // scheduled-extract.yml re-runs it post-push itself (GITHUB_TOKEN pushes suppress ci.yml's

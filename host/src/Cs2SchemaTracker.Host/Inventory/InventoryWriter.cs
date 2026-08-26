@@ -13,7 +13,9 @@
 // diff over every forward-capture write.
 //
 // Fail-loud: a missing/unparseable inventory, or an attempt to append a build_id that already
-// exists, throws before any bytes are written. Appending is NEW-ONLY (never a silent overwrite).
+// exists, throws before any bytes are written. Appending is NEW-ONLY (never a silent overwrite);
+// MergeBuildFacts is the one sanctioned edit of an existing row, and it only ADDS absent keys
+// (content / tools / binaries[<platform>]); a present value is never rewritten.
 
 using System.Globalization;
 using System.Text;
@@ -71,6 +73,94 @@ internal static class InventoryWriter
         InsertBuildSorted(builds, NewBuildObject(record));
         EnsurePredecessors(builds);   // derive predecessor for the new row + any neighbour it displaced
         WriteCanonical(inventoryPath, root);
+    }
+
+    /// <summary>
+    /// Merge MISSING forward-capture facts into an existing <c>builds[]</c> row: <c>content</c> and
+    /// <c>tools</c> when the row lacks them, and each <paramref name="binaries"/> platform key the
+    /// row's <c>binaries</c> map lacks. Present values are NEVER rewritten (a hand-curated GID always
+    /// wins over a later forward-capture one). The row is rebuilt in the canonical key order and the
+    /// file rewritten canonically iff something was added. Returns true when the file changed.
+    /// Fail-loud when the build_id is absent (merge is for existing rows; append new ones).
+    /// </summary>
+    public static bool MergeBuildFacts(
+        string inventoryPath, long buildId, string? content,
+        IReadOnlyDictionary<string, string>? binaries, string? tools)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(inventoryPath);
+
+        var root = LoadTree(inventoryPath);
+        var builds = (root["builds"] as JsonArray)
+            ?? throw new InvalidDataException($"assets inventory '{inventoryPath}' has no 'builds' array.");
+
+        int idx = -1;
+        for (var i = 0; i < builds.Count; i++)
+        {
+            if (builds[i] is JsonObject o && BuildIdOf(o) == buildId)
+            {
+                idx = i;
+                break;
+            }
+        }
+        if (idx < 0)
+        {
+            throw new InvalidDataException(
+                $"assets inventory '{inventoryPath}' has no build_id {buildId}; " +
+                "MergeBuildFacts only merges into an existing row (use AppendBuild for a new one).");
+        }
+
+        var row = (JsonObject)builds[idx]!;
+        bool changed = false;
+
+        if (content is not null && !row.ContainsKey("content"))
+        {
+            row["content"] = content;
+            changed = true;
+        }
+        if (tools is not null && !row.ContainsKey("tools"))
+        {
+            row["tools"] = tools;
+            changed = true;
+        }
+        if (binaries is { Count: > 0 })
+        {
+            // Present entries are carried over VERBATIM whatever their node shape; only genuinely
+            // absent platform keys are added. Rewriting or dropping an existing value here would
+            // break the never-rewrite contract on a hand-curated row.
+            var bin = row["binaries"] as JsonObject;
+            var merged = new SortedDictionary<string, JsonNode?>(StringComparer.Ordinal);
+            if (bin is not null)
+            {
+                foreach (var kv in bin)
+                    merged[kv.Key] = kv.Value?.DeepClone();
+            }
+            bool binariesChanged = false;
+            foreach (var (plat, gid) in binaries)
+            {
+                if (!merged.ContainsKey(plat))
+                {
+                    merged[plat] = gid;
+                    binariesChanged = true;
+                }
+            }
+            if (binariesChanged)
+            {
+                var rebuiltBin = new JsonObject();
+                foreach (var (plat, node) in merged)
+                    rebuiltBin[plat] = node;
+                row["binaries"] = rebuiltBin;
+                changed = true;
+            }
+        }
+
+        if (!changed)
+        {
+            return false;
+        }
+
+        builds[idx] = WithCanonicalKeyOrder(row);
+        WriteCanonical(inventoryPath, root);
+        return true;
     }
 
     /// <summary>
@@ -221,6 +311,32 @@ internal static class InventoryWriter
             if (kv.Key is "build_id" or "predecessor")
                 continue;
             rebuilt[kv.Key] = kv.Value?.DeepClone();
+        }
+        return rebuilt;
+    }
+
+    /// <summary>
+    /// Rebuild a builds[] row in the canonical key order (<c>build_id, predecessor, date_utc,
+    /// change_number, title, era, content, binaries, tools</c>, then any unknown keys in their
+    /// original order), deep-cloning every value. Keys the row lacks stay absent.
+    /// </summary>
+    private static JsonObject WithCanonicalKeyOrder(JsonObject build)
+    {
+        string[] known =
+        {
+            "build_id", "predecessor", "date_utc", "change_number", "title",
+            "era", "content", "binaries", "tools",
+        };
+        var rebuilt = new JsonObject();
+        foreach (var k in known)
+        {
+            if (build.ContainsKey(k))
+                rebuilt[k] = build[k]?.DeepClone();
+        }
+        foreach (var kv in build)
+        {
+            if (!known.Contains(kv.Key, StringComparer.Ordinal))
+                rebuilt[kv.Key] = kv.Value?.DeepClone();
         }
         return rebuilt;
     }
