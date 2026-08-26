@@ -519,7 +519,16 @@ jobs:
             # before the validator runs (observed on PR #9, exit 126). Diff-scoping is
             # only a speed optimization, so past that size validate the WHOLE tree —
             # the strictly stronger check.
-            if [ "${#CHANGED}" -lt 100000 ]; then
+            if [ -z "$CHANGED" ]; then
+              # The gate can run with an EMPTY base..head artifacts diff: detect-changes
+              # diffs against the PR MERGE commit, so artifacts landing on main while the
+              # PR is open (a scheduled capture) trip its filter even though this branch
+              # touches none. An empty list would be a usage error to --changed-paths;
+              # validate the whole tree instead (the checkout is the merge ref, so this
+              # also covers exactly those main-side artifacts).
+              echo "no artifacts/ paths in this branch's diff: validating whole artifacts/ tree"
+              "$VERIFY_ARTIFACTS_EXE" verify-artifacts --artifacts artifacts --inventory data/cs2-assets-inventory.json
+            elif [ "${#CHANGED}" -lt 100000 ]; then
               "$VERIFY_ARTIFACTS_EXE" verify-artifacts --changed-paths "$CHANGED" --inventory data/cs2-assets-inventory.json
             else
               echo "changed list is ${#CHANGED} bytes (>= argv limit headroom): validating whole artifacts/ tree instead"
