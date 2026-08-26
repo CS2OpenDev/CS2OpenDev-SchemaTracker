@@ -83,6 +83,10 @@ internal static class Program
         root.AddCommand(BuildBackfillLocalizationCommand());
         root.AddCommand(BuildPlanCommand());
         root.AddCommand(BuildCommitPlanCommand());
+        root.AddCommand(BuildRecordBuildCommand());
+        root.AddCommand(BuildEmitPicsCommand());
+        root.AddCommand(BuildMergeOmissionsCommand());
+        root.AddCommand(BuildReconcileChangelogCommand());
         root.AddCommand(BuildVerifyNativesCommand());
         root.AddCommand(BuildVerifyEraParityCommand());
 
@@ -752,6 +756,129 @@ internal static class Program
     }
 
     // ---------------------------------------------------------------------------
+    // record-build  (forward-capture tooling: the commit job's inventory writer)
+    // ---------------------------------------------------------------------------
+    private static Command BuildRecordBuildCommand()
+    {
+        var cmd = new Command(
+            "record-build",
+            "Append or fact-merge one build's assets-inventory row from the promoted provenance.json in the checkout.");
+
+        var build = new Option<string?>("--build", "Build id whose promoted set is on disk.");
+        var platform = new Option<string?>("--platform", "linux-x86_64 or windows-x86_64.");
+        var inventory = new Option<string?>("--inventory", "Inventory path (default: the repo's data/cs2-assets-inventory.json).");
+
+        cmd.AddOption(build);
+        cmd.AddOption(platform);
+        cmd.AddOption(inventory);
+
+        cmd.SetHandler(ctx =>
+        {
+            var p = ctx.ParseResult;
+            var a = new ArgList();
+            a.AddValue("--build", p.GetValueForOption(build));
+            a.AddValue("--platform", p.GetValueForOption(platform));
+            a.AddValue("--inventory", p.GetValueForOption(inventory));
+            ctx.ExitCode = RecordBuildCommand.Run(a.ToArray());
+        });
+
+        return cmd;
+    }
+
+    // ---------------------------------------------------------------------------
+    // emit-pics  (forward-capture tooling: build-level pics-appinfo.json from a capture file)
+    // ---------------------------------------------------------------------------
+    private static Command BuildEmitPicsCommand()
+    {
+        var cmd = new Command(
+            "emit-pics",
+            "Write artifacts/<build>/pics-appinfo.json from an explicit PICS capture file (sidecar format).");
+
+        var build = new Option<string?>("--build", "Build id to commit the capture under.");
+        var capture = new Option<string?>("--capture", "The capture file to emit from.");
+        var artifacts = new Option<string?>("--artifacts", "Artifacts root (default: artifacts).");
+
+        cmd.AddOption(build);
+        cmd.AddOption(capture);
+        cmd.AddOption(artifacts);
+
+        cmd.SetHandler(ctx =>
+        {
+            var p = ctx.ParseResult;
+            var a = new ArgList();
+            a.AddValue("--build", p.GetValueForOption(build));
+            a.AddValue("--capture", p.GetValueForOption(capture));
+            a.AddValue("--artifacts", p.GetValueForOption(artifacts));
+            ctx.ExitCode = EmitPicsCommand.Run(a.ToArray());
+        });
+
+        return cmd;
+    }
+
+    // ---------------------------------------------------------------------------
+    // merge-omissions  (forward-capture tooling: per-platform carrier merge)
+    // ---------------------------------------------------------------------------
+    private static Command BuildMergeOmissionsCommand()
+    {
+        var cmd = new Command(
+            "merge-omissions",
+            "Fold one platform's content-omission carrier from an external omissions.json into the build-level manifest.");
+
+        var build = new Option<string?>("--build", "Build id whose manifest is merged into.");
+        var platform = new Option<string?>("--platform", "The platform whose carrier is taken from --from.");
+        var from = new Option<string?>("--from", "The source omissions.json (a leg upload). Absent = empty carrier.");
+        var artifacts = new Option<string?>("--artifacts", "Artifacts root (default: artifacts).");
+
+        cmd.AddOption(build);
+        cmd.AddOption(platform);
+        cmd.AddOption(from);
+        cmd.AddOption(artifacts);
+
+        cmd.SetHandler(ctx =>
+        {
+            var p = ctx.ParseResult;
+            var a = new ArgList();
+            a.AddValue("--build", p.GetValueForOption(build));
+            a.AddValue("--platform", p.GetValueForOption(platform));
+            a.AddValue("--from", p.GetValueForOption(from));
+            a.AddValue("--artifacts", p.GetValueForOption(artifacts));
+            ctx.ExitCode = MergeOmissionsCommand.Run(a.ToArray());
+        });
+
+        return cmd;
+    }
+
+    // ---------------------------------------------------------------------------
+    // reconcile-changelog  (forward-capture tooling: from_build vs the true tip's predecessor)
+    // ---------------------------------------------------------------------------
+    private static Command BuildReconcileChangelogCommand()
+    {
+        var cmd = new Command(
+            "reconcile-changelog",
+            "Regenerate one set's changelog.json when its from_build disagrees with the tree's committed predecessor.");
+
+        var build = new Option<string?>("--build", "Build id whose set is on disk.");
+        var platform = new Option<string?>("--platform", "linux-x86_64 or windows-x86_64.");
+        var artifacts = new Option<string?>("--artifacts", "Artifacts root (default: artifacts).");
+
+        cmd.AddOption(build);
+        cmd.AddOption(platform);
+        cmd.AddOption(artifacts);
+
+        cmd.SetHandler(ctx =>
+        {
+            var p = ctx.ParseResult;
+            var a = new ArgList();
+            a.AddValue("--build", p.GetValueForOption(build));
+            a.AddValue("--platform", p.GetValueForOption(platform));
+            a.AddValue("--artifacts", p.GetValueForOption(artifacts));
+            ctx.ExitCode = ReconcileChangelogCommand.Run(a.ToArray());
+        });
+
+        return cmd;
+    }
+
+    // ---------------------------------------------------------------------------
     // dump-appinfo  (diagnostic — not part of the public surface)
     // ---------------------------------------------------------------------------
     private static Command BuildDumpAppInfoCommand()
@@ -780,7 +907,7 @@ internal static class Program
     }
 
     // ---------------------------------------------------------------------------
-    // capture-pics  (forward-capture tooling — NOT part of the documented CLI surface)
+    // capture-pics  (forward-capture tooling: NOT part of the documented CLI surface)
     //   Fetch the current PICS appinfo and write the capture sidecar into the (build, platform)
     //   binaries cache, so a following `extract --commit` promotes it to pics-appinfo.json.
     // ---------------------------------------------------------------------------

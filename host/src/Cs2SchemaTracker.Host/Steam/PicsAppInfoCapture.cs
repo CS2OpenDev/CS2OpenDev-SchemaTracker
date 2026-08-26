@@ -162,6 +162,29 @@ internal sealed record PicsAppInfoCapture(
             AppInfoJson: doc.AppInfoJson);
     }
 
+    /// <summary>
+    /// The public-branch build id embedded in a rendered appinfo body
+    /// (<c>depots.branches.public.buildid</c>), or null when the body lacks one. This is the head
+    /// build the PICS response describes; a capture whose embedded id differs from the build it is
+    /// filed under is mis-associated (PICS is current-only and cannot describe a non-head build).
+    /// </summary>
+    public static string? TryGetEmbeddedBuildId(string appInfoJson)
+    {
+        if (string.IsNullOrEmpty(appInfoJson))
+            return null;
+        try
+        {
+            var root = System.Text.Json.Nodes.JsonNode.Parse(appInfoJson);
+            var node = root?["depots"]?["branches"]?["public"]?["buildid"];
+            var buildId = node is System.Text.Json.Nodes.JsonValue v ? v.ToString() : null;
+            return string.IsNullOrEmpty(buildId) ? null : buildId;
+        }
+        catch (JsonException)
+        {
+            return null;
+        }
+    }
+
     private Document ToDocument() => new()
     {
         AppId = AppId,

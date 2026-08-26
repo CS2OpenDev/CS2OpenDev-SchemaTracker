@@ -306,7 +306,8 @@ public sealed class ArtifactSetValidator
     /// SAME source of truth — the committed-file list can never drift from a hand-maintained copy.
     /// Unlike <see cref="ValidateBuild"/> it does NOT enforce the cross-platform all-or-nothing shape,
     /// so an in-progress single-tuple commit (e.g. a linux backfill before the build's other platform)
-    /// is validated on its own merits.
+    /// is validated on its own merits. The changelog predecessor gate DOES run here: a stale
+    /// from_build committed anyway would fail verify-artifacts on every later push.
     /// </summary>
     public BuildVerdict ValidateTuple(string buildId, string platform)
     {
@@ -325,6 +326,10 @@ public sealed class ArtifactSetValidator
         }
 
         ValidatePlatformComplete(buildId, platform, buildPath, ReadContentOmissions(buildPath, platform), Violate);
+        // Changelog predecessor gate, same rule ValidateBuild applies: a stale from_build committed
+        // here would wedge every later verify-artifacts run, so the commit driver must refuse it
+        // (regenerate via `reconcile-changelog` / `diff` first).
+        ValidateChangelogGate(buildId, platform, buildPath, Violate);
         return new BuildVerdict(buildId, v);
     }
 
@@ -536,6 +541,39 @@ public sealed class ArtifactSetValidator
     /// a stale artifact not refreshed after a build landed). Fail-soft on malformed JSON (reported, no
     /// throw). A platform with no committed builds is skipped.
     /// </summary>
+    /// <summary>
+    /// Repo-level orphan check for preserved PICS captures: every
+    /// <c>&lt;picsCapturesDir&gt;/&lt;build&gt;.json</c> whose build already has a committed
+    /// build-level pics-appinfo.json is redundant and must be removed (commit-plan names it in
+    /// removePaths so every commit path drops it in the landing commit). Dormant when the directory
+    /// is absent. A preserved capture for a build with NO committed pics-appinfo.json is the
+    /// intended pending state and raises nothing.
+    /// </summary>
+    public IReadOnlyList<ArtifactSetViolation> ValidatePreservedCaptures(string picsCapturesDir)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(picsCapturesDir);
+        var issues = new List<ArtifactSetViolation>();
+        if (!Directory.Exists(picsCapturesDir))
+            return issues;
+
+        foreach (var file in Directory.EnumerateFiles(picsCapturesDir, "*.json")
+                     .OrderBy(f => f, StringComparer.Ordinal))
+        {
+            var build = Path.GetFileNameWithoutExtension(file);
+            if (string.IsNullOrEmpty(build))
+                continue;
+            var committedPics = Path.Combine(_artifactsRoot, build, "pics-appinfo.json");
+            if (File.Exists(committedPics))
+            {
+                issues.Add(new ArtifactSetViolation(build,
+                    $"preserved PICS capture '{file}' is ORPHANED: build '{build}' already has a " +
+                    "committed pics-appinfo.json. Remove the preserved copy (the landing commit " +
+                    "should have dropped it; commit-plan names it in removePaths)."));
+            }
+        }
+        return issues;
+    }
+
     public IReadOnlyList<ArtifactSetViolation> ValidateEvolution(string platform)
     {
         ArgumentException.ThrowIfNullOrEmpty(platform);

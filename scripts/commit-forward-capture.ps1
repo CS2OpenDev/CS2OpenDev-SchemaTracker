@@ -3,11 +3,10 @@
   Aggregate the scheduled-extract legs' uploads into git commits (one per new build).
 
 .DESCRIPTION
-  scheduled-extract.yml's platform legs never touch git: each uploads its promoted
-  artifact set (plus its PICS capture sidecar and, when its extract appended a row, the
-  inventory) as a workflow artifact named extract-<platform>. This script runs in the
-  workflow's single commit job, against a checkout of main's CURRENT tip, and turns the
-  downloaded uploads into history:
+  scheduled-extract.yml's platform legs never touch git: each uploads its promoted artifact set
+  (minus the gitignored localization.json) plus its build manifest and PICS capture sidecar as a
+  workflow artifact named extract-<platform>. This script runs in the workflow's single commit
+  job, against a checkout of main's CURRENT tip, and turns the downloaded uploads into history:
 
     * every platform set the run produced for a build lands as ONE commit;
     * one leg failing still yields a partial commit of the other leg's set;
@@ -15,19 +14,20 @@
       as data/pics-captures/<build>.json (PICS is current-only: an uncommitted capture
       is lost forever once the public branch advances).
 
-  Platform preference is windows-x86_64 then linux-x86_64, matching the old serialized
-  legs' commit order: where the legs disagree on a shared file (the inventory row, the
-  build-level pics-appinfo.json) the preferred leg's copy wins, and a copy already
-  committed on main always wins over either.
+  Per landed set the host does the judgement against the TIP, not the legs' stale trigger tree:
+  merge-omissions folds each leg's content carrier into the build manifest, emit-pics derives the
+  build-level pics-appinfo.json from the winning capture (a committed copy wins, then the
+  preserved capture, then the preferred leg's sidecar), record-build appends or fact-merges the
+  inventory row, reconcile-changelog repairs a from_build the tip outran, and commit-plan
+  validates and names what to stage and what to remove.
 
-  Never pushes. Tags are not created here either: the workflow tags after the push, so
-  a rebase retry cannot leave a tag pointing at a pre-rebase commit. Pending tags are
-  written to <IncomingDir>/tag-specs.tsv as "<buildId>TAB<tagMessage>" lines.
+  Never pushes. Tags are not created here either: the workflow tags after the push, so a rebase
+  retry cannot leave a tag pointing at a pre-rebase commit. The push step's inputs are written to
+  <IncomingDir>/push-plan.json as { sets: <bool>, tags: [ { build, message } ] }.
 
 .NOTES
-  Completeness / message / staging judgement stays in the host (commit-plan, evolution);
-  this script only assembles files and runs git. Host dll: $CS2_HOST_DLL / $HOST_DLL if
-  set, else built Release once. Operator-run local commits keep using commit-dump.ps1.
+  Host dll: $CS2_HOST_DLL / $HOST_DLL if set, else built Release once. Operator-run local
+  commits keep using commit-dump.ps1.
 #>
 [CmdletBinding()]
 param(
@@ -37,33 +37,42 @@ param(
 $ErrorActionPreference = "Stop"
 Set-StrictMode -Version Latest
 
-# Preference order everywhere a single winner is needed (inventory row, build-level
-# pics-appinfo.json, the preserved capture). Windows first: the old serialized flow ran
-# the windows leg first, so committed inventory rows historically carry the windows
-# binaries gid + the tools gid; keeping that order keeps the data shape stable.
+. (Join-Path $PSScriptRoot 'lib/commit-common.ps1')
+
+# Preference order where a single winner is needed (the leg whose sidecar feeds emit-pics, and
+# the provenance that frames captured_utc). Windows first: committed rows and pics framing have
+# carried the windows facts first since the pipeline began, so keeping the order keeps the data
+# shape stable.
 $PlatformPreference = @('windows-x86_64', 'linux-x86_64')
 
-function Resolve-HostDll {
-  foreach ($env in @($env:CS2_HOST_DLL, $env:HOST_DLL)) {
-    if ($env -and (Test-Path $env)) { return $env }
-  }
-  Write-Host "==> building host (for commit-plan/evolution)..."
-  & dotnet build (Join-Path $Repo 'host/src/Cs2SchemaTracker.Host') -c Release -p:SelfContained=false -p:PublishSingleFile=false -p:UseAppHost=false -v q --nologo | Out-Host
-  if ($LASTEXITCODE -ne 0) { Write-Error "host build failed (needed for commit-plan)"; exit 1 }
-  $dll = Join-Path $Repo 'host/artifacts/bin/Cs2SchemaTracker.Host/release/cs2-schema-tracker.dll'
-  if (-not (Test-Path $dll)) { Write-Error "host dll not found after build: $dll"; exit 1 }
-  return $dll
+if (-not (Test-Path $IncomingDir)) {
+  Write-Host "no leg payload directory at $IncomingDir. nothing to commit."
+  exit 0
+}
+$IncomingDir = (Resolve-Path $IncomingDir).Path
+$HostDll = Resolve-HostDll -Repo $Repo
+
+# The aggregation depends on the forward-capture host commands (record-build, emit-pics,
+# merge-omissions, reconcile-changelog). A release bundle published before they existed must
+# fail HERE with guidance, not partway through a landing.
+& dotnet $HostDll record-build --help *> $null
+if ($LASTEXITCODE -ne 0) {
+  Write-Error ("the resolved host dll lacks the forward-capture commands (record-build and " +
+    "friends): the release bundle predates this pipeline. wait for release.yml to publish an " +
+    "updated bundle, or point CS2_HOST_DLL at a current build.")
+  exit 1
 }
 
-$IncomingDir = (Resolve-Path $IncomingDir).Path
-$HostDll = Resolve-HostDll
-$tagSpecPath = Join-Path $IncomingDir 'tag-specs.tsv'
-Remove-Item $tagSpecPath -Force -ErrorAction SilentlyContinue
+$pushPlanPath = Join-Path $IncomingDir 'push-plan.json'
+Remove-Item $pushPlanPath -Force -ErrorAction SilentlyContinue
+
+$setsLanded = $false
+$pendingTags = @()
 
 Push-Location $Repo
 try {
-  # Discover the leg uploads. A leg that resolved no new build uploads nothing; a leg
-  # that failed after resolve still uploads meta.json (+ whatever it produced).
+  # Discover the leg uploads. A leg that resolved no new build uploads nothing, and the stage
+  # step writes meta.json LAST, so a payload without one is truncated and ignored whole.
   $legs = @()
   foreach ($p in $PlatformPreference) {
     $dir = Join-Path $IncomingDir "extract-$p"
@@ -74,11 +83,10 @@ try {
       Write-Error "meta.json under extract-$p names platform '$($meta.platform)'"; exit 1
     }
     $legs += [pscustomobject]@{
-      Platform         = $p
-      Build            = "$($meta.buildId)"
-      ExtractOk        = [bool]$meta.extractOk
-      InventoryBaseOid = "$($meta.inventoryBaseOid)"
-      Dir              = $dir
+      Platform = $p
+      Build    = "$($meta.buildId)"
+      Marker   = "$($meta.marker)"
+      Dir      = $dir
     }
   }
   if ($legs.Count -eq 0) {
@@ -86,7 +94,9 @@ try {
     exit 0
   }
 
-  foreach ($group in ($legs | Group-Object Build | Sort-Object Name)) {
+  # Oldest build first (numeric, not lexical), so a two-build run lands each build on top of
+  # the previous one's commit and the changelog/predecessor chain stays contiguous.
+  foreach ($group in ($legs | Group-Object Build | Sort-Object { [long]$_.Name })) {
     $b = $group.Name
 
     # Legs whose promoted set actually arrived. Promote is all-or-nothing, so a present
@@ -95,10 +105,10 @@ try {
     # against the run's trigger SHA, and this re-check against the true tip is what keeps
     # an operator push of the same set from being overwritten.
     $extracted = @($group.Group | Where-Object {
-        $_.ExtractOk -and (Test-Path (Join-Path $_.Dir "artifacts/$b/$($_.Platform)"))
+        Test-Path (Join-Path $_.Dir "artifacts/$b/$($_.Platform)")
       })
     $alreadyLanded = @($extracted | Where-Object {
-        git cat-file -e "HEAD:artifacts/$b/$($_.Platform)/entity_schema.json" *> $null
+        git cat-file -e "HEAD:$($_.Marker)" *> $null
         $LASTEXITCODE -eq 0
       })
     foreach ($leg in $alreadyLanded) {
@@ -108,8 +118,8 @@ try {
 
     if ($extracted.Count -eq 0) {
       # No set this run. Preserve the PICS capture if one arrived and is not already
-      # committed in either form; the legs seed their sidecar from this file on later
-      # runs, so a successful extract promotes this ORIGINAL capture.
+      # committed in either form; capture-pics seeds later runs' sidecars from this file,
+      # so a successful extract promotes this ORIGINAL capture.
       $sidecarLeg = $group.Group |
         Where-Object { Test-Path (Join-Path $_.Dir 'pics-appinfo-capture.json') } |
         Select-Object -First 1
@@ -142,7 +152,8 @@ try {
       continue
     }
 
-    # Assemble the platform sets into the checkout.
+    # Assemble the platform sets into the checkout. Only the per-platform dirs are copied;
+    # build-level files are derived below by the host against the tip.
     foreach ($leg in $extracted) {
       $src = Join-Path $leg.Dir "artifacts/$b/$($leg.Platform)"
       $dst = "artifacts/$b/$($leg.Platform)"
@@ -151,78 +162,62 @@ try {
       Copy-Item $src $dst -Recurse
     }
 
-    # Build-level files: a copy already committed on main wins (never churn a landed
-    # artifact; for pics-appinfo.json that also keeps the earliest capture, whose body
-    # is identical and whose capturedUtc predates any re-emit). Otherwise the preferred
-    # leg's copy is taken.
-    foreach ($name in @('pics-appinfo.json', 'omissions.json')) {
-      $dst = "artifacts/$b/$name"
-      foreach ($leg in $extracted) {
-        $src = Join-Path $leg.Dir "artifacts/$b/$name"
-        if ((Test-Path $src) -and -not (Test-Path $dst)) { Copy-Item $src $dst }
-      }
-    }
-
-    # Inventory: the preferred leg's appended row wins, mirroring the old serialized flow
-    # where the first leg to commit recorded the row and the later leg's append no-opped
-    # (ForwardCaptureRecorder never mutates an existing row). The base-oid check refuses
-    # to clobber an inventory that advanced on main after the legs checked out. That
-    # guard also fails loud, on purpose, in the rare run where the legs resolved
-    # DIFFERENT builds: the second build's leg copy is based on a pre-first-commit
-    # inventory, and taking it would drop the first build's row. The next cron picks the
-    # newer build up cleanly.
+    # Build manifest: each landed leg's content carrier merges in; every other platform's
+    # committed carrier survives (taking a leg file whole would drop them).
     foreach ($leg in $extracted) {
-      $src = Join-Path $leg.Dir 'data/cs2-assets-inventory.json'
-      if (-not (Test-Path $src)) { continue }
-      $headOid = git rev-parse "HEAD:data/cs2-assets-inventory.json"
-      if ($LASTEXITCODE -ne 0) { Write-Error "git rev-parse failed for the committed inventory"; exit 1 }
-      if ($leg.InventoryBaseOid -and $headOid -ne $leg.InventoryBaseOid) {
-        Write-Error ("the committed inventory advanced after the legs checked out " +
-          "(leg base $($leg.InventoryBaseOid), main now $headOid). refusing to overwrite; re-run the extract.")
-        exit 1
-      }
-      Copy-Item $src 'data/cs2-assets-inventory.json' -Force
-      break
+      & dotnet $HostDll merge-omissions --build $b --platform $leg.Platform `
+        --from (Join-Path $leg.Dir "artifacts/$b/omissions.json") --artifacts artifacts | Out-Host
+      if ($LASTEXITCODE -ne 0) { Write-Error "merge-omissions failed for build $b ($($leg.Platform))"; exit 1 }
     }
 
-    # Per platform: refresh the cumulative evolution artifact (non-fatal, same contract
-    # as commit-dump.ps1), then stage exactly what the host's plan names.
+    # Build-level pics-appinfo.json: a committed copy wins (never churn a landed artifact);
+    # else the preserved capture (earliest wins, even against a fresher leg capture from a
+    # queued run); else the preferred leg's sidecar. emit-pics refuses a capture that does not
+    # describe this build. NON-FATAL like the extract's own pics emit: a pics failure must not
+    # forfeit the time-sensitive set (the artifact is optional; sidecars stay downloadable).
+    git cat-file -e "HEAD:artifacts/$b/pics-appinfo.json" *> $null
+    if ($LASTEXITCODE -ne 0) {
+      $captureSrc = $null
+      git cat-file -e "HEAD:data/pics-captures/$b.json" *> $null
+      if ($LASTEXITCODE -eq 0) {
+        $captureSrc = "data/pics-captures/$b.json"
+      }
+      else {
+        # Any leg's sidecar will do (a failed-extract leg still uploads its capture).
+        foreach ($leg in $group.Group) {
+          $sidecar = Join-Path $leg.Dir 'pics-appinfo-capture.json'
+          if (Test-Path $sidecar) { $captureSrc = $sidecar; break }
+        }
+      }
+      if ($captureSrc) {
+        & dotnet $HostDll emit-pics --build $b --capture $captureSrc --artifacts artifacts | Out-Host
+        if ($LASTEXITCODE -ne 0) {
+          Write-Warning "emit-pics returned $LASTEXITCODE for build $b; committing the set without pics-appinfo.json."
+        }
+      }
+    }
+
+    # Inventory: record each landed platform against the TIP's inventory (append the row for a
+    # new build; fact-merge a later platform's GID into an existing row). Runs before staging
+    # so the plan's inventory check picks the change up.
+    foreach ($leg in $extracted) {
+      & dotnet $HostDll record-build --build $b --platform $leg.Platform | Out-Host
+      if ($LASTEXITCODE -ne 0) { Write-Error "record-build failed for build $b ($($leg.Platform))"; exit 1 }
+    }
+
+    # Per platform: repair a changelog the tip outran, then evolution + commit-plan + staging
+    # via the shared contract (commit-plan also names the preserved capture for removal).
     $plans = @()
     foreach ($leg in $extracted) {
-      & dotnet $HostDll evolution --platform $leg.Platform --artifacts artifacts
-      if ($LASTEXITCODE -ne 0) {
-        Write-Warning "evolution refresh returned $LASTEXITCODE for build $b ($($leg.Platform)); committing the set without an evolution update. re-run 'evolution' later."
-      }
-
-      $planJson = & dotnet $HostDll commit-plan --build $b --platform $leg.Platform --artifacts artifacts
-      if ($LASTEXITCODE -ne 0) { Write-Error "commit-plan refused build $b ($($leg.Platform)); see VIOLATION lines above"; exit 65 }
-      $plan = $planJson | ConvertFrom-Json
-      $plans += $plan
-
-      foreach ($sp in $plan.stagePaths) {
-        git add -- $sp
-        if ($LASTEXITCODE -ne 0) { Write-Error "git add failed for '$sp' (build $b)"; exit 1 }
-      }
-      if (git status --porcelain -- $plan.inventoryPath) {
-        git add -- $plan.inventoryPath
-        if ($LASTEXITCODE -ne 0) { Write-Error "git add inventory failed for build $b"; exit 1 }
-      }
+      & dotnet $HostDll reconcile-changelog --build $b --platform $leg.Platform --artifacts artifacts | Out-Host
+      if ($LASTEXITCODE -ne 0) { Write-Error "reconcile-changelog failed for build $b ($($leg.Platform))"; exit 65 }
+      $plans += Invoke-ArtifactSetStage -HostDll $HostDll -Repo $Repo -Build $b -Platform $leg.Platform -Artifacts artifacts
     }
 
     git diff --cached --quiet
     if ($LASTEXITCODE -eq 0) {
       Write-Host "build ${b}: assembled set matches what main already has. nothing to commit."
       continue
-    }
-
-    # A preserved capture is redundant once the build-level pics-appinfo.json exists in
-    # artifacts/ (the legs' seed step made the extract promote that same document).
-    # Drop it in the same commit.
-    $preservedRel = "data/pics-captures/$b.json"
-    git ls-files --error-unmatch -- $preservedRel *> $null
-    if ($LASTEXITCODE -eq 0 -and (Test-Path "artifacts/$b/pics-appinfo.json")) {
-      git rm -q -- $preservedRel
-      if ($LASTEXITCODE -ne 0) { Write-Error "git rm failed for $preservedRel"; exit 1 }
     }
 
     $platformList = @($plans | ForEach-Object { $_.platform }) -join ', '
@@ -232,30 +227,27 @@ try {
     }
     else {
       # Combined message for a full-build commit: the subject lists the platforms and the
-      # body carries one line per platform. Nothing collapses across platforms on purpose:
-      # schemaRevision embeds a per-platform layout hash, and the depot sets differ (per-OS
-      # binary depots, the windows-only tools depot). The tag message stays single-line
-      # because tag-specs.tsv is line-based.
-      $parsed = @(foreach ($plan in $plans) {
-          if ($plan.commitMessage -notmatch 'schemaRevision=(\S*) depots=(\S*)') {
-            Write-Error "could not parse schemaRevision/depots from the $($plan.platform) commit plan"; exit 1
-          }
-          [pscustomobject]@{ Platform = $plan.platform; Rev = $Matches[1]; Depots = $Matches[2] }
-        })
+      # body carries one line per platform, from the plans' structured schemaRevision/depots
+      # fields. Nothing collapses across platforms on purpose: schemaRevision embeds a
+      # per-platform layout hash, and the depot sets differ (per-OS binary depots, the
+      # windows-only tools depot).
       $subject = "build $b ($platformList)"
-      $body = @($parsed | ForEach-Object { "$($_.Platform): schemaRevision=$($_.Rev) depots=$($_.Depots)" }) -join "`n"
+      $body = @($plans | ForEach-Object {
+          "$($_.platform): schemaRevision=$($_.schemaRevision) depots=$($_.depots)"
+        }) -join "`n"
       $message = "$subject`n`n$body"
       $tagMessage = "$subject schemaRevision " +
-      (@($parsed | ForEach-Object { "$($_.Platform)=$($_.Rev)" }) -join ' ')
+      (@($plans | ForEach-Object { "$($_.platform)=$($_.schemaRevision)" }) -join ' ')
     }
 
     git commit -q -m $message
     if ($LASTEXITCODE -ne 0) { Write-Error "git commit failed for build $b"; exit 1 }
     Write-Host "committed: build $b ($platformList)"
+    $setsLanded = $true
 
     git rev-parse -q --verify "refs/tags/build/$b" *> $null
     if ($LASTEXITCODE -ne 0) {
-      "$b`t$tagMessage" | Add-Content -Path $tagSpecPath
+      $pendingTags += [pscustomobject]@{ build = $b; message = $tagMessage }
       Write-Host "tag build/$b pending (the workflow tags after the push)."
     }
     else {
@@ -263,8 +255,11 @@ try {
     }
   }
 
+  [pscustomobject]@{ sets = $setsLanded; tags = @($pendingTags) } |
+    ConvertTo-Json -Depth 3 | Set-Content -Path $pushPlanPath
   Write-Host "done. This script never pushes; review with 'git log'/'git show'."
 }
 finally {
   Pop-Location
 }
+exit 0
