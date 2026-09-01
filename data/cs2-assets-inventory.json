@@ -7,11 +7,11 @@
     ],
     "provenance": "Manifests are hand-extracted from SteamDB patch pages via the bookmarklet in temp/scripts/ (manual DOM read; -- no scraping); new builds are appended to this inventory by the host on a successful extract --commit (forward-capture), which is now the sole writer. Authoritative entries carry build_id+change_number; date-only entries predate extraction. Verified against committed provenance.json where available.",
     "counts": {
-      "builds": 376,
-      "builds_with_binaries": 375,
-      "builds_with_content": 376,
-      "builds_with_change_number": 376,
-      "builds_with_era": 376,
+      "builds": 387,
+      "builds_with_binaries": 387,
+      "builds_with_content": 387,
+      "builds_with_change_number": 387,
+      "builds_with_era": 387,
       "depots": 15
     },
     "era_note": "builds[].era = the id of the eras[] entry this build's schema-system layout belongs to (compile-pin or runtime-variant). eras[] defines each era's hl2sdk pin (or ridden pin), per-platform layout signature(s), and class-count band. Maintained by the host on forward-capture."
@@ -25563,12 +25563,85 @@
   ],
   "builds": [
     {
+      "build_id": 25000182,
+      "predecessor": 24957633,
+      "date_utc": "2026-08-28T20:16:08Z",
+      "change_number": 38420961,
+      "title": "Build 25000182 on 28 August 2026",
+      "era": "cs2-2026-07-09",
+      "content": "6839025807341874757",
+      "binaries": {
+        "linux-x86_64": "3098867400317391293",
+        "windows-x86_64": "5122228181560116426"
+      },
+      "tools": "7581174453430667755"
+    },
+    {
+      "build_id": 24957633,
+      "predecessor": 24934554,
+      "date_utc": "2026-08-26T20:58:46Z",
+      "change_number": 38362402,
+      "title": "Build 24957633 on 26 August 2026",
+      "era": "cs2-2026-07-09",
+      "content": "2844536608884402770",
+      "binaries": {
+        "linux-x86_64": "5543898279197610779",
+        "windows-x86_64": "6581019893274903321"
+      },
+      "tools": "7205094395767562851"
+    },
+    {
+      "build_id": 24934554,
+      "predecessor": 24916958,
+      "date_utc": "2026-08-25T18:35:52Z",
+      "change_number": 38326889,
+      "title": "Build 24934554 on 25 August 2026",
+      "era": "cs2-2026-07-09",
+      "content": "4322456088840983890",
+      "binaries": {
+        "linux-x86_64": "4438670448538289168",
+        "windows-x86_64": "3075687913968839709"
+      },
+      "tools": "492033267890921851"
+    },
+    {
+      "build_id": 24916958,
+      "predecessor": 24828357,
+      "date_utc": "2026-08-24T23:15:06Z",
+      "change_number": 38300059,
+      "title": "Build 24916958 on 24 August 2026",
+      "era": "cs2-2026-07-09",
+      "content": "2988082166379903189",
+      "binaries": {
+        "linux-x86_64": "3204075245827788235",
+        "windows-x86_64": "4506841409834636555"
+      },
+      "tools": "6910457658223501569"
+    },
+    {
+      "build_id": 24828357,
+      "predecessor": 24701871,
+      "date_utc": "2026-08-19T23:16:48Z",
+      "change_number": 38168775,
+      "title": "Build 24828357 on 19 August 2026",
+      "era": "cs2-2026-07-09",
+      "content": "4814468113142569832",
+      "binaries": {
+        "linux-x86_64": "1670443425869204360",
+        "windows-x86_64": "4846265837652631529"
+      },
+      "tools": "6265834673964963888"
+    },
+    {
       "build_id": 24701871,
       "predecessor": 24662694,
       "date_utc": "2026-08-12T22:20:36Z",
+      "change_number": 37980985,
+      "title": "Build 24701871 on 12 August 2026",
       "era": "cs2-2026-07-09",
       "content": "7645176062026597595",
       "binaries": {
+        "linux-x86_64": "3612056480687749066",
         "windows-x86_64": "358563799254497787"
       },
       "tools": "3570374031121073996"
@@ -25577,9 +25650,12 @@
       "build_id": 24662694,
       "predecessor": 24537688,
       "date_utc": "2026-08-10T23:45:15Z",
+      "change_number": 37922190,
+      "title": "Build 24662694 on 10 August 2026",
       "era": "cs2-2026-07-09",
       "content": "816091078217593486",
       "binaries": {
+        "linux-x86_64": "4426952802600100986",
         "windows-x86_64": "5408352382264162408"
       },
       "tools": "3150672179051489314"
@@ -25588,6 +25664,8 @@
       "build_id": 24537688,
       "predecessor": 24442510,
       "date_utc": "2026-08-03T18:18:10Z",
+      "change_number": 37744882,
+      "title": "Build 24537688 on 3 August 2026",
       "era": "cs2-2026-07-09",
       "content": "6966900685090593016",
       "binaries": {
@@ -25614,6 +25692,8 @@
       "build_id": 24304127,
       "predecessor": 24248951,
       "date_utc": "2026-07-20T22:45:54Z",
+      "change_number": 37433143,
+      "title": "Build 24304127 on 20 July 2026",
       "era": "cs2-2026-07-09",
       "content": "7673916425787288234",
       "binaries": {
@@ -25626,6 +25706,8 @@
       "build_id": 24248951,
       "predecessor": 24134959,
       "date_utc": "2026-07-16T22:54:32Z",
+      "change_number": 37322823,
+      "title": "Build 24248951 on 16 July 2026",
       "era": "cs2-2026-07-09",
       "content": "8243926021199121453",
       "binaries": {
@@ -25754,6 +25836,10 @@
       "title": "Build 24007471 on 1 July 2026",
       "era": "cs2-2026-04-21",
       "content": "8910988576493132875",
+      "binaries": {
+        "linux-x86_64": "1948240346581197019",
+        "windows-x86_64": "2638437279544401110"
+      },
       "tools": "2662582504310803213"
     },
     {
