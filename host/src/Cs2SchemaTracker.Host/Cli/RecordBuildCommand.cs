@@ -38,8 +38,12 @@ Arguments:
 
 Behavior:
   A build absent from builds[] is appended (era resolved from the catalog, date/GIDs from
-  artifacts/<build>/<platform>/provenance.json). A build already present gains only its MISSING
-  facts (this platform's binaries GID, absent tools/content); present values are never rewritten.
+  artifacts/<build>/<platform>/provenance.json, change_number from the build-level
+  artifacts/<build>/pics-appinfo.json, and a derived 'Build <id> on <d MMMM yyyy>' title). A build
+  already present gains only its MISSING facts (this platform's binaries GID, absent
+  tools/content/change_number/title); present values are never rewritten, so re-running this over
+  the corpus backfills thin rows without touching hand-curated ones. _meta.counts is recomputed
+  from builds[] on every write.
 
 Exit codes: 0 appended/merged/no-op · 64 usage error · 65 no provenance / unreadable inventory.");
             return 0;

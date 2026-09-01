@@ -78,14 +78,24 @@
 # producing a new artifact set within 6h of detection. cron is every 6h, which both
 # satisfies the 24h detection floor with margin AND bounds detection->artifact well
 # under 6h (a single run detects + extracts + pushes end to end).
-# MEASUREMENT TODO (sentence 2): after the FIRST THREE successful automated
-#   runs that actually produced an artifact set, record the measured median + p95 of
-#   detection->push wall time HERE, and tighten/loosen the 6h target accordingly.
-#   (Left blank until the remote exists and three real runs have landed.)
-#     run 1: <build_id> <detected_utc> <pushed_utc> <elapsed>
-#     run 2: ...
-#     run 3: ...
-#     median=<...> p95=<...>  -> 6h target: <kept | tightened to N | loosened to N>
+# MEASURED (2026-09-01, first three automated runs that produced a set). Elapsed is
+#   the first leg's probe start -> the commit job's push completing:
+#     run 32938795702: 24934554  detected 2026-08-26T06:37:10Z  pushed 06:40:47Z  3m37s
+#     run 33046024250: 24957633  detected 2026-08-27T06:31:02Z  pushed 06:36:58Z  5m56s
+#     run 33213343556: 25000182  detected 2026-08-28T21:39:17Z  pushed 21:44:16Z  4m59s
+#     median=4m59s p95=5m56s  -> 6h target: KEPT (two orders of magnitude of headroom).
+#   The pipeline is nowhere near the 6h bound. What consumes the budget is GitHub's
+#   SCHEDULER, not the work: `schedule` runs are best-effort and get dropped under
+#   load, so the nominal 4 ticks/day is a ceiling, not a floor. Observed inter-run
+#   gaps over 2026-08-26..09-01 ran 4.5h to 15.0h (two consecutive ticks lost on
+#   08-27), which pushed 24957633's manifest->push to 9h38m even though its actual
+#   detect->push was 5m56s.
+#   MITIGATION: the cron minute is deliberately OFF the hour. :00 is the most
+#   contended slot on the hosted scheduler and the likeliest to be dropped; an
+#   arbitrary off-peak minute measurably improves delivery. If gaps still exceed the
+#   24h detection floor, the next lever is raising the tick RATE (the no-op path is
+#   one PICS probe, ~7 runner-minutes a tick, free on a public repo) — not making
+#   any single tick more reliable, which is not something a caller can control.
 #
 # HOSTED-ONLY: windows-latest + ubuntu-latest are hosted runners. No self-hosted dependency.
 
@@ -93,7 +103,7 @@ name: scheduled-extract
 
 on:
   schedule:
-    - cron: '0 */6 * * *'   # every 6 hours, UTC
+    - cron: '23 */6 * * *'  # every 6 hours, UTC, deliberately off :00 (see CADENCE note)
   workflow_dispatch:
     inputs:
       build_id:
@@ -374,6 +384,18 @@ jobs:
     needs: forward-capture
     if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
     runs-on: ubuntu-latest
+    permissions:
+      # Job-scoped (the extract legs need neither): re-grants the workflow-level
+      # contents: write for the artifact push, and adds actions: write, which is what
+      # the POST .../actions/workflows/<id>/dispatches call in "Refresh latest-artifacts
+      # channel" requires. WITHOUT actions: write that call fails 403 "Resource not
+      # accessible by integration" — and because the step is non-fatal by design the run
+      # still goes green, so the latest channel silently stops tracking main. That is
+      # exactly what happened between 2026-08-14 and 2026-09-01 (five builds landed on
+      # main while the channel stayed pinned at 24701871). Do not trim this back to
+      # contents-only without also removing the dispatch.
+      contents: write
+      actions: write
     steps:
       # Payloads FIRST, into the runner's temp dir (outside the workspace, so the checkout's
       # clean cannot delete them), before any checkout/.NET/bundle setup: on the common
@@ -478,6 +500,7 @@ jobs:
         # workflow_dispatch is the documented exception to that guard, so we dispatch it
         # explicitly. (Operator pushes with personal credentials — local re-dumps,
         # backfills — DO fire its push trigger; this step covers only the CI path.)
+        # REQUIRES actions: write on this job — see the permissions block above.
         # Gated on sets: a PICS-preservation commit changes no artifact set, so the
         # channel has nothing to pick up. !cancelled(): sets that landed still refresh the
         # channel when a fail-isolated aggregate marked the run red.
@@ -491,7 +514,11 @@ jobs:
         run: |
           gh workflow run publish-latest.yml --ref main
           if ($LASTEXITCODE -ne 0) {
-            Write-Warning "could not dispatch publish-latest.yml (exit $LASTEXITCODE) — latest channel will refresh on the next artifact push."
+            # ::warning:: (not Write-Warning) so the failure lands in the run's annotation
+            # summary. The step stays exit-0 — the artifact set is already pushed and must
+            # not be forfeited — but a silent pwsh warning in a green log is how this went
+            # unnoticed for five builds, so the swallow is now at least loud in the UI.
+            Write-Host "::warning title=latest channel not refreshed::could not dispatch publish-latest.yml (exit $LASTEXITCODE) — the latest channel is now BEHIND main until the next successful dispatch or operator push. Check the commit job's actions: write permission."
             exit 0
           }
           Write-Host "dispatched publish-latest.yml"
