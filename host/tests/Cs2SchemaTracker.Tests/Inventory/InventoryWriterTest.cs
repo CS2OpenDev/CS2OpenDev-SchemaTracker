@@ -8,6 +8,8 @@
 //
 // Deterministic: throwaway temp files, no wall-clock, no Steam.
 
+using System.Text.Json.Nodes;
+
 using Cs2SchemaTracker.Host.Inventory;
 
 using Xunit;
@@ -180,5 +182,104 @@ public sealed class InventoryWriterTest
         var missing = Path.Combine(Path.GetTempPath(), "no-such-" + Guid.NewGuid().ToString("N"), "inv.json");
         Assert.Throws<InvalidDataException>(() => InventoryWriter.AppendBuild(missing,
             new InventoryBuildRecord(BuildId: 1, DateUtc: "x", Era: "e")));
+    }
+
+    /// <summary>
+    /// A seed whose _meta carries a STALE derived counts block plus a key the writer does not
+    /// derive — the shape data/cs2-assets-inventory.json actually has.
+    /// </summary>
+    private const string SeedWithCounts = """
+        {
+          "_meta": {
+            "note": "keep me",
+            "counts": {
+              "builds": 99,
+              "builds_with_content": 99,
+              "builds_with_change_number": 99,
+              "depots": 42,
+              "hand_maintained_key": 7
+            }
+          },
+          "app": {
+            "app_id": 730
+          },
+          "eras": [
+            {
+              "era": "cs2-2026-04-21"
+            }
+          ],
+          "depots": [
+            {
+              "depot_id": 2347771
+            }
+          ],
+          "builds": [
+            {
+              "build_id": 20000000,
+              "date_utc": "2026-01-01T00:00:00Z",
+              "era": "cs2-2026-04-21",
+              "content": "111"
+            }
+          ]
+        }
+
+        """;
+
+    [Fact]
+    public void AppendBuild_Refreshes_Stale_Meta_Counts()
+    {
+        var path = NewInventory(SeedWithCounts);
+        InventoryWriter.AppendBuild(path, new InventoryBuildRecord(
+            BuildId: 20000001,
+            DateUtc: "2026-01-02T00:00:00Z",
+            Era: "cs2-2026-04-21",
+            ChangeNumber: 12345,
+            Content: "222"));
+
+        var counts = JsonNode.Parse(File.ReadAllText(path))!["_meta"]!["counts"]!;
+        Assert.Equal(2, (int)counts["builds"]!);              // was 99
+        Assert.Equal(2, (int)counts["builds_with_content"]!); // was 99
+        Assert.Equal(1, (int)counts["builds_with_change_number"]!);
+        Assert.Equal(1, (int)counts["depots"]!);              // was 42
+        // A key the writer has no derivation for is left exactly as found.
+        Assert.Equal(7, (int)counts["hand_maintained_key"]!);
+        // Non-counts _meta content is still preserved verbatim.
+        Assert.Contains("\"note\": \"keep me\"", File.ReadAllText(path), StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void AppendBuild_Never_Invents_A_Counts_Block()
+    {
+        // The base Seed's _meta has no counts; the writer must not add one.
+        var path = NewInventory(Seed);
+        InventoryWriter.AppendBuild(path, new InventoryBuildRecord(
+            BuildId: 20000001, DateUtc: "2026-01-02T00:00:00Z", Era: "cs2-2026-04-21"));
+
+        var meta = (JsonObject)JsonNode.Parse(File.ReadAllText(path))!["_meta"]!;
+        Assert.False(meta.ContainsKey("counts"));
+        Assert.Equal("keep me", (string)meta["note"]!);
+    }
+
+    [Fact]
+    public void MergeBuildFacts_Adds_Absent_ChangeNumber_And_Title_Only()
+    {
+        var path = NewInventory(SeedWithCounts);
+
+        Assert.True(InventoryWriter.MergeBuildFacts(
+            path, 20000000, content: null, binaries: null, tools: null,
+            changeNumber: 555, title: "Build 20000000 on 1 January 2026"));
+
+        var row = (JsonObject)JsonNode.Parse(File.ReadAllText(path))!["builds"]![0]!;
+        Assert.Equal(555, (int)row["change_number"]!);
+        Assert.Equal("Build 20000000 on 1 January 2026", (string)row["title"]!);
+        Assert.Equal("111", (string)row["content"]!);   // present value untouched
+
+        // Second merge with DIFFERENT values changes nothing — never rewrite what is there.
+        Assert.False(InventoryWriter.MergeBuildFacts(
+            path, 20000000, content: null, binaries: null, tools: null,
+            changeNumber: 999, title: "Counter-Strike 2 Update"));
+        var again = (JsonObject)JsonNode.Parse(File.ReadAllText(path))!["builds"]![0]!;
+        Assert.Equal(555, (int)again["change_number"]!);
+        Assert.Equal("Build 20000000 on 1 January 2026", (string)again["title"]!);
     }
 }

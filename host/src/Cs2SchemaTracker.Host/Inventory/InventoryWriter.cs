@@ -15,7 +15,14 @@
 // Fail-loud: a missing/unparseable inventory, or an attempt to append a build_id that already
 // exists, throws before any bytes are written. Appending is NEW-ONLY (never a silent overwrite);
 // MergeBuildFacts is the one sanctioned edit of an existing row, and it only ADDS absent keys
-// (content / tools / binaries[<platform>]); a present value is never rewritten.
+// (content / tools / binaries[<platform>] / change_number / title); a present value is never
+// rewritten.
+//
+// _meta.counts is a DERIVED summary of builds[] that every writing path refreshes, so it cannot
+// drift from the rows it counts (it had: 376 builds recorded against 387 real ones by 2026-09-01,
+// because the Python ingest that used to maintain it was retired and nothing took the job over).
+// Only keys ALREADY PRESENT in the block are recomputed — a counts block is never invented, and an
+// unknown key is left verbatim — so this stays a lossless RMW like the rest of the writer.
 
 using System.Globalization;
 using System.Text;
@@ -72,20 +79,23 @@ internal static class InventoryWriter
 
         InsertBuildSorted(builds, NewBuildObject(record));
         EnsurePredecessors(builds);   // derive predecessor for the new row + any neighbour it displaced
+        RefreshMetaCounts(root);
         WriteCanonical(inventoryPath, root);
     }
 
     /// <summary>
     /// Merge MISSING forward-capture facts into an existing <c>builds[]</c> row: <c>content</c> and
-    /// <c>tools</c> when the row lacks them, and each <paramref name="binaries"/> platform key the
-    /// row's <c>binaries</c> map lacks. Present values are NEVER rewritten (a hand-curated GID always
-    /// wins over a later forward-capture one). The row is rebuilt in the canonical key order and the
-    /// file rewritten canonically iff something was added. Returns true when the file changed.
-    /// Fail-loud when the build_id is absent (merge is for existing rows; append new ones).
+    /// <c>tools</c> when the row lacks them, each <paramref name="binaries"/> platform key the row's
+    /// <c>binaries</c> map lacks, and <paramref name="changeNumber"/> / <paramref name="title"/> when
+    /// absent. Present values are NEVER rewritten (a hand-curated GID — or a real SteamDB title —
+    /// always wins over a later forward-capture one). The row is rebuilt in the canonical key order
+    /// and the file rewritten canonically iff something was added. Returns true when the file
+    /// changed. Fail-loud when the build_id is absent (merge is for existing rows; append new ones).
     /// </summary>
     public static bool MergeBuildFacts(
         string inventoryPath, long buildId, string? content,
-        IReadOnlyDictionary<string, string>? binaries, string? tools)
+        IReadOnlyDictionary<string, string>? binaries, string? tools,
+        long? changeNumber = null, string? title = null)
     {
         ArgumentException.ThrowIfNullOrEmpty(inventoryPath);
 
@@ -120,6 +130,16 @@ internal static class InventoryWriter
         if (tools is not null && !row.ContainsKey("tools"))
         {
             row["tools"] = tools;
+            changed = true;
+        }
+        if (changeNumber is not null && !row.ContainsKey("change_number"))
+        {
+            row["change_number"] = changeNumber.Value;
+            changed = true;
+        }
+        if (title is not null && !row.ContainsKey("title"))
+        {
+            row["title"] = title;
             changed = true;
         }
         if (binaries is { Count: > 0 })
@@ -159,6 +179,7 @@ internal static class InventoryWriter
         }
 
         builds[idx] = WithCanonicalKeyOrder(row);
+        RefreshMetaCounts(root);
         WriteCanonical(inventoryPath, root);
         return true;
     }
@@ -176,7 +197,47 @@ internal static class InventoryWriter
         var builds = (root["builds"] as JsonArray)
             ?? throw new InvalidDataException($"assets inventory '{inventoryPath}' has no 'builds' array.");
         EnsurePredecessors(builds);
+        RefreshMetaCounts(root);
         WriteCanonical(inventoryPath, root);
+    }
+
+    /// <summary>
+    /// Recompute the derived tallies in <c>_meta.counts</c> from the tree that is about to be
+    /// written. A no-op when the inventory has no <c>_meta.counts</c> block — this never INVENTS
+    /// one — and it only rewrites keys that are already there, leaving any key it does not know how
+    /// to derive verbatim. Idempotent: re-running on an up-to-date tree changes nothing.
+    /// </summary>
+    private static void RefreshMetaCounts(JsonObject root)
+    {
+        if (root["_meta"] is not JsonObject meta || meta["counts"] is not JsonObject counts)
+        {
+            return;
+        }
+        var builds = root["builds"] as JsonArray;
+        var rows = builds?.OfType<JsonObject>().ToList() ?? [];
+
+        int WithKey(string key) => rows.Count(r => r[key] is not null);
+
+        var derived = new Dictionary<string, int>(StringComparer.Ordinal)
+        {
+            ["builds"] = rows.Count,
+            ["builds_with_binaries"] = WithKey("binaries"),
+            ["builds_with_content"] = WithKey("content"),
+            ["builds_with_change_number"] = WithKey("change_number"),
+            ["builds_with_era"] = WithKey("era"),
+            ["builds_with_title"] = WithKey("title"),
+            ["builds_with_tools"] = WithKey("tools"),
+            ["depots"] = (root["depots"] as JsonArray)?.Count ?? 0,
+            ["eras"] = (root["eras"] as JsonArray)?.Count ?? 0,
+        };
+
+        foreach (var key in counts.Select(kv => kv.Key).ToList())
+        {
+            if (derived.TryGetValue(key, out var value))
+            {
+                counts[key] = value;
+            }
+        }
     }
 
     private static void WriteCanonical(string inventoryPath, JsonNode root)
