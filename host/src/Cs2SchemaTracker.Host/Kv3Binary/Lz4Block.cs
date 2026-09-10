@@ -12,7 +12,8 @@
 // === Raw block layout ===
 // A raw LZ4 block is a bare run of sequences. There is no header, no length prefix, no end
 // marker and no checksum — the decoder is driven entirely by an output length the CONTAINER
-// supplies out of band (for KV3 v5 that is the per-segment uncompressedSize header field).
+// supplies out of band (for KV3 that is the uncompressedSize header field of the segment or
+// payload being unpacked).
 //
 //   sequence := token         u8
 //               litExt        0..n bytes    present only when (token >> 4)  == 15
@@ -35,7 +36,7 @@
 // DecodeInto appends into a caller-owned buffer and lets a match reach back into bytes an
 // EARLIER call produced. Compiled-resource binary-blob ("block") payloads are stored as a run
 // of small LZ4 frames in exactly that mode — decoding each frame into a fresh buffer fails,
-// because frame n routinely matches against output produced by frame n-1. The two main KV3 v5
+// because frame n routinely matches against output produced by frame n-1. A KV3 block's main
 // segments are, by contrast, plain independent blocks and go through Decode.
 //
 // === Determinism ===
