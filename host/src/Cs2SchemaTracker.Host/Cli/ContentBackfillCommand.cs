@@ -9,9 +9,17 @@
 // build's manifest spec — which (post core-pak support) fetches + trims the core pak into
 // _content/<gid>/game/core while skipping the already-complete csgo copy.
 //
+// `--pak` selects WHICH pak to plan for (default `core`, the historical behaviour). `--pak csgo`
+// targets the primary content pak, whose store copies also go stale when
+// ContentPakSelector.EnumerateRequiredEntries gains a resource: the stored trim predates the new
+// path, so it is a proper-but-OLD trim. ContentStore's required-set generation marker makes those
+// visible to the planner, and this is the command that re-fetches them — the remedy
+// ExtractCommand's stale-store guard names.
+//
 // DRY-RUN by default (prints the plan, contacts no Steam). `--execute` performs the fetch. It does NOT
-// re-extract gameevents.json — that is a subsequent `extract` pass over the affected builds (the
-// core.gameevents events flow in once the store carries the core pak).
+// re-extract the content artifacts — that is a subsequent `extract` pass over the affected builds
+// (the core.gameevents events, or the newly-required csgo resources, flow in once the store carries
+// them).
 
 using Cs2SchemaTracker.Host.Steam;
 
@@ -60,8 +68,15 @@ internal static class ContentBackfillCommand
             return 66;
         }
 
-        // Today the only newly-tracked pak is the engine core pak; --pak is reserved for future paks.
-        var pak = ContentPak.Core;
+        // Which pak to plan for. Default `core` preserves the original behaviour verbatim; `csgo`
+        // targets the primary pak (the required-set-generation backfill).
+        if (!TryResolvePak(parsed, out var pak))
+        {
+            Console.Error.WriteLine(
+                $"content-backfill: unknown --pak '{(parsed.TryGetValue("pak", out var bad) ? bad : "")}' "
+                + $"(expected one of: {ContentPak.NamesForHelp}).");
+            return 64;
+        }
 
         IReadOnlyList<ContentBackfillPlanner.BackfillTarget> targets;
         try
@@ -96,8 +111,8 @@ internal static class ContentBackfillCommand
         {
             Console.Error.WriteLine(
                 "content-backfill: DRY-RUN (no Steam contact). Re-run with --execute to fetch. After a "
-                + "successful fetch, re-run `extract` over the affected builds so gameevents.json picks "
-                + "up the core.gameevents events.");
+                + $"successful fetch, re-run `extract` over the affected builds so the '{pak.BaseRelDir}' "
+                + "content artifacts are re-emitted from the refreshed store.");
             return 0;
         }
 
@@ -175,8 +190,25 @@ internal static class ContentBackfillCommand
             $"content-backfill: {(throttled ? "STOPPED (Steam throttle)" : "done")} — fetched={fetched} "
             + $"failed={failed} skipped={skipped} this run; {remaining} GID(s) still missing the "
             + $"'{pak.BaseRelDir}' pak (of {targets.Count}). Re-run to resume; then `extract` over the "
-            + "affected builds to fold core.gameevents into gameevents.json.");
+            + $"affected builds to re-emit the '{pak.BaseRelDir}' content artifacts.");
         return (failed > 0 || throttled) ? 1 : 0;
+    }
+
+    /// <summary>The <c>--pak</c> default: the engine core pak, preserving the original behaviour.</summary>
+    internal const string DefaultPakName = "core";
+
+    /// <summary>
+    /// Resolve the <c>--pak</c> value the way <see cref="RunAsync"/> does: absent/empty ⇒
+    /// <see cref="DefaultPakName"/>, otherwise a case-insensitive short pak name. False on an
+    /// unrecognized value (the command then exits 64 naming the accepted set).
+    /// </summary>
+    internal static bool TryResolvePak(IReadOnlyDictionary<string, string> parsed, out ContentPak pak)
+    {
+        ArgumentNullException.ThrowIfNull(parsed);
+        var name = parsed.TryGetValue("pak", out var value) && !string.IsNullOrEmpty(value)
+            ? value
+            : DefaultPakName;
+        return ContentPak.TryParse(name, out pak);
     }
 
     /// <summary>
@@ -194,15 +226,19 @@ internal static class ContentBackfillCommand
     private static void PrintHelp()
     {
         Console.WriteLine(
-@"cs2-schema-tracker content-backfill — fetch newly-tracked content paks for committed builds.
+@"cs2-schema-tracker content-backfill — fetch missing/stale content paks for committed builds.
 
-Fetches the engine core pak (resource/core.gameevents) for every committed content GID whose store
-copy predates core-pak tracking, keyed + deduped by the 2347770 manifest GID (fetched ONCE per GID).
+Fetches one content pak for every committed content GID whose store copy is missing or was trimmed
+under an older required-set generation, keyed + deduped by the 2347770 manifest GID (ONCE per GID).
 
-Usage: cs2-schema-tracker content-backfill [--binaries-root <dir>] [--execute] [--limit N]
-                                           [--delay-seconds N] [--steam-guard <code>]
+Usage: cs2-schema-tracker content-backfill [--binaries-root <dir>] [--pak <csgo|core>] [--execute]
+                                           [--limit N] [--delay-seconds N] [--steam-guard <code>]
 
   --binaries-root <dir>  Store root (default: CS2_BINARIES_ROOT).
+  --pak <csgo|core>      Which content pak to back-fill (default: core, the engine
+                         resource/core.gameevents pak). Use `csgo` to refresh primary-pak store
+                         copies that predate a newly-required content resource — the remedy
+                         `extract` names when it refuses a stale store.
   --execute              Perform the Steam fetch. Omit for a DRY-RUN plan (no Steam contact).
   --limit N              Fetch at most N content GIDs this run (controlled rollout).
   --delay-seconds N      Pause N seconds between GIDs to avoid Steam logon throttling (default 0).
@@ -210,6 +246,6 @@ Usage: cs2-schema-tracker content-backfill [--binaries-root <dir>] [--execute] [
 
 The store is content-addressed + idempotent: the fetch is deduped per content GID, completed GIDs are
 skipped, and the run STOPS cleanly if Steam throttles logons — just re-run to resume. After the fetch,
-re-run `extract` over the affected builds so gameevents.json folds in the core.gameevents events.");
+re-run `extract` over the affected builds so their content artifacts are re-emitted.");
     }
 }

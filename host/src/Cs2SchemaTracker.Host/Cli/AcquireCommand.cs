@@ -978,8 +978,8 @@ internal static class AcquireCommand
     /// UNIFIED ACQUIRE content leg: fetch the selective content pak into <paramref name="outDir"/>
     /// — the SAME directory the binaries were acquired into — so a single <c>extract</c> emits
     /// every content artifact (gameevents, item_definitions, game_modes, surface_properties,
-    /// prop_data, map_overviews, localization) without a separate <c>--content</c> pass or any
-    /// post-hoc injection.
+    /// prop_data, map_overviews, weapon_vdata, localization) without a separate <c>--content</c>
+    /// pass or any post-hoc injection.
     ///
     /// PICS-current resolution (buildId 0): the forward PICS-current capture path for the CURRENT
     /// build — reached whether requested as 'latest' or as the concrete current build_id by number.
@@ -2444,7 +2444,8 @@ Usage:
 
 UNIFIED ACQUIRE (Gap A): the default acquire fetches BINARIES + the selective CONTENT pak co-located in
 ONE output dir, so a single `extract` emits EVERY artifact (entity_schema/convars/commands/... AND
-gameevents/item_definitions/game_modes/localization/surface_properties/prop_data/map_overviews) — no
+gameevents/item_definitions/game_modes/localization/surface_properties/prop_data/map_overviews/
+weapon_vdata) — no
 separate `--content` pass, no post-hoc injection. The content leg runs on the forward PICS-current path
 for the CURRENT build — whether requested as 'latest' OR as the concrete current build_id by number —
 and on any --from-manifest whose spec lists the 2347770 content depot. Pass --binaries-only to SKIP the

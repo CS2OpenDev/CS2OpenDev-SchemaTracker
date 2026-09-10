@@ -1,9 +1,16 @@
-// ContentBackfillPlanner tests — the pure enumeration/dedup/missing-core planning (no Steam).
+// ContentBackfillPlanner tests — the pure enumeration/dedup/missing-pak planning (no Steam).
+//
+// Two axes: the core pak (a GID either has the engine core copy or does not) and, since the
+// required-set generation marker landed, the csgo pak (a GID's copy may be PRESENT but trimmed under
+// an older required set — stale, and a backfill target exactly like a missing one). The planner
+// itself needed no change for the second axis: it asks ContentStore.IsCompleteTrimmedStore, and that
+// is where the generation gate lives.
 
 using System.Globalization;
 using System.Text;
 
 using Cs2SchemaTracker.Host.Steam;
+using Cs2SchemaTracker.Host.Vpk;
 using Cs2SchemaTracker.Tests.Content;
 
 using Xunit;
@@ -117,6 +124,53 @@ public class ContentBackfillPlannerTest
         {
             TryDelete(root);
         }
+    }
+
+    [Fact]
+    public void Plan_Yields_A_Csgo_Gid_Whose_Store_Trim_Predates_The_Current_Required_Set()
+    {
+        var root = NewRoot();
+        try
+        {
+            WriteBuild(root, "1000", "windows-x86_64", 100UL);
+            WriteBuild(root, "2000", "windows-x86_64", 200UL);
+            // GID 100: a CURRENT csgo trim. GID 200: a proper trim of the generation-1 required set
+            // — uncorrupted, fully readable, and exactly the store shape the old self-referential
+            // completeness probe called complete forever.
+            WriteCsgoStore(root, 100UL, current: true);
+            WriteCsgoStore(root, 200UL, current: false);
+
+            var targets = ContentBackfillPlanner.Plan(root, ContentPak.Csgo);
+
+            var target = Assert.Single(targets);
+            Assert.Equal(200UL, target.ContentGid);
+            Assert.Equal(ContentPak.Csgo, target.Pak);
+        }
+        finally
+        {
+            TryDelete(root);
+        }
+    }
+
+    // Write a csgo store copy for `gid` through the production trim writer. `current` stamps the
+    // present required-set generation over the full required set; otherwise it writes the
+    // generation-1 set (no weapons.vdata_c) with no marker — a pre-marker store, verbatim.
+    private static void WriteCsgoStore(string root, ulong gid, bool current)
+    {
+        var work = Path.Combine(root, "_src", gid.ToString(CultureInfo.InvariantCulture));
+        var source = VpkArchive.Open(ContentVpkFixture.Write(work, ContentSamples.StandardEntries()));
+        var contentRoot = Path.Combine(root, ContentStore.ContentDirName);
+        var required = ContentPakSelector.EnumerateRequiredEntries(source);
+        if (current)
+        {
+            ContentStore.EnsureTrimmedStore(source, required, contentRoot, gid, force: false, out _);
+            return;
+        }
+        VpkTrimWriter.Write(
+            source,
+            required.Where(e => !string.Equals(
+                e.FullPath, ContentPakSelector.WeaponVDataRelPath, StringComparison.OrdinalIgnoreCase)).ToList(),
+            ContentStore.ResolveDirVpk(contentRoot, gid));
     }
 
     // Write a REAL complete trimmed core store for `gid`: a self-contained pak01_dir.vpk (core.gameevents

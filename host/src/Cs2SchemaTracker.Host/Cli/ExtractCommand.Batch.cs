@@ -118,6 +118,7 @@ internal static partial class ExtractCommand
     {
         "gameevents.json", "item_definitions.json", "game_modes.json",
         "surface_properties.json", "prop_data.json", "map_overviews.json",
+        "weapon_vdata.json",
     };
 
     // schemaVersion / tool.gitCommit / tool.semver are EXPECTED to drift (family-version stamp +

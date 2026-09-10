@@ -329,7 +329,7 @@ public class AcquireCommandArgsTest
         // Co-location consistency: the forward PICS-current path now co-locates content for the
         // CURRENT build whether requested as 'latest' OR as the concrete current build_id by number.
         // `extract` auto-acquires with the concrete build id it was given, so a content-LESS dir here
-        // would silently drop all 7 content artifacts. Anonymous Steam only resolves the CURRENT
+        // would silently drop all 8 content artifacts. Anonymous Steam only resolves the CURRENT
         // manifest, so this content leg only ever runs when the requested build IS current (a
         // non-current --build <number> fails at binary acquisition before reaching here).
         var fake = new FakeAcquirer();

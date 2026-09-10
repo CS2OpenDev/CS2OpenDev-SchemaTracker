@@ -78,5 +78,15 @@ public static class SchemaFamily
     // unlike 0.9.0 it needs NO walker/era rebuild — any build re-emitted (or newly
     // extracted) through this host carries it. Strictly additive; unset means
     // "not derivable", and multi-member/mixed decompositions stay deliberately unset.
-    public const string Version = "0.10.0";
+    //
+    // 0.11.0: a NEW content artifact, weapon_vdata.json — the per-weapon tuning tables from
+    // scripts/weapons.vdata_c, the first COMPILED Source 2 resource (binary KV3) the host
+    // reads. A verbatim KV3 mirror: 176 top-level entries carried as (key, google.protobuf.Value)
+    // pairs, so the one bare-string entry (generic_data_type) is representable alongside the 175
+    // maps. Strictly additive to the artifact surface — no existing artifact changes shape — but
+    // a new required-per-set file is a surface change, hence the minor bump. The version gate in
+    // EvolutionCommand consequently forces one full schema_evolution rebuild; that is expected.
+    // Corpus rollout is staged: weapon_vdata.json is OMITTABLE but not yet content-depot-GATED
+    // (see ArtifactSet.OmittableContentArtifacts) until the committed corpus carries it.
+    public const string Version = "0.11.0";
 }

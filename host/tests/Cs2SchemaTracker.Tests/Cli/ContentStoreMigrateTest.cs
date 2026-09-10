@@ -143,6 +143,10 @@ public class ContentStoreMigrateTest
             };
             var contentRoot = Path.Combine(root, "_content");
             ContentVpkFixture.Write(ContentStore.StoreDirForGid(contentRoot, Gid), bogus);
+            // Stamp the CURRENT required-set generation so the pre-placed copy looks like a complete,
+            // up-to-date trim: the point of this test is the byte-identity guard, so migrate must
+            // VALIDATE this store rather than re-trim it away as stale.
+            ContentStore.WriteTrimGenerationMarker(contentRoot, Gid, ContentPakSelector.RequiredSetGeneration);
 
             int rc = ContentStoreCommand.Run(new[] { "migrate", "--binaries-root", root, "--reclaim" });
             Assert.Equal(65, rc);

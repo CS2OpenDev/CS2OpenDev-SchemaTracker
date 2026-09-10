@@ -69,6 +69,7 @@ public sealed class ExtractBatchTest
     {
         "gameevents.json", "item_definitions.json", "game_modes.json",
         "localization.json", "surface_properties.json", "prop_data.json", "map_overviews.json",
+        "weapon_vdata.json",
     };
 
     private static string? MatchingPlatform()

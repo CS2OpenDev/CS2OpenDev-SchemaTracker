@@ -19,7 +19,7 @@ The host runs stages 1–4 in a single `extract` invocation, and `--commit` addi
 - **Deterministic.** Same tool version + same inputs ⇒ byte-identical output. JSON is emitted in canonical form (sorted keys, no insignificant whitespace); timestamps come only from the input manifest, never the wall clock; every collection is iterated in a stable order.
 - **Fail-loud, never partial.** Any input failure — a corrupt binary, a missing module, a VPK or KV parse error, an unrecognized schema-system layout — aborts with a non-zero exit *before* any artifact bytes are written.
 - **All-or-nothing.** A commit is either one complete `(build, platform)` set or one complete build across both platforms. There is no partial set. Anything legitimately missing goes in the build-level `omissions.json` with a reason, never a silent skip.
-- **Content-gated artifacts.** The seven content artifacts are required only when the build's `provenance.json` lists the content depot (`2347770`) among its inputs. A build acquired binaries-only, or an era that never shipped a table, records the absence in `omissions.json`.
+- **Content-gated artifacts.** The eight content artifacts are required only when the build's `provenance.json` lists the content depot (`2347770`) among its inputs. A build acquired binaries-only, or an era that never shipped a table, records the absence in `omissions.json`.
 
 `verify-artifacts` re-checks these completeness rules over any committed set and is the gate to run before publishing.
 

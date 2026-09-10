@@ -30,6 +30,7 @@ using Cs2SchemaTracker.Host.Provenance;
 using Cs2SchemaTracker.Host.StringPools;
 using Cs2SchemaTracker.Host.SurfaceProperties;
 using Cs2SchemaTracker.Host.Vpk;
+using Cs2SchemaTracker.Host.WeaponVData;
 using Cs2SchemaTracker.Schemas;
 
 using Google.Protobuf;
@@ -207,6 +208,14 @@ internal static class ArtifactCases
             Emit = outPath => new MapOverviewsEmitter(SchemaFamily.Version, BuildId, Platform)
                 .Emit(BuildMapOverviewsArchive(), outPath),
             Parse = json => ParseStrict<Cs2SchemaTracker.Schemas.MapOverviews>(json),
+            ByteIdenticalRoundTrip = true,
+        },
+        new ArtifactCase
+        {
+            FileName = "weapon_vdata.json",
+            Emit = outPath => new WeaponVDataEmitter(SchemaFamily.Version, BuildId, Platform)
+                .Emit(BuildWeaponVDataArchive(), outPath),
+            Parse = json => ParseStrict<Cs2SchemaTracker.Schemas.WeaponVData>(json),
             ByteIdenticalRoundTrip = true,
         },
         // registry_audit.json is intentionally NOT in this table. Every case here
@@ -635,6 +644,25 @@ internal static class ArtifactCases
         {
             new("resource/overviews", "txt", "de_dust2", Encoding.UTF8.GetBytes(OverviewDust2)),
             new("resource/overviews", "txt", "de_mirage", Encoding.UTF8.GetBytes(OverviewMirage)),
+        };
+        return VpkArchive.Parse("pak01_dir.vpk", BuildEmbeddedVpk(2, files));
+    }
+
+    // ---- weapon_vdata.json fixture (in-memory VPK; scripts/weapons.vdata_c, COMPILED KV3) ----
+
+    /// <summary>
+    /// The REAL shipped weapons.vdata_c (build 25175329, content depot 2347770), committed under
+    /// Kv3Binary/fixtures/ for the reader tests and copied next to the test binary by the csproj.
+    /// A hand-written stub is not an option here: the body is a compressed binary resource, so
+    /// anything synthetic simply fails to decode and the emit would never exercise the mapping.
+    /// </summary>
+    internal static VpkArchive BuildWeaponVDataArchive()
+    {
+        var body = File.ReadAllBytes(
+            Path.Combine(AppContext.BaseDirectory, "Kv3Binary", "fixtures", "weapons.vdata_c"));
+        var files = new List<FileSpec>
+        {
+            new("scripts", "vdata_c", "weapons", body),
         };
         return VpkArchive.Parse("pak01_dir.vpk", BuildEmbeddedVpk(2, files));
     }

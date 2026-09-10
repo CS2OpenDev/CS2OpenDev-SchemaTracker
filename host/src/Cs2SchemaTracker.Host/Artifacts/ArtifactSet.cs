@@ -95,11 +95,22 @@ public static class ArtifactSet
     /// The content artifacts a per-platform omissions entry may legitimately name: every
     /// content-depot-gated file PLUS the build-on-demand <see cref="LocalizationFileName"/> (an era
     /// that genuinely never shipped localization tables records a <c>localization.json</c> omission,
-    /// even though the file itself is never committed). Used by the omission-name validation in
-    /// ArtifactSetValidator.
+    /// even though the file itself is never committed) PLUS <c>weapon_vdata.json</c>. Used by the
+    /// omission-name validation in ArtifactSetValidator.
+    ///
+    /// <c>weapon_vdata.json</c> is omittable-but-NOT-gated, a TEMPORARY asymmetry that mirrors the
+    /// <see cref="LocalizationFileName"/> precedent structurally while differing in reason. The
+    /// artifact is new: every already-committed set predates it, so putting it in
+    /// <see cref="ContentDepotGatedFiles"/> today would make the completeness gate fail every one of
+    /// those sets at once. Listing it here alone means a set that legitimately omits it (an era whose
+    /// content depot ships no <c>scripts/weapons.vdata_c</c>) records a valid omission name, while a
+    /// set that simply predates the artifact is not retroactively incomplete. It MOVES into
+    /// <see cref="ContentDepotGatedFiles"/> in a later change, once the committed corpus carries it
+    /// everywhere the content depot is listed — unlike localization.json, whose exclusion from the
+    /// gated list is permanent (it is never committed at all).
     /// </summary>
     public static readonly IReadOnlyList<string> OmittableContentArtifacts =
-        ContentDepotGatedFiles.Append(LocalizationFileName)
+        ContentDepotGatedFiles.Append(LocalizationFileName).Append("weapon_vdata.json")
             .OrderBy(n => n, StringComparer.Ordinal)
             .ToArray();
 

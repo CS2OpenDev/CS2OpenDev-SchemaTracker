@@ -19,6 +19,12 @@
 // Fail-loud: if the directory file isn't in the content manifest, or the parsed VPK contains zero
 // `.gameevents` entries, the caller fails loud rather than producing a useless partial content tree
 // — these helpers surface that via an empty result the caller asserts on.
+//
+// Versioning: EnumerateRequiredEntries is the SSOT for "which resources do we cover", and the
+// content store persists trims built from it. RequiredSetGeneration (declared immediately above
+// that method) stamps which rule set a stored trim was built under, so a store trimmed under an
+// OLDER set is detected as incomplete instead of silently passing a self-referential completeness
+// probe. Changing what EnumerateRequiredEntries selects REQUIRES bumping that constant.
 
 using System.Globalization;
 
@@ -67,6 +73,38 @@ internal sealed record ContentPak(string BaseRelDir, bool Required)
 
     /// <summary>Every content pak the tracker reads, csgo first (deterministic order).</summary>
     public static readonly IReadOnlyList<ContentPak> All = new[] { Csgo, Core };
+
+    /// <summary>
+    /// The pak's short CLI name — the last segment of <see cref="BaseRelDir"/> (<c>csgo</c> /
+    /// <c>core</c>). This is what <c>content-backfill --pak</c> accepts and what error text prints.
+    /// </summary>
+    public string Name => BaseRelDir[(BaseRelDir.LastIndexOf('/') + 1)..];
+
+    /// <summary>The accepted <c>--pak</c> values, Ordinal-joined for help/error text.</summary>
+    public static string NamesForHelp => string.Join("|", All.Select(p => p.Name));
+
+    /// <summary>
+    /// Resolve a short CLI pak name (<c>csgo</c> / <c>core</c>, case-insensitive) to its
+    /// <see cref="ContentPak"/>. Returns false for an empty or unrecognized value so the caller can
+    /// fail loud with the accepted set rather than silently defaulting.
+    /// </summary>
+    public static bool TryParse(string? name, out ContentPak pak)
+    {
+        pak = Csgo;
+        if (string.IsNullOrEmpty(name))
+        {
+            return false;
+        }
+        foreach (var candidate in All)
+        {
+            if (string.Equals(candidate.Name, name, StringComparison.OrdinalIgnoreCase))
+            {
+                pak = candidate;
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
 /// <summary>
@@ -146,6 +184,12 @@ internal static class ContentPakSelector
     public const string CollisionPropertiesRelPath = "scripts/collision_properties.txt";
 
     /// <summary>
+    /// The weapon VData source (weapons.vdata_c — a COMPILED Source 2 resource, binary KV3).
+    /// Unlike every other entry here it is not a text file; it is fetched and trimmed the same way.
+    /// </summary>
+    public const string WeaponVDataRelPath = "scripts/weapons.vdata_c";
+
+    /// <summary>
     /// The map-overview family (resource/overviews/&lt;map&gt;.txt, KV1; one per map). Many files,
     /// typically spanning several chunks.
     /// </summary>
@@ -156,14 +200,14 @@ internal static class ContentPakSelector
 
     /// <summary>
     /// The BYTE-RANGE-SELECTIVE content fetch plan: for each external
-    /// <c>pak01_&lt;NNN&gt;.vpk</c> that backs a resource the 7 content emitters read, the exact
+    /// <c>pak01_&lt;NNN&gt;.vpk</c> that backs a resource the 8 content emitters read, the exact
     /// union of body byte ranges <c>[EntryOffset, EntryOffset+EntryLength)</c> of those resources —
     /// so the acquirer can fetch ONLY the depot-chunks overlapping them (a sparse pak01 file),
     /// shrinking the per-build content fetch from ~1.3 GB to ~tens of MB. This is the SINGLE live
     /// content selector; the resources covered are the SSOT in <see cref="EnumerateRequiredEntries"/>
     /// (every `.gameevents`, items_game.txt, gamemodes.txt, the resource/csgo_&lt;lang&gt;.txt token
-    /// tables, the surfaceproperties_*.txt family, propdata.txt + collision_properties.txt, and the
-    /// resource/overviews/*.txt family).
+    /// tables, the surfaceproperties_*.txt family, propdata.txt + collision_properties.txt, the
+    /// resource/overviews/*.txt family, and the compiled weapons.vdata_c).
     ///
     /// The directory index (<c>pak01_dir.vpk</c>) is a WHOLE-file fetch (it is the VPK index and is
     /// already pulled in Phase A). Embedded resources (archive index 0x7FFF) ride in that index and
@@ -264,14 +308,56 @@ internal static class ContentPakSelector
         return merged;
     }
 
+    // ============================================================================================
+    //  REQUIRED-SET GENERATION — READ BEFORE EDITING EnumerateRequiredEntries BELOW
+    // ============================================================================================
+    //
+    //  *** INCREMENT RequiredSetGeneration WHENEVER EnumerateRequiredEntries CHANGES WHICH ***
+    //  ***                          RESOURCES IT SELECTS. NO EXCEPTIONS.                    ***
+    //
+    // The content store persists a TRIMMED pak per content GID holding only the entries that were
+    // required WHEN IT WAS WRITTEN. Nothing in those stored bytes records which rule set produced
+    // them, so a completeness probe run over the stored pak is self-referential: it can only ever
+    // see the paths the trim already kept, and a store missing a NEWLY-required path reads back as
+    // perfectly complete. This constant is the out-of-band fact that breaks that circularity —
+    // VpkTrimWriter stamps it beside the trimmed pair (ContentStore.TrimMarkerFileName) and
+    // ContentStore.IsCompleteTrimmedStore rejects any store stamped below the current value.
+    //
+    // Forget to bump it and the failure is SILENT and CORPUS-WIDE: every stale store keeps passing,
+    // acquires/backfills skip it as already-complete, and `extract` records a FALSE
+    // CONTENT_NOT_SHIPPED_THIS_ERA omission for a resource the build demonstrably ships. This
+    // constant is the mechanism's only weak point; it is a human promise, nothing enforces it.
+    //
+    // History (one line per generation, newest last):
+    //   1 — every `.gameevents`, scripts/items/items_game.txt, gamemodes.txt, the
+    //       resource/csgo_<lang>.txt token tables, the scripts/surfaceproperties_*.txt family,
+    //       scripts/propdata.txt + scripts/collision_properties.txt, resource/overviews/*.txt.
+    //       (Pre-marker: stores written under this set carry NO marker file at all.)
+    //   2 — adds scripts/weapons.vdata_c (the compiled weapon VData resource).
+
     /// <summary>
-    /// Enumerate the VPK directory entries of EXACTLY the resources the 7 content emitters consume:
+    /// The identity of the CURRENT <see cref="EnumerateRequiredEntries"/> rule set. Bump it in the
+    /// SAME change that alters which resources that method selects, and add a history line above.
+    /// Persisted per store copy by <see cref="ContentStore.EnsureTrimmedStore"/> and enforced by
+    /// <see cref="ContentStore.IsCompleteTrimmedStore"/>.
+    /// </summary>
+    public const int RequiredSetGeneration = 2;
+
+    /// <summary>
+    /// The first generation whose stored trims carry a marker file. A store with NO marker was
+    /// written before the marker existed, i.e. under generation
+    /// <see cref="FirstMarkedGeneration"/> - 1.
+    /// </summary>
+    public const int FirstMarkedGeneration = 2;
+
+    /// <summary>
+    /// Enumerate the VPK directory entries of EXACTLY the resources the 8 content emitters consume:
     /// every `.gameevents`, scripts/items/items_game.txt, the loose gamemodes.txt, every
     /// resource/csgo_&lt;lang&gt;.txt, the scripts/surfaceproperties_*.txt family, scripts/propdata.txt
-    /// + scripts/collision_properties.txt, and the resource/overviews/*.txt family. Returns the
-    /// entries in the archive's deterministic (Ordinal-by-FullPath) order. Returns EMPTY when there is
-    /// no `.gameevents` entry (the wrong VPK) — the gameevents fail-loud gate the byte-range selector
-    /// enforces.
+    /// + scripts/collision_properties.txt, the resource/overviews/*.txt family, and the compiled
+    /// scripts/weapons.vdata_c. Returns the entries in the archive's deterministic
+    /// (Ordinal-by-FullPath) order. Returns EMPTY when there is no `.gameevents` entry (the wrong
+    /// VPK) — the gameevents fail-loud gate the byte-range selector enforces.
     ///
     /// This is the single source of truth for "which resources do we cover" (consumed by
     /// <see cref="SelectContentByteRanges"/> for the fetch plan AND by <see cref="VpkTrimWriter"/>
@@ -294,6 +380,7 @@ internal static class ContentPakSelector
                 || string.Equals(entry.FullPath, GameModesRelPath, StringComparison.OrdinalIgnoreCase)
                 || string.Equals(entry.FullPath, PropDataRelPath, StringComparison.OrdinalIgnoreCase)
                 || string.Equals(entry.FullPath, CollisionPropertiesRelPath, StringComparison.OrdinalIgnoreCase)
+                || string.Equals(entry.FullPath, WeaponVDataRelPath, StringComparison.OrdinalIgnoreCase)
                 || LocalizationFileRegex.IsMatch(entry.FullPath)
                 || SurfacePropertiesFileRegex.IsMatch(entry.FullPath)
                 || MapOverviewFileRegex.IsMatch(entry.FullPath))

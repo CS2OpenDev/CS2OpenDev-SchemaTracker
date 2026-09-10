@@ -265,15 +265,17 @@ internal static class Program
     {
         var cmd = new Command(
             "content-backfill",
-            "Internal: fetch newly-tracked content paks (the engine core pak / resource/core.gameevents) for committed content GIDs that predate them. Dry-run by default; --execute performs the Steam fetch.");
+            "Internal: fetch missing/stale content paks for committed content GIDs — the engine core pak by default, or the primary csgo pak whose store copy predates a newly-required content resource. Dry-run by default; --execute performs the Steam fetch.");
 
         var binariesRoot = new Option<string?>("--binaries-root", "Store root (default: CS2_BINARIES_ROOT / appsettings BinariesRoot).");
+        var pak = new Option<string?>("--pak", "Which content pak to back-fill: csgo | core (default: core).");
         var execute = new Option<bool>("--execute", "Perform the Steam fetch (default: dry-run plan only, no Steam contact).");
         var limit = new Option<string?>("--limit", "Fetch at most N content GIDs this run (for a controlled rollout).");
         var delaySeconds = new Option<string?>("--delay-seconds", "Pause N seconds between GIDs to avoid Steam logon throttling (default 0).");
         var steamGuard = new Option<string?>("--steam-guard", "Steam Guard code, if credentialed auth is required for historical manifests.");
 
         cmd.AddOption(binariesRoot);
+        cmd.AddOption(pak);
         cmd.AddOption(execute);
         cmd.AddOption(limit);
         cmd.AddOption(delaySeconds);
@@ -284,6 +286,7 @@ internal static class Program
             var p = ctx.ParseResult;
             var a = new ArgList();
             a.AddValue("--binaries-root", p.GetValueForOption(binariesRoot));
+            a.AddValue("--pak", p.GetValueForOption(pak));
             a.AddFlag("--execute", p.GetValueForOption(execute));
             a.AddValue("--limit", p.GetValueForOption(limit));
             a.AddValue("--delay-seconds", p.GetValueForOption(delaySeconds));

@@ -2,7 +2,7 @@
 //
 // === Why this exists ===
 // The CS2 content depot (2347770) ships a ~1.7 GB pak01 archive set per platform,
-// but the 7 content emitters read only ~50 MB of it (the .gameevents entries plus a
+// but the 8 content emitters read only ~50 MB of it (the .gameevents entries plus a
 // handful of KV text files — see ContentPakSelector.EnumerateRequiredEntries). This
 // writer TRIMS a source pak01 down to exactly those required entries, emitting a
 // genuine, valid VPK1 that VpkArchive.Open reads with ZERO reader change:
@@ -33,6 +33,16 @@
 // place only on full success, so an interrupted repack never leaves a half-written
 // _content/<gid> a later run would treat as authoritative.
 //
+// === Sidecar ===
+// A caller may hand Write an optional VpkTrimSidecar: one tiny text file staged and
+// moved into place TOGETHER with the pair, so the trimmed bytes and the fact that
+// describes them can never be out of step. The content store uses it to stamp the
+// ContentPakSelector.RequiredSetGeneration the trim was built under — the trimmed
+// tree itself cannot record which selection rules produced it, so that fact has to
+// ride alongside. The sidecar content is supplied by the caller and must be a pure
+// function of that fact (no timestamps, paths, or environment state) or the store
+// stops being byte-reproducible.
+//
 // === independence ===
 // Hand-rolled against the documented VPK1 on-disk format (see VpkArchive.cs header);
 // no ValveResourceFormat / ValveKeyValue / VPK-tool dependency.
@@ -41,6 +51,16 @@ using System.Buffers.Binary;
 using System.Text;
 
 namespace Cs2SchemaTracker.Host.Vpk;
+
+/// <summary>
+/// A tiny text file written into the trimmed pak's directory as part of the SAME atomic move that
+/// puts <c>pak01_dir.vpk</c> + <c>pak01_000.vpk</c> in place — so a trimmed store never carries
+/// bytes without its sidecar, nor a sidecar without its bytes. <paramref name="FileName"/> is a
+/// bare file name (no directory separators); <paramref name="Content"/> is written UTF-8, no BOM,
+/// verbatim, and MUST be a pure function of what it records (no timestamps, paths, or environment
+/// state) so repacking the same inputs stays byte-identical.
+/// </summary>
+internal readonly record struct VpkTrimSidecar(string FileName, string Content);
 
 internal static class VpkTrimWriter
 {
@@ -55,9 +75,12 @@ internal static class VpkTrimWriter
     /// Repack <paramref name="required"/> (entries belonging to <paramref name="source"/>) into a
     /// trimmed VPK1 pair written at <paramref name="dirVpkPath"/> (the <c>pak01_dir.vpk</c>) and its
     /// sibling <c>pak01_000.vpk</c> (derived from the dir path's <c>_dir</c> base name). The two files
-    /// are staged in a sibling <c>.vpktrim</c> dir and moved into place atomically on success.
+    /// — plus <paramref name="sidecar"/> when supplied — are staged in a sibling <c>.vpktrim</c> dir
+    /// and moved into place atomically on success, so the pair and its sidecar land together or not
+    /// at all.
     /// </summary>
-    public static void Write(VpkArchive source, IReadOnlyList<VpkDirectoryEntry> required, string dirVpkPath)
+    public static void Write(VpkArchive source, IReadOnlyList<VpkDirectoryEntry> required, string dirVpkPath,
+        VpkTrimSidecar? sidecar = null)
     {
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(required);
@@ -68,6 +91,15 @@ internal static class VpkTrimWriter
             // no .gameevents) is supposed to fire first. Refuse rather than emit a useless pak.
             throw new ArgumentException(
                 "refusing to write a trimmed VPK with zero entries.", nameof(required));
+        }
+
+        if (sidecar is { } s
+            && (string.IsNullOrEmpty(s.FileName)
+                || s.FileName.Contains('/', StringComparison.Ordinal)
+                || s.FileName.Contains('\\', StringComparison.Ordinal)))
+        {
+            throw new ArgumentException(
+                $"VpkTrimWriter: sidecar file name '{s.FileName}' must be a bare file name.", nameof(sidecar));
         }
 
         var (dirBytes, chunkBytes) = Build(source, required);
@@ -91,10 +123,22 @@ internal static class VpkTrimWriter
             string stagedChunk = Path.Combine(stageDir, Path.GetFileName(chunkFull));
             File.WriteAllBytes(stagedDir, dirBytes);
             File.WriteAllBytes(stagedChunk, chunkBytes);
+            // UTF-8 without a BOM and with the caller's bytes verbatim: the sidecar is compared and
+            // reproduced byte-for-byte, so no encoding preamble and no re-formatting.
+            string? stagedSidecar = null;
+            if (sidecar is { } side)
+            {
+                stagedSidecar = Path.Combine(stageDir, side.FileName);
+                File.WriteAllText(stagedSidecar, side.Content, new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
+            }
 
             Directory.CreateDirectory(targetDir);
             MoveOverwrite(stagedDir, dirFull);
             MoveOverwrite(stagedChunk, chunkFull);
+            if (stagedSidecar is not null && sidecar is { } moved)
+            {
+                MoveOverwrite(stagedSidecar, Path.Combine(targetDir, moved.FileName));
+            }
         }
         finally
         {

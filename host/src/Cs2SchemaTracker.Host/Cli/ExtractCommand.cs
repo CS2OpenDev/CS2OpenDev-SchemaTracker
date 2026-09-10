@@ -14,6 +14,15 @@
 //
 // The undocumented --binaries <dir> hook below runs ONLY the descriptor extractor over a directory
 // of input binaries; it's a development hook, not a public API.
+//
+// STALE CONTENT STORE GUARD (step 1c of RunExtract): when the content pak resolves out of the
+// content-addressed store, that store copy is a TRIM — it holds only the resources the required set
+// covered when it was written. A trim from an older required-set generation is missing bytes this
+// build genuinely ships, and the per-artifact HasSource probes cannot tell that apart from "the era
+// never shipped it": they would record a FALSE CONTENT_NOT_SHIPPED_THIS_ERA omission into the
+// committed corpus. So a stale store ABORTS the extract before any artifact byte, naming the GID,
+// both generations, and the `content-backfill --pak csgo --execute` remedy. A CO-LOCATED pak (the
+// migrate / live-install case) is the untrimmed original, carries no marker, and is untouched.
 
 using System.Security.Cryptography;
 
@@ -39,6 +48,7 @@ using Cs2SchemaTracker.Host.StringPools;
 using Cs2SchemaTracker.Host.SurfaceProperties;
 using Cs2SchemaTracker.Host.Vpk;
 using Cs2SchemaTracker.Host.Walker;
+using Cs2SchemaTracker.Host.WeaponVData;
 using Cs2SchemaTracker.Schemas;
 
 using Google.Protobuf;
@@ -261,6 +271,17 @@ internal static partial class ExtractCommand
         if (!VerifyAgainstCommittedProvenance(build, platform, binariesDir))
         {
             return 65;   // EX_DATAERR — input bytes don't match the committed provenance.
+        }
+
+        // 1c. STALE CONTENT STORE guard. When the content pak comes from the content-addressed
+        //     store, refuse to extract from a trim built under an OLDER required-set generation:
+        //     its missing resources would be misread as "this era never shipped them" and written
+        //     into the corpus as false CONTENT_NOT_SHIPPED_THIS_ERA omissions. Runs BEFORE the walk
+        //     and before any artifact byte; a co-located pak (no store copy) is not gated.
+        if (!TryGuardContentStoreGeneration(build, platform, binariesDir, out var staleStoreError))
+        {
+            Console.Error.WriteLine(staleStoreError);
+            return 65;   // EX_DATAERR — the resolved content input is stale, not usable.
         }
 
         // 1b. Resolve the per-era walker binary + the era's expected layout signature. Done AFTER
@@ -1040,7 +1061,7 @@ internal static partial class ExtractCommand
         LocalizationOutput? LocalizationFingerprint);
 
     /// <summary>
-    /// Emit the seven content artifacts into <paramref name="stagingDir"/>, gated on a co-located
+    /// Emit the eight content artifacts into <paramref name="stagingDir"/>, gated on a co-located
     /// content-depot <c>pak01_dir.vpk</c>. The VPK is opened ONCE and shared
     /// across the emitters. For each artifact: if its source genuinely ships in this build
     /// (<c>HasSource</c>) the emitter runs (and still fails loud on corruption / a missing backing
@@ -1048,7 +1069,7 @@ internal static partial class ExtractCommand
     /// collected, never a throw. Returns one <see cref="ContentArtifactOmission"/> per genuinely
     /// absent artifact (reason <c>CONTENT_NOT_SHIPPED_THIS_ERA</c>), which the caller records in the
     /// build-level omissions.json AFTER a clean promote. When the whole content depot is absent (no
-    /// VPK) the seven are the documented binaries-only skip and NO content omissions are returned
+    /// VPK) the eight are the documented binaries-only skip and NO content omissions are returned
     /// (the content depot is not in provenance, so the validator does not require the files) and the
     /// localization fingerprint is null (provenance.localization stays absent).
     /// </summary>
@@ -1075,7 +1096,7 @@ internal static partial class ExtractCommand
     }
 
     /// <summary>
-    /// Emit the seven content artifacts from an EXPLICIT content <c>pak01_dir.vpk</c> at
+    /// Emit the eight content artifacts from an EXPLICIT content <c>pak01_dir.vpk</c> at
     /// <paramref name="vpkPath"/> into <paramref name="stagingDir"/> — the resolution-independent
     /// core of <see cref="EmitContentArtifacts"/>. Shared by the normal extract path (which resolves
     /// the VPK via <see cref="TryFindGameEventsVpk"/>) and the <c>content-store migrate</c> validation
@@ -1098,7 +1119,7 @@ internal static partial class ExtractCommand
 
         // The engine core pak is OPTIONAL: opened only when resolved (present in the store / co-located).
         // Its .gameevents entries are merged into gameevents.json alongside the csgo pak's; it carries
-        // NOTHING the other six emitters read, so they stay on the csgo archive only.
+        // NOTHING the other seven emitters read, so they stay on the csgo archive only.
         var coreArchive = string.IsNullOrEmpty(corePakPath) ? null : VpkArchive.Open(corePakPath);
         var gameEventArchives = coreArchive is null
             ? new[] { archive }
@@ -1143,6 +1164,9 @@ internal static partial class ExtractCommand
             new ContentArtifactSpec("map_overviews.json", MapOverviewsEmitter.HasSource,
                 (a, o) => new MapOverviewsEmitter(SchemaFamily.Version, build, platform).Emit(a, o),
                 "resource/overviews/*.txt absent from this build's content depot"),
+            new ContentArtifactSpec("weapon_vdata.json", WeaponVDataEmitter.HasSource,
+                (a, o) => new WeaponVDataEmitter(SchemaFamily.Version, build, platform).Emit(a, o),
+                "scripts/weapons.vdata_c absent from this build's content depot"),
         };
 
         var omissions = new List<ContentArtifactOmission>();
@@ -1424,7 +1448,7 @@ internal static partial class ExtractCommand
     ///         (back-compat during migration and for dev <c>--out</c> trees).</item>
     /// </list>
     /// Returns false (documented skip) when neither is present. Everything downstream
-    /// (<see cref="EmitContentArtifacts"/>, all 7 specs, <see cref="VpkArchive.Open"/>) is unchanged:
+    /// (<see cref="EmitContentArtifacts"/>, all 8 specs, <see cref="VpkArchive.Open"/>) is unchanged:
     /// the resolved pak is opened ONCE and emits all content artifacts. A PRESENT-but-corrupt
     /// manifest-record.json fails loud inside the store resolver, never a silent skip.
     /// </summary>
@@ -1440,6 +1464,60 @@ internal static partial class ExtractCommand
             .OrderBy(p => p, StringComparer.Ordinal)
             .FirstOrDefault() ?? "";
         return !string.IsNullOrEmpty(vpkPath);
+    }
+
+    /// <summary>
+    /// The STALE CONTENT STORE guard: false (with an actionable <paramref name="error"/>) when the
+    /// content pak for (build, platform) resolves out of the content-addressed store AND that store
+    /// copy was trimmed under a required-set generation older than
+    /// <see cref="ContentPakSelector.RequiredSetGeneration"/>.
+    ///
+    /// Only a STORE-resolved pak is gated. A co-located <c>pak01_dir.vpk</c> (the
+    /// <c>content-store migrate</c> / live-install case) is the untrimmed original — no selection
+    /// was ever applied to it, so it carries no generation marker and must keep working unchanged.
+    /// A build with no content pak at all is the documented binaries-only skip and is not gated
+    /// either.
+    ///
+    /// This is the one content check that must FAIL LOUD rather than self-heal: extract has no
+    /// source pak to re-trim from, and the alternative — emitting from the stale trim — silently
+    /// writes a false <c>CONTENT_NOT_SHIPPED_THIS_ERA</c> omission for every resource the trim
+    /// predates. The caller aborts with EX_DATAERR before the walk, so no artifact byte is written.
+    /// </summary>
+    internal static bool TryGuardContentStoreGeneration(
+        string build, string platform, string binariesDir, out string error)
+    {
+        error = "";
+        if (!ContentStore.TryResolveStorePak(binariesDir, ContentPak.Csgo, out _))
+        {
+            return true;   // co-located pak, or no content at all — nothing store-shaped to gate.
+        }
+        var contentRoot = ContentStore.RootForTupleDir(binariesDir);
+        if (contentRoot is null || !ContentStore.TryReadContentGid(binariesDir, out var gid))
+        {
+            // Unreachable: TryResolveStorePak succeeded, so both of these resolved a moment ago.
+            // Never turn an unnameable shape into an abort.
+            return true;
+        }
+        if (ContentStore.IsTrimGenerationCurrent(contentRoot, gid, ContentPak.Csgo, out var reason))
+        {
+            return true;
+        }
+
+        error =
+            $"extract: STALE CONTENT STORE for (build {build}, {platform}) — content depot " +
+            $"{ContentStore.ContentDepotId} GID {gid}." + Environment.NewLine +
+            $"  {ContentStore.ContentDirName}/{gid}/{ContentPak.Csgo.BaseRelDir}: {reason}." +
+            Environment.NewLine +
+            "  That stored trim predates a resource the CURRENT required set covers, so the bytes are " +
+            "simply not in it." + Environment.NewLine +
+            "  Extracting from it would record a FALSE CONTENT_NOT_SHIPPED_THIS_ERA omission — " +
+            "asserting this build never shipped a file it demonstrably does — into the committed " +
+            "corpus." + Environment.NewLine +
+            "  Refresh this GID's content store copy, then re-run extract:" + Environment.NewLine +
+            $"      cs2-schema-tracker content-backfill --pak {ContentPak.Csgo.Name} --execute" +
+            Environment.NewLine +
+            "  No artifacts written.";
+        return false;
     }
 
     /// <summary>

@@ -415,7 +415,7 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
                 // ---- Phase B: parse + select the minimal BYTE-RANGE set ----
                 var archive = VpkArchive.Open(dirVpkPath);
                 // Build the byte-range-selective fetch plan: the exact body byte ranges of the
-                // resources our 7 content emitters read, grouped by backing external
+                // resources our 8 content emitters read, grouped by backing external
                 // pak01_<NNN>.vpk. The acquirer then fetches ONLY the depot-chunks overlapping
                 // those ranges (a sparse pak01 file), shrinking the per-build content fetch from
                 // ~1.3 GB to tens of MB and avoiding the CDN 503 storm.

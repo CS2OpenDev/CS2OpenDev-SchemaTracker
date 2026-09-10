@@ -6,6 +6,7 @@
 //
 //   <contentStoreRoot>/<gid>/game/csgo/pak01_dir.vpk
 //   <contentStoreRoot>/<gid>/game/csgo/pak01_000.vpk
+//   <contentStoreRoot>/<gid>/game/csgo/trim-generation.json
 //
 // where contentStoreRoot is the `_content` directory that lives directly under the
 // binaries STORE ROOT (the dir that holds every <build>/<platform> tuple dir), i.e.
@@ -17,8 +18,27 @@
 // `<BinariesRoot>/_content` — a CHILD of BinariesRoot, not its parent. The store
 // root reached by walking two levels up from a tuple dir is BinariesRoot itself; we
 // derive contentStoreRoot from there.
+//
+// === The trim-generation marker ===
+// A stored trim holds ONLY the entries ContentPakSelector.EnumerateRequiredEntries selected when it
+// was written, and the VPK tree records nothing about which rule set that was. So asking the stored
+// pak "are all your required entries present?" is circular — the required set derived FROM a stale
+// trim is exactly what the stale trim contains, every entry reads and CRC-verifies, and the answer
+// is always yes. That is how a store trimmed before a resource was added stays "complete" forever
+// while extract records a FALSE CONTENT_NOT_SHIPPED_THIS_ERA omission for it.
+//
+// trim-generation.json breaks the circle: one deterministic line,
+// {"required_set_generation":<n>}, written into the GID/pak dir by the same atomic move that lands
+// the trimmed pair (never separately), holding ContentPakSelector.RequiredSetGeneration as of the
+// trim. IsCompleteTrimmedStore treats absent / unparseable / below-current as INCOMPLETE, which is
+// all EnsureTrimmedStore and ContentBackfillPlanner need to start self-healing and planning.
+//
+// The gate applies to REQUIRED paks only (ContentPak.Csgo). See IsCompleteTrimmedStore for why the
+// non-required core pak is stamped but not enforced.
 
 using System.Globalization;
+using System.Text;
+using System.Text.Json;
 
 using Cs2SchemaTracker.Host.Vpk;
 
@@ -26,7 +46,9 @@ namespace Cs2SchemaTracker.Host.Steam;
 
 internal static class ContentStore
 {
-    /// <summary>The two files a PROPER trimmed store owns (everything else in the GID dir is legacy stray).</summary>
+    /// <summary>The two pak files a PROPER trimmed store owns (every OTHER pak01_*.vpk in the GID
+    /// dir is legacy stray). The third file a proper store owns is
+    /// <see cref="TrimMarkerFileName"/>.</summary>
     private const string TrimDirVpkName = "pak01_dir.vpk";
     private const string TrimChunkVpkName = "pak01_000.vpk";
 
@@ -53,6 +75,129 @@ internal static class ContentStore
     public const string ContentDirName = "_content";
 
     /// <summary>
+    /// The trim-generation marker file, written into the GID/pak dir beside <c>pak01_dir.vpk</c>.
+    /// Deliberately OUTSIDE the <c>pak01_*.vpk</c> shape <see cref="PruneStrayStoreChunks"/>
+    /// sweeps, and explicitly kept there as well.
+    /// </summary>
+    public const string TrimMarkerFileName = "trim-generation.json";
+
+    /// <summary>The single property the marker carries.</summary>
+    private const string TrimMarkerProperty = "required_set_generation";
+
+    /// <summary>
+    /// The EXACT marker file content for <paramref name="generation"/>: one JSON object and a
+    /// trailing newline, invariant-formatted. A pure function of the generation — no timestamps, no
+    /// paths, no environment state — so two stores at the same generation are byte-identical here.
+    /// </summary>
+    internal static string TrimMarkerContent(int generation)
+        => "{\"" + TrimMarkerProperty + "\":"
+            + generation.ToString(CultureInfo.InvariantCulture) + "}\n";
+
+    /// <summary>The marker path for a GID's pak dir (csgo pak by default).</summary>
+    public static string TrimMarkerPath(string contentStoreRoot, ulong gid, ContentPak? pak = null)
+        => Path.Combine(StoreDirForGid(contentStoreRoot, gid, pak), TrimMarkerFileName);
+
+    /// <summary>
+    /// Stamp the marker for <paramref name="generation"/> into an EXISTING store dir. Production
+    /// NEVER calls this: <see cref="EnsureTrimmedStore"/> hands the marker to
+    /// <see cref="VpkTrimWriter.Write"/> so it moves into place with the trimmed pair and the two
+    /// can never disagree. This is the seam for tests that pre-place a store by hand (and for a
+    /// future one-shot re-stamp migration).
+    /// </summary>
+    internal static void WriteTrimGenerationMarker(
+        string contentStoreRoot, ulong gid, int generation, ContentPak? pak = null)
+    {
+        var path = TrimMarkerPath(contentStoreRoot, gid, pak);
+        Directory.CreateDirectory(Path.GetDirectoryName(path)!);
+        File.WriteAllText(path, TrimMarkerContent(generation),
+            new UTF8Encoding(encoderShouldEmitUTF8Identifier: false));
+    }
+
+    /// <summary>
+    /// Read the required-set generation a stored trim was written under. False when the marker file
+    /// is absent, is not a JSON object, lacks the property, or the property is not an integer — the
+    /// caller distinguishes absent from unparseable by testing <see cref="File.Exists"/> first.
+    /// </summary>
+    internal static bool TryReadTrimGeneration(
+        string contentStoreRoot, ulong gid, ContentPak? pak, out int generation)
+    {
+        generation = 0;
+        var path = TrimMarkerPath(contentStoreRoot, gid, pak);
+        if (!File.Exists(path))
+        {
+            return false;
+        }
+        try
+        {
+            using var doc = JsonDocument.Parse(File.ReadAllText(path));
+            if (doc.RootElement.ValueKind != JsonValueKind.Object
+                || !doc.RootElement.TryGetProperty(TrimMarkerProperty, out var value)
+                || value.ValueKind != JsonValueKind.Number)
+            {
+                return false;
+            }
+            return value.TryGetInt32(out generation);
+        }
+        catch (Exception ex) when (ex is JsonException or IOException or UnauthorizedAccessException)
+        {
+            generation = 0;
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// True iff the store copy for <paramref name="gid"/> was trimmed under the CURRENT
+    /// <see cref="ContentPakSelector.RequiredSetGeneration"/> (or a newer one — a store written by a
+    /// later build of the tool is a superset, never something to downgrade). Absent, unparseable, or
+    /// below-current ⇒ false with a <paramref name="reason"/> naming BOTH generations. This is the
+    /// single question the extract-time guard and the store-completeness probe both ask.
+    /// </summary>
+    public static bool IsTrimGenerationCurrent(
+        string contentStoreRoot, ulong gid, ContentPak? pak, out string reason)
+    {
+        int current = ContentPakSelector.RequiredSetGeneration;
+        if (!File.Exists(TrimMarkerPath(contentStoreRoot, gid, pak)))
+        {
+            reason =
+                $"stored trim carries no '{TrimMarkerFileName}', so it was written for required-set "
+                + $"generation {ContentPakSelector.FirstMarkedGeneration - 1} or older (markers begin at "
+                + $"generation {ContentPakSelector.FirstMarkedGeneration}); current is {current}";
+            return false;
+        }
+        if (!TryReadTrimGeneration(contentStoreRoot, gid, pak, out int stored))
+        {
+            reason =
+                $"stored trim's '{TrimMarkerFileName}' is unreadable, so its required-set generation "
+                + $"is treated as {ContentPakSelector.FirstMarkedGeneration - 1} or older; current is {current}";
+            return false;
+        }
+        if (stored < current)
+        {
+            reason = $"stored trim was written for required-set generation {stored}; current is {current}";
+            return false;
+        }
+        reason = "";
+        return true;
+    }
+
+    /// <summary>
+    /// Whether the trim-generation gate is ENFORCED for <paramref name="pak"/>.
+    ///
+    /// Only REQUIRED paks (<see cref="ContentPak.Csgo"/>) are gated. Every resource
+    /// <see cref="ContentPakSelector.EnumerateRequiredEntries"/> has ever gained — items_game,
+    /// gamemodes, the localization tables, surfaceproperties, propdata/collision, the map overviews,
+    /// weapons.vdata_c — lives in the csgo pak, so a generation bump never changes what the
+    /// gameevents-only core pak would select: its selection is the `.gameevents` rule, unchanged
+    /// since generation 1. Enforcing the gate there would mark every core store stale on a
+    /// csgo-only rule change and force ~387 authenticated Steam re-fetches that cannot alter one
+    /// emitted byte, while breaking the graceful absence semantics
+    /// <see cref="SteamAnonymousAcquirer"/>'s core leg and <see cref="ContentBackfillPlanner"/>
+    /// depend on. The marker is still WRITTEN for the core pak (so the fact is on disk if the core
+    /// selection ever does change and this gate has to widen), just not enforced.
+    /// </summary>
+    private static bool GenerationGateApplies(ContentPak pak) => pak.Required;
+
+    /// <summary>
     /// The per-GID store dir for a pak's trimmed pair (<c>&lt;root&gt;/&lt;gid&gt;/&lt;pak base dir&gt;</c>,
     /// e.g. <c>.../game/csgo</c> or <c>.../game/core</c>). Both paks of a build share the ONE content
     /// GID, so they sit side-by-side under it. Defaults to the csgo pak so every existing caller is
@@ -77,17 +222,29 @@ internal static class ContentStore
 
     /// <summary>
     /// True iff a store copy exists for <paramref name="gid"/> AND it is a COMPLETE, self-contained
-    /// proper trim: its <c>pak01_dir.vpk</c> parses, carries at least one <c>.gameevents</c> entry, and
-    /// EVERY <see cref="ContentPakSelector.EnumerateRequiredEntries"/> entry resolves + reads +
-    /// CRC-verifies (i.e. all bodies live in the local <c>pak01_000.vpk</c> / preload, none in an absent
-    /// original external chunk). A legacy/partial <c>_content/&lt;gid&gt;</c> — the old python
-    /// gameevents-only backfill whose dir tree still references the ORIGINAL external chunk indices
-    /// (<c>pak01_154.vpk</c> …) that were never fetched, or one that predates the newer non-gameevents
-    /// families — fails this check and MUST be re-trimmed (see <see cref="EnsureTrimmedStore"/>).
+    /// proper trim of the CURRENT required set:
+    /// <list type="number">
+    /// <item>its <c>trim-generation.json</c> is present, parseable, and at or above
+    /// <see cref="ContentPakSelector.RequiredSetGeneration"/> (REQUIRED paks only — see
+    /// <see cref="GenerationGateApplies"/>);</item>
+    /// <item>its <c>pak01_dir.vpk</c> parses and carries at least one <c>.gameevents</c> entry;</item>
+    /// <item>EVERY <see cref="ContentPakSelector.EnumerateRequiredEntries"/> entry resolves + reads +
+    /// CRC-verifies (i.e. all bodies live in the local <c>pak01_000.vpk</c> / preload, none in an
+    /// absent original external chunk).</item>
+    /// </list>
+    /// Checks 2 and 3 catch CORRUPTION and the legacy/partial <c>_content/&lt;gid&gt;</c> shape (the
+    /// old python gameevents-only backfill whose dir tree still references the ORIGINAL external
+    /// chunk indices — <c>pak01_154.vpk</c> … — that were never fetched). They CANNOT catch a proper
+    /// trim of an OLDER required set: the required set they derive comes from the stored pak itself,
+    /// so a path the trim never kept is a path they never look for. Check 1 is the out-of-band fact
+    /// that closes that hole, and it runs FIRST because it is one small file read rather than a
+    /// CRC-verified read of every entry — the difference matters across a ~387-GID store sweep.
     ///
-    /// This is a completeness PROBE, not an artifact-emitting read: a parse/read/CRC failure is the
-    /// SIGNAL to re-trim (fault-safe → returns false with a reason), NOT an abort. The re-trim
-    /// itself reads a KNOWN-GOOD source pak and fail-louds if THAT source is bad.
+    /// This is a completeness PROBE, not an artifact-emitting read: a stale marker or a
+    /// parse/read/CRC failure is the SIGNAL to re-trim (fault-safe → returns false with a reason),
+    /// NOT an abort. The re-trim itself reads a KNOWN-GOOD source pak and fail-louds if THAT source
+    /// is bad. Callers that have NO source to re-trim from (extract) must fail loud instead — see
+    /// <see cref="IsTrimGenerationCurrent"/>.
     /// </summary>
     public static bool IsCompleteTrimmedStore(string contentStoreRoot, ulong gid, out string reason,
         ContentPak? pak = null)
@@ -97,6 +254,12 @@ internal static class ContentStore
         if (!File.Exists(dirVpk))
         {
             reason = "no pak01_dir.vpk present in the store";
+            return false;
+        }
+        if (GenerationGateApplies(pak ?? ContentPak.Csgo)
+            && !IsTrimGenerationCurrent(contentStoreRoot, gid, pak, out var generationReason))
+        {
+            reason = generationReason;
             return false;
         }
         try
@@ -129,6 +292,11 @@ internal static class ContentStore
     /// full-size <c>_content/&lt;gid&gt;</c> (which held the ORIGINAL external chunks, e.g.
     /// <c>pak01_154.vpk</c>) is reduced to the two-file trimmed pair, reclaiming the legacy chunk bytes.
     /// Deterministic (Ordinal order) + idempotent. Returns the count removed.
+    ///
+    /// The sweep is scoped to the <c>pak01_*.vpk</c> shape and the KEEP set below is the contract:
+    /// <see cref="TrimMarkerFileName"/> is listed there even though the glob could not match it, so
+    /// that widening the glob later cannot silently delete the marker and re-open the stale-store
+    /// hole this store's completeness check depends on.
     /// </summary>
     public static int PruneStrayStoreChunks(string contentStoreRoot, ulong gid, ContentPak? pak = null)
     {
@@ -143,7 +311,8 @@ internal static class ContentStore
         {
             var name = Path.GetFileName(f);
             if (string.Equals(name, TrimDirVpkName, StringComparison.Ordinal) ||
-                string.Equals(name, TrimChunkVpkName, StringComparison.Ordinal))
+                string.Equals(name, TrimChunkVpkName, StringComparison.Ordinal) ||
+                string.Equals(name, TrimMarkerFileName, StringComparison.Ordinal))
             {
                 continue;
             }
@@ -161,9 +330,18 @@ internal static class ContentStore
     /// <item>otherwise trim <paramref name="required"/> from <paramref name="source"/> into the store
     /// (<see cref="VpkTrimWriter.Write"/>, CRC-verified reads —) and prune any stray legacy chunks.</item>
     /// </list>
+    /// "Complete" now includes "trimmed under the current
+    /// <see cref="ContentPakSelector.RequiredSetGeneration"/>", so a store built before a resource
+    /// was added to the required set takes the SECOND branch and self-heals as
+    /// <see cref="StoreEnsureAction.ReTrimmedIncomplete"/> — this method needed no other change.
+    ///
     /// Idempotent and deterministic: the trimmed bytes are a pure function of the source
     /// entries. Both the acquire repack and <c>content-store migrate</c> route through here so a fresh
-    /// acquire OR a migrate over a legacy <c>_content/&lt;gid&gt;</c> self-heals identically.
+    /// acquire OR a migrate over a legacy <c>_content/&lt;gid&gt;</c> self-heals identically. The
+    /// generation marker is handed to <see cref="VpkTrimWriter.Write"/> rather than written after
+    /// it, so it rides the SAME atomic move as the trimmed pair — no window in which a store has
+    /// bytes without a marker, or a marker without bytes. It is written for EVERY pak; only
+    /// required paks enforce it (<see cref="GenerationGateApplies"/>).
     /// </summary>
     public static StoreEnsureAction EnsureTrimmedStore(
         VpkArchive source,
@@ -187,8 +365,11 @@ internal static class ContentStore
 
         bool existed = GidExists(contentStoreRoot, gid, pak);
         var storeDirVpk = ResolveDirVpk(contentStoreRoot, gid, pak);
-        // Fail-loud: a required entry that can't be read from the source throws here.
-        VpkTrimWriter.Write(source, required, storeDirVpk);
+        // Fail-loud: a required entry that can't be read from the source throws here. The marker
+        // moves into place WITH the pair (single atomic success path), never as a follow-up write.
+        VpkTrimWriter.Write(source, required, storeDirVpk,
+            new VpkTrimSidecar(
+                TrimMarkerFileName, TrimMarkerContent(ContentPakSelector.RequiredSetGeneration)));
         int pruned = PruneStrayStoreChunks(contentStoreRoot, gid, pak);
         string prunedNote = pruned > 0 ? $"; pruned {pruned} stray legacy chunk(s)" : "";
 
