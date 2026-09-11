@@ -29,6 +29,11 @@ public class ExtractCliParseTest
     [InlineData("extract --all --platform windows-x86_64 --verify --no-gate --force --no-acquire --no-changelog --no-localization-changelog")]
     [InlineData("extract --build 1 --platform windows-x86_64 --commit --single-walk")]
     [InlineData("extract --build 1 --platform windows-x86_64 --commit --allow-mixed-walkers")]
+    // --allow-walker-change is batch-level (one flag authorises the whole run), so it must parse
+    // alongside every selection family, not just --build.
+    [InlineData("extract --build 1 --platform windows-x86_64 --commit --allow-walker-change")]
+    [InlineData("extract --all --platform windows-x86_64 --commit --allow-walker-change")]
+    [InlineData("extract --era cs2-2026-04-21 --platform windows-x86_64 --commit --allow-walker-change --allow-mixed-walkers")]
     public void Documented_Extract_Flags_Are_Accepted_By_The_Real_Parser(string commandLine)
     {
         Assert.Empty(ParseErrors(commandLine));

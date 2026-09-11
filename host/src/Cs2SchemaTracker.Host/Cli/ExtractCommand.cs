@@ -15,6 +15,12 @@
 // The undocumented --binaries <dir> hook below runs ONLY the descriptor extractor over a directory
 // of input binaries; it's a development hook, not a public API.
 //
+// The commit path is additionally preflighted ONCE per run, before build 1: the WALKER IDENTITY
+// GATE (ExtractCommand.Batch.cs) and the WALKER FINGERPRINT DRIFT GUARD
+// (ExtractCommand.WalkerDrift.cs — refuses to re-emit a committed set with a walker other than the
+// one its provenance records, unless --allow-walker-change). Both abort the whole invocation at
+// exit 78 before any era is resolved here, so nothing in artifacts/ is touched.
+//
 // STALE CONTENT STORE GUARD (step 1c of RunExtract): when the content pak resolves out of the
 // content-addressed store, that store copy is a TRIM — it holds only the resources the required set
 // covered when it was written. A trim from an older required-set generation is missing bytes this
@@ -105,6 +111,21 @@ internal static partial class ExtractCommand
         => Run(args, runnerFactory, eraResolver, gateFromResolver: true);
 
     /// <summary>
+    /// Test seam for the commit-path WALKER FINGERPRINT DRIFT GUARD (ExtractCommand.WalkerDrift.cs):
+    /// the gate seam above PLUS an injected walker-identity source. Production resolves a walker
+    /// binary's identity by launching it (<see cref="WalkerIdentity.Resolve"/>), which a fixture
+    /// "binary" cannot satisfy; this seam lets the suite state what the resolved walker reports and
+    /// drive the guard's drift / match / unidentified paths without a real exe. Supplying it does NOT
+    /// make a fake walker run — the fake <paramref name="runnerFactory"/> still produces the
+    /// WalkerOutput, exactly as on the gate seam.
+    /// </summary>
+    internal static int Run(
+        string[] args, Func<IWalkerRunner> runnerFactory, EraWalkerResolver eraResolver,
+        Func<string, WalkerIdentity> walkerIdentitySource)
+        => Run(args, runnerFactory, eraResolver, gateFromResolver: true,
+               walkerIdentitySource: walkerIdentitySource);
+
+    /// <summary>
     /// Shared entry. <paramref name="runnerFactory"/> (test seam — fake runner) and/or
     /// <paramref name="eraResolver"/> (production — per-era binary + armed second gate) drive
     /// which runner runs and whether the gate is armed:
@@ -119,9 +140,15 @@ internal static partial class ExtractCommand
     /// binaries are absent on the PRODUCTION path. Null on the test seams so auto-acquire never
     /// fires (and even when supplied it is gated on a null runnerFactory).
     /// </param>
+    /// <param name="walkerIdentitySource">
+    /// Walker-identity seam (binary path -> its self-reported identity) for the commit-path drift
+    /// guard. Null everywhere but the drift test seam: production binds it to
+    /// <see cref="WalkerIdentity.Resolve"/> in RunSelection, and a fake-runner run launches no binary
+    /// so it has no identity to resolve.
+    /// </param>
     private static int Run(
         string[] args, Func<IWalkerRunner>? runnerFactory, EraWalkerResolver? eraResolver, bool gateFromResolver,
-        Func<string, string, int>? acquire = null)
+        Func<string, string, int>? acquire = null, Func<string, WalkerIdentity>? walkerIdentitySource = null)
     {
         if (CliArgs.HasHelpFlag(args))
         {
@@ -149,7 +176,7 @@ internal static partial class ExtractCommand
         // class-count gate, --verify classification, --commit promotion (+ build-level hooks),
         // and fail-isolation all live in the RunSelection orchestration (ExtractCommand.Batch). The
         // auto-acquire seam threads through to RunExtract.
-        return RunSelection(args, runnerFactory, eraResolver, gateFromResolver, acquire);
+        return RunSelection(args, runnerFactory, eraResolver, gateFromResolver, acquire, walkerIdentitySource);
     }
 
     /// <summary>Default artifact directory per README.md: artifacts/&lt;build&gt;/&lt;platform&gt;/.</summary>
@@ -296,9 +323,12 @@ internal static partial class ExtractCommand
         //     CLASS-BAND GATE (the parsed walk's class count falls outside the resolved era's band).
         //     75/76/77 are all "this build cannot be trusted as extracted" — never a walker crash
         //     (65/70), which is a distinct failure class. Exit 78 = the WALKER IDENTITY GATE
-        //     (ExtractCommand.Batch.cs PreflightWalkerIdentity) — same failure class, but evaluated
-        //     ONCE for the whole selection BEFORE this method is ever called for build 1 (a
-        //     mixed/stale walker SET is a property of the run, not of any one build's walk).
+        //     (ExtractCommand.Batch.cs PreflightWalkerIdentity) and the commit-path WALKER
+        //     FINGERPRINT DRIFT GUARD (ExtractCommand.WalkerDrift.cs
+        //     PreflightWalkerFingerprintDrift) — same failure class, but both evaluated ONCE for the
+        //     whole selection BEFORE this method is ever called for build 1 (which walker set a run
+        //     uses, and whether it is the walker the committed sets were built with, are properties
+        //     of the RUN, not of any one build's walk).
         IWalkerRunner runner;
         string? expectedLayoutSignature = null;
         // Whether the second gate is ARMED for this run. Distinct from expectedLayoutSignature being
@@ -356,10 +386,16 @@ internal static partial class ExtractCommand
                 // fields empty and say loudly why, so a silently-empty provenance stamp is never
                 // mistaken for "the walker reported nothing" (: fail-loud, but the walk is
                 // the primary gate; identity is a defense-in-depth record on top of it).
+                // The same unresolved identity is also what the commit-path WALKER FINGERPRINT DRIFT
+                // GUARD compares against, so say so here too: with no identity there is nothing to
+                // compare the committed set's recorded fingerprint to, and a walker change would go
+                // undetected on this run (the guard warns, never blocks, on unknown — see
+                // ExtractCommand.WalkerDrift.cs).
                 Console.Error.WriteLine(
                     $"extract: WARNING could not resolve walker identity for " +
                     $"'{resolution.WalkerBinaryPath}': {ex.GetType().Name}: {ex.Message}. " +
-                    "provenance.tool.walkerGitSha/walkerSrcFingerprint will be empty.");
+                    "provenance.tool.walkerGitSha/walkerSrcFingerprint will be empty, and the walker " +
+                    "fingerprint DRIFT GUARD could not run for this set.");
             }
         }
 
@@ -1689,11 +1725,11 @@ internal static partial class ExtractCommand
 Usage: cs2-schema-tracker extract --build <id> [--build <id> ...] [--platform <platform>]
                                    [--out <dir>] [--commit] [--verify] [--no-gate] [--force] [--no-acquire]
                                    [--no-changelog] [--no-localization-changelog] [--single-walk]
-                                   [--allow-mixed-walkers]
+                                   [--allow-mixed-walkers] [--allow-walker-change]
        cs2-schema-tracker extract (--all | --era <key> | --pin <sha>) [--platform <platform>]
                                    [--out <dir>] [--commit] [--verify] [--no-gate] [--force] [--no-acquire]
                                    [--no-changelog] [--no-localization-changelog] [--single-walk]
-                                   [--allow-mixed-walkers]
+                                   [--allow-mixed-walkers] [--allow-walker-change]
 
 A single extract produces the COMPLETE artifact set for the build (CORE + the content artifacts
 whenever the content depot is co-located with the binaries). The retired single-artifact --*-only
@@ -1726,9 +1762,10 @@ Arguments (stable per README.md):
                         pics-appinfo.json from a forward-acquisition capture; inventory upsert).
                         Does NOT git-commit; review the diff and commit manually. The
                         layout/signature gate (exit 75), the commit-path determinism gate (exit 76,
-                        on by default; see --single-walk), the class-count gate (exit 77), and the
-                        walker identity gate (exit 78; see --allow-mixed-walkers) all stay HARD => NO
-                        write. --verify stays a NON-BLOCKING review signal (promote proceeds
+                        on by default; see --single-walk), the class-count gate (exit 77), the
+                        walker identity gate (exit 78; see --allow-mixed-walkers) and the walker
+                        fingerprint drift guard (exit 78; see --allow-walker-change) all stay HARD
+                        => NO write. --verify stays a NON-BLOCKING review signal (promote proceeds
                         regardless of its verdict).
   --single-walk         Disable the commit-path determinism gate (armed by default under --commit):
                         walk once instead of twice, skipping the byte-compare that would otherwise
@@ -1745,6 +1782,20 @@ Arguments (stable per README.md):
                         CS2_EXPECT_FPRINT to a fingerprint prefix to hard-fail (exit 78,
                         unconditionally — never bypassed by this flag) when the resolved walker set
                         does not match (the stale-remote-image tripwire).
+  --allow-walker-change Authorise re-emitting ALREADY-COMMITTED sets with a walker OTHER than the one
+                        that built them. Under --commit, every selected build whose committed
+                        artifacts/<build>/<platform>/provenance.json records a
+                        tool.walkerSrcFingerprint is compared, BEFORE any era is resolved or anything
+                        is walked, against the fingerprint of the walker this run would use; a KNOWN
+                        mismatch refuses the whole run at exit 78 naming both fingerprints, and
+                        nothing is written. A different walker rewrites the artifacts themselves, not
+                        just the tool stamp, and the diff is indistinguishable from a real engine
+                        change — which is why the refusal is the default. This flag is BATCH-level
+                        (an intentional rewalk legitimately changes every set in the selection): it
+                        authorises the whole run and logs one `old -> new` transition line per
+                        affected set. A brand-new build, a committed set recording no fingerprint,
+                        and a walker whose identity cannot be resolved are never blocked (the last
+                        two warn). Off-repo runs never target a committed set and are never gated.
   --verify              Byte-compare the produced CORE set to the committed artifacts/ set
                         (schemaVersion + toolGitSha normalized); classify CORE-CLEAN / REGRESSION.
                         Off-repo a REGRESSION is a hard failure; with --commit it is a non-blocking
@@ -1780,6 +1831,12 @@ verbatim) instead of the flat batch 1.
 
 WALKER IDENTITY GATE (exit 78): evaluated ONCE for the whole selection, BEFORE any build runs —
 unlike the per-build gates above, a mixed/stale walker SET aborts the entire invocation (no partial
-SUMMARY), since it means the run cannot be trusted from build 1. See --allow-mixed-walkers above.");
+SUMMARY), since it means the run cannot be trusted from build 1. See --allow-mixed-walkers above.
+
+WALKER FINGERPRINT DRIFT GUARD (exit 78, --commit only): evaluated in the same preflight, right
+after the identity gate. The identity gate asks whether the walker set is COHERENT; this asks
+whether it is the SAME walker the committed sets record — a uniform, freshly-built walker passes
+the first and can still silently rewrite every set it re-emits. A known mismatch aborts the whole
+invocation with nothing written. See --allow-walker-change above.");
     }
 }

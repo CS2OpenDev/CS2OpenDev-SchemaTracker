@@ -225,6 +225,22 @@ silently poisoning the corpus. For a remote/CI run (e.g. inside the Docker image
 unconditionally (exit 78, not bypassed by `--allow-mixed-walkers`), catching a stale deployed image
 before it can walk anything with the wrong binaries.
 
+The identity gate only asks whether the resolved walker set is *coherent*. A uniform, freshly built
+walker passes it and can still be a different walker from the one that produced the sets already in
+`artifacts/` — which is how a leftover, gitignored `natives/` tree once re-walked a build under
+`--commit` and rewrote thousands of semantic lines (`ATOMIC_PLAIN` -> `ATOMIC_UNSPECIFIED`) into the
+corpus, a diff indistinguishable from a real engine change. So a second preflight runs right after
+it, on the commit path only: for every selected build whose committed
+`artifacts/<build>/<platform>/provenance.json` records a `tool.walkerSrcFingerprint`, that value is
+compared against what the resolved walker reports. A known mismatch refuses the whole run at exit 78
+— before any era is resolved, anything is walked, or a staging dir exists — naming both
+fingerprints. Pass `--allow-walker-change` when the rewalk is intentional: it authorises the entire
+run (a deliberate rewalk changes every set it touches) and logs one `old -> new` transition line per
+affected set. A brand-new build, a set that records no fingerprint, and a walker whose identity will
+not resolve are never blocked; the last two warn. This is the corpus-facing complement to
+`CS2_EXPECT_FPRINT`: that one checks the walker against what the operator expected, this one against
+what the corpus actually carries.
+
 ## Schemas (protoc)
 
 Check that the proto family compiles. Use a real temp-file path — passing `NUL` creates a literal `NUL` file on Windows:

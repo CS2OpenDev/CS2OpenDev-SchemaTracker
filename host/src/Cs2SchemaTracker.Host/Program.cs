@@ -408,6 +408,7 @@ internal static class Program
         var noLocalizationChangelog = new Option<bool>("--no-localization-changelog", "Emit the changelog WITHOUT the content-derived localization family (the five binary families only). For the forward-capture path, where the predecessor build's content is not re-acquirable.");
         var singleWalk = new Option<bool>("--single-walk", "Disable the commit-path determinism gate (armed by default under --commit): walk once instead of twice.");
         var allowMixedWalkers = new Option<bool>("--allow-mixed-walkers", "Bypass the commit-path walker identity gate (exit 78) on a mixed/unverified per-era walker set; warns loudly instead. Never use for a corpus-committing run.");
+        var allowWalkerChange = new Option<bool>("--allow-walker-change", "Authorise re-emitting already-committed sets with a walker OTHER than the one their provenance records (the commit-path drift guard, exit 78). Batch-level: authorises the whole run and logs each old -> new transition.");
 
         // Undocumented descriptor-only development hook (not part of the public surface); declared so it parses.
         var binaries = new Option<string?>("--binaries", "Dev hook: run ONLY the descriptor extractor over this dir.");
@@ -429,6 +430,7 @@ internal static class Program
         cmd.AddOption(noLocalizationChangelog);
         cmd.AddOption(singleWalk);
         cmd.AddOption(allowMixedWalkers);
+        cmd.AddOption(allowWalkerChange);
         cmd.AddOption(binaries);
 
         cmd.SetHandler(ctx =>
@@ -455,6 +457,7 @@ internal static class Program
             a.AddFlag("--no-localization-changelog", p.GetValueForOption(noLocalizationChangelog));
             a.AddFlag("--single-walk", p.GetValueForOption(singleWalk));
             a.AddFlag("--allow-mixed-walkers", p.GetValueForOption(allowMixedWalkers));
+            a.AddFlag("--allow-walker-change", p.GetValueForOption(allowWalkerChange));
             a.AddValue("--binaries", p.GetValueForOption(binaries));
             ctx.ExitCode = ExtractCommand.Run(a.ToArray());
         });

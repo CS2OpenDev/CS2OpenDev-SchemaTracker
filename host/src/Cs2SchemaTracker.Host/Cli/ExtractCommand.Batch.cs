@@ -14,6 +14,11 @@
 //     now evaluated INSIDE RunExtract, BEFORE any promote — off-repo OR --commit alike, a violation
 //     writes NOTHING (exit 77 / exit 76). "Gated but promoted" is structurally impossible; this
 //     layer only classifies the exit code into a Status.Gated result for the summary.
+//   - PREFLIGHT (once per run, before build 1): the WALKER IDENTITY GATE below (is the resolved
+//     walker SET coherent?) and, under --commit, the WALKER FINGERPRINT DRIFT GUARD in
+//     ExtractCommand.WalkerDrift.cs (is it the SAME walker that built the sets this run would
+//     clobber?). Both abort the WHOLE invocation at exit 78 with nothing written; the drift guard is
+//     opted out of per run with --allow-walker-change.
 //   - --verify: byte-compare the produced CORE set (including provenance.json) to committed
 //     (tool-stamp fields normalized: schemaVersion, tool.gitCommit, tool.semver, walkerGitSha,
 //     walkerSrcFingerprint). Off-repo a regression is HARD; under --commit it is a
@@ -59,7 +64,8 @@ internal static partial class ExtractCommand
         bool NoChangelog,
         bool NoLocalizationChangelog,
         bool SingleWalk,
-        bool AllowMixedWalkers);
+        bool AllowMixedWalkers,
+        bool AllowWalkerChange);
 
     /// <summary>Per-build outcome classification (drives the summary + exit code).</summary>
     internal enum Status
@@ -161,7 +167,7 @@ internal static partial class ExtractCommand
     /// </summary>
     private static int RunSelection(
         string[] args, Func<IWalkerRunner>? runnerFactory, EraWalkerResolver? eraResolver, bool gateFromResolver,
-        Func<string, string, int>? acquire)
+        Func<string, string, int>? acquire, Func<string, WalkerIdentity>? walkerIdentitySource)
     {
         if (!TryParseSelection(args, out var opts, out var parseError))
         {
@@ -235,6 +241,21 @@ internal static partial class ExtractCommand
         if (PreflightWalkerIdentity(builds, opts, runnerFactory, eraResolver) is int identityExit)
         {
             return identityExit;
+        }
+
+        // WALKER FINGERPRINT DRIFT GUARD — the corpus-facing half of the walker identity chain, and
+        // the reason the gate above is not enough: a walker set can be perfectly uniform and freshly
+        // built and STILL be a different walker from the one that wrote the committed sets this run
+        // is about to clobber. Evaluated here, after the identity gate and before the per-build loop,
+        // so a refusal lands before build 1 resolves an era, walks, or creates a staging dir.
+        // The identity source is WalkerIdentity.Resolve on the PRODUCTION path only (a fake runner
+        // launches no binary, so there is nothing to identify — the guard stays inert); the test
+        // suite injects its own through the Run seam. See ExtractCommand.WalkerDrift.cs.
+        var identitySource = walkerIdentitySource
+            ?? (runnerFactory is null ? WalkerIdentity.Resolve : (Func<string, WalkerIdentity>?)null);
+        if (PreflightWalkerFingerprintDrift(builds, opts, repoRoot, eraResolver, identitySource) is int driftExit)
+        {
+            return driftExit;
         }
 
         var outcomes = new List<BuildOutcome>();
@@ -315,7 +336,13 @@ internal static partial class ExtractCommand
 
     /// <summary>Env var: the operator's expected walker src-fingerprint — the stale-remote-image
     /// tripwire. Set on a remote/CI runner to the fingerprint the operator BUILT there; a
-    /// mismatch means the running image/binaries are not what was intended.</summary>
+    /// mismatch means the running image/binaries are not what was intended.
+    /// DISTINCT FROM (and complementary to) the commit-path WALKER FINGERPRINT DRIFT GUARD
+    /// (<see cref="PreflightWalkerFingerprintDrift"/>): this one checks the resolved walker against a
+    /// value the OPERATOR supplies and is opt-in per run; that one checks it against what the CORPUS
+    /// itself records in provenance.tool.walkerSrcFingerprint and needs no operator input. Neither
+    /// subsumes the other — the right image can still be the wrong walker for these sets — and both
+    /// are evaluated on every run.</summary>
     internal const string ExpectFingerprintEnvVar = "CS2_EXPECT_FPRINT";
 
     /// <summary>One resolved walker binary's identity (or resolution error) plus every era it serves.</summary>
@@ -1091,7 +1118,7 @@ internal static partial class ExtractCommand
         var builds = new List<string>();
         bool all = false, backfill = false, onlyExistingBuilds = false, force = false, verify = false,
              noGate = false, commit = false, noAcquire = false, noChangelog = false, noLocalizationChangelog = false,
-             singleWalk = false, allowMixedWalkers = false;
+             singleWalk = false, allowMixedWalkers = false, allowWalkerChange = false;
         string? era = null, pin = null, platform = null, outRoot = null;
 
         for (int i = 0; i < args.Length; i++)
@@ -1140,6 +1167,15 @@ internal static partial class ExtractCommand
                     // commit. See PreflightWalkerIdentity. Never use it for a corpus-committing run;
                     // it exists for local iteration against a deliberately partial era rebuild.
                     allowMixedWalkers = true;
+                    break;
+                case "--allow-walker-change":
+                    // Opt-in for the commit-path WALKER FINGERPRINT DRIFT GUARD (exit 78): authorises
+                    // re-emitting committed sets with a walker OTHER than the one whose
+                    // src-fingerprint they record. BATCH-level by design — an intentional rewalk
+                    // legitimately changes every set in the selection, so one flag authorises the
+                    // whole run and each affected set gets its own transition line in the log. See
+                    // PreflightWalkerFingerprintDrift (ExtractCommand.WalkerDrift.cs).
+                    allowWalkerChange = true;
                     break;
                 case "--era":
                     if (!NextSel(args, ref i, a, out era, out error))
@@ -1218,7 +1254,8 @@ internal static partial class ExtractCommand
             Builds: builds, Platform: platform, OutRoot: Path.GetFullPath(outRoot),
             Gate: !noGate, Force: force, Verify: verify, Commit: commit, NoAcquire: noAcquire,
             NoChangelog: noChangelog, NoLocalizationChangelog: noLocalizationChangelog,
-            SingleWalk: singleWalk, AllowMixedWalkers: allowMixedWalkers);
+            SingleWalk: singleWalk, AllowMixedWalkers: allowMixedWalkers,
+            AllowWalkerChange: allowWalkerChange);
         return true;
     }
 
