@@ -26,6 +26,21 @@
 // re-used-vs-fetched split and the transferred byte count are LOGGED per GID and totalled at the end,
 // so the saving is a number in the run log rather than an assumption.
 //
+// ONE Steam logon per RUN, not per GID. Steam rate-limits authenticated LOGONS, not bytes: a campaign
+// that stood up its own SteamClient per GID was refused with AccountLoginDeniedThrottle after 118 of
+// 381 GIDs, and a re-run ten hours later was refused before it transferred a byte. `--execute` opens
+// ONE ISteamAcquirer.BeginSharedSession scope around the whole per-GID loop — the same single-logon
+// wiring the `acquire` batch uses — so a 381-GID run connects and logs on once. Spacing the GIDs out
+// does not help and never did; the limit counts logons, not their rate.
+//
+// The failure taxonomy is what keeps a shared session from turning one fault into 381. A per-GID DATA
+// fault (bad manifest, purged chunk, hash mismatch) fail-isolates and the run continues. A session DROP
+// fails only the GID it hit — the next GID's lease reconnects once and the run carries on. A logon
+// THROTTLE, or a connect/logon that cannot be re-established, stops the run: every remaining GID would
+// fail identically, and the store is content-addressed + idempotent, so re-running skips the completed
+// GIDs and resumes with the rest. Any other cascade is caught by the consecutive-failure stop, so a
+// drop can never quietly mark the whole remainder failed.
+//
 // DRY-RUN by default (prints the plan, contacts no Steam). `--execute` performs the fetch. It does NOT
 // re-extract the content artifacts — that is a subsequent `extract` pass over the affected builds
 // (the core.gameevents events, or the newly-required csgo resources, flow in once the store carries
@@ -57,8 +72,8 @@ internal static class ContentBackfillCommand
         int limit = parsed.TryGetValue("limit", out var lim) && int.TryParse(lim, out var l) && l > 0
             ? l
             : int.MaxValue;
-        // Optional pause between GIDs. The fetch re-authenticates per GID, so spacing them out reduces
-        // the chance Steam throttles the account (which halts the run). Default 0 (fastest).
+        // Optional pause between GIDs — CDN pacing only. It does NOT mitigate logon throttling (the run
+        // logs on once, and the limit counts logons, not their rate). Default 0 (fastest).
         int delaySeconds = parsed.TryGetValue("delay-seconds", out var ds) && int.TryParse(ds, out var d) && d > 0
             ? d
             : 0;
@@ -144,75 +159,91 @@ internal static class ContentBackfillCommand
         // MEASURED, so each GID reports what Steam actually transferred and the run reports the total —
         // a number to compare against the full-fetch cost rather than an estimate to trust.
         long transferredBytes = 0;
-        bool throttled = false;
+        // Non-null once something RUN-level (not GID-level) ended the loop early: it names the stop in
+        // the summary and makes the run exit non-zero.
+        string? stopReason = null;
+        // Failures since the last successful fetch — the cascade guard described on ConsecutiveStop.
+        int consecutiveFailures = 0;
         bool first = true;
-        foreach (var t in toFetch)
+
+        // ONE shared Steam session for the whole run. Every AcquireContentPakAsync below leases that
+        // single connection+logon instead of standing up its own SteamClient, so a 381-GID campaign
+        // performs ONE logon rather than 381 — and logons are what Steam rate-limits. The scope tears
+        // the session down when the loop ends, whether it ran out of targets or broke out early.
+        using (acquirer.BeginSharedSession())
         {
-            if (!first && delaySeconds > 0)
+            foreach (var t in toFetch)
             {
-                await Task.Delay(TimeSpan.FromSeconds(delaySeconds)).ConfigureAwait(false);
-            }
-            first = false;
-
-            var spec = new ManifestSpec(
-                t.Record.AppId, t.Record.BuildId,
-                t.Record.Depots.Select(d => new ManifestSpecDepot(d.DepotId, d.ManifestId)).ToList());
-            if (!spec.Depots.Any(d => d.DepotId == ContentStore.ContentDepotId))
-            {
-                Console.Error.WriteLine(
-                    $"content-backfill: SKIP GID {t.ContentGid} — representative record carries no "
-                    + $"{ContentStore.ContentDepotId} content depot GID (cannot spec the fetch).");
-                skipped++;
-                continue;
-            }
-            try
-            {
-                Console.Error.WriteLine(
-                    $"content-backfill: fetching '{pak.BaseRelDir}' for GID {t.ContentGid} via build "
-                    + $"{spec.BuildId} into '{t.RepresentativeTupleDir}' ...");
-                var result = await acquirer.AcquireContentPakAsync(
-                    spec.AppId, ContentStore.ContentDepotId, buildId: 0, t.RepresentativeTupleDir,
-                    minimalGameEvents: true, explicitSpec: spec, dirOnly: false,
-                    CancellationToken.None).ConfigureAwait(false);
-                fetched++;
-                transferredBytes += result.DownloadedBytes;
-                Console.Error.WriteLine(
-                    $"content-backfill: GID {t.ContentGid} done — {result.DownloadedBytes:N0} byte(s) "
-                    + $"transferred from Steam ({transferredBytes:N0} across {fetched} GID(s) so far). The "
-                    + "per-entry re-used-vs-fetched split for this GID is on the `content refresh plan` "
-                    + "and `content-store repack` lines above.");
-            }
-            catch (Exception ex)
-            {
-                failed++;
-                Console.Error.WriteLine(
-                    $"content-backfill: FAILED GID {t.ContentGid}: {ex.GetType().Name}: {ex.Message}");
-
-                // Steam login THROTTLE is not a per-GID fault — it means "too many logons, back off".
-                // Every subsequent attempt makes it worse (and burns the run), so STOP HERE. The store
-                // is content-addressed + idempotent: re-running after the throttle clears skips every
-                // GID already fetched and resumes with the rest.
-                if (IsSteamThrottle(ex))
+                if (!first && delaySeconds > 0)
                 {
-                    throttled = true;
+                    await Task.Delay(TimeSpan.FromSeconds(delaySeconds)).ConfigureAwait(false);
+                }
+                first = false;
+
+                var spec = new ManifestSpec(
+                    t.Record.AppId, t.Record.BuildId,
+                    t.Record.Depots.Select(d => new ManifestSpecDepot(d.DepotId, d.ManifestId)).ToList());
+                if (!spec.Depots.Any(d => d.DepotId == ContentStore.ContentDepotId))
+                {
                     Console.Error.WriteLine(
-                        "content-backfill: STOPPING — Steam is rate-limiting authenticated logons "
-                        + "(the fetch re-auths per GID). Wait for the throttle to clear (minutes to a "
-                        + "few hours), then re-run the SAME command — completed GIDs are skipped and it "
-                        + "resumes with the remainder.");
-                    break;
+                        $"content-backfill: SKIP GID {t.ContentGid} — representative record carries no "
+                        + $"{ContentStore.ContentDepotId} content depot GID (cannot spec the fetch).");
+                    skipped++;
+                    continue;
+                }
+                try
+                {
+                    Console.Error.WriteLine(
+                        $"content-backfill: fetching '{pak.BaseRelDir}' for GID {t.ContentGid} via build "
+                        + $"{spec.BuildId} into '{t.RepresentativeTupleDir}' ...");
+                    var result = await acquirer.AcquireContentPakAsync(
+                        spec.AppId, ContentStore.ContentDepotId, buildId: 0, t.RepresentativeTupleDir,
+                        minimalGameEvents: true, explicitSpec: spec, dirOnly: false,
+                        CancellationToken.None).ConfigureAwait(false);
+                    fetched++;
+                    consecutiveFailures = 0;
+                    transferredBytes += result.DownloadedBytes;
+                    Console.Error.WriteLine(
+                        $"content-backfill: GID {t.ContentGid} done — {result.DownloadedBytes:N0} byte(s) "
+                        + $"transferred from Steam ({transferredBytes:N0} across {fetched} GID(s) so far). The "
+                        + "per-entry re-used-vs-fetched split for this GID is on the `content refresh plan` "
+                        + "and `content-store repack` lines above.");
+                }
+                catch (Exception ex)
+                {
+                    failed++;
+                    consecutiveFailures++;
+                    Console.Error.WriteLine(
+                        $"content-backfill: FAILED GID {t.ContentGid}: {ex.GetType().Name}: {ex.Message}");
+
+                    stopReason = ClassifyRunStop(ex, consecutiveFailures);
+                    if (stopReason is not null)
+                    {
+                        Console.Error.WriteLine(StopAdvice(stopReason));
+                        break;
+                    }
+
+                    // A DROPPED session is survivable: the next fetch's lease reconnects it ONCE and
+                    // the run carries on, so only this GID is lost. Say so in the log rather than
+                    // leaving the reader to infer it from the acquirer's reconnect line.
+                    if (IsSessionDrop(ex))
+                    {
+                        Console.Error.WriteLine(
+                            "content-backfill: the shared Steam session dropped on this GID; the next "
+                            + "fetch reconnects it ONCE and the run continues.");
+                    }
                 }
             }
         }
 
         int remaining = targets.Count - fetched - skipped;
         Console.Error.WriteLine(
-            $"content-backfill: {(throttled ? "STOPPED (Steam throttle)" : "done")} — fetched={fetched} "
-            + $"failed={failed} skipped={skipped} this run, {transferredBytes:N0} byte(s) transferred "
-            + $"in total; {remaining} GID(s) still missing the '{pak.BaseRelDir}' pak (of "
-            + $"{targets.Count}). Re-run to resume; then `extract` over the affected builds to re-emit "
-            + $"the '{pak.BaseRelDir}' content artifacts.");
-        return (failed > 0 || throttled) ? 1 : 0;
+            $"content-backfill: {(stopReason is null ? "done" : $"STOPPED ({stopReason})")} — "
+            + $"fetched={fetched} failed={failed} skipped={skipped} this run, "
+            + $"{transferredBytes:N0} byte(s) transferred in total; {remaining} GID(s) still missing "
+            + $"the '{pak.BaseRelDir}' pak (of {targets.Count}). Re-run to resume; then `extract` over "
+            + $"the affected builds to re-emit the '{pak.BaseRelDir}' content artifacts.");
+        return (failed > 0 || stopReason is not null) ? 1 : 0;
     }
 
     /// <summary>The <c>--pak</c> default: the engine core pak, preserving the original behaviour.</summary>
@@ -232,6 +263,60 @@ internal static class ContentBackfillCommand
         return ContentPak.TryParse(name, out pak);
     }
 
+    /// <summary>Summary label for a run stopped by Steam refusing further logons.</summary>
+    internal const string StopThrottle = "Steam throttle";
+
+    /// <summary>Summary label for a run stopped because the shared session could not be re-established.</summary>
+    internal const string StopNoSession = "Steam session unavailable";
+
+    /// <summary>
+    /// Failures since the last success that end the run. A per-GID fault is isolated and the loop
+    /// continues, but a fault that repeats this many times running is not per-GID — it is the shared
+    /// session, Steam, or the CDN being unavailable in a way the message did not name. Stopping there
+    /// costs at most two wasted attempts and keeps a bad session from marking every remaining GID
+    /// failed; the store is idempotent, so the re-run picks up exactly where this one left off.
+    /// </summary>
+    internal const int ConsecutiveStop = 3;
+
+    /// <summary>
+    /// Classify a per-GID failure as RUN-level (returns the summary label, and the caller stops) or
+    /// GID-level (returns null, and the caller carries on). Order matters: a throttle arrives as a
+    /// credentials-stage logon rejection, so it is recognized before the general logon failure.
+    /// </summary>
+    private static string? ClassifyRunStop(Exception ex, int consecutiveFailures)
+    {
+        if (IsSteamThrottle(ex))
+        {
+            return StopThrottle;
+        }
+        if (IsSessionUnavailable(ex))
+        {
+            return StopNoSession;
+        }
+        return consecutiveFailures >= ConsecutiveStop
+            ? $"{consecutiveFailures} consecutive failures"
+            : null;
+    }
+
+    /// <summary>What to tell the operator about a stop named by <see cref="ClassifyRunStop"/>.</summary>
+    private static string StopAdvice(string stopReason) => stopReason switch
+    {
+        StopThrottle =>
+            "content-backfill: STOPPING — Steam is rate-limiting authenticated logons. This run logs on "
+            + "ONCE, so the throttle is carried over from earlier logons rather than earned by this run; "
+            + "wait for it to clear (minutes to a few hours), then re-run the SAME command — completed "
+            + "GIDs are skipped and it resumes with the remainder.",
+        StopNoSession =>
+            "content-backfill: STOPPING — the shared Steam session could not be established or "
+            + "re-established, so every remaining GID would fail identically. Re-run the SAME command "
+            + "once Steam is reachable — completed GIDs are skipped and it resumes with the remainder.",
+        _ =>
+            $"content-backfill: STOPPING — {ConsecutiveStop} GIDs failed in a row, which is a run-level "
+            + "fault (an unusable session, Steam, or the CDN) rather than that many bad GIDs. Fix what "
+            + "the failures above name, then re-run the SAME command — completed GIDs are skipped and "
+            + "it resumes with the remainder.",
+    };
+
     /// <summary>
     /// True when <paramref name="ex"/> indicates Steam is throttling authenticated logons — the
     /// signal to stop and resume later rather than keep hammering (which prolongs the throttle).
@@ -240,8 +325,38 @@ internal static class ContentBackfillCommand
     {
         var m = ex.Message;
         return m.Contains("RateLimitExceeded", StringComparison.OrdinalIgnoreCase)
-            || m.Contains("AccountLoginDeniedThrottle", StringComparison.OrdinalIgnoreCase)
-            || m.Contains("must be connected", StringComparison.OrdinalIgnoreCase);
+            || m.Contains("AccountLoginDeniedThrottle", StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    /// True when the shared session DROPPED mid-fetch (the connection went away; SteamKit reports the
+    /// handler calls as needing a connection). Survivable: the acquirer's next lease reconnects once,
+    /// so only the GID that hit the drop is lost. This is NOT a stop — before the run shared one
+    /// session, a drop had nothing left to reconnect and was treated as terminal.
+    /// </summary>
+    private static bool IsSessionDrop(Exception ex)
+    {
+        var m = ex.Message;
+        return m.Contains("must be connected", StringComparison.OrdinalIgnoreCase)
+            || m.Contains("not connected", StringComparison.OrdinalIgnoreCase)
+            || m.Contains("session dropped", StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    /// True when connect-or-logon ITSELF failed, so the shared session does not exist and the acquirer's
+    /// reconnect-once already had its turn. Every remaining GID would fail the same way, so the run
+    /// stops rather than converting the whole remainder into failures.
+    /// </summary>
+    private static bool IsSessionUnavailable(Exception ex)
+    {
+        if (ex is SteamGuardRequiredException)
+        {
+            return true;
+        }
+        var m = ex.Message;
+        return m.Contains("logon failed with EResult", StringComparison.OrdinalIgnoreCase)
+            || m.Contains("logon rejected at credentials stage", StringComparison.OrdinalIgnoreCase)
+            || m.Contains("failed to connect to steam", StringComparison.OrdinalIgnoreCase);
     }
 
     private static void PrintHelp()
@@ -262,11 +377,18 @@ Usage: cs2-schema-tracker content-backfill [--binaries-root <dir>] [--pak <csgo|
                          `extract` names when it refuses a stale store.
   --execute              Perform the Steam fetch. Omit for a DRY-RUN plan (no Steam contact).
   --limit N              Fetch at most N content GIDs this run (controlled rollout).
-  --delay-seconds N      Pause N seconds between GIDs to avoid Steam logon throttling (default 0).
+  --delay-seconds N      Pause N seconds between GIDs to pace CDN work (default 0). It does NOT affect
+                         logon throttling: the run logs on ONCE, and Steam limits the NUMBER of
+                         authenticated logons rather than their rate.
   --steam-guard <code>   Steam Guard code, if credentialed auth is required for historical manifests.
 
+One authenticated Steam logon serves the WHOLE run: the session is opened once and every GID's fetch
+reuses it, so a 381-GID campaign costs one logon rather than 381 (Steam limits logons, not bytes).
+
 The store is content-addressed + idempotent: the fetch is deduped per content GID, completed GIDs are
-skipped, and the run STOPS cleanly if Steam throttles logons — just re-run to resume. After the fetch,
-re-run `extract` over the affected builds so their content artifacts are re-emitted.");
+skipped, and the run STOPS cleanly if Steam throttles logons or the shared session cannot be
+re-established — just re-run to resume. A session that merely drops mid-run costs the GID it hit and
+then reconnects. After the fetch, re-run `extract` over the affected builds so their content artifacts
+are re-emitted.");
     }
 }

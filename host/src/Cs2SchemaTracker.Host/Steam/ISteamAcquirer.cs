@@ -20,12 +20,13 @@ internal sealed class NoOpDisposable : IDisposable
 internal interface ISteamAcquirer
 {
     /// <summary>
-    /// Batch session lifecycle. Open ONE shared Steam connection+logon for the lifetime of the
+    /// Multi-target session lifecycle. Open ONE shared Steam connection+logon for the lifetime of the
     /// returned scope; while open, EVERY acquire call on this acquirer reuses that single session
-    /// instead of connecting+logging-on per call. Disposing the scope tears the session down. The BATCH
-    /// path (<c>acquire --all</c> / repeated <c>--build</c>) opens exactly one scope around its whole
-    /// per-build loop so a 244-build run does ONE logon, not 244 — Steam rate-limits LOGONS
-    /// (<c>AccountLoginDeniedThrottle</c> after ~58 logons/window), not data transfer.
+    /// instead of connecting+logging-on per call. Disposing the scope tears the session down. Steam
+    /// rate-limits LOGONS (<c>AccountLoginDeniedThrottle</c>), not data transfer, so every command that
+    /// acquires more than one target opens exactly one scope around its whole loop: the BATCH path
+    /// (<c>acquire --all</c> / repeated <c>--build</c>) does ONE logon for a 244-build run rather than
+    /// 244, and <c>content-backfill --execute</c> does ONE for a 381-GID campaign rather than 381.
     ///
     /// Outside a scope (the default), every acquire owns its own connect+logon+disconnect — so the
     /// single-build / <c>--from-provenance</c> / <c>--content</c> / probe paths keep their
