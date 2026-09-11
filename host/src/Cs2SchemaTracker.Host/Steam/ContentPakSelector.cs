@@ -246,9 +246,34 @@ internal static class ContentPakSelector
                 new Dictionary<string, IReadOnlyList<VpkByteRange>>(StringComparer.Ordinal));
         }
 
+        return BuildByteRangePlan(pak, required);
+    }
+
+    /// <summary>
+    /// The byte-range plan for an EXPLICIT entry list, bypassing the `.gameevents` gate in
+    /// <see cref="EnumerateRequiredEntries"/> — the caller has already run that gate over the FULL
+    /// required set and is now narrowing the fetch to a SUBSET of it.
+    ///
+    /// This is what the incremental ("patch") refresh fetches: <see cref="ContentPatchPlan"/>
+    /// partitions the required set into entries re-usable from the store copy and entries that must
+    /// come off the CDN, and only the latter reach here. <paramref name="entries"/> MAY therefore be
+    /// EMPTY (every required entry was re-usable), which yields a plan carrying just the whole-file
+    /// directory index and no chunk ranges — deliberately NOT
+    /// <see cref="ContentFetchPlan.IsEmpty"/>, because "nothing left to fetch" is a success, not the
+    /// wrong-VPK condition that empty flags.
+    ///
+    /// Determinism is unchanged: per-file range lists are merged and Ordinal-by-offset sorted, so
+    /// the same entry subset always yields the same plan.
+    /// </summary>
+    internal static ContentFetchPlan BuildByteRangePlan(
+        ContentPak pak, IReadOnlyList<VpkDirectoryEntry> entries)
+    {
+        ArgumentNullException.ThrowIfNull(pak);
+        ArgumentNullException.ThrowIfNull(entries);
+
         // Group required body ranges by their backing external chunk file.
         var byFile = new Dictionary<string, List<VpkByteRange>>(StringComparer.Ordinal);
-        foreach (var entry in required)
+        foreach (var entry in entries)
         {
             if (entry.ArchiveIndex == EmbeddedArchiveIndex || entry.EntryLength == 0)
             {

@@ -35,6 +35,21 @@
 //
 // The gate applies to REQUIRED paks only (ContentPak.Csgo). See IsCompleteTrimmedStore for why the
 // non-required core pak is stamped but not enforced.
+//
+// === Refreshing a stale trim without re-downloading it ===
+// A generation bump marks every existing store copy stale, but the bytes in those copies are still
+// exactly right for their GID — the GID IS the content identity. So EnsureTrimmedStore also takes a
+// MULTI-SOURCE repack (a VpkTrimSource list): ContentPatchPlan partitions the fresh required set into
+// entries the store copy already holds byte-for-byte and entries that genuinely have to be fetched,
+// and the refresh re-reads the former straight out of the store instead of off the CDN. Measured on
+// the generation-2 (weapons.vdata_c) campaign that is ~5-9 MB per GID instead of 20-199 MB, because
+// 93.9% of the required bytes are localization tables that did not change.
+//
+// Determinism is what makes that safe: the trimmed bytes are a pure function of the entries, not of
+// which archive supplied each one, so a patched trim is byte-identical to the full re-fetch it
+// replaces (VpkTrimWriterTest pins the equivalence). Fail-loud is what keeps it honest: an entry that
+// disagrees between the store copy and the fresh index under ONE GID means the store is corrupt or
+// mis-keyed, and ContentPatchPlan throws rather than papering over it.
 
 using System.Globalization;
 using System.Text;
@@ -354,6 +369,37 @@ internal static class ContentStore
     {
         ArgumentNullException.ThrowIfNull(source);
         ArgumentNullException.ThrowIfNull(required);
+        return EnsureTrimmedStore(
+            VpkTrimWriter.FromSingleSource(source, required),
+            contentStoreRoot, gid, force, out detail, pak);
+    }
+
+    /// <summary>
+    /// <see cref="EnsureTrimmedStore(VpkArchive, IReadOnlyList{VpkDirectoryEntry}, string, ulong, bool, out string, ContentPak?)"/>
+    /// for a MULTI-SOURCE repack: each entry arrives paired with the archive its bytes come from, so
+    /// one trim can be assembled from several archives at once.
+    ///
+    /// This is what the incremental ("patch") refresh writes. <see cref="ContentPatchPlan"/> pairs the
+    /// entries the store copy already holds with THAT store copy and the rest with the fresh staging
+    /// archive, so refreshing a stale trim re-downloads only what genuinely changed instead of the
+    /// whole required set. The store copy being one of the sources is safe on purpose:
+    /// <see cref="VpkTrimWriter.Write(IReadOnlyList{VpkTrimSource}, string, VpkTrimSidecar?)"/>
+    /// finishes every CRC-verified read into memory before it stages or moves a single byte, so the
+    /// pair it overwrites may be the pair it read from.
+    ///
+    /// Determinism is unchanged: the trimmed bytes are a pure function of the entries, not of which
+    /// archive each one came from, so a patched trim is byte-identical to the full re-fetch it
+    /// replaces.
+    /// </summary>
+    public static StoreEnsureAction EnsureTrimmedStore(
+        IReadOnlyList<VpkTrimSource> sources,
+        string contentStoreRoot,
+        ulong gid,
+        bool force,
+        out string detail,
+        ContentPak? pak = null)
+    {
+        ArgumentNullException.ThrowIfNull(sources);
         ArgumentException.ThrowIfNullOrEmpty(contentStoreRoot);
 
         bool complete = IsCompleteTrimmedStore(contentStoreRoot, gid, out var incompleteReason, pak);
@@ -367,7 +413,7 @@ internal static class ContentStore
         var storeDirVpk = ResolveDirVpk(contentStoreRoot, gid, pak);
         // Fail-loud: a required entry that can't be read from the source throws here. The marker
         // moves into place WITH the pair (single atomic success path), never as a follow-up write.
-        VpkTrimWriter.Write(source, required, storeDirVpk,
+        VpkTrimWriter.Write(sources, storeDirVpk,
             new VpkTrimSidecar(
                 TrimMarkerFileName, TrimMarkerContent(ContentPakSelector.RequiredSetGeneration)));
         int pruned = PruneStrayStoreChunks(contentStoreRoot, gid, pak);
