@@ -6,9 +6,14 @@
 // emitter and no literal "0.x.y" is scattered across the host. Emitters MUST source the
 // version from here rather than hardcoding it.
 //
-// Under the lightweight pre-v1.0.0 stability rule (README "Stability"): bump this when the
-// artifact surface changes AND the sibling CS2OpenDev-Docs is updated in the same change.
-// Formal semver discipline returns at v1.0.0.
+// Pre-v1.0.0 this moves whenever the artifact surface changes. What obliges a matching
+// CS2OpenDev-Docs change is NARROWER than that, and the distinction is easy to get wrong: Docs
+// re-publishes a fixed, named set of artifacts (entity_schema, convars, commands, gameevents,
+// schema_evolution) and reads nothing else from a set. A field ENTERING OR LEAVING one of those
+// is a Docs event and wants the lockstep update 0.9.0's atomic taxonomy got. A new standalone
+// artifact Docs never opens is not, however much it moves this number. Docs' own
+// schema_format_version versions the files Docs EMITS, not this family; the two look alike and
+// are unrelated. Formal semver discipline returns at v1.0.0.
 
 namespace Cs2SchemaTracker.Host;
 
@@ -19,7 +24,7 @@ public static class SchemaFamily
 {
     /// <summary>
     /// Current schemas/*.proto family version. Pre-v1.0.0 it changes when the artifact
-    /// surface changes and CS2OpenDev-Docs is updated in lockstep (README "Stability").
+    /// surface changes; see the header for when that also obliges a CS2OpenDev-Docs change.
     /// Do not hardcode this literal elsewhere — reference this field.
     /// </summary>
     // 0.5.0: schema-coverage expansion. The walker now walks the global
