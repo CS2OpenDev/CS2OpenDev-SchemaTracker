@@ -537,3 +537,68 @@ jobs:
             echo "push/dispatch mode: validating whole artifacts/ working tree"
             "$VERIFY_ARTIFACTS_EXE" verify-artifacts --artifacts artifacts --inventory data/cs2-assets-inventory.json
           fi
+
+  # THE ONE REQUIRED CHECK (why this job exists):
+  #
+  # Branch protection needs a check NAME to require, and requiring the real jobs
+  # directly does not work here:
+  #
+  #   1. PATH SCOPING. Every build job above is gated on `needs: detect-changes`
+  #      plus an `if:`, so a docs-only PR legitimately SKIPS host-build. GitHub
+  #      counts a `skipped` check as satisfying a required check, so requiring
+  #      `host build + test (ubuntu-latest)` would behave correctly — but only as
+  #      long as a hand-maintained list of job names in a web UI stays in lockstep
+  #      with this file.
+  #   2. NAME DRIFT. The matrix jobs' check names are DERIVED
+  #      (`host build + test (${{ matrix.os }})`). Renaming a job, editing the
+  #      matrix, or adding a third OS silently orphans the required-check entry:
+  #      the required name never reports, and every PR then sits on
+  #      "Expected — waiting for status to be reported" forever. The break happens
+  #      in a file the protection config cannot see, and surfaces on the next PR.
+  #
+  # So ONE aggregate job is the required check, and it derives its verdict from
+  # `needs` — which lives here, next to the jobs, and shows up in code review.
+  # Adding a job to CI means adding it to `needs` below in the same diff.
+  #
+  # PASS/FAIL RULE: `success` and `skipped` pass; `failure` and `cancelled` fail.
+  # (Those four are the complete set of job results.) `skipped` MUST pass — that
+  # is exactly what the path-scoped gates produce on a change that does not touch
+  # their area. A job whose own `needs:` dependency failed also reports `skipped`,
+  # but that is still caught, because the dependency reports `failure` and is in
+  # this list too. detect-changes is in the list for precisely that reason: it is
+  # the job whose failure would otherwise skip everything downstream into a false
+  # green.
+  ci-gate:
+    name: ci gate
+    # always(): run even when an upstream job failed or the run was cancelled.
+    # Without it this job would itself be skipped on failure, report `skipped`,
+    # and so SATISFY the very requirement it exists to enforce.
+    if: always()
+    needs:
+      - detect-changes
+      - host-build
+      - walker-build
+      - format-check
+      - schemas-compile
+      - artifacts-validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: Job results
+        # Printed unconditionally so a red gate says which job to look at without
+        # expanding the whole run.
+        run: |
+          echo "detect-changes ....... ${{ needs.detect-changes.result }}"
+          echo "host-build ........... ${{ needs.host-build.result }}"
+          echo "walker-build ......... ${{ needs.walker-build.result }}"
+          echo "format-check ......... ${{ needs.format-check.result }}"
+          echo "schemas-compile ...... ${{ needs.schemas-compile.result }}"
+          echo "artifacts-validation . ${{ needs.artifacts-validation.result }}"
+
+      - name: Fail if any job failed or was cancelled
+        # Deliberately an expression over `needs.*.result` rather than a jq script:
+        # no dependency on a tool being present in the runner image, and the
+        # condition is visible in the run's job summary.
+        if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: |
+          echo "::error::ci gate: a required CI job failed or was cancelled (see the results above)."
+          exit 1
