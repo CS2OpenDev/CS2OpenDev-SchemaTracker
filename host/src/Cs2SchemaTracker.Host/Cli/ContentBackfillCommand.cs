@@ -24,7 +24,11 @@
 // partitions the fresh required set against the store copy (ContentPatchPlan) and fetches only what
 // is genuinely missing, which turns a ~50 GB corpus-wide campaign into a few GB. The per-GID
 // re-used-vs-fetched split and the transferred byte count are LOGGED per GID and totalled at the end,
-// so the saving is a number in the run log rather than an assumption.
+// so the saving is a number in the run log rather than an assumption. That total ADDS the Phase-A
+// directory-index fetch the acquire's own AcquireResult.DownloadedBytes omits on the Phase-B branch —
+// the index is downloaded twice (once to parse the required set, once as the range plan's whole-file
+// entry) and only one of those is reported. The run log therefore says what Steam actually sent rather
+// than a figure that flatters the saving.
 //
 // ONE Steam logon per RUN, not per GID. Steam rate-limits authenticated LOGONS, not bytes: a campaign
 // that stood up its own SteamClient per GID was refused with AccountLoginDeniedThrottle after 118 of
@@ -202,10 +206,16 @@ internal static class ContentBackfillCommand
                         CancellationToken.None).ConfigureAwait(false);
                     fetched++;
                     consecutiveFailures = 0;
-                    transferredBytes += result.DownloadedBytes;
+                    long phaseAIndexBytes = PhaseAIndexBytes(result);
+                    long gidBytes = result.DownloadedBytes + phaseAIndexBytes;
+                    transferredBytes += gidBytes;
+                    string indexNote = phaseAIndexBytes > 0
+                        ? $" ({result.DownloadedBytes:N0} counted by the acquire + {phaseAIndexBytes:N0} for the "
+                            + "Phase-A directory index it does not count)"
+                        : "";
                     Console.Error.WriteLine(
-                        $"content-backfill: GID {t.ContentGid} done — {result.DownloadedBytes:N0} byte(s) "
-                        + $"transferred from Steam ({transferredBytes:N0} across {fetched} GID(s) so far). The "
+                        $"content-backfill: GID {t.ContentGid} done — {gidBytes:N0} byte(s) transferred from Steam"
+                        + $"{indexNote} ({transferredBytes:N0} across {fetched} GID(s) so far). The "
                         + "per-entry re-used-vs-fetched split for this GID is on the `content refresh plan` "
                         + "and `content-store repack` lines above.");
                 }
@@ -346,6 +356,24 @@ internal static class ContentBackfillCommand
     /// True when connect-or-logon ITSELF failed, so the shared session does not exist and the acquirer's
     /// reconnect-once already had its turn. Every remaining GID would fail the same way, so the run
     /// stops rather than converting the whole remainder into failures.
+    /// <para>
+    /// The probes are the messages <c>SteamAnonymousAcquirer.Session.ConnectAndLogonAsync</c> actually
+    /// produces, because that is the method the reconnect goes through: the <c>OnDisconnected</c> faults
+    /// <c>disconnected before connect completed (UserInitiated=...)</c> and <c>disconnected before logon
+    /// completed (UserInitiated=...)</c>, the <c>&lt;anonymous|authenticated&gt; logon failed with
+    /// EResult=... ExtendedResult=...</c> refusal, the <c>authenticated logon rejected at credentials
+    /// stage (EResult=...)</c> refusal, and <c>authenticated logon produced no LoggedOnCallback after
+    /// token exchange.</c> An earlier probe here matched "failed to connect to steam", which the acquirer
+    /// never emits — so the one-session-per-run change made the refused-reconnect path reachable and this
+    /// classifier could not recognize a single message it produces.
+    /// </para>
+    /// <para>
+    /// These are substrings only because there is nothing stabler to match: the acquirer exposes no typed
+    /// session-failure exception and no session-status enum. <see cref="SteamGuardRequiredException"/> is
+    /// the one typed case and is matched as a type above. The two "disconnected before ..." faults cannot
+    /// steal a mid-fetch drop from <see cref="IsSessionDrop"/>: they complete TCSs that are awaited only
+    /// inside ConnectAndLogonAsync, so a drop during a fetch finds them already completed.
+    /// </para>
     /// </summary>
     private static bool IsSessionUnavailable(Exception ex)
     {
@@ -356,7 +384,44 @@ internal static class ContentBackfillCommand
         var m = ex.Message;
         return m.Contains("logon failed with EResult", StringComparison.OrdinalIgnoreCase)
             || m.Contains("logon rejected at credentials stage", StringComparison.OrdinalIgnoreCase)
-            || m.Contains("failed to connect to steam", StringComparison.OrdinalIgnoreCase);
+            || m.Contains("produced no LoggedOnCallback", StringComparison.OrdinalIgnoreCase)
+            || m.Contains("disconnected before connect completed", StringComparison.OrdinalIgnoreCase)
+            || m.Contains("disconnected before logon completed", StringComparison.OrdinalIgnoreCase);
+    }
+
+    /// <summary>
+    /// The Phase-A directory-index transfer that <paramref name="result"/> does NOT count, so the run can
+    /// report what Steam actually sent.
+    /// <para>
+    /// AcquireContentPakAsync fetches every content pak's <c>pak01_dir.vpk</c> WHOLE in Phase A to parse
+    /// the required set, then — when the patch partition leaves body ranges to fetch — returns ONLY Phase
+    /// B's result, dropping Phase A's transfer from <see cref="AcquireResult.DownloadedBytes"/>. Phase B
+    /// genuinely re-downloads that index (BuildByteRangePlan always lists the directory file as a whole
+    /// file, and Phase B stages into a fresh <c>.partial</c> where the chunk-resume probe hits nothing),
+    /// so the index is paid for TWICE and the acquire reports one of them. A whole-file fetch's
+    /// <see cref="AcquiredFileInfo.SizeBytes"/> IS the number of bytes it transferred, which is why
+    /// summing the result's directory files restores the unreported half.
+    /// </para>
+    /// <para>
+    /// When Phase B was SKIPPED the acquirer hands back Phase A's own result, whose DownloadedBytes
+    /// already counts the index and whose Files are directory files ONLY — the "carries a non-directory
+    /// file" gate returns 0 there, so that shape is never double-counted. The addend is exact only while
+    /// both of those hold: Phase B re-fetching the directory file whole, and Phase A's staging being
+    /// fresh. If a later acquirer change lets Phase B reuse Phase A's staging, this over-reports.
+    /// </para>
+    /// <para>
+    /// This derivation exists ONLY because AcquireResult carries no Phase-A field. If the acquirer ever
+    /// folds Phase A into DownloadedBytes, DELETE this helper and its call site in the SAME change or the
+    /// index is counted twice.
+    /// </para>
+    /// </summary>
+    private static long PhaseAIndexBytes(AcquireResult result)
+    {
+        static bool IsIndex(AcquiredFileInfo f)
+            => ContentPak.All.Any(p => p.IsDirectoryFile(f.RelativePath));
+        return result.Files.Any(f => !IsIndex(f))
+            ? result.Files.Where(IsIndex).Sum(f => f.SizeBytes)
+            : 0;
     }
 
     private static void PrintHelp()

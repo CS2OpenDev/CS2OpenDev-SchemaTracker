@@ -12,7 +12,10 @@
 // load-bearing quantity — logons — observable, and lets the recovery paths be asserted without Steam.
 //
 // Covered here: one logon across many GIDs; a session drop costing only the GID it hit; a reconnect
-// that itself fails stopping the run instead of converting every remaining GID into a failure; a
+// that itself fails stopping the run instead of converting every remaining GID into a failure —
+// including one refused with the messages ConnectAndLogonAsync really produces, not just a synthetic
+// EResult one; the run total counting the Phase-A directory index the acquire's own figure omits,
+// without double-counting an acquire whose Phase B was skipped; a
 // data-level fetch failure still fail-isolating; a throttle still stopping the run resumably; an
 // unclassifiable cascade stopping on the consecutive-failure guard; and the single-build
 // `acquire --content` paths opening NO shared scope (their connect-once-then-done lifecycle is
@@ -57,6 +60,15 @@ public sealed class ContentBackfillSessionTest
 
         /// <summary>Bytes each successful fetch reports as transferred from the CDN.</summary>
         public long DownloadedBytes { get; set; } = 4096;
+
+        /// <summary>Per-GID override of <see cref="DownloadedBytes"/> — what the acquire itself counts.</summary>
+        public Dictionary<ulong, long> DownloadedBytesByGid { get; } = new();
+
+        // Modelled because the run's reported byte total is derived partly from the directory files in
+        // the result (the Phase-A index the acquire's own figure omits), so a fake that always returns
+        // an empty file list cannot exercise that accounting at all.
+        /// <summary>Per-GID file list the successful fetch reports (default: none, as the session tests want).</summary>
+        public Dictionary<ulong, IReadOnlyList<AcquiredFileInfo>> FilesByGid { get; } = new();
 
         /// <summary>The dirOnly flag the last content fetch received (single-build path assertions).</summary>
         public bool LastDirOnly { get; private set; }
@@ -128,13 +140,14 @@ public sealed class ContentBackfillSessionTest
                 return Task.FromException<AcquireResult>(make());
             }
 
+            var files = FilesByGid.TryGetValue(gid, out var f) ? f : Array.Empty<AcquiredFileInfo>();
             return Task.FromResult(new AcquireResult(
                 OutDir: outDir,
                 ResolvedBuildId: explicitSpec?.BuildId ?? buildId,
                 Depots: Array.Empty<AcquiredDepotInfo>(),
-                Files: Array.Empty<AcquiredFileInfo>(),
-                TotalBytes: 0,
-                DownloadedBytes: DownloadedBytes));
+                Files: files,
+                TotalBytes: files.Sum(x => x.SizeBytes),
+                DownloadedBytes: DownloadedBytesByGid.TryGetValue(gid, out var db) ? db : DownloadedBytes));
         }
 
         // No other acquire leg is reachable from content-backfill or `acquire --content`.
@@ -210,6 +223,10 @@ public sealed class ContentBackfillSessionTest
 
     private static InvalidOperationException Drop() => new(
         "SteamApps must be connected to Steam to issue a PICS request.");
+
+    /// <summary>One entry of a successful acquire's <see cref="AcquireResult.Files"/>.</summary>
+    private static AcquiredFileInfo PakFile(string rel, long size)
+        => new(RelativePath: rel, Sha256Hex: new string('0', 64), SizeBytes: size, MtimeUtc: null);
 
     // ---- one logon per run ---------------------------------------------------------------------
 
@@ -293,6 +310,100 @@ public sealed class ContentBackfillSessionTest
             Assert.Contains("fetched=1 failed=2 skipped=0", err, StringComparison.Ordinal);
             Assert.Contains("5 GID(s) still missing", err, StringComparison.Ordinal);   // resumable remainder
             Assert.Contains("Re-run to resume", err, StringComparison.Ordinal);
+        }
+        finally
+        {
+            TryDelete(root);
+        }
+    }
+
+    // The test above uses a synthetic EResult message; these are the messages a refused
+    // ConnectAndLogonAsync ACTUALLY produces, copied verbatim from SteamAnonymousAcquirer. They are
+    // the whole point of the classifier: the one-session-per-run change made the reconnect path
+    // reachable, and a probe set that does not match these leaves every refused reconnect
+    // unclassified — the run then burns GIDs until the consecutive-failure guard trips and tells the
+    // operator the wrong thing about why it stopped.
+    [Theory]
+    [InlineData("disconnected before connect completed (UserInitiated=False).")]
+    [InlineData("disconnected before logon completed (UserInitiated=False).")]
+    [InlineData("authenticated logon produced no LoggedOnCallback after token exchange.")]
+    public void A_Refused_Reconnect_Stops_The_Run(string message)
+    {
+        var root = NewRoot();
+        try
+        {
+            WriteBuilds(root, 6);
+            var fake = new ContentFakeAcquirer
+            {
+                OnReconnect = () => new InvalidOperationException(message),
+            };
+            fake.Failures[200UL] = Drop;
+            fake.DropsSession.Add(200UL);
+
+            var (code, err) = RunExecute(root, fake);
+
+            Assert.Equal(1, code);
+            Assert.Equal(new List<ulong> { 100UL, 200UL }, fake.Calls);
+            Assert.Equal(1, fake.LogonCount);
+            Assert.Contains("STOPPED (Steam session unavailable)", err, StringComparison.Ordinal);
+            Assert.Contains("fetched=1 failed=2 skipped=0", err, StringComparison.Ordinal);
+            Assert.Contains("5 GID(s) still missing", err, StringComparison.Ordinal);
+            Assert.Contains("Re-run to resume", err, StringComparison.Ordinal);
+        }
+        finally
+        {
+            TryDelete(root);
+        }
+    }
+
+    // ---- the reported transfer is what Steam actually sent ---------------------------------------
+
+    [Fact]
+    public void Phase_A_Directory_Index_Is_Counted_In_The_Reported_Transfer()
+    {
+        var root = NewRoot();
+        try
+        {
+            WriteBuilds(root, 3);
+            var fake = new ContentFakeAcquirer();
+            // GID 100: an ordinary Phase-B acquire — the returned result counts Phase B only, so the
+            // 7 MB directory index Phase A pulled (and Phase B re-pulled whole) is missing from it.
+            fake.FilesByGid[100UL] = new[]
+            {
+                PakFile("game/csgo/pak01_dir.vpk", 7_000_000),
+                PakFile("game/csgo/pak01_462.vpk", 2_500),
+            };
+            fake.DownloadedBytesByGid[100UL] = 9_000_000;
+            // GID 200: Phase B SKIPPED, so the acquirer handed back Phase A's OWN result — its figure
+            // already counts the index, and its file list is directory-only. Nothing to add here.
+            fake.FilesByGid[200UL] = new[] { PakFile("game/csgo/pak01_dir.vpk", 7_000_000) };
+            fake.DownloadedBytesByGid[200UL] = 7_000_000;
+            // GID 300: a Phase-B acquire that also staged the engine core pak's index — both indexes
+            // were paid for twice, so both are added.
+            fake.FilesByGid[300UL] = new[]
+            {
+                PakFile("game/csgo/pak01_dir.vpk", 7_000_000),
+                PakFile("game/core/pak01_dir.vpk", 1_000_000),
+                PakFile("game/csgo/pak01_462.vpk", 2_500),
+            };
+            fake.DownloadedBytesByGid[300UL] = 9_000_000;
+
+            var (code, err) = RunExecute(root, fake);
+
+            Assert.Equal(0, code);
+            Assert.Contains(
+                $"GID 100 done — {16_000_000L.ToString("N0", CultureInfo.CurrentCulture)} byte(s)",
+                err, StringComparison.Ordinal);
+            Assert.Contains(
+                $"GID 200 done — {7_000_000L.ToString("N0", CultureInfo.CurrentCulture)} byte(s)",
+                err, StringComparison.Ordinal);
+            Assert.Contains(
+                $"GID 300 done — {17_000_000L.ToString("N0", CultureInfo.CurrentCulture)} byte(s)",
+                err, StringComparison.Ordinal);
+            Assert.Contains(
+                $"{40_000_000L.ToString("N0", CultureInfo.CurrentCulture)} byte(s) transferred in total",
+                err, StringComparison.Ordinal);
+            Assert.Contains("Phase-A directory index", err, StringComparison.Ordinal);
         }
         finally
         {
