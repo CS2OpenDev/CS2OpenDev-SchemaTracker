@@ -292,7 +292,12 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
     // trimmed layout is a pure function of the entries and not of which archive supplied each one.
     // An entry that disagrees between the store copy and the fresh index under ONE GID means the
     // store is corrupt or mis-keyed, and ContentPatchPlan throws rather than papering over it; an
-    // ABSENT store copy is not a fault and simply degrades to the full fetch.
+    // ABSENT store copy is not a fault and simply degrades to the full fetch. So does a legacy /
+    // partial _content/<gid> whose tree still points at ORIGINAL external chunks: re-use is gated on
+    // the store copy being a self-contained trimmed pair, so such a copy is re-trimmed from THIS
+    // fresh staging exactly as it was before the patch path existed. That gate has to live in the
+    // partition rather than as a retry around the repack below — by the time the repack runs, Phase B
+    // has already narrowed the fetch, so staging no longer holds the bodies that were re-used.
     // ---------------------------------------------------------------------
 
     public async Task<AcquireResult> AcquireContentPakAsync(

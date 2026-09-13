@@ -50,6 +50,12 @@
 // replaces (VpkTrimWriterTest pins the equivalence). Fail-loud is what keeps it honest: an entry that
 // disagrees between the store copy and the fresh index under ONE GID means the store is corrupt or
 // mis-keyed, and ContentPatchPlan throws rather than papering over it.
+//
+// Re-use is additionally gated on the store copy having the LAYOUT of a self-contained trimmed pair
+// (IsSelfContainedTrimLayout): tree fields alone do not prove a body is readable, and a legacy /
+// partial _content/<gid> whose tree still points at ORIGINAL external chunks matches them all. Such a
+// copy is re-trimmed from fresh staging exactly as it was before the patch path existed, rather than
+// being repacked out of bodies it does not hold.
 
 using System.Globalization;
 using System.Text;
@@ -66,6 +72,15 @@ internal static class ContentStore
     /// <see cref="TrimMarkerFileName"/>.</summary>
     private const string TrimDirVpkName = "pak01_dir.vpk";
     private const string TrimChunkVpkName = "pak01_000.vpk";
+
+    /// <summary>
+    /// The single external archive index <see cref="VpkTrimWriter"/> remaps EVERY trimmed body into.
+    /// Duplicated here because the writer's own constant is private, and because the value is part of
+    /// the ON-DISK shape of a trimmed pair rather than an implementation detail of the writer: a
+    /// stored entry naming any other index — an original chunk like 154, or the 0x7FFF embedded
+    /// sentinel — keeps its body somewhere this store copy does not own.
+    /// </summary>
+    private const ushort TrimmedArchiveIndex = 0;
 
     /// <summary>The disposition of an <see cref="EnsureTrimmedStore"/> call (for caller logging).</summary>
     public enum StoreEnsureAction
@@ -234,6 +249,76 @@ internal static class ContentStore
     /// <summary>True iff a trimmed pak already exists for this GID (content-addressed idempotency).</summary>
     public static bool GidExists(string contentStoreRoot, ulong gid, ContentPak? pak = null)
         => File.Exists(ResolveDirVpk(contentStoreRoot, gid, pak));
+
+    /// <summary>The trimmed <c>pak01_000.vpk</c> (body file) path for a GID inside the store (csgo pak by default).</summary>
+    public static string ResolveChunkVpk(string contentStoreRoot, ulong gid, ContentPak? pak = null)
+        => Path.Combine(StoreDirForGid(contentStoreRoot, gid, pak), TrimChunkVpkName);
+
+    /// <summary>
+    /// True iff <paramref name="store"/> has the LAYOUT <see cref="VpkTrimWriter"/> writes — every
+    /// body at trimmed archive index 0, in bounds, inside a <c>pak01_000.vpk</c> whose length is
+    /// EXACTLY what the tree accounts for. This is the CHEAP structural sibling of
+    /// <see cref="IsCompleteTrimmedStore"/>: it walks the already-parsed entry tree and reads one
+    /// file length, never a body, so it costs nothing beside that probe's ~50 MB CRC-verified sweep.
+    ///
+    /// It answers the one question <see cref="ContentPatchPlan.Create"/> must ask before re-using
+    /// anything: can this copy actually PRODUCE the bytes it appears to hold? A legacy
+    /// <c>_content/&lt;gid&gt;</c> — the old python gameevents-only backfill, a verbatim copy of the
+    /// ORIGINAL index still pointing at <c>pak01_154.vpk</c> and friends that were never fetched —
+    /// answers no on its first entry even though its tree fields match the fresh index on every
+    /// required entry. The final exact-length equality is what additionally catches a full-size but
+    /// partially-fetched body file whose per-entry bounds all pass.
+    /// </summary>
+    public static bool IsSelfContainedTrimLayout(VpkArchive store, string chunkVpkPath, out string reason)
+    {
+        ArgumentNullException.ThrowIfNull(store);
+        ArgumentException.ThrowIfNullOrEmpty(chunkVpkPath);
+
+        if (!File.Exists(chunkVpkPath))
+        {
+            reason = $"the store copy has no '{TrimChunkVpkName}' beside its {TrimDirVpkName}";
+            return false;
+        }
+
+        long chunkLength = new FileInfo(chunkVpkPath).Length;
+        long bodyBytes = 0;
+        foreach (var entry in store.Entries)
+        {
+            if (entry.EntryLength == 0)
+            {
+                // Wholly preloaded (or empty): its bytes ride in the tree, so it needs no body file
+                // and says nothing about whether this copy owns its bodies.
+                continue;
+            }
+            if (entry.ArchiveIndex != TrimmedArchiveIndex)
+            {
+                reason =
+                    $"stored entry '{entry.FullPath}' keeps its body in archive index "
+                    + $"{entry.ArchiveIndex}, not the trimmed pair's '{TrimChunkVpkName}'";
+                return false;
+            }
+            long end = (long)entry.EntryOffset + entry.EntryLength;
+            if (end > chunkLength)
+            {
+                reason =
+                    $"stored entry '{entry.FullPath}' needs bytes [{entry.EntryOffset}, {end}) of "
+                    + $"'{TrimChunkVpkName}', which is {chunkLength} bytes";
+                return false;
+            }
+            bodyBytes += entry.EntryLength;
+        }
+
+        if (bodyBytes != chunkLength)
+        {
+            reason =
+                $"'{TrimChunkVpkName}' is {chunkLength} bytes but the stored tree accounts for "
+                + $"{bodyBytes} — it is not the exact concatenation a trimmed pair is";
+            return false;
+        }
+
+        reason = "";
+        return true;
+    }
 
     /// <summary>
     /// True iff a store copy exists for <paramref name="gid"/> AND it is a COMPLETE, self-contained

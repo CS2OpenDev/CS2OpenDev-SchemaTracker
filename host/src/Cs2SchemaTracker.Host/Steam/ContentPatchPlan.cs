@@ -45,6 +45,23 @@
 // log. That matches ContentStore's existing fault-safe probe semantics — an unreadable store is the
 // signal to rebuild it from a known-good source, and the full fetch IS that rebuild.
 //
+// === Re-use is gated on a store copy we can actually read from ===
+// Those four matched fields are directory-TREE fields, and a tree can describe bytes the store does
+// not hold. The legacy _content/<gid> is exactly that shape — a verbatim copy of the ORIGINAL index,
+// so it matches every required entry on FullPath / EntryLength / Crc32 / preload while its bodies
+// still point at original chunks (pak01_154.vpk and friends) that were never fetched. Marking those
+// REUSE emptied the fetch half, which left the byte-range plan with no chunk ranges, which skipped
+// Phase B, which left the repack reading bodies nobody had fetched: FileNotFoundException out of
+// VpkArchive.ReadBody, identically on every re-run — --force included, because the sources were the
+// broken store either way — and three such GIDs in a row stop a backfill campaign.
+//
+// So before ANY entry is re-used the copy must pass ContentStore.IsSelfContainedTrimLayout: every
+// body at trimmed archive index 0, in bounds, in a pak01_000.vpk exactly as long as the tree accounts
+// for. That is a walk of the already-parsed tree plus one file length — no body read. A copy that
+// fails it is not a trim at all, so the plan degrades to the full fetch and the repack rewrites the
+// store from fresh staging: the self-heal EnsureTrimmedStore has always promised for legacy/partial
+// stores, and precisely the behaviour this path had before the patch partition existed.
+//
 // === Determinism ===
 // The partition is a pure function of (fresh required set, stored tree): no timestamps, no
 // environment, no ordering dependence. Both halves preserve the required set's Ordinal-by-FullPath
@@ -126,10 +143,13 @@ internal sealed class ContentPatchPlan
     /// <paramref name="fresh"/>) against the store copy for <paramref name="gid"/> /
     /// <paramref name="pak"/>.
     ///
-    /// No store copy, or one whose <c>pak01_dir.vpk</c> will not parse, yields a FULL plan (every
-    /// entry fetched from <paramref name="fresh"/>) with the reason recorded. Otherwise every
-    /// required entry the store also holds — same FullPath, EntryLength, Crc32 and preload — is
-    /// re-used from the store, and the rest are fetched.
+    /// No store copy, one whose <c>pak01_dir.vpk</c> will not parse, or one that is not a
+    /// self-contained trimmed pair (its bodies are not all in its own <c>pak01_000.vpk</c>) yields a
+    /// FULL plan (every entry fetched from <paramref name="fresh"/>) with the reason recorded. That
+    /// third check runs BEFORE the per-entry comparison below, so the throw is reserved for a genuine
+    /// trim that disagrees with the fresh index. Otherwise every required entry the store also holds
+    /// — same FullPath, EntryLength, Crc32 and preload — is re-used from the store, and the rest are
+    /// fetched.
     ///
     /// THROWS <see cref="InvalidDataException"/> when the store holds an entry of the same path that
     /// disagrees on length / CRC / preload: under one content GID that cannot happen unless the store
@@ -164,6 +184,21 @@ internal sealed class ContentPatchPlan
             // Fault-safe, exactly like ContentStore's completeness probe: an unreadable store copy is
             // the signal to rebuild it from a known-good source, and the full fetch IS that rebuild.
             return Full(fresh, required, $"stored trim is unreadable ({ex.Message})");
+        }
+
+        // The four fields compared below all live in the TREE, and a tree can describe bytes the
+        // store does not hold — which is exactly the legacy _content/<gid> shape, a verbatim copy of
+        // the ORIGINAL index whose bodies still point at chunks that were never fetched. It matched
+        // every required entry, so everything was marked REUSE, the fetch half emptied, Phase B was
+        // skipped, and the repack threw FileNotFoundException for pak01_154.vpk — on every re-run,
+        // --force included, because the sources were the broken store either way. So re-use first
+        // has to prove the copy is a trim THIS store owns. Ahead of the loop on purpose: it keeps a
+        // legacy copy from ever tripping the corruption throw below, and it is what keeps the
+        // byte-range plan (built from plan.Fetch) non-empty so Phase B still runs.
+        if (!ContentStore.IsSelfContainedTrimLayout(
+                store, ContentStore.ResolveChunkVpk(contentStoreRoot, gid, pak), out var layoutReason))
+        {
+            return Full(fresh, required, $"stored trim is not a self-contained trimmed pair ({layoutReason})");
         }
 
         var sources = new List<VpkTrimSource>(required.Count);

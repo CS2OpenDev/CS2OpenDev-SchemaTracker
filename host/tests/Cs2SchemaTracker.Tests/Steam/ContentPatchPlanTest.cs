@@ -83,6 +83,26 @@ public class ContentPatchPlanTest
         return storeDirVpk;
     }
 
+    /// <summary>
+    /// Lay down the LEGACY <c>_content/&lt;gid&gt;</c> shape the old python gameevents-only backfill
+    /// left behind: a verbatim copy of the ORIGINAL directory index whose tree still points at the
+    /// original external chunks (<c>pak01_154.vpk</c> …) that were never fetched. Its tree therefore
+    /// agrees with the fresh index on FullPath / EntryLength / Crc32 / preload for EVERY required
+    /// entry while one of the bodies lives in a chunk file this store copy does not hold — which is
+    /// precisely why the reuse partition cannot be decided from tree fields alone.
+    /// </summary>
+    private static void WriteLegacyStore(string root)
+    {
+        var legacyEntries = ContentSamples.StandardEntries()
+            .Select(e => string.Equals(e.Name, "items_game", StringComparison.Ordinal)
+                ? e with { ArchiveIndex = 154 }
+                : e)
+            .ToList();
+        var storeDir = ContentStore.StoreDirForGid(root, Gid);
+        ContentVpkFixture.Write(storeDir, legacyEntries);
+        File.Delete(Path.Combine(storeDir, "pak01_154.vpk"));
+    }
+
     [Fact]
     public void No_Store_Copy_Yields_A_Full_Plan()
     {
@@ -327,6 +347,117 @@ public class ContentPatchPlanTest
             Assert.False(plan.IsPatch);
             Assert.Equal(required.Count, plan.Fetch.Count);
             Assert.Contains("unreadable", plan.Reason, StringComparison.Ordinal);
+        }
+        finally
+        {
+            TryDelete(work);
+        }
+    }
+    /// <summary>
+    /// THE REGRESSION. The four fields the partition matches on all live in the directory TREE, and
+    /// a tree can describe bytes the store copy does not hold. A legacy <c>_content/&lt;gid&gt;</c>
+    /// matches on every one of them for every required entry, so EVERY entry was marked REUSE: the
+    /// fetch half emptied, the byte-range plan came out with no chunk ranges at all, Phase B was
+    /// skipped, and the repack was then handed sources pointing into a store copy that cannot
+    /// produce the bodies. Re-use must first prove the copy is a trim this store actually owns.
+    /// </summary>
+    [Fact]
+    public void Legacy_Store_Pointing_At_Original_External_Chunks_Degrades_To_A_Full_Plan()
+    {
+        var work = NewWorkDir();
+        try
+        {
+            var root = Path.Combine(work, "_content");
+            WriteLegacyStore(root);
+
+            var fresh = FreshPak(work);
+            var required = ContentPakSelector.EnumerateRequiredEntries(fresh);
+            var plan = ContentPatchPlan.Create(fresh, required, root, Gid, ContentPak.Csgo);
+
+            Assert.False(plan.IsPatch);
+            Assert.Equal(0, plan.ReusedCount);
+            Assert.Equal(required.Count, plan.Fetch.Count);
+            Assert.Equal(required.Count, plan.TrimSources.Count);
+            Assert.Contains("not a self-contained", plan.Reason, StringComparison.Ordinal);
+            Assert.Contains("FULL", plan.Describe(), StringComparison.Ordinal);
+
+            // The consequence that actually deadlocked the corpus: with everything re-used the fetch
+            // half was empty, so the byte-range plan had no chunk ranges and the acquirer skipped
+            // Phase B outright — leaving the repack to read bodies nobody had fetched.
+            var fetchPlan = ContentPakSelector.BuildByteRangePlan(ContentPak.Csgo, plan.Fetch);
+            Assert.NotEmpty(fetchPlan.ChunkRanges);
+        }
+        finally
+        {
+            TryDelete(work);
+        }
+    }
+
+    /// <summary>
+    /// The end-to-end repro, and the reason the gate exists at all: a legacy store copy must SELF-HEAL
+    /// off this acquire's fresh staging, exactly as it did before the patch path existed. Without the
+    /// gate the repack sources point back at the broken store, VpkArchive.ReadBody throws
+    /// FileNotFoundException for the absent <c>pak01_154.vpk</c>, and the GID fails identically on
+    /// every re-run — <c>--force</c> included, because the sources are the broken store either way.
+    /// Three such GIDs in a row stop a backfill campaign.
+    /// </summary>
+    [Fact]
+    public void Legacy_Store_Self_Heals_From_Fresh_Staging_Instead_Of_Failing_The_Gid()
+    {
+        var work = NewWorkDir();
+        try
+        {
+            var root = Path.Combine(work, "_content");
+            WriteLegacyStore(root);
+
+            var fresh = FreshPak(work);
+            var required = ContentPakSelector.EnumerateRequiredEntries(fresh);
+            var plan = ContentPatchPlan.Create(fresh, required, root, Gid, ContentPak.Csgo);
+
+            var action = ContentStore.EnsureTrimmedStore(
+                plan.TrimSources, root, Gid, force: false, out _);
+            Assert.Equal(ContentStore.StoreEnsureAction.ReTrimmedIncomplete, action);
+
+            Assert.True(ContentStore.IsCompleteTrimmedStore(root, Gid, out var reason), reason);
+
+            var storeDir = ContentStore.StoreDirForGid(root, Gid);
+            Assert.False(File.Exists(Path.Combine(storeDir, "pak01_154.vpk")));
+            Assert.True(File.Exists(Path.Combine(storeDir, "pak01_000.vpk")));
+        }
+        finally
+        {
+            TryDelete(work);
+        }
+    }
+
+    /// <summary>
+    /// The other half of the gate: a PROPER trim whose pak01_000.vpk was truncated (an interrupted
+    /// write, a partially-fetched body file). The directory tree is untouched, so all four matched
+    /// fields still agree and every entry looked re-usable; the missing bytes would only surface much
+    /// later as a repack-time read failure. The exact-length equality is what catches it.
+    /// </summary>
+    [Fact]
+    public void Truncated_Store_Chunk_File_Degrades_To_A_Full_Plan()
+    {
+        var work = NewWorkDir();
+        try
+        {
+            var root = Path.Combine(work, "_content");
+            var fresh = FreshPak(work);
+            WriteStaleStore(root, fresh);
+
+            var chunk = Path.Combine(ContentStore.StoreDirForGid(root, Gid), "pak01_000.vpk");
+            using (var fs = new FileStream(chunk, FileMode.Open, FileAccess.Write))
+            {
+                fs.SetLength(fs.Length - 1);
+            }
+
+            var required = ContentPakSelector.EnumerateRequiredEntries(fresh);
+            var plan = ContentPatchPlan.Create(fresh, required, root, Gid, ContentPak.Csgo);
+
+            Assert.False(plan.IsPatch);
+            Assert.Equal(required.Count, plan.Fetch.Count);
+            Assert.Contains("not a self-contained", plan.Reason, StringComparison.Ordinal);
         }
         finally
         {
