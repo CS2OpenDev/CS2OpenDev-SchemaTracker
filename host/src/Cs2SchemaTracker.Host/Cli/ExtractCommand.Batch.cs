@@ -403,6 +403,24 @@ internal static partial class ExtractCommand
     }
 
     /// <summary>
+    /// PURE decision core for the <c>CS2_WALKER_BIN</c> / appsettings <c>WalkerBin</c> short-circuit —
+    /// no I/O, no Console writes — so the one rule that decides whether the identity gate runs at all
+    /// is unit-testable. Internal (not private): the test suite exercises this directly via
+    /// InternalsVisibleTo, exactly as it does <see cref="EvaluateWalkerIdentityGate"/>.
+    ///
+    /// An explicit single-binary override IS trivially uniform, which is why it used to skip the gate
+    /// outright — but uniformity was never the only thing the gate checks. It also catches a binary
+    /// that reports no src-fingerprint or will not resolve at all, and it enforces the
+    /// <see cref="ExpectFingerprintEnvVar"/> tripwire, and an override binary is exactly the unvetted
+    /// binary those two exist for. Under <c>--commit</c> that same override binary is what
+    /// EraWalkerResolver hands the drift guard for EVERY build, so skipping the gate there was a
+    /// corpus-facing hole: the one run that can rewrite committed sets was the one running unchecked.
+    /// An off-repo run cannot rewrite a committed set, so it keeps the cheap short-circuit.
+    /// </summary>
+    internal static bool WalkerOverrideSkipsIdentityGate(string? walkerBinOverride, bool commit)
+        => !string.IsNullOrWhiteSpace(walkerBinOverride) && !commit;
+
+    /// <summary>
     /// WALKER IDENTITY GATE. A mixed-vintage walker set (some eras rebuilt, some stale) and a
     /// stale Docker image both produced corpus-scale damage undetected before this existed
     /// (incident #8) — nothing ever compared what actually ran against what the operator believed was
@@ -420,9 +438,15 @@ internal static partial class ExtractCommand
     ///      against every resolved fingerprint) — NOT bypassed by --allow-mixed-walkers or a non-commit
     ///      run, because it is an explicit operator assertion ("this run must be THIS exact walker
     ///      set"), not a generic mixed-set warning.
-    /// Skipped entirely (no banner) on the fake-runner test seam (no real binary to identify) and when
-    /// CS2_WALKER_BIN / appsettings WalkerBin is set (an explicit single-binary override makes every
-    /// build resolve to the SAME binary by construction — trivially uniform, nothing to compare).
+    /// Skipped entirely (no banner) on the fake-runner test seam (no real binary to identify), and
+    /// skipped for a NON-COMMIT run when CS2_WALKER_BIN / appsettings WalkerBin is set (an explicit
+    /// single-binary override makes every build resolve to the SAME binary by construction —
+    /// trivially uniform, nothing to compare, and an off-repo run cannot rewrite a committed set).
+    /// Under <c>--commit</c> the override no longer skips this gate: "trivially uniform" is not
+    /// "verified", and that override binary is the very one the drift guard next door is then handed
+    /// for every build, so the "unknown"/unresolvable-identity violations and the
+    /// <see cref="ExpectFingerprintEnvVar"/> tripwire still apply to it. See
+    /// <see cref="WalkerOverrideSkipsIdentityGate"/>.
     /// Returns the exit code to abort with, or null to proceed.
     /// </summary>
     private static int? PreflightWalkerIdentity(
@@ -438,7 +462,7 @@ internal static partial class ExtractCommand
         string toolSha = ShortToken(ToolBuildInfo.GitCommitId, 7);
 
         var explicitOverride = HostConfig.WalkerBin;
-        if (!string.IsNullOrWhiteSpace(explicitOverride))
+        if (WalkerOverrideSkipsIdentityGate(explicitOverride, opts.Commit))
         {
             Console.Error.WriteLine($"extract: tool={toolSha} walkers=override ({explicitOverride})");
             return null;
@@ -540,7 +564,13 @@ internal static partial class ExtractCommand
         var verdict = EvaluateWalkerIdentityGate(
             fingerprints, violations.Count, opts.Commit, opts.AllowMixedWalkers, expectFprint);
 
-        Console.Error.WriteLine($"extract: tool={toolSha} walkers={verdict.WalkersDisplay}");
+        // Still exactly ONE banner line per run: a --commit override run no longer prints the
+        // `walkers=override` line above, so the override path rides along here instead of vanishing.
+        Console.Error.WriteLine(
+            $"extract: tool={toolSha} walkers={verdict.WalkersDisplay}"
+            + (string.IsNullOrWhiteSpace(explicitOverride)
+                ? ""
+                : $" ({WalkerProcessRunner.BinaryPathEnvVar} override: {explicitOverride})"));
 
         if (verdict.MixedOrUnverified)
         {
@@ -1166,6 +1196,11 @@ internal static partial class ExtractCommand
                     // a mixed/unverified per-era walker set is warned LOUDLY instead of blocking the
                     // commit. See PreflightWalkerIdentity. Never use it for a corpus-committing run;
                     // it exists for local iteration against a deliberately partial era rebuild.
+                    // It releases the WALKER IDENTITY GATE ONLY, and deliberately does NOT release the
+                    // commit-path drift guard: a walker that reports "unknown" against a set recording
+                    // a real fingerprint still needs the separate --allow-walker-change. Two opt-ins,
+                    // two questions — "is this walker set coherent" vs "is it the walker that wrote
+                    // the corpus" — and answering the first has never answered the second.
                     allowMixedWalkers = true;
                     break;
                 case "--allow-walker-change":

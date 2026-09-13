@@ -25,10 +25,19 @@
 // and never a half-rewritten corpus. A refusal here can only ever leave the corpus exactly as it
 // was.
 //
-// It blocks ONLY on a KNOWN mismatch. A committed set that records no fingerprint, and a walker
-// whose own identity does not resolve, each WARN and proceed: blocking on "unknown" would make the
-// tool unusable against sets committed before the fingerprint line existed or on a host whose
-// walker cannot be interrogated, while blocking on a known mismatch is the entire point.
+// A committed set that records no fingerprint, and a walker whose own identity will not RESOLVE,
+// each WARN and proceed: blocking there would make the tool unusable against sets committed before
+// the fingerprint line existed or on a host whose walker cannot be interrogated at all.
+//
+// A walker that DOES resolve and reports "unknown" is on the other side of that line, and blocks
+// exactly like a known mismatch. It is not an absence: a committed set carrying a real 64-hex
+// fingerprint was, by construction, written by a walker that PRINTS the src-fingerprint line, so a
+// binary that does not print it provably is not the walker that wrote that set. Warning and
+// proceeding there did more than miss a rewrite — the run went on to re-stamp those sets'
+// provenance with the literal "unknown", destroying the only record of who actually built them. The
+// route that reached it was --allow-mixed-walkers, which releases the identity gate next door and
+// was never a statement about the CORPUS; releasing this guard stays its own separate opt-in
+// (--allow-walker-change), because the two flags answer two different questions.
 //
 // COMPLEMENTARY TO — never a duplicate of — CS2_EXPECT_FPRINT (see ExpectFingerprintEnvVar). That
 // tripwire compares the resolved walker against a value the OPERATOR supplies ("this host must be
@@ -69,7 +78,8 @@ internal static partial class ExtractCommand
     private const string CommittedSetMarkerFileName = "entity_schema.json";
 
     /// <summary>What the committed set's recorded fingerprint and the resolved walker's fingerprint
-    /// say when put side by side. Only <see cref="Drift"/> ever blocks.</summary>
+    /// say when put side by side. <see cref="Drift"/> and <see cref="WalkerReportsUnknown"/> block;
+    /// the other two warn and proceed.</summary>
     internal enum WalkerDriftDecision
     {
         /// <summary>The committed set records no usable fingerprint — nothing to compare against.
@@ -77,15 +87,23 @@ internal static partial class ExtractCommand
         /// anything).</summary>
         NoRecordedFingerprint,
 
-        /// <summary>The walker reports no usable fingerprint (an unresolvable binary, or one that
-        /// predates the src-fingerprint line). WARN and proceed — the guard could not run.</summary>
-        WalkerUnidentified,
+        /// <summary>The walker's identity would not resolve AT ALL (a missing binary, a
+        /// <c>--version</c> that failed). Genuinely uncomparable — the guard could not run, so WARN
+        /// and proceed.</summary>
+        WalkerUnresolved,
+
+        /// <summary>The walker DID resolve and reports <see cref="WalkerIdentity.UnknownFingerprint"/>
+        /// — it predates the src-fingerprint line. A committed set recording a real 64-hex
+        /// fingerprint was, by construction, written by a walker that DOES print that line, so this
+        /// binary provably is not it: BLOCKS exactly like <see cref="Drift"/>, released by the same
+        /// <c>--allow-walker-change</c>.</summary>
+        WalkerReportsUnknown,
 
         /// <summary>Both sides known and equal: this run's walker is the one that built the set.</summary>
         Match,
 
         /// <summary>Both sides known and DIFFERENT: re-emitting would change which walker built the
-        /// committed set. The only blocking verdict.</summary>
+        /// committed set.</summary>
         Drift,
     }
 
@@ -102,9 +120,17 @@ internal static partial class ExtractCommand
         {
             return WalkerDriftDecision.NoRecordedFingerprint;
         }
+        // Order is load-bearing, and this branch MUST precede the usability test below, which already
+        // excludes the "unknown" sentinel. Only reachable once the corpus recorded a usable
+        // fingerprint, which is exactly what makes "unknown" here evidence rather than absence: the
+        // walker that wrote that record printed the src-fingerprint line, and this one does not.
+        if (string.Equals(resolvedFingerprint, WalkerIdentity.UnknownFingerprint, StringComparison.Ordinal))
+        {
+            return WalkerDriftDecision.WalkerReportsUnknown;
+        }
         if (!IsUsableFingerprint(resolvedFingerprint))
         {
-            return WalkerDriftDecision.WalkerUnidentified;
+            return WalkerDriftDecision.WalkerUnresolved;
         }
         return string.Equals(recordedFingerprint, resolvedFingerprint, StringComparison.Ordinal)
             ? WalkerDriftDecision.Match
@@ -187,10 +213,14 @@ internal static partial class ExtractCommand
     ///      there is no walker identity to compare and the guard is inert;
     ///   3. the target set ALREADY EXISTS (a brand-new build is never blocked);
     ///   4. that set records a usable <c>provenance.tool.walkerSrcFingerprint</c>;
-    ///   5. the resolved walker reports a usable fingerprint of its own;
+    ///   5. the resolved walker reports a usable fingerprint of its own OR reports "unknown" against a
+    ///      set that records one (see <see cref="WalkerDriftDecision.WalkerReportsUnknown"/> — a
+    ///      binary that does not print the src-fingerprint line provably did not write a set that
+    ///      records one, so that is a mismatch, not an absence);
     ///   6. the two DIFFER.
-    /// 4 and 5 failing are the degenerate cases: each WARNS (naming what could not be compared) and
-    /// proceeds. <c>--allow-walker-change</c> turns a refusal into one audit line per affected set
+    /// Item 4 failing, and the walker's identity refusing to RESOLVE at all, are the degenerate cases:
+    /// each WARNS (naming what could not be compared) and proceeds.
+    /// <c>--allow-walker-change</c> turns a refusal into one audit line per affected set
     /// recording the old -&gt; new transition, so an intentional rewalk is visible in the run log
     /// instead of silent.
     /// </summary>
@@ -254,11 +284,18 @@ internal static partial class ExtractCommand
                 case WalkerDriftDecision.NoRecordedFingerprint:
                     unrecorded.Add(build);
                     break;
-                case WalkerDriftDecision.WalkerUnidentified:
+                case WalkerDriftDecision.WalkerUnresolved:
                     unidentified[binaryPath] = walker.Error
-                        ?? "the binary reports no src-fingerprint (it predates that line — rebuild it)";
+                        ?? "the resolved identity carries no src-fingerprint value";
                     break;
+                // A walker that resolved and reports "unknown" is the SAME failure class as Drift —
+                // the committed set records a fingerprint only a walker printing that line could have
+                // produced — so it takes the same refusal, the same audit line and the same opt-in.
+                // Deliberately NOT released by --allow-mixed-walkers: that flag says the walker SET is
+                // knowingly incoherent, never that rewriting the corpus with it is authorised.
+                case WalkerDriftDecision.WalkerReportsUnknown:
                 case WalkerDriftDecision.Drift:
+                    // walker.Identity is non-null in both: each requires a resolved identity to reach.
                     drifted.Add(new WalkerDriftRow(
                         build, opts.Platform, recorded, walker.Identity!.SrcFingerprint,
                         walker.Identity.GitSha, binaryPath));
@@ -275,7 +312,9 @@ internal static partial class ExtractCommand
             Console.Error.WriteLine(
                 $"extract: WARNING walker drift guard could NOT run for '{Path.GetFileName(binaryPath)}': " +
                 $"{reason}. A walker change against the committed set(s) that binary serves cannot be " +
-                "detected this run.");
+                "detected this run. This run will also re-stamp those sets' " +
+                "provenance.tool.walkerSrcFingerprint with an empty value, so the change cannot be " +
+                "detected on any LATER run either.");
         }
         if (unrecorded.Count > 0)
         {
@@ -327,6 +366,10 @@ internal static partial class ExtractCommand
         foreach (var row in rows)
         {
             var gitSha = IsUsableFingerprint(row.GitSha) ? $"gitSha {row.GitSha}" : "gitSha not reported";
+            // A walker reporting "unknown" needs a different remedy line: there is no other walker to
+            // go and find, the one in hand is simply too old to identify itself and must be rebuilt.
+            bool predatesFingerprintLine =
+                string.Equals(row.Resolved, WalkerIdentity.UnknownFingerprint, StringComparison.Ordinal);
             if (rows.Count > 1)
             {
                 // The one-set header already names the build and platform; a batch needs a per-set one.
@@ -336,8 +379,12 @@ internal static partial class ExtractCommand
                 .Append($"      artifacts/{row.Build}/{row.Platform}/{ArtifactSet.ProvenanceFileName} records " +
                         $"walkerSrcFingerprint {row.Recorded}")
                 .Append(Environment.NewLine)
-                .Append($"      this run would walk it with a walker reporting {row.Resolved} " +
-                        $"({gitSha}, {row.BinaryPath})");
+                .Append(predatesFingerprintLine
+                    ? "      this run would walk it with a walker that reports NO src-fingerprint — it " +
+                      $"predates that line ({gitSha}, {row.BinaryPath}); rebuild it " +
+                      "(scripts/build-era-walkers.*)"
+                    : $"      this run would walk it with a walker reporting {row.Resolved} " +
+                      $"({gitSha}, {row.BinaryPath})");
         }
 
         text.Append(Environment.NewLine)

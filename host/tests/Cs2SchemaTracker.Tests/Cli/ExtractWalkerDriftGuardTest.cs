@@ -9,9 +9,18 @@
 //
 // The other half of the contract, exercised just as hard: it must be invisible in every other
 // situation. A brand-new build, a matching walker, an off-repo run, a set recording no fingerprint,
-// and a walker whose identity will not resolve must all behave exactly as they did before the guard
-// existed — the last two warning, none of them blocking. Blocking on "unknown" would make the tool
-// unusable against legitimate corpora; blocking on a KNOWN mismatch is the entire point.
+// and a walker whose identity will not RESOLVE must all behave exactly as they did before the guard
+// existed — the last two warning, none of them blocking. Blocking on a corpus that records nothing,
+// or on a host whose walker cannot be interrogated at all, would make the tool unusable against
+// legitimate corpora.
+//
+// A walker that DOES resolve and reports "unknown" is the one case deliberately on the other side of
+// that line: a committed set carrying a real 64-hex fingerprint was by construction written by a
+// walker that prints the src-fingerprint line, so a binary that does not print it provably is not
+// that walker. That is not unknown, it is proof, and it blocks like any other drift — released only
+// by --allow-walker-change, never by --allow-mixed-walkers, which answers a different question. The
+// CS2_WALKER_BIN bypass rule is pinned here too (ExtractCommand.WalkerOverrideSkipsIdentityGate):
+// that override is the other route AROUND this guard, so its rule belongs with this guard's suite.
 //
 // Driven through the drift test seam ExtractCommand.Run(args, fakeRunnerFactory, eraResolver,
 // walkerIdentitySource): the FAKE runner produces the WalkerOutput (no real exe), the fixture-rooted
@@ -380,7 +389,103 @@ public sealed class ExtractWalkerDriftGuardTest
             Assert.Contains("walker drift guard could NOT run", stderr, StringComparison.Ordinal);
             Assert.DoesNotContain("WALKER FINGERPRINT DRIFT", stderr, StringComparison.Ordinal);
 
+            // The warning must also say what proceeding COSTS: this run re-stamps the set's
+            // provenance with the unresolved identity, so the drift it could not detect becomes
+            // undetectable on every later run too.
+            Assert.Contains("cannot be detected on any LATER run", stderr, StringComparison.Ordinal);
+
             var setDir = Path.Combine(root, "artifacts", "50000001", platform);
+            Assert.True(File.Exists(Path.Combine(setDir, "convars.json")));
+        });
+    }
+
+    // ---- a walker that resolves and reports "unknown": provable drift, not absence --------------
+
+    [WindowsOnlyFact]
+    public void Walker_Reporting_Unknown_Against_A_Recorded_Set_Refuses_Under_Commit()
+    {
+        var platform = MatchingPlatform();
+        if (platform is null)
+            return;
+
+        InDriftFixture(platform, new[] { new Seed("50000001", CorpusFingerprint) }, (root, resolver) =>
+        {
+            var runner = NewRunner(platform);
+            int code = 0;
+            var stderr = CaptureStderr(() => code = ExtractCommand.Run(
+                new[] { "--build", "50000001", "--platform", platform, "--commit" },
+                () => runner, resolver, Reporting(WalkerIdentity.UnknownFingerprint)));
+
+            Assert.Equal(78, code);
+            Assert.Contains("WALKER FINGERPRINT DRIFT", stderr, StringComparison.Ordinal);
+            Assert.Contains("build 50000001", stderr, StringComparison.Ordinal);
+            Assert.Contains(CorpusFingerprint, stderr, StringComparison.Ordinal);
+            // The remedy is "rebuild that walker", not "go find a different one".
+            Assert.Contains("predates", stderr, StringComparison.Ordinal);
+            Assert.Contains("--allow-walker-change", stderr, StringComparison.Ordinal);
+            Assert.Contains("No artifacts written.", stderr, StringComparison.Ordinal);
+
+            Assert.Equal(0, runner.Calls);
+            AssertNothingWritten(root, "50000001", platform);
+        });
+    }
+
+    [WindowsOnlyFact]
+    public void Walker_Reporting_Unknown_Is_Not_Released_By_AllowMixedWalkers()
+    {
+        var platform = MatchingPlatform();
+        if (platform is null)
+            return;
+
+        InDriftFixture(platform, new[] { new Seed("50000001", CorpusFingerprint) }, (root, resolver) =>
+        {
+            var runner = NewRunner(platform);
+            int code = 0;
+            var stderr = CaptureStderr(() => code = ExtractCommand.Run(
+                new[]
+                {
+                    "--build", "50000001", "--platform", platform, "--commit", "--allow-mixed-walkers",
+                },
+                () => runner, resolver, Reporting(WalkerIdentity.UnknownFingerprint)));
+
+            // Two escape hatches, two questions: --allow-mixed-walkers answers "is this walker SET
+            // coherent", and says nothing at all about "is it the walker that wrote the corpus".
+            Assert.Equal(78, code);
+            Assert.Contains("WALKER FINGERPRINT DRIFT", stderr, StringComparison.Ordinal);
+            Assert.Equal(0, runner.Calls);
+            AssertNothingWritten(root, "50000001", platform);
+        });
+    }
+
+    [WindowsOnlyFact]
+    public void Walker_Reporting_Unknown_With_AllowWalkerChange_Proceeds_And_Logs_The_Transition()
+    {
+        var platform = MatchingPlatform();
+        if (platform is null)
+            return;
+
+        InDriftFixture(platform, new[] { new Seed("50000001", CorpusFingerprint) }, (root, resolver) =>
+        {
+            var runner = NewRunner(platform);
+            int code = 0;
+            var stderr = CaptureStderr(() => code = ExtractCommand.Run(
+                new[]
+                {
+                    "--build", "50000001", "--platform", platform, "--commit", "--allow-walker-change",
+                },
+                () => runner, resolver, Reporting(WalkerIdentity.UnknownFingerprint)));
+
+            Assert.Equal(0, code);
+
+            // The transition is RECORDED rather than merely warned about: the fingerprint the corpus
+            // is losing is in the log, which is the whole difference from the old warn-and-proceed.
+            Assert.Contains(
+                $"WALKER CHANGE AUTHORISED (build 50000001, {platform}): {CorpusFingerprint} -> unknown",
+                stderr, StringComparison.Ordinal);
+            Assert.DoesNotContain("WALKER FINGERPRINT DRIFT", stderr, StringComparison.Ordinal);
+
+            var setDir = Path.Combine(root, "artifacts", "50000001", platform);
+            Assert.NotEqual("{}", File.ReadAllText(Path.Combine(setDir, "entity_schema.json")));
             Assert.True(File.Exists(Path.Combine(setDir, "convars.json")));
         });
     }
@@ -468,15 +573,38 @@ public sealed class ExtractWalkerDriftGuardTest
     [InlineData(null, "bbbb", "NoRecordedFingerprint")]
     [InlineData("unknown", "bbbb", "NoRecordedFingerprint")]
     [InlineData("<error>", "bbbb", "NoRecordedFingerprint")]
-    // The walker will not say what it is: the guard cannot run, and must not block on unknown.
-    [InlineData("aaaa", "", "WalkerUnidentified")]
-    [InlineData("aaaa", null, "WalkerUnidentified")]
-    [InlineData("aaaa", "unknown", "WalkerUnidentified")]
-    [InlineData("aaaa", "<error>", "WalkerUnidentified")]
-    public void EvaluateWalkerDrift_Blocks_Only_On_A_Known_Mismatch(
+    // The walker's identity would not RESOLVE at all: the guard cannot run, and must not block.
+    [InlineData("aaaa", "", "WalkerUnresolved")]
+    [InlineData("aaaa", null, "WalkerUnresolved")]
+    [InlineData("aaaa", "<error>", "WalkerUnresolved")]
+    // ... but a walker that resolved and reports "unknown" against a set that records a real
+    // fingerprint is not an absence, it is evidence: the set was written by a walker that DOES print
+    // the src-fingerprint line, so this binary is provably a different one. Blocks like Drift.
+    [InlineData("aaaa", "unknown", "WalkerReportsUnknown")]
+    public void EvaluateWalkerDrift_Blocks_On_A_Known_Mismatch_And_On_A_Walker_That_Reports_Unknown(
         string? recorded, string? resolved, string expected)
     {
         Assert.Equal(expected, ExtractCommand.EvaluateWalkerDrift(recorded, resolved).ToString());
+    }
+
+    [Theory]
+    // No override at all: the identity gate runs, as it always has.
+    [InlineData(null, false, false)]
+    [InlineData("", false, false)]
+    [InlineData("   ", true, false)]
+    // An override on an off-repo run keeps the cheap short-circuit — it cannot rewrite a committed
+    // set, so the gate has no corpus to protect.
+    [InlineData("C:/w/walker.exe", false, true)]
+    // ... but under --commit that same override binary is what EraWalkerResolver hands the drift
+    // guard for EVERY build, so skipping the gate there skipped the "unknown"/unresolvable-identity
+    // violations and the CS2_EXPECT_FPRINT tripwire on the one run that writes the corpus. This row
+    // is the fix: CS2_WALKER_BIN is the second route AROUND the drift guard, which is why its rule
+    // is pinned in the drift guard's own suite.
+    [InlineData("C:/w/walker.exe", true, false)]
+    public void Walker_Bin_Override_Short_Circuits_The_Identity_Gate_Only_Off_Commit(
+        string? walkerBinOverride, bool commit, bool expected)
+    {
+        Assert.Equal(expected, ExtractCommand.WalkerOverrideSkipsIdentityGate(walkerBinOverride, commit));
     }
 
     [Fact]
