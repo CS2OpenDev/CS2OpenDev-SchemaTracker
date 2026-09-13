@@ -27,6 +27,15 @@ internal sealed class WalkerProcessRunner : IWalkerRunner
     /// <summary>Environment variable that overrides the walker binary path.</summary>
     public const string BinaryPathEnvVar = "CS2_WALKER_BIN";
 
+    /// <summary>
+    /// Environment variable the walker reads to opt OUT of the live MGetKV3ClassDefaults recovery.
+    /// The walker tests its PRESENCE and not its value (schema_walk.cpp MaybeResolveSaveKv3Json:
+    /// <c>std::getenv("CS2_WALKER_NO_KV3_DEFAULTS") != nullptr</c>), so ANY value — <c>"0"</c>
+    /// included — disables the recovery. That is why the host must REMOVE an inherited one rather
+    /// than merely refrain from setting it; see <see cref="ApplyKv3DefaultsGate"/>.
+    /// </summary>
+    public const string DisableKv3DefaultsEnvVar = "CS2_WALKER_NO_KV3_DEFAULTS";
+
     private readonly string? _explicitBinaryPath;
 
     /// <summary>
@@ -35,6 +44,8 @@ internal sealed class WalkerProcessRunner : IWalkerRunner
     /// KV3 accessor ABI is not validated (<see cref="InventoryEra.Kv3ClassDefaults"/> == false): on
     /// those eras the call yields nothing on windows and CRASHES on linux, so we emit empty
     /// (deferred-with-reason) instead. See EraWalkerResolver / the walker's MaybeResolveSaveKv3Json.
+    /// When false the host explicitly REMOVES the variable from the child's environment rather than
+    /// letting an inherited one through — the era, not the ambient shell, decides.
     /// </summary>
     private readonly bool _disableKv3Defaults;
 
@@ -102,10 +113,7 @@ internal sealed class WalkerProcessRunner : IWalkerRunner
         // is identical cross-platform: on those eras windows recovers nothing anyway and linux would
         // CRASH calling the invalid accessor. Deterministic (a fixed env → the walker's
         // MaybeResolveSaveKv3Json early-returns → every MGetKV3ClassDefaults value stays empty).
-        if (_disableKv3Defaults)
-        {
-            psi.Environment["CS2_WALKER_NO_KV3_DEFAULTS"] = "1";
-        }
+        ApplyKv3DefaultsGate(psi, _disableKv3Defaults);
 
         if (!RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
         {
@@ -180,6 +188,35 @@ internal sealed class WalkerProcessRunner : IWalkerRunner
         var want = mode | UnixFileMode.UserExecute | UnixFileMode.GroupExecute | UnixFileMode.OtherExecute;
         if (want != mode)
             File.SetUnixFileMode(path, want);
+    }
+
+    /// <summary>
+    /// Make the host authoritative over <see cref="DisableKv3DefaultsEnvVar"/> in BOTH directions:
+    /// set it when the era needs the opt-out, and REMOVE it when the era does not. The removal is
+    /// the point. The walker opts out on the variable's mere presence, and this process routinely
+    /// carries an inherited value — an operator's exported shell var, or any key in the repo .env
+    /// (Program.cs loads it wholesale via DotEnv.LoadFromRepoRoot, and DotEnv.LoadFile sets every
+    /// syntactically valid key, not just the STEAM_* ones it exists to carry). Without the Remove
+    /// that value passed straight through on <c>kv3ClassDefaults=true</c> eras and emptied every
+    /// MGetKV3ClassDefaults value on the one path where the host believes it decides — and an
+    /// inherited <c>CS2_WALKER_NO_KV3_DEFAULTS=0</c> reads to a human as "leave the recovery on"
+    /// while doing the exact opposite. Mechanically: touching <see cref="ProcessStartInfo.Environment"/>
+    /// seeds the dictionary from THIS process's environment, so the inherited entry is present and
+    /// <c>Remove</c> genuinely drops it from the child's block; it does not disturb the host's own
+    /// environment (a batch run reuses this process era after era). Internal (not private): the test
+    /// suite exercises this directly via InternalsVisibleTo — <see cref="Run"/> itself cannot be
+    /// unit-tested without a real walker binary.
+    /// </summary>
+    internal static void ApplyKv3DefaultsGate(ProcessStartInfo psi, bool disableKv3Defaults)
+    {
+        if (disableKv3Defaults)
+        {
+            psi.Environment[DisableKv3DefaultsEnvVar] = "1";
+        }
+        else
+        {
+            psi.Environment.Remove(DisableKv3DefaultsEnvVar);
+        }
     }
 
     private static string DefaultWalkerBinary()
