@@ -27,12 +27,18 @@
 // passing already means a whole block was consumed without an off-by-one. Both sides of the
 // tree diff are normalized the same way first — numbers re-emitted through
 // Utf8JsonWriter.WriteNumberValue(double), then the production CanonicalJson layer — so no
-// value, key, array order or type is weakened by the comparison. The fail-loud tests pin the
-// deliberate refusals: truncated and corrupt input in every supported version, a non-KV3 magic,
-// a container with no DATA block, v0/v1/v2, and zstd, each raising Kv3BinaryException naming
-// what it found.
+// value, key, array order or type is weakened by the comparison. The one thing that comparison
+// does lose is an integer above 2^53, which a double cannot hold: every such token in the
+// corpus is declared per fixture in that theory's InlineData, so a new one fails by name rather
+// than rounding away on both sides at once. The fail-loud tests pin the deliberate refusals:
+// truncated and corrupt input in every supported version, a non-KV3 magic, a container with no
+// DATA block, v0/v1/v2, and zstd, each raising Kv3BinaryException naming what it found. The
+// allocation guards are driven by blocks assembled byte by byte in this file rather than by
+// fixtures: they state the header lies a shipped resource never tells — a count or a size the
+// block's own bytes cannot justify — which is exactly what those guards refuse.
 
 using System.Buffers.Binary;
+using System.Globalization;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Text.Json;
@@ -343,20 +349,34 @@ public class Kv3BinaryReaderTest
     // -----------------------------------------------------------------------------------
 
     [Theory]
-    [InlineData("weapons.vdata_c", 500_000)]
-    [InlineData("pistol_jump_crouch_w_pistol.vnmclip_c", 50_000)]
-    [InlineData("soundeventgroups.vdata_c", 100)]
-    [InlineData("aztec_skybox_tree_card_large_01.vmdl_c", 1_000)]
-    [InlineData(WeaponsV3, 500_000)]
-    [InlineData(WeaponsV4, 500_000)]
-    public void Decode_Matches_The_Reference_Decode_Exactly(string fixture, int minimumLength)
+    [InlineData("weapons.vdata_c", 500_000, "")]
+    [InlineData("pistol_jump_crouch_w_pistol.vnmclip_c", 50_000, "")]
+    [InlineData("soundeventgroups.vdata_c", 100, "")]
+    [InlineData(
+        "aztec_skybox_tree_card_large_01.vmdl_c",
+        1_000,
+        "18446744073709551615,18446744073709551615")]
+    [InlineData(WeaponsV3, 500_000, "")]
+    [InlineData(WeaponsV4, 500_000, "")]
+    public void Decode_Matches_The_Reference_Decode_Exactly(
+        string fixture, int minimumLength, string roundedIntegers)
     {
         Value root = Kv3BinaryReader.Decode(File.ReadAllBytes(Path.Combine(FixtureDir, fixture)));
         string actual = CanonicalJson.SerializeRawJson(ToRawJson(root));
 
         string referenceJson = File.ReadAllText(Path.Combine(FixtureDir, fixture + ".json"));
         using var reference = JsonDocument.Parse(referenceJson);
-        string expected = CanonicalJson.SerializeRawJson(Renumber(reference.RootElement));
+        (string renumbered, IReadOnlyList<string> rounded) = Renumber(reference.RootElement);
+        string expected = CanonicalJson.SerializeRawJson(renumbered);
+
+        // The reference side is re-emitted through a double, which cannot hold every integer
+        // the format can carry, so each token that loses precision has to be named here, once
+        // per occurrence. The whole corpus contains exactly two, both ulong.MaxValue and both
+        // in the vmdl: m_nDefaultMeshGroupMask and m_refMeshGroupMasks[0]. A new one — a
+        // regenerated reference, a new fixture, an emitter that starts feeding large integers
+        // through — then fails this test instead of disappearing into a comparison that rounds
+        // both sides the same way.
+        Assert.Equal(roundedIntegers.Split(',', StringSplitOptions.RemoveEmptyEntries), rounded);
 
         // Guard against a vacuous pass (an empty fixture, an empty tree, two empty strings).
         Assert.True(
@@ -642,6 +662,202 @@ public class Kv3BinaryReaderTest
     }
 
     // -----------------------------------------------------------------------------------
+    // allocation and bounds guards
+    // -----------------------------------------------------------------------------------
+    //
+    // Every block in this section is assembled in code rather than shipped as a fixture,
+    // because these are the header lies a real resource never tells: a count or a size that the
+    // bytes the block actually carries cannot possibly justify. The reader's rule is that such
+    // a field is bounded BEFORE anything is allocated from it, so a corrupt or truncated depot
+    // file fails as a named Kv3BinaryException — the type WeaponVDataEmitter catches — instead
+    // of exhausting the extract host or escaping as an OutOfMemoryException or an
+    // IndexOutOfRangeException that nothing catches.
+
+    [Fact]
+    public void Decode_TypedArray_With_An_Impossible_Element_Count_Is_Refused_By_Name()
+    {
+        // ARRAY_TYPED reads ONE shared element tag and then loops the declared count, so when
+        // that tag is a zero-width type (13 = BOOLEAN_TRUE here) nothing the loop does advances
+        // any cursor and no per-buffer guard can bound it. Until the count was checked against
+        // the payload this 134-byte block decoded with NO exception at all, passed
+        // RequireFullyConsumed, and handed back a 1,000,000-element ListValue.
+        var ex = Assert.Throws<Kv3BinaryException>(
+            () => Kv3BinaryReader.DecodeBlock(TypedArrayBlock(1_000_000)));
+        Assert.Contains("ARRAY_TYPED", ex.Message, StringComparison.Ordinal);
+        Assert.Contains("declares 1000000 elements", ex.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Decode_TypedArray_Of_ZeroWidth_Elements_Still_Decodes()
+    {
+        // The other half of the same guard: a genuine typed array of a zero-width type spends
+        // no payload bytes at all and must keep decoding. This pins the bound against being
+        // tightened to something a real block could trip.
+        Value root = Kv3BinaryReader.DecodeBlock(TypedArrayBlock(3));
+        Assert.Equal(Value.KindOneofCase.ListValue, root.KindCase);
+        Assert.Equal(3, root.ListValue.Values.Count);
+        foreach (Value element in root.ListValue.Values)
+        {
+            Assert.Equal(Value.KindOneofCase.BoolValue, element.KindCase);
+            Assert.True(element.BoolValue);
+        }
+    }
+
+    [Fact]
+    public void Decode_V5_Blob_Frame_Table_Larger_Than_The_Buffer_Is_Refused_By_Name()
+    {
+        // The v5 header word at offset 68 sizes an int[] at one element per two declared bytes.
+        // Nothing compared it to the buffer those bytes have to come out of, so the array was
+        // allocated first and the per-entry bounds check only ran afterwards. 100,000,000 is
+        // far below the int.MaxValue the field accepts — it sizes a 50,000,000-element int[]
+        // and no more, which keeps the cost of this test bounded on a reader without the guard.
+        var ex = Assert.Throws<Kv3BinaryException>(
+            () => Kv3BinaryReader.DecodeBlock(TypedArrayBlock(3, blobFrameTableSize: 100_000_000)));
+        Assert.Contains("blob frame table", ex.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Decode_V5_Segment_Declaring_An_Impossible_Uncompressed_Size_Is_Refused_By_Name()
+    {
+        // The segment's uncompressed-size word is range-checked against int.MaxValue and
+        // nothing else, and the RequireRange beside it bounds only the COMPRESSED slice — so
+        // that word drove the destination allocation on its own. Here a 5-byte LZ4 block that
+        // produces 4 bytes claims 50,000: without the expansion ceiling the 50,000 bytes were
+        // reserved first and the mismatch was reported only afterwards.
+        byte[] segment1 = TypedArraySegment1(3);
+        var block = new V5Block
+        {
+            CompressionMethod = 1,
+            Segment0Bytes = [0x40, 0x00, 0x00, 0x00, 0x00],
+            Segment0Uncompressed = 50_000,
+            Segment1Bytes = Lz4Literals(segment1),
+            Segment1Uncompressed = segment1.Length,
+            IntCount = 1,
+            TypesSize = 2,
+        };
+
+        var ex = Assert.Throws<Kv3BinaryException>(
+            () => Kv3BinaryReader.DecodeBlock(block.ToBytes()));
+        Assert.Contains("can possibly expand to", ex.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Decode_V5_Blob_Total_Beyond_What_The_Frames_Can_Produce_Is_Refused_By_Name()
+    {
+        // blockTotalSize sizes the blob payload buffer, and under LZ4 the only thing that can
+        // fill it is the frame table that follows the trailer. One 4-byte frame cannot produce
+        // 50,000,000 bytes, but the buffer was allocated before anything said so.
+        byte[] segment1 =
+        [
+            0x01,                         // types: a NULL root
+            0x80, 0xF0, 0xFA, 0x02,       // blob length list: one blob of 50,000,000 bytes
+            0x00, 0xDD, 0xEE, 0xFF,       // buffer-area trailer
+            0x04, 0x00,                   // frame-size table: one 4-byte LZ4 frame
+        ];
+        var block = new V5Block
+        {
+            CompressionMethod = 1,
+            Segment0Bytes = [0x40, 0x00, 0x00, 0x00, 0x00],
+            Segment0Uncompressed = 4,
+            Segment1Bytes = Lz4Literals(segment1),
+            Segment1Uncompressed = segment1.Length,
+            Trailing = [0x00, 0x00, 0x00, 0x00],
+            TypesSize = 1,
+            BlobCount = 1,
+            BlobTotalSize = 50_000_000,
+            BlobFrameTableSize = 2,
+        };
+
+        var ex = Assert.Throws<Kv3BinaryException>(
+            () => Kv3BinaryReader.DecodeBlock(block.ToBytes()));
+        Assert.Contains("LZ4 blob frame", ex.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Decode_V5_Aux_Align8_Padding_Is_Conditional_On_A_NonEmpty_EightByte_Buffer()
+    {
+        // The align(8) before segment 0's auxiliary 8-byte buffer is materialised ONLY when
+        // that buffer is non-empty. soundeventgroups.vdata_c cannot hold that branch down: its
+        // auxiliary 4-byte area already ends at 104, which is 8-aligned, so applying the
+        // padding unconditionally would decode it identically. This block ends that area at 12
+        // — 4 mod 8 — so the conditional is the only thing keeping the layout honest: applied
+        // unconditionally, the unpadded block computes an end past its own segment and the
+        // padded one, which no encoder emits, starts decoding.
+        Struct root = Kv3BinaryReader.DecodeBlock(AuxAlignBlock(padSegment0: false)).StructValue;
+        Value list = root.Fields["a"];
+        Assert.Equal(Value.KindOneofCase.ListValue, list.KindCase);
+        Assert.Equal(7d, Assert.Single(list.ListValue.Values).NumberValue);
+
+        var ex = Assert.Throws<Kv3BinaryException>(
+            () => Kv3BinaryReader.DecodeBlock(AuxAlignBlock(padSegment0: true)));
+        Assert.Contains(
+            "SEG0 layout computes an end of 12 but the segment is 16 bytes",
+            ex.Message,
+            StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Lz4_Declared_Output_Beyond_The_Expansion_Ceiling_Is_Refused_By_Name()
+    {
+        // Nothing related the declared output length to the block that has to produce it, so
+        // the destination was allocated from a container header field alone — and a value near
+        // int.MaxValue is past the CLR's array cap, which escapes as an OutOfMemoryException.
+        var ex = Assert.Throws<Kv3BinaryException>(() => Lz4Block.Decode(new byte[8], 100_000));
+        Assert.Contains("can possibly expand to", ex.Message, StringComparison.Ordinal);
+    }
+
+    [Fact]
+    public void Lz4_High_Ratio_Block_Still_Decodes()
+    {
+        // 6 input bytes to 275 output bytes, a 45.8x expansion: well inside the 255x ceiling,
+        // and its single 0xFF match-length extension runs to 270 against a limit of 274. Both
+        // new bounds are one step from firing here, which is the point — a ceiling picked too
+        // tight, or an off-by-one in the extension limit, fails this test rather than a fixture.
+        byte[] block = [0x1F, (byte)'a', 0x01, 0x00, 0xFF, 0x00];
+        byte[] decoded = Lz4Block.Decode(block, 275);
+        Assert.Equal(new string('a', 275), Encoding.ASCII.GetString(decoded));
+    }
+
+    [Fact]
+    public void Lz4_Runaway_Match_Length_Extension_Is_Refused_By_Name()
+    {
+        // A 0xFF extension run accumulated into an int with no cap: 8,500,000 of them reach
+        // 2,167,500,015, which wraps negative, and the overrun guard below it wrapped in step
+        // and PASSED. The copy loop was then skipped, outPos went negative, and the following
+        // sequence indexed the destination at a negative offset — an ArgumentOutOfRangeException
+        // that WeaponVDataEmitter's catch (Kv3BinaryException) does not catch. ~8.4M extension
+        // bytes is the arithmetic minimum to overflow the accumulator, so this block cannot be
+        // made materially smaller; with the limit in place the first extension byte ends it.
+        var block = new byte[4 + 8_500_000 + 4];
+        block[0] = 0x1F;              // 1 literal, match-length nibble saturated
+        block[1] = (byte)'a';
+        block[2] = 0x01;              // match offset 1
+        block[3] = 0x00;
+        Array.Fill(block, (byte)0xFF, 4, 8_500_000);
+        block[4 + 8_500_000] = 0x00;  // ends the extension run
+        block[5 + 8_500_000] = 0x20;  // 2 literals
+        block[6 + 8_500_000] = (byte)'x';
+        block[7 + 8_500_000] = (byte)'y';
+
+        Assert.Throws<Kv3BinaryException>(() => Lz4Block.Decode(block, 64));
+    }
+
+    [Fact]
+    public void Reference_Renumber_Reports_An_Integer_A_Double_Cannot_Hold()
+    {
+        // 2^53+1 is the smallest positive integer a double cannot represent. The reference side
+        // of the whole-tree diff rounds it silently, so before Renumber reported the loss these
+        // two documents normalized to identical text and the diff could not tell them apart —
+        // which is why an int64/uint64 above 2^53 could never make that comparison fail.
+        using var document = JsonDocument.Parse(
+            """{"lossy":9007199254740993,"exact":9007199254740992}""");
+        (string json, IReadOnlyList<string> rounded) = Renumber(document.RootElement);
+
+        Assert.Equal(["9007199254740993"], rounded);
+        Assert.Equal("""{"lossy":9007199254740992,"exact":9007199254740992}""", json);
+    }
+
+    // -----------------------------------------------------------------------------------
     // helpers
     // -----------------------------------------------------------------------------------
 
@@ -709,6 +925,181 @@ public class Kv3BinaryReaderTest
         return bytes;
     }
 
+    /// <summary>
+    /// A hand-assembled KV3 v5 block. Every field below is written into the header verbatim,
+    /// INCLUDING sizes that contradict the bytes the block actually carries — which is the
+    /// whole point: no shipped resource lies about its own geometry, and the fixtures are
+    /// read-only, so the lying blocks the allocation guards refuse have to be stated in code.
+    /// Segment bytes are supplied exactly as they appear in the DATA block, i.e. already LZ4
+    /// encoded when <see cref="CompressionMethod"/> is 1.
+    /// </summary>
+    private sealed class V5Block
+    {
+        public byte[] Segment0Bytes { get; init; } = [];
+        public byte[] Segment1Bytes { get; init; } = [];
+
+        /// <summary>The blob frame payload region, which follows both stored segments.</summary>
+        public byte[] Trailing { get; init; } = [];
+
+        public uint CompressionMethod { get; init; }
+        public int StringBlobSize { get; init; }
+        public int AuxSlotCount { get; init; } = 1;
+        public int AuxEightByteCount { get; init; }
+        public int TypesSize { get; init; }
+        public int BlobCount { get; init; }
+        public int BlobTotalSize { get; init; }
+        public int BlobFrameTableSize { get; init; }
+
+        /// <summary>
+        /// Declared SEG0 uncompressed size; -1 means "however many bytes SEG0 holds", which is
+        /// right for a stored segment and has to be stated explicitly for an LZ4 one.
+        /// </summary>
+        public int Segment0Uncompressed { get; init; } = -1;
+
+        /// <summary>Declared SEG1 uncompressed size; -1 as for <see cref="Segment0Uncompressed"/>.</summary>
+        public int Segment1Uncompressed { get; init; } = -1;
+
+        public int ByteCount { get; init; }
+        public int IntCount { get; init; }
+        public int EightByteCount { get; init; }
+        public int ObjectCount { get; init; }
+
+        public byte[] ToBytes()
+        {
+            int seg0Unc = Segment0Uncompressed >= 0 ? Segment0Uncompressed : Segment0Bytes.Length;
+            int seg1Unc = Segment1Uncompressed >= 0 ? Segment1Uncompressed : Segment1Bytes.Length;
+
+            var block = new byte[
+                120 + Segment0Bytes.Length + Segment1Bytes.Length + Trailing.Length];
+            block[0] = 0x05;
+            block[1] = 0x33;
+            block[2] = 0x56;
+            block[3] = 0x4B;
+            Word(block, 20, CompressionMethod);
+            Word(block, 28, StringBlobSize);
+            Word(block, 32, AuxSlotCount);
+            Word(block, 36, AuxEightByteCount);
+            Word(block, 40, TypesSize);
+            Word(block, 48, (long)seg0Unc + seg1Unc);
+            Word(block, 56, BlobCount);
+            Word(block, 60, BlobTotalSize);
+            Word(block, 68, BlobFrameTableSize);
+            Word(block, 72, seg0Unc);
+            // v5 zeroes the per-segment compressed size when the segment is stored verbatim.
+            Word(block, 76, CompressionMethod == 0 ? 0 : Segment0Bytes.Length);
+            Word(block, 80, seg1Unc);
+            Word(block, 84, CompressionMethod == 0 ? 0 : Segment1Bytes.Length);
+            Word(block, 88, ByteCount);
+            Word(block, 96, IntCount);
+            Word(block, 100, EightByteCount);
+            Word(block, 108, ObjectCount);
+
+            int cursor = 120;
+            Segment0Bytes.CopyTo(block.AsSpan(cursor));
+            cursor += Segment0Bytes.Length;
+            Segment1Bytes.CopyTo(block.AsSpan(cursor));
+            cursor += Segment1Bytes.Length;
+            Trailing.CopyTo(block.AsSpan(cursor));
+            return block;
+
+            static void Word(byte[] target, int offset, long value) =>
+                BinaryPrimitives.WriteUInt32LittleEndian(target.AsSpan(offset, 4), (uint)value);
+        }
+    }
+
+    /// <summary>
+    /// Segment 1 of a block whose whole tree is one ARRAY_TYPED of <paramref name="count"/>
+    /// BOOLEAN_TRUE elements: the count in the 4-byte buffer, the array tag and its ONE shared
+    /// element tag in the types buffer, then the trailer. Nothing here grows with the count —
+    /// which is exactly why the count needs a bound of its own.
+    /// </summary>
+    private static byte[] TypedArraySegment1(uint count)
+    {
+        byte[] segment1 = [0, 0, 0, 0, 0x0A, 0x0D, 0x00, 0xDD, 0xEE, 0xFF];
+        BinaryPrimitives.WriteUInt32LittleEndian(segment1.AsSpan(0, 4), count);
+        return segment1;
+    }
+
+    /// <summary>
+    /// A complete 134-byte stored-uncompressed v5 block around
+    /// <see cref="TypedArraySegment1"/>. Segment 0 is the four bytes of a zero string count.
+    /// </summary>
+    private static byte[] TypedArrayBlock(uint count, int blobFrameTableSize = 0) =>
+        new V5Block
+        {
+            Segment0Bytes = [0x00, 0x00, 0x00, 0x00],
+            Segment1Bytes = TypedArraySegment1(count),
+            IntCount = 1,
+            TypesSize = 2,
+            BlobFrameTableSize = blobFrameTableSize,
+        }.ToBytes();
+
+    /// <summary>
+    /// A stored-uncompressed v5 block decoding to <c>{ "a": [7] }</c>, whose auxiliary 4-byte
+    /// area ends at 12 — 4 mod 8 — so the conditional align(8) in front of the (empty) auxiliary
+    /// 8-byte buffer is load-bearing. <paramref name="padSegment0"/> appends the four padding
+    /// bytes an unconditional align(8) would expect, which no encoder emits.
+    /// </summary>
+    private static byte[] AuxAlignBlock(bool padSegment0)
+    {
+        // "a\0", the align(4) pad, the string count, then the single auxiliary 4-byte value.
+        var segment0 = new byte[padSegment0 ? 16 : 12];
+        segment0[0] = (byte)'a';
+        BinaryPrimitives.WriteUInt32LittleEndian(segment0.AsSpan(4, 4), 1u);
+        BinaryPrimitives.WriteUInt32LittleEndian(segment0.AsSpan(8, 4), 7u);
+
+        // The object's member count, the byte buffer holding the type-25 element count, the
+        // align(4) pad at 5..8, string id 0 (the key "a") at 8..12, three type tags, trailer.
+        var segment1 = new byte[19];
+        BinaryPrimitives.WriteUInt32LittleEndian(segment1.AsSpan(0, 4), 1u);
+        segment1[4] = 0x01;
+        segment1[12] = 0x09;   // OBJECT
+        segment1[13] = 0x19;   // ARRAY_TYPE_AUXILIARY_BUFFER
+        segment1[14] = 0x0B;   // INT32
+        segment1[15] = 0x00;
+        segment1[16] = 0xDD;
+        segment1[17] = 0xEE;
+        segment1[18] = 0xFF;
+
+        return new V5Block
+        {
+            Segment0Bytes = segment0,
+            Segment1Bytes = segment1,
+            StringBlobSize = 2,
+            AuxSlotCount = 2,
+            ObjectCount = 1,
+            ByteCount = 1,
+            IntCount = 1,
+            TypesSize = 3,
+        }.ToBytes();
+    }
+
+    /// <summary>
+    /// Wrap bytes as a raw LZ4 block of pure literals — the identity encoding, and the only one
+    /// that can be written by hand for an arbitrary payload.
+    /// </summary>
+    private static byte[] Lz4Literals(byte[] payload)
+    {
+        var block = new List<byte>();
+        if (payload.Length < 15)
+        {
+            block.Add((byte)(payload.Length << 4));
+        }
+        else
+        {
+            block.Add(0xF0);
+            int remaining = payload.Length - 15;
+            while (remaining >= 0xFF)
+            {
+                block.Add(0xFF);
+                remaining -= 0xFF;
+            }
+            block.Add((byte)remaining);
+        }
+        block.AddRange(payload);
+        return [.. block];
+    }
+
     private static readonly JsonWriterOptions RawWriterOptions = new()
     {
         Indented = false,
@@ -774,18 +1165,27 @@ public class Kv3BinaryReaderTest
     /// float text (e.g. <c>8e-05</c>) and .NET's (<c>8E-05</c>) become the same bytes. Nothing
     /// else is touched: keys, strings, booleans, nulls and array order pass through verbatim,
     /// and two distinct doubles can never normalize to the same text.
+    /// <para>
+    /// What it DOES lose is an integer above 2^53, and it used to lose it in silence: such a
+    /// token came back out of <see cref="JsonElement.GetDouble"/> as the nearest double, so a
+    /// correctly decoded int64/uint64 and a mangled one normalized to the same bytes and the
+    /// whole-tree diff could not tell them apart. Every rounded token is now returned alongside
+    /// the JSON for the caller to declare. The diff still compares doubles, because
+    /// Value.NumberValue IS a double and the reader is documented to produce nothing else.
+    /// </para>
     /// </summary>
-    private static string Renumber(JsonElement element)
+    private static (string Json, IReadOnlyList<string> RoundedIntegers) Renumber(JsonElement element)
     {
+        var rounded = new List<string>();
         using var stream = new MemoryStream();
         using (var writer = new Utf8JsonWriter(stream, RawWriterOptions))
         {
-            WriteElement(writer, element);
+            WriteElement(writer, element, rounded);
         }
-        return Encoding.UTF8.GetString(stream.ToArray());
+        return (Encoding.UTF8.GetString(stream.ToArray()), rounded);
     }
 
-    private static void WriteElement(Utf8JsonWriter writer, JsonElement element)
+    private static void WriteElement(Utf8JsonWriter writer, JsonElement element, List<string> rounded)
     {
         switch (element.ValueKind)
         {
@@ -794,7 +1194,7 @@ public class Kv3BinaryReaderTest
                 foreach (JsonProperty property in element.EnumerateObject())
                 {
                     writer.WritePropertyName(property.Name);
-                    WriteElement(writer, property.Value);
+                    WriteElement(writer, property.Value, rounded);
                 }
                 writer.WriteEndObject();
                 break;
@@ -802,12 +1202,12 @@ public class Kv3BinaryReaderTest
                 writer.WriteStartArray();
                 foreach (JsonElement item in element.EnumerateArray())
                 {
-                    WriteElement(writer, item);
+                    WriteElement(writer, item, rounded);
                 }
                 writer.WriteEndArray();
                 break;
             case JsonValueKind.Number:
-                writer.WriteNumberValue(element.GetDouble());
+                WriteNumber(writer, element, rounded);
                 break;
             case JsonValueKind.String:
                 writer.WriteStringValue(element.GetString());
@@ -822,6 +1222,24 @@ public class Kv3BinaryReaderTest
             default:
                 throw new InvalidOperationException($"unexpected JSON kind {element.ValueKind}");
         }
+    }
+
+    /// <summary>
+    /// Write one reference number as a double, recording its raw text first when it is an
+    /// integer token that does not survive the round trip — the only thing this normalization
+    /// loses, and the reason the loss is reported rather than absorbed.
+    /// </summary>
+    private static void WriteNumber(Utf8JsonWriter writer, JsonElement element, List<string> rounded)
+    {
+        string raw = element.GetRawText();
+        double value = element.GetDouble();
+        if (raw.IndexOfAny(['.', 'e', 'E']) < 0 &&
+            !string.Equals(
+                value.ToString("F0", CultureInfo.InvariantCulture), raw, StringComparison.Ordinal))
+        {
+            rounded.Add(raw);
+        }
+        writer.WriteNumberValue(value);
     }
 
     /// <summary>

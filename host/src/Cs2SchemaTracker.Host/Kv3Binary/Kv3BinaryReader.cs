@@ -276,6 +276,9 @@
 //     surface as IndexOutOfRangeException / OverflowException;
 //   * each cursor is bounded by its DECLARED end, not merely by the array length, so a
 //     desynchronised walk fails at the exact tag that caused it;
+//   * every count and size taken from a header is bounded against the buffer, or the
+//     compressed input, that has to justify it BEFORE anything is allocated from it, so a
+//     corrupt depot file fails as a named Kv3BinaryException instead of exhausting the host;
 //   * the computed buffer layout must match the actual payload length, and the 00 DD EE FF
 //     trailer must be where the layout says;
 //   * after the walk every cursor must sit exactly on its declared end. That whole-buffer
@@ -1064,6 +1067,21 @@ internal static class Kv3BinaryReader
         {
             cursor += 4;
             int tableSize = frameTableSize >= 0 ? frameTableSize : buffer.Length - cursor;
+
+            // The frame-size table has to fit in what is left of the buffer. Checked BEFORE
+            // allocating, so a garbage v5 header word at offset 68 fails by name instead of as
+            // an OutOfMemoryException — a 157-byte block declaring a 2,147,483,646-byte table
+            // sized a 1,073,741,823-element int[] before the per-entry RequireBuffer below ever
+            // ran. v3/v4 pass frameTableSize -1, which derives tableSize FROM what is left, so
+            // they can never trip it.
+            if (tableSize > buffer.Length - cursor)
+            {
+                throw new Kv3BinaryException(
+                    $"Kv3BinaryReader: KV3 v{version} declares a {tableSize}-byte blob frame " +
+                    $"table, which does not fit in the {buffer.Length - cursor} bytes left " +
+                    $"after the blob length list at offset {cursor}.");
+            }
+
             int frameCount = tableSize / 2;
             var frameSizes = new int[frameCount];
             for (int i = 0; i < frameCount; i++)
@@ -1136,6 +1154,26 @@ internal static class Kv3BinaryReader
         }
         else
         {
+            // The frames are the only source of these bytes, and a raw LZ4 block cannot expand
+            // without bound (see Lz4Block.MaxExpandedLength). Checked BEFORE allocating, so a
+            // header declaring an impossible blockTotalSize fails by name here instead of as an
+            // OutOfMemoryException: the stored branch above is already bounded by RequireRange,
+            // but this one has nothing but the header word to go on. Summed per frame rather
+            // than as 255 x the total frame bytes, which keeps the bound provably above what
+            // LINKED frames can produce.
+            long ceiling = 0;
+            foreach (int frameSize in frameSizes)
+            {
+                ceiling += Lz4Block.MaxExpandedLength(frameSize);
+            }
+            if (blobTotalSize > ceiling)
+            {
+                throw new Kv3BinaryException(
+                    $"Kv3BinaryReader: the header declares blockTotalSize = {blobTotalSize}, " +
+                    $"more than the {ceiling} bytes the {frameSizes.Length} LZ4 blob frame(s) " +
+                    $"after the payload can expand to.");
+            }
+
             payload = new byte[blobTotalSize];
             int written = 0;
             int offset = blobRegionOffset;
@@ -1560,10 +1598,11 @@ internal static class Kv3BinaryReader
                     return ReadArray(NextCount("ARRAY element count"), depth);
 
                 case TypeArrayTyped:
-                    return ReadTypedArray(NextCount("ARRAY_TYPED element count"), depth);
+                    return ReadTypedArray(
+                        "ARRAY_TYPED", NextCount("ARRAY_TYPED element count"), depth);
 
                 case TypeArrayByteLength:
-                    return ReadTypedArray(NextByte(), depth);
+                    return ReadTypedArray("ARRAY_TYPE_BYTE_LENGTH", NextByte(), depth);
 
                 case TypeArrayAuxiliaryBuffer:
                     if (!_hasAuxiliaryBuffers)
@@ -1608,8 +1647,29 @@ internal static class Kv3BinaryReader
             return new Value { ListValue = list };
         }
 
-        private Value ReadTypedArray(int count, int depth)
+        private Value ReadTypedArray(string what, int count, int depth)
         {
+            // The one count in the whole walk that nothing in the stream grows with. ARRAY
+            // (type 8) re-reads a tag per element, so the types buffer bounds it, and OBJECT
+            // spends 4 bytes of a buffer per member; a typed array reads ONE shared element tag
+            // and then loops. When that tag is a zero-width type (NULL, BOOLEAN_TRUE/FALSE,
+            // INT64_ZERO/ONE, DOUBLE_ZERO/ONE) no cursor advances either, so the per-buffer
+            // Advance guards never bound the loop: a 134-byte hand-built v5 block with element
+            // tag 13 and count 8,000,000 decoded with NO exception, passed RequireFullyConsumed
+            // and returned a ListValue holding ~552 MB. The payload length is the bound because
+            // every OTHER element type costs at least one byte out of a buffer inside it
+            // (BINARY_BLOB costs 4 of the blob length list), so a real block always satisfies
+            // it, and for the zero-width constants it is the only file-scaled ceiling the
+            // format offers. Checked BEFORE the loop, so such a count fails by name instead of
+            // as an OutOfMemoryException.
+            if (count > _main.Length)
+            {
+                throw new Kv3BinaryException(
+                    $"Kv3BinaryReader: {what} at types offset {_typesPos - _typesBase - 1} " +
+                    $"declares {count} elements, more than the {_main.Length}-byte payload " +
+                    $"buffer they would have to come from.");
+            }
+
             (int elementType, _) = ReadTag();
             var list = new ListValue();
             for (int i = 0; i < count; i++)
