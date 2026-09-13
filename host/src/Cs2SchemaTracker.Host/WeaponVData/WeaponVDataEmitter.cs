@@ -40,18 +40,30 @@
 //   - Kv3BinaryReader is the single decode path and is NOT re-implemented here; a
 //     Kv3BinaryException is wrapped in an InvalidDataException naming the source, per the
 //     repo's wrap-the-parser convention (see PropDataEmitter.ParseKv3).
+//   - NUMBERS ARE DOUBLES, and that is lossy past 2^53. Kv3BinaryReader narrows KV3 int and
+//     real alike to Value.NumberValue and google.protobuf.Value has no integer case, so an
+//     INT64 / UINT64 larger than 2^53 has ALREADY been rounded by the time it reaches this
+//     file — ulong.MaxValue arrives as 1.8446744073709552e+19 and 9007199254740993 as
+//     9007199254740992, indistinguishable from a genuine DOUBLE. This emitter therefore cannot
+//     detect the loss and deliberately does not pretend to: the check belongs at the narrowing
+//     site in Kv3BinaryReader. No weapon field in any measured build comes close to that bound.
 //
 // Invariants:
 //   Determinism: entries sorted by key Ordinal (which puts the numeric aliases first and
-//     LEXICOGRAPHICALLY — "1" < "10" < "13" — not in numeric order). Keys are unique in the
-//     source; that is ASSERTED, not assumed. CanonicalJson sorts object keys only, so array
+//     LEXICOGRAPHICALLY — "1" < "10" < "13" — not in numeric order). Keys are unique by
+//     CONSTRUCTION, not by assertion: the decoded top level is a protobuf map, and
+//     Kv3BinaryReader.ReadObject collapses a repeated KV3 key LAST-WINS before the tree ever
+//     reaches here, so a duplicate is unobservable at this boundary — surfacing one would take
+//     a reader change, not an emitter check. CanonicalJson sorts object keys only, so array
 //     order inside a Value is this emitter's responsibility and it is SOURCE ORDER: nothing
 //     re-orders a ListValue. Canonical JSON, LF, UTF-8 no BOM.
 //   Fail-loud: missing vpk / the source absent from the archive / a decode failure / a
-//     top-level value that is not a KV3 map / a duplicate top-level key / zero entries — all
-//     throw BEFORE any output bytes. No catch-and-continue.
+//     top-level value that is not a KV3 map / zero entries / a tree that nests deeper than
+//     canonical JSON will read — all throw BEFORE any output bytes. No catch-and-continue.
 //   All-or-nothing: build the full message in memory, then write to a sibling .tmp and
 //     atomically rename.
+
+using System.Text.Json;
 
 using Cs2SchemaTracker.Host.Kv3Binary;
 using Cs2SchemaTracker.Host.Serialization;
@@ -146,16 +158,8 @@ internal sealed class WeaponVDataEmitter
         // Mirror the top level VERBATIM. The decoded tree's Value nodes are handed straight to
         // the message — no flattening, no normalisation, no filtering.
         var entries = new List<WeaponVDataEntry>();
-        var seen = new HashSet<string>(StringComparer.Ordinal);
         foreach (var (key, value) in root.StructValue.Fields)
         {
-            // Keys are unique in every observed build; assert rather than assume, because a
-            // collision would silently drop one definition.
-            if (!seen.Add(key))
-            {
-                throw new InvalidDataException(
-                    $"WeaponVDataEmitter: duplicate top-level key '{key}' in '{WeaponVDataPath}'.");
-            }
             entries.Add(new WeaponVDataEntry { Key = key, Value = value });
         }
 
@@ -166,12 +170,29 @@ internal sealed class WeaponVDataEmitter
                 + "refusing to write an empty weapon_vdata.json.");
         }
 
-        // Ordinal by key. Keys are unique (asserted above), so no tiebreak is needed. Array order
-        // WITHIN a Value is source order and is never touched.
+        // Ordinal by key. Keys are unique by CONSTRUCTION — the decoded top level is a protobuf
+        // map and the reader already collapsed any repeated KV3 key — so no tiebreak is needed.
+        // Array order WITHIN a Value is source order and is never touched.
         entries.Sort(static (a, b) => string.CompareOrdinal(a.Key, b.Key));
         document.Entries.AddRange(entries);
 
-        AtomicWrite.WriteCanonical(document, outputPath);
+        try
+        {
+            AtomicWrite.WriteCanonical(document, outputPath);
+        }
+        catch (JsonException ex)
+        {
+            // Wrapping the whole call is safe for the all-or-nothing invariant: AtomicWrite
+            // serializes fully before it creates the sibling .tmp, so a depth failure leaves no
+            // bytes behind. Deliberately NOT widened past JsonException — an IOException from
+            // the write itself must keep propagating as-is.
+            throw new InvalidDataException(
+                $"WeaponVDataEmitter: '{WeaponVDataPath}' decoded to a tree that NESTS TOO "
+                + $"DEEPLY for canonical JSON: {ex.Message} Kv3BinaryReader accepts 512 levels "
+                + "but CanonicalJson re-reads the formatter's output through JsonDocument, whose "
+                + "depth cap is 64, so this fails only at serialization — long after the decode "
+                + $"and every check above have passed. Refusing to write '{outputPath}'.", ex);
+        }
     }
 
     private static Value Decode(byte[] resourceBytes)
