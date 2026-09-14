@@ -1,7 +1,7 @@
 // 22 — byte-range-selective content-depot fetch plan.
 //
 // A whole-FILE content acquire would fetch every pak01_<NNN>.vpk that BACKS a
-// resource our 7 content emitters read. But each resource is a tiny byte range
+// resource our 8 content emitters read. But each resource is a tiny byte range
 // inside one of those multi-hundred-MB chunk files, so a whole-file fetch pulls
 // ~1.3 GB/build of mostly-unneeded bytes (and hammers the Steam CDN into 503s).
 // This plan (built by ContentPakSelector.SelectContentByteRanges) narrows the

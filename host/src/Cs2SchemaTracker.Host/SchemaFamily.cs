@@ -6,9 +6,14 @@
 // emitter and no literal "0.x.y" is scattered across the host. Emitters MUST source the
 // version from here rather than hardcoding it.
 //
-// Under the lightweight pre-v1.0.0 stability rule (README "Stability"): bump this when the
-// artifact surface changes AND the sibling CS2OpenDev-Docs is updated in the same change.
-// Formal semver discipline returns at v1.0.0.
+// Pre-v1.0.0 this moves whenever the artifact surface changes. What obliges a matching
+// CS2OpenDev-Docs change is NARROWER than that, and the distinction is easy to get wrong: Docs
+// re-publishes a fixed, named set of artifacts (entity_schema, convars, commands, gameevents,
+// schema_evolution) and reads nothing else from a set. A field ENTERING OR LEAVING one of those
+// is a Docs event and wants the lockstep update 0.9.0's atomic taxonomy got. A new standalone
+// artifact Docs never opens is not, however much it moves this number. Docs' own
+// schema_format_version versions the files Docs EMITS, not this family; the two look alike and
+// are unrelated. Formal semver discipline returns at v1.0.0.
 
 namespace Cs2SchemaTracker.Host;
 
@@ -19,7 +24,7 @@ public static class SchemaFamily
 {
     /// <summary>
     /// Current schemas/*.proto family version. Pre-v1.0.0 it changes when the artifact
-    /// surface changes and CS2OpenDev-Docs is updated in lockstep (README "Stability").
+    /// surface changes; see the header for when that also obliges a CS2OpenDev-Docs change.
     /// Do not hardcode this literal elsewhere — reference this field.
     /// </summary>
     // 0.5.0: schema-coverage expansion. The walker now walks the global
@@ -78,5 +83,15 @@ public static class SchemaFamily
     // unlike 0.9.0 it needs NO walker/era rebuild — any build re-emitted (or newly
     // extracted) through this host carries it. Strictly additive; unset means
     // "not derivable", and multi-member/mixed decompositions stay deliberately unset.
-    public const string Version = "0.10.0";
+    //
+    // 0.11.0: a NEW content artifact, weapon_vdata.json — the per-weapon tuning tables from
+    // scripts/weapons.vdata_c, the first COMPILED Source 2 resource (binary KV3) the host
+    // reads. A verbatim KV3 mirror: 176 top-level entries carried as (key, google.protobuf.Value)
+    // pairs, so the one bare-string entry (generic_data_type) is representable alongside the 175
+    // maps. Strictly additive to the artifact surface — no existing artifact changes shape — but
+    // a new required-per-set file is a surface change, hence the minor bump. The version gate in
+    // EvolutionCommand consequently forces one full schema_evolution rebuild; that is expected.
+    // Corpus rollout is staged: weapon_vdata.json is OMITTABLE but not yet content-depot-GATED
+    // (see ArtifactSet.OmittableContentArtifacts) until the committed corpus carries it.
+    public const string Version = "0.11.0";
 }

@@ -876,9 +876,9 @@ public class ExtractCommandTest
     }
 
     // end-to-end: a co-located content VPK that ships ONLY one content source (a single
-    // .gameevents) — the other six content sources genuinely absent — produces gameevents.json,
-    // OMITS the six others (no fail-loud, the whole extract still succeeds), and RECORDS those six
-    // as per-artifact content omissions in the build-level omissions.json.
+    // .gameevents) — the other seven content sources genuinely absent — produces gameevents.json,
+    // OMITS the seven others (no fail-loud, the whole extract still succeeds), and RECORDS those
+    // seven as per-artifact content omissions in the build-level omissions.json.
     [WindowsOnlyFact]
     public void FullExtract_PartialContent_OmitsAbsentArtifacts_AndRecordsThem()
     {
@@ -903,7 +903,7 @@ public class ExtractCommandTest
                 Assert.False(File.Exists(Path.Combine(setDir, absent)), $"{absent} must be omitted (absent source)");
             }
 
-            // The build-level omissions.json records exactly the six genuinely-absent artifacts.
+            // The build-level omissions.json records exactly the seven genuinely-absent artifacts.
             var omissionsPath = Path.Combine(workDir, "extract-out", BuildId, "omissions.json");
             Assert.True(File.Exists(omissionsPath), "omissions.json must be written");
             var omissions = new JsonParser(JsonParser.Settings.Default.WithIgnoreUnknownFields(true))
@@ -911,7 +911,7 @@ public class ExtractCommandTest
             var carrier = Assert.Single(omissions.Omissions_, o => o.Platform == platform);
             Assert.Equal(PlatformOmission.Types.Reason.Unspecified, carrier.Reason);
             Assert.Equal(
-                "game_modes.json,item_definitions.json,localization.json,map_overviews.json,prop_data.json,surface_properties.json",
+                "game_modes.json,item_definitions.json,localization.json,map_overviews.json,prop_data.json,surface_properties.json,weapon_vdata.json",
                 string.Join(",", carrier.ContentOmissions.Select(c => c.Artifact)));
             Assert.All(carrier.ContentOmissions,
                 c => Assert.Equal(PlatformOmission.Types.Reason.ContentNotShippedThisEra, c.Reason));
@@ -921,7 +921,7 @@ public class ExtractCommandTest
     private static readonly string[] AbsentContentArtifacts =
     {
         "item_definitions.json", "game_modes.json", "localization.json",
-        "surface_properties.json", "prop_data.json", "map_overviews.json",
+        "surface_properties.json", "prop_data.json", "map_overviews.json", "weapon_vdata.json",
     };
 
     // ---- PromoteStagingDir (two-step promote) -----------------------------------------------

@@ -14,6 +14,21 @@
 //
 // The undocumented --binaries <dir> hook below runs ONLY the descriptor extractor over a directory
 // of input binaries; it's a development hook, not a public API.
+//
+// The commit path is additionally preflighted ONCE per run, before build 1: the WALKER IDENTITY
+// GATE (ExtractCommand.Batch.cs) and the WALKER FINGERPRINT DRIFT GUARD
+// (ExtractCommand.WalkerDrift.cs — refuses to re-emit a committed set with a walker other than the
+// one its provenance records, unless --allow-walker-change). Both abort the whole invocation at
+// exit 78 before any era is resolved here, so nothing in artifacts/ is touched.
+//
+// STALE CONTENT STORE GUARD (step 1c of RunExtract): when the content pak resolves out of the
+// content-addressed store, that store copy is a TRIM — it holds only the resources the required set
+// covered when it was written. A trim from an older required-set generation is missing bytes this
+// build genuinely ships, and the per-artifact HasSource probes cannot tell that apart from "the era
+// never shipped it": they would record a FALSE CONTENT_NOT_SHIPPED_THIS_ERA omission into the
+// committed corpus. So a stale store ABORTS the extract before any artifact byte, naming the GID,
+// both generations, and the `content-backfill --pak csgo --execute` remedy. A CO-LOCATED pak (the
+// migrate / live-install case) is the untrimmed original, carries no marker, and is untouched.
 
 using System.Security.Cryptography;
 
@@ -39,6 +54,7 @@ using Cs2SchemaTracker.Host.StringPools;
 using Cs2SchemaTracker.Host.SurfaceProperties;
 using Cs2SchemaTracker.Host.Vpk;
 using Cs2SchemaTracker.Host.Walker;
+using Cs2SchemaTracker.Host.WeaponVData;
 using Cs2SchemaTracker.Schemas;
 
 using Google.Protobuf;
@@ -95,6 +111,21 @@ internal static partial class ExtractCommand
         => Run(args, runnerFactory, eraResolver, gateFromResolver: true);
 
     /// <summary>
+    /// Test seam for the commit-path WALKER FINGERPRINT DRIFT GUARD (ExtractCommand.WalkerDrift.cs):
+    /// the gate seam above PLUS an injected walker-identity source. Production resolves a walker
+    /// binary's identity by launching it (<see cref="WalkerIdentity.Resolve"/>), which a fixture
+    /// "binary" cannot satisfy; this seam lets the suite state what the resolved walker reports and
+    /// drive the guard's drift / match / unidentified paths without a real exe. Supplying it does NOT
+    /// make a fake walker run — the fake <paramref name="runnerFactory"/> still produces the
+    /// WalkerOutput, exactly as on the gate seam.
+    /// </summary>
+    internal static int Run(
+        string[] args, Func<IWalkerRunner> runnerFactory, EraWalkerResolver eraResolver,
+        Func<string, WalkerIdentity> walkerIdentitySource)
+        => Run(args, runnerFactory, eraResolver, gateFromResolver: true,
+               walkerIdentitySource: walkerIdentitySource);
+
+    /// <summary>
     /// Shared entry. <paramref name="runnerFactory"/> (test seam — fake runner) and/or
     /// <paramref name="eraResolver"/> (production — per-era binary + armed second gate) drive
     /// which runner runs and whether the gate is armed:
@@ -109,9 +140,15 @@ internal static partial class ExtractCommand
     /// binaries are absent on the PRODUCTION path. Null on the test seams so auto-acquire never
     /// fires (and even when supplied it is gated on a null runnerFactory).
     /// </param>
+    /// <param name="walkerIdentitySource">
+    /// Walker-identity seam (binary path -> its self-reported identity) for the commit-path drift
+    /// guard. Null everywhere but the drift test seam: production binds it to
+    /// <see cref="WalkerIdentity.Resolve"/> in RunSelection, and a fake-runner run launches no binary
+    /// so it has no identity to resolve.
+    /// </param>
     private static int Run(
         string[] args, Func<IWalkerRunner>? runnerFactory, EraWalkerResolver? eraResolver, bool gateFromResolver,
-        Func<string, string, int>? acquire = null)
+        Func<string, string, int>? acquire = null, Func<string, WalkerIdentity>? walkerIdentitySource = null)
     {
         if (CliArgs.HasHelpFlag(args))
         {
@@ -139,7 +176,7 @@ internal static partial class ExtractCommand
         // class-count gate, --verify classification, --commit promotion (+ build-level hooks),
         // and fail-isolation all live in the RunSelection orchestration (ExtractCommand.Batch). The
         // auto-acquire seam threads through to RunExtract.
-        return RunSelection(args, runnerFactory, eraResolver, gateFromResolver, acquire);
+        return RunSelection(args, runnerFactory, eraResolver, gateFromResolver, acquire, walkerIdentitySource);
     }
 
     /// <summary>Default artifact directory per README.md: artifacts/&lt;build&gt;/&lt;platform&gt;/.</summary>
@@ -263,6 +300,17 @@ internal static partial class ExtractCommand
             return 65;   // EX_DATAERR — input bytes don't match the committed provenance.
         }
 
+        // 1c. STALE CONTENT STORE guard. When the content pak comes from the content-addressed
+        //     store, refuse to extract from a trim built under an OLDER required-set generation:
+        //     its missing resources would be misread as "this era never shipped them" and written
+        //     into the corpus as false CONTENT_NOT_SHIPPED_THIS_ERA omissions. Runs BEFORE the walk
+        //     and before any artifact byte; a co-located pak (no store copy) is not gated.
+        if (!TryGuardContentStoreGeneration(build, platform, binariesDir, out var staleStoreError))
+        {
+            Console.Error.WriteLine(staleStoreError);
+            return 65;   // EX_DATAERR — the resolved content input is stale, not usable.
+        }
+
         // 1b. Resolve the per-era walker binary + the era's expected layout signature. Done AFTER
         //     the binaries-dir check so a binaries-not-found run still fails loud at EX_DATAERR
         //     before the inventory/era catalog is required. Any era-resolution failure (no
@@ -275,9 +323,12 @@ internal static partial class ExtractCommand
         //     CLASS-BAND GATE (the parsed walk's class count falls outside the resolved era's band).
         //     75/76/77 are all "this build cannot be trusted as extracted" — never a walker crash
         //     (65/70), which is a distinct failure class. Exit 78 = the WALKER IDENTITY GATE
-        //     (ExtractCommand.Batch.cs PreflightWalkerIdentity) — same failure class, but evaluated
-        //     ONCE for the whole selection BEFORE this method is ever called for build 1 (a
-        //     mixed/stale walker SET is a property of the run, not of any one build's walk).
+        //     (ExtractCommand.Batch.cs PreflightWalkerIdentity) and the commit-path WALKER
+        //     FINGERPRINT DRIFT GUARD (ExtractCommand.WalkerDrift.cs
+        //     PreflightWalkerFingerprintDrift) — same failure class, but both evaluated ONCE for the
+        //     whole selection BEFORE this method is ever called for build 1 (which walker set a run
+        //     uses, and whether it is the walker the committed sets were built with, are properties
+        //     of the RUN, not of any one build's walk).
         IWalkerRunner runner;
         string? expectedLayoutSignature = null;
         // Whether the second gate is ARMED for this run. Distinct from expectedLayoutSignature being
@@ -335,10 +386,18 @@ internal static partial class ExtractCommand
                 // fields empty and say loudly why, so a silently-empty provenance stamp is never
                 // mistaken for "the walker reported nothing" (: fail-loud, but the walk is
                 // the primary gate; identity is a defense-in-depth record on top of it).
+                // The same unresolved identity is also what the commit-path WALKER FINGERPRINT DRIFT
+                // GUARD compares against, so say so here too: with no identity there is nothing to
+                // compare the committed set's recorded fingerprint to, and a walker change would go
+                // undetected on this run. Reaching here under --commit therefore means the set being
+                // written records NO fingerprint of its own (or does not exist yet): the guard has
+                // already skipped every committed set that records one, precisely so the empty
+                // WalkerSrcFingerprint stamped below cannot erase it (ExtractCommand.WalkerDrift.cs).
                 Console.Error.WriteLine(
                     $"extract: WARNING could not resolve walker identity for " +
                     $"'{resolution.WalkerBinaryPath}': {ex.GetType().Name}: {ex.Message}. " +
-                    "provenance.tool.walkerGitSha/walkerSrcFingerprint will be empty.");
+                    "provenance.tool.walkerGitSha/walkerSrcFingerprint will be empty, and the walker " +
+                    "fingerprint DRIFT GUARD could not run for this set.");
             }
         }
 
@@ -1040,7 +1099,7 @@ internal static partial class ExtractCommand
         LocalizationOutput? LocalizationFingerprint);
 
     /// <summary>
-    /// Emit the seven content artifacts into <paramref name="stagingDir"/>, gated on a co-located
+    /// Emit the eight content artifacts into <paramref name="stagingDir"/>, gated on a co-located
     /// content-depot <c>pak01_dir.vpk</c>. The VPK is opened ONCE and shared
     /// across the emitters. For each artifact: if its source genuinely ships in this build
     /// (<c>HasSource</c>) the emitter runs (and still fails loud on corruption / a missing backing
@@ -1048,7 +1107,7 @@ internal static partial class ExtractCommand
     /// collected, never a throw. Returns one <see cref="ContentArtifactOmission"/> per genuinely
     /// absent artifact (reason <c>CONTENT_NOT_SHIPPED_THIS_ERA</c>), which the caller records in the
     /// build-level omissions.json AFTER a clean promote. When the whole content depot is absent (no
-    /// VPK) the seven are the documented binaries-only skip and NO content omissions are returned
+    /// VPK) the eight are the documented binaries-only skip and NO content omissions are returned
     /// (the content depot is not in provenance, so the validator does not require the files) and the
     /// localization fingerprint is null (provenance.localization stays absent).
     /// </summary>
@@ -1075,7 +1134,7 @@ internal static partial class ExtractCommand
     }
 
     /// <summary>
-    /// Emit the seven content artifacts from an EXPLICIT content <c>pak01_dir.vpk</c> at
+    /// Emit the eight content artifacts from an EXPLICIT content <c>pak01_dir.vpk</c> at
     /// <paramref name="vpkPath"/> into <paramref name="stagingDir"/> — the resolution-independent
     /// core of <see cref="EmitContentArtifacts"/>. Shared by the normal extract path (which resolves
     /// the VPK via <see cref="TryFindGameEventsVpk"/>) and the <c>content-store migrate</c> validation
@@ -1098,7 +1157,7 @@ internal static partial class ExtractCommand
 
         // The engine core pak is OPTIONAL: opened only when resolved (present in the store / co-located).
         // Its .gameevents entries are merged into gameevents.json alongside the csgo pak's; it carries
-        // NOTHING the other six emitters read, so they stay on the csgo archive only.
+        // NOTHING the other seven emitters read, so they stay on the csgo archive only.
         var coreArchive = string.IsNullOrEmpty(corePakPath) ? null : VpkArchive.Open(corePakPath);
         var gameEventArchives = coreArchive is null
             ? new[] { archive }
@@ -1143,6 +1202,9 @@ internal static partial class ExtractCommand
             new ContentArtifactSpec("map_overviews.json", MapOverviewsEmitter.HasSource,
                 (a, o) => new MapOverviewsEmitter(SchemaFamily.Version, build, platform).Emit(a, o),
                 "resource/overviews/*.txt absent from this build's content depot"),
+            new ContentArtifactSpec("weapon_vdata.json", WeaponVDataEmitter.HasSource,
+                (a, o) => new WeaponVDataEmitter(SchemaFamily.Version, build, platform).Emit(a, o),
+                "scripts/weapons.vdata_c absent from this build's content depot"),
         };
 
         var omissions = new List<ContentArtifactOmission>();
@@ -1399,7 +1461,11 @@ internal static partial class ExtractCommand
             GitCommit = ToolBuildInfo.GitCommitId,            // build-baked SHA (nbgv) — deterministic, no runtime git shell-out.
             // Walker identity chain: the WALKER's own self-reported identity (distinct from GitCommit,
             // the HOST's SHA above). "" when unresolved this run (fake-runner test seam / a resolution
-            // hiccup already warned about above) — never guessed.
+            // hiccup already warned about above) — never guessed. Under --commit an empty value here
+            // can only ever REPLACE an empty one: the drift guard refuses to re-promote a committed
+            // set that records a real fingerprint with a walker that cannot identify itself, because
+            // this line would otherwise overwrite the corpus's only record of who built it
+            // (ExtractCommand.WalkerDrift.cs, WalkerDriftDecision.WalkerUnresolved).
             WalkerGitSha = walkerIdentity?.GitSha ?? "",
             WalkerSrcFingerprint = walkerIdentity?.SrcFingerprint ?? "",
             SchemaRevision = walk.SchemaSystemLayoutSignature ?? "",
@@ -1424,7 +1490,7 @@ internal static partial class ExtractCommand
     ///         (back-compat during migration and for dev <c>--out</c> trees).</item>
     /// </list>
     /// Returns false (documented skip) when neither is present. Everything downstream
-    /// (<see cref="EmitContentArtifacts"/>, all 7 specs, <see cref="VpkArchive.Open"/>) is unchanged:
+    /// (<see cref="EmitContentArtifacts"/>, all 8 specs, <see cref="VpkArchive.Open"/>) is unchanged:
     /// the resolved pak is opened ONCE and emits all content artifacts. A PRESENT-but-corrupt
     /// manifest-record.json fails loud inside the store resolver, never a silent skip.
     /// </summary>
@@ -1440,6 +1506,60 @@ internal static partial class ExtractCommand
             .OrderBy(p => p, StringComparer.Ordinal)
             .FirstOrDefault() ?? "";
         return !string.IsNullOrEmpty(vpkPath);
+    }
+
+    /// <summary>
+    /// The STALE CONTENT STORE guard: false (with an actionable <paramref name="error"/>) when the
+    /// content pak for (build, platform) resolves out of the content-addressed store AND that store
+    /// copy was trimmed under a required-set generation older than
+    /// <see cref="ContentPakSelector.RequiredSetGeneration"/>.
+    ///
+    /// Only a STORE-resolved pak is gated. A co-located <c>pak01_dir.vpk</c> (the
+    /// <c>content-store migrate</c> / live-install case) is the untrimmed original — no selection
+    /// was ever applied to it, so it carries no generation marker and must keep working unchanged.
+    /// A build with no content pak at all is the documented binaries-only skip and is not gated
+    /// either.
+    ///
+    /// This is the one content check that must FAIL LOUD rather than self-heal: extract has no
+    /// source pak to re-trim from, and the alternative — emitting from the stale trim — silently
+    /// writes a false <c>CONTENT_NOT_SHIPPED_THIS_ERA</c> omission for every resource the trim
+    /// predates. The caller aborts with EX_DATAERR before the walk, so no artifact byte is written.
+    /// </summary>
+    internal static bool TryGuardContentStoreGeneration(
+        string build, string platform, string binariesDir, out string error)
+    {
+        error = "";
+        if (!ContentStore.TryResolveStorePak(binariesDir, ContentPak.Csgo, out _))
+        {
+            return true;   // co-located pak, or no content at all — nothing store-shaped to gate.
+        }
+        var contentRoot = ContentStore.RootForTupleDir(binariesDir);
+        if (contentRoot is null || !ContentStore.TryReadContentGid(binariesDir, out var gid))
+        {
+            // Unreachable: TryResolveStorePak succeeded, so both of these resolved a moment ago.
+            // Never turn an unnameable shape into an abort.
+            return true;
+        }
+        if (ContentStore.IsTrimGenerationCurrent(contentRoot, gid, ContentPak.Csgo, out var reason))
+        {
+            return true;
+        }
+
+        error =
+            $"extract: STALE CONTENT STORE for (build {build}, {platform}) — content depot " +
+            $"{ContentStore.ContentDepotId} GID {gid}." + Environment.NewLine +
+            $"  {ContentStore.ContentDirName}/{gid}/{ContentPak.Csgo.BaseRelDir}: {reason}." +
+            Environment.NewLine +
+            "  That stored trim predates a resource the CURRENT required set covers, so the bytes are " +
+            "simply not in it." + Environment.NewLine +
+            "  Extracting from it would record a FALSE CONTENT_NOT_SHIPPED_THIS_ERA omission — " +
+            "asserting this build never shipped a file it demonstrably does — into the committed " +
+            "corpus." + Environment.NewLine +
+            "  Refresh this GID's content store copy, then re-run extract:" + Environment.NewLine +
+            $"      cs2-schema-tracker content-backfill --pak {ContentPak.Csgo.Name} --execute" +
+            Environment.NewLine +
+            "  No artifacts written.";
+        return false;
     }
 
     /// <summary>
@@ -1611,11 +1731,11 @@ internal static partial class ExtractCommand
 Usage: cs2-schema-tracker extract --build <id> [--build <id> ...] [--platform <platform>]
                                    [--out <dir>] [--commit] [--verify] [--no-gate] [--force] [--no-acquire]
                                    [--no-changelog] [--no-localization-changelog] [--single-walk]
-                                   [--allow-mixed-walkers]
+                                   [--allow-mixed-walkers] [--allow-walker-change]
        cs2-schema-tracker extract (--all | --era <key> | --pin <sha>) [--platform <platform>]
                                    [--out <dir>] [--commit] [--verify] [--no-gate] [--force] [--no-acquire]
                                    [--no-changelog] [--no-localization-changelog] [--single-walk]
-                                   [--allow-mixed-walkers]
+                                   [--allow-mixed-walkers] [--allow-walker-change]
 
 A single extract produces the COMPLETE artifact set for the build (CORE + the content artifacts
 whenever the content depot is co-located with the binaries). The retired single-artifact --*-only
@@ -1648,9 +1768,10 @@ Arguments (stable per README.md):
                         pics-appinfo.json from a forward-acquisition capture; inventory upsert).
                         Does NOT git-commit; review the diff and commit manually. The
                         layout/signature gate (exit 75), the commit-path determinism gate (exit 76,
-                        on by default; see --single-walk), the class-count gate (exit 77), and the
-                        walker identity gate (exit 78; see --allow-mixed-walkers) all stay HARD => NO
-                        write. --verify stays a NON-BLOCKING review signal (promote proceeds
+                        on by default; see --single-walk), the class-count gate (exit 77), the
+                        walker identity gate (exit 78; see --allow-mixed-walkers) and the walker
+                        fingerprint drift guard (exit 78; see --allow-walker-change) all stay HARD
+                        => NO write. --verify stays a NON-BLOCKING review signal (promote proceeds
                         regardless of its verdict).
   --single-walk         Disable the commit-path determinism gate (armed by default under --commit):
                         walk once instead of twice, skipping the byte-compare that would otherwise
@@ -1667,6 +1788,20 @@ Arguments (stable per README.md):
                         CS2_EXPECT_FPRINT to a fingerprint prefix to hard-fail (exit 78,
                         unconditionally — never bypassed by this flag) when the resolved walker set
                         does not match (the stale-remote-image tripwire).
+  --allow-walker-change Authorise re-emitting ALREADY-COMMITTED sets with a walker OTHER than the one
+                        that built them. Under --commit, every selected build whose committed
+                        artifacts/<build>/<platform>/provenance.json records a
+                        tool.walkerSrcFingerprint is compared, BEFORE any era is resolved or anything
+                        is walked, against the fingerprint of the walker this run would use; a KNOWN
+                        mismatch refuses the whole run at exit 78 naming both fingerprints, and
+                        nothing is written. A different walker rewrites the artifacts themselves, not
+                        just the tool stamp, and the diff is indistinguishable from a real engine
+                        change — which is why the refusal is the default. This flag is BATCH-level
+                        (an intentional rewalk legitimately changes every set in the selection): it
+                        authorises the whole run and logs one `old -> new` transition line per
+                        affected set. A brand-new build, a committed set recording no fingerprint,
+                        and a walker whose identity cannot be resolved are never blocked (the last
+                        two warn). Off-repo runs never target a committed set and are never gated.
   --verify              Byte-compare the produced CORE set to the committed artifacts/ set
                         (schemaVersion + toolGitSha normalized); classify CORE-CLEAN / REGRESSION.
                         Off-repo a REGRESSION is a hard failure; with --commit it is a non-blocking
@@ -1702,6 +1837,12 @@ verbatim) instead of the flat batch 1.
 
 WALKER IDENTITY GATE (exit 78): evaluated ONCE for the whole selection, BEFORE any build runs —
 unlike the per-build gates above, a mixed/stale walker SET aborts the entire invocation (no partial
-SUMMARY), since it means the run cannot be trusted from build 1. See --allow-mixed-walkers above.");
+SUMMARY), since it means the run cannot be trusted from build 1. See --allow-mixed-walkers above.
+
+WALKER FINGERPRINT DRIFT GUARD (exit 78, --commit only): evaluated in the same preflight, right
+after the identity gate. The identity gate asks whether the walker set is COHERENT; this asks
+whether it is the SAME walker the committed sets record — a uniform, freshly-built walker passes
+the first and can still silently rewrite every set it re-emits. A known mismatch aborts the whole
+invocation with nothing written. See --allow-walker-change above.");
     }
 }

@@ -225,6 +225,36 @@ silently poisoning the corpus. For a remote/CI run (e.g. inside the Docker image
 unconditionally (exit 78, not bypassed by `--allow-mixed-walkers`), catching a stale deployed image
 before it can walk anything with the wrong binaries.
 
+The identity gate only asks whether the resolved walker set is *coherent*. A uniform, freshly built
+walker passes it and can still be a different walker from the one that produced the sets already in
+`artifacts/` — which is how a leftover, gitignored `natives/` tree once re-walked a build under
+`--commit` and rewrote thousands of semantic lines (`ATOMIC_PLAIN` -> `ATOMIC_UNSPECIFIED`) into the
+corpus, a diff indistinguishable from a real engine change. So a second preflight runs right after
+it, on the commit path only: for every selected build whose committed
+`artifacts/<build>/<platform>/provenance.json` records a `tool.walkerSrcFingerprint`, that value is
+compared against what the resolved walker reports. A known mismatch refuses the whole run at exit 78
+— before any era is resolved, anything is walked, or a staging dir exists — naming both
+fingerprints. Pass `--allow-walker-change` when the rewalk is intentional: it authorises the entire
+run (a deliberate rewalk changes every set it touches) and logs one `old -> new` transition line per
+affected set. A brand-new build and a set that records no fingerprint are never blocked. A walker
+whose identity will not resolve does not refuse the run — it is genuinely uncomparable, so there is
+nothing to compare — but it does not get to rewrite the record either: each committed set it would
+have re-walked is warned about and skipped (reported as `Gated`, so the batch exits non-zero).
+Promoting there would re-stamp `tool.walkerSrcFingerprint` with an empty value, so a set that
+recorded a real fingerprint would come back recording nothing and the drift would be undetectable on
+every later run too. Rebuild the era walker so it answers `--version`
+(`scripts/build-era-walkers.*`) and re-run. A walker that DOES resolve but reports `unknown` for its
+own source fingerprint is a different case and blocks: the set on disk records a real 64-hex value,
+so the two provably differ, and `--allow-walker-change` is the release. `--allow-mixed-walkers` does
+not release it — that flag is about a set spanning several walkers, not about promoting one whose
+identity contradicts the corpus.
+This is the corpus-facing complement to `CS2_EXPECT_FPRINT`: that one checks the walker against what
+the operator expected, this one against what the corpus actually carries.
+
+`CS2_WALKER_BIN` (and the `WalkerBin` appsettings key) overrides era selection, and under `--commit` it
+no longer skips the identity gate with it: a run that writes to the corpus is checked whichever walker
+it was pointed at. Non-commit override runs are unaffected.
+
 ## Schemas (protoc)
 
 Check that the proto family compiles. Use a real temp-file path — passing `NUL` creates a literal `NUL` file on Windows:

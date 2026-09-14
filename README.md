@@ -61,6 +61,7 @@ These come from the shared content depot's `pak01` VPK and are present only when
 | `surface_properties.json` | Per-material physics and footstep/impact/acoustic mappings. | The `scripts/surfaceproperties_*.txt` family (KV3 text). |
 | `prop_data.json` | Breakable-prop classes and health, gib groups, and the collision-group registry. | `scripts/propdata.txt` (KV1) + `scripts/collision_properties.txt` (KV3 text). |
 | `map_overviews.json` | Per-map radar metadata (material, position, scale, rotation, zoom, bombsites, spawns) plus a maps inventory. | `resource/overviews/*.txt` (KV1, one per map). |
+| `weapon_vdata.json` | Per-weapon tuning: damage, armor ratio, penetration, the inaccuracy model, and the recoil seed the spray pattern is generated from — plus the prefab and category entries alongside them. The decoded KV3 verbatim; nothing flattened or normalised. | `scripts/weapons.vdata_c` (a **compiled** Source 2 resource — binary KV3, not text). |
 
 #### Build-on-demand: `localization.json`
 

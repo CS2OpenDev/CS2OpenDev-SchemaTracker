@@ -101,6 +101,11 @@ public sealed class ExtractNoLocalizationChangelogTest
     {
         var contentRoot = ContentStore.RootForTupleDir(TupleDir(workDir, build, platform))!;
         ContentVpkFixture.Write(ContentStore.StoreDirForGid(contentRoot, gid), ContentSamples.StandardEntries());
+        // The fixture lays down the pak bytes directly rather than going through VpkTrimWriter, so
+        // stamp the required-set generation marker EnsureTrimmedStore would have written with them.
+        // Without it extract's stale-content-store guard (correctly) refuses to extract from a store
+        // copy whose trim generation cannot be established.
+        ContentStore.WriteTrimGenerationMarker(contentRoot, gid, ContentPakSelector.RequiredSetGeneration);
     }
 
     // Make a build's content UNresolvable: remove its _content/<gid> store copy while LEAVING its

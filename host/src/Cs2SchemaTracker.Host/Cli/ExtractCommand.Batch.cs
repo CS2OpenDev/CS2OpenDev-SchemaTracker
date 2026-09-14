@@ -14,6 +14,11 @@
 //     now evaluated INSIDE RunExtract, BEFORE any promote — off-repo OR --commit alike, a violation
 //     writes NOTHING (exit 77 / exit 76). "Gated but promoted" is structurally impossible; this
 //     layer only classifies the exit code into a Status.Gated result for the summary.
+//   - PREFLIGHT (once per run, before build 1): the WALKER IDENTITY GATE below (is the resolved
+//     walker SET coherent?) and, under --commit, the WALKER FINGERPRINT DRIFT GUARD in
+//     ExtractCommand.WalkerDrift.cs (is it the SAME walker that built the sets this run would
+//     clobber?). Both abort the WHOLE invocation at exit 78 with nothing written; the drift guard is
+//     opted out of per run with --allow-walker-change.
 //   - --verify: byte-compare the produced CORE set (including provenance.json) to committed
 //     (tool-stamp fields normalized: schemaVersion, tool.gitCommit, tool.semver, walkerGitSha,
 //     walkerSrcFingerprint). Off-repo a regression is HARD; under --commit it is a
@@ -59,7 +64,8 @@ internal static partial class ExtractCommand
         bool NoChangelog,
         bool NoLocalizationChangelog,
         bool SingleWalk,
-        bool AllowMixedWalkers);
+        bool AllowMixedWalkers,
+        bool AllowWalkerChange);
 
     /// <summary>Per-build outcome classification (drives the summary + exit code).</summary>
     internal enum Status
@@ -73,9 +79,11 @@ internal static partial class ExtractCommand
         /// </summary>
         Committed,
         /// <summary>
-        /// A layout gate (exit 75) or the class-count-band gate (exit 77) rejected the walk BEFORE
-        /// any promote — nothing was written. Not a walker crash, but DOES make the batch's own exit
-        /// non-zero (see <c>Summarize</c>) — a build with nothing in the corpus is never "clean".
+        /// A layout gate (exit 75), the class-count-band gate (exit 77), or the walker drift guard's
+        /// refusal to re-promote a committed set with an unidentifiable walker rejected the walk
+        /// BEFORE any promote — nothing was written. Not a walker crash, but DOES make the batch's
+        /// own exit non-zero (see <c>Summarize</c>) — a build the run was asked to commit and did not
+        /// is never "clean", whichever of the three stopped it.
         /// </summary>
         Gated,
         /// <summary>Skipped: already-present off-repo output without --force. Not a failure.</summary>
@@ -118,6 +126,7 @@ internal static partial class ExtractCommand
     {
         "gameevents.json", "item_definitions.json", "game_modes.json",
         "surface_properties.json", "prop_data.json", "map_overviews.json",
+        "weapon_vdata.json",
     };
 
     // schemaVersion / tool.gitCommit / tool.semver are EXPECTED to drift (family-version stamp +
@@ -160,7 +169,7 @@ internal static partial class ExtractCommand
     /// </summary>
     private static int RunSelection(
         string[] args, Func<IWalkerRunner>? runnerFactory, EraWalkerResolver? eraResolver, bool gateFromResolver,
-        Func<string, string, int>? acquire)
+        Func<string, string, int>? acquire, Func<string, WalkerIdentity>? walkerIdentitySource)
     {
         if (!TryParseSelection(args, out var opts, out var parseError))
         {
@@ -236,12 +245,48 @@ internal static partial class ExtractCommand
             return identityExit;
         }
 
+        // WALKER FINGERPRINT DRIFT GUARD — the corpus-facing half of the walker identity chain, and
+        // the reason the gate above is not enough: a walker set can be perfectly uniform and freshly
+        // built and STILL be a different walker from the one that wrote the committed sets this run
+        // is about to clobber. Evaluated here, after the identity gate and before the per-build loop,
+        // so a refusal lands before build 1 resolves an era, walks, or creates a staging dir.
+        // The identity source is WalkerIdentity.Resolve on the PRODUCTION path only (a fake runner
+        // launches no binary, so there is nothing to identify — the guard stays inert); the test
+        // suite injects its own through the Run seam. See ExtractCommand.WalkerDrift.cs.
+        var identitySource = walkerIdentitySource
+            ?? (runnerFactory is null ? WalkerIdentity.Resolve : (Func<string, WalkerIdentity>?)null);
+        // `unpromotable` is the guard's OTHER verdict: builds whose committed set records a real
+        // fingerprint but whose walker cannot identify itself. Those are not refusals of the run —
+        // they are sets this run must not rewrite, because promoting them would re-stamp
+        // provenance.tool.walkerSrcFingerprint with the unresolved identity and erase the only record
+        // of who built them. The loop below skips them; everything else in the selection still runs.
+        if (PreflightWalkerFingerprintDrift(
+                builds, opts, repoRoot, eraResolver, identitySource, out var unpromotable) is int driftExit)
+        {
+            return driftExit;
+        }
+
         var outcomes = new List<BuildOutcome>();
         int i = 0;
         foreach (var b in builds)
         {
             i++;
             Console.Error.WriteLine($"extract: [{i}/{builds.Count}] build {b}");
+            if (unpromotable.Contains(b))
+            {
+                // REFUSE TO PROMOTE (walker drift guard, see ExtractCommand.WalkerDrift.cs). Not
+                // walked at all: the committed set keeps the fingerprint it records, which is the
+                // evidence the next run with an identifiable walker needs. Classified Gated for the
+                // same reason the layout and class-band gates are — nothing was written for a build
+                // this run was asked to commit, so the batch is not clean (see Summarize).
+                Console.Error.WriteLine(
+                    $"extract: build {b} SKIPPED — the walker that would re-walk it cannot identify " +
+                    "itself, so its committed set keeps the walkerSrcFingerprint it already records " +
+                    "(see the drift guard warning above).");
+                outcomes.Add(new BuildOutcome(
+                    new BuildResult(b, "", Status.Gated, "walker identity unresolved — NOT promoted"), 0));
+                continue;
+            }
             outcomes.Add(RunOneBuild(b, opts, repoRoot, runnerFactory, eraResolver, gateFromResolver, batch, acquire));
         }
 
@@ -314,7 +359,13 @@ internal static partial class ExtractCommand
 
     /// <summary>Env var: the operator's expected walker src-fingerprint — the stale-remote-image
     /// tripwire. Set on a remote/CI runner to the fingerprint the operator BUILT there; a
-    /// mismatch means the running image/binaries are not what was intended.</summary>
+    /// mismatch means the running image/binaries are not what was intended.
+    /// DISTINCT FROM (and complementary to) the commit-path WALKER FINGERPRINT DRIFT GUARD
+    /// (<see cref="PreflightWalkerFingerprintDrift"/>): this one checks the resolved walker against a
+    /// value the OPERATOR supplies and is opt-in per run; that one checks it against what the CORPUS
+    /// itself records in provenance.tool.walkerSrcFingerprint and needs no operator input. Neither
+    /// subsumes the other — the right image can still be the wrong walker for these sets — and both
+    /// are evaluated on every run.</summary>
     internal const string ExpectFingerprintEnvVar = "CS2_EXPECT_FPRINT";
 
     /// <summary>One resolved walker binary's identity (or resolution error) plus every era it serves.</summary>
@@ -375,6 +426,24 @@ internal static partial class ExtractCommand
     }
 
     /// <summary>
+    /// PURE decision core for the <c>CS2_WALKER_BIN</c> / appsettings <c>WalkerBin</c> short-circuit —
+    /// no I/O, no Console writes — so the one rule that decides whether the identity gate runs at all
+    /// is unit-testable. Internal (not private): the test suite exercises this directly via
+    /// InternalsVisibleTo, exactly as it does <see cref="EvaluateWalkerIdentityGate"/>.
+    ///
+    /// An explicit single-binary override IS trivially uniform, which is why it used to skip the gate
+    /// outright — but uniformity was never the only thing the gate checks. It also catches a binary
+    /// that reports no src-fingerprint or will not resolve at all, and it enforces the
+    /// <see cref="ExpectFingerprintEnvVar"/> tripwire, and an override binary is exactly the unvetted
+    /// binary those two exist for. Under <c>--commit</c> that same override binary is what
+    /// EraWalkerResolver hands the drift guard for EVERY build, so skipping the gate there was a
+    /// corpus-facing hole: the one run that can rewrite committed sets was the one running unchecked.
+    /// An off-repo run cannot rewrite a committed set, so it keeps the cheap short-circuit.
+    /// </summary>
+    internal static bool WalkerOverrideSkipsIdentityGate(string? walkerBinOverride, bool commit)
+        => !string.IsNullOrWhiteSpace(walkerBinOverride) && !commit;
+
+    /// <summary>
     /// WALKER IDENTITY GATE. A mixed-vintage walker set (some eras rebuilt, some stale) and a
     /// stale Docker image both produced corpus-scale damage undetected before this existed
     /// (incident #8) — nothing ever compared what actually ran against what the operator believed was
@@ -392,9 +461,15 @@ internal static partial class ExtractCommand
     ///      against every resolved fingerprint) — NOT bypassed by --allow-mixed-walkers or a non-commit
     ///      run, because it is an explicit operator assertion ("this run must be THIS exact walker
     ///      set"), not a generic mixed-set warning.
-    /// Skipped entirely (no banner) on the fake-runner test seam (no real binary to identify) and when
-    /// CS2_WALKER_BIN / appsettings WalkerBin is set (an explicit single-binary override makes every
-    /// build resolve to the SAME binary by construction — trivially uniform, nothing to compare).
+    /// Skipped entirely (no banner) on the fake-runner test seam (no real binary to identify), and
+    /// skipped for a NON-COMMIT run when CS2_WALKER_BIN / appsettings WalkerBin is set (an explicit
+    /// single-binary override makes every build resolve to the SAME binary by construction —
+    /// trivially uniform, nothing to compare, and an off-repo run cannot rewrite a committed set).
+    /// Under <c>--commit</c> the override no longer skips this gate: "trivially uniform" is not
+    /// "verified", and that override binary is the very one the drift guard next door is then handed
+    /// for every build, so the "unknown"/unresolvable-identity violations and the
+    /// <see cref="ExpectFingerprintEnvVar"/> tripwire still apply to it. See
+    /// <see cref="WalkerOverrideSkipsIdentityGate"/>.
     /// Returns the exit code to abort with, or null to proceed.
     /// </summary>
     private static int? PreflightWalkerIdentity(
@@ -410,7 +485,7 @@ internal static partial class ExtractCommand
         string toolSha = ShortToken(ToolBuildInfo.GitCommitId, 7);
 
         var explicitOverride = HostConfig.WalkerBin;
-        if (!string.IsNullOrWhiteSpace(explicitOverride))
+        if (WalkerOverrideSkipsIdentityGate(explicitOverride, opts.Commit))
         {
             Console.Error.WriteLine($"extract: tool={toolSha} walkers=override ({explicitOverride})");
             return null;
@@ -512,7 +587,13 @@ internal static partial class ExtractCommand
         var verdict = EvaluateWalkerIdentityGate(
             fingerprints, violations.Count, opts.Commit, opts.AllowMixedWalkers, expectFprint);
 
-        Console.Error.WriteLine($"extract: tool={toolSha} walkers={verdict.WalkersDisplay}");
+        // Still exactly ONE banner line per run: a --commit override run no longer prints the
+        // `walkers=override` line above, so the override path rides along here instead of vanishing.
+        Console.Error.WriteLine(
+            $"extract: tool={toolSha} walkers={verdict.WalkersDisplay}"
+            + (string.IsNullOrWhiteSpace(explicitOverride)
+                ? ""
+                : $" ({WalkerProcessRunner.BinaryPathEnvVar} override: {explicitOverride})"));
 
         if (verdict.MixedOrUnverified)
         {
@@ -1090,7 +1171,7 @@ internal static partial class ExtractCommand
         var builds = new List<string>();
         bool all = false, backfill = false, onlyExistingBuilds = false, force = false, verify = false,
              noGate = false, commit = false, noAcquire = false, noChangelog = false, noLocalizationChangelog = false,
-             singleWalk = false, allowMixedWalkers = false;
+             singleWalk = false, allowMixedWalkers = false, allowWalkerChange = false;
         string? era = null, pin = null, platform = null, outRoot = null;
 
         for (int i = 0; i < args.Length; i++)
@@ -1138,7 +1219,21 @@ internal static partial class ExtractCommand
                     // a mixed/unverified per-era walker set is warned LOUDLY instead of blocking the
                     // commit. See PreflightWalkerIdentity. Never use it for a corpus-committing run;
                     // it exists for local iteration against a deliberately partial era rebuild.
+                    // It releases the WALKER IDENTITY GATE ONLY, and deliberately does NOT release the
+                    // commit-path drift guard: a walker that reports "unknown" against a set recording
+                    // a real fingerprint still needs the separate --allow-walker-change. Two opt-ins,
+                    // two questions — "is this walker set coherent" vs "is it the walker that wrote
+                    // the corpus" — and answering the first has never answered the second.
                     allowMixedWalkers = true;
+                    break;
+                case "--allow-walker-change":
+                    // Opt-in for the commit-path WALKER FINGERPRINT DRIFT GUARD (exit 78): authorises
+                    // re-emitting committed sets with a walker OTHER than the one whose
+                    // src-fingerprint they record. BATCH-level by design — an intentional rewalk
+                    // legitimately changes every set in the selection, so one flag authorises the
+                    // whole run and each affected set gets its own transition line in the log. See
+                    // PreflightWalkerFingerprintDrift (ExtractCommand.WalkerDrift.cs).
+                    allowWalkerChange = true;
                     break;
                 case "--era":
                     if (!NextSel(args, ref i, a, out era, out error))
@@ -1217,7 +1312,8 @@ internal static partial class ExtractCommand
             Builds: builds, Platform: platform, OutRoot: Path.GetFullPath(outRoot),
             Gate: !noGate, Force: force, Verify: verify, Commit: commit, NoAcquire: noAcquire,
             NoChangelog: noChangelog, NoLocalizationChangelog: noLocalizationChangelog,
-            SingleWalk: singleWalk, AllowMixedWalkers: allowMixedWalkers);
+            SingleWalk: singleWalk, AllowMixedWalkers: allowMixedWalkers,
+            AllowWalkerChange: allowWalkerChange);
         return true;
     }
 

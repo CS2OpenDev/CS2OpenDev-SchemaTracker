@@ -172,7 +172,7 @@ internal static class ContentStoreCommand
     }
 
     /// <summary>
-    /// Emit the 7 content artifacts from BOTH the co-located pak and the trimmed store copy into two
+    /// Emit the 8 content artifacts from BOTH the co-located pak and the trimmed store copy into two
     /// temp dirs and byte-compare every produced file. Byte-identical ⇒ the trim is provably
     /// equivalent for this build. Cleans up the temp dirs.
     /// </summary>

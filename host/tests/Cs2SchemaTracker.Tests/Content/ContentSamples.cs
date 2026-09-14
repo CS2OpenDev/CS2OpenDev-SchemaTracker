@@ -1,9 +1,11 @@
 // Representative content-family sample bodies for the content-store tests.
 //
 // The KV1/KV3 strings are lifted verbatim from the per-emitter test fixtures so every one of the
-// 7 content emitters parses them WITHOUT throwing (they must, for the byte-identical trim proof to
-// run all 7). The .gameevents body is the REAL shipped CS2 fixture (content depot 2347770) that
-// VpkGameEventsRoundTripTest also uses.
+// 8 content emitters parses them WITHOUT throwing (they must, for the byte-identical trim proof to
+// run all 8). The .gameevents body is the REAL shipped CS2 fixture (content depot 2347770) that
+// VpkGameEventsRoundTripTest also uses; weapons.vdata_c is the REAL shipped compiled resource
+// committed under Kv3Binary/fixtures/ — a compressed binary resource has no hand-writable stub, and
+// a body that does not decode would fail the emit outright.
 
 using System.Text;
 
@@ -12,6 +14,13 @@ namespace Cs2SchemaTracker.Tests.Content;
 internal static class ContentSamples
 {
     private static byte[] Utf8(string s) => Encoding.UTF8.GetBytes(s);
+
+    private static byte[] RealWeaponsVdata()
+    {
+        // Committed under Kv3Binary/fixtures/, copied next to the test binary by the csproj.
+        return File.ReadAllBytes(
+            Path.Combine(AppContext.BaseDirectory, "Kv3Binary", "fixtures", "weapons.vdata_c"));
+    }
 
     private static byte[] RealGameEvents()
     {
@@ -132,10 +141,11 @@ internal static class ContentSamples
         """;
 
     /// <summary>
-    /// The standard 7-family entry set (matching the spec: one .gameevents, items_game.txt, two
-    /// csgo_&lt;lang&gt;.txt, a surfaceproperties file, propdata + collision, one overview) PLUS a
-    /// couple of unrelated entries the emitters must ignore. gameevents + items are EXTERNAL (chunk 0)
-    /// to exercise the external→trim remap; the rest are EMBEDDED in _dir.vpk.
+    /// The standard 8-family entry set (matching the spec: one .gameevents, items_game.txt, two
+    /// csgo_&lt;lang&gt;.txt, a surfaceproperties file, propdata + collision, one overview, the
+    /// compiled weapons.vdata_c) PLUS a couple of unrelated entries the emitters must ignore.
+    /// gameevents + items are EXTERNAL (chunk 0) to exercise the external→trim remap; the rest are
+    /// EMBEDDED in _dir.vpk.
     /// </summary>
     public static IReadOnlyList<ContentVpkFixture.Entry> StandardEntries() =>
     [
@@ -148,6 +158,7 @@ internal static class ContentSamples
         new("scripts", "txt", "propdata", Utf8(PropData), ContentVpkFixture.Embedded),
         new("scripts", "txt", "collision_properties", Utf8(CollisionKv3), ContentVpkFixture.Embedded),
         new("resource/overviews", "txt", "de_dust2", Utf8(Dust2), ContentVpkFixture.Embedded),
+        new("scripts", "vdata_c", "weapons", RealWeaponsVdata(), ContentVpkFixture.Embedded),
         // Unrelated entries the required-set selector must EXCLUDE from the trim.
         new("scripts", "txt", "unrelated", Utf8("\"x\" { }"), ContentVpkFixture.Embedded),
         new("materials", "vmat", "noise", Utf8("not content we read"), ArchiveIndex: 0),

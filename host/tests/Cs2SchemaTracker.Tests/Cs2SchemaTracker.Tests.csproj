@@ -32,6 +32,21 @@
     </Content>
   </ItemGroup>
 
+  <!-- real shipped compiled resources paired with a reference decode of each (<resource>.json):
+       four KV3_V5 from build 25175329 against an independently-derived decode, and two older
+       v3/v4 resources against a decode from the same derivation this reader implements (those two
+       pin regressions rather than proving correctness - see Kv3BinaryReaderTest's header). Copied
+       verbatim to the test output dir so Kv3BinaryReaderTest drives the binary-KV3 reader over
+       genuine Valve bytes and diffs the WHOLE tree. Deterministic: PreserveNewest copies
+       the committed bytes unchanged; .gitattributes marks host/tests/**/fixtures/** -text so
+       none of them is ever EOL-normalized. -->
+  <ItemGroup>
+    <Content Include="Kv3Binary\fixtures\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>Kv3Binary\fixtures\%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+
   <!-- committed live-capture oracle for the NetworkMessageRttiScanner
        integration test. Copied verbatim to the test output dir so the scan-vs-live
        cross-validation reads the captured bytes from a stable, repo-relative path

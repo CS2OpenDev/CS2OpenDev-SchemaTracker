@@ -277,6 +277,27 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
     //
     // Fallback (minimalGameEvents=false): admit the full pak01_*.vpk set (dir + all chunks),
     // still far smaller than the whole depot.
+    //
+    // INCREMENTAL ("patch") refresh. The trimmed store is keyed by the content depot's manifest GID,
+    // so a store copy for a GID holds exactly the bytes that GID ships. When a GID already has a
+    // copy, Phase B does NOT re-fetch the whole required set: ContentPatchPlan partitions the FRESH
+    // required set (the directory index is authoritative — it is the only place a newly-required
+    // entry's offset/length/CRC exists) into entries the store copy already holds byte-for-byte and
+    // entries that genuinely have to come off the CDN, and the byte-range plan is built over the
+    // latter only. The repack then assembles the new trim from BOTH archives at once (VpkTrimWriter
+    // takes per-entry sources), so refreshing a store that merely went stale on a required-set
+    // generation bump costs the directory index plus the new entries instead of ~20-199 MB.
+    //
+    // The patched output is byte-identical to what the full re-fetch would have written, because the
+    // trimmed layout is a pure function of the entries and not of which archive supplied each one.
+    // An entry that disagrees between the store copy and the fresh index under ONE GID means the
+    // store is corrupt or mis-keyed, and ContentPatchPlan throws rather than papering over it; an
+    // ABSENT store copy is not a fault and simply degrades to the full fetch. So does a legacy /
+    // partial _content/<gid> whose tree still points at ORIGINAL external chunks: re-use is gated on
+    // the store copy being a self-contained trimmed pair, so such a copy is re-trimmed from THIS
+    // fresh staging exactly as it was before the patch path existed. That gate has to live in the
+    // partition rather than as a retry around the repack below — by the time the repack runs, Phase B
+    // has already narrowed the fetch, so staging no longer holds the bodies that were re-used.
     // ---------------------------------------------------------------------
 
     public async Task<AcquireResult> AcquireContentPakAsync(
@@ -336,6 +357,26 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
             AcquireResult staged;
             IReadOnlyList<string> selected;
 
+            // Both are pure derivations of what we already resolved, and the INCREMENTAL refresh
+            // needs them BEFORE Phase B: whether this GID already has a store copy is what decides
+            // which required entries have to be fetched at all. The store root stays NULLABLE here
+            // because the DIR-ONLY leg returns before the repack and must keep working against an
+            // outDir that is not a <storeRoot>/<build>/<platform> tuple dir; the repack below is
+            // what fails loud on it.
+            ulong contentGid = resolved.First(d => d.DepotId == contentDepotId).ManifestId;
+            string? contentStoreRoot = ContentStore.RootForTupleDir(outDir);
+
+            // Set by the minimal (byte-range) path: the FRESH directory index, its required-entry
+            // set, and the reuse-vs-fetch partition against the store copy. They stay null on the
+            // fallback (whole-pak) path, which fetched everything anyway and so repacks from staging
+            // exactly as before.
+            ContentPatchPlan? csgoPatch = null;
+            VpkArchive? csgoFreshArchive = null;
+            IReadOnlyList<VpkDirectoryEntry>? csgoFreshRequired = null;
+            ContentPatchPlan? corePatch = null;
+            VpkArchive? coreFreshArchive = null;
+            IReadOnlyList<VpkDirectoryEntry>? coreFreshRequired = null;
+
             if (dirOnly)
             {
                 // ---- DIR-ONLY (gameevents-dedup): Phase A only ----
@@ -389,7 +430,9 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
                 // csgo always matches (so the fail-loud below is unchanged); a missing core dir file
                 // is simply not fetched — no second manifest round-trip, no failure.
                 log.WriteLine($"steam-acquire: content Phase A — fetching content pak directory file(s) {string.Join(", ", ContentPak.All.Select(p => "'" + p.DirectoryFileRelPath + "'"))} into staging '{stagingDir}'.");
-                await AcquireResolvedAsync(
+                // Kept, not discarded: when the patch partition leaves nothing to fetch, Phase A IS
+                // the whole acquire and its result carries the depot identity the record needs.
+                var phaseA = await AcquireResolvedAsync(
                     session, appId, resolvedBuild, resolved, stagingDir,
                     fileFilter: n => ContentPak.All.Any(p => p.IsDirectoryFile(n)), ct).ConfigureAwait(false);
 
@@ -412,28 +455,72 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
                     ? $"steam-acquire: content Phase A — engine core pak '{ContentPak.Core.DirectoryFileRelPath}' present."
                     : $"steam-acquire: content Phase A — engine core pak '{ContentPak.Core.DirectoryFileRelPath}' NOT in this manifest (core.gameevents not tracked this build; graceful).");
 
-                // ---- Phase B: parse + select the minimal BYTE-RANGE set ----
+                // ---- Phase B: parse + partition + select the minimal BYTE-RANGE set ----
+                // The FRESH directory index is authoritative and always drives the required set: it
+                // is the only place a newly-required entry's offset / length / CRC exists, so the
+                // (possibly stale) store copy never gets a say in WHAT is required — only in what
+                // still has to be downloaded.
                 var archive = VpkArchive.Open(dirVpkPath);
-                // Build the byte-range-selective fetch plan: the exact body byte ranges of the
-                // resources our 7 content emitters read, grouped by backing external
-                // pak01_<NNN>.vpk. The acquirer then fetches ONLY the depot-chunks overlapping
-                // those ranges (a sparse pak01 file), shrinking the per-build content fetch from
-                // ~1.3 GB to tens of MB and avoiding the CDN 503 storm.
-                var csgoPlan = ContentPakSelector.SelectContentByteRanges(archive, ContentPak.Csgo);
-                if (csgoPlan.IsEmpty)
+                csgoFreshArchive = archive;
+                var csgoRequired = ContentPakSelector.EnumerateRequiredEntries(archive);
+                if (csgoRequired.Count == 0)
                 {
                     throw new InvalidDataException(
                         $"pak01_dir.vpk from content depot {contentDepotId} contains no '.gameevents' entries — " +
                         "refusing to lay down a content tree that cannot satisfy. " +
                         "Verify the content depot / build.");
                 }
+                csgoFreshRequired = csgoRequired;
+
+                // INCREMENTAL refresh: an entry the store copy for this GID already holds
+                // byte-for-byte is read back OUT of the store at repack time instead of off the CDN,
+                // so a store that has merely gone stale on a required-set generation bump costs the
+                // directory index plus the genuinely-new entries rather than the whole ~50 MB
+                // required set. Fails loud if the store disagrees with the fresh index about an
+                // entry — see ContentPatchPlan.
+                csgoPatch = contentStoreRoot is null
+                    ? null
+                    : ContentPatchPlan.Create(archive, csgoRequired, contentStoreRoot, contentGid, ContentPak.Csgo);
+                if (csgoPatch is not null)
+                {
+                    log.WriteLine(
+                        $"steam-acquire: content refresh plan — _content/{contentGid}/{ContentPak.Csgo.BaseRelDir}: "
+                        + $"{csgoPatch.Describe()}.");
+                }
+
+                // Build the byte-range-selective fetch plan over ONLY what must be fetched: the exact
+                // body byte ranges of those resources, grouped by backing external pak01_<NNN>.vpk.
+                // The acquirer then fetches ONLY the depot-chunks overlapping those ranges (a sparse
+                // pak01 file), shrinking the per-build content fetch from ~1.3 GB to tens of MB (and,
+                // on a patched refresh, to single-digit MB) while avoiding the CDN 503 storm.
+                var csgoPlan = ContentPakSelector.BuildByteRangePlan(
+                    ContentPak.Csgo, csgoPatch?.Fetch ?? csgoRequired);
+
                 // Additively fold the engine core pak's minimal ranges into the SAME fetch (disjoint
                 // chunk keys under game/core/*), when its dir file staged. Absent ⇒ csgo-only plan.
                 var plan = csgoPlan;
                 if (coreStaged)
                 {
                     var coreArchive = VpkArchive.Open(coreDirVpkPath);
-                    var corePlan = ContentPakSelector.SelectContentByteRanges(coreArchive, ContentPak.Core);
+                    coreFreshArchive = coreArchive;
+                    var coreRequired = ContentPakSelector.EnumerateRequiredEntries(coreArchive);
+                    coreFreshRequired = coreRequired;
+                    ContentFetchPlan corePlan;
+                    if (coreRequired.Count == 0)
+                    {
+                        // No `.gameevents` in the core pak — nothing to fetch, and the repack's own
+                        // core gate below fails loud on it (unchanged).
+                        corePlan = ContentPakSelector.SelectContentByteRanges(coreArchive, ContentPak.Core);
+                    }
+                    else
+                    {
+                        corePatch = contentStoreRoot is null
+                            ? null
+                            : ContentPatchPlan.Create(
+                                coreArchive, coreRequired, contentStoreRoot, contentGid, ContentPak.Core);
+                        corePlan = ContentPakSelector.BuildByteRangePlan(
+                            ContentPak.Core, corePatch?.Fetch ?? coreRequired);
+                    }
                     plan = ContentFetchPlan.Merge(new[] { csgoPlan, corePlan });
                 }
                 selected = plan.AllFiles;
@@ -444,12 +531,26 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
                     $"{plannedRangeBytes:N0} resource bytes across required ranges: " +
                     string.Join(", ", selected));
 
-                // Re-acquire the directory file (whole) + the selected chunk(s) — but for the
-                // chunk files, ONLY the depot-chunks overlapping the required ranges (sparse).
-                // The directory file is refetched (whole) — cheap — so staging is complete.
-                staged = await AcquireResolvedAsync(
-                    session, appId, resolvedBuild, resolved, stagingDir,
-                    fileFilter: plan.SelectedPredicate(), ct, rangePlan: plan).ConfigureAwait(false);
+                if (plan.ChunkRanges.Count == 0)
+                {
+                    // Nothing left to fetch: everything not re-usable from the store copy rides in
+                    // (or is preloaded from) the directory index Phase A already pulled WHOLE. A
+                    // Phase-B acquire would re-download that index and write nothing new, so skip it
+                    // and let Phase A's result stand as this acquire's record.
+                    log.WriteLine(
+                        "steam-acquire: content Phase B SKIPPED — no external body range left to fetch " +
+                        "(every required entry is re-used from the store copy or rides in the directory index).");
+                    staged = phaseA;
+                }
+                else
+                {
+                    // Re-acquire the directory file (whole) + the selected chunk(s) — but for the
+                    // chunk files, ONLY the depot-chunks overlapping the required ranges (sparse).
+                    // The directory file is refetched (whole) — cheap — so staging is complete.
+                    staged = await AcquireResolvedAsync(
+                        session, appId, resolvedBuild, resolved, stagingDir,
+                        fileFilter: plan.SelectedPredicate(), ct, rangePlan: plan).ConfigureAwait(false);
+                }
             }
 
             // ---- REPACK into the content-addressed trimmed store ----
@@ -469,17 +570,23 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
                     $"'{ContentPakSelector.DirectoryFileRelPath}' before repack (expected at '{stagedDirVpk}').");
             }
 
-            ulong contentGid = resolved.First(d => d.DepotId == contentDepotId).ManifestId;
-            var contentStoreRoot = ContentStore.RootForTupleDir(outDir)
+            var storeRoot = contentStoreRoot
                 ?? throw new InvalidOperationException(
                     $"cannot derive the _content store root from outDir '{outDir}' " +
                     "(expected a <storeRoot>/<build>/<platform> tuple dir).");
 
-            // Open the freshly-staged pak + compute the required-entry set. Fail-loud gate covering
-            // both the minimal Phase-B and the fallback (full-pak) paths: no `.gameevents` means the
-            // wrong VPK / depot.
-            var stagedArchive = VpkArchive.Open(stagedDirVpk);
-            var required = ContentPakSelector.EnumerateRequiredEntries(stagedArchive);
+            // The minimal path has ALREADY parsed the fresh index and partitioned it against the
+            // store copy; reuse that rather than re-deriving it, so the set that was fetched and the
+            // set that gets repacked cannot drift apart. The fallback (whole-pak) path has no
+            // partition and repacks the entire required set from staging, exactly as before.
+            //
+            // Reusing the Phase-A archive handle is deliberate: VpkArchive holds the directory bytes
+            // in memory and resolves each body lazily from the sibling chunk files, so it picks up
+            // the sparse chunks Phase B has since written into staging.
+            //
+            // Fail-loud gate covering both paths: no `.gameevents` means the wrong VPK / depot.
+            var stagedArchive = csgoFreshArchive ?? VpkArchive.Open(stagedDirVpk);
+            var required = csgoFreshRequired ?? ContentPakSelector.EnumerateRequiredEntries(stagedArchive);
             if (required.Count == 0)
             {
                 throw new InvalidDataException(
@@ -491,12 +598,21 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
             // (e.g. the old python gameevents-only backfill whose dir tree still references the ORIGINAL
             // external chunks that were never fetched). A genuinely-complete trim is a content-addressed
             // no-op (a second build/platform with the same GID skips fast); an incomplete one is
-            // re-trimmed from THIS fresh staging without needing --force.
+            // re-trimmed without needing --force — from THIS fresh staging for the entries that were
+            // fetched, and from the STORE COPY ITSELF for the entries it already held byte-for-byte.
+            // That mix is what makes the refresh cheap; it is byte-identical to a full re-fetch
+            // because the trimmed layout is a pure function of the entries, not of their source.
+            var csgoSources = csgoPatch?.TrimSources
+                ?? VpkTrimWriter.FromSingleSource(stagedArchive, required);
             var action = ContentStore.EnsureTrimmedStore(
-                stagedArchive, required, contentStoreRoot, contentGid, force: false, out var storeDetail);
+                csgoSources, storeRoot, contentGid, force: false, out var storeDetail);
+            var csgoPatchNote = csgoPatch is { IsPatch: true } p
+                ? $"; {p.ReusedCount} re-used from the stored trim ({p.ReusedBytes:N0} B), "
+                    + $"{p.Fetch.Count} fetched ({p.FetchBytes:N0} resource B)"
+                : "";
             log.WriteLine(action == ContentStore.StoreEnsureAction.SkippedComplete
                 ? $"steam-acquire: content-store HIT — _content/{contentGid} already a complete trim; skipping repack ({storeDetail})."
-                : $"steam-acquire: content-store repack — _content/{contentGid} {storeDetail} ({required.Count} required entrie(s), CRC-verified reads).");
+                : $"steam-acquire: content-store repack — _content/{contentGid} {storeDetail} ({required.Count} required entrie(s), CRC-verified reads{csgoPatchNote}).");
 
             // ---- ENGINE CORE pak (resource/core.gameevents) — additive, optional ----
             // Trim + store the engine core pak into _content/<gid>/game/core alongside the csgo copy,
@@ -507,20 +623,30 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
                 stagingDir, ContentPak.Core.DirectoryFileRelPath.Replace('/', Path.DirectorySeparatorChar));
             if (File.Exists(stagedCoreDirVpk))
             {
-                var coreArch = VpkArchive.Open(stagedCoreDirVpk);
-                var coreRequired = ContentPakSelector.EnumerateRequiredEntries(coreArch); // core.gameevents only
+                var coreArch = coreFreshArchive ?? VpkArchive.Open(stagedCoreDirVpk);
+                var coreRequired = coreFreshRequired
+                    ?? ContentPakSelector.EnumerateRequiredEntries(coreArch); // core.gameevents only
                 if (coreRequired.Count == 0)
                 {
                     throw new InvalidDataException(
                         $"engine core pak '{ContentPak.Core.DirectoryFileRelPath}' from content depot " +
                         $"{contentDepotId} contains no '.gameevents' — refusing to store an empty core copy.");
                 }
+                // Same partition, same reasoning as the csgo pak above — the core selection has not
+                // changed since generation 1, so in practice its store copy supplies everything and
+                // nothing is fetched for it at all.
+                var coreSources = corePatch?.TrimSources
+                    ?? VpkTrimWriter.FromSingleSource(coreArch, coreRequired);
                 var coreAction = ContentStore.EnsureTrimmedStore(
-                    coreArch, coreRequired, contentStoreRoot, contentGid, force: false, out var coreDetail,
+                    coreSources, storeRoot, contentGid, force: false, out var coreDetail,
                     ContentPak.Core);
+                var corePatchNote = corePatch is { IsPatch: true } cp
+                    ? $"; {cp.ReusedCount} re-used from the stored trim ({cp.ReusedBytes:N0} B), "
+                        + $"{cp.Fetch.Count} fetched ({cp.FetchBytes:N0} resource B)"
+                    : "";
                 log.WriteLine(coreAction == ContentStore.StoreEnsureAction.SkippedComplete
                     ? $"steam-acquire: content-store HIT (core) — _content/{contentGid}/game/core already a complete trim ({coreDetail})."
-                    : $"steam-acquire: content-store repack (core) — _content/{contentGid}/game/core {coreDetail} ({coreRequired.Count} required entrie(s)).");
+                    : $"steam-acquire: content-store repack (core) — _content/{contentGid}/game/core {coreDetail} ({coreRequired.Count} required entrie(s){corePatchNote}).");
             }
             else
             {

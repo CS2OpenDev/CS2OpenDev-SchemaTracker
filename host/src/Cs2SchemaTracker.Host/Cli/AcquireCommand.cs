@@ -978,8 +978,8 @@ internal static class AcquireCommand
     /// UNIFIED ACQUIRE content leg: fetch the selective content pak into <paramref name="outDir"/>
     /// — the SAME directory the binaries were acquired into — so a single <c>extract</c> emits
     /// every content artifact (gameevents, item_definitions, game_modes, surface_properties,
-    /// prop_data, map_overviews, localization) without a separate <c>--content</c> pass or any
-    /// post-hoc injection.
+    /// prop_data, map_overviews, weapon_vdata, localization) without a separate <c>--content</c>
+    /// pass or any post-hoc injection.
     ///
     /// PICS-current resolution (buildId 0): the forward PICS-current capture path for the CURRENT
     /// build — reached whether requested as 'latest' or as the concrete current build_id by number.
@@ -1776,8 +1776,13 @@ internal static class AcquireCommand
                         minimalGameEvents: true, explicitSpec: contentSpec, dirOnly: false,
                         CancellationToken.None).ConfigureAwait(false);
                     contentDone = true;
+                    // + PhaseAIndexBytes: AcquireContentPakAsync drops Phase A's whole-index fetch from
+                    // DownloadedBytes whenever Phase B runs, and Phase B re-fetches that index rather than
+                    // reusing it — so the raw figure under-reports what Steam sent. Same correction the
+                    // content-backfill line makes; see AcquireResult.PhaseAIndexBytes for why it is exact.
+                    long contentFetched = contentResult.DownloadedBytes + contentResult.PhaseAIndexBytes;
                     contentNote =
-                        $" +content(files={contentResult.Files.Count} fetched={contentResult.DownloadedBytes:N0}B)";
+                        $" +content(files={contentResult.Files.Count} fetched={contentFetched:N0}B)";
                 }
             }
 
@@ -2444,7 +2449,8 @@ Usage:
 
 UNIFIED ACQUIRE (Gap A): the default acquire fetches BINARIES + the selective CONTENT pak co-located in
 ONE output dir, so a single `extract` emits EVERY artifact (entity_schema/convars/commands/... AND
-gameevents/item_definitions/game_modes/localization/surface_properties/prop_data/map_overviews) — no
+gameevents/item_definitions/game_modes/localization/surface_properties/prop_data/map_overviews/
+weapon_vdata) — no
 separate `--content` pass, no post-hoc injection. The content leg runs on the forward PICS-current path
 for the CURRENT build — whether requested as 'latest' OR as the concrete current build_id by number —
 and on any --from-manifest whose spec lists the 2347770 content depot. Pass --binaries-only to SKIP the

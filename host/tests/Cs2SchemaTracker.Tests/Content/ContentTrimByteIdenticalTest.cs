@@ -1,8 +1,9 @@
 // Trimmed-VPK vs full-VPK byte-identical content JSON tests.
 //
 // Given a synthetic VPK fixture with representative entries (one .gameevents, items_game.txt, two
-// csgo_<lang>.txt, a surfaceproperties file, propdata + collision, one overview), assert:
-//   * all 7 content artifacts emitted from the TRIMMED VPK == those from the FULL VPK, byte-for-byte;
+// csgo_<lang>.txt, a surfaceproperties file, propdata + collision, one overview, weapons.vdata_c),
+// assert:
+//   * all 8 content artifacts emitted from the TRIMMED VPK == those from the FULL VPK, byte-for-byte;
 //   * VpkTrimWriter output re-parses cleanly and every entry's ReadEntryBytes CRC matches the source.
 
 using Cs2SchemaTracker.Host.Cli;
@@ -21,7 +22,7 @@ public class ContentTrimByteIdenticalTest
     private static readonly string[] ExpectedArtifacts =
     {
         "game_modes.json", "gameevents.json", "item_definitions.json", "localization.json",
-        "map_overviews.json", "prop_data.json", "surface_properties.json",
+        "map_overviews.json", "prop_data.json", "surface_properties.json", "weapon_vdata.json",
     };
 
     private static string NewWorkDir()
@@ -39,7 +40,7 @@ public class ContentTrimByteIdenticalTest
     }
 
     [Fact]
-    public void All_Seven_Content_Artifacts_Are_Byte_Identical_Full_Vs_Trimmed()
+    public void All_Eight_Content_Artifacts_Are_Byte_Identical_Full_Vs_Trimmed()
     {
         var work = NewWorkDir();
         try
@@ -64,7 +65,7 @@ public class ContentTrimByteIdenticalTest
                 Assert.Equal(full.ReadEntryBytes(re), trimmed.ReadEntryBytes(te));
             }
 
-            // Emit all 7 content artifacts from each and byte-compare.
+            // Emit all 8 content artifacts from each and byte-compare.
             var outFull = Path.Combine(work, "emit-full");
             var outTrim = Path.Combine(work, "emit-trim");
             Directory.CreateDirectory(outFull);
@@ -76,7 +77,7 @@ public class ContentTrimByteIdenticalTest
             var fullFiles = Directory.EnumerateFiles(outFull).Select(Path.GetFileName)
                 .OrderBy(x => x, StringComparer.Ordinal).ToList();
 
-            // All 7 content artifacts must have been produced (the fixture ships every family).
+            // All 8 content artifacts must have been produced (the fixture ships every family).
             Assert.Equal(ExpectedArtifacts.OrderBy(x => x, StringComparer.Ordinal), fullFiles);
 
             var trimFiles = Directory.EnumerateFiles(outTrim).Select(Path.GetFileName)
