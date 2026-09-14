@@ -8,11 +8,19 @@
 // reports, and REFUSES the whole run (exit 78) on a known mismatch unless --allow-walker-change.
 //
 // The other half of the contract, exercised just as hard: it must be invisible in every other
-// situation. A brand-new build, a matching walker, an off-repo run, a set recording no fingerprint,
-// and a walker whose identity will not RESOLVE must all behave exactly as they did before the guard
-// existed — the last two warning, none of them blocking. Blocking on a corpus that records nothing,
-// or on a host whose walker cannot be interrogated at all, would make the tool unusable against
-// legitimate corpora.
+// situation. A brand-new build, a matching walker, an off-repo run and a set recording no
+// fingerprint must all behave exactly as they did before the guard existed — the last one warning,
+// none of them blocking. Blocking on a corpus that records nothing would make the tool unusable
+// against legitimate corpora.
+//
+// A walker whose identity will not RESOLVE never refuses the RUN either — it is genuinely
+// uncomparable — but it is not allowed to REWRITE a committed set that records a real fingerprint,
+// which is the residue this suite now pins: promoting there re-stamped
+// provenance.tool.walkerSrcFingerprint with the unresolved identity (""), so the set came back
+// recording nothing and the drift the guard warned about became undetectable on every later run.
+// Such a set is warned about and SKIPPED (classified Gated, so the batch exits non-zero), and the
+// tests below assert the recorded fingerprint is still on disk afterwards — the assertion that
+// would have caught the residue.
 //
 // A walker that DOES resolve and reports "unknown" is the one case deliberately on the other side of
 // that line: a committed set carrying a real 64-hex fingerprint was by construction written by a
@@ -371,7 +379,7 @@ public sealed class ExtractWalkerDriftGuardTest
     }
 
     [WindowsOnlyFact]
-    public void Unresolvable_Walker_Identity_Warns_That_The_Guard_Could_Not_Run_And_Proceeds()
+    public void Unresolvable_Walker_Identity_Skips_The_Committed_Set_Instead_Of_Restamping_It()
     {
         var platform = MatchingPlatform();
         if (platform is null)
@@ -385,17 +393,146 @@ public sealed class ExtractWalkerDriftGuardTest
                 new[] { "--build", "50000001", "--platform", platform, "--commit" },
                 () => runner, resolver, Unresolvable()));
 
-            Assert.Equal(0, code);
+            // THE POINT. Promoting here would re-stamp provenance.tool.walkerSrcFingerprint with the
+            // unresolved identity (""), so a set that recorded a real 64-hex value would come back
+            // recording nothing and read as NoRecordedFingerprint on every later run: the guard would
+            // have destroyed the only evidence of the drift it warned about. Nothing is written, so
+            // nothing is erased — the recorded fingerprint is still on disk afterwards.
+            Assert.Equal(0, runner.Calls);
+            AssertNothingWritten(root, "50000001", platform);
+            var setDir = Path.Combine(root, "artifacts", "50000001", platform);
+            Assert.Contains(
+                CorpusFingerprint,
+                File.ReadAllText(Path.Combine(setDir, "provenance.json")),
+                StringComparison.Ordinal);
+
             Assert.Contains("walker drift guard could NOT run", stderr, StringComparison.Ordinal);
             Assert.DoesNotContain("WALKER FINGERPRINT DRIFT", stderr, StringComparison.Ordinal);
 
-            // The warning must also say what proceeding COSTS: this run re-stamps the set's
-            // provenance with the unresolved identity, so the drift it could not detect becomes
-            // undetectable on every later run too.
-            Assert.Contains("cannot be detected on any LATER run", stderr, StringComparison.Ordinal);
+            // The warning names the set it is leaving alone and what to DO about it — an operator
+            // who is only told "a skip happened" has no next step.
+            Assert.Contains("50000001", stderr, StringComparison.Ordinal);
+            Assert.Contains("build-era-walkers", stderr, StringComparison.Ordinal);
+
+            // A set the operator asked to commit and that the run left behind is not a clean batch —
+            // the same exit truth Gated already carries (see Summarize's BATCH EXIT TRUTH note).
+            Assert.Equal(1, code);
+        });
+    }
+
+    [WindowsOnlyFact]
+    public void Unresolvable_Walker_Identity_Skips_Only_The_Recorded_Sets_And_Still_Walks_The_Rest()
+    {
+        var platform = MatchingPlatform();
+        if (platform is null)
+            return;
+
+        // 50000001 records a real fingerprint (protect it); 50000009 has no committed set at all, so
+        // this run CREATES it and there is nothing to erase. The refusal is per set, never a
+        // whole-run abort: a 388-build backfill must still do the work it legitimately can.
+        var seeds = new[] { new Seed("50000001", CorpusFingerprint), new Seed("50000009", null) };
+        InDriftFixture(platform, seeds, (root, resolver) =>
+        {
+            var runner = NewRunner(platform);
+            int code = 0;
+            var stderr = CaptureStderr(() => code = ExtractCommand.Run(
+                new[]
+                {
+                    "--build", "50000001", "--build", "50000009", "--platform", platform, "--commit",
+                    // --no-changelog: the changelog emitter reads the PREVIOUS build's committed set,
+                    // and this fixture seeds 50000001 with a stub rather than a full one. Nothing to
+                    // do with the guard — keep the test on the skip decision.
+                    "--no-changelog",
+                },
+                () => runner, resolver, Unresolvable()));
+
+            Assert.Equal(1, code);
+            AssertNothingWritten(root, "50000001", platform);
+
+            var fresh = Path.Combine(root, "artifacts", "50000009", platform);
+            Assert.True(File.Exists(Path.Combine(fresh, "entity_schema.json")));
+            Assert.True(File.Exists(Path.Combine(fresh, "provenance.json")));
+            Assert.True(runner.Calls > 0, "the brand-new build must still be walked");
+            Assert.Contains("gated=1", stderr, StringComparison.Ordinal);
+        });
+    }
+
+    [WindowsOnlyFact]
+    public void Unresolvable_Walker_Identity_Against_A_Set_Recording_Nothing_Still_Promotes()
+    {
+        var platform = MatchingPlatform();
+        if (platform is null)
+            return;
+
+        // A set that records NO fingerprint has no evidence to lose, so the refusal must not sweep it
+        // up: it keeps warning and promoting exactly as it did before. Blocking here would make the
+        // tool unusable against every set committed before the fingerprint line existed.
+        InDriftFixture(platform, new[] { new Seed("50000001", "") }, (root, resolver) =>
+        {
+            var runner = NewRunner(platform);
+            int code = 0;
+            var stderr = CaptureStderr(() => code = ExtractCommand.Run(
+                new[] { "--build", "50000001", "--platform", platform, "--commit" },
+                () => runner, resolver, Unresolvable()));
+
+            Assert.Equal(0, code);
+            Assert.Contains("record no tool.walkerSrcFingerprint", stderr, StringComparison.Ordinal);
+            Assert.DoesNotContain("walker drift guard could NOT run", stderr, StringComparison.Ordinal);
 
             var setDir = Path.Combine(root, "artifacts", "50000001", platform);
             Assert.True(File.Exists(Path.Combine(setDir, "convars.json")));
+        });
+    }
+
+    [WindowsOnlyFact]
+    public void Unresolvable_Walker_Identity_On_A_NonCommit_Run_Is_Not_Guarded_At_All()
+    {
+        var platform = MatchingPlatform();
+        if (platform is null)
+            return;
+
+        // An off-repo run writes under OutRoot and can never re-stamp a committed set's provenance,
+        // so there is nothing to protect and the guard stays inert — no warning, no skip, no change.
+        InDriftFixture(platform, new[] { new Seed("50000001", CorpusFingerprint) }, (root, resolver) =>
+        {
+            var runner = NewRunner(platform);
+            int code = 0;
+            var stderr = CaptureStderr(() => code = ExtractCommand.Run(
+                new[] { "--build", "50000001", "--platform", platform },
+                () => runner, resolver, Unresolvable()));
+
+            Assert.Equal(0, code);
+            Assert.DoesNotContain("drift guard", stderr, StringComparison.Ordinal);
+            Assert.True(File.Exists(Path.Combine(root, "extract-out", "50000001", platform, "entity_schema.json")));
+            AssertNothingWritten(root, "50000001", platform);
+        });
+    }
+
+    [WindowsOnlyFact]
+    public void Unresolvable_Walker_Identity_Is_Not_Released_By_AllowWalkerChange()
+    {
+        var platform = MatchingPlatform();
+        if (platform is null)
+            return;
+
+        InDriftFixture(platform, new[] { new Seed("50000001", CorpusFingerprint) }, (root, resolver) =>
+        {
+            var runner = NewRunner(platform);
+            int code = 0;
+            var stderr = CaptureStderr(() => code = ExtractCommand.Run(
+                new[]
+                {
+                    "--build", "50000001", "--platform", platform, "--commit", "--allow-walker-change",
+                },
+                () => runner, resolver, Unresolvable()));
+
+            // --allow-walker-change authorises a walker CHANGE — an old -> new transition the run can
+            // name in the log. An unidentifiable walker has no "new" to record, so the flag has
+            // nothing to authorise and the set is still left alone rather than re-stamped with "".
+            Assert.Equal(1, code);
+            Assert.DoesNotContain("WALKER CHANGE AUTHORISED", stderr, StringComparison.Ordinal);
+            Assert.Equal(0, runner.Calls);
+            AssertNothingWritten(root, "50000001", platform);
         });
     }
 

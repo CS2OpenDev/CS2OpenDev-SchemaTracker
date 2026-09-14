@@ -236,12 +236,18 @@ compared against what the resolved walker reports. A known mismatch refuses the 
 — before any era is resolved, anything is walked, or a staging dir exists — naming both
 fingerprints. Pass `--allow-walker-change` when the rewalk is intentional: it authorises the entire
 run (a deliberate rewalk changes every set it touches) and logs one `old -> new` transition line per
-affected set. A brand-new build and a set that records no fingerprint are never blocked, and a walker
-whose identity will not resolve warns and proceeds — that one is genuinely uncomparable, so there is
-nothing to compare. A walker that DOES resolve but reports `unknown` for its own source fingerprint is
-a different case and blocks: the set on disk records a real 64-hex value, so the two provably differ,
-and `--allow-walker-change` is the release. `--allow-mixed-walkers` does not release it — that flag is
-about a set spanning several walkers, not about promoting one whose identity contradicts the corpus.
+affected set. A brand-new build and a set that records no fingerprint are never blocked. A walker
+whose identity will not resolve does not refuse the run — it is genuinely uncomparable, so there is
+nothing to compare — but it does not get to rewrite the record either: each committed set it would
+have re-walked is warned about and skipped (reported as `Gated`, so the batch exits non-zero).
+Promoting there would re-stamp `tool.walkerSrcFingerprint` with an empty value, so a set that
+recorded a real fingerprint would come back recording nothing and the drift would be undetectable on
+every later run too. Rebuild the era walker so it answers `--version`
+(`scripts/build-era-walkers.*`) and re-run. A walker that DOES resolve but reports `unknown` for its
+own source fingerprint is a different case and blocks: the set on disk records a real 64-hex value,
+so the two provably differ, and `--allow-walker-change` is the release. `--allow-mixed-walkers` does
+not release it — that flag is about a set spanning several walkers, not about promoting one whose
+identity contradicts the corpus.
 This is the corpus-facing complement to `CS2_EXPECT_FPRINT`: that one checks the walker against what
 the operator expected, this one against what the corpus actually carries.
 

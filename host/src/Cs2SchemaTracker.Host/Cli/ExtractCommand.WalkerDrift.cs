@@ -25,9 +25,20 @@
 // and never a half-rewritten corpus. A refusal here can only ever leave the corpus exactly as it
 // was.
 //
-// A committed set that records no fingerprint, and a walker whose own identity will not RESOLVE,
-// each WARN and proceed: blocking there would make the tool unusable against sets committed before
-// the fingerprint line existed or on a host whose walker cannot be interrogated at all.
+// A committed set that records no fingerprint WARNS and proceeds: blocking there would make the
+// tool unusable against sets committed before the fingerprint line existed, and there is nothing on
+// disk for the re-stamp to destroy.
+//
+// A walker whose own identity will not RESOLVE is uncomparable — the guard genuinely cannot run, so
+// it never refuses the RUN — but it does not get to rewrite the record either. Warning and
+// proceeding left the residue the first version of this guard shipped with: the run went on to
+// re-stamp those sets' provenance.tool.walkerSrcFingerprint with the unresolved identity (""), so a
+// set that recorded a real 64-hex value came back recording nothing and read as
+// NoRecordedFingerprint on every later run. The drift that was merely warned about became
+// permanently undetectable, by the guard's own hand. So each such COMMITTED set is warned about and
+// SKIPPED: nothing is written, so nothing is erased, and the next run with an identifiable walker
+// still has the corpus's own record to compare against. Writing the OLD value back was rejected —
+// provenance would then assert that a walker produced bytes it did not produce.
 //
 // A walker that DOES resolve and reports "unknown" is on the other side of that line, and blocks
 // exactly like a known mismatch. It is not an absence: a committed set carrying a real 64-hex
@@ -78,8 +89,9 @@ internal static partial class ExtractCommand
     private const string CommittedSetMarkerFileName = "entity_schema.json";
 
     /// <summary>What the committed set's recorded fingerprint and the resolved walker's fingerprint
-    /// say when put side by side. <see cref="Drift"/> and <see cref="WalkerReportsUnknown"/> block;
-    /// the other two warn and proceed.</summary>
+    /// say when put side by side. <see cref="Drift"/> and <see cref="WalkerReportsUnknown"/> refuse the
+    /// whole run; <see cref="WalkerUnresolved"/> refuses to re-promote that one committed set;
+    /// <see cref="NoRecordedFingerprint"/> alone warns and proceeds.</summary>
     internal enum WalkerDriftDecision
     {
         /// <summary>The committed set records no usable fingerprint — nothing to compare against.
@@ -88,8 +100,12 @@ internal static partial class ExtractCommand
         NoRecordedFingerprint,
 
         /// <summary>The walker's identity would not resolve AT ALL (a missing binary, a
-        /// <c>--version</c> that failed). Genuinely uncomparable — the guard could not run, so WARN
-        /// and proceed.</summary>
+        /// <c>--version</c> that failed). Genuinely uncomparable — the guard could not run, so it
+        /// never refuses the RUN. But the committed set records a real fingerprint (this verdict is
+        /// unreachable otherwise), and re-promoting it would re-stamp that field with the unresolved
+        /// identity — <c>""</c> — erasing the only record of which walker built it and making the
+        /// undetected drift undetectable on every LATER run too. So under <c>--commit</c> that set is
+        /// WARNED about and SKIPPED: nothing written, nothing erased.</summary>
         WalkerUnresolved,
 
         /// <summary>The walker DID resolve and reports <see cref="WalkerIdentity.UnknownFingerprint"/>
@@ -192,6 +208,14 @@ internal static partial class ExtractCommand
     /// <summary>One walker binary's resolved identity, or the reason it would not resolve.</summary>
     private sealed record ResolvedWalker(WalkerIdentity? Identity, string? Error);
 
+    /// <summary>One walker binary whose identity would not resolve, and the committed sets this run
+    /// therefore refuses to re-promote with it (see <see cref="WalkerDriftDecision.WalkerUnresolved"/>).
+    /// Aggregated per binary so a 388-build batch warns in lines rather than screens.</summary>
+    private sealed record UnidentifiedWalker(string Reason)
+    {
+        public List<string> Builds { get; } = new();
+    }
+
     /// <summary>One (build, platform) whose committed set was built by a different walker than the
     /// one this run would use.</summary>
     private sealed record WalkerDriftRow(
@@ -218,11 +242,18 @@ internal static partial class ExtractCommand
     ///      binary that does not print the src-fingerprint line provably did not write a set that
     ///      records one, so that is a mismatch, not an absence);
     ///   6. the two DIFFER.
-    /// Item 4 failing, and the walker's identity refusing to RESOLVE at all, are the degenerate cases:
-    /// each WARNS (naming what could not be compared) and proceeds.
+    /// Item 4 failing is the degenerate case: it WARNS (naming what could not be compared) and
+    /// proceeds — a set that records nothing has nothing to lose by being re-promoted.
     /// <c>--allow-walker-change</c> turns a refusal into one audit line per affected set
     /// recording the old -&gt; new transition, so an intentional rewalk is visible in the run log
     /// instead of silent.
+    ///
+    /// A walker whose identity will not RESOLVE never refuses the run, but the committed sets it
+    /// serves are reported through <paramref name="unpromotable"/> for the batch loop to SKIP: the
+    /// guard must not destroy the record it exists to protect (see
+    /// <see cref="WalkerDriftDecision.WalkerUnresolved"/>). That is not released by
+    /// <c>--allow-walker-change</c> — that flag authorises an old -&gt; new transition it can name in
+    /// the log, and an unidentifiable walker has no "new" to name.
     /// </summary>
     /// <param name="identitySource">
     /// Resolves a walker binary path to its self-reported identity — production binds this to
@@ -230,11 +261,17 @@ internal static partial class ExtractCommand
     /// will run (the fake-runner seam): the guard is inert, never a refusal about a walker that never
     /// runs.
     /// </param>
+    /// <param name="unpromotable">
+    /// The builds whose COMMITTED set this run must not rewrite because the walker that would re-walk
+    /// it cannot identify itself — for the caller's per-build loop to SKIP. Empty whenever this
+    /// returns an exit code (the run aborts, so nothing is promoted anyway).
+    /// </param>
     /// <returns>The exit code to abort the whole run with, or null to proceed.</returns>
     private static int? PreflightWalkerFingerprintDrift(
         IReadOnlyList<string> builds, Options opts, string repoRoot, EraWalkerResolver? eraResolver,
-        Func<string, WalkerIdentity>? identitySource)
+        Func<string, WalkerIdentity>? identitySource, out IReadOnlySet<string> unpromotable)
     {
+        unpromotable = new HashSet<string>(StringComparer.Ordinal);
         if (!opts.Commit || eraResolver is null || identitySource is null)
         {
             return null;
@@ -244,7 +281,8 @@ internal static partial class ExtractCommand
         var walkerByBinary = new Dictionary<string, ResolvedWalker>(StringComparer.OrdinalIgnoreCase);
         var drifted = new List<WalkerDriftRow>();
         var unrecorded = new List<string>();
-        var unidentified = new SortedDictionary<string, string>(StringComparer.Ordinal);
+        var unidentified = new SortedDictionary<string, UnidentifiedWalker>(StringComparer.Ordinal);
+        var skipped = new HashSet<string>(StringComparer.Ordinal);
 
         foreach (var build in builds)
         {
@@ -285,8 +323,18 @@ internal static partial class ExtractCommand
                     unrecorded.Add(build);
                     break;
                 case WalkerDriftDecision.WalkerUnresolved:
-                    unidentified[binaryPath] = walker.Error
-                        ?? "the resolved identity carries no src-fingerprint value";
+                    // Uncomparable, so never a refusal of the RUN — but this set records a real
+                    // fingerprint, and promoting it would re-stamp that field with the unresolved
+                    // identity (""). Skip it instead: an unidentifiable walker does not get to
+                    // rewrite the record, in either direction.
+                    if (!unidentified.TryGetValue(binaryPath, out var unidentifiedWalker))
+                    {
+                        unidentifiedWalker = new UnidentifiedWalker(
+                            walker.Error ?? "the resolved identity carries no src-fingerprint value");
+                        unidentified[binaryPath] = unidentifiedWalker;
+                    }
+                    unidentifiedWalker.Builds.Add(build);
+                    skipped.Add(build);
                     break;
                 // A walker that resolved and reports "unknown" is the SAME failure class as Drift —
                 // the committed set records a fingerprint only a walker printing that line could have
@@ -307,14 +355,17 @@ internal static partial class ExtractCommand
         }
 
         // Degenerate cases, aggregated so a 388-build batch warns in lines rather than screens.
-        foreach (var (binaryPath, reason) in unidentified)
+        foreach (var (binaryPath, walker) in unidentified)
         {
             Console.Error.WriteLine(
                 $"extract: WARNING walker drift guard could NOT run for '{Path.GetFileName(binaryPath)}': " +
-                $"{reason}. A walker change against the committed set(s) that binary serves cannot be " +
-                "detected this run. This run will also re-stamp those sets' " +
-                "provenance.tool.walkerSrcFingerprint with an empty value, so the change cannot be " +
-                "detected on any LATER run either.");
+                $"{walker.Reason}. A walker change against the committed set(s) that binary serves " +
+                $"cannot be detected this run, so {walker.Builds.Count} already-committed set(s) will " +
+                $"NOT be re-walked and are SKIPPED: {JoinCapped(walker.Builds, 8)}. Promoting them " +
+                "would re-stamp their provenance.tool.walkerSrcFingerprint with an empty value and " +
+                "destroy the only record of which walker built them. Rebuild that walker so it " +
+                "answers --version (scripts/build-era-walkers.*) and re-run, and the sets will be " +
+                "re-walked by a walker the corpus can be compared against.");
         }
         if (unrecorded.Count > 0)
         {
@@ -324,8 +375,11 @@ internal static partial class ExtractCommand
                 "walker against; proceeding.");
         }
 
+        // Handed back ONLY on a path that proceeds to the per-build loop: a refusal below aborts
+        // the whole run, so there is nothing left for the caller to skip.
         if (drifted.Count == 0)
         {
+            unpromotable = skipped;
             return null;
         }
 
@@ -340,6 +394,7 @@ internal static partial class ExtractCommand
                     $"extract: WALKER CHANGE AUTHORISED (build {row.Build}, {row.Platform}): " +
                     $"{row.Recorded} -> {row.Resolved} (--allow-walker-change)");
             }
+            unpromotable = skipped;
             return null;
         }
 

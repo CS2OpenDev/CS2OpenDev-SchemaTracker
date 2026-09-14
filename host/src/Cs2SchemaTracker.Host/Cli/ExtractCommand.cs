@@ -389,8 +389,10 @@ internal static partial class ExtractCommand
                 // The same unresolved identity is also what the commit-path WALKER FINGERPRINT DRIFT
                 // GUARD compares against, so say so here too: with no identity there is nothing to
                 // compare the committed set's recorded fingerprint to, and a walker change would go
-                // undetected on this run (the guard warns, never blocks, on unknown — see
-                // ExtractCommand.WalkerDrift.cs).
+                // undetected on this run. Reaching here under --commit therefore means the set being
+                // written records NO fingerprint of its own (or does not exist yet): the guard has
+                // already skipped every committed set that records one, precisely so the empty
+                // WalkerSrcFingerprint stamped below cannot erase it (ExtractCommand.WalkerDrift.cs).
                 Console.Error.WriteLine(
                     $"extract: WARNING could not resolve walker identity for " +
                     $"'{resolution.WalkerBinaryPath}': {ex.GetType().Name}: {ex.Message}. " +
@@ -1459,7 +1461,11 @@ internal static partial class ExtractCommand
             GitCommit = ToolBuildInfo.GitCommitId,            // build-baked SHA (nbgv) — deterministic, no runtime git shell-out.
             // Walker identity chain: the WALKER's own self-reported identity (distinct from GitCommit,
             // the HOST's SHA above). "" when unresolved this run (fake-runner test seam / a resolution
-            // hiccup already warned about above) — never guessed.
+            // hiccup already warned about above) — never guessed. Under --commit an empty value here
+            // can only ever REPLACE an empty one: the drift guard refuses to re-promote a committed
+            // set that records a real fingerprint with a walker that cannot identify itself, because
+            // this line would otherwise overwrite the corpus's only record of who built it
+            // (ExtractCommand.WalkerDrift.cs, WalkerDriftDecision.WalkerUnresolved).
             WalkerGitSha = walkerIdentity?.GitSha ?? "",
             WalkerSrcFingerprint = walkerIdentity?.SrcFingerprint ?? "",
             SchemaRevision = walk.SchemaSystemLayoutSignature ?? "",

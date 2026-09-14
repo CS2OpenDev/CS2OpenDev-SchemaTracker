@@ -79,9 +79,11 @@ internal static partial class ExtractCommand
         /// </summary>
         Committed,
         /// <summary>
-        /// A layout gate (exit 75) or the class-count-band gate (exit 77) rejected the walk BEFORE
-        /// any promote — nothing was written. Not a walker crash, but DOES make the batch's own exit
-        /// non-zero (see <c>Summarize</c>) — a build with nothing in the corpus is never "clean".
+        /// A layout gate (exit 75), the class-count-band gate (exit 77), or the walker drift guard's
+        /// refusal to re-promote a committed set with an unidentifiable walker rejected the walk
+        /// BEFORE any promote — nothing was written. Not a walker crash, but DOES make the batch's
+        /// own exit non-zero (see <c>Summarize</c>) — a build the run was asked to commit and did not
+        /// is never "clean", whichever of the three stopped it.
         /// </summary>
         Gated,
         /// <summary>Skipped: already-present off-repo output without --force. Not a failure.</summary>
@@ -253,7 +255,13 @@ internal static partial class ExtractCommand
         // suite injects its own through the Run seam. See ExtractCommand.WalkerDrift.cs.
         var identitySource = walkerIdentitySource
             ?? (runnerFactory is null ? WalkerIdentity.Resolve : (Func<string, WalkerIdentity>?)null);
-        if (PreflightWalkerFingerprintDrift(builds, opts, repoRoot, eraResolver, identitySource) is int driftExit)
+        // `unpromotable` is the guard's OTHER verdict: builds whose committed set records a real
+        // fingerprint but whose walker cannot identify itself. Those are not refusals of the run —
+        // they are sets this run must not rewrite, because promoting them would re-stamp
+        // provenance.tool.walkerSrcFingerprint with the unresolved identity and erase the only record
+        // of who built them. The loop below skips them; everything else in the selection still runs.
+        if (PreflightWalkerFingerprintDrift(
+                builds, opts, repoRoot, eraResolver, identitySource, out var unpromotable) is int driftExit)
         {
             return driftExit;
         }
@@ -264,6 +272,21 @@ internal static partial class ExtractCommand
         {
             i++;
             Console.Error.WriteLine($"extract: [{i}/{builds.Count}] build {b}");
+            if (unpromotable.Contains(b))
+            {
+                // REFUSE TO PROMOTE (walker drift guard, see ExtractCommand.WalkerDrift.cs). Not
+                // walked at all: the committed set keeps the fingerprint it records, which is the
+                // evidence the next run with an identifiable walker needs. Classified Gated for the
+                // same reason the layout and class-band gates are — nothing was written for a build
+                // this run was asked to commit, so the batch is not clean (see Summarize).
+                Console.Error.WriteLine(
+                    $"extract: build {b} SKIPPED — the walker that would re-walk it cannot identify " +
+                    "itself, so its committed set keeps the walkerSrcFingerprint it already records " +
+                    "(see the drift guard warning above).");
+                outcomes.Add(new BuildOutcome(
+                    new BuildResult(b, "", Status.Gated, "walker identity unresolved — NOT promoted"), 0));
+                continue;
+            }
             outcomes.Add(RunOneBuild(b, opts, repoRoot, runnerFactory, eraResolver, gateFromResolver, batch, acquire));
         }
 
