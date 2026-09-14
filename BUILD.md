@@ -236,10 +236,18 @@ compared against what the resolved walker reports. A known mismatch refuses the 
 — before any era is resolved, anything is walked, or a staging dir exists — naming both
 fingerprints. Pass `--allow-walker-change` when the rewalk is intentional: it authorises the entire
 run (a deliberate rewalk changes every set it touches) and logs one `old -> new` transition line per
-affected set. A brand-new build, a set that records no fingerprint, and a walker whose identity will
-not resolve are never blocked; the last two warn. This is the corpus-facing complement to
-`CS2_EXPECT_FPRINT`: that one checks the walker against what the operator expected, this one against
-what the corpus actually carries.
+affected set. A brand-new build and a set that records no fingerprint are never blocked, and a walker
+whose identity will not resolve warns and proceeds — that one is genuinely uncomparable, so there is
+nothing to compare. A walker that DOES resolve but reports `unknown` for its own source fingerprint is
+a different case and blocks: the set on disk records a real 64-hex value, so the two provably differ,
+and `--allow-walker-change` is the release. `--allow-mixed-walkers` does not release it — that flag is
+about a set spanning several walkers, not about promoting one whose identity contradicts the corpus.
+This is the corpus-facing complement to `CS2_EXPECT_FPRINT`: that one checks the walker against what
+the operator expected, this one against what the corpus actually carries.
+
+`CS2_WALKER_BIN` (and the `WalkerBin` appsettings key) overrides era selection, and under `--commit` it
+no longer skips the identity gate with it: a run that writes to the corpus is checked whichever walker
+it was pointed at. Non-commit override runs are unaffected.
 
 ## Schemas (protoc)
 
