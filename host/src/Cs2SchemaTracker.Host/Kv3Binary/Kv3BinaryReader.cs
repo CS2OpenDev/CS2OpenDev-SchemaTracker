@@ -1797,12 +1797,22 @@ internal static class Kv3BinaryReader
             // it, and for the zero-width constants it is the only file-scaled ceiling the
             // format offers. Checked BEFORE the loop, so such a count fails by name instead of
             // as an OutOfMemoryException.
-            if (count > _main.Length)
+            // FLOORED AT 255, because the payload length is the right SHAPE for this ceiling but
+            // the wrong FLOOR. Type 24 (ARRAY_TYPE_BYTE_LENGTH) shares this method and takes its
+            // count from a single byte, so it can legitimately declare up to 255 however small the
+            // block is, and 255 zero-width elements can no more exhaust anything than 3 can. A bare
+            // `count > _main.Length` refused those: this block's payload is 10 bytes, so an 11-
+            // element array of BOOLEAN_TRUE — a legal encoding that spends no payload at all — was
+            // rejected, and ARRAY_TYPED reached the same edge. A count that fits in a byte is
+            // structurally incapable of the unbounded allocation this guard exists for, so it must
+            // never be what gets refused; above 255 the file-scaled ceiling does the real work.
+            int ceiling = Math.Max(_main.Length, byte.MaxValue);
+            if (count > ceiling)
             {
                 throw new Kv3BinaryException(
                     $"Kv3BinaryReader: {what} at types offset {_typesPos - _typesBase - 1} " +
-                    $"declares {count} elements, more than the {_main.Length}-byte payload " +
-                    $"buffer they would have to come from.");
+                    $"declares {count} elements, more than the {ceiling} a {_main.Length}-byte " +
+                    $"payload buffer can supply them from.");
             }
 
             (int elementType, _) = ReadTag();

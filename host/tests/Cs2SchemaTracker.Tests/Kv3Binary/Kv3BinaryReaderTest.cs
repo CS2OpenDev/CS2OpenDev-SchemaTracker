@@ -712,6 +712,22 @@ public class Kv3BinaryReaderTest
     }
 
     [Fact]
+    public void Decode_TypedArray_Smaller_Than_A_Byte_Count_Is_Not_Refused_By_A_Tiny_Payload()
+    {
+        // The payload length is the right SHAPE for the ceiling but the wrong FLOOR. This block's
+        // whole payload is 14 bytes, so a bare `count > _main.Length` refuses any zero-width array
+        // past 14 elements — and 200 BOOLEAN_TRUEs is a perfectly legal encoding that spends no
+        // payload at all. It bites type 24 (ARRAY_TYPE_BYTE_LENGTH) hardest, whose count comes
+        // from a single byte and so can legitimately say up to 255 no matter how small the block
+        // is, but as this case shows ARRAY_TYPED reaches it too. A count that fits in a byte can
+        // never drive an unbounded allocation, so it must never be the thing refused.
+        Value root = Kv3BinaryReader.DecodeBlock(TypedArrayBlock(200));
+        Assert.Equal(Value.KindOneofCase.ListValue, root.KindCase);
+        Assert.Equal(200, root.ListValue.Values.Count);
+        Assert.All(root.ListValue.Values, e => Assert.True(e.BoolValue));
+    }
+
+    [Fact]
     public void Decode_V5_Blob_Frame_Table_Larger_Than_The_Buffer_Is_Refused_By_Name()
     {
         // The v5 header word at offset 68 sizes an int[] at one element per two declared bytes.
