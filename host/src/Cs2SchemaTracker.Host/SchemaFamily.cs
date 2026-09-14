@@ -1,6 +1,6 @@
 // single source of the schemas/*.proto FAMILY version in host code.
 //
-// This is the schemas/*.proto family version (currently 0.5.1). Every per-tuple artifact
+// This is the schemas/*.proto family version; the constant below is the value. Every per-tuple artifact
 // emitter stamps this string into its `schema_version` field (entity_schema.json,
 // modules.json, ...). It is intentionally ONE constant so a single edit here flows to every
 // emitter and no literal "0.x.y" is scattered across the host. Emitters MUST source the
@@ -93,5 +93,19 @@ public static class SchemaFamily
     // EvolutionCommand consequently forces one full schema_evolution rebuild; that is expected.
     // Corpus rollout is staged: weapon_vdata.json is OMITTABLE but not yet content-depot-GATED
     // (see ArtifactSet.OmittableContentArtifacts) until the committed corpus carries it.
-    public const string Version = "0.11.0";
+    //
+    // 0.12.0: schema_evolution field_move_candidates reaches the interposed base (issue #20). The
+    // pool feeding it was MATCHED-classes-only, so a field hoisted into a base class added by the
+    // same transition was structurally invisible. That is the hoist shape Valve ships most often,
+    // and it outnumbered the visible one on both platforms (38 vs 9 on linux-x86_64, 48 vs 17 on
+    // windows). An added class now contributes its fields to the pool when it sits on the
+    // to-snapshot ancestor chain of a class that lost fields, and pairs only with the sources it is
+    // an ancestor OF: unlike a matched class it contributes every field it has rather than only the
+    // ones the transition introduced, so an unrelated source would pair on the floor alone.
+    // NOT additive: the proto scope sentence said both classes were MATCHED and now says which
+    // unmatched ones qualify, hence the minor bump. The version gate in EvolutionCommand forces one
+    // full schema_evolution rebuild; 0.11.0 already owed that one. NOT a Docs event by the rule in
+    // the header above: no field enters or leaves a re-published artifact, field_move_candidates
+    // only gets a wider population, so no lockstep Docs change.
+    public const string Version = "0.12.0";
 }

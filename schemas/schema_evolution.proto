@@ -89,12 +89,16 @@ message Transition {
   // Ordinal by (from, to).
   repeated ClassPairCandidate class_pair_candidates = 9;
 
-  // A field REMOVEd from one surviving class paired with a same-named, same-typed field ADDed to a
-  // DIFFERENT surviving class in the same transition — the hoist/move a within-class pairing
-  // cannot see. Floor: field name AND rendered type both equal (name alone across classes is
-  // noise). Scope: both classes are MATCHED (present in both snapshots) — a wholly-moved class's
-  // fields are deliberately NOT re-paired field-by-field here; class_pair_candidates already
-  // carries that linkage. Signals: "fieldNameMatch" + "typeMatch" (always — the floor),
+  // A field REMOVEd from one class paired with a same-named, same-typed field ADDed to a DIFFERENT
+  // class in the same transition — the hoist/move a within-class pairing cannot see. Floor: field
+  // name AND rendered type both equal (name alone across classes is noise). Scope: the source class
+  // is MATCHED (present in both snapshots); the destination is MATCHED, or an ADDED class on that
+  // SOURCE's own to-snapshot ancestor chain, which is the base interposed by the very transition
+  // that fills it. An added class off the source's chain never qualifies for it: an added class
+  // contributes every field it has rather than only the ones this transition introduced, so the
+  // floor alone would assert a relation neither snapshot supports. A wholly-moved class's fields
+  // are deliberately NOT re-paired field-by-field here; class_pair_candidates already carries that
+  // linkage. Signals: "fieldNameMatch" + "typeMatch" (always — the floor),
   // "parentChainUp" (to_class is an ancestor of from_class in the to-snapshot),
   // "parentChainDown" (to_class is a descendant of from_class in the to-snapshot).
   // Ordinal by (from_class, field, to_class).

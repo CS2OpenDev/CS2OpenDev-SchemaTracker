@@ -79,8 +79,8 @@ public static class SchemaSnapshotDiff
         foreach (var name in RemovedKeys(fromMap, toMap))
             transition.ClassRemoved.Add(name);
 
-        // Removed/added field pools across the MATCHED classes, feeding the transition-level
-        // field-move candidates. The rendered type rides along so each field is rendered once.
+        // Removed/added field pools feeding the transition-level field-move candidates. The rendered
+        // type rides along so each field is rendered once.
         var removedPool = new List<(string Cls, string Field, string RenderedType)>();
         var addedPool = new List<(string Cls, string Field, string RenderedType)>();
 
@@ -91,9 +91,12 @@ public static class SchemaSnapshotDiff
                 transition.ClassChanged.Add(delta);
         }
 
+        var addedClasses = new HashSet<string>(transition.ClassAdded, StringComparer.Ordinal);
+        PoolInterposedBases(addedClasses, toMap, removedPool, addedPool);
+
         foreach (var pair in ClassPairCandidates(transition, fromMap, toMap))
             transition.ClassPairCandidates.Add(pair);
-        foreach (var move in FieldMoveCandidates(removedPool, addedPool, toMap))
+        foreach (var move in FieldMoveCandidates(removedPool, addedPool, toMap, addedClasses))
             transition.FieldMoveCandidates.Add(move);
     }
 
@@ -423,17 +426,67 @@ public static class SchemaSnapshotDiff
     }
 
     /// <summary>
-    /// Cross-class field-move candidates over the pooled removed/added fields of the MATCHED
-    /// classes: same field name AND same rendered type, different class (a hoist to a parent, a
-    /// push-down, or a sideways move between surviving classes). "parentChainUp"/"parentChainDown"
-    /// are emitted when the destination class is an ancestor/descendant of the source class in the
-    /// TO snapshot — both classes exist there, so the relation is provable. Ordinal by
+    /// Widens <paramref name="addedPool"/> with the instance fields of every ADDED class on the
+    /// TO-snapshot ancestor chain of a class that lost fields: the interposed base (issue #20).
+    /// Valve's usual hoist introduces the new base in the same transition it fills, so the
+    /// destination exists only in the TO snapshot and the matched-class loop never reaches it.
+    /// </summary>
+    /// <remarks>
+    /// Resolves over the FULL chain, not the direct parent: a transition can interpose several
+    /// levels at once and the fields land anywhere on the new stretch. Statics stay out, as
+    /// everywhere else on this surface.
+    /// </remarks>
+    private static void PoolInterposedBases(
+        HashSet<string> addedClasses,
+        Dictionary<string, SchemaClass> toMap,
+        List<(string Cls, string Field, string RenderedType)> removedPool,
+        List<(string Cls, string Field, string RenderedType)> addedPool)
+    {
+        if (removedPool.Count == 0 || addedClasses.Count == 0)
+            return;
+
+        // Deduped: several classes commonly reparent onto the SAME new base, and pooling it twice
+        // would emit duplicate (from_class, field, to_class) tuples on a surface documented unique.
+        var bases = new SortedSet<string>(StringComparer.Ordinal);
+        var walked = new HashSet<string>(StringComparer.Ordinal);
+        foreach (var (cls, _, _) in removedPool)
+        {
+            if (!walked.Add(cls))
+                continue;
+            foreach (var ancestor in Ancestors(toMap, cls))
+            {
+                if (addedClasses.Contains(ancestor))
+                    bases.Add(ancestor);
+            }
+        }
+
+        foreach (var name in bases)
+        {
+            // An added class runs through no op computation, so this is the only duplicate-name and
+            // missing-type check its fields ever get.
+            var c = toMap[name];
+            IndexBy(c.Fields, f => f.Name, "field");
+            foreach (var f in c.Fields)
+            {
+                var t = f.Type ?? throw Corrupt(c, f, "field has no type");
+                addedPool.Add((name, f.Name, SchemaTypeRenderer.Render(t)));
+            }
+        }
+    }
+
+    /// <summary>
+    /// Cross-class field-move candidates over the pooled removed/added fields: same field name AND
+    /// same rendered type, different class (a hoist to a parent, a push-down, or a sideways move).
+    /// "parentChainUp"/"parentChainDown" are emitted when the destination class is an
+    /// ancestor/descendant of the source class in the TO snapshot. The destination is present
+    /// there whether it survived or was added, so the relation is provable either way. Ordinal by
     /// (from_class, field, to_class).
     /// </summary>
     private static IEnumerable<FieldMoveCandidate> FieldMoveCandidates(
         List<(string Cls, string Field, string RenderedType)> removedPool,
         List<(string Cls, string Field, string RenderedType)> addedPool,
-        Dictionary<string, SchemaClass> toMap)
+        Dictionary<string, SchemaClass> toMap,
+        HashSet<string> addedClasses)
     {
         if (removedPool.Count == 0 || addedPool.Count == 0)
             yield break;
@@ -455,13 +508,22 @@ public static class SchemaSnapshotDiff
                     continue;
                 }
 
+                var up = IsAncestor(toMap, ancestorOf: r.Cls, candidate: a.Cls);
+
+                // A MATCHED destination contributes only the fields it gained in this transition, so
+                // the floor alone is a fact about the transition. An ADDED one contributes every
+                // field it has, most of them relocated rather than new, so off the source's own
+                // chain the floor asserts a relation neither snapshot supports.
+                if (!up && addedClasses.Contains(a.Cls))
+                    continue;
+
                 var move = new FieldMoveCandidate { FromClass = r.Cls, ToClass = a.Cls, Field = r.Field };
                 // Signals appended in Ordinal order:
                 // fieldNameMatch < parentChainDown < parentChainUp < typeMatch.
                 move.Signals.Add("fieldNameMatch");
                 if (IsAncestor(toMap, ancestorOf: a.Cls, candidate: r.Cls))
                     move.Signals.Add("parentChainDown");
-                if (IsAncestor(toMap, ancestorOf: r.Cls, candidate: a.Cls))
+                if (up)
                     move.Signals.Add("parentChainUp");
                 move.Signals.Add("typeMatch");
                 moves.Add(move);
@@ -482,15 +544,23 @@ public static class SchemaSnapshotDiff
 
     /// <summary>
     /// Is <paramref name="candidate"/> in the transitive parent chain of <paramref name="ancestorOf"/>
-    /// within the snapshot indexed by <paramref name="classes"/>? Cycle-safe; a parent whose class
-    /// record is not in the snapshot terminates that branch (nothing is inferred about it).
+    /// within the snapshot indexed by <paramref name="classes"/>?
     /// </summary>
     private static bool IsAncestor(
         Dictionary<string, SchemaClass> classes, string ancestorOf, string candidate)
+        => Ancestors(classes, ancestorOf).Contains(candidate, StringComparer.Ordinal);
+
+    /// <summary>
+    /// The transitive parent chain of <paramref name="of"/> within the snapshot indexed by
+    /// <paramref name="classes"/>. Cycle-safe; a parent whose class record is not in the snapshot is
+    /// still yielded but terminates that branch (nothing is inferred about it). A parent reachable by
+    /// two paths can be yielded twice; callers dedupe or short-circuit.
+    /// </summary>
+    private static IEnumerable<string> Ancestors(Dictionary<string, SchemaClass> classes, string of)
     {
         var visited = new HashSet<string>(StringComparer.Ordinal);
         var pending = new Stack<string>();
-        pending.Push(ancestorOf);
+        pending.Push(of);
         while (pending.Count > 0)
         {
             var current = pending.Pop();
@@ -498,12 +568,10 @@ public static class SchemaSnapshotDiff
                 continue;
             foreach (var parent in Parents(c))
             {
-                if (string.Equals(parent, candidate, StringComparison.Ordinal))
-                    return true;
+                yield return parent;
                 pending.Push(parent);
             }
         }
-        return false;
     }
 
     // ---- enums ----------------------------------------------------------------------------
