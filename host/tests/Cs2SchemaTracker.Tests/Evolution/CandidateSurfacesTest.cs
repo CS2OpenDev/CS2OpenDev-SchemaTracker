@@ -249,6 +249,155 @@ public sealed class CandidateSurfacesTest
         Assert.Empty(Diff(from, to).FieldMoveCandidates);
     }
 
+    // ---- hoists into a base interposed in the same transition (issue #20) ---------------------
+
+    [Fact]
+    public void A_hoist_into_a_base_added_in_the_same_transition_yields_parentChainUp()
+    {
+        // The new base is introduced by the transition that fills it, so the destination exists
+        // only in the TO snapshot and the matched-class loop never reaches it.
+        (string, string)[] rootParent = [("client", "CRoot")];
+        (string, string)[] midParent = [("client", "CMid")];
+        var from = Snapshot(B1,
+            Class("client", "CRoot", 8, null),
+            Class("client", "CLeaf", 16, rootParent, Field("m_v", 0, Builtin("int32"))));
+        var to = Snapshot(B2,
+            Class("client", "CLeaf", 16, midParent),
+            Class("client", "CMid", 12, rootParent, Field("m_v", 0, Builtin("int32"))),
+            Class("client", "CRoot", 8, null));
+
+        var move = Assert.Single(Diff(from, to).FieldMoveCandidates);
+        Assert.Equal("client/CLeaf", move.FromClass);
+        Assert.Equal("client/CMid", move.ToClass);
+        Assert.Equal("m_v", move.Field);
+        Assert.Equal(SigHoist, move.Signals);
+    }
+
+    [Fact]
+    public void A_hoist_resolves_past_the_new_direct_parent_to_the_whole_added_stretch()
+    {
+        // A transition can interpose several levels at once and the field can land anywhere on the
+        // new stretch, so resolution cannot stop at the new direct parent.
+        (string, string)[] rootParent = [("client", "CRoot")];
+        (string, string)[] upperParent = [("client", "CUpper")];
+        (string, string)[] midParent = [("client", "CMid")];
+        var from = Snapshot(B1,
+            Class("client", "CRoot", 8, null),
+            Class("client", "CLeaf", 16, rootParent, Field("m_v", 0, Builtin("int32"))));
+        var to = Snapshot(B2,
+            Class("client", "CLeaf", 16, midParent),
+            Class("client", "CMid", 12, upperParent),
+            Class("client", "CRoot", 8, null),
+            Class("client", "CUpper", 12, rootParent, Field("m_v", 0, Builtin("int32"))));
+
+        var move = Assert.Single(Diff(from, to).FieldMoveCandidates);
+        Assert.Equal("client/CUpper", move.ToClass);
+        Assert.Equal(SigHoist, move.Signals);
+    }
+
+    [Fact]
+    public void A_field_the_interposed_base_does_not_carry_stays_unpaired()
+    {
+        // A reparent onto a new base is not itself evidence of a move; the floor is what decides.
+        (string, string)[] rootParent = [("client", "CRoot")];
+        (string, string)[] midParent = [("client", "CMid")];
+        var from = Snapshot(B1,
+            Class("client", "CRoot", 8, null),
+            Class("client", "CLeaf", 16, rootParent,
+                Field("m_moved", 0, Builtin("int32")), Field("m_died", 4, Builtin("int32"))));
+        var to = Snapshot(B2,
+            Class("client", "CLeaf", 16, midParent),
+            Class("client", "CMid", 12, rootParent, Field("m_moved", 0, Builtin("int32"))),
+            Class("client", "CRoot", 8, null));
+
+        var move = Assert.Single(Diff(from, to).FieldMoveCandidates);
+        Assert.Equal("m_moved", move.Field);
+        Assert.Equal("client/CLeaf", move.FromClass);
+        Assert.Equal("client/CMid", move.ToClass);
+        Assert.Equal(SigHoist, move.Signals);
+    }
+
+    [Fact]
+    public void An_interposed_base_never_pairs_with_a_source_it_is_not_an_ancestor_of()
+    {
+        // CMid is pooled because it is on CLeaf's chain, but it holds every field it has rather than
+        // only what this transition introduced, so CFar losing the same name+type is not evidence.
+        (string, string)[] rootParent = [("client", "CRoot")];
+        (string, string)[] midParent = [("client", "CMid")];
+        var from = Snapshot(B1,
+            Class("client", "CFar", 8, null, Field("m_v", 0, Builtin("int32"))),
+            Class("client", "CRoot", 8, null),
+            Class("client", "CLeaf", 16, rootParent, Field("m_v", 0, Builtin("int32"))));
+        var to = Snapshot(B2,
+            Class("client", "CFar", 8, null),
+            Class("client", "CLeaf", 16, midParent),
+            Class("client", "CMid", 12, rootParent, Field("m_v", 0, Builtin("int32"))),
+            Class("client", "CRoot", 8, null));
+
+        var move = Assert.Single(Diff(from, to).FieldMoveCandidates);
+        Assert.Equal("client/CLeaf", move.FromClass);
+        Assert.Equal("client/CMid", move.ToClass);
+        Assert.Equal(SigHoist, move.Signals);
+    }
+
+    [Fact]
+    public void An_added_class_off_every_shrinking_chain_is_never_pooled()
+    {
+        // Only the ancestors of something that shrank qualify, so an added class with no inheritance
+        // relation to the loser contributes nothing.
+        var from = Snapshot(B1,
+            Class("client", "CLeaf", 16, null, Field("m_v", 0, Builtin("int32"))));
+        var to = Snapshot(B2,
+            Class("client", "CLeaf", 16, null),
+            Class("client", "CUnrelated", 8, null, Field("m_v", 0, Builtin("int32"))));
+
+        Assert.Empty(Diff(from, to).FieldMoveCandidates);
+    }
+
+    [Fact]
+    public void An_interposed_base_never_carries_the_push_down_direction()
+    {
+        // CMid is pooled for CLeaf's sake, and CRoot losing a field CMid also holds would otherwise
+        // pair downward. Only the hoist direction is in scope.
+        (string, string)[] rootParent = [("client", "CRoot")];
+        (string, string)[] midParent = [("client", "CMid")];
+        var from = Snapshot(B1,
+            Class("client", "CRoot", 8, null, Field("m_x", 0, Builtin("int32"))),
+            Class("client", "CLeaf", 16, rootParent, Field("m_v", 0, Builtin("int32"))));
+        var to = Snapshot(B2,
+            Class("client", "CLeaf", 16, midParent),
+            Class("client", "CMid", 12, rootParent,
+                Field("m_v", 0, Builtin("int32")), Field("m_x", 4, Builtin("int32"))),
+            Class("client", "CRoot", 8, null));
+
+        var move = Assert.Single(Diff(from, to).FieldMoveCandidates);
+        Assert.Equal("m_v", move.Field);
+        Assert.Equal(SigHoist, move.Signals);
+    }
+
+    [Fact]
+    public void Two_classes_reparented_onto_one_new_base_pool_it_once()
+    {
+        // Pooling the shared base once per shrinking class would emit each (from, field, to)
+        // tuple twice.
+        (string, string)[] rootParent = [("client", "CRoot")];
+        (string, string)[] midParent = [("client", "CMid")];
+        var from = Snapshot(B1,
+            Class("client", "CRoot", 8, null),
+            Class("client", "CLeafA", 16, rootParent, Field("m_v", 0, Builtin("int32"))),
+            Class("client", "CLeafB", 16, rootParent, Field("m_v", 0, Builtin("int32"))));
+        var to = Snapshot(B2,
+            Class("client", "CLeafA", 16, midParent),
+            Class("client", "CLeafB", 16, midParent),
+            Class("client", "CMid", 12, rootParent, Field("m_v", 0, Builtin("int32"))),
+            Class("client", "CRoot", 8, null));
+
+        var moves = Diff(from, to).FieldMoveCandidates;
+        Assert.Equal(2, moves.Count);
+        Assert.Equal(["client/CLeafA", "client/CLeafB"], moves.Select(m => m.FromClass));
+        Assert.All(moves, m => Assert.Equal("client/CMid", m.ToClass));
+    }
+
     // ---- the schema-version gate on the incremental path -------------------------------------
 
     [Fact]
