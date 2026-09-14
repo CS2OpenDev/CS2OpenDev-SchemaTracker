@@ -30,7 +30,15 @@
 // value, key, array order or type is weakened by the comparison. The one thing that comparison
 // does lose is an integer above 2^53, which a double cannot hold: every such token in the
 // corpus is declared per fixture in that theory's InlineData, so a new one fails by name rather
-// than rounding away on both sides at once. The fail-loud tests pin the deliberate refusals:
+// than rounding away on both sides at once.
+// The loss record is pinned the same two ways. What the reader cannot carry — a repeated KV3
+// key, a 64-bit integer past 2^53 — is absent from every shipped resource but the vmdl, whose
+// two ulong.MaxValue values are asserted against the fixture itself; the repeated key and the
+// signed case are hand-built blocks, for the same reason the allocation guards are. Each of
+// those tests also asserts the TREE, because recording the loss was not allowed to change what
+// the decode returns: the duplicate must still collapse last-wins and the integer must still
+// arrive rounded.
+// The fail-loud tests pin the deliberate refusals:
 // truncated and corrupt input in every supported version, a non-KV3 magic, a container with no
 // DATA block, v0/v1/v2, and zstd, each raising Kv3BinaryException naming what it found. The
 // allocation guards are driven by blocks assembled byte by byte in this file rather than by
@@ -858,6 +866,95 @@ public class Kv3BinaryReaderTest
     }
 
     // -----------------------------------------------------------------------------------
+    // what the decode could not carry
+    // -----------------------------------------------------------------------------------
+
+    [Fact]
+    public void DecodeWithLoss_Records_A_Repeated_Key_And_Still_Collapses_It_LastWins()
+    {
+        (Value root, Kv3DecodeLoss loss) = Kv3BinaryReader.DecodeBlockWithLoss(DuplicateKeyBlock());
+
+        // The tree is the one this block has always produced: a Struct cannot hold two members
+        // under one key, so the second value wins and the first is gone. Recording the loss was
+        // not licence to change that — every other consumer still gets these exact bytes.
+        var only = Assert.Single(root.StructValue.Fields);
+        Assert.Equal("a", only.Key);
+        Assert.Equal(1d, only.Value.NumberValue);
+
+        // ... and the old entry point, which nothing had to touch, still returns it too.
+        Assert.Equal(
+            1d, Kv3BinaryReader.DecodeBlock(DuplicateKeyBlock()).StructValue.Fields["a"].NumberValue);
+
+        // The difference: the collapse is now visible to a caller that cares.
+        Assert.Equal(["a"], loss.DuplicateKeys);
+        Assert.Empty(loss.NarrowedIntegers);
+        Assert.False(loss.IsLossless);
+    }
+
+    [Fact]
+    public void DecodeWithLoss_Records_Each_Int64_A_Double_Cannot_Hold()
+    {
+        // 2^53+1 is the smallest positive integer a double cannot represent; 2^53 is the
+        // largest it can. Both are recorded or not on the same round trip the reference side of
+        // the whole-tree diff uses, so the two sides cannot drift apart in what they call lossy.
+        (Value root, Kv3DecodeLoss loss) = Kv3BinaryReader.DecodeBlockWithLoss(
+            Int64ArrayBlock(9007199254740993L, 9007199254740992L, -9007199254740993L));
+
+        // Narrowing behaviour is untouched: the tree still carries the rounded doubles, and the
+        // lossy value is still indistinguishable in it from the exact one beside it.
+        AssertNumberList(root, 9007199254740992d, 9007199254740992d, -9007199254740992d);
+
+        // The record is what tells them apart. It is per OCCURRENCE and in tree order, and the
+        // sign is carried: a magnitude computed the lazy way turns long.MinValue into itself.
+        Assert.Equal(["9007199254740993", "-9007199254740993"], loss.NarrowedIntegers);
+        Assert.Empty(loss.DuplicateKeys);
+        Assert.False(loss.IsLossless);
+    }
+
+    [Fact]
+    public void DecodeWithLoss_Records_Both_Uint64s_The_Vmdl_Already_Ships()
+    {
+        // The reason the reader records instead of throwing. This is a resource Valve shipped:
+        // m_nDefaultMeshGroupMask is a plain UINT64 and m_refMeshGroupMasks[0] a UINT64 in the
+        // segment-0 auxiliary buffer, so the two narrowing sites are BOTH exercised here, and
+        // both values are all-bits-set, which no double holds. A reader that refused at the
+        // narrowing site could not read this file at all.
+        byte[] bytes = File.ReadAllBytes(
+            Path.Combine(FixtureDir, "aztec_skybox_tree_card_large_01.vmdl_c"));
+        (Value root, Kv3DecodeLoss loss) = Kv3BinaryReader.DecodeWithLoss(bytes);
+
+        Assert.Equal(
+            (double)ulong.MaxValue,
+            root.StructValue.Fields["m_refMeshGroupMasks"].ListValue.Values[0].NumberValue);
+
+        // The same two tokens Decode_Matches_The_Reference_Decode_Exactly declares for this
+        // fixture, which is the point: the production reader and the reference-side round trip
+        // agree on exactly which values the corpus cannot carry.
+        Assert.Equal(
+            ["18446744073709551615", "18446744073709551615"], loss.NarrowedIntegers);
+        Assert.Empty(loss.DuplicateKeys);
+    }
+
+    [Theory]
+    [InlineData("weapons.vdata_c")]
+    [InlineData("pistol_jump_crouch_w_pistol.vnmclip_c")]
+    [InlineData("soundeventgroups.vdata_c")]
+    [InlineData(WeaponsV3)]
+    [InlineData(WeaponsV4)]
+    public void DecodeWithLoss_Reports_No_Loss_For_The_Fixtures_That_Lose_Nothing(string fixture)
+    {
+        // The other half of the record. A loss list that filled up on ordinary blocks would be
+        // useless to a caller that fails loud on it, and the vmdl above is the ONLY fixture in
+        // the suite that puts anything in one.
+        (_, Kv3DecodeLoss loss) = Kv3BinaryReader.DecodeWithLoss(
+            File.ReadAllBytes(Path.Combine(FixtureDir, fixture)));
+
+        Assert.Empty(loss.DuplicateKeys);
+        Assert.Empty(loss.NarrowedIntegers);
+        Assert.True(loss.IsLossless);
+    }
+
+    // -----------------------------------------------------------------------------------
     // helpers
     // -----------------------------------------------------------------------------------
 
@@ -1071,6 +1168,84 @@ public class Kv3BinaryReaderTest
             ByteCount = 1,
             IntCount = 1,
             TypesSize = 3,
+        }.ToBytes();
+    }
+
+    /// <summary>
+    /// A stored-uncompressed v5 block decoding to <c>{ "a": 1 }</c> from an OBJECT that carries
+    /// the key "a" TWICE — string id 0 both times, INT64_ZERO then INT64_ONE, neither of which
+    /// spends a byte of any buffer. No shipped resource repeats a key, so the collapse the
+    /// reader records has to be stated in code; the two zero-width values make the SECOND one
+    /// identifiable in the tree, which is how last-wins is asserted rather than assumed.
+    /// </summary>
+    private static byte[] DuplicateKeyBlock()
+    {
+        // "a\0", the align(4) pad, then the string count.
+        var segment0 = new byte[8];
+        segment0[0] = (byte)'a';
+        BinaryPrimitives.WriteUInt32LittleEndian(segment0.AsSpan(4, 4), 1u);
+
+        // The object member count, the two string ids in the 4-byte buffer, three type tags,
+        // trailer. Both ids are 0, which is the string "a".
+        var segment1 = new byte[19];
+        BinaryPrimitives.WriteUInt32LittleEndian(segment1.AsSpan(0, 4), 2u);
+        segment1[12] = 0x09;   // OBJECT
+        segment1[13] = 0x0F;   // INT64_ZERO
+        segment1[14] = 0x10;   // INT64_ONE
+        segment1[15] = 0x00;
+        segment1[16] = 0xDD;
+        segment1[17] = 0xEE;
+        segment1[18] = 0xFF;
+
+        return new V5Block
+        {
+            Segment0Bytes = segment0,
+            Segment1Bytes = segment1,
+            StringBlobSize = 2,
+            AuxSlotCount = 1,
+            ObjectCount = 1,
+            IntCount = 2,
+            TypesSize = 3,
+        }.ToBytes();
+    }
+
+    /// <summary>
+    /// A stored-uncompressed v5 block whose whole tree is an ARRAY of the given INT64 values,
+    /// each tagged INT64 individually so the array is the ordinary type-8 kind rather than a
+    /// typed one. The 8-byte buffer is where an INT64 actually lives, which is the cursor the
+    /// narrowing sits on.
+    /// </summary>
+    private static byte[] Int64ArrayBlock(params long[] values)
+    {
+        // The array element count, the align(8) pad, then the values themselves.
+        var segment1 = new byte[8 + (values.Length * 8) + 1 + values.Length + 4];
+        BinaryPrimitives.WriteUInt32LittleEndian(segment1.AsSpan(0, 4), (uint)values.Length);
+        for (int i = 0; i < values.Length; i++)
+        {
+            BinaryPrimitives.WriteInt64LittleEndian(segment1.AsSpan(8 + (i * 8), 8), values[i]);
+        }
+
+        int types = 8 + (values.Length * 8);
+        segment1[types] = 0x08;                        // ARRAY
+        for (int i = 0; i < values.Length; i++)
+        {
+            segment1[types + 1 + i] = 0x03;            // INT64
+        }
+
+        int trailer = types + 1 + values.Length;
+        segment1[trailer] = 0x00;
+        segment1[trailer + 1] = 0xDD;
+        segment1[trailer + 2] = 0xEE;
+        segment1[trailer + 3] = 0xFF;
+
+        return new V5Block
+        {
+            Segment0Bytes = [0x00, 0x00, 0x00, 0x00],
+            Segment1Bytes = segment1,
+            AuxSlotCount = 1,
+            IntCount = 1,
+            EightByteCount = values.Length,
+            TypesSize = 1 + values.Length,
         }.ToBytes();
     }
 

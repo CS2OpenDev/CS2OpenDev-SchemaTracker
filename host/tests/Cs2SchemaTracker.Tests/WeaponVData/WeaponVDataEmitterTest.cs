@@ -7,12 +7,13 @@
 // glob. A synthesised stub would not decode, and a decode that never runs proves nothing about
 // the mapping.
 //
-// The ONE exception is the depth case. No shipped weapons.vdata_c nests anywhere near the 64
-// levels System.Text.Json will read, so that path is unreachable from the committed fixture and
-// a synthetic uncompressed KV3 v3 block is hand-built for it (NestedKv3Resource). Because a
-// MALFORMED synthetic block would throw the same InvalidDataException as the case under test —
-// the decode wrapper names the same source — a shallow control test asserts that the builder
-// produces a genuinely decodable resource, so the deep test cannot pass on a decode failure.
+// The exceptions are the three cases no shipped weapons.vdata_c contains, each of which gets a
+// hand-built uncompressed KV3 v3 block: a tree deeper than the 64 levels System.Text.Json will
+// read (NestedKv3Resource), an OBJECT that repeats a key, and one carrying an integer past 2^53
+// (both Kv3V3Int64ObjectResource). Because a MALFORMED synthetic block would throw the same
+// InvalidDataException as the case under test — the decode wrapper names the same source — each
+// builder has a control test asserting it produces a genuinely decodable resource, so none of
+// those tests can pass on a decode failure.
 //
 // We assert:
 //   * the happy-path mapping — all 176 top-level entries, verbatim, envelope fields stamped;
@@ -28,6 +29,8 @@
 //     VPK path (FileNotFoundException via EmitFromVpk);
 //   * a tree that nests deeper than canonical JSON will read fails loud as a typed
 //     InvalidDataException naming the source, instead of escaping as a raw JsonException;
+//   * a decode that LOST data fails loud before any output bytes, naming what was lost: a KV3
+//     key the reader collapsed last-wins, and a 64-bit integer the narrowing to double changed;
 //   * the synthetic nested block round-trips when it is shallow (the fixture-validity guard for
 //     the case above).
 
@@ -201,14 +204,15 @@ public class WeaponVDataEmitterTest
         return block;
     }
 
+    private static byte[] NestedKv3Resource(int depth) => Kv3Resource(NestedKv3V3Block(depth));
+
     /// <summary>
-    /// <see cref="NestedKv3V3Block"/> wrapped in a minimal compiled-resource container holding
-    /// one DATA block — the same shape Kv3BinaryReaderTest.BuildContainer produces, which is what
+    /// A KV3 DATA block wrapped in a minimal compiled-resource container holding that one block
+    /// — the same shape Kv3BinaryReaderTest.BuildContainer produces, which is what
     /// Kv3BinaryReader.Decode walks to find the payload.
     /// </summary>
-    private static byte[] NestedKv3Resource(int depth)
+    private static byte[] Kv3Resource(byte[] block)
     {
-        byte[] block = NestedKv3V3Block(depth);
         const int TableStart = 16;
         const int PayloadStart = TableStart + 12;
 
@@ -225,6 +229,87 @@ public class WeaponVDataEmitterTest
         BinaryPrimitives.WriteUInt32LittleEndian(bytes.AsSpan(TableStart + 8, 4), (uint)block.Length);
         block.CopyTo(bytes.AsSpan(PayloadStart));
         return bytes;
+    }
+
+    /// <summary>
+    /// A hand-built, UNCOMPRESSED KV3 v3 resource whose tree is ONE OBJECT carrying the given
+    /// INT64 members in the given order. Hand-built for the same reason NestedKv3V3Block is:
+    /// no shipped weapons.vdata_c repeats a key or carries an integer past 2^53, so neither
+    /// loss Kv3BinaryReader records is reachable from the committed fixture. The geometry is
+    /// the documented v3 layout, and the reader trailer check and RequireFullyConsumed reject
+    /// anything else; its correctness is itself asserted, by
+    /// Synthetic_Int64_Object_Round_Trips_When_Nothing_Is_Lost.
+    /// </summary>
+    private static byte[] Kv3V3Int64ObjectResource(params (string Key, long Value)[] members)
+    {
+        var strings = new List<string>();
+        foreach ((string key, _) in members)
+        {
+            if (!strings.Contains(key))
+            {
+                strings.Add(key);
+            }
+        }
+
+        var payload = new MemoryStream();
+
+        // The byte buffer is empty, so the 4-byte slots start at offset 0. The FIRST slot is
+        // the string count; then comes the OBJECT member count — v3 reads that from the general
+        // 4-byte buffer, not from a dedicated one — and then one string id per member.
+        WriteU32(payload, (uint)strings.Count);
+        WriteU32(payload, (uint)members.Length);
+        foreach ((string key, _) in members)
+        {
+            WriteU32(payload, (uint)strings.IndexOf(key));
+        }
+
+        // align(8) in front of the 8-byte buffer. v3/v4 pad UNCONDITIONALLY; drop these bytes
+        // when the slot count lands 4 mod 8 and the whole block is refused.
+        while (payload.Length % 8 != 0)
+        {
+            payload.WriteByte(0);
+        }
+        var eight = new byte[8];
+        foreach ((_, long value) in members)
+        {
+            BinaryPrimitives.WriteInt64LittleEndian(eight, value);
+            payload.Write(eight);
+        }
+
+        // The string + types area: the NUL-terminated strings, then the type stream.
+        int stringBytes = 0;
+        foreach (string key in strings)
+        {
+            WriteCString(payload, key);
+            stringBytes += Encoding.UTF8.GetByteCount(key) + 1;
+        }
+        payload.WriteByte(0x09);                  // OBJECT
+        for (int i = 0; i < members.Length; i++)
+        {
+            payload.WriteByte(0x03);              // INT64
+        }
+
+        // No binary blobs, so the blob length list is empty and the 00 DD EE FF trailer follows
+        // the type stream immediately.
+        payload.Write(new byte[] { 0x00, 0xDD, 0xEE, 0xFF });
+
+        byte[] payloadBytes = payload.ToArray();
+
+        var block = new byte[64 + payloadBytes.Length];
+        new byte[] { 0x03, 0x33, 0x56, 0x4B }.CopyTo(block.AsSpan(0));   // KV3_V3 magic
+        BinaryPrimitives.WriteUInt32LittleEndian(block.AsSpan(20, 4), 0);                          // compressionMethod: stored
+        BinaryPrimitives.WriteUInt32LittleEndian(block.AsSpan(28, 4), 0);                          // byte buffer size
+        BinaryPrimitives.WriteUInt32LittleEndian(block.AsSpan(32, 4), (uint)(2 + members.Length)); // 4-byte slot count
+        BinaryPrimitives.WriteUInt32LittleEndian(block.AsSpan(36, 4), (uint)members.Length);       // 8-byte value count
+        BinaryPrimitives.WriteUInt32LittleEndian(
+            block.AsSpan(40, 4), (uint)(stringBytes + 1 + members.Length));                        // string + types area
+        BinaryPrimitives.WriteUInt32LittleEndian(block.AsSpan(48, 4), (uint)payloadBytes.Length);
+        // v3 writes the uncompressed size into the compressed-size field too under method 0.
+        BinaryPrimitives.WriteUInt32LittleEndian(block.AsSpan(52, 4), (uint)payloadBytes.Length);
+        BinaryPrimitives.WriteUInt32LittleEndian(block.AsSpan(56, 4), 0);                          // blob count
+        BinaryPrimitives.WriteUInt32LittleEndian(block.AsSpan(60, 4), 0);                          // blob total size
+        payloadBytes.CopyTo(block.AsSpan(64));
+        return Kv3Resource(block);
     }
 
     private static WeaponVDataEmitter NewEmitter() => new(SchemaFamily.Version, BuildId, Platform);
@@ -520,6 +605,85 @@ public class WeaponVDataEmitterTest
             // Pins that the real serializer failure was wrapped rather than a hand-rolled
             // pre-check substituted for it.
             Assert.IsAssignableFrom<JsonException>(ex.InnerException);
+
+            Assert.False(File.Exists(outPath));
+            Assert.False(File.Exists(outPath + ".tmp"));
+        }
+        finally { Directory.Delete(dir, recursive: true); }
+    }
+
+    /// <summary>
+    /// The FIXTURE-VALIDITY GUARD for the two refusals below, and the other half of each of
+    /// them. Both assert an InvalidDataException naming scripts/weapons.vdata_c — which is also
+    /// exactly what a synthetic block the reader could not decode would produce — so this
+    /// proves the builder emits a resource that really decodes, and that neither refusal fires
+    /// on a tree that lost nothing: two DISTINCT keys are not a duplicate, and 2^53 is the
+    /// largest integer a double still holds exactly.
+    /// </summary>
+    [Fact]
+    public void Synthetic_Int64_Object_Round_Trips_When_Nothing_Is_Lost()
+    {
+        var dir = NewWorkDir();
+        try
+        {
+            var outPath = Path.Combine(dir, "weapon_vdata.json");
+            NewEmitter().Emit(
+                ArchiveWith(Kv3V3Int64ObjectResource(("a", 9007199254740992L), ("b", -5L))),
+                outPath);
+
+            using var doc = JsonDocument.Parse(File.ReadAllText(outPath));
+            var entries = doc.RootElement.GetProperty("entries");
+            Assert.Equal(2, entries.GetArrayLength());
+            Assert.Equal(9007199254740992d, EntryValue(entries, "a").GetDouble());
+            Assert.Equal(-5d, EntryValue(entries, "b").GetDouble());
+        }
+        finally { Directory.Delete(dir, recursive: true); }
+    }
+
+    [Fact]
+    public void FailLoud_Repeated_Kv3_Key_The_Reader_Collapsed()
+    {
+        var dir = NewWorkDir();
+        try
+        {
+            // Two members, one key. The reader still collapses them LAST-WINS — that half has
+            // not changed — but the collapse is recorded now instead of vanishing, and this
+            // emitter refuses rather than publishing a top level that quietly dropped a value.
+            var outPath = Path.Combine(dir, "weapon_vdata.json");
+            var ex = Assert.Throws<InvalidDataException>(() => NewEmitter().Emit(
+                ArchiveWith(Kv3V3Int64ObjectResource(("a", 1L), ("a", 2L))), outPath));
+
+            Assert.Contains("scripts/weapons.vdata_c", ex.Message, StringComparison.Ordinal);
+            // Fragments unique to THIS refusal. The decode wrapper names the same source, so
+            // without them a synthetic block the reader could not decode at all would satisfy
+            // the assertion above for entirely the wrong reason.
+            Assert.Contains("LAST-WINS", ex.Message, StringComparison.Ordinal);
+            Assert.Contains("\'a\'", ex.Message, StringComparison.Ordinal);
+
+            Assert.False(File.Exists(outPath));
+            Assert.False(File.Exists(outPath + ".tmp"));
+        }
+        finally { Directory.Delete(dir, recursive: true); }
+    }
+
+    [Fact]
+    public void FailLoud_Int64_That_Did_Not_Survive_The_Narrowing_To_Double()
+    {
+        var dir = NewWorkDir();
+        try
+        {
+            // 2^53+1 is the smallest positive integer a double cannot hold: it arrives here as
+            // 9007199254740992, indistinguishable from a genuine double and one off what the
+            // depot said. Only the narrowing site can still tell, and it now says so.
+            var outPath = Path.Combine(dir, "weapon_vdata.json");
+            var ex = Assert.Throws<InvalidDataException>(() => NewEmitter().Emit(
+                ArchiveWith(Kv3V3Int64ObjectResource(("a", 9007199254740993L))), outPath));
+
+            Assert.Contains("scripts/weapons.vdata_c", ex.Message, StringComparison.Ordinal);
+            // Again unique to this refusal, and the value itself, which is the one thing an
+            // operator needs in order to find the field the depot changed.
+            Assert.Contains("did not survive", ex.Message, StringComparison.Ordinal);
+            Assert.Contains("9007199254740993", ex.Message, StringComparison.Ordinal);
 
             Assert.False(File.Exists(outPath));
             Assert.False(File.Exists(outPath + ".tmp"));

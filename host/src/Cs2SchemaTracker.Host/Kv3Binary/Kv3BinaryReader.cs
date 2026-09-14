@@ -26,6 +26,23 @@
 //   - null         -> Value.NullValue
 //   - binary blob  -> Value.StringValue holding standard base64 (see "Binary blobs" below)
 //
+// === What that shape LOSES, and how a caller hears about it ===
+// Two of those mappings are not injective, and neither loss is visible in the tree that comes
+// out of them. A repeated KV3 key collapses LAST-WINS into the Struct map, so a duplicate is
+// simply not there to be found afterwards. An INT64 / UINT64 past 2^53 rounds on the way into
+// the double that Value.NumberValue is, so ulong.MaxValue arrives as 1.8446744073709552e+19 and
+// 9007199254740993 as the still-integer-looking 9007199254740992 — neither distinguishable from
+// a genuine DOUBLE. Both used to leave the reader silently, which is why an emitter-side check
+// for either could never fire.
+//
+// DECODING IS UNCHANGED: the collapse and the narrowing both still happen, byte for byte, and
+// Decode returns exactly the tree it always has. What is new is that the reader RECORDS both
+// losses as it makes them and DecodeWithLoss hands the record to the caller. Recording rather
+// than refusing is forced by the corpus: aztec_skybox_tree_card_large_01.vmdl_c ships
+// ulong.MaxValue twice, so a reader that threw at the narrowing site could not read a resource
+// Valve actually shipped. A caller that cannot live with the loss decides for itself —
+// WeaponVDataEmitter does, and fails loud.
+//
 // === Container: the compiled resource wrapper ===
 // CONFIRMED against real bytes. Shared by every Source 2 `*_c` file and by every KV3 version:
 //
@@ -288,6 +305,7 @@
 //     and refused rather than skipped.
 
 using System.Buffers.Binary;
+using System.Globalization;
 using System.Text;
 
 using Google.Protobuf.WellKnownTypes;
@@ -299,6 +317,38 @@ internal sealed class Kv3BinaryException : Exception
 {
     public Kv3BinaryException(string message) : base(message) { }
     public Kv3BinaryException(string message, Exception inner) : base(message, inner) { }
+}
+
+/// <summary>
+/// What one decode could not carry into the structural tree. See "What that shape LOSES" in
+/// this file header for why these are recorded rather than refused. Both lists are in tree
+/// order and hold one entry per OCCURRENCE, not per distinct value, so a caller can report how
+/// many times it happened as well as where.
+/// </summary>
+internal sealed class Kv3DecodeLoss
+{
+    internal Kv3DecodeLoss(List<string>? duplicateKeys, List<string>? narrowedIntegers)
+    {
+        // Copied, not aliased: the walker keeps mutating its lists until the walk ends, and a
+        // loss record that changes under its reader would be worse than no record at all.
+        DuplicateKeys = duplicateKeys?.ToArray() ?? [];
+        NarrowedIntegers = narrowedIntegers?.ToArray() ?? [];
+    }
+
+    /// <summary>
+    /// Every OBJECT key whose value was overwritten by a later member of the same OBJECT — one
+    /// entry per collapse. The earlier value is gone; this is the only trace it left.
+    /// </summary>
+    public IReadOnlyList<string> DuplicateKeys { get; }
+
+    /// <summary>
+    /// Every INT64 / UINT64 that is not the same number as the double it became, in its own
+    /// exact decimal text — which the tree no longer holds and cannot be recovered from it.
+    /// </summary>
+    public IReadOnlyList<string> NarrowedIntegers { get; }
+
+    /// <summary>True when the tree carries everything the block said.</summary>
+    public bool IsLossless => DuplicateKeys.Count == 0 && NarrowedIntegers.Count == 0;
 }
 
 internal static class Kv3BinaryReader
@@ -361,26 +411,42 @@ internal static class Kv3BinaryReader
 
     /// <summary>
     /// Decode a compiled Source 2 resource (e.g. a .vdata_c file's full bytes): locate its DATA
-    /// block, decode the binary KV3 payload, and return the structural tree.
+    /// block, decode the binary KV3 payload, and return the structural tree. Whatever that tree
+    /// could not carry is dropped here without a word; a caller that needs to know reads
+    /// <see cref="DecodeWithLoss"/> instead.
     /// </summary>
-    public static Value Decode(byte[] resourceBytes)
+    public static Value Decode(byte[] resourceBytes) => DecodeWithLoss(resourceBytes).Root;
+
+    /// <summary>
+    /// <see cref="Decode"/>, plus the record of what the decode could not carry. The tree is
+    /// the one <see cref="Decode"/> returns, node for node: recording changes nothing about how
+    /// a block is read, it only stops the loss leaving without a trace. See
+    /// <see cref="Kv3DecodeLoss"/>.
+    /// </summary>
+    public static (Value Root, Kv3DecodeLoss Loss) DecodeWithLoss(byte[] resourceBytes)
     {
         ArgumentNullException.ThrowIfNull(resourceBytes);
         (int dataOffset, int dataSize) = FindDataBlock(resourceBytes);
-        return DecodeBlock(resourceBytes.AsSpan(dataOffset, dataSize));
+        return DecodeBlockWithLoss(resourceBytes.AsSpan(dataOffset, dataSize));
     }
 
     /// <summary>
     /// Decode a bare KV3 block — the payload of a compiled resource's DATA block, without the
     /// container around it. Exposed for tests and for callers that already sliced the block out.
     /// </summary>
-    public static Value DecodeBlock(ReadOnlySpan<byte> block)
+    public static Value DecodeBlock(ReadOnlySpan<byte> block) => DecodeBlockWithLoss(block).Root;
+
+    /// <summary>
+    /// <see cref="DecodeBlock"/>, plus the loss record. Every entry point above funnels through
+    /// here, so no caller can take a decode path that forgets to keep the record.
+    /// </summary>
+    public static (Value Root, Kv3DecodeLoss Loss) DecodeBlockWithLoss(ReadOnlySpan<byte> block)
     {
         int version = IdentifyVersion(block);
         Walker walker = version == 5 ? BuildV5Walker(block) : BuildV3OrV4Walker(block, version);
         Value root = walker.ReadRoot();
         walker.RequireFullyConsumed();
-        return root;
+        return (root, walker.Loss);
     }
 
     // -----------------------------------------------------------------------------------
@@ -1249,6 +1315,12 @@ internal static class Kv3BinaryReader
 
         private int _blobIndex;
 
+        // What this walk could not carry into the tree. Null until the first loss of each kind,
+        // because almost every block in the corpus loses nothing and must not pay for a list it
+        // never fills.
+        private List<string>? _duplicateKeys;
+        private List<string>? _narrowedIntegers;
+
         public Walker(
             int version,
             byte[] main,
@@ -1318,6 +1390,9 @@ internal static class Kv3BinaryReader
                     $"{buffer.Length}-byte buffer that holds it.");
             }
         }
+
+        /// <summary>What this walk lost on the way into the tree. See <see cref="Kv3DecodeLoss"/>.</summary>
+        public Kv3DecodeLoss Loss => new(_duplicateKeys, _narrowedIntegers);
 
         /// <summary>Read the single tagged value at the root of the tree.</summary>
         public Value ReadRoot()
@@ -1526,6 +1601,56 @@ internal static class Kv3BinaryReader
             return (b & 0x7F, _main[_typesPos - 1]);
         }
 
+        // -- recording what the tree cannot hold -----------------------------------------
+
+        /// <summary>
+        /// Narrow a KV3 INT64 to the double google.protobuf.Value carries, recording the value
+        /// first when the two are not the same number.
+        /// </summary>
+        private double Narrow(long value)
+        {
+            // long.MinValue has no positive counterpart, and negating it unchecked lands on
+            // itself; cast to ulong afterwards and the magnitude comes out right anyway.
+            ulong magnitude = value < 0 ? (ulong)(-value) : (ulong)value;
+            if (!SurvivesNarrowing(magnitude))
+            {
+                (_narrowedIntegers ??= []).Add(value.ToString(CultureInfo.InvariantCulture));
+            }
+            return value;
+        }
+
+        /// <summary><see cref="Narrow(long)"/> for UINT64, whose top bit is a value bit.</summary>
+        private double Narrow(ulong value)
+        {
+            if (!SurvivesNarrowing(value))
+            {
+                (_narrowedIntegers ??= []).Add(value.ToString(CultureInfo.InvariantCulture));
+            }
+            return value;
+        }
+
+        /// <summary>
+        /// True when a double is still the same number as this magnitude. A double keeps 53
+        /// significant bits, so anything larger survives only if every bit below its top 53 is
+        /// already zero. This is the same round trip Kv3BinaryReaderTest.Renumber applies to the
+        /// reference side of the whole-tree diff — an integer equals its own double iff nothing
+        /// was rounded off it — done in bits rather than in text so that the happy path, which is
+        /// every 8-byte value in every shipped block, does not format two strings to find out.
+        /// </summary>
+        private static bool SurvivesNarrowing(ulong magnitude)
+        {
+            const ulong ExactCeiling = 1UL << 53;
+            while (magnitude > ExactCeiling)
+            {
+                if ((magnitude & 1) != 0)
+                {
+                    return false;
+                }
+                magnitude >>= 1;
+            }
+            return true;
+        }
+
         // -- the walk --------------------------------------------------------------------
 
         private Value ReadValue(int type, int depth)
@@ -1552,10 +1677,10 @@ internal static class Kv3BinaryReader
                     return Value.ForBool(false);
 
                 case TypeInt64:
-                    return Value.ForNumber(NextInt64());
+                    return Value.ForNumber(Narrow(NextInt64()));
 
                 case TypeUInt64:
-                    return Value.ForNumber(NextUInt64());
+                    return Value.ForNumber(Narrow(NextUInt64()));
 
                 case TypeInt64Zero:
                     return Value.ForNumber(0d);
@@ -1629,9 +1754,19 @@ internal static class Kv3BinaryReader
             {
                 string key = StringById(NextInt32());
                 (int type, _) = ReadTag();
+                Value member = ReadValue(type, depth + 1);
+
                 // Last value wins on a duplicate key, matching EntitySchema/Kv3.cs — a Struct
-                // cannot hold both, and no duplicate occurs in any measured block.
-                members.Fields[key] = ReadValue(type, depth + 1);
+                // cannot hold both, and no duplicate occurs in any measured block. The collapse
+                // is no longer silent, though: the map Count is the one thing already on hand
+                // that says it happened, since an overwrite is the only assignment that does not
+                // grow it, so the record costs two int reads per member and no second lookup.
+                int before = members.Fields.Count;
+                members.Fields[key] = member;
+                if (members.Fields.Count == before)
+                {
+                    (_duplicateKeys ??= []).Add(key);
+                }
             }
             return Value.ForStruct(members);
         }
@@ -1700,8 +1835,8 @@ internal static class Kv3BinaryReader
             TypeInt32 => Value.ForNumber(NextAuxInt32()),
             TypeUInt32 => Value.ForNumber(NextAuxUInt32()),
             TypeFloat => Value.ForNumber(NextAuxSingle()),
-            TypeInt64 => Value.ForNumber(NextAuxInt64()),
-            TypeUInt64 => Value.ForNumber(NextAuxUInt64()),
+            TypeInt64 => Value.ForNumber(Narrow(NextAuxInt64())),
+            TypeUInt64 => Value.ForNumber(Narrow(NextAuxUInt64())),
             TypeDoubleZero => Value.ForNumber(0d),
             TypeDoubleOne => Value.ForNumber(1d),
             TypeInt64Zero => Value.ForNumber(0d),
