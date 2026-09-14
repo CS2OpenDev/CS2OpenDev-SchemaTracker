@@ -362,9 +362,32 @@ jobs:
           echo "tag=v$V"        >> "$GITHUB_OUTPUT"
           echo "prerelease=$PRE" >> "$GITHUB_OUTPUT"
 
+          # A PUBLISHED RELEASE IS IMMUTABLE (why this check exists):
+          # This workflow runs on every push to main, and nbgv keeps returning the same
+          # version until version.json moves. softprops/action-gh-release does not refuse a
+          # tag that already exists — it FINDS that release and replaces its assets. So every
+          # ordinary merge silently re-pointed the newest release at whatever main had become.
+          # v1.4.0 is the evidence: published 2026-08-14 against bec1b406, tag still on that
+          # commit, but its two bundles were deleted and re-uploaded on roughly 14 later
+          # pushes, most recently 2026-09-14 from a main containing all of PR #17. Anyone
+          # downloading "v1.4.0" got bytes that were never 1.4.0, and nothing anywhere said so.
+          #
+          # Cutting a release is therefore a DELIBERATE act — bump version.json, which is
+          # reviewable in a diff — and this job's only job when the tag is already here is to
+          # keep its hands off it. Exit 0, not 1: a merge to main that publishes nothing is
+          # the normal case, and a red run on every merge is noise people learn to ignore.
+          if git rev-parse -q --verify "refs/tags/v$V" >/dev/null; then
+            echo "::notice title=Release not republished::v$V is already published; skipping. Bump version.json to cut a new release."
+            echo "exists=true"  >> "$GITHUB_OUTPUT"
+          else
+            echo "v$V is not yet published — this run will cut it."
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
       # Both matrix legs uploaded a bundle-<platform> artifact carrying one archive each; merge
       # them into dist/ so the release step sees both the .zip and the .tar.gz.
       - name: Download bundle artifacts
+        if: steps.version.outputs.exists == 'false'
         uses: actions/download-artifact@v4
         with:
           pattern: bundle-*
@@ -372,6 +395,7 @@ jobs:
           merge-multiple: true
 
       - name: Publish GitHub Release
+        if: steps.version.outputs.exists == 'false'
         uses: softprops/action-gh-release@v2
         with:
           tag_name: ${{ steps.version.outputs.tag }}
