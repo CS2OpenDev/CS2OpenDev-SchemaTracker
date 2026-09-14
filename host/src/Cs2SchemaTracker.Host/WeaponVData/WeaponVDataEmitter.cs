@@ -183,15 +183,22 @@ internal sealed class WeaponVDataEmitter
         catch (JsonException ex)
         {
             // Wrapping the whole call is safe for the all-or-nothing invariant: AtomicWrite
-            // serializes fully before it creates the sibling .tmp, so a depth failure leaves no
-            // bytes behind. Deliberately NOT widened past JsonException — an IOException from
-            // the write itself must keep propagating as-is.
+            // serializes fully before it creates the sibling .tmp, so a serialization failure
+            // leaves no bytes behind. Deliberately NOT widened past JsonException — an IOException
+            // from the write itself must keep propagating as-is.
+            //
+            // The headline does NOT claim depth. Depth is the only cause we have actually seen and
+            // by far the likeliest, but this catch cannot distinguish it from any other JsonException
+            // out of the formatter, and a message that asserts "nests too deeply" at an operator
+            // staring at some other serializer failure sends them somewhere the bug is not. Name the
+            // likely cause, hand over the inner message, and let it be read.
             throw new InvalidDataException(
-                $"WeaponVDataEmitter: '{WeaponVDataPath}' decoded to a tree that NESTS TOO "
-                + $"DEEPLY for canonical JSON: {ex.Message} Kv3BinaryReader accepts 512 levels "
-                + "but CanonicalJson re-reads the formatter's output through JsonDocument, whose "
-                + "depth cap is 64, so this fails only at serialization — long after the decode "
-                + $"and every check above have passed. Refusing to write '{outputPath}'.", ex);
+                $"WeaponVDataEmitter: '{WeaponVDataPath}' decoded to a tree that canonical JSON "
+                + $"REFUSED TO SERIALIZE: {ex.Message} The usual cause is DEPTH: Kv3BinaryReader "
+                + "accepts 512 levels but CanonicalJson re-reads the formatter's output through "
+                + "JsonDocument, whose depth cap is 64, so an over-deep tree fails only at "
+                + "serialization — long after the decode and every check above have passed. Read the "
+                + $"inner message above before assuming that is what happened. Refusing to write '{outputPath}'.", ex);
         }
     }
 

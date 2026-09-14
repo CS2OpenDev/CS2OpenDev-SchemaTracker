@@ -511,7 +511,12 @@ public class WeaponVDataEmitterTest
             Assert.Contains("scripts/weapons.vdata_c", ex.Message, StringComparison.Ordinal);
             // A fragment unique to the serialization wrap, so the decode wrapper's message — which
             // names the same source — cannot satisfy this assertion.
-            Assert.Contains("NESTS TOO DEEPLY", ex.Message, StringComparison.Ordinal);
+            Assert.Contains("REFUSED TO SERIALIZE", ex.Message, StringComparison.Ordinal);
+            // The wrap names depth as the LIKELY cause without asserting it (the catch cannot tell a
+            // depth failure from any other JsonException), so both halves are pinned: the diagnosis
+            // is offered, and the serializer's own message is carried through for the operator to read.
+            Assert.Contains("The usual cause is DEPTH", ex.Message, StringComparison.Ordinal);
+            Assert.Contains(ex.InnerException!.Message, ex.Message, StringComparison.Ordinal);
             // Pins that the real serializer failure was wrapped rather than a hand-rolled
             // pre-check substituted for it.
             Assert.IsAssignableFrom<JsonException>(ex.InnerException);

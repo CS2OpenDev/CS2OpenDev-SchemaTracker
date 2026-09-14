@@ -1776,8 +1776,13 @@ internal static class AcquireCommand
                         minimalGameEvents: true, explicitSpec: contentSpec, dirOnly: false,
                         CancellationToken.None).ConfigureAwait(false);
                     contentDone = true;
+                    // + PhaseAIndexBytes: AcquireContentPakAsync drops Phase A's whole-index fetch from
+                    // DownloadedBytes whenever Phase B runs, and Phase B re-fetches that index rather than
+                    // reusing it — so the raw figure under-reports what Steam sent. Same correction the
+                    // content-backfill line makes; see AcquireResult.PhaseAIndexBytes for why it is exact.
+                    long contentFetched = contentResult.DownloadedBytes + contentResult.PhaseAIndexBytes;
                     contentNote =
-                        $" +content(files={contentResult.Files.Count} fetched={contentResult.DownloadedBytes:N0}B)";
+                        $" +content(files={contentResult.Files.Count} fetched={contentFetched:N0}B)";
                 }
             }
 

@@ -56,4 +56,44 @@ internal sealed record AcquireResult(
     /// "did we hit the network?" signal the batch reports so a binary-cache reuse
     /// run can be seen to transfer content-only, not re-fetch cached binaries.
     /// </summary>
-    long DownloadedBytes = 0);
+    long DownloadedBytes = 0)
+{
+    /// <summary>
+    /// The Phase-A directory-index transfer this result does NOT count, so a caller can report what
+    /// Steam actually sent.
+    /// <para>
+    /// AcquireContentPakAsync fetches every content pak's <c>pak01_dir.vpk</c> WHOLE in Phase A to parse
+    /// the required set, then — when the patch partition leaves body ranges to fetch — returns ONLY Phase
+    /// B's result, dropping Phase A's transfer from <see cref="DownloadedBytes"/>. Phase B genuinely
+    /// re-downloads that index (BuildByteRangePlan always lists the directory file as a whole file, and
+    /// Phase B stages into a fresh <c>.partial</c> where the chunk-resume probe hits nothing), so the
+    /// index is paid for TWICE and the acquire reports one of them. A whole-file fetch's
+    /// <see cref="AcquiredFileInfo.SizeBytes"/> IS the number of bytes it transferred, which is why
+    /// summing the result's directory files restores the unreported half.
+    /// </para>
+    /// <para>
+    /// When Phase B was SKIPPED the acquirer hands back Phase A's own result, whose DownloadedBytes
+    /// already counts the index and whose Files are directory files ONLY — the "carries a non-directory
+    /// file" gate returns 0 there, so that shape is never double-counted. The addend is exact only while
+    /// both of those hold: Phase B re-fetching the directory file whole, and Phase A's staging being
+    /// fresh. If a later acquirer change lets Phase B reuse Phase A's staging, this over-reports.
+    /// </para>
+    /// <para>
+    /// This derivation lives here, on the result itself, so there is exactly ONE definition rather than a
+    /// copy per caller. It exists ONLY because AcquireResult carries no Phase-A field: if the acquirer
+    /// ever folds Phase A into <see cref="DownloadedBytes"/>, DELETE this property and EVERY call site in
+    /// the SAME change or the index is counted twice.
+    /// </para>
+    /// </summary>
+    internal long PhaseAIndexBytes
+    {
+        get
+        {
+            static bool IsIndex(AcquiredFileInfo f)
+                => ContentPak.All.Any(p => p.IsDirectoryFile(f.RelativePath));
+            return Files.Any(f => !IsIndex(f))
+                ? Files.Where(IsIndex).Sum(f => f.SizeBytes)
+                : 0;
+        }
+    }
+}

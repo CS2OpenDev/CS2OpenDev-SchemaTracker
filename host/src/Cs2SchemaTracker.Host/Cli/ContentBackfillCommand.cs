@@ -206,7 +206,7 @@ internal static class ContentBackfillCommand
                         CancellationToken.None).ConfigureAwait(false);
                     fetched++;
                     consecutiveFailures = 0;
-                    long phaseAIndexBytes = PhaseAIndexBytes(result);
+                    long phaseAIndexBytes = result.PhaseAIndexBytes;
                     long gidBytes = result.DownloadedBytes + phaseAIndexBytes;
                     transferredBytes += gidBytes;
                     string indexNote = phaseAIndexBytes > 0
@@ -387,41 +387,6 @@ internal static class ContentBackfillCommand
             || m.Contains("produced no LoggedOnCallback", StringComparison.OrdinalIgnoreCase)
             || m.Contains("disconnected before connect completed", StringComparison.OrdinalIgnoreCase)
             || m.Contains("disconnected before logon completed", StringComparison.OrdinalIgnoreCase);
-    }
-
-    /// <summary>
-    /// The Phase-A directory-index transfer that <paramref name="result"/> does NOT count, so the run can
-    /// report what Steam actually sent.
-    /// <para>
-    /// AcquireContentPakAsync fetches every content pak's <c>pak01_dir.vpk</c> WHOLE in Phase A to parse
-    /// the required set, then — when the patch partition leaves body ranges to fetch — returns ONLY Phase
-    /// B's result, dropping Phase A's transfer from <see cref="AcquireResult.DownloadedBytes"/>. Phase B
-    /// genuinely re-downloads that index (BuildByteRangePlan always lists the directory file as a whole
-    /// file, and Phase B stages into a fresh <c>.partial</c> where the chunk-resume probe hits nothing),
-    /// so the index is paid for TWICE and the acquire reports one of them. A whole-file fetch's
-    /// <see cref="AcquiredFileInfo.SizeBytes"/> IS the number of bytes it transferred, which is why
-    /// summing the result's directory files restores the unreported half.
-    /// </para>
-    /// <para>
-    /// When Phase B was SKIPPED the acquirer hands back Phase A's own result, whose DownloadedBytes
-    /// already counts the index and whose Files are directory files ONLY — the "carries a non-directory
-    /// file" gate returns 0 there, so that shape is never double-counted. The addend is exact only while
-    /// both of those hold: Phase B re-fetching the directory file whole, and Phase A's staging being
-    /// fresh. If a later acquirer change lets Phase B reuse Phase A's staging, this over-reports.
-    /// </para>
-    /// <para>
-    /// This derivation exists ONLY because AcquireResult carries no Phase-A field. If the acquirer ever
-    /// folds Phase A into DownloadedBytes, DELETE this helper and its call site in the SAME change or the
-    /// index is counted twice.
-    /// </para>
-    /// </summary>
-    private static long PhaseAIndexBytes(AcquireResult result)
-    {
-        static bool IsIndex(AcquiredFileInfo f)
-            => ContentPak.All.Any(p => p.IsDirectoryFile(f.RelativePath));
-        return result.Files.Any(f => !IsIndex(f))
-            ? result.Files.Where(IsIndex).Sum(f => f.SizeBytes)
-            : 0;
     }
 
     private static void PrintHelp()
