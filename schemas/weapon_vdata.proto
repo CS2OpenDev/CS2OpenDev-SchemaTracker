@@ -1,0 +1,84 @@
+// Weapon VData extraction from CS2 scripts/weapons.vdata_c — a COMPILED Source 2
+// resource (binary KV3, not the KV1/KV3-text the other content artifacts read),
+// packed in the content-depot pak01.
+//
+// A VERBATIM KV3 mirror — deliberately NOT the structured-message treatment
+// item_definitions / prop_data / surface_properties get. See "shape decision" below.
+//
+// === The source (CONFIRMED against the committed build-25175329 fixture, 2026-09-09) ===
+// The decoded DATA block is one KV3 map with 176 top-level entries:
+//   - 88 `weapon_*` keys: 45 plain (weapon_ak47, weapon_deagle, ...) plus 43 `_prefab`
+//     variants (weapon_ak47_prefab, ...);
+//   - 72 numeric item-definition-index aliases ("1" -> deagle, "7" -> ak47) that are
+//     near-duplicates of the named entries;
+//   - 15 category/prefab objects (rifle, melee, c4, statted_item_base, ...);
+//   - 1 BARE STRING entry: generic_data_type = "CBasePlayerWeaponVData".
+// That last one is why the payload is google.protobuf.Value and not Struct: NOT every
+// top-level entry is a map, and a Struct-typed payload could not represent it.
+//
+// Each weapon entry carries ~87 fields DIRECTLY. Valve's resource compiler already
+// resolves the prefab chain at build time, so the compiled entries are flat and complete;
+// `_class` and `_base` are genuine KV3 keys inside each entry (weapon_ak47._base ==
+// "weapon_ak47_prefab") and are retained as ordinary payload, not promoted to typed fields.
+//
+//   weapon_ak47 = {
+//       _class = "weapon_ak47"  _base = "weapon_ak47_prefab"
+//       m_nDamage = 36  m_nRecoilSeed = 223  m_flArmorRatio = 1.55
+//       m_flSpread = [ 0.0006, 0.0006 ]      // a 2-element array
+//       m_flCycleTime = 0.1                  // schema type is a 2-array; source shorthand
+//       ...
+//   }
+//   generic_data_type = "CBasePlayerWeaponVData"    // a bare string, not a map
+//
+// === SHAPE DECISION (verbatim KV3 mirror) ===
+// One repeated `entries`, each a (key, Value) pair carrying the top-level KV3 value AS IS:
+//   - The field set is wide (~87 per weapon), heterogeneous across the weapon / alias /
+//     category / prefab entry kinds, and moves between builds. A typed proto per field
+//     would be brittle and would silently DROP anything Valve adds — the exact failure a
+//     weapon-stats consumer cannot tolerate. A structural mirror drops nothing.
+//   - Mixed-arity numerics are emitted EXACTLY as the source has them: m_flSpread stays a
+//     2-element array, m_flCycleTime stays a bare scalar. Normalising the shorthand into a
+//     2-array would invent data the build does not contain.
+//   - No flattening (the compiler already resolved prefabs), no field filtering, no
+//     promotion of `_class` / `_base`. What the resource says is what the artifact says.
+//   - entity_schema.json already carries KV3 payloads this way (the MGetKV3ClassDefaults
+//     value_parsed nodes), so this is an established representation here, not a new one.
+//
+// Determinism (host concern, noted for the contract): `entries` is sorted by `key`
+// ORDINAL — note that puts the numeric aliases first and lexicographically, "1" < "10" <
+// "13" < ... , not in numeric order. Keys are unique in the source and the emitter asserts
+// it. Within a Value the object keys are sorted by the canonical-JSON layer and ARRAY ORDER
+// IS SOURCE ORDER (arrays are payload, never re-ordered). Canonical JSON, LF, UTF-8 no BOM.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+import "google/protobuf/struct.proto";   // for the verbatim KV3 payload (Value)
+
+message WeaponVData {
+  string schema_version = 1;       // schemas/ family version
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" | "linux-x86_64"
+
+  // The depot-relative path the payload was decoded from ("scripts/weapons.vdata_c").
+  // Recorded so a consumer can tell WHICH compiled resource produced the tree without
+  // inferring it from the artifact name.
+  string source_file    = 4;
+
+  // Every top-level KV3 entry, sorted by key Ordinal. REQUIRED non-empty.
+  repeated WeaponVDataEntry entries = 100;
+}
+
+message WeaponVDataEntry {
+  // The top-level KV3 key, VERBATIM: a weapon name ("weapon_ak47"), a prefab name
+  // ("weapon_ak47_prefab"), a numeric item-definition-index alias ("7"), a category
+  // object ("rifle"), or the bare "generic_data_type".
+  string key = 1;
+
+  // The entry's KV3 value, VERBATIM and complete. Usually a map; "generic_data_type" is a
+  // bare string — consumers MUST NOT assume an object. Nested arrays keep source order.
+  google.protobuf.Value value = 2;
+}
