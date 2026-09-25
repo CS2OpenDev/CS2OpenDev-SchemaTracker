@@ -1,9 +1,0 @@
-syntax = "proto2";
-
-enum EGCPetMsg {
-  k_EMsgGCAckPetEvent = 2538;
-}
-
-message CMsgAckPetEvent {
-  optional uint64 pet_item_id = 1;
-}
