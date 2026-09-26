@@ -1,0 +1,73 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "11",
+              "oldValue": "10"
+            }
+          ],
+          "name": "libclient.so/C_SmokeGrenadeProjectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "58",
+              "oldValue": "57"
+            }
+          ],
+          "name": "libserver.so/CCSWeaponBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "13",
+              "oldValue": "12"
+            }
+          ],
+          "name": "libserver.so/CSmokeGrenadeProjectile"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "sv_clantags_enabled"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [
+        "sv_smoke_lighting_changed"
+      ],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "25515854",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.12.0",
+  "toBuild": "25537370"
+}
