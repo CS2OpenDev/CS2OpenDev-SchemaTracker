@@ -1,0 +1,728 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "105",
+              "oldValue": "104"
+            }
+          ],
+          "name": "libclient.so/C_CSPlayerPawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "108",
+              "oldValue": "107"
+            }
+          ],
+          "name": "libserver.so/CCSPlayerPawn"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "member:k_EMsgGCApplyConsumableEffects",
+              "newValue": "",
+              "oldValue": "1069"
+            },
+            {
+              "field": "member:k_EMsgGCApplyConsumableEffects_DEPRECATED",
+              "newValue": "1069",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCApplyEggEssence",
+              "newValue": "",
+              "oldValue": "1078"
+            },
+            {
+              "field": "member:k_EMsgGCApplyEggEssence_DEPRECATED",
+              "newValue": "1078",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCApplyPennantUpgrade",
+              "newValue": "",
+              "oldValue": "1076"
+            },
+            {
+              "field": "member:k_EMsgGCApplyPennantUpgrade_DEPRECATED",
+              "newValue": "1076",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCApplyStrangePart",
+              "newValue": "",
+              "oldValue": "1073"
+            },
+            {
+              "field": "member:k_EMsgGCApplyStrangePart_DEPRECATED",
+              "newValue": "1073",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCClientDisplayNotification",
+              "newValue": "",
+              "oldValue": "1072"
+            },
+            {
+              "field": "member:k_EMsgGCClientDisplayNotification_DEPRECATED",
+              "newValue": "1072",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCCollectItem",
+              "newValue": "",
+              "oldValue": "1061"
+            },
+            {
+              "field": "member:k_EMsgGCCollectItem_DEPRECATED",
+              "newValue": "1061",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCCustomizeItemTexture",
+              "newValue": "",
+              "oldValue": "1023"
+            },
+            {
+              "field": "member:k_EMsgGCCustomizeItemTextureResponse",
+              "newValue": "",
+              "oldValue": "1024"
+            },
+            {
+              "field": "member:k_EMsgGCCustomizeItemTextureResponse_DEPRECATED",
+              "newValue": "1024",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCCustomizeItemTexture_DEPRECATED",
+              "newValue": "1023",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCDeliverGift",
+              "newValue": "",
+              "oldValue": "1034"
+            },
+            {
+              "field": "member:k_EMsgGCDeliverGiftResponseGiver",
+              "newValue": "",
+              "oldValue": "1035"
+            },
+            {
+              "field": "member:k_EMsgGCDeliverGiftResponseGiver_DEPRECATED",
+              "newValue": "1035",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCDeliverGiftResponseReceiver",
+              "newValue": "",
+              "oldValue": "1036"
+            },
+            {
+              "field": "member:k_EMsgGCDeliverGiftResponseReceiver_DEPRECATED",
+              "newValue": "1036",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCDeliverGift_DEPRECATED",
+              "newValue": "1034",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCDev_PaintKitDropItem",
+              "newValue": "",
+              "oldValue": "2003"
+            },
+            {
+              "field": "member:k_EMsgGCDev_PaintKitDropItem_DEPRECATED",
+              "newValue": "2003",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCGiftWrapItem",
+              "newValue": "",
+              "oldValue": "1032"
+            },
+            {
+              "field": "member:k_EMsgGCGiftWrapItemResponse",
+              "newValue": "",
+              "oldValue": "1033"
+            },
+            {
+              "field": "member:k_EMsgGCGiftWrapItemResponse_DEPRECATED",
+              "newValue": "1033",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCGiftWrapItem_DEPRECATED",
+              "newValue": "1032",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCGoldenWrenchBroadcast",
+              "newValue": "",
+              "oldValue": "1011"
+            },
+            {
+              "field": "member:k_EMsgGCGoldenWrenchBroadcast_DEPRECATED",
+              "newValue": "1011",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewCheckStatus",
+              "newValue": "",
+              "oldValue": "1701"
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewCheckStatus_DEPRECATED",
+              "newValue": "1701",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewExpire",
+              "newValue": "",
+              "oldValue": "1705"
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewExpireNotification",
+              "newValue": "",
+              "oldValue": "1706"
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewExpireNotification_DEPRECATED",
+              "newValue": "1706",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewExpire_DEPRECATED",
+              "newValue": "1705",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewItemBoughtNotification",
+              "newValue": "",
+              "oldValue": "1707"
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewItemBoughtNotification_DEPRECATED",
+              "newValue": "1707",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewRequest",
+              "newValue": "",
+              "oldValue": "1703"
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewRequestResponse",
+              "newValue": "",
+              "oldValue": "1704"
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewRequestResponse_DEPRECATED",
+              "newValue": "1704",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewRequest_DEPRECATED",
+              "newValue": "1703",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewStatusResponse",
+              "newValue": "",
+              "oldValue": "1702"
+            },
+            {
+              "field": "member:k_EMsgGCItemPreviewStatusResponse_DEPRECATED",
+              "newValue": "1702",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCLookupAccount",
+              "newValue": "",
+              "oldValue": "1043"
+            },
+            {
+              "field": "member:k_EMsgGCLookupAccountName",
+              "newValue": "",
+              "oldValue": "1045"
+            },
+            {
+              "field": "member:k_EMsgGCLookupAccountNameResponse",
+              "newValue": "",
+              "oldValue": "1046"
+            },
+            {
+              "field": "member:k_EMsgGCLookupAccountNameResponse_DEPRECATED",
+              "newValue": "1046",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCLookupAccountName_DEPRECATED",
+              "newValue": "1045",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCLookupAccountResponse",
+              "newValue": "",
+              "oldValue": "1044"
+            },
+            {
+              "field": "member:k_EMsgGCLookupAccountResponse_DEPRECATED",
+              "newValue": "1044",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCLookupAccount_DEPRECATED",
+              "newValue": "1043",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCMOTDRequest",
+              "newValue": "",
+              "oldValue": "1012"
+            },
+            {
+              "field": "member:k_EMsgGCMOTDRequestResponse",
+              "newValue": "",
+              "oldValue": "1013"
+            },
+            {
+              "field": "member:k_EMsgGCMOTDRequestResponse_DEPRECATED",
+              "newValue": "1013",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCMOTDRequest_DEPRECATED",
+              "newValue": "1012",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCNameEggEssenceResponse",
+              "newValue": "",
+              "oldValue": "1079"
+            },
+            {
+              "field": "member:k_EMsgGCNameEggEssenceResponse_DEPRECATED",
+              "newValue": "1079",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCPaintItem",
+              "newValue": "",
+              "oldValue": "1009"
+            },
+            {
+              "field": "member:k_EMsgGCPaintItemResponse",
+              "newValue": "",
+              "oldValue": "1010"
+            },
+            {
+              "field": "member:k_EMsgGCPaintItemResponse_DEPRECATED",
+              "newValue": "1010",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCPaintItem_DEPRECATED",
+              "newValue": "1009",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCPaintKitBaseItem",
+              "newValue": "",
+              "oldValue": "1081"
+            },
+            {
+              "field": "member:k_EMsgGCPaintKitBaseItem_DEPRECATED",
+              "newValue": "1081",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCPaintKitItem",
+              "newValue": "",
+              "oldValue": "1080"
+            },
+            {
+              "field": "member:k_EMsgGCPaintKitItemResponse",
+              "newValue": "",
+              "oldValue": "1082"
+            },
+            {
+              "field": "member:k_EMsgGCPaintKitItemResponse_DEPRECATED",
+              "newValue": "1082",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCPaintKitItem_DEPRECATED",
+              "newValue": "1080",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCRemoveCustomTexture",
+              "newValue": "",
+              "oldValue": "1051"
+            },
+            {
+              "field": "member:k_EMsgGCRemoveCustomTextureResponse",
+              "newValue": "",
+              "oldValue": "1052"
+            },
+            {
+              "field": "member:k_EMsgGCRemoveCustomTextureResponse_DEPRECATED",
+              "newValue": "1052",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCRemoveCustomTexture_DEPRECATED",
+              "newValue": "1051",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCRemoveItemPaint",
+              "newValue": "",
+              "oldValue": "1031"
+            },
+            {
+              "field": "member:k_EMsgGCRemoveItemPaint_DEPRECATED",
+              "newValue": "1031",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCRemoveMakersMark",
+              "newValue": "",
+              "oldValue": "1053"
+            },
+            {
+              "field": "member:k_EMsgGCRemoveMakersMarkResponse",
+              "newValue": "",
+              "oldValue": "1054"
+            },
+            {
+              "field": "member:k_EMsgGCRemoveMakersMarkResponse_DEPRECATED",
+              "newValue": "1054",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCRemoveMakersMark_DEPRECATED",
+              "newValue": "1053",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCRemoveUniqueCraftIndex",
+              "newValue": "",
+              "oldValue": "1055"
+            },
+            {
+              "field": "member:k_EMsgGCRemoveUniqueCraftIndexResponse",
+              "newValue": "",
+              "oldValue": "1056"
+            },
+            {
+              "field": "member:k_EMsgGCRemoveUniqueCraftIndexResponse_DEPRECATED",
+              "newValue": "1056",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCRemoveUniqueCraftIndex_DEPRECATED",
+              "newValue": "1055",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCServerBrowser_BlacklistServer",
+              "newValue": "",
+              "oldValue": "1602"
+            },
+            {
+              "field": "member:k_EMsgGCServerBrowser_BlacklistServer_DEPRECATED",
+              "newValue": "1602",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCServerBrowser_FavoriteServer",
+              "newValue": "",
+              "oldValue": "1601"
+            },
+            {
+              "field": "member:k_EMsgGCServerBrowser_FavoriteServer_DEPRECATED",
+              "newValue": "1601",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCServerRentalsBase",
+              "newValue": "",
+              "oldValue": "1700"
+            },
+            {
+              "field": "member:k_EMsgGCServerRentalsBase_DEPRECATED",
+              "newValue": "1700",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCSetItemStyle",
+              "newValue": "",
+              "oldValue": "1039"
+            },
+            {
+              "field": "member:k_EMsgGCSetItemStyle_DEPRECATED",
+              "newValue": "1039",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCStorePurchaseQueryTxn",
+              "newValue": "",
+              "oldValue": "2508"
+            },
+            {
+              "field": "member:k_EMsgGCStorePurchaseQueryTxnResponse",
+              "newValue": "",
+              "oldValue": "2509"
+            },
+            {
+              "field": "member:k_EMsgGCStorePurchaseQueryTxnResponse_DEPRECATED",
+              "newValue": "2509",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCStorePurchaseQueryTxn_DEPRECATED",
+              "newValue": "2508",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCUnlockItemStyle",
+              "newValue": "",
+              "oldValue": "1084"
+            },
+            {
+              "field": "member:k_EMsgGCUnlockItemStyleResponse",
+              "newValue": "",
+              "oldValue": "1085"
+            },
+            {
+              "field": "member:k_EMsgGCUnlockItemStyleResponse_DEPRECATED",
+              "newValue": "1085",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCUnlockItemStyle_DEPRECATED",
+              "newValue": "1084",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCUnwrapGiftRequest",
+              "newValue": "",
+              "oldValue": "1037"
+            },
+            {
+              "field": "member:k_EMsgGCUnwrapGiftRequest_DEPRECATED",
+              "newValue": "1037",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCUnwrapGiftResponse",
+              "newValue": "",
+              "oldValue": "1038"
+            },
+            {
+              "field": "member:k_EMsgGCUnwrapGiftResponse_DEPRECATED",
+              "newValue": "1038",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCUsedClaimCodeItem",
+              "newValue": "",
+              "oldValue": "1040"
+            },
+            {
+              "field": "member:k_EMsgGCUsedClaimCodeItem_DEPRECATED",
+              "newValue": "1040",
+              "oldValue": ""
+            },
+            {
+              "field": "member:k_EMsgGCVerifyCacheSubscription",
+              "newValue": "",
+              "oldValue": "1005"
+            },
+            {
+              "field": "member:k_EMsgGCVerifyCacheSubscription_DEPRECATED",
+              "newValue": "1005",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/EGCItemMsg"
+        },
+        {
+          "fields": [
+            {
+              "field": "member:k_EGCMsgPreTestSetup",
+              "newValue": "",
+              "oldValue": "69"
+            },
+            {
+              "field": "member:k_EGCMsgPreTestSetup_DEPRECATED",
+              "newValue": "69",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/EGCSystemMsg"
+        }
+      ],
+      "family": "enums",
+      "removed": [
+        "!GlobalTypes/EUnlockStyle"
+      ]
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCApplyConsumableEffects_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCApplyEggEssence_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCApplyPennantUpgrade_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCApplyStrangePart_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCClientDisplayNotification_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCCollectItem_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCCustomizeItemTextureResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCCustomizeItemTexture_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCDeliverGiftResponseGiver_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCDeliverGiftResponseReceiver_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCDeliverGift_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCDev_PaintKitDropItem_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCGiftWrapItemResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCGiftWrapItem_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCGoldenWrenchBroadcast_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewCheckStatus_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewExpireNotification_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewExpire_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewItemBoughtNotification_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewRequestResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewRequest_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewStatusResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCLookupAccountNameResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCLookupAccountName_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCLookupAccountResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCLookupAccount_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCMOTDRequestResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCMOTDRequest_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCNameEggEssenceResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintItemResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintItem_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintKitBaseItem_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintKitItemResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintKitItem_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveCustomTextureResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveCustomTexture_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveItemPaint_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveMakersMarkResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveMakersMark_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveUniqueCraftIndexResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveUniqueCraftIndex_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCServerBrowser_BlacklistServer_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCServerBrowser_FavoriteServer_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCServerRentalsBase_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCSetItemStyle_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCStorePurchaseQueryTxnResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCStorePurchaseQueryTxn_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUnlockItemStyleResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUnlockItemStyle_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUnwrapGiftRequest_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUnwrapGiftResponse_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUsedClaimCodeItem_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCVerifyCacheSubscription_DEPRECATED",
+        "schema_enum:!GlobalTypes/EGCSystemMsg/EGCSystemMsg::k_EGCMsgPreTestSetup_DEPRECATED"
+      ],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": [
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCApplyConsumableEffects",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCApplyEggEssence",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCApplyPennantUpgrade",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCApplyStrangePart",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCClientDisplayNotification",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCCollectItem",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCCustomizeItemTexture",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCCustomizeItemTextureResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCDeliverGift",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCDeliverGiftResponseGiver",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCDeliverGiftResponseReceiver",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCDev_PaintKitDropItem",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCGiftWrapItem",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCGiftWrapItemResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCGoldenWrenchBroadcast",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewCheckStatus",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewExpire",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewExpireNotification",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewItemBoughtNotification",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewRequest",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewRequestResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCItemPreviewStatusResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCLookupAccount",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCLookupAccountName",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCLookupAccountNameResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCLookupAccountResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCMOTDRequest",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCMOTDRequestResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCNameEggEssenceResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintItem",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintItemResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintKitBaseItem",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintKitItem",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCPaintKitItemResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveCustomTexture",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveCustomTextureResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveItemPaint",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveMakersMark",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveMakersMarkResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveUniqueCraftIndex",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCRemoveUniqueCraftIndexResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCServerBrowser_BlacklistServer",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCServerBrowser_FavoriteServer",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCServerRentalsBase",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCSetItemStyle",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCStorePurchaseQueryTxn",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCStorePurchaseQueryTxnResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUnlockItemStyle",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUnlockItemStyleResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUnwrapGiftRequest",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUnwrapGiftResponse",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCUsedClaimCodeItem",
+        "schema_enum:!GlobalTypes/EGCItemMsg/EGCItemMsg::k_EMsgGCVerifyCacheSubscription",
+        "schema_enum:!GlobalTypes/EGCSystemMsg/EGCSystemMsg::k_EGCMsgPreTestSetup",
+        "schema_enum:!GlobalTypes/EUnlockStyle/EUnlockStyle::k_UnlockStyle_Failed_CantAfford",
+        "schema_enum:!GlobalTypes/EUnlockStyle/EUnlockStyle::k_UnlockStyle_Failed_CantAffordAttrib",
+        "schema_enum:!GlobalTypes/EUnlockStyle/EUnlockStyle::k_UnlockStyle_Failed_CantCommit",
+        "schema_enum:!GlobalTypes/EUnlockStyle/EUnlockStyle::k_UnlockStyle_Failed_CantLockCache",
+        "schema_enum:!GlobalTypes/EUnlockStyle/EUnlockStyle::k_UnlockStyle_Failed_PreReq",
+        "schema_enum:!GlobalTypes/EUnlockStyle/EUnlockStyle::k_UnlockStyle_Succeeded"
+      ]
+    }
+  ],
+  "fromBuild": "25738536",
+  "platform": "linux-x86_64",
+  "schemaVersion": "0.12.0",
+  "toBuild": "25815307"
+}
