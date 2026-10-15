@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "purpose": "Single source of truth for CS2 Steam app/depot/build/manifest data. Per (build, platform) acquire: binary = builds[].binaries[platform]; content (gameevents) = builds[].content. Any depot's manifest at any build resolves from depots[].history (newest entry whose change_number <= the build's, or date_utc <= the build date). All depots a build touches are tracked for downstream context; we only ACQUIRE content (2347770) + the platform binary depot. Tools (2347779, role=tools) are acquired per build like binaries: the win64 editor-DLL slice merges into the windows binaries dir; builds[].tools is that build's 2347779 manifest GID.",
+    "purpose": "Single source of truth for CS2 Steam app/depot/build/manifest data. Per (build, platform) acquire: binary = builds[].binaries[platform]; content (gameevents) = builds[].content. Any depot's manifest at any build resolves from depots[].history: the newest entry whose change_number <= the build's. change_number is the PRIMARY key and orders entries totally; date_utc is only a FALLBACK for an entry that carries no change_number, never a substitute -- CS2 builds can share a timestamp to the second (19083876/19086168, 23354238/23355497), so a date-only scan is ambiguous at those ties and resolves 7 of 1592 (depot, build) pairs to the wrong GID. Refreshed by the host: refresh-depot-history (bulk, from builds[] + committed PICS captures) and extract --commit (per build). All depots a build touches are tracked for downstream context; we only ACQUIRE content (2347770) + the platform binary depot. Tools (2347779, role=tools) are acquired per build like binaries: the win64 editor-DLL slice merges into the windows binaries dir; builds[].tools is that build's 2347779 manifest GID.",
     "consumers": [
       "host acquire --all / --build <id> [...] batch mode (binary manifests via builds[].binaries; AssetsInventory reader)",
       "scripts/backfill-gameevents.py (content GID via builds[].content / content depot history)"
@@ -311,6 +311,144 @@
       "name": null,
       "role": "csgo-legacy",
       "history": [
+        {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "2684716067374661784"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "1878231805402408119"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "431893115196576721"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "2138794735549423822"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "6921310259077964939"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "5985522902049360831"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "2101970786981282873"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "2957212392539442017"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "8037145695550171532"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "8659259503527582805"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "6436761910375028561"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "2451774155290977500"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "6967806384656644903"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "7230638700296504345"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "1581182079707516933"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "8327619295558898323"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "3607516601398500144"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "3614982585245784173"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "7586306892523761317"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "6623072708389910008"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "2177642409584128815"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "6536786002765576612"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "770573001221988962"
+        },
         {
           "build_id": 24134959,
           "change_number": 37155395,
@@ -2325,6 +2463,144 @@
         "windows-x86_64"
       ],
       "history": [
+        {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "1792491388350933147"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "2961470536169734344"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "2660968282297915743"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "6681594078699930502"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "6094760909524820011"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "8136776987043853388"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "7594226841068906340"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "8263468938835326162"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "3205114743775656023"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "7703301403372310716"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "2849850780169022159"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "6912658587243870270"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "2392832650133142766"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "4583774826268207272"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "7699226777476141357"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "6885636264848219888"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "8951198306987017489"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "7931978545043611745"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "4460542289348114083"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "4796956886868161665"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "8865603041742505094"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "4577466991136481399"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "7803862685757578055"
+        },
         {
           "build_id": 24134959,
           "change_number": 37155395,
@@ -4346,6 +4622,144 @@
       ],
       "history": [
         {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "5536731219234652988"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "4225379124913471229"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "8827837816039411550"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "13245607787527988"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "5851026986612665435"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "1838718357615194448"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "6054236259210870948"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "602782161543982816"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "76578477784056030"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "1706251435841338580"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "7479871044339759718"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "750674618564725254"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "64197214935496785"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "4411786091889859121"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "7529733009167799247"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "3648703290252087506"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "4675015311550561437"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "1448756581747217984"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "8243254756932840859"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "127012671803536056"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "5948035287505683606"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "5657593506144251850"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "6326931829364603137"
+        },
+        {
           "build_id": 24134959,
           "change_number": 37155395,
           "date_utc": "2026-07-09T21:46:16Z",
@@ -6366,6 +6780,144 @@
       ],
       "history": [
         {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "3348637041901828389"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "8425445703592454768"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "7833224937569643468"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "806598465275815520"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "8744559686816185371"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "8276825542234255196"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "1730292377787102547"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "9075053168555200950"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "5115218965371227597"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "4446025766245222997"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "6690307387168637445"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "7087459721992093507"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "7033212863121807740"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "5367452975134587943"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "5479429415550172776"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "34115317032522454"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "7619755141600925131"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "4538633791788366294"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "9098609949813487409"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "8265244543208566235"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "554806932236036384"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "1869835707985324168"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "6137066255242606108"
+        },
+        {
           "build_id": 24134959,
           "change_number": 37155395,
           "date_utc": "2026-07-09T21:46:16Z",
@@ -8377,6 +8929,144 @@
       "role": "csgo-legacy",
       "history": [
         {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "617237371696493154"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "3466718689692491167"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "1037384217855247358"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "8555785855288597660"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "4532277599245391709"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "7506633301959301598"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "2876922075099978566"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "3091032254299944331"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "4489118262624228188"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "6198436440996098051"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "2430139882439017832"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "2631356113534743812"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "3656110896552880422"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "7824196858708483519"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "2988302937233157666"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "4071221640464134719"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "5251710739673570556"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "4926757255323445779"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "2810765699324527923"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "1248750427163054026"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "5985333859037771963"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "991580581070944647"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "1156325845873156316"
+        },
+        {
           "build_id": 24134959,
           "change_number": 37155395,
           "date_utc": "2026-07-09T21:46:16Z",
@@ -10322,6 +11012,144 @@
       "role": "csgo-legacy",
       "history": [
         {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "4649117568227239362"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "5029209641732822101"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "4706036369510164273"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "474318988604713438"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "1599446203977440864"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "8993398748326090475"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "4774888427643274249"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "2185044368885764249"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "6925668430263316827"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "5662830398526900286"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "5751260873739093822"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "5442407986565772332"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "1072271977287084760"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "8165835529728875119"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "6544260201068256645"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "1921925028090722861"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "6823657154640712725"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "6587178448720897259"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "192615003598027157"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "7009742387048998662"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "2564487739876505594"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "7762389079851171652"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "6635095735471264210"
+        },
+        {
           "build_id": 24134959,
           "change_number": 37155395,
           "date_utc": "2026-07-09T21:46:16Z",
@@ -12261,6 +13089,144 @@
       "role": "csgo-legacy",
       "history": [
         {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "4458111670173737004"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "3889637803049214578"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "6309980250723446142"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "506139196782334930"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "4320631253717621066"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "5889231711452410751"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "257261521887890250"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "7736620452942810029"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "8625130154882281286"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "8835659543547640625"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "172338446784131635"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "1483511027829730159"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "841513851254955365"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "4928377218150151803"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "6156929751706301237"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "9030036987602878247"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "7378832802704967523"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "3220453962871444621"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "2878305552332034865"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "8695641164512381458"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "5114115648805693971"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "7809142821051002113"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "6452359480467780346"
+        },
+        {
           "build_id": 24134959,
           "change_number": 37155395,
           "date_utc": "2026-07-09T21:46:16Z",
@@ -14176,6 +15142,144 @@
       "role": "csgo-legacy",
       "history": [
         {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "5180943002725823220"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "3725231235106900214"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "4926913372380475577"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "4793066566922364852"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "8377425432438273417"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "919315124422300907"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "4503036528153112205"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "7324356680873348888"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "8312822665704782760"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "5092848529832002831"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "2019725392635854178"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "178996186559414468"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "5301404298522657910"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "3985552264983778572"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "2376299309500640110"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "4060430626637665158"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "7204576946021156943"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "3938405454680201982"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "2537448701969449877"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "8733621962807282896"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "7957225838203103176"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "3946504905135396911"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "3770212100148671133"
+        },
+        {
           "build_id": 24134959,
           "change_number": 37155395,
           "date_utc": "2026-07-09T21:46:16Z",
@@ -16082,6 +17186,144 @@
         "linux-x86_64"
       ],
       "history": [
+        {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "2312433566686574487"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "4758919807587010422"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "7820179980365915207"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "2625928478418236338"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "2416787194101235199"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "1566706412315608688"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "6313884916170234593"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "4218289832790841850"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "5009084625236407721"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "3469898947734168900"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "2053759441494650084"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "5133223087201626432"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "6839025807341874757"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "2844536608884402770"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "4322456088840983890"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "2988082166379903189"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "4814468113142569832"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "7645176062026597595"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "816091078217593486"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "6966900685090593016"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "7357001356549703767"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "7673916425787288234"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "8243926021199121453"
+        },
         {
           "build_id": 24134959,
           "change_number": 37155395,
@@ -18346,6 +19588,144 @@
         "windows-x86_64"
       ],
       "history": [
+        {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "8766757721818354077"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "571072184844314041"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "459013114122940128"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "846540275648835184"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "4472721471834965775"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "8582617999835812788"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "3558451520161040527"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "6072833387853900784"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "1712132612863643470"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "3417992560980425656"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "5806169188224907599"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "7475134589078180787"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "5122228181560116426"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "6581019893274903321"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "3075687913968839709"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "4506841409834636555"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "4846265837652631529"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "358563799254497787"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "5408352382264162408"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "3132779792492138697"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "5814144478477689230"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "1756429801267405217"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "5957664385369805541"
+        },
         {
           "build_id": 24134959,
           "change_number": 37155395,
@@ -20761,6 +22141,144 @@
       ],
       "history": [
         {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "5513399157532729905"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "8144769780027006476"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "8082014506965878039"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "4659679433267198996"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "1263602768589796619"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "5185162378762752449"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "7484770979211644490"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "2964462901968687674"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "644862288385836392"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "2116299376055199661"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "8639120305802825922"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "7308152089951763351"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "3098867400317391293"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "5543898279197610779"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "4438670448538289168"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "3204075245827788235"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "1670443425869204360"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "3612056480687749066"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "4426952802600100986"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "8127770850217610141"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "56114211749641557"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "4042805601783611185"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "5183754434502602414"
+        },
+        {
           "build_id": 24134959,
           "change_number": 37155395,
           "date_utc": "2026-07-09T21:46:16Z",
@@ -20935,7 +22453,9 @@
           "manifest_id": "1269453905342800514"
         },
         {
-          "date_utc": "2026-04-21T01:10:54Z",
+          "build_id": 22877907,
+          "change_number": 35353434,
+          "date_utc": "2026-04-21T01:11:28Z",
           "manifest_id": "5838037100830095218"
         },
         {
@@ -22806,6 +24326,12 @@
       "role": "cs2-other",
       "history": [
         {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "6845003340509320862"
+        },
+        {
           "build_id": 24116939,
           "change_number": 37129376,
           "date_utc": "2026-07-08T22:50:43Z",
@@ -23058,6 +24584,144 @@
       "name": null,
       "role": "cs2-other",
       "history": [
+        {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "206450085737966939"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "4629717068114474886"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "5084913278258733319"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "7259033131248248190"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "4504255325236716738"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "7671985608615476756"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "6467012788075746344"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "410247917924929651"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "602217446714724936"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "8377402236628743548"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "5615454798277792274"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "8738766641789790353"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "4849223692745628484"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "4770686874990024407"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "5388529158246295000"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "4805538467580660264"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "6833019380989136120"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "8257741938751253771"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "7850156069593747758"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "2629661497822434554"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "4433394564189317044"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "5539424077450532866"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "3703788398028934383"
+        },
         {
           "build_id": 24134959,
           "change_number": 37155395,
@@ -23323,6 +24987,144 @@
       "name": "cs2 workshop tools binaries (win64 editor DLLs; free DLC 2279721)",
       "role": "tools",
       "history": [
+        {
+          "build_id": 25947352,
+          "change_number": 39842910,
+          "date_utc": "2026-10-15T00:06:45Z",
+          "manifest_id": "8610660954225250733"
+        },
+        {
+          "build_id": 25815307,
+          "change_number": 39636489,
+          "date_utc": "2026-10-08T22:01:43Z",
+          "manifest_id": "3537825762417016625"
+        },
+        {
+          "build_id": 25738536,
+          "change_number": 39518724,
+          "date_utc": "2026-10-05T22:26:27Z",
+          "manifest_id": "1476568869723472059"
+        },
+        {
+          "build_id": 25687242,
+          "change_number": 39438007,
+          "date_utc": "2026-10-02T21:55:48Z",
+          "manifest_id": "3767249661551973557"
+        },
+        {
+          "build_id": 25640462,
+          "change_number": 39363344,
+          "date_utc": "2026-09-30T23:38:19Z",
+          "manifest_id": "2061476879682333089"
+        },
+        {
+          "build_id": 25588766,
+          "change_number": 39288246,
+          "date_utc": "2026-09-28T21:46:59Z",
+          "manifest_id": "3637141216158339459"
+        },
+        {
+          "build_id": 25537370,
+          "change_number": 39211200,
+          "date_utc": "2026-09-25T20:33:35Z",
+          "manifest_id": "7129228160519127425"
+        },
+        {
+          "build_id": 25515854,
+          "change_number": 39178598,
+          "date_utc": "2026-09-24T22:08:02Z",
+          "manifest_id": "8731220205552954634"
+        },
+        {
+          "build_id": 25492732,
+          "change_number": 39145822,
+          "date_utc": "2026-09-23T22:32:44Z",
+          "manifest_id": "8874264632749675538"
+        },
+        {
+          "build_id": 25472966,
+          "change_number": 39114578,
+          "date_utc": "2026-09-23T02:54:58Z",
+          "manifest_id": "925926935943126066"
+        },
+        {
+          "build_id": 25218825,
+          "change_number": 38743761,
+          "date_utc": "2026-09-09T22:31:50Z",
+          "manifest_id": "2145418671218218617"
+        },
+        {
+          "build_id": 25175329,
+          "change_number": 38678840,
+          "date_utc": "2026-09-07T21:44:07Z",
+          "manifest_id": "1150676326026692936"
+        },
+        {
+          "build_id": 25000182,
+          "change_number": 38420961,
+          "date_utc": "2026-08-28T20:16:08Z",
+          "manifest_id": "7581174453430667755"
+        },
+        {
+          "build_id": 24957633,
+          "change_number": 38362402,
+          "date_utc": "2026-08-26T20:58:46Z",
+          "manifest_id": "7205094395767562851"
+        },
+        {
+          "build_id": 24934554,
+          "change_number": 38326889,
+          "date_utc": "2026-08-25T18:35:52Z",
+          "manifest_id": "492033267890921851"
+        },
+        {
+          "build_id": 24916958,
+          "change_number": 38300059,
+          "date_utc": "2026-08-24T23:15:06Z",
+          "manifest_id": "6910457658223501569"
+        },
+        {
+          "build_id": 24828357,
+          "change_number": 38168775,
+          "date_utc": "2026-08-19T23:16:48Z",
+          "manifest_id": "6265834673964963888"
+        },
+        {
+          "build_id": 24701871,
+          "change_number": 37980985,
+          "date_utc": "2026-08-12T22:20:36Z",
+          "manifest_id": "3570374031121073996"
+        },
+        {
+          "build_id": 24662694,
+          "change_number": 37922190,
+          "date_utc": "2026-08-10T23:45:15Z",
+          "manifest_id": "3150672179051489314"
+        },
+        {
+          "build_id": 24537688,
+          "change_number": 37744882,
+          "date_utc": "2026-08-03T18:18:10Z",
+          "manifest_id": "981268298072435002"
+        },
+        {
+          "build_id": 24442510,
+          "change_number": 37602693,
+          "date_utc": "2026-07-29T00:38:24Z",
+          "manifest_id": "2354482487203280838"
+        },
+        {
+          "build_id": 24304127,
+          "change_number": 37433143,
+          "date_utc": "2026-07-20T22:45:54Z",
+          "manifest_id": "3221426604446990793"
+        },
+        {
+          "build_id": 24248951,
+          "change_number": 37322823,
+          "date_utc": "2026-07-16T22:54:32Z",
+          "manifest_id": "6353121686173505955"
+        },
         {
           "build_id": 24134959,
           "change_number": 37155395,

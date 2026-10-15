@@ -70,6 +70,7 @@ internal static class Program
         root.AddCommand(BuildDiffCommand());
         root.AddCommand(BuildEvolutionCommand());
         root.AddCommand(BuildBackfillPredecessorsCommand());
+        root.AddCommand(BuildRefreshDepotHistoryCommand());
         root.AddCommand(BuildEmitLocalizationCommand());
         root.AddCommand(BuildAcquireCommand());
         root.AddCommand(BuildProbeLayoutCommand());
@@ -546,6 +547,35 @@ internal static class Program
             var a = new ArgList();
             a.AddValue("--inventory", p.GetValueForOption(inventory));
             ctx.ExitCode = BackfillPredecessorsCommand.Run(a.ToArray());
+        });
+
+        return cmd;
+    }
+
+    // ---------------------------------------------------------------------------
+    // refresh-depot-history  (maintenance: refresh depots[].history from committed facts)
+    // ---------------------------------------------------------------------------
+    private static Command BuildRefreshDepotHistoryCommand()
+    {
+        var cmd = new Command(
+            "refresh-depot-history",
+            "Maintenance: refresh depots[].history in data/cs2-assets-inventory.json from builds[] + committed PICS captures (idempotent, merge-only).");
+
+        var inventory = new Option<string?>("--inventory", "Inventory path (default: CS2_INVENTORY_PATH / appsettings / repo-root data/cs2-assets-inventory.json).");
+        var artifacts = new Option<string?>("--artifacts", "Artifacts root to read pics-appinfo.json captures from (default: <repo root>/artifacts).");
+        var dryRun = new Option<bool>("--dry-run", "Report what would change and write nothing.");
+        cmd.AddOption(inventory);
+        cmd.AddOption(artifacts);
+        cmd.AddOption(dryRun);
+
+        cmd.SetHandler(ctx =>
+        {
+            var p = ctx.ParseResult;
+            var a = new ArgList();
+            a.AddValue("--inventory", p.GetValueForOption(inventory));
+            a.AddValue("--artifacts", p.GetValueForOption(artifacts));
+            a.AddFlag("--dry-run", p.GetValueForOption(dryRun));
+            ctx.ExitCode = RefreshDepotHistoryCommand.Run(a.ToArray());
         });
 
         return cmd;

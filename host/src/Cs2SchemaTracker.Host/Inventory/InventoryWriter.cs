@@ -49,6 +49,29 @@ internal sealed record InventoryBuildRecord(
     IReadOnlyDictionary<string, string>? Binaries = null,
     string? Tools = null);
 
+/// <summary>
+/// One OBSERVED fact: at build <paramref name="BuildId"/>, depot <paramref name="DepotId"/>'s
+/// public-branch manifest was <paramref name="ManifestId"/>. This is a recording, never a
+/// derivation -- every field comes from a PICS capture, or from an inventory row that itself came
+/// from one.
+/// </summary>
+internal sealed record DepotManifestObservation(
+    uint DepotId,
+    long BuildId,
+    long? ChangeNumber,
+    string DateUtc,
+    string ManifestId);
+
+/// <summary>What a <see cref="InventoryWriter.MergeDepotHistories"/> call changed.</summary>
+internal sealed record DepotHistoryMergeResult(
+    int DepotsChanged,
+    int EntriesAdded,
+    int EntriesResolvedToBuilds)
+{
+    /// <summary>True when the merge found nothing to do (the inventory is already current).</summary>
+    public bool NoChange => DepotsChanged == 0 && EntriesAdded == 0 && EntriesResolvedToBuilds == 0;
+}
+
 /// <summary>Lossless append-a-build writer for <c>data/cs2-assets-inventory.json</c>.</summary>
 internal static class InventoryWriter
 {
@@ -199,6 +222,336 @@ internal static class InventoryWriter
         EnsurePredecessors(builds);
         RefreshMetaCounts(root);
         WriteCanonical(inventoryPath, root);
+    }
+
+    /// <summary>
+    /// Merge observed depot manifests into <c>depots[].history</c>.
+    /// <para>
+    /// WHY THIS EXISTS: the histories went three months stale (newest entry build 24134959,
+    /// 2026-07-09) because nothing in the host ever wrote them -- they were hand-extracted from
+    /// SteamDB patch pages, and that manual path stopped. The contract <c>_meta.purpose</c> states
+    /// ("any depot's manifest at any build resolves from depots[].history, newest entry whose
+    /// change_number &lt;= the build's, or date_utc &lt;= the build date") makes a stale table
+    /// quietly WRONG rather than merely incomplete: it answers with a months-old GID instead of
+    /// failing.
+    /// </para>
+    /// <para>
+    /// MERGE-ONLY, never replace. An existing entry is never dropped and a present manifest is
+    /// never rewritten, so the hand-curated record always survives. The one edit this makes to an
+    /// existing entry is to RESOLVE a build-less one (an entry carrying only date_utc +
+    /// manifest_id) to the build whose recorded manifest matches it, which adds build_id and
+    /// change_number and loses nothing.
+    /// </para>
+    /// <para>
+    /// With <paramref name="rederiveFromBuilds"/>, the depots whose manifest every build already
+    /// records in <c>builds[]</c> -- role <c>content</c> (builds[].content), <c>binary</c>
+    /// (builds[].binaries[platform], the platform from the depot's own platforms[]) and
+    /// <c>tools</c> (builds[].tools) -- are additionally re-derived across EVERY build, so those
+    /// four get complete per-build coverage instead of whatever the observations happen to sample.
+    /// Those are exactly the depots the acquire paths resolve. Every other depot can only ever be
+    /// as dense as the captures passed in.
+    /// </para>
+    /// Returns what changed; writes nothing when nothing changed, and nothing at all under
+    /// <paramref name="dryRun"/>.
+    /// </summary>
+    public static DepotHistoryMergeResult MergeDepotHistories(
+        string inventoryPath,
+        IReadOnlyList<DepotManifestObservation> observations,
+        bool rederiveFromBuilds,
+        bool dryRun = false)
+    {
+        ArgumentException.ThrowIfNullOrEmpty(inventoryPath);
+        ArgumentNullException.ThrowIfNull(observations);
+
+        var root = LoadTree(inventoryPath);
+        var result = MergeDepotHistoriesInto(root, observations, rederiveFromBuilds);
+        if (!result.NoChange && !dryRun)
+        {
+            RefreshMetaCounts(root);
+            WriteCanonical(inventoryPath, root);
+        }
+        return result;
+    }
+
+    /// <summary>One history entry, decoupled from its JSON node for sorting and collapsing.</summary>
+    private sealed record HistoryEntry(long? BuildId, long? ChangeNumber, string DateUtc, string ManifestId);
+
+    private static DepotHistoryMergeResult MergeDepotHistoriesInto(
+        JsonObject root, IReadOnlyList<DepotManifestObservation> observations, bool rederiveFromBuilds)
+    {
+        var depots = (root["depots"] as JsonArray)
+            ?? throw new InvalidDataException("assets inventory has no 'depots' array.");
+
+        var byDepot = observations
+            .GroupBy(o => o.DepotId)
+            .ToDictionary(g => g.Key, g => (IReadOnlyList<DepotManifestObservation>)g.ToList());
+
+        // The inventory's OWN facts for a build win over whatever the observation carried. A PICS
+        // capture's captured_utc is when WE captured it, which trails the build's manifest date by
+        // hours; all 4186 existing entries use the BUILD date, and the resolution contract is an
+        // ordered scan over those dates, so mixing the two clocks would misorder entries against
+        // their neighbours. The observation's own values are the fallback for a build the
+        // inventory does not list.
+        var buildFacts = BuildFactIndex(root);
+
+        int depotsChanged = 0, added = 0, resolved = 0;
+        foreach (var node in depots)
+        {
+            if (node is not JsonObject depot)
+                continue;
+            var depotId = DepotIdOf(depot);
+            if (depotId == 0)
+                continue;
+
+            var candidates = new List<HistoryEntry>();
+            if (byDepot.TryGetValue(depotId, out var obs))
+            {
+                foreach (var o in obs)
+                {
+                    if (string.IsNullOrEmpty(o.ManifestId))
+                        continue;
+                    var date = o.DateUtc;
+                    var change = o.ChangeNumber;
+                    if (buildFacts.TryGetValue(o.BuildId, out var known))
+                    {
+                        date = known.DateUtc ?? date;
+                        change = known.ChangeNumber ?? change;
+                    }
+                    if (!string.IsNullOrEmpty(date))
+                        candidates.Add(new HistoryEntry(o.BuildId, change, date, o.ManifestId));
+                }
+            }
+            if (rederiveFromBuilds)
+                candidates.AddRange(DeriveFromBuilds(root, depot));
+
+            if (candidates.Count == 0)
+                continue;
+
+            var existing = ReadHistory(depot["history"] as JsonArray);
+            var (merged, addedHere, resolvedHere) = MergeOneHistory(existing, candidates);
+            if (addedHere == 0 && resolvedHere == 0)
+                continue;
+
+            depot["history"] = WriteHistory(merged);
+            depotsChanged++;
+            added += addedHere;
+            resolved += resolvedHere;
+        }
+
+        return new DepotHistoryMergeResult(depotsChanged, added, resolved);
+    }
+
+    /// <summary>
+    /// build_id -> the date_utc / change_number that <c>builds[]</c> records for it. The inventory
+    /// is the authority on its own builds; see the normalization note at the call site.
+    /// </summary>
+    private static Dictionary<long, (string? DateUtc, long? ChangeNumber)> BuildFactIndex(JsonObject root)
+    {
+        var index = new Dictionary<long, (string? DateUtc, long? ChangeNumber)>();
+        foreach (var row in (root["builds"] as JsonArray)?.OfType<JsonObject>() ?? [])
+        {
+            var id = BuildIdOf(row);
+            if (id != 0)
+                index[id] = (StringOf(row, "date_utc"), LongOrNull(row, "change_number"));
+        }
+        return index;
+    }
+
+    /// <summary>
+    /// The manifest sequence for a depot as every build already records it, one entry per CHANGE.
+    /// Empty unless the depot's role maps onto a <c>builds[]</c> field (content / binary / tools).
+    /// Walks builds OLDEST-first so the entry kept for a run of identical manifests is the build
+    /// where that manifest first appeared, which is what the <c>&lt;=</c> resolution rule needs.
+    /// <c>build_id</c> breaks a date_utc tie: several CS2 builds share a timestamp to the second,
+    /// and ordering those by date alone is ambiguous (it picks a different representative run to
+    /// run, which is how this was first caught).
+    /// </summary>
+    private static List<HistoryEntry> DeriveFromBuilds(JsonObject root, JsonObject depot)
+    {
+        var field = BuildsFieldFor(depot);
+        if (field is null)
+            return [];
+
+        var ordered = ((root["builds"] as JsonArray)?.OfType<JsonObject>() ?? [])
+            .Where(r => !string.IsNullOrEmpty(StringOf(r, "date_utc")))
+            .OrderBy(r => StringOf(r, "date_utc"), StringComparer.Ordinal)
+            .ThenBy(BuildIdOf)
+            .ToList();
+
+        var emitted = new List<HistoryEntry>();
+        string? previous = null;
+        foreach (var row in ordered)
+        {
+            var gid = field(row);
+            if (string.IsNullOrEmpty(gid) || string.Equals(gid, previous, StringComparison.Ordinal))
+                continue;
+            emitted.Add(new HistoryEntry(
+                BuildIdOf(row), LongOrNull(row, "change_number"), StringOf(row, "date_utc")!, gid));
+            previous = gid;
+        }
+        return emitted;
+    }
+
+    /// <summary>
+    /// The <c>builds[]</c> accessor for a depot, chosen by ROLE -- never a hard-coded depot id, so
+    /// a depot rotation flows through from the data (the same rule
+    /// <see cref="Steam.AssetsInventory"/> uses to find the acquire depots). A <c>binary</c> depot
+    /// must name exactly one platform in its own platforms[]; anything else is ambiguous and gets
+    /// no derivation rather than a guess.
+    /// </summary>
+    private static Func<JsonObject, string?>? BuildsFieldFor(JsonObject depot)
+    {
+        var role = StringOf(depot, "role");
+        if (string.Equals(role, "content", StringComparison.Ordinal))
+            return r => StringOf(r, "content");
+        if (string.Equals(role, "tools", StringComparison.Ordinal))
+            return r => StringOf(r, "tools");
+        if (!string.Equals(role, "binary", StringComparison.Ordinal))
+            return null;
+
+        var platforms = ((depot["platforms"] as JsonArray) ?? [])
+            .Select(p => p is JsonValue v && v.TryGetValue<string>(out var s) ? s : null)
+            .Where(p => !string.IsNullOrEmpty(p))
+            .ToList();
+        if (platforms.Count != 1)
+            return null;
+        var platform = platforms[0]!;
+        return r => r["binaries"] is JsonObject b ? StringOf(b, platform) : null;
+    }
+
+    /// <summary>
+    /// Merge candidates into an existing history: resolve build-less entries, add what is genuinely
+    /// new, order newest-first, then collapse a run of identical manifests to its OLDEST entry (a
+    /// manifest that did not change needs no second entry -- the existing one still resolves).
+    /// </summary>
+    private static (List<HistoryEntry> Merged, int Added, int Resolved) MergeOneHistory(
+        List<HistoryEntry> existing, List<HistoryEntry> candidates)
+    {
+        var firstByManifest = new Dictionary<string, HistoryEntry>(StringComparer.Ordinal);
+        foreach (var c in candidates)
+        {
+            if (!firstByManifest.ContainsKey(c.ManifestId))
+                firstByManifest[c.ManifestId] = c;
+        }
+
+        var merged = new List<HistoryEntry>(existing.Count + candidates.Count);
+        int resolved = 0;
+        foreach (var e in existing)
+        {
+            // A build-less entry (hand-entered: date_utc + manifest_id only) that a recorded build
+            // also carries takes that build's identity. Same manifest, strictly more provenance.
+            if (e.BuildId is null && firstByManifest.TryGetValue(e.ManifestId, out var match))
+            {
+                merged.Add(match);
+                resolved++;
+            }
+            else
+            {
+                merged.Add(e);
+            }
+        }
+
+        var present = new HashSet<(long?, string)>(merged.Select(e => (e.BuildId, e.ManifestId)));
+        foreach (var c in candidates)
+        {
+            if (present.Add((c.BuildId, c.ManifestId)))
+                merged.Add(c);
+        }
+
+        var ordered = merged
+            .OrderByDescending(e => e.DateUtc, StringComparer.Ordinal)
+            .ThenByDescending(e => e.BuildId ?? 0)
+            .ToList();
+
+        var collapsed = new List<HistoryEntry>(ordered.Count);
+        foreach (var e in ordered)
+        {
+            if (collapsed.Count > 0 &&
+                string.Equals(collapsed[^1].ManifestId, e.ManifestId, StringComparison.Ordinal))
+            {
+                collapsed[^1] = e;   // keep the OLDER representative of the run
+                continue;
+            }
+            collapsed.Add(e);
+        }
+
+        // Report the NET effect on the file, not the number of insertions: the collapse can absorb
+        // a candidate, and the operator is about to read this number against a diff.
+        return (collapsed, collapsed.Count - existing.Count, resolved);
+    }
+
+    private static List<HistoryEntry> ReadHistory(JsonArray? history)
+    {
+        var entries = new List<HistoryEntry>();
+        if (history is null)
+            return entries;
+        foreach (var node in history)
+        {
+            if (node is not JsonObject o)
+                continue;
+            var manifest = StringOf(o, "manifest_id");
+            var date = StringOf(o, "date_utc");
+            if (string.IsNullOrEmpty(manifest) || string.IsNullOrEmpty(date))
+                continue;
+            var bid = o["build_id"] is null ? (long?)null : BuildIdOf(o);
+            entries.Add(new HistoryEntry(
+                bid is 0 ? null : bid, LongOrNull(o, "change_number"), date, manifest));
+        }
+        return entries;
+    }
+
+    /// <summary>
+    /// Emit history entries in the on-disk shape: key order <c>build_id, change_number, date_utc,
+    /// manifest_id</c>, with build_id/change_number OMITTED (not null) when unknown -- the shape
+    /// the hand-entered build-less entries already use.
+    /// </summary>
+    private static JsonArray WriteHistory(List<HistoryEntry> entries)
+    {
+        var arr = new JsonArray();
+        foreach (var e in entries)
+        {
+            var o = new JsonObject();
+            if (e.BuildId is { } bid)
+                o["build_id"] = bid;
+            if (e.ChangeNumber is { } cn)
+                o["change_number"] = cn;
+            o["date_utc"] = e.DateUtc;
+            o["manifest_id"] = e.ManifestId;
+            arr.Add(o);
+        }
+        return arr;
+    }
+
+    private static string? StringOf(JsonObject o, string key)
+        => o[key] is JsonValue v && v.TryGetValue<string>(out var s) ? s : null;
+
+    private static long? LongOrNull(JsonObject o, string key)
+    {
+        if (o[key] is not JsonValue v)
+            return null;
+        if (v.TryGetValue<long>(out var l))
+            return l;
+        if (v.TryGetValue<string>(out var s) &&
+            long.TryParse(s, NumberStyles.Integer, CultureInfo.InvariantCulture, out var sl))
+        {
+            return sl;
+        }
+        return null;
+    }
+
+    private static uint DepotIdOf(JsonObject o)
+    {
+        if (o["depot_id"] is JsonValue v)
+        {
+            if (v.TryGetValue<uint>(out var u))
+                return u;
+            if (v.TryGetValue<string>(out var s) &&
+                uint.TryParse(s, NumberStyles.Integer, CultureInfo.InvariantCulture, out var su))
+            {
+                return su;
+            }
+        }
+        return 0;
     }
 
     /// <summary>

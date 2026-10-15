@@ -17,12 +17,21 @@
 //     itself renders exactly this form for a build with no release-notes entry, and 150 of the
 //     existing rows already carry it. So this is the same fact the corpus already states in the
 //     same words, not an invented patch title.
+// It ALSO merges the build's observed depot manifests into depots[].history, from the same
+// committed pics-appinfo.json. That table is what resolves "depot X's manifest at build Y"
+// (_meta.purpose), and nothing used to write it: it was hand-extracted from SteamDB patch pages,
+// that stopped, and it sat three months stale while resolving 93 of 1592 (depot, build) pairs to
+// the WRONG GID -- silently, because a stale table answers instead of failing. Doing it here, on
+// the capture this forward-capture already promoted, is what stops it rotting again; the bulk
+// repair for builds already committed is `refresh-depot-history`.
+//
 // A build already in the inventory has any MISSING facts merged in (the binaries GID of a platform
 // that landed later, tools/content when absent, and the two fields above); a present value is never
 // rewritten, so a hand-curated row — including a real SteamDB title — always wins. Non-fatal by
 // contract when called from PromoteBuildLevel (surfaced loudly, never reverts the promote).
 
 using System.Globalization;
+using System.Text.Json;
 
 using Cs2SchemaTracker.Host.Steam;
 using Cs2SchemaTracker.Host.Walker;
@@ -146,6 +155,8 @@ internal static class ForwardCaptureRecorder
             bool changed = InventoryWriter.MergeBuildFacts(
                 inventoryPath, buildId, contentGid,
                 binaries.Count > 0 ? binaries : null, toolsGid, changeNumber, title);
+            // The row may already be complete while the depot table still lacks this build.
+            changed |= RecordDepotHistory(repoRoot, inventoryPath, build, buildId, dateUtc, changeNumber);
             return changed ? Outcome.Merged : Outcome.AlreadyPresent;
         }
 
@@ -161,7 +172,111 @@ internal static class ForwardCaptureRecorder
             Binaries: binaries.Count > 0 ? binaries : null,
             Tools: toolsGid));
 
+        // AFTER the append, so the merge sees this build in builds[] and normalizes its entries
+        // onto the row's own date_utc / change_number rather than the capture's capture time.
+        RecordDepotHistory(repoRoot, inventoryPath, build, buildId, dateUtc, changeNumber);
+
         return Outcome.Appended;
+    }
+
+    /// <summary>
+    /// Merge this build's observed public depot manifests into <c>depots[].history</c>, read from
+    /// the build-level <c>pics-appinfo.json</c> this same forward capture committed. Returns true
+    /// when the table changed.
+    /// <para>
+    /// PICS is current-only, so the capture is the one place a build's whole depot picture
+    /// survives -- including the depots <c>builds[]</c> says nothing about (csgo-legacy,
+    /// cs2-other). Absent capture is not an omission (historical / re-walked builds have none), so
+    /// this is a no-op then rather than a failure.
+    /// </para>
+    /// <para>
+    /// NON-FATAL by the same contract as the rest of this recorder: a depot-history merge that
+    /// fails must never revert a promoted build. The bulk repair is `refresh-depot-history`, and it
+    /// is idempotent, so a skipped merge here is recoverable at any later time.
+    /// </para>
+    /// </summary>
+    private static bool RecordDepotHistory(
+        string repoRoot, string inventoryPath, string build, long buildId,
+        string dateUtc, long? changeNumber)
+    {
+        var picsPath = Path.Combine(
+            repoRoot, "artifacts", build, PicsAppInfo.PicsAppInfoEmitter.FileName);
+        if (!File.Exists(picsPath))
+        {
+            return false;
+        }
+
+        try
+        {
+            var pics = PicsParser.Parse<Schemas.PicsAppInfo>(File.ReadAllText(picsPath));
+            var observations = DepotObservations(pics, buildId, dateUtc, changeNumber);
+            if (observations.Count == 0)
+                return false;
+
+            var result = InventoryWriter.MergeDepotHistories(
+                inventoryPath, observations, rederiveFromBuilds: false);
+            if (!result.NoChange)
+            {
+                Console.Error.WriteLine(
+                    $"forward-capture: depots[].history +{result.EntriesAdded} entr(ies) across " +
+                    $"{result.DepotsChanged} depot(s) from build {buildId}'s PICS capture.");
+            }
+            return !result.NoChange;
+        }
+        catch (Exception ex) when (ex is InvalidProtocolBufferException or InvalidJsonException
+                                      or InvalidDataException or IOException or JsonException)
+        {
+            // Loud, never fatal: the build stays promoted and refresh-depot-history repairs this.
+            Console.Error.WriteLine(
+                $"forward-capture: WARNING could not merge depot history from '{picsPath}': " +
+                $"{ex.Message} — run `refresh-depot-history` to repair.");
+            return false;
+        }
+    }
+
+    /// <summary>
+    /// The <c>depots.&lt;numeric&gt;.manifests.public.gid</c> pairs in a capture's appinfo body.
+    /// That body is declared OPAQUE by schemas/pics_appinfo.proto ("do not assume any key is
+    /// present"), so every step here is defensive and a shape that does not match simply yields
+    /// nothing.
+    /// </summary>
+    private static List<DepotManifestObservation> DepotObservations(
+        Schemas.PicsAppInfo pics, long buildId, string dateUtc, long? changeNumber)
+    {
+        var observations = new List<DepotManifestObservation>();
+        if (string.IsNullOrWhiteSpace(pics.AppinfoJson))
+            return observations;
+
+        using var doc = JsonDocument.Parse(pics.AppinfoJson);
+        if (doc.RootElement.ValueKind != JsonValueKind.Object
+            || !doc.RootElement.TryGetProperty("depots", out var depots)
+            || depots.ValueKind != JsonValueKind.Object)
+        {
+            return observations;
+        }
+
+        foreach (var depot in depots.EnumerateObject())
+        {
+            if (!uint.TryParse(depot.Name, NumberStyles.Integer, CultureInfo.InvariantCulture, out var depotId))
+                continue;
+            if (depot.Value.ValueKind != JsonValueKind.Object
+                || !depot.Value.TryGetProperty("manifests", out var manifests)
+                || manifests.ValueKind != JsonValueKind.Object
+                || !manifests.TryGetProperty("public", out var pub)
+                || pub.ValueKind != JsonValueKind.Object
+                || !pub.TryGetProperty("gid", out var gid)
+                || gid.ValueKind != JsonValueKind.String)
+            {
+                continue;
+            }
+            var value = gid.GetString();
+            if (!string.IsNullOrEmpty(value))
+            {
+                observations.Add(new DepotManifestObservation(
+                    depotId, buildId, changeNumber, dateUtc, value));
+            }
+        }
+        return observations;
     }
 
     /// <summary>
