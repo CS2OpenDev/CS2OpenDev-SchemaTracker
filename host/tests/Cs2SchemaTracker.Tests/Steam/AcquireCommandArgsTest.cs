@@ -34,6 +34,15 @@ public class AcquireCommandArgsTest
     private static readonly string[] ArgsRetiredTupleName = { "--build", "12345", "--platform", "linux-x86_64.server" };
     private static readonly string[] ArgsNonIntegerBuild = { "--build", "not-a-number", "--platform", "linux-x86_64" };
     private static readonly string[] ArgsLatestLinux = { "--build", "latest", "--platform", "linux-x86_64" };
+    /// <summary>
+    /// The concrete build id the PICS-current tests acquire, which the fake also reports as the
+    /// CURRENT public-branch build. The two must agree: PICS serves only the current manifests, so
+    /// <c>AcquireCommand.RefuseNonCurrentBuildAsync</c> refuses a concrete <c>--build</c> that is
+    /// not the live one rather than file today's bytes under it. Tests for that refusal set
+    /// <c>CurrentPicsBuildId</c> to something else on purpose.
+    /// </summary>
+    private const uint LiveBuildId = 1555u;
+
     private static readonly string[] ArgsIntegerLinux = { "--build", "1555", "--platform", "linux-x86_64" };
     private static readonly string[] ArgsHashMismatch = { "--build", "1555", "--platform", "linux-x86_64" };
     private static readonly uint[] ExpectedLinuxBinDepots = { SteamAppIdMap.Cs2LinuxBinariesDepotId };
@@ -58,8 +67,11 @@ public class AcquireCommandArgsTest
         public string LastOutDir = string.Empty;
         public ManifestSpec? LastExplicitSpec;
 
-        /// <summary>Build id ProbeCurrentPicsAsync resolves 'latest' to.</summary>
-        public uint CurrentPicsBuildId { get; init; } = 12345u;
+        /// <summary>
+        /// Build id ProbeCurrentPicsAsync reports as the current public-branch build. It resolves
+        /// 'latest' for the path, and it is what a concrete --build is checked against.
+        /// </summary>
+        public uint CurrentPicsBuildId { get; init; } = LiveBuildId;
 
         public Task<AcquireResult> AcquireAsync(
             uint appId, IReadOnlyList<uint> depotIds, uint buildId, string outDir, CancellationToken ct)
@@ -342,7 +354,9 @@ public class AcquireCommandArgsTest
         Assert.False(fake.ContentDirOnly);
         // A concrete integer build needs NO PICS probe — neither the binary leg nor the content leg
         // re-probes (single-probe contract: content reuses the already-resolved outDir).
-        Assert.Equal(0, fake.CurrentPicsCount);
+        // ONE probe, and only one: the concrete build is verified against PICS-current before
+        // anything is fetched (RefuseNonCurrentBuildAsync), and neither leg re-probes after that.
+        Assert.Equal(1, fake.CurrentPicsCount);
         var expectedSuffix = Path.Combine("cache", "binaries", "1555", "linux-x86_64");
         Assert.EndsWith(expectedSuffix, fake.LastOutDir);            // content co-located with binaries
     }
@@ -404,8 +418,9 @@ public class AcquireCommandArgsTest
         Assert.Equal(1555u, fake.LastBinariesOnlyBuildId);
         // App ID 730 — CS2 is one app for every platform.
         Assert.Equal(SteamAppIdMap.Cs2AppId, fake.LastAppId);
-        // An explicit integer build needs no PICS probe for the path (neither leg re-probes).
-        Assert.Equal(0, fake.CurrentPicsCount);
+        // An explicit integer build needs no PICS probe for the PATH, but it does get one to
+        // confirm it is the live build before any bytes are fetched; neither leg re-probes.
+        Assert.Equal(1, fake.CurrentPicsCount);
     }
 
     [Fact]
@@ -563,7 +578,7 @@ public class AcquireCommandArgsTest
     [Fact]
     public async Task BinariesOnly_routes_to_binaries_acquire_with_platform()
     {
-        var fake = new FakeAcquirer();
+        var fake = new FakeAcquirer { CurrentPicsBuildId = 23669931u };
         var args = new[] { "--binaries-only", "--build", "23669931", "--platform", "windows-x86_64" };
         var code = await AcquireCommand.RunAsync(args, () => fake);
         Assert.Equal(0, code);
@@ -612,7 +627,7 @@ public class AcquireCommandArgsTest
     [Fact]
     public async Task BinariesOnly_explicit_out_overrides_default()
     {
-        var fake = new FakeAcquirer();
+        var fake = new FakeAcquirer { CurrentPicsBuildId = 23669931u };
         var customOut = Path.Combine(Path.GetTempPath(), "cs2-binonly-" + Guid.NewGuid().ToString("N"));
         var args = new[] { "--binaries-only", "--build", "23669931", "--platform", "windows-x86_64", "--out", customOut };
         var code = await AcquireCommand.RunAsync(args, () => fake);
@@ -925,5 +940,62 @@ public class AcquireCommandArgsTest
         var args = new[] { "--binaries-only", "--build", "1555", "--platform", "windows-x86_64" };
         var code = await AcquireCommand.RunAsync(args, () => fake);
         Assert.Equal(65, code);
+    }
+
+    // ----- a concrete --build must BE the current build (PICS serves nothing else) -----
+
+    [Fact]
+    public async Task Non_current_integer_build_is_refused_without_fetching()
+    {
+        // The hazard this closes: PICS exposes only the current manifests, and
+        // ResolveBuildIdAsync echoes a non-zero requested build back verbatim, so a historical
+        // --build used to fetch TODAY's depot bytes into <that build>/<platform> and stamp
+        // manifest-record.json with the requested id. `extract` auto-acquires through this path,
+        // so `extract --build <historical id>` was one command from attributing current-build
+        // schema to an old build. Refuse instead, and fetch NOTHING.
+        var fake = new FakeAcquirer { CurrentPicsBuildId = 25947352u };
+        var code = await AcquireCommand.RunAsync(ArgsIntegerLinux, () => fake);
+        Assert.Equal(64, code);
+        Assert.Equal(1, fake.CurrentPicsCount);                      // it probed to find out
+        Assert.Equal(0, fake.BinariesOnlyInvocationCount);            // and then fetched nothing
+        Assert.Equal(0, fake.InvocationCount);
+        Assert.Equal(0, fake.ContentInvocationCount);
+        Assert.Equal(0, fake.ToolsInvocationCount);
+    }
+
+    [Fact]
+    public async Task BinariesOnly_non_current_integer_build_is_refused_without_fetching()
+    {
+        // Same guard on the --binaries-only path: a historical backfill belongs on
+        // --from-manifest (explicit per-depot GIDs), never on PICS-current.
+        var fake = new FakeAcquirer { CurrentPicsBuildId = 25947352u };
+        var args = new[] { "--binaries-only", "--build", "1555", "--platform", "linux-x86_64" };
+        var code = await AcquireCommand.RunAsync(args, () => fake);
+        Assert.Equal(64, code);
+        Assert.Equal(1, fake.CurrentPicsCount);
+        Assert.Equal(0, fake.BinariesOnlyInvocationCount);
+    }
+
+    [Fact]
+    public async Task Unresolvable_current_build_refuses_concrete_build_65()
+    {
+        // PICS answered with no parseable public-branch buildid. We cannot prove the request is
+        // current, so refuse rather than guess: guessing wrong mislabels the corpus silently.
+        var fake = new FakeAcquirer { CurrentPicsBuildId = 0u };
+        var code = await AcquireCommand.RunAsync(ArgsIntegerLinux, () => fake);
+        Assert.Equal(65, code);
+        Assert.Equal(0, fake.BinariesOnlyInvocationCount);
+    }
+
+    [Fact]
+    public async Task Latest_is_never_refused_by_the_current_build_guard()
+    {
+        // 'latest' IS the current build by construction, whatever PICS reports, so the guard must
+        // not cost it a second probe or ever reject it.
+        var fake = new FakeAcquirer { CurrentPicsBuildId = 25947352u };
+        var code = await AcquireCommand.RunAsync(ArgsLatestLinux, () => fake);
+        Assert.Equal(0, code);
+        Assert.Equal(1, fake.CurrentPicsCount);                      // the path-resolution probe only
+        Assert.Equal(1, fake.BinariesOnlyInvocationCount);
     }
 }
