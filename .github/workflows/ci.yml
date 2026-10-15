@@ -40,7 +40,7 @@ jobs:
   # or ci.yml itself) also forces `everything`, because those alter every target.
   detect-changes:
     name: detect changed input areas
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     outputs:
       host: ${{ steps.detect.outputs.host }}
       walker: ${{ steps.detect.outputs.walker }}
@@ -156,7 +156,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-24.04, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v5
@@ -232,7 +232,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-24.04, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v5
@@ -336,7 +336,7 @@ jobs:
   format-check:
     name: format (C# + C++)
     # Always runs: a formatting drift in either project is cheap to catch and should never merge.
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
 
@@ -377,7 +377,7 @@ jobs:
     # GATE: only when the proto contract itself changed (or everything).
     needs: detect-changes
     if: needs.detect-changes.outputs.schemas == 'true' || needs.detect-changes.outputs.everything == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
 
@@ -414,7 +414,7 @@ jobs:
     # push-whole-tree logic below is unchanged.)
     needs: detect-changes
     if: needs.detect-changes.outputs.artifacts == 'true' || needs.detect-changes.outputs.everything == 'true'
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     # hosted-first. ubuntu-latest carries .NET (via setup-dotnet, pinned by global.json) +
     # git, which is everything the host `verify-artifacts` subcommand needs.
     # No self-hosted dep.
@@ -546,7 +546,7 @@ jobs:
   #   1. PATH SCOPING. Every build job above is gated on `needs: detect-changes`
   #      plus an `if:`, so a docs-only PR legitimately SKIPS host-build. GitHub
   #      counts a `skipped` check as satisfying a required check, so requiring
-  #      `host build + test (ubuntu-latest)` would behave correctly — but only as
+  #      `host build + test (ubuntu-24.04)` would behave correctly, but only as
   #      long as a hand-maintained list of job names in a web UI stays in lockstep
   #      with this file.
   #   2. NAME DRIFT. The matrix jobs' check names are DERIVED
@@ -581,7 +581,7 @@ jobs:
       - format-check
       - schemas-compile
       - artifacts-validation
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - name: Job results
         # Printed unconditionally so a red gate says which job to look at without
