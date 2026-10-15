@@ -26,6 +26,19 @@ public static class CanonicalJson
         Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
     };
 
+    // COMPACT form -- the same canonical guarantees (recursively sorted keys, invariant culture,
+    // UTF-8 without BOM, LF) with the indentation dropped. Reserved for artifacts whose size is a
+    // practical problem rather than their readability: the cumulative schema_evolution index had
+    // reached 64.5 MB on windows-x86_64, ~49% of it indentation whitespace, against GitHub's 50 MB
+    // per-file warning and its 100 MB hard limit. Parsers are indifferent to the whitespace; git
+    // and the push limit are not.
+    private static readonly JsonWriterOptions CompactWriterOptions = new()
+    {
+        Indented = false,
+        SkipValidation = false,
+        Encoder = JavaScriptEncoder.UnsafeRelaxedJsonEscaping,
+    };
+
     private static readonly JsonSerializerOptions SerializerOptions = new()
     {
         WriteIndented = true,
@@ -70,12 +83,37 @@ public static class CanonicalJson
     public static string SerializeRawJson(string json)
     {
         ArgumentNullException.ThrowIfNull(json);
+        return SortRaw(json, WriterOptions);
+    }
+
+    /// <summary>
+    /// Canonical form of an already-serialized JSON document with the indentation dropped: the
+    /// same recursive key sort, escaping and encoding as <see cref="SerializeRawJson"/>, so the
+    /// two parse to an identical tree and differ only in whitespace. For an artifact whose byte
+    /// count matters more than its diff readability -- see <see cref="CompactWriterOptions"/>.
+    /// </summary>
+    public static string SerializeRawJsonCompact(string json)
+    {
+        ArgumentNullException.ThrowIfNull(json);
+        return SortRaw(json, CompactWriterOptions);
+    }
+
+    /// <summary>
+    /// Shared sorter behind <see cref="SerializeRawJson"/> and
+    /// <see cref="SerializeRawJsonCompact"/>: identical bytes but for the indentation
+    /// <paramref name="options"/> selects.
+    /// </summary>
+    private static string SortRaw(string json, JsonWriterOptions options)
+    {
         using var sourceDoc = JsonDocument.Parse(json);
         using var stream = new MemoryStream();
-        using (var writer = new Utf8JsonWriter(stream, WriterOptions))
+        using (var writer = new Utf8JsonWriter(stream, options))
         {
             WriteSorted(writer, sourceDoc.RootElement);
         }
+        // Force LF line endings. A bare CR or LF never survives inside a JSON string literal
+        // (both are escaped), so this only ever rewrites indentation newlines -- of which the
+        // compact form has none.
         var s = Encoding.UTF8.GetString(stream.ToArray());
         return s.Replace("\r\n", "\n", StringComparison.Ordinal);
     }

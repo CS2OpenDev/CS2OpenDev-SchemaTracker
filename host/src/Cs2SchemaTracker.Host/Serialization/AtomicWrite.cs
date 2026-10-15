@@ -36,6 +36,17 @@ internal static class AtomicWrite
     }
 
     /// <summary>
+    /// Canonical proto3 JSON for <paramref name="message"/> with the indentation dropped -- same
+    /// sorted keys, same escaping, same parse tree, roughly half the bytes. For an artifact whose
+    /// SIZE is the problem; see <see cref="WriteCanonicalCompact"/>.
+    /// </summary>
+    public static string SerializeCanonicalCompact(IMessage message)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        return CanonicalJson.SerializeRawJsonCompact(Formatter.Format(message));
+    }
+
+    /// <summary>
     /// Serialize <paramref name="message"/> to canonical proto3 JSON and write it atomically to
     /// <paramref name="outputPath"/> (sibling .tmp then rename). Throws (and leaves no partial
     /// output) on any failure.
@@ -44,9 +55,25 @@ internal static class AtomicWrite
     {
         ArgumentNullException.ThrowIfNull(message);
         ArgumentException.ThrowIfNullOrEmpty(outputPath);
+        WriteAtomic(SerializeCanonical(message), outputPath);
+    }
 
-        string json = SerializeCanonical(message);
+    /// <summary>
+    /// As <see cref="WriteCanonical"/> but in the compact canonical form (no indentation). Used by
+    /// the cumulative schema-evolution index only: it is a machine-read artifact that had grown to
+    /// 64.5 MB pretty-printed, past GitHub's 50 MB per-file recommendation and on course for the
+    /// 100 MB hard limit, with ~49% of those bytes being indentation. Every PER-BUILD artifact
+    /// stays indented -- those are read by people and diffed build to build.
+    /// </summary>
+    public static void WriteCanonicalCompact(IMessage message, string outputPath)
+    {
+        ArgumentNullException.ThrowIfNull(message);
+        ArgumentException.ThrowIfNullOrEmpty(outputPath);
+        WriteAtomic(SerializeCanonicalCompact(message), outputPath);
+    }
 
+    private static void WriteAtomic(string json, string outputPath)
+    {
         var fullPath = Path.GetFullPath(outputPath);
         var parent = Path.GetDirectoryName(fullPath);
         if (!string.IsNullOrEmpty(parent))
