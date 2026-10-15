@@ -859,11 +859,6 @@ internal static partial class ExtractCommand
     }
 
     /// <summary>
-    /// Byte-compare two buffers for the commit-path determinism gate. Returns true iff identical;
-    /// otherwise <paramref name="firstDiffOffset"/> is the index of the first differing byte, or (when
-    /// one buffer is a strict prefix of the other) the length of the shorter one.
-    /// </summary>
-    /// <summary>
     /// Copy both diverging walks out of temp so an exit-76 mismatch can be decoded after the run.
     /// Returns the directory, or null when nothing could be preserved. Never throws.
     /// </summary>
@@ -892,6 +887,11 @@ internal static partial class ExtractCommand
         }
     }
 
+    /// <summary>
+    /// Byte-compare two buffers for the commit-path determinism gate. Returns true iff identical;
+    /// otherwise <paramref name="firstDiffOffset"/> is the index of the first differing byte, or (when
+    /// one buffer is a strict prefix of the other) the length of the shorter one.
+    /// </summary>
     private static bool BytesEqual(byte[] a, byte[] b, out long firstDiffOffset)
     {
         long min = Math.Min(a.Length, b.Length);
