@@ -522,6 +522,12 @@ internal static partial class ExtractCommand
                         $"extract: DETERMINISM GATE FAILED for (build {build}, {platform}): two walks " +
                         $"differ (sizes {walkBytes.Length}/{walkBytes2.Length}, first diff at byte " +
                         $"{firstDiffOffset}). No artifacts written.");
+                    // The diverging pair is the only evidence of the defect and the finally block
+                    // deletes both walks. The gate's exit code must not depend on the copy.
+                    var dumpDir = PreserveDivergingWalks(binariesDir, build, platform, walkTmp, walkTmp2);
+                    Console.Error.WriteLine(dumpDir is not null
+                        ? $"extract: preserved both walks -> '{dumpDir}'"
+                        : "extract: could not preserve the diverging walks (see the sizes/offset above).");
                     return 76;   // new — see the exit-75 comment block above for the sibling codes.
                 }
                 Console.Error.WriteLine("extract: determinism gate OK — two walks byte-identical.");
@@ -849,6 +855,35 @@ internal static partial class ExtractCommand
                     $"extract: WARNING failed to remove superseded set {oldDir}: {ex.GetType().Name}: " +
                     $"{ex.Message}. It will be swept on the next commit/batch run.");
             }
+        }
+    }
+
+    /// <summary>
+    /// Copy both diverging walks out of temp so an exit-76 mismatch can be decoded after the run.
+    /// Returns the directory, or null when nothing could be preserved. Never throws.
+    /// </summary>
+    private static string? PreserveDivergingWalks(
+        string binariesDir, string build, string platform, string walkTmp, string walkTmp2)
+    {
+        try
+        {
+            // binariesDir is <store-root>/<build>/<platform>. The dump goes beside the store root
+            // so an acquire that wipes the tuple dir cannot take the evidence with it.
+            var storeRoot = Directory.GetParent(binariesDir)?.Parent?.FullName;
+            if (storeRoot is null)
+                return null;
+            var dumpDir = Path.Combine(
+                Path.GetDirectoryName(storeRoot) ?? storeRoot,
+                "determinism",
+                $"{build}-{platform}");
+            Directory.CreateDirectory(dumpDir);
+            File.Copy(walkTmp, Path.Combine(dumpDir, "walk-1.pb"), overwrite: true);
+            File.Copy(walkTmp2, Path.Combine(dumpDir, "walk-2.pb"), overwrite: true);
+            return dumpDir;
+        }
+        catch
+        {
+            return null;
         }
     }
 
