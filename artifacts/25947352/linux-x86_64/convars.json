@@ -1,5 +1,5 @@
 {
-  "buildId": "25815307",
+  "buildId": "25947352",
   "convars": [
     {
       "default": "3",
@@ -5479,6 +5479,20 @@
       "minValue": "",
       "name": "cl_decryptdata_key_pub",
       "valueType": "String"
+    },
+    {
+      "default": "true",
+      "description": "During demo playback, roaming spectator movement runs on real time so it works while paused and at any playback rate.",
+      "flags": [
+        "clientdll",
+        "release"
+      ],
+      "hasMax": false,
+      "hasMin": false,
+      "maxValue": "",
+      "minValue": "",
+      "name": "cl_demo_freecam",
+      "valueType": "Bool"
     },
     {
       "default": "1",
@@ -13970,20 +13984,6 @@
       "minValue": "",
       "name": "demo_max_consecutive_skip_packets",
       "valueType": "Int32"
-    },
-    {
-      "default": "drop",
-      "description": "Name of the binding to enable mouse on demo playback UI",
-      "flags": [
-        "clientdll",
-        "archive"
-      ],
-      "hasMax": false,
-      "hasMin": false,
-      "maxValue": "",
-      "minValue": "",
-      "name": "demo_mouse_enable_binding",
-      "valueType": "String"
     },
     {
       "default": "true",
@@ -35818,6 +35818,20 @@
       "minValue": "",
       "name": "r_csgo_shadows_debug",
       "valueType": "Int32"
+    },
+    {
+      "default": "true",
+      "description": "",
+      "flags": [
+        "clientdll",
+        "cheat"
+      ],
+      "hasMax": false,
+      "hasMin": false,
+      "maxValue": "",
+      "minValue": "",
+      "name": "r_csgo_sky_occluder",
+      "valueType": "Bool"
     },
     {
       "default": "true",

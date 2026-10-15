@@ -1,5 +1,5 @@
 {
-  "buildId": "25815307",
+  "buildId": "25947352",
   "classes": [
     {
       "alignment": 255,
@@ -195982,7 +195982,7 @@
         {
           "metadata": [],
           "name": "m_strMinimapName",
-          "offset": "4360",
+          "offset": "4384",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -196008,7 +196008,7 @@
       ],
       "projectName": "client",
       "singleInheritanceDepth": 5,
-      "size": "4368",
+      "size": "4400",
       "staticFields": []
     },
     {
@@ -196172,7 +196172,7 @@
         {
           "metadata": [],
           "name": "m_obsInterpState",
-          "offset": "104",
+          "offset": "112",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_ENUM",
@@ -196198,7 +196198,7 @@
       ],
       "projectName": "client",
       "singleInheritanceDepth": 2,
-      "size": "240",
+      "size": "256",
       "staticFields": []
     },
     {
@@ -221138,7 +221138,7 @@
         {
           "metadata": [],
           "name": "m_animgraphCharacterModeString",
-          "offset": "17864",
+          "offset": "17848",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -221151,7 +221151,7 @@
         {
           "metadata": [],
           "name": "m_flInitialModelScale",
-          "offset": "17872",
+          "offset": "17856",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -221177,7 +221177,7 @@
       ],
       "projectName": "client",
       "singleInheritanceDepth": 8,
-      "size": "18032",
+      "size": "18016",
       "staticFields": []
     },
     {
@@ -221199,7 +221199,7 @@
       ],
       "projectName": "client",
       "singleInheritanceDepth": 9,
-      "size": "18032",
+      "size": "18016",
       "staticFields": []
     },
     {
@@ -221485,7 +221485,7 @@
       ],
       "projectName": "client",
       "singleInheritanceDepth": 9,
-      "size": "18032",
+      "size": "18016",
       "staticFields": []
     },
     {
@@ -223821,28 +223821,8 @@
         },
         {
           "metadata": [],
-          "name": "m_hActiveMinimapVolume",
-          "offset": "11316",
-          "type": {
-            "atomicCategory": "ATOMIC_T",
-            "category": "ATOMIC",
-            "count": "0",
-            "inner": {
-              "atomicCategory": "ATOMIC_UNSPECIFIED",
-              "category": "DECLARED_CLASS",
-              "count": "0",
-              "module": "libclient.so",
-              "name": "CCSMinimapVolume"
-            },
-            "module": "",
-            "name": "CHandle< CCSMinimapVolume >"
-          },
-          "typeModule": "libclient.so"
-        },
-        {
-          "metadata": [],
           "name": "m_hHudModelArms",
-          "offset": "11320",
+          "offset": "11316",
           "type": {
             "atomicCategory": "ATOMIC_T",
             "category": "ATOMIC",
@@ -223862,7 +223842,7 @@
         {
           "metadata": [],
           "name": "m_qDeathEyeAngles",
-          "offset": "11324",
+          "offset": "11320",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -223875,7 +223855,7 @@
         {
           "metadata": [],
           "name": "m_bLeftHanded",
-          "offset": "11336",
+          "offset": "11332",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -223888,7 +223868,7 @@
         {
           "metadata": [],
           "name": "m_fSwitchedHandednessTime",
-          "offset": "11340",
+          "offset": "11336",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -223901,7 +223881,7 @@
         {
           "metadata": [],
           "name": "m_flViewmodelOffsetX",
-          "offset": "11344",
+          "offset": "11340",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -223914,7 +223894,7 @@
         {
           "metadata": [],
           "name": "m_flViewmodelOffsetY",
-          "offset": "11348",
+          "offset": "11344",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -223927,7 +223907,7 @@
         {
           "metadata": [],
           "name": "m_flViewmodelOffsetZ",
-          "offset": "11352",
+          "offset": "11348",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -223940,7 +223920,7 @@
         {
           "metadata": [],
           "name": "m_flViewmodelFOV",
-          "offset": "11356",
+          "offset": "11352",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -223953,7 +223933,7 @@
         {
           "metadata": [],
           "name": "m_vecPlayerPatchEconIndices",
-          "offset": "11360",
+          "offset": "11356",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "FIXED_ARRAY",
@@ -223973,7 +223953,7 @@
         {
           "metadata": [],
           "name": "m_GunGameImmunityColor",
-          "offset": "11432",
+          "offset": "11424",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -223986,7 +223966,7 @@
         {
           "metadata": [],
           "name": "m_vecBulletHitModels",
-          "offset": "11512",
+          "offset": "11504",
           "type": {
             "atomicCategory": "ATOMIC_COLLECTION_OF_T",
             "category": "ATOMIC",
@@ -224013,7 +223993,7 @@
         {
           "metadata": [],
           "name": "m_bIsWalking",
-          "offset": "11536",
+          "offset": "11528",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224026,7 +224006,7 @@
         {
           "metadata": [],
           "name": "m_entitySpottedState",
-          "offset": "11544",
+          "offset": "11536",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -224039,7 +224019,7 @@
         {
           "metadata": [],
           "name": "m_bIsScoped",
-          "offset": "11568",
+          "offset": "11560",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224052,7 +224032,7 @@
         {
           "metadata": [],
           "name": "m_bResumeZoom",
-          "offset": "11569",
+          "offset": "11561",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224065,7 +224045,7 @@
         {
           "metadata": [],
           "name": "m_bIsDefusing",
-          "offset": "11570",
+          "offset": "11562",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224078,7 +224058,7 @@
         {
           "metadata": [],
           "name": "m_bIsGrabbingHostage",
-          "offset": "11571",
+          "offset": "11563",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224091,7 +224071,7 @@
         {
           "metadata": [],
           "name": "m_iBlockingUseActionInProgress",
-          "offset": "11572",
+          "offset": "11564",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_ENUM",
@@ -224104,7 +224084,20 @@
         {
           "metadata": [],
           "name": "m_flEmitSoundTime",
-          "offset": "11576",
+          "offset": "11568",
+          "type": {
+            "atomicCategory": "ATOMIC_UNSPECIFIED",
+            "category": "DECLARED_CLASS",
+            "count": "0",
+            "module": "!GlobalTypes",
+            "name": "GameTime_t"
+          },
+          "typeModule": "!GlobalTypes"
+        },
+        {
+          "metadata": [],
+          "name": "m_flEmitSoundTime_Client",
+          "offset": "11572",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -224117,7 +224110,7 @@
         {
           "metadata": [],
           "name": "m_bInNoDefuseArea",
-          "offset": "11580",
+          "offset": "11576",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224130,7 +224123,7 @@
         {
           "metadata": [],
           "name": "m_nWhichBombZone",
-          "offset": "11584",
+          "offset": "11580",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224143,7 +224136,7 @@
         {
           "metadata": [],
           "name": "m_iShotsFired",
-          "offset": "11588",
+          "offset": "11584",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224156,7 +224149,7 @@
         {
           "metadata": [],
           "name": "m_flFlinchStack",
-          "offset": "11592",
+          "offset": "11588",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224169,7 +224162,7 @@
         {
           "metadata": [],
           "name": "m_flVelocityModifier",
-          "offset": "11596",
+          "offset": "11592",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224182,7 +224175,7 @@
         {
           "metadata": [],
           "name": "m_bWaitForNoAttack",
-          "offset": "11600",
+          "offset": "11596",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224195,7 +224188,7 @@
         {
           "metadata": [],
           "name": "m_ignoreLadderJumpTime",
-          "offset": "11604",
+          "offset": "11600",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224208,7 +224201,7 @@
         {
           "metadata": [],
           "name": "m_bKilledByHeadshot",
-          "offset": "11609",
+          "offset": "11605",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224221,7 +224214,7 @@
         {
           "metadata": [],
           "name": "m_ArmorValue",
-          "offset": "11612",
+          "offset": "11608",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224234,7 +224227,7 @@
         {
           "metadata": [],
           "name": "m_unCurrentEquipmentValue",
-          "offset": "11616",
+          "offset": "11612",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224247,7 +224240,7 @@
         {
           "metadata": [],
           "name": "m_unRoundStartEquipmentValue",
-          "offset": "11618",
+          "offset": "11614",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224260,7 +224253,7 @@
         {
           "metadata": [],
           "name": "m_unFreezetimeEndEquipmentValue",
-          "offset": "11620",
+          "offset": "11616",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224273,7 +224266,7 @@
         {
           "metadata": [],
           "name": "m_nLastKillerIndex",
-          "offset": "11624",
+          "offset": "11620",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224286,7 +224279,7 @@
         {
           "metadata": [],
           "name": "m_bOldIsScoped",
-          "offset": "11628",
+          "offset": "11624",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224299,7 +224292,7 @@
         {
           "metadata": [],
           "name": "m_bHasDeathInfo",
-          "offset": "11629",
+          "offset": "11625",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224312,7 +224305,7 @@
         {
           "metadata": [],
           "name": "m_flDeathInfoTime",
-          "offset": "11632",
+          "offset": "11628",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224325,7 +224318,7 @@
         {
           "metadata": [],
           "name": "m_vecDeathInfoOrigin",
-          "offset": "11636",
+          "offset": "11632",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224338,7 +224331,7 @@
         {
           "metadata": [],
           "name": "m_grenadeParameterStashTime",
-          "offset": "11696",
+          "offset": "11688",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -224351,7 +224344,7 @@
         {
           "metadata": [],
           "name": "m_bGrenadeParametersStashed",
-          "offset": "11700",
+          "offset": "11692",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224364,7 +224357,7 @@
         {
           "metadata": [],
           "name": "m_angStashedShootAngles",
-          "offset": "11704",
+          "offset": "11696",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224377,7 +224370,7 @@
         {
           "metadata": [],
           "name": "m_vecStashedGrenadeThrowPosition",
-          "offset": "11716",
+          "offset": "11708",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224390,7 +224383,7 @@
         {
           "metadata": [],
           "name": "m_vecStashedGrenadeThrowPawnCenter",
-          "offset": "11728",
+          "offset": "11720",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224403,7 +224396,7 @@
         {
           "metadata": [],
           "name": "m_vecStashedVelocity",
-          "offset": "11740",
+          "offset": "11732",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224416,7 +224409,7 @@
         {
           "metadata": [],
           "name": "m_flInterpolatedInaccuracy",
-          "offset": "11752",
+          "offset": "11744",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224429,7 +224422,7 @@
         {
           "metadata": [],
           "name": "m_bShouldAutobuyDMWeapons",
-          "offset": "17312",
+          "offset": "17296",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224442,7 +224435,7 @@
         {
           "metadata": [],
           "name": "m_fImmuneToGunGameDamageTime",
-          "offset": "17316",
+          "offset": "17300",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -224455,7 +224448,7 @@
         {
           "metadata": [],
           "name": "m_bGunGameImmunity",
-          "offset": "17320",
+          "offset": "17304",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224468,7 +224461,7 @@
         {
           "metadata": [],
           "name": "m_fImmuneToGunGameDamageTimeLast",
-          "offset": "17324",
+          "offset": "17308",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -224481,7 +224474,7 @@
         {
           "metadata": [],
           "name": "m_flModifier0",
-          "offset": "17328",
+          "offset": "17312",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224494,7 +224487,7 @@
         {
           "metadata": [],
           "name": "m_fMolotovDamageTime",
-          "offset": "17332",
+          "offset": "17316",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -224507,7 +224500,7 @@
         {
           "metadata": [],
           "name": "m_nPlayerInfernoBodyFx",
-          "offset": "17440",
+          "offset": "17424",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -224520,7 +224513,7 @@
         {
           "metadata": [],
           "name": "m_angEyeAngles",
-          "offset": "17568",
+          "offset": "17552",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224533,7 +224526,7 @@
         {
           "metadata": [],
           "name": "m_arrOldEyeAnglesTimes",
-          "offset": "17720",
+          "offset": "17704",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "FIXED_ARRAY",
@@ -224553,7 +224546,7 @@
         {
           "metadata": [],
           "name": "m_arrOldEyeAngles",
-          "offset": "17736",
+          "offset": "17720",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "FIXED_ARRAY",
@@ -224573,7 +224566,7 @@
         {
           "metadata": [],
           "name": "m_angEyeAnglesVelocity",
-          "offset": "17784",
+          "offset": "17768",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224586,7 +224579,7 @@
         {
           "metadata": [],
           "name": "m_iIDEntIndex",
-          "offset": "17796",
+          "offset": "17780",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224599,7 +224592,7 @@
         {
           "metadata": [],
           "name": "m_delayTargetIDTimer",
-          "offset": "17800",
+          "offset": "17784",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -224612,7 +224605,7 @@
         {
           "metadata": [],
           "name": "m_iTargetItemEntIdx",
-          "offset": "17824",
+          "offset": "17808",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224625,7 +224618,7 @@
         {
           "metadata": [],
           "name": "m_iOldIDEntIndex",
-          "offset": "17828",
+          "offset": "17812",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -224638,7 +224631,7 @@
         {
           "metadata": [],
           "name": "m_holdTargetIDTimer",
-          "offset": "17832",
+          "offset": "17816",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -224664,7 +224657,7 @@
       ],
       "projectName": "client",
       "singleInheritanceDepth": 7,
-      "size": "17872",
+      "size": "17856",
       "staticFields": []
     },
     {
@@ -277931,7 +277924,7 @@
         {
           "metadata": [],
           "name": "m_strMinimapName",
-          "offset": "3232",
+          "offset": "3256",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -277957,7 +277950,7 @@
       ],
       "projectName": "server",
       "singleInheritanceDepth": 5,
-      "size": "3240",
+      "size": "3264",
       "staticFields": []
     },
     {
@@ -280916,55 +280909,8 @@
         },
         {
           "metadata": [],
-          "name": "m_vecCurrentMinimapVolumes",
-          "offset": "5912",
-          "type": {
-            "atomicCategory": "ATOMIC_COLLECTION_OF_T",
-            "category": "ATOMIC",
-            "count": "0",
-            "inner": {
-              "atomicCategory": "ATOMIC_T",
-              "category": "ATOMIC",
-              "count": "0",
-              "inner": {
-                "atomicCategory": "ATOMIC_UNSPECIFIED",
-                "category": "DECLARED_CLASS",
-                "count": "0",
-                "module": "libserver.so",
-                "name": "CCSMinimapVolume"
-              },
-              "module": "",
-              "name": "CHandle< CCSMinimapVolume >"
-            },
-            "module": "",
-            "name": "CUtlVector< CHandle< CCSMinimapVolume > >"
-          },
-          "typeModule": "libserver.so"
-        },
-        {
-          "metadata": [],
-          "name": "m_hActiveMinimapVolume",
-          "offset": "5936",
-          "type": {
-            "atomicCategory": "ATOMIC_T",
-            "category": "ATOMIC",
-            "count": "0",
-            "inner": {
-              "atomicCategory": "ATOMIC_UNSPECIFIED",
-              "category": "DECLARED_CLASS",
-              "count": "0",
-              "module": "libserver.so",
-              "name": "CCSMinimapVolume"
-            },
-            "module": "",
-            "name": "CHandle< CCSMinimapVolume >"
-          },
-          "typeModule": "libserver.so"
-        },
-        {
-          "metadata": [],
           "name": "m_qDeathEyeAngles",
-          "offset": "5940",
+          "offset": "5908",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -280977,7 +280923,7 @@
         {
           "metadata": [],
           "name": "m_bLeftHanded",
-          "offset": "5952",
+          "offset": "5920",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -280990,7 +280936,7 @@
         {
           "metadata": [],
           "name": "m_fSwitchedHandednessTime",
-          "offset": "5956",
+          "offset": "5924",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -281003,7 +280949,7 @@
         {
           "metadata": [],
           "name": "m_flViewmodelOffsetX",
-          "offset": "5960",
+          "offset": "5928",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281016,7 +280962,7 @@
         {
           "metadata": [],
           "name": "m_flViewmodelOffsetY",
-          "offset": "5964",
+          "offset": "5932",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281029,7 +280975,7 @@
         {
           "metadata": [],
           "name": "m_flViewmodelOffsetZ",
-          "offset": "5968",
+          "offset": "5936",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281042,7 +280988,7 @@
         {
           "metadata": [],
           "name": "m_flViewmodelFOV",
-          "offset": "5972",
+          "offset": "5940",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281055,7 +281001,7 @@
         {
           "metadata": [],
           "name": "m_bIsWalking",
-          "offset": "5976",
+          "offset": "5944",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281068,7 +281014,7 @@
         {
           "metadata": [],
           "name": "m_fLastGivenDefuserTime",
-          "offset": "5980",
+          "offset": "5948",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281081,7 +281027,7 @@
         {
           "metadata": [],
           "name": "m_fLastGivenBombTime",
-          "offset": "5984",
+          "offset": "5952",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281094,7 +281040,7 @@
         {
           "metadata": [],
           "name": "m_flDealtDamageToEnemyMostRecentTimestamp",
-          "offset": "5988",
+          "offset": "5956",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281107,7 +281053,7 @@
         {
           "metadata": [],
           "name": "m_iDisplayHistoryBits",
-          "offset": "5992",
+          "offset": "5960",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281120,7 +281066,7 @@
         {
           "metadata": [],
           "name": "m_flLastAttackedTeammate",
-          "offset": "5996",
+          "offset": "5964",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281133,7 +281079,7 @@
         {
           "metadata": [],
           "name": "m_allowAutoFollowTime",
-          "offset": "6000",
+          "offset": "5968",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -281146,7 +281092,7 @@
         {
           "metadata": [],
           "name": "m_bResetArmorNextSpawn",
-          "offset": "6004",
+          "offset": "5972",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281159,7 +281105,7 @@
         {
           "metadata": [],
           "name": "m_nLastKillerIndex",
-          "offset": "6008",
+          "offset": "5976",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281172,7 +281118,7 @@
         {
           "metadata": [],
           "name": "m_entitySpottedState",
-          "offset": "6016",
+          "offset": "5984",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -281185,7 +281131,7 @@
         {
           "metadata": [],
           "name": "m_nSpotRules",
-          "offset": "6040",
+          "offset": "6008",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281198,7 +281144,7 @@
         {
           "metadata": [],
           "name": "m_bIsScoped",
-          "offset": "6044",
+          "offset": "6012",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281211,7 +281157,7 @@
         {
           "metadata": [],
           "name": "m_bResumeZoom",
-          "offset": "6045",
+          "offset": "6013",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281224,7 +281170,7 @@
         {
           "metadata": [],
           "name": "m_bIsDefusing",
-          "offset": "6046",
+          "offset": "6014",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281237,7 +281183,7 @@
         {
           "metadata": [],
           "name": "m_bIsGrabbingHostage",
-          "offset": "6047",
+          "offset": "6015",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281250,7 +281196,7 @@
         {
           "metadata": [],
           "name": "m_iBlockingUseActionInProgress",
-          "offset": "6048",
+          "offset": "6016",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_ENUM",
@@ -281263,7 +281209,7 @@
         {
           "metadata": [],
           "name": "m_flEmitSoundTime",
-          "offset": "6052",
+          "offset": "6020",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -281276,7 +281222,7 @@
         {
           "metadata": [],
           "name": "m_bInNoDefuseArea",
-          "offset": "6056",
+          "offset": "6024",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281289,7 +281235,7 @@
         {
           "metadata": [],
           "name": "m_iBombSiteIndex",
-          "offset": "6060",
+          "offset": "6028",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281302,7 +281248,7 @@
         {
           "metadata": [],
           "name": "m_nWhichBombZone",
-          "offset": "6064",
+          "offset": "6032",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281315,7 +281261,7 @@
         {
           "metadata": [],
           "name": "m_bInBombZoneTrigger",
-          "offset": "6068",
+          "offset": "6036",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281328,7 +281274,7 @@
         {
           "metadata": [],
           "name": "m_bWasInBombZoneTrigger",
-          "offset": "6069",
+          "offset": "6037",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281341,7 +281287,7 @@
         {
           "metadata": [],
           "name": "m_iShotsFired",
-          "offset": "6072",
+          "offset": "6040",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281354,7 +281300,7 @@
         {
           "metadata": [],
           "name": "m_flFlinchStack",
-          "offset": "6076",
+          "offset": "6044",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281367,7 +281313,7 @@
         {
           "metadata": [],
           "name": "m_flVelocityModifier",
-          "offset": "6080",
+          "offset": "6048",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281380,7 +281326,7 @@
         {
           "metadata": [],
           "name": "m_vecTotalBulletForce",
-          "offset": "6084",
+          "offset": "6052",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281393,7 +281339,7 @@
         {
           "metadata": [],
           "name": "m_bWaitForNoAttack",
-          "offset": "6096",
+          "offset": "6064",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281406,7 +281352,7 @@
         {
           "metadata": [],
           "name": "m_ignoreLadderJumpTime",
-          "offset": "6100",
+          "offset": "6068",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281419,7 +281365,7 @@
         {
           "metadata": [],
           "name": "m_bKilledByHeadshot",
-          "offset": "6104",
+          "offset": "6072",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281432,7 +281378,7 @@
         {
           "metadata": [],
           "name": "m_LastHitBox",
-          "offset": "6108",
+          "offset": "6076",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281445,7 +281391,7 @@
         {
           "metadata": [],
           "name": "m_pBot",
-          "offset": "6112",
+          "offset": "6080",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "PTR",
@@ -281465,7 +281411,7 @@
         {
           "metadata": [],
           "name": "m_bBotAllowActive",
-          "offset": "6120",
+          "offset": "6088",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281478,7 +281424,7 @@
         {
           "metadata": [],
           "name": "m_nLastPickupPriority",
-          "offset": "6124",
+          "offset": "6092",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281491,7 +281437,7 @@
         {
           "metadata": [],
           "name": "m_flLastPickupPriorityTime",
-          "offset": "6128",
+          "offset": "6096",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281504,7 +281450,7 @@
         {
           "metadata": [],
           "name": "m_ArmorValue",
-          "offset": "6132",
+          "offset": "6100",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281517,7 +281463,7 @@
         {
           "metadata": [],
           "name": "m_unCurrentEquipmentValue",
-          "offset": "6136",
+          "offset": "6104",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281530,7 +281476,7 @@
         {
           "metadata": [],
           "name": "m_unRoundStartEquipmentValue",
-          "offset": "6138",
+          "offset": "6106",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281543,7 +281489,7 @@
         {
           "metadata": [],
           "name": "m_unFreezetimeEndEquipmentValue",
-          "offset": "6140",
+          "offset": "6108",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281556,7 +281502,7 @@
         {
           "metadata": [],
           "name": "m_iLastWeaponFireUsercmd",
-          "offset": "6144",
+          "offset": "6112",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281569,7 +281515,7 @@
         {
           "metadata": [],
           "name": "m_bIsSpawning",
-          "offset": "6148",
+          "offset": "6116",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281582,7 +281528,7 @@
         {
           "metadata": [],
           "name": "m_iDeathFlags",
-          "offset": "6160",
+          "offset": "6128",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281595,7 +281541,7 @@
         {
           "metadata": [],
           "name": "m_bHasDeathInfo",
-          "offset": "6164",
+          "offset": "6132",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281608,7 +281554,7 @@
         {
           "metadata": [],
           "name": "m_flDeathInfoTime",
-          "offset": "6168",
+          "offset": "6136",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281621,7 +281567,7 @@
         {
           "metadata": [],
           "name": "m_vecDeathInfoOrigin",
-          "offset": "6172",
+          "offset": "6140",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281634,7 +281580,7 @@
         {
           "metadata": [],
           "name": "m_vecPlayerPatchEconIndices",
-          "offset": "6184",
+          "offset": "6152",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "FIXED_ARRAY",
@@ -281654,7 +281600,7 @@
         {
           "metadata": [],
           "name": "m_GunGameImmunityColor",
-          "offset": "6204",
+          "offset": "6172",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281667,7 +281613,7 @@
         {
           "metadata": [],
           "name": "m_grenadeParameterStashTime",
-          "offset": "6208",
+          "offset": "6176",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -281680,7 +281626,7 @@
         {
           "metadata": [],
           "name": "m_bGrenadeParametersStashed",
-          "offset": "6212",
+          "offset": "6180",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281693,7 +281639,7 @@
         {
           "metadata": [],
           "name": "m_angStashedShootAngles",
-          "offset": "6216",
+          "offset": "6184",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281706,7 +281652,7 @@
         {
           "metadata": [],
           "name": "m_vecStashedGrenadeThrowPosition",
-          "offset": "6228",
+          "offset": "6196",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281719,7 +281665,7 @@
         {
           "metadata": [],
           "name": "m_vecStashedGrenadeThrowPawnCenter",
-          "offset": "6240",
+          "offset": "6208",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281732,7 +281678,7 @@
         {
           "metadata": [],
           "name": "m_vecStashedVelocity",
-          "offset": "6252",
+          "offset": "6220",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281745,7 +281691,7 @@
         {
           "metadata": [],
           "name": "m_bCommittingSuicideOnTeamChange",
-          "offset": "6272",
+          "offset": "6240",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281758,7 +281704,7 @@
         {
           "metadata": [],
           "name": "m_wasNotKilledNaturally",
-          "offset": "6273",
+          "offset": "6241",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281771,7 +281717,7 @@
         {
           "metadata": [],
           "name": "m_fImmuneToGunGameDamageTime",
-          "offset": "6276",
+          "offset": "6244",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "DECLARED_CLASS",
@@ -281784,7 +281730,7 @@
         {
           "metadata": [],
           "name": "m_bGunGameImmunity",
-          "offset": "6280",
+          "offset": "6248",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281797,7 +281743,7 @@
         {
           "metadata": [],
           "name": "m_flModifier0",
-          "offset": "6284",
+          "offset": "6252",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281810,7 +281756,7 @@
         {
           "metadata": [],
           "name": "m_fMolotovDamageTime",
-          "offset": "6288",
+          "offset": "6256",
           "type": {
             "atomicCategory": "ATOMIC_UNSPECIFIED",
             "category": "BUILTIN",
@@ -281823,7 +281769,7 @@
         {
           "metadata": [],
           "name": "m_angEyeAngles",
-          "offset": "6292",
+          "offset": "6260",
           "type": {
             "atomicCategory": "ATOMIC_PLAIN",
             "category": "ATOMIC",
@@ -281849,7 +281795,7 @@
       ],
       "projectName": "server",
       "singleInheritanceDepth": 7,
-      "size": "6320",
+      "size": "6288",
       "staticFields": []
     },
     {
