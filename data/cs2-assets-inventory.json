@@ -7,11 +7,11 @@
     ],
     "provenance": "Manifests are hand-extracted from SteamDB patch pages via the bookmarklet in temp/scripts/ (manual DOM read; -- no scraping); new builds are appended to this inventory by the host on a successful extract --commit (forward-capture), which is now the sole writer. Authoritative entries carry build_id+change_number; date-only entries predate extraction. Verified against committed provenance.json where available.",
     "counts": {
-      "builds": 399,
-      "builds_with_binaries": 399,
-      "builds_with_content": 399,
-      "builds_with_change_number": 399,
-      "builds_with_era": 399,
+      "builds": 400,
+      "builds_with_binaries": 400,
+      "builds_with_content": 400,
+      "builds_with_change_number": 400,
+      "builds_with_era": 400,
       "depots": 15
     },
     "era_note": "builds[].era = the id of the eras[] entry this build's schema-system layout belongs to (compile-pin or runtime-variant). eras[] defines each era's hl2sdk pin (or ridden pin), per-platform layout signature(s), and class-count band. Maintained by the host on forward-capture."
@@ -25562,6 +25562,20 @@
     }
   ],
   "builds": [
+    {
+      "build_id": 25966348,
+      "predecessor": 25947352,
+      "date_utc": "2026-10-15T17:24:20Z",
+      "change_number": 39872123,
+      "title": "Build 25966348 on 15 October 2026",
+      "era": "cs2-2026-07-09",
+      "content": "2520908610273941189",
+      "binaries": {
+        "linux-x86_64": "5513399157532729905",
+        "windows-x86_64": "8766757721818354077"
+      },
+      "tools": "2027872042337298402"
+    },
     {
       "build_id": 25947352,
       "predecessor": 25815307,
