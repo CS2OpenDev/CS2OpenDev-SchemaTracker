@@ -62,7 +62,7 @@ jobs:
           - os: windows-latest
             platform: windows-x86_64
             rid: win-x64
-          - os: ubuntu-latest
+          - os: ubuntu-24.04
             platform: linux-x86_64
             rid: linux-x64
     runs-on: ${{ matrix.os }}
@@ -320,7 +320,7 @@ jobs:
     name: publish GitHub Release
     needs: build-walkers
     # Just gathers both matrix legs' bundle artifacts and cuts the Release — no build, either OS works.
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: write   # create the GitHub Release + upload the assets
     steps:

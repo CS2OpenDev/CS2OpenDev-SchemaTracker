@@ -134,8 +134,10 @@ jobs:
         include:
           - platform: windows-x86_64
             os: windows-latest
+          # PINNED, not ubuntu-latest: this leg installs the walker's runtime libs by name
+          # (see the system-libs step), so a label that migrates can change what resolves.
           - platform: linux-x86_64
-            os: ubuntu-latest
+            os: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
         with:
@@ -250,10 +252,20 @@ jobs:
             Write-Host "workflow_dispatch: explicit build_id=$buildId"
           } else {
             Write-Host "probing current public-branch build id (anonymous PICS, no download)..."
-            $probe = & dotnet $env:HOST_DLL acquire --probe --build latest --platform ${{ matrix.platform }} 2>&1
-            $probe | ForEach-Object { Write-Host $_ }
+            # Steam's license list / PICS reply is the flakiest hop here and the probe
+            # downloads nothing, so a lost connection is retried, not fatal to the leg.
+            $probe = $null
+            foreach ($attempt in 1..3) {
+              $probe = & dotnet $env:HOST_DLL acquire --probe --build latest --platform ${{ matrix.platform }} 2>&1
+              $probe | ForEach-Object { Write-Host $_ }
+              if ($LASTEXITCODE -eq 0) { break }
+              if ($attempt -lt 3) {
+                Write-Host "::warning title=probe retry::acquire --probe exit $LASTEXITCODE on attempt $attempt/3; retrying in $(15 * $attempt)s."
+                Start-Sleep -Seconds (15 * $attempt)
+              }
+            }
             if ($LASTEXITCODE -ne 0) {
-              Write-Error "acquire --probe failed (exit $LASTEXITCODE) — could not resolve current build id."
+              Write-Error "acquire --probe failed (exit $LASTEXITCODE) after 3 attempts. Could not resolve current build id."
               exit $LASTEXITCODE
             }
             $m = [regex]::Match(($probe -join "`n"), 'build_id=(\d+)')
@@ -292,9 +304,18 @@ jobs:
           $ErrorActionPreference = "Stop"
           $buildId = "${{ steps.resolve.outputs.build_id }}"
           Write-Host "capturing current PICS appinfo for build $buildId (anonymous, no download)..."
-          & dotnet $env:HOST_DLL capture-pics --build $buildId --platform ${{ matrix.platform }}
+          # PICS is current-only: a capture lost to a transient Steam hiccup cannot be
+          # retaken once the build moves on, so retry before failing the leg.
+          foreach ($attempt in 1..3) {
+            & dotnet $env:HOST_DLL capture-pics --build $buildId --platform ${{ matrix.platform }}
+            if ($LASTEXITCODE -eq 0) { break }
+            if ($attempt -lt 3) {
+              Write-Host "::warning title=capture-pics retry::exit $LASTEXITCODE on attempt $attempt/3; retrying in $(15 * $attempt)s."
+              Start-Sleep -Seconds (15 * $attempt)
+            }
+          }
           if ($LASTEXITCODE -ne 0) {
-            Write-Error "capture-pics failed (exit $LASTEXITCODE) for build $buildId. refusing to proceed with a fetch/write failure."
+            Write-Error "capture-pics failed (exit $LASTEXITCODE) for build $buildId after 3 attempts. refusing to proceed with a fetch/write failure."
             exit $LASTEXITCODE
           }
 
@@ -368,6 +389,19 @@ jobs:
           retention-days: 7
           overwrite: true            # a re-run leg replaces its own payload.
 
+      - name: Upload diverging walks (determinism gate only)
+        # The two walks are the only evidence of a gate divergence and the host deletes them
+        # on exit. Picks up cache/determinism/<build>-<platform>/ once the host writes it
+        # (PreserveDivergingWalks); inert until then, hence if-no-files-found: ignore.
+        if: ${{ failure() && steps.extract.outcome == 'failure' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: diverging-walks-${{ matrix.platform }}-${{ steps.resolve.outputs.build_id }}
+          path: cache/determinism
+          if-no-files-found: ignore   # every other extract failure mode writes nothing here.
+          retention-days: 30          # longer than the leg payload: this is post-mortem input.
+          overwrite: true
+
       - name: No new build (clean no-op)
         if: success() && steps.resolve.outputs.is_new != 'true'
         # a clean exit-0 when the public branch has not advanced. The 6h cron re-checks.
@@ -383,7 +417,7 @@ jobs:
     # never touch git, so there is no push race left to serialize or rebase around.
     needs: forward-capture
     if: ${{ !cancelled() && github.ref == 'refs/heads/main' }}
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       # Job-scoped (the extract legs need neither): re-grants the workflow-level
       # contents: write for the artifact push, and adds actions: write, which is what

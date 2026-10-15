@@ -67,7 +67,7 @@ concurrency:
 jobs:
   publish:
     name: publish latest branch + rolling release
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v5
         with:
