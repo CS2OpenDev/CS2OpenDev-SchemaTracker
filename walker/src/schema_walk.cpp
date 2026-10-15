@@ -825,7 +825,12 @@ bool CallKv3DefaultsGuarded(Kv3CallCtx* ctx) {
 // g_regexFilters. Applied to the JSON text AFTER the guarded call (std::regex is not signal-safe, so
 // it must run outside the guard). NOTE: this makes the text no longer strictly valid JSON — it is a
 // diff-stable blob carried verbatim in SchemaMetadata.value (value_parsed is left unset).
-std::string FilterKv3Nondeterminism(const std::string& json) {
+//
+// Two tables: kFilters is GLOBAL (matched by property name in every class) and kClassFilters is
+// CLASS-SCOPED (matched only in the named class). A property only ever belongs in kFilters when
+// NO class emits a real default for it; otherwise it goes in kClassFilters. See the note on
+// kClassFilters below.
+std::string FilterKv3Nondeterminism(const std::string& json, const char* class_name) {
   static const std::regex kFilters[] = {
       std::regex(R"#(("m_id":) .*)#"),
       // m_ID / m_nRandomSeed / m_seed / m_outputPinID used to require a literal trailing comma
@@ -867,8 +872,40 @@ std::string FilterKv3Nondeterminism(const std::string& json) {
       std::regex(R"#(("valueB":) .*)#"),
       std::regex(R"#(("pitchfrac":) .*)#"),
   };
+  // CLASS-SCOPED filters: applied only to the named class, NOT globally by property name.
+  //   * VMixPointerFixupEntry_t::m_nIndex — the class's MGetKV3ClassDefaults accessor reads the
+  //     field out of uninitialized instance memory in a schema-only walk, so it emits
+  //     address-shaped garbage that differs RUN-TO-RUN (3226467264 vs 2685402576 across two walks
+  //     of build 25472966). The game added the class in build 25472966; it is present in every
+  //     windows build from there on (25472966, 25492732, 25515854, 25537370, 25588766, 25640462,
+  //     25687242, 25738536, 25815307, 25947352) and absent from the last build before it,
+  //     25218825 — which double-walks byte-identically with the same walker. One leaked field is
+  //     enough to fail "extract --commit"'s double-walk byte-compare (exit 76).
+  //     It CANNOT go in kFilters: that table is keyed by property name alone, and eleven other
+  //     classes in the same walk emit a REAL, consumer-facing m_nIndex default that a global entry
+  //     would blank — AimMatrixOpFixedSettings_t, CAimMatrixUpdateNode, CFootAdjustmentUpdateNode,
+  //     CLeanMatrixUpdateNode, CPoseHandle, CSingleFrameUpdateNode, FunctionInfo_t, MotionDBIndex,
+  //     RnTriangle_t, RnWing_t and VariableInfo_t (65535 sentinels, 0, and in RnTriangle_t /
+  //     RnWing_t a multi-line array whose opening bracket a one-line `.*` match would sever).
+  //     In VMixPointerFixupEntry_t m_nIndex is followed by m_offset, so this is a mid-struct hit
+  //     (value plus trailing comma); the greedy, comma-free `.*` form matches through that comma
+  //     and the replacement re-appends exactly one, same as the kFilters entries above, so a
+  //     mid-struct and a last-property hit come out identical.
+  struct Kv3ClassFilter {
+    const char* class_name;
+    std::regex pattern;
+  };
+  static const Kv3ClassFilter kClassFilters[] = {
+      {"VMixPointerFixupEntry_t", std::regex(R"#(("m_nIndex":) .*)#")},
+  };
   std::string out = json;
   for (const auto& re : kFilters) out = std::regex_replace(out, re, "$1 <HIDDEN FOR DIFF>,");
+  if (class_name != nullptr) {
+    for (const auto& f : kClassFilters) {
+      if (std::strcmp(class_name, f.class_name) != 0) continue;
+      out = std::regex_replace(out, f.pattern, "$1 <HIDDEN FOR DIFF>,");
+    }
+  }
   return out;
 }
 
@@ -982,7 +1019,7 @@ void LoadKv3Results(const char* path, std::unordered_map<uintptr_t, std::string>
     ctx.ok = false;
     std::string json;
     if (CallKv3DefaultsGuarded(&ctx) && ctx.result != nullptr) {
-      json = FilterKv3Nondeterminism(std::string(ctx.result));
+      json = FilterKv3Nondeterminism(std::string(ctx.result), r.class_name.c_str());
     }
     if (res != nullptr) {
       std::uint32_t len = static_cast<std::uint32_t>(json.size());
@@ -1102,6 +1139,7 @@ std::string DecodeKv3Defaults(const void* accessor_data, const char* class_name)
   // Heap-owned shared state so a DETACHED (hung) worker can still safely write after we've moved on.
   struct Kv3Work {
     const void* accessor_data = nullptr;
+    std::string class_name;  // owned copy: a detached worker may outlive this frame
     std::mutex m;
     std::condition_variable cv;
     bool done = false;
@@ -1109,6 +1147,7 @@ std::string DecodeKv3Defaults(const void* accessor_data, const char* class_name)
   };
   auto w = std::make_shared<Kv3Work>();
   w->accessor_data = accessor_data;
+  if (class_name != nullptr) w->class_name = class_name;
 
   std::thread worker([w]() {
     Kv3CallCtx ctx;
@@ -1117,7 +1156,8 @@ std::string DecodeKv3Defaults(const void* accessor_data, const char* class_name)
     ctx.ok = false;
     std::string r;
     if (CallKv3DefaultsGuarded(&ctx) && ctx.result != nullptr) {
-      r = FilterKv3Nondeterminism(std::string(ctx.result));
+      r = FilterKv3Nondeterminism(std::string(ctx.result),
+                                  w->class_name.empty() ? nullptr : w->class_name.c_str());
     }
     {
       std::lock_guard<std::mutex> lk(w->m);
