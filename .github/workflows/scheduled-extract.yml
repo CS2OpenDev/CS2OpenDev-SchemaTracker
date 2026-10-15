@@ -430,6 +430,10 @@ jobs:
       # contents-only without also removing the dispatch.
       contents: write
       actions: write
+      # checks: read is what `gh api repos/.../commits/<sha>/check-runs` needs in the push step's
+      # gate (see below). Declaring a permissions block drops every scope not listed, so without
+      # this the gate cannot read its own verdict and the push is refused rather than risked.
+      checks: read
     steps:
       # Payloads FIRST, into the runner's temp dir (outside the workspace, so the checkout's
       # clean cannot delete them), before any checkout/.NET/bundle setup: on the common
@@ -520,11 +524,29 @@ jobs:
         # Runs whenever the aggregate step RAN, even when it failed: builds are fail-isolated
         # there, so a partial failure can still leave other builds validly committed, and those
         # must not die with the runner (the failed aggregate step already keeps the run red).
+        #
+        # -Gate is what lets main stay rule-protected. main requires a passing `ci gate`, and a
+        # GITHUB_TOKEN push can NEVER carry one (GitHub suppresses push-event workflows for such
+        # pushes, so ci.yml never runs on exactly these commits) — which is why the ruleset sat
+        # inert at `evaluate`. With -Gate the script parks HEAD on an ungated staging branch,
+        # dispatches ci.yml against it (workflow_dispatch being the documented exception to the
+        # recursive-trigger guard, same as the channel refresh below), waits for the `ci gate`
+        # check run on that SHA, and only then pushes the SAME SHA to main — where the status
+        # travels with it, because check runs attach to the commit and not the ref. The rule is
+        # satisfied, not bypassed.
+        #
+        # It is also safer than the direct push it replaced: the staging push happens FIRST, so a
+        # refusal or a red gate leaves the capture sitting on the remote instead of dying with the
+        # runner. That is the difference that matters here — PICS serves only the current build and
+        # acquire now refuses to re-acquire a historical one, so a capture lost at this point is
+        # lost for good.
         if: ${{ !cancelled() && (steps.aggregate.outcome == 'success' || steps.aggregate.outcome == 'failure') }}
         shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           $ErrorActionPreference = "Stop"
-          ./scripts/push-forward-capture.ps1 -PlanPath (Join-Path $env:RUNNER_TEMP 'incoming/push-plan.json')
+          ./scripts/push-forward-capture.ps1 -PlanPath (Join-Path $env:RUNNER_TEMP 'incoming/push-plan.json') -Gate
           if ($LASTEXITCODE -ne 0) { Write-Error "push-forward-capture.ps1 failed"; exit $LASTEXITCODE }
 
       - name: Refresh latest-artifacts channel
@@ -558,6 +580,12 @@ jobs:
           Write-Host "dispatched publish-latest.yml"
 
       - name: Verify committed tree (fail-loud observability)
+        # STILL EARNS ITS KEEP after the push gate: the gate runs ci.yml on the staging SHA, so
+        # the artifacts gate HAS now seen these bytes — but this step also covers the ungated
+        # path (an operator running push-forward-capture.ps1 without -Gate) and it is the check
+        # that reads the tree as it actually stands on main after the push, rebase retry and all.
+        # Cheap, and the failure it catches is expensive.
+        #
         # WHY THIS RUNS HERE (CS2OpenDev-SchemaTracker#7 item 5): the push above is made
         # with the ambient GITHUB_TOKEN, so ci.yml's push-triggered verify-artifacts gate is
         # suppressed for exactly the commits this workflow lands. Meanwhile the cumulative
