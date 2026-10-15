@@ -535,6 +535,16 @@ internal static class AcquireCommand
                     $"acquire: resolved 'latest' -> build_id {pathBuildId} (app {plan.AppId}); " +
                     $"output keyed off the resolved build_id.");
             }
+            else if (buildId != 0)
+            {
+                // A concrete --build names the output dir and the manifest record, but PICS only
+                // ever serves the CURRENT manifests -- so unless this build IS current, continuing
+                // would file another build's bytes under it. See RefuseNonCurrentBuildAsync.
+                var refusal = await RefuseNonCurrentBuildAsync(
+                    acquirer, plan, buildId, "acquire").ConfigureAwait(false);
+                if (refusal is not null)
+                    return refusal.Value;
+            }
 
             var outDir = Path.GetFullPath(explicitOutArg ?? DefaultOutDir(pathBuildId, platform));
 
@@ -1156,6 +1166,15 @@ internal static class AcquireCommand
                 pathBuildId = pics.CurrentBuildId.ToString(CultureInfo.InvariantCulture);
                 Console.Error.WriteLine(
                     $"acquire --binaries-only: resolved 'latest' -> build_id {pathBuildId} (app {plan.AppId}).");
+            }
+            else if (buildId != 0)
+            {
+                // Same hazard as the unified path: PICS-current cannot serve a prior build, and a
+                // --binaries-only historical backfill is exactly what --from-manifest is for.
+                var refusal = await RefuseNonCurrentBuildAsync(
+                    acquirer, plan, buildId, "acquire --binaries-only").ConfigureAwait(false);
+                if (refusal is not null)
+                    return refusal.Value;
             }
 
             var outDir = Path.GetFullPath(explicitOutArg ?? DefaultOutDir(pathBuildId, platform));
@@ -2299,6 +2318,63 @@ internal static class AcquireCommand
     private sealed class CredentialsMissingException : Exception
     {
         public CredentialsMissingException(string message) : base(message) { }
+    }
+
+    /// <summary>
+    /// Refuse a PICS-current acquire that names a build OTHER than the one the public branch is on
+    /// right now.
+    /// <para>
+    /// PICS exposes the CURRENT manifests only -- see
+    /// <c>SteamAnonymousAcquirer.ResolveManifestIdsAsync</c>: "a specific buildId is recorded but
+    /// manifests still resolve from the public branch's current state" -- and
+    /// <c>ResolveBuildIdAsync</c> echoes a non-zero requested build back verbatim without checking
+    /// it. Together those meant a concrete historical <c>--build</c> on this path fetched TODAY's
+    /// depot bytes into <c>&lt;that build&gt;/&lt;platform&gt;</c> AND stamped manifest-record.json
+    /// with the requested id, so nothing downstream could notice: the tuple dir, the record and
+    /// every artifact walked out of it agreed on a build the bytes never came from. <c>extract</c>
+    /// auto-acquires through here, so <c>extract --build &lt;historical id&gt;</c> was one command
+    /// away from attributing current-build schema to an old build id.
+    /// </para>
+    /// <para>
+    /// Historical builds have a correct path: recorded per-depot GIDs, via batch mode (two or more
+    /// <c>--build</c>, or <c>--all</c>) or an explicit <c>--from-manifest</c> spec. This guard
+    /// costs one cheap PICS probe on the concrete-build path and nothing on <c>latest</c>.
+    /// </para>
+    /// Returns null when the request is servable from PICS-current, else the exit code to return.
+    /// </summary>
+    private static async Task<int?> RefuseNonCurrentBuildAsync(
+        ISteamAcquirer acquirer, PlatformAcquisitionPlan plan, uint buildId, string label)
+    {
+        if (buildId == 0)
+            return null;   // 'latest' IS the current build, by construction.
+
+        var pics = await acquirer.ProbeCurrentPicsAsync(
+            plan.AppId, plan.DepotIds, CancellationToken.None).ConfigureAwait(false);
+
+        if (pics.CurrentBuildId == buildId)
+            return null;   // the requested build is the live one -- PICS-current serves it exactly.
+
+        if (pics.CurrentBuildId == 0)
+        {
+            // PICS answered without a parseable public-branch buildid. We cannot prove the request
+            // is current, and guessing writes mislabelled bytes, so refuse rather than proceed.
+            Console.Error.WriteLine(
+                $"{label}: could not resolve the current public-branch build id from PICS, so " +
+                $"--build {buildId} cannot be confirmed to be the current build. Refusing rather " +
+                $"than risk recording another build's bytes under {buildId}. Retry, or acquire by " +
+                $"recorded GIDs (batch mode / --from-manifest).");
+            return 65;
+        }
+
+        Console.Error.WriteLine(
+            $"{label}: --build {buildId} is NOT the current public-branch build (PICS-current is " +
+            $"{pics.CurrentBuildId}). PICS serves only the current manifests, so this would fetch " +
+            $"build {pics.CurrentBuildId}'s bytes into a directory named for build {buildId} and " +
+            $"record them under the WRONG build id. Acquire a historical build by its RECORDED " +
+            $"GIDs instead: batch mode, which resolves data/cs2-assets-inventory.json " +
+            $"('--build {buildId} --build <another-id> --platform <P> --auth'), or " +
+            $"'--from-manifest <spec>' carrying that build's per-depot GIDs.");
+        return 64;
     }
 
     /// <summary>

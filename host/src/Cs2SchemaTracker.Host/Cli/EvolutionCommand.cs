@@ -122,7 +122,13 @@ internal static class EvolutionCommand
             return 65;
         }
 
-        AtomicWrite.WriteCanonical(message, outputPath);
+        // COMPACT, uniquely among the artifacts: this one is cumulative, so it grows without
+        // bound as builds land, and at 398 transitions the pretty form was 64.5 MB on
+        // windows-x86_64 -- past GitHub's 50 MB per-file recommendation, with the 100 MB hard
+        // limit the eventual wall. Dropping the indentation halves it and changes nothing a
+        // consumer can observe after a parse (same sorted keys, same values, same proto
+        // round-trip). The per-build artifacts stay indented.
+        AtomicWrite.WriteCanonicalCompact(message, outputPath);
 
         Console.Error.WriteLine(
             $"evolution: wrote {ArtifactSet.SchemaEvolutionRelativePath(platform)} [{mode}].");

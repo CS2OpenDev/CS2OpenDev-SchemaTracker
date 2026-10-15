@@ -73,4 +73,50 @@ public class CanonicalJsonTest
     {
         Xunit.Assert.Equal("null", CanonicalJson.Serialize(null));
     }
+
+    [Xunit.Fact]
+    public void Compact_Form_Has_The_Same_Keys_And_Values_Without_The_Whitespace()
+    {
+        // The compact writer exists so the cumulative schema-evolution index can stop being half
+        // indentation (64.5 MB -> 33.2 MB on windows-x86_64). It must differ from the indented
+        // form in whitespace ONLY: same recursive key sort, same escaping, same parse tree.
+        const string input = """{"zeta":1,"alpha":{"z":"last","a":"first"},"beta":[3,1,2]}""";
+
+        var indented = CanonicalJson.SerializeRawJson(input);
+        var compact = CanonicalJson.SerializeRawJsonCompact(input);
+
+        Xunit.Assert.DoesNotContain("\n", compact);
+        Xunit.Assert.Contains("\n", indented);
+        Xunit.Assert.True(compact.Length < indented.Length);
+
+        // Whitespace-insensitive equality: strip the indentation from the pretty form and the two
+        // are the same bytes. (Safe on this fixture -- no string value here contains a space.)
+        Xunit.Assert.Equal(
+            indented.Replace(" ", string.Empty, System.StringComparison.Ordinal)
+                    .Replace("\n", string.Empty, System.StringComparison.Ordinal),
+            compact);
+
+        // Key order is still canonical (alpha, beta, zeta) and array order is still preserved.
+        Xunit.Assert.Equal("""{"alpha":{"a":"first","z":"last"},"beta":[3,1,2],"zeta":1}""", compact);
+    }
+
+    [Xunit.Fact]
+    public void Compact_Form_Is_Byte_Identical_Across_Runs()
+    {
+        const string input = """{"b":{"d":2,"c":[1,{"y":1,"x":2}]},"a":"v"}""";
+        Xunit.Assert.Equal(
+            CanonicalJson.SerializeRawJsonCompact(input),
+            CanonicalJson.SerializeRawJsonCompact(input));
+    }
+
+    [Xunit.Fact]
+    public void Compact_Form_Preserves_Escaped_Newlines_Inside_String_Values()
+    {
+        // The LF normalization in the shared sorter rewrites indentation newlines only. A newline
+        // INSIDE a value arrives escaped and must survive verbatim, or dropping the indentation
+        // would silently corrupt string data.
+        const string input = """{"k":"line1\nline2"}""";
+        var compact = CanonicalJson.SerializeRawJsonCompact(input);
+        Xunit.Assert.Equal("""{"k":"line1\nline2"}""", compact);
+    }
 }

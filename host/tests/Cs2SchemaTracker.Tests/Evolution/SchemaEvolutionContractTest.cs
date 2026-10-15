@@ -7,7 +7,9 @@
 //   - determinism: two full builds are byte-identical;
 //   - incremental == full: appending the newest transition to the prior artifact matches a full walk
 //     byte-for-byte (the load-bearing new contract);
-//   - round-trip: the written file strict-parses (schema-valid) and re-serializes canonical identically;
+//   - round-trip: the written file strict-parses (schema-valid) and re-serializes canonical
+//     identically -- in the COMPACT canonical form, which this artifact alone uses because it is
+//     cumulative and had outgrown GitHub's 50 MB per-file recommendation;
 //   - fail-loud: a missing snapshot in the walk throws before any bytes are written.
 
 using Cs2SchemaTracker.Host.Cli;
@@ -282,8 +284,17 @@ public sealed class SchemaEvolutionContractTest
 
             var bytes = File.ReadAllText(path);
             var parsed = StrictParser.Parse<SchemaEvolution>(bytes);          // strict => schema-valid
-            Assert.Equal(AtomicWrite.SerializeCanonical(parsed), bytes);       // canonical fixpoint
+            // COMPACT canonical, uniquely among the artifacts: this one is cumulative and had
+            // reached 64.5 MB pretty-printed on windows-x86_64, ~49% of it indentation. Still a
+            // canonical fixpoint, just the no-indent form.
+            Assert.Equal(AtomicWrite.SerializeCanonicalCompact(parsed), bytes);
+            Assert.DoesNotContain('\n', bytes);                               // one line, no indentation
             Assert.Equal(B3, parsed.LatestBuild);
+            // And the compact form is the SAME document as the indented one would have been:
+            // identical parse tree, so a consumer cannot tell them apart after parsing.
+            Assert.Equal(
+                AtomicWrite.SerializeCanonical(parsed),
+                AtomicWrite.SerializeCanonical(StrictParser.Parse<SchemaEvolution>(bytes)));
         });
     }
 
