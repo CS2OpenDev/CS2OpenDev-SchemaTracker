@@ -2321,15 +2321,6 @@ internal static class AcquireCommand
     }
 
     /// <summary>
-    /// The DEFAULT per-(build, platform) acquire output dir when no explicit <c>--out</c> is given.
-    /// Honors the binaries-store root (env <c>CS2_BINARIES_ROOT</c>, else appsettings BinariesRoot;
-    /// env wins) so the acquired-binaries store can live off the repo volume — the SAME resolution
-    /// <see cref="ExtractCommand"/> uses (its <c>&lt;root&gt;/&lt;build&gt;/&lt;platform&gt;/</c> convention),
-    /// so an acquire and a later extract agree on the location. When the root is empty (unset), falls
-    /// back to the in-repo <c>cache/binaries/&lt;build&gt;/&lt;platform&gt;/</c> convention. Precedence at the
-    /// call sites: an explicit <c>--out</c> always WINS over this default (operator override).
-    /// </summary>
-    /// <summary>
     /// Refuse a PICS-current acquire that names a build OTHER than the one the public branch is on
     /// right now.
     /// <para>
@@ -2386,6 +2377,15 @@ internal static class AcquireCommand
         return 64;
     }
 
+    /// <summary>
+    /// The DEFAULT per-(build, platform) acquire output dir when no explicit <c>--out</c> is given.
+    /// Honors the binaries-store root (env <c>CS2_BINARIES_ROOT</c>, else appsettings BinariesRoot;
+    /// env wins) so the acquired-binaries store can live off the repo volume — the SAME resolution
+    /// <see cref="ExtractCommand"/> uses (its <c>&lt;root&gt;/&lt;build&gt;/&lt;platform&gt;/</c> convention),
+    /// so an acquire and a later extract agree on the location. When the root is empty (unset), falls
+    /// back to the in-repo <c>cache/binaries/&lt;build&gt;/&lt;platform&gt;/</c> convention. Precedence at the
+    /// call sites: an explicit <c>--out</c> always WINS over this default (operator override).
+    /// </summary>
     internal static string DefaultOutDir(string buildId, string platform)
         => Path.Combine(BinariesStoreRoot(), buildId, platform);
 
