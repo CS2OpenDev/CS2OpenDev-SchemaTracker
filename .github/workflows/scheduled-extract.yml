@@ -1,7 +1,7 @@
 # Scheduled CS2 forward-capture extract
 #
 # WHAT THIS IS: the forward-capture pipeline: one EXTRACTION LEG per platform
-# (windows-x86_64 on windows-latest, linux-x86_64 on ubuntu-latest) plus ONE commit job.
+# (windows-x86_64 on windows-latest, linux-x86_64 on ubuntu-24.04) plus ONE commit job.
 # On a cron (and on demand) each leg resolves the CURRENT public-branch CS2 build, and,
 # if that build's set for ITS platform is not already committed, acquires it, walks it,
 # emits the complete artifact set + inline changelog, and uploads the result as a
@@ -53,7 +53,7 @@
 # convars register in the render module's Init->ConVar_Register, INDEPENDENT of whether a
 # device is created. On linux, librendersystemvulkan.so has no hard Vulkan dependency and a
 # run with NO Vulkan driver present is byte-identical to one with lavapipe. So both runners
-# work with no GRAPHICS setup — windows-latest needs nothing at all; ubuntu-latest needs only
+# work with no GRAPHICS setup: windows-latest needs nothing at all; ubuntu-24.04 needs only
 # the small walker system-lib apt install below (WALKER.md's Linux prerequisite — the image
 # stopped preinstalling the libva chain, and the current build's panoramauiclient pulls it).
 # (A D3D11/Vulkan device may still be created as a side effect — WARP is always present on
@@ -97,7 +97,7 @@
 #   one PICS probe, ~7 runner-minutes a tick, free on a public repo) — not making
 #   any single tick more reliable, which is not something a caller can control.
 #
-# HOSTED-ONLY: windows-latest + ubuntu-latest are hosted runners. No self-hosted dependency.
+# HOSTED-ONLY: windows-latest + ubuntu-24.04 are hosted runners. No self-hosted dependency.
 
 name: scheduled-extract
 
