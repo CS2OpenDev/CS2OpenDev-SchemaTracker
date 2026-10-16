@@ -11,7 +11,7 @@
 # cannot carry unix exec bits, so the linux bundle is tarred on the linux leg). A final
 # publish-release job gathers both artifacts and creates the GitHub Release.
 #
-# Everything runs on GitHub-hosted runners (windows-latest + ubuntu-latest); there is no
+# Everything runs on GitHub-hosted runners (windows-latest + ubuntu-24.04); there is no
 # self-hosted dependency. This workflow IS the heavy build (11 era walkers x 2 platforms, each
 # cmake-configured + built + ctest + signature gate) — that cost is expected here; the natives
 # cache + the vcpkg archive cache keep the COMMON case (a host-only change) fast: a host-only

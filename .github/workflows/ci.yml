@@ -1,6 +1,6 @@
 # CS2-Schema-Tracker CI
 #
-# Every job here runs on a GitHub-hosted runner (ubuntu-latest / windows-latest). No
+# Every job here runs on a GitHub-hosted runner (ubuntu-24.04 / windows-latest). No
 # self-hosted dependency.
 #
 # Scope: build + test on each host-OS so we catch toolchain regressions early, plus
@@ -415,7 +415,7 @@ jobs:
     needs: detect-changes
     if: needs.detect-changes.outputs.artifacts == 'true' || needs.detect-changes.outputs.everything == 'true'
     runs-on: ubuntu-24.04
-    # hosted-first. ubuntu-latest carries .NET (via setup-dotnet, pinned by global.json) +
+    # hosted-first. ubuntu-24.04 carries .NET (via setup-dotnet, pinned by global.json) +
     # git, which is everything the host `verify-artifacts` subcommand needs.
     # No self-hosted dep.
     #
