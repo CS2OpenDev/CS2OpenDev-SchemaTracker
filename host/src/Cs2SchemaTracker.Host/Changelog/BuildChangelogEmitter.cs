@@ -27,6 +27,17 @@
 // NOT content-depot-exempt — but the five binary families always are, so a content-less build still
 // gets its 5-family changelog.
 //
+// PLUS two optional tools-content families, appended after localization in this order:
+//   cs_script_api      cs_script_api.json  — keys export:<Name> / <Type> / <Type>.<member>#<overload>
+//                                            / <Enum> / <Enum>.<MEMBER>; fields signature, deprecated,
+//                                            experimental, doc, value, ...
+//   entity_io          entity_io.json      — keyed by classname; fields class_type, bases,
+//                                            keyvalue:<name> / input:<name> / output:<name>
+// Both are read from the committed set dirs like the binary families, but each is emitted only when
+// BOTH sides carry its artifact (a linux set never does; the first windows set to carry one has a
+// predecessor that does not). Past the five binary families the index of a family is therefore not
+// fixed — only their relative order (OptionalFamilyOrder) is; consumers key families by name.
+//
 // CHANGELOG ENTITY KEY (the "name" of every added[]/removed[]/changed[].name row)
 // --------------------------------------------------------------------------------
 // A bare `name` is NOT unique within several families: the same class/enum name legitimately
@@ -96,6 +107,24 @@ public sealed class BuildChangelogEmitter
 
     /// <summary>The optional 6th (content-derived) family name — appended as families[5] when emitted.</summary>
     public const string LocalizationFamily = "localization";
+
+    /// <summary>Optional tools-content family over cs_script_api.json (both sides must carry it).</summary>
+    public const string CsScriptApiFamily = "cs_script_api";
+
+    /// <summary>Optional tools-content family over entity_io.json (both sides must carry it).</summary>
+    public const string EntityIoFamily = "entity_io";
+
+    /// <summary>
+    /// Every optional family, in the fixed relative order they are appended after the five binary
+    /// families. Any subset may be present; consumers key families by name, never by index past 4.
+    /// </summary>
+    public static readonly IReadOnlyList<string> OptionalFamilyOrder = new[]
+    {
+        LocalizationFamily, CsScriptApiFamily, EntityIoFamily,
+    };
+
+    private const string CsScriptApiFileName = "cs_script_api.json";
+    private const string EntityIoFileName = "entity_io.json";
 
     private readonly string _schemaVersion;
     private readonly string _platform;
@@ -222,7 +251,158 @@ public sealed class BuildChangelogEmitter
         {
             doc.Families.Add(DiffLocalizationRows(fromRows, toRows));
         }
+
+        // Optional tools-content families, appended after everything above in this fixed relative
+        // order. Each is emitted only when BOTH sets carry its artifact: a linux set never does
+        // (TOOLS_DEPOT_NOT_ON_PLATFORM), and the first windows set to carry one has a predecessor
+        // that does not — diffing against nothing would list the whole API as "added" in a build
+        // that added none of it.
+        if (BothHave(fromSetDir, toSetDir, CsScriptApiFileName))
+        {
+            doc.Families.Add(DiffCsScriptApi(
+                LoadRequired<CsScriptApi>(fromSetDir, CsScriptApiFileName),
+                LoadRequired<CsScriptApi>(toSetDir, CsScriptApiFileName)));
+        }
+        if (BothHave(fromSetDir, toSetDir, EntityIoFileName))
+        {
+            doc.Families.Add(DiffEntityIo(
+                LoadRequired<Schemas.EntityIo>(fromSetDir, EntityIoFileName),
+                LoadRequired<Schemas.EntityIo>(toSetDir, EntityIoFileName)));
+        }
         return doc;
+    }
+
+    private static bool BothHave(string fromSetDir, string toSetDir, string fileName)
+        => File.Exists(Path.Combine(fromSetDir, fileName)) && File.Exists(Path.Combine(toSetDir, fileName));
+
+    // --- tools-content families (cs_script_api, entity_io) ----------------------------------
+
+    /// <summary>
+    /// The cs_script API family. One row per API element, keyed:
+    /// <list type="bullet">
+    ///   <item><c>export:&lt;Name&gt;</c> — an exported constant; fields <c>type</c>, <c>doc</c>;</item>
+    ///   <item><c>&lt;Type&gt;</c> — an interface/class/alias; fields <c>kind</c>, <c>extends</c>,
+    ///         <c>type_params</c>, <c>type_text</c>, <c>deprecated</c>, <c>experimental</c>, <c>doc</c>;</item>
+    ///   <item><c>&lt;Type&gt;.&lt;member&gt;#&lt;overload_index&gt;</c> — a member; fields
+    ///         <c>signature</c>, <c>deprecated</c>, <c>experimental</c>, <c>doc</c>;</item>
+    ///   <item><c>&lt;Enum&gt;</c> — an enum; fields <c>deprecated</c>, <c>experimental</c>, <c>doc</c>;</item>
+    ///   <item><c>&lt;Enum&gt;.&lt;MEMBER&gt;</c> — an enum member (no '#'); fields <c>value</c>,
+    ///         <c>deprecated</c>, <c>doc</c>.</item>
+    /// </list>
+    /// A new overload shifts the index of the overloads declared after it, which reads as a change to
+    /// each of them; that is the cost of keying by position, and it is what an overload insertion is.
+    /// </summary>
+    private static FamilyDelta DiffCsScriptApi(CsScriptApi from, CsScriptApi to)
+        => BuildDelta(CsScriptApiFamily, CsScriptApiRows(from), CsScriptApiRows(to), DiffFieldMaps);
+
+    private static Dictionary<string, SortedDictionary<string, string>> CsScriptApiRows(CsScriptApi api)
+    {
+        var rows = new Dictionary<string, SortedDictionary<string, string>>(StringComparer.Ordinal);
+        void Add(string key, SortedDictionary<string, string> fields)
+        {
+            if (!rows.TryAdd(key, fields))
+            {
+                throw new InvalidDataException(
+                    $"BuildChangelogEmitter: duplicate cs_script_api key '{key}' (corrupt source set).");
+            }
+        }
+        static string B(bool b) => b ? "true" : "false";
+
+        foreach (var e in api.Exports)
+        {
+            Add("export:" + e.Name, new(StringComparer.Ordinal) { ["type"] = e.Type, ["doc"] = e.Doc });
+        }
+        foreach (var t in api.Types_)
+        {
+            Add(t.Name, new(StringComparer.Ordinal)
+            {
+                ["kind"] = t.Kind,
+                ["extends"] = string.Join(",", t.Extends),
+                ["type_params"] = string.Join(",", t.TypeParams),
+                ["type_text"] = t.TypeText,
+                ["deprecated"] = B(t.Deprecated),
+                ["experimental"] = B(t.Experimental),
+                ["doc"] = t.Doc,
+            });
+            foreach (var m in t.Members)
+            {
+                Add($"{t.Name}.{m.Name}#{m.OverloadIndex.ToString(CultureInfo.InvariantCulture)}",
+                    new(StringComparer.Ordinal)
+                    {
+                        ["signature"] = m.SignatureText,
+                        ["deprecated"] = B(m.Deprecated),
+                        ["experimental"] = B(m.Experimental),
+                        ["doc"] = m.Doc,
+                    });
+            }
+        }
+        foreach (var en in api.Enums)
+        {
+            Add(en.Name, new(StringComparer.Ordinal)
+            {
+                ["deprecated"] = B(en.Deprecated),
+                ["experimental"] = B(en.Experimental),
+                ["doc"] = en.Doc,
+            });
+            foreach (var m in en.Members)
+            {
+                Add($"{en.Name}.{m.Name}", new(StringComparer.Ordinal)
+                {
+                    ["value"] = m.Value.ToString(CultureInfo.InvariantCulture),
+                    ["deprecated"] = B(m.Deprecated),
+                    ["doc"] = m.Doc,
+                });
+            }
+        }
+        return rows;
+    }
+
+    /// <summary>
+    /// The entity I/O family. One row per classname. Fields: <c>class_type</c>, <c>bases</c> (joined),
+    /// and one field per resolved item — <c>keyvalue:&lt;name&gt;</c> (its type), <c>input:&lt;name&gt;</c>
+    /// and <c>output:&lt;name&gt;</c> (the param type). An item added or removed is a field whose old or
+    /// new value is "" — the same convention the enums family uses for members.
+    /// </summary>
+    private static FamilyDelta DiffEntityIo(Schemas.EntityIo from, Schemas.EntityIo to)
+        => BuildDelta(EntityIoFamily, EntityIoRows(from), EntityIoRows(to), DiffFieldMaps);
+
+    private static Dictionary<string, SortedDictionary<string, string>> EntityIoRows(Schemas.EntityIo io)
+    {
+        var rows = new Dictionary<string, SortedDictionary<string, string>>(StringComparer.Ordinal);
+        foreach (var c in io.Classes)
+        {
+            var fields = new SortedDictionary<string, string>(StringComparer.Ordinal)
+            {
+                ["class_type"] = c.ClassType,
+                ["bases"] = string.Join(",", c.Bases),
+            };
+            foreach (var kv in c.Keyvalues)
+                fields["keyvalue:" + kv.Name] = kv.Type;
+            foreach (var p in c.Inputs)
+                fields["input:" + p.Name] = p.ParamType;
+            foreach (var p in c.Outputs)
+                fields["output:" + p.Name] = p.ParamType;
+            if (string.IsNullOrEmpty(c.Name) || !rows.TryAdd(c.Name, fields))
+            {
+                throw new InvalidDataException(
+                    $"BuildChangelogEmitter: entity_io class '{c.Name}' is empty or duplicated (corrupt source set).");
+            }
+        }
+        return rows;
+    }
+
+    /// <summary>Field-wise diff of two rows over the union of their field names ("" = absent).</summary>
+    private static List<FieldChange> DiffFieldMaps(
+        SortedDictionary<string, string> oldRow, SortedDictionary<string, string> newRow)
+    {
+        var fields = new List<FieldChange>();
+        foreach (var name in oldRow.Keys.Union(newRow.Keys, StringComparer.Ordinal))
+        {
+            AddIfChanged(fields, name,
+                oldRow.TryGetValue(name, out var o) ? o : "",
+                newRow.TryGetValue(name, out var n) ? n : "");
+        }
+        return fields;
     }
 
     // --- per-family diffs ------------------------------------------------------------------
