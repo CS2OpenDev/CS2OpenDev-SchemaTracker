@@ -47,6 +47,20 @@
     </Content>
   </ItemGroup>
 
+  <!-- trimmed REAL Workshop Tools loose files (depot 2347779, 2026-10-22), laid out at their
+       depot-relative paths so a ToolsContentTree can be rooted at ToolsContent/fixtures/ exactly as
+       it is rooted at a tuple dir or a CS2 install: game/csgo/csgo.fgd + game/core/{base,
+       markup_volumes}.fgd (class blocks verbatim, unrelated classes removed) and
+       content/csgo_addons/cs_script_demo/maps/scripts/{point_script.d.ts,tsconfig.json} (the d.ts
+       cut to a subset of its declarations, each kept verbatim). Copied unchanged; .gitattributes
+       marks host/tests/**/fixtures/** -text. -->
+  <ItemGroup>
+    <Content Include="ToolsContent\fixtures\**\*">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>ToolsContent\fixtures\%(RecursiveDir)%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+
   <!-- committed live-capture oracle for the NetworkMessageRttiScanner
        integration test. Copied verbatim to the test output dir so the scan-vs-live
        cross-validation reads the captured bytes from a stable, repo-relative path
