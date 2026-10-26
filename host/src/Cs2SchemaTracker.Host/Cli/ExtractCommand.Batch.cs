@@ -65,7 +65,8 @@ internal static partial class ExtractCommand
         bool NoLocalizationChangelog,
         bool SingleWalk,
         bool AllowMixedWalkers,
-        bool AllowWalkerChange);
+        bool AllowWalkerChange,
+        string? ToolsContentRoot = null);
 
     /// <summary>Per-build outcome classification (drives the summary + exit code).</summary>
     internal enum Status
@@ -821,7 +822,8 @@ internal static partial class ExtractCommand
             int code = RunExtract(
                 build, opts.Platform, outDir, runnerFactory, eraResolver, gateFromResolver,
                 opts.NoAcquire, acquire, opts.NoChangelog, opts.NoLocalizationChangelog,
-                doubleWalk: opts.Commit && !opts.SingleWalk, classCountGate: opts.Gate);
+                doubleWalk: opts.Commit && !opts.SingleWalk, classCountGate: opts.Gate,
+                toolsContentRoot: opts.ToolsContentRoot);
 
             if (code == 75)
             {
@@ -1172,7 +1174,7 @@ internal static partial class ExtractCommand
         bool all = false, backfill = false, onlyExistingBuilds = false, force = false, verify = false,
              noGate = false, commit = false, noAcquire = false, noChangelog = false, noLocalizationChangelog = false,
              singleWalk = false, allowMixedWalkers = false, allowWalkerChange = false;
-        string? era = null, pin = null, platform = null, outRoot = null;
+        string? era = null, pin = null, platform = null, outRoot = null, toolsContentRoot = null;
 
         for (int i = 0; i < args.Length; i++)
         {
@@ -1251,6 +1253,10 @@ internal static partial class ExtractCommand
                     if (!NextSel(args, ref i, a, out outRoot, out error))
                         return false;
                     break;
+                case "--tools-content-root":
+                    if (!NextSel(args, ref i, a, out toolsContentRoot, out error))
+                        return false;
+                    break;
                 case "--build":
                     if (!NextSel(args, ref i, a, out var b, out error))
                         return false;
@@ -1286,6 +1292,17 @@ internal static partial class ExtractCommand
             return false;
         }
 
+        // --tools-content-root is a development override: it reads the Workshop Tools loose files
+        // from a local tree (a CS2 install), whose files belong to whatever build that install is on.
+        // One named build, never --commit, so it cannot write another build's files into the corpus.
+        if (toolsContentRoot is not null && (commit || builds.Count != 1))
+        {
+            error = "extract: --tools-content-root is a development override for a single --build and is " +
+                    "refused with --commit or a batch selection (the tree's files belong to whatever build " +
+                    "it was installed at).";
+            return false;
+        }
+
         // --platform: explicit wins, else config default (no env key reserved — operator input).
         platform ??= HostConfig.ExtractPlatform;
         if (string.IsNullOrEmpty(platform))
@@ -1313,7 +1330,8 @@ internal static partial class ExtractCommand
             Gate: !noGate, Force: force, Verify: verify, Commit: commit, NoAcquire: noAcquire,
             NoChangelog: noChangelog, NoLocalizationChangelog: noLocalizationChangelog,
             SingleWalk: singleWalk, AllowMixedWalkers: allowMixedWalkers,
-            AllowWalkerChange: allowWalkerChange);
+            AllowWalkerChange: allowWalkerChange,
+            ToolsContentRoot: toolsContentRoot is null ? null : Path.GetFullPath(toolsContentRoot));
         return true;
     }
 

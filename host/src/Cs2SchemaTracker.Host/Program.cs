@@ -72,6 +72,7 @@ internal static class Program
         root.AddCommand(BuildBackfillPredecessorsCommand());
         root.AddCommand(BuildRefreshDepotHistoryCommand());
         root.AddCommand(BuildEmitLocalizationCommand());
+        root.AddCommand(BuildEmitToolsContentCommand());
         root.AddCommand(BuildAcquireCommand());
         root.AddCommand(BuildProbeLayoutCommand());
         root.AddCommand(BuildAuditCommand());
@@ -411,6 +412,8 @@ internal static class Program
         var allowMixedWalkers = new Option<bool>("--allow-mixed-walkers", "Bypass the commit-path walker identity gate (exit 78) on a mixed/unverified per-era walker set; warns loudly instead. Never use for a corpus-committing run.");
         var allowWalkerChange = new Option<bool>("--allow-walker-change", "Authorise re-emitting already-committed sets with a walker OTHER than the one their provenance records (the commit-path drift guard, exit 78). Batch-level: authorises the whole run and logs each old -> new transition.");
 
+        var toolsContentRoot = new Option<string?>("--tools-content-root", "Development override: read the Workshop Tools loose files (FGDs, point_script.d.ts) from this tree (e.g. a local CS2 install root) instead of the tuple dir. Single --build only; refused with --commit.");
+
         // Undocumented descriptor-only development hook (not part of the public surface); declared so it parses.
         var binaries = new Option<string?>("--binaries", "Dev hook: run ONLY the descriptor extractor over this dir.");
 
@@ -432,6 +435,7 @@ internal static class Program
         cmd.AddOption(singleWalk);
         cmd.AddOption(allowMixedWalkers);
         cmd.AddOption(allowWalkerChange);
+        cmd.AddOption(toolsContentRoot);
         cmd.AddOption(binaries);
 
         cmd.SetHandler(ctx =>
@@ -459,6 +463,7 @@ internal static class Program
             a.AddFlag("--single-walk", p.GetValueForOption(singleWalk));
             a.AddFlag("--allow-mixed-walkers", p.GetValueForOption(allowMixedWalkers));
             a.AddFlag("--allow-walker-change", p.GetValueForOption(allowWalkerChange));
+            a.AddValue("--tools-content-root", p.GetValueForOption(toolsContentRoot));
             a.AddValue("--binaries", p.GetValueForOption(binaries));
             ctx.ExitCode = ExtractCommand.Run(a.ToArray());
         });
@@ -576,6 +581,39 @@ internal static class Program
             a.AddValue("--artifacts", p.GetValueForOption(artifacts));
             a.AddFlag("--dry-run", p.GetValueForOption(dryRun));
             ctx.ExitCode = RefreshDepotHistoryCommand.Run(a.ToArray());
+        });
+
+        return cmd;
+    }
+
+    // ---------------------------------------------------------------------------
+    // emit-tools-content  (cs_script_api.json + entity_io.json without a walk)
+    // ---------------------------------------------------------------------------
+    private static Command BuildEmitToolsContentCommand()
+    {
+        var cmd = new Command(
+            "emit-tools-content",
+            "Emit cs_script_api.json and entity_io.json from the Workshop Tools loose files (point_script.d.ts, Hammer FGDs) without a walk.");
+
+        var build = new Option<string?>("--build", "Steam build id.");
+        var platform = new Option<string?>("--platform", "Target platform (windows-x86_64 only; the default).");
+        var outOpt = new Option<string?>("--out", "Output directory (default: artifacts/<id>/<platform>/).");
+        var root = new Option<string?>("--tools-content-root", "Read the loose files from this tree (depot layout, e.g. a local CS2 install root) instead of the build's tuple dir.");
+
+        cmd.AddOption(build);
+        cmd.AddOption(platform);
+        cmd.AddOption(outOpt);
+        cmd.AddOption(root);
+
+        cmd.SetHandler(ctx =>
+        {
+            var p = ctx.ParseResult;
+            var a = new ArgList();
+            a.AddValue("--build", p.GetValueForOption(build));
+            a.AddValue("--platform", p.GetValueForOption(platform));
+            a.AddValue("--out", p.GetValueForOption(outOpt));
+            a.AddValue("--tools-content-root", p.GetValueForOption(root));
+            ctx.ExitCode = EmitToolsContentCommand.Run(a.ToArray());
         });
 
         return cmd;

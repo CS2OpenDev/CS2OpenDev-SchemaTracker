@@ -915,6 +915,57 @@ public class ExtractCommandTest
                 string.Join(",", carrier.ContentOmissions.Select(c => c.Artifact)));
             Assert.All(carrier.ContentOmissions,
                 c => Assert.Equal(PlatformOmission.Types.Reason.ContentNotShippedThisEra, c.Reason));
+
+            // No tools-content slice in this tuple: the Workshop Tools artifacts are a documented
+            // skip — absent from the set and NOT recorded as omissions.
+            foreach (var tools in Cs2SchemaTracker.Host.Artifacts.ArtifactSet.ToolsDepotGatedFiles)
+                Assert.False(File.Exists(Path.Combine(setDir, tools)), $"{tools} must be skipped (no tools slice)");
+        });
+    }
+
+    // end-to-end: a windows tuple dir carrying a CURRENT tools-content slice (manifest-record lists
+    // the Workshop Tools depot, tools-content.json at the current generation, the trimmed real FGDs
+    // and point_script.d.ts at their depot paths) yields cs_script_api.json + entity_io.json, and
+    // every tools-content file read is hashed into provenance.inputs beside the binaries. Without
+    // the slice (every other extract test here) both are a documented skip: absent, no omission.
+    [WindowsOnlyFact]
+    public void FullExtract_WithToolsContentSlice_EmitsToolsArtifacts_AndHashesTheirSources()
+    {
+        var platform = MatchingPlatform();
+        if (platform != "windows-x86_64")
+            return;
+
+        InPinnedWorkDir(BuildId, platform, workDir =>
+        {
+            var binariesDir = Path.Combine(workDir, "cache", "binaries", BuildId, platform);
+            var fixtures = Path.Combine(AppContext.BaseDirectory, "ToolsContent", "fixtures");
+            foreach (var src in Directory.EnumerateFiles(fixtures, "*", SearchOption.AllDirectories))
+            {
+                var dst = Path.Combine(binariesDir, Path.GetRelativePath(fixtures, src));
+                Directory.CreateDirectory(Path.GetDirectoryName(dst)!);
+                File.Copy(src, dst);
+            }
+            File.WriteAllText(
+                Path.Combine(binariesDir, Cs2SchemaTracker.Host.Steam.ManifestRecord.FileName),
+                $$"""{"appId":730,"buildId":{{BuildId}},"depots":[{"depotId":2347771,"manifestId":"1"},{"depotId":2347779,"manifestId":"2"}]}""");
+            Cs2SchemaTracker.Host.ToolsContent.ToolsContentMarker.Write(binariesDir);
+
+            var fake = new FakeWalkerRunner(0, "", CannedWalkerOutput(platform));
+            Assert.Equal(0, ExtractCommand.Run(new[] { "--build", BuildId, "--platform", platform }, () => fake));
+
+            var setDir = Path.Combine(workDir, "extract-out", BuildId, platform);
+            Assert.True(File.Exists(Path.Combine(setDir, "cs_script_api.json")));
+            Assert.True(File.Exists(Path.Combine(setDir, "entity_io.json")));
+
+            var prov = new JsonParser(JsonParser.Settings.Default.WithIgnoreUnknownFields(true))
+                .Parse<Cs2SchemaTracker.Schemas.Provenance>(File.ReadAllText(Path.Combine(setDir, "provenance.json")));
+            var paths = prov.Inputs.Select(i => i.Path).ToList();
+            Assert.Contains("game/csgo/csgo.fgd", paths);
+            Assert.Contains("game/core/base.fgd", paths);
+            Assert.Contains("content/csgo_addons/cs_script_demo/maps/scripts/point_script.d.ts", paths);
+            Assert.Contains("client.dll", paths);
+            Assert.Equal(paths.OrderBy(p => p, StringComparer.Ordinal), paths);
+            Assert.False(File.Exists(Path.Combine(workDir, "extract-out", BuildId, "omissions.json")));
         });
     }
 

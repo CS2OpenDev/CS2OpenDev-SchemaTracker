@@ -64,12 +64,13 @@ public sealed class ExtractBatchTest
         "modules.json", "registry_audit.json",
     };
 
-    // Content artifacts a full extract adds when a content VPK is present (never in the fixture).
+    // Content artifacts a full extract adds when a content VPK is present, plus the two Workshop Tools
+    // artifacts a tools-content slice adds (neither is ever in the fixture).
     private static readonly string[] ContentFileNames =
     {
         "gameevents.json", "item_definitions.json", "game_modes.json",
         "localization.json", "surface_properties.json", "prop_data.json", "map_overviews.json",
-        "weapon_vdata.json",
+        "weapon_vdata.json", "cs_script_api.json", "entity_io.json",
     };
 
     private static string? MatchingPlatform()

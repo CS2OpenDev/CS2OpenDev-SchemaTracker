@@ -91,6 +91,33 @@ public static class ArtifactSet
     /// </summary>
     public const string LocalizationFileName = "localization.json";
 
+    /// <summary>The CS2 Workshop Tools depot (Windows-only, DLC-gated behind 2279721).</summary>
+    public const uint ToolsDepotId = 2347779;
+
+    /// <summary>The only platform <see cref="ToolsDepotId"/> ships for.</summary>
+    public const string ToolsPlatform = "windows-x86_64";
+
+    /// <summary>
+    /// Artifacts built from the Workshop Tools depot's LOOSE files (not the content pak):
+    /// cs_script_api.json from Valve's point_script.d.ts, entity_io.json from the Hammer FGDs.
+    ///
+    /// The gate differs from <see cref="ContentDepotGatedFiles"/> because the tools depot already
+    /// appears in committed provenance for sets extracted before these artifacts existed (the walker
+    /// has loaded the editor DLLs for a while). "Provenance lists 2347779" alone would therefore make
+    /// every one of those sets incomplete at once. The gate is instead: a windows-x86_64 set whose
+    /// provenance lists <see cref="ToolsDepotId"/> AND whose provenance.inputs include a
+    /// tools-content file (the host resolved the tools-content slice for it) must carry each of
+    /// these or record an omission for it. A linux-x86_64 set must never carry them.
+    ///
+    /// Declared BEFORE <see cref="OmittableContentArtifacts"/>, which reads it: static initializers
+    /// run in textual order.
+    /// </summary>
+    public static readonly IReadOnlyList<string> ToolsDepotGatedFiles = new[]
+    {
+        "cs_script_api.json",
+        "entity_io.json",
+    };
+
     /// <summary>
     /// The content artifacts a per-platform omissions entry may legitimately name: every
     /// content-depot-gated file PLUS the build-on-demand <see cref="LocalizationFileName"/> (an era
@@ -108,9 +135,14 @@ public static class ArtifactSet
     /// <see cref="ContentDepotGatedFiles"/> in a later change, once the committed corpus carries it
     /// everywhere the content depot is listed — unlike localization.json, whose exclusion from the
     /// gated list is permanent (it is never committed at all).
+    ///
+    /// The <see cref="ToolsDepotGatedFiles"/> are omittable too: a linux-x86_64 set records them
+    /// with TOOLS_DEPOT_NOT_ON_PLATFORM, and a windows set from an era before cs_script records
+    /// cs_script_api.json with CONTENT_NOT_SHIPPED_THIS_ERA.
     /// </summary>
     public static readonly IReadOnlyList<string> OmittableContentArtifacts =
         ContentDepotGatedFiles.Append(LocalizationFileName).Append("weapon_vdata.json")
+            .Concat(ToolsDepotGatedFiles)
             .OrderBy(n => n, StringComparer.Ordinal)
             .ToArray();
 

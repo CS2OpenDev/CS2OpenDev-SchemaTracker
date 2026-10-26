@@ -16,7 +16,9 @@ using System.Text;
 using Cs2SchemaTracker.Host;
 using Cs2SchemaTracker.Host.Commands;
 using Cs2SchemaTracker.Host.ConVars;
+using Cs2SchemaTracker.Host.CsScript;
 using Cs2SchemaTracker.Host.EngineConstants;
+using Cs2SchemaTracker.Host.EntityIo;
 using Cs2SchemaTracker.Host.EntitySchema;
 using Cs2SchemaTracker.Host.GameEvents;
 using Cs2SchemaTracker.Host.GameModes;
@@ -29,6 +31,7 @@ using Cs2SchemaTracker.Host.PropData;
 using Cs2SchemaTracker.Host.Provenance;
 using Cs2SchemaTracker.Host.StringPools;
 using Cs2SchemaTracker.Host.SurfaceProperties;
+using Cs2SchemaTracker.Host.ToolsContent;
 using Cs2SchemaTracker.Host.Vpk;
 using Cs2SchemaTracker.Host.WeaponVData;
 using Cs2SchemaTracker.Schemas;
@@ -81,6 +84,9 @@ internal static class ArtifactCases
 {
     private const string BuildId = "13371337";
     private const string Platform = "linux-x86_64";
+
+    /// <summary>The committed trimmed Workshop Tools tree (ToolsContent/fixtures/, depot layout).</summary>
+    private static string ToolsContentFixtureRoot => Path.Combine(AppContext.BaseDirectory, "ToolsContent", "fixtures");
 
     /// <summary>
     /// The producible-now artifacts. Add a future artifact here (one entry) and every
@@ -216,6 +222,25 @@ internal static class ArtifactCases
             Emit = outPath => new WeaponVDataEmitter(SchemaFamily.Version, BuildId, Platform)
                 .Emit(BuildWeaponVDataArchive(), outPath),
             Parse = json => ParseStrict<Cs2SchemaTracker.Schemas.WeaponVData>(json),
+            ByteIdenticalRoundTrip = true,
+        },
+        new ArtifactCase
+        {
+            FileName = "cs_script_api.json",
+            // The committed trimmed Workshop Tools fixture tree (ToolsContent/fixtures/, the real
+            // point_script.d.ts cut to a subset of its declarations) — the emitter reads a file
+            // tree, not a VPK or a walk.
+            Emit = outPath => new CsScriptApiEmitter(SchemaFamily.Version, BuildId, Platform)
+                .Emit(new ToolsContentTree(ToolsContentFixtureRoot), outPath),
+            Parse = json => ParseStrict<Cs2SchemaTracker.Schemas.CsScriptApi>(json),
+            ByteIdenticalRoundTrip = true,
+        },
+        new ArtifactCase
+        {
+            FileName = "entity_io.json",
+            Emit = outPath => new EntityIoEmitter(SchemaFamily.Version, BuildId, Platform)
+                .Emit(new ToolsContentTree(ToolsContentFixtureRoot), outPath),
+            Parse = json => ParseStrict<Cs2SchemaTracker.Schemas.EntityIo>(json),
             ByteIdenticalRoundTrip = true,
         },
         // registry_audit.json is intentionally NOT in this table. Every case here
