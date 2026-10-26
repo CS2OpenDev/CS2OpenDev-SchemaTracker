@@ -1,0 +1,136 @@
+// Hammer entity classes, keyvalues and I/O, parsed from Valve's FGD files.
+//
+// A map is a list of entities, each a classname ("func_button") plus keyvalues; entities
+// talk to each other through named outputs wired to named inputs. The authoritative list
+// of which classnames exist, which keyvalues each takes and which inputs/outputs each
+// exposes is the FGD ("Forge Game Data") the Hammer editor loads. CS2 ships it as loose
+// files in the Workshop Tools depot (2347779, Windows-only):
+//
+//   game/csgo/csgo.fgd       the root Hammer opens for CS2
+//   game/core/*.fgd          engine-level classes it @includes (base.fgd, lights.fgd, ...)
+//   game/csgo/*.fgd          mod-level siblings (postprocessing.fgd, ...)
+//
+// cs_script needs this too: Instance.EntFireAtName / ConnectOutput take input and output
+// NAMES as plain strings, and this is the only place those names are listed.
+//
+// === Resolution (what the host does, mirroring Hammer) ===
+//   - The root is game/csgo/csgo.fgd. `@include "x.fgd"` is resolved against game/csgo/
+//     first, then game/core/, and parsed in place. Only files reachable from the root
+//     are read; `sources` lists exactly those.
+//   - Declarations are applied in include-expanded order. `@exclude name` removes a class
+//     defined earlier (csgo.fgd excludes ~40 engine classes CS2 does not use, and
+//     excludes-then-redefines a few to drop defunct keyvalues). `@OverrideClass` /
+//     `@ExtendClass` merge into the existing class of that name.
+//   - Inheritance (`base(A, B)`) is resolved in the host: a class's keyvalues, inputs and
+//     outputs are its bases' (in base order, recursively) followed by its own; a
+//     same-named item declared lower in the chain replaces the inherited one in place.
+//     `spawnflags`-style flags lists merge per bit instead of replacing. declared_in
+//     names the class whose declaration won. Cycles and unknown bases fail loud.
+//   - Other directives (@mapsize, @EntityGroup, @VisGroupFilter, ...) are tolerated and
+//     ignored: they configure the editor, not entities.
+//
+// === SHAPE DECISIONS ===
+//   - Classes are RESOLVED (own + inherited) so a consumer can answer "what inputs does
+//     func_button take" without re-implementing inheritance. Base classes are listed too
+//     (is_base) with their own resolved view.
+//   - Helper calls in a class header (iconsprite(...), studio(...), size(...), metadata
+//     { ... }) are kept as raw strings with whitespace collapsed; their arguments are
+//     editor presentation, not entity data. base(...) is lifted into `bases`.
+//   - Keyvalue types are verbatim ("string", "resource:vjs", "target_source",
+//     "choices", "flags", ...). Property metadata blocks ({ ... } or [ ... ] after the
+//     type) are kept raw in `metadata`.
+//   - default_value is a proto3 `optional`: unset when the FGD leaves the default
+//     slot empty (`: :`), "" when it is an explicit empty string.
+//   - Sorting: classes by name Ordinal; sources by path Ordinal; keyvalues, inputs,
+//     outputs, choices and flags in RESOLVED DECLARATION ORDER (that is the order Hammer
+//     shows them in, and it is the only order the FGD defines).
+//
+// Determinism: canonical JSON (sorted keys, LF, UTF-8 no BOM); the orderings above.
+// Fail-loud: a missing root or include, an unbalanced bracket, an unterminated string, a
+// keyvalue with more fields than the format allows, a non-integer flag value, an unknown
+// base class, an inheritance cycle, or an override of a class that does not exist
+// aborts the emit before any bytes are written.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message EntityIo {
+  string schema_version = 1;       // schemas/ family version
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" (the Workshop Tools depot is Windows-only)
+
+  string root = 4;                 // "game/csgo/csgo.fgd"
+  repeated FgdSource sources = 5;  // every file the include graph reached, path Ordinal
+
+  // Classes removed by @exclude and never redefined. Recorded so their absence from
+  // `classes` is explained rather than silent. Name Ordinal.
+  repeated FgdExclusion excluded = 6;
+
+  repeated EntityClass classes = 100;
+}
+
+message FgdSource {
+  string path   = 1;               // depot-relative, forward slashes
+  string sha256 = 2;               // hex, lowercase
+}
+
+message FgdExclusion {
+  string name        = 1;
+  string source_file = 2;          // the file carrying the @exclude
+}
+
+message EntityClass {
+  string name        = 1;          // classname, e.g. "func_button"
+  string class_type  = 2;          // the FGD declaration kind without '@': "PointClass", "SolidClass", "BaseClass", ...
+  bool   is_base     = 3;          // class_type == "BaseClass" (not placeable)
+  string description = 4;
+  repeated string bases   = 5;     // direct bases from base(...), as written
+  repeated string helpers = 6;     // other header helpers, raw ("iconsprite(\"editor/x.vmat\")")
+  string source_file = 7;          // file holding the defining declaration
+  // Files whose @OverrideClass / @ExtendClass merged into this class, in application order.
+  repeated string override_sources = 8;
+
+  repeated EntityKeyValue keyvalues = 100;   // resolved, declaration order
+  repeated EntityIoPort   inputs    = 101;   // resolved, declaration order
+  repeated EntityIoPort   outputs   = 102;   // resolved, declaration order
+}
+
+message EntityKeyValue {
+  string name         = 1;
+  string type         = 2;         // verbatim, e.g. "resource:vjs"
+  string display_name = 3;
+  optional string default_value = 4;
+  string description  = 5;
+  string metadata     = 6;         // raw { ... } / [ ... ] blocks after the type, "" if none
+  repeated FgdChoice choices = 7;  // choices-typed keyvalues
+  repeated FgdFlag   flags   = 8;  // flags-typed keyvalues (spawnflags)
+  string declared_in  = 9;         // class whose declaration supplied this keyvalue
+}
+
+// One entry of a choices-style list. Plain `choices` entries are `value : "label"`; `tag_list`
+// entries add a default and sometimes a description (`"NONAV" : "No Nav" : 0 : "..."`).
+message FgdChoice {
+  string value = 1;                // verbatim ("0", "-1", "ct")
+  string label = 2;
+  optional string default_value = 3;   // third field, verbatim; unset when absent
+  string description = 4;          // fourth field, "" when absent
+}
+
+message FgdFlag {
+  uint32 value       = 1;          // the bit value
+  string label       = 2;
+  bool   default     = 3;          // the flag's default state
+  string declared_in = 4;          // flags merge per bit across the chain
+  string description = 5;          // optional fourth field, "" when absent
+}
+
+message EntityIoPort {
+  string name        = 1;          // "RunScriptInput"
+  string param_type  = 2;          // verbatim: "void", "string", "integer", "api", ...
+  string description = 3;
+  string metadata    = 4;          // raw { ... } block, "" if none
+  string declared_in = 5;
+}

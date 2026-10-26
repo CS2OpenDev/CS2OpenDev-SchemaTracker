@@ -1,0 +1,310 @@
+//=== Trimmed excerpt of game/core/base.fgd (Workshop Tools depot 2347779, 2026-10-22) for the entity_io tests.
+//=== Class blocks are verbatim (line endings normalised to LF); only unrelated classes were removed.
+
+@BaseClass = VScript
+[
+	vscripts(scriptlist) [ group="Misc" ] : "Entity Scripts" : "" : "Name(s) of script files that are executed after all entities have spawned."
+
+	// Inputs
+	input RunScriptFile(string) : "Load and execute a script file"
+	input RunScriptCode(string) : "Execute a fragment of script code"
+	input CallScriptFunction(string) : "Call a script function"
+	input CallPrivateScriptFunction(string) : "Calls a script function from this entity's private script scope."
+	input CallGlobalScriptFunction(string) : "Calls a script function in the global script scope."
+]
+
+@BaseClass base(VScript) = GameEntity
+[
+	input Kill(void) : "Removes this entity from the world."
+	input KillHierarchy(void) : "Removes this entity and all its children from the world."
+	input KillConstrained(void) : "Removes this entity, all its children, and anything constrained to it, from the world."
+
+	// Inputs
+	input AddOutput(string) : "Adds an entity I/O connection to this entity. Parameter format: outputname>targetname>inputname>parameter>delay>max times to fire (-1 == infinite). Very dangerous, use with care."
+	input FireUser1(void) : "Causes this entity's OnUser1 output to be fired."
+	input FireUser2(void) : "Causes this entity's OnUser2 output to be fired."
+	input FireUser3(void) : "Causes this entity's OnUser3 output to be fired."
+	input FireUser4(void) : "Causes this entity's OnUser4 output to be fired."
+
+	input EnableAutoSleeping(void) : "Enable automatic sleeping on this entity's physics bodies. When enabled, physics bodies go to sleep when at rest."
+	input DisableAutoSleeping(void) : "Disable automatic sleeping on this entity's physics bodies. Bodies remain awake until explicitly put to sleep."
+
+	// Outputs	
+	output OnUser1(void) : "Fired in response to FireUser1 input."
+	output OnUser2(void) : "Fired in response to FireUser2 input."
+	output OnUser3(void) : "Fired in response to FireUser3 input."
+	output OnUser4(void) : "Fired in response to FireUser4 input."
+	
+	output OnKilled(void) : "Fired when the entity is killed and removed from the game. Parameter is the inflictor."
+] 
+
+@BaseClass base(GameEntity) = Targetname 
+[ 
+	targetname(target_source) { sort_priority = 90 } : "Name" : : "The name that other entities refer to this entity by."
+]
+
+@BaseClass
+ = Parentname
+[ 
+	parentname(target_destination) { group="Hierarchy" } : "Parent" : : "The name of this entity's parent in the movement hierarchy. Entities with parents move with their parent."
+	parentAttachmentName(parentAttachment) { group="Hierarchy" } : "Parent Bone/Attachment Name" : : "The name of the bone or attachment to attach to on the entity's parent in the movement hierarchy. Use !bonemerge to use bone-merge style attachment. NOTE: If this is specified the Hammer transform will be disregarded, even if 'Use Local Transform' is NOT specified (in that case local transform will be identity)"
+	
+	useLocalOffset(boolean)
+	{
+		group="Hierarchy"
+		bindable_command_buttons =
+		[
+			{
+				target = "ToolSelection"
+				command = "RepositionToMatchLocalOffset"
+				icon = "tools/images/hammer/reposition_to_match_local_offset.png"
+				desc = "Reposition the entity's Hammer transform to match its local offset hierarchy keys"
+			},
+			{
+				target = "ToolSelection"
+				command = "UpdateLocalOffset"
+				icon = "tools/images/hammer/update_local_offset.png"
+				desc = "Update the local offset hierarchy keys based on the entity's current Hammer transform"
+			},
+		]
+	}
+	: "Use Local Transform" : 0 : "Whether to respect the specified local offset when doing the initial hierarchical attachment to its parent."
+
+	local.origin(vector) { group="Hierarchy" enabled={ variable="useLocalOffset" value="1" } } : "Local Origin" : : "Offset in the local space of the parent model's attachment/bone to use in hierarchy. Not used if you are not using parent attachment."
+	local.angles(angle)  { group="Hierarchy" enabled={ variable="useLocalOffset" value="1" } } : "Local Angles" : : "Angular offset in the local space of the parent model's attachment/bone to use in hierarchy. Not used if you are not using parent attachment."
+	local.scales(vector) { group="Hierarchy" enabled={ variable="useLocalOffset" value="1" } } : "Local Scale" : "1 1 1" : "Scale in the local space of the parent model's attachment/bone to use in hierarchy. Not used if you are not using parent attachment."
+
+	// Inputs
+	input SetParent(api)
+	input SetParentWithOffset(api)
+	input SetParentMaintainOffset(api)
+	input SetParentAttachment(string) : "Change this entity to attach to a specific attachment point on its parent. Entities must be parented before being sent this input. The parameter passed in should be the name of the attachment."
+	input SetParentAttachmentMaintainOffset(string) : "Change this entity to attach to a specific attachment point on it's parent. Entities must be parented before being sent this input. The parameter passed in should be the name of the attachment. The entity will maintain it's position relative to the parent at the time it is attached."
+	input ClearParent(void) : "Removes this entity from the the movement hierarchy, leaving it free to move independently."
+	input FollowEntity(string) : "Bone merges this entity to a parent entity. Call again passing nothing to end the bone merge."
+]
+
+@BaseClass = EnableDisable
+[
+	StartDisabled(boolean) : "Start Disabled" : 0
+
+	// Inputs
+	input Enable(void) : "Enable this entity."
+	input Disable(void) : "Disable this entity."
+]
+
+@BaseClass = RenderFxChoices
+[
+	renderfx(choices) [ group="Render Properties" ] : "Render FX" : "kRenderFxNone" =
+	[
+		"kRenderFxNone" : "Normal"
+		"kRenderFxPulseSlow" : "Slow Pulse"
+		"kRenderFxPulseFast" : "Fast Pulse"
+		"kRenderFxPulseSlowWide" : "Slow Wide Pulse"
+		"kRenderFxPulseFastWide" : "Fast Wide Pulse"
+		"kRenderFxStrobeSlow" : "Slow Strobe"
+		"kRenderFxStrobeFast" : "Fast Strobe"
+		"kRenderFxStrobeFaster" : "Faster Strobe"
+		"kRenderFxFlickerSlow" : "Slow Flicker"
+		"kRenderFxFlickerFast" : "Fast Flicker"
+		"kRenderFxFadeSlow" : "Slow Fade Away"
+		"kRenderFxFadeFast" : "Fast Fade Away"
+		"kRenderFxSolidSlow" : "Slow Become Solid"
+		"kRenderFxSolidFast" : "Fast Become Solid"
+		"kRenderFxNoDissipation" : "Constant Glow"
+
+		// FGDFIXME: why are these different from the ones above?
+		15: "Distort"
+		16: "Hologram (Distort + fade)"
+		23: "Cull By Distance (TEST)"
+		24: "Spotlight FX"
+		26: "Fade Near"
+	]
+]
+
+@BaseClass = RenderModeChoices
+[
+	rendermode(choices) [ group="Render Properties" ] :"Render Mode" : "kRenderNormal" : "Used to set a non-standard rendering mode on this entity. See also 'FX Amount' and 'FX Color'." =
+	[
+		"kRenderNormal" : "Normal"
+		"kRenderTransColor" : "Color"
+		"kRenderTransTexture" : "Texture"
+		"kRenderGlow" : "Glow"
+		"kRenderTransAlpha" : "Solid"
+		"kRenderTransAdd" : "Additive"
+		"kRenderTransAddFrameBlend" : "Additive Fractional Frame"
+		"kRenderWorldGlow" : "World Space Glow"
+		"kRenderNone" : "Dont Render"
+		"kRenderDevVisualizer" : "Dev Visualizer"
+	]
+]
+
+@BaseClass = Shadow
+[
+	disableshadows(intchoices) [ group="Render Properties" ] : "Cast Shadows" : 0 : "Used to disable shadow casting from this entity." = 
+	[
+		0: "Enabled"
+		1: "No Shadows"
+		2: "Only Realtime Shadows"
+		3: "Only Baked Shadows"
+	]
+
+	input DisableShadow(void) : "Turn shadow off."
+	input EnableShadow(void) : "Turn shadow on."
+]
+
+@BaseClass base(RenderFxChoices, RenderModeChoices) = RenderFields 
+[
+	renderamt(integer) [ group="Render Properties" ] : "FX Amount (0 - 255)" : 255 : "The FX amount is used by the selected Render Mode."
+	rendercolor(color255) : "FX Color (R G B)" : "255 255 255" : "The FX color is used by the selected Render Mode."
+
+	disablereceiveshadows(boolean) [ group="Render Properties" ] : "Disable Receiving Shadows" : 0
+
+	input Alpha(integer) : "Set the sprite's alpha (0 - 255)."
+	input Color(color255) : "Set the sprite's color (R G B)."
+
+	fademindist(float) [ group="Render Properties" ] : "Start Fade Dist" : -1 : "Distance at which the overlay starts to fade (-1 = subtract from fademaxdist)."
+	fademaxdist(float) [ group="Render Properties" ] : "End Fade Dist" : 0 : "Maximum distance at which the overlay is visible (0 = don't fade out)."
+
+	object_culling(intchoices) [ group="Render Properties" ] : "Culling Behaviour" : 0 : "Modifies culling behaviour when the object is small / distant" =
+	[
+		0 : "Default"
+		1 : "Smaller than default"
+		2 : "Much smaller than default"
+		3 : "When extremely small"
+	]
+
+	rendertocubemaps(boolean) [ group="Render Properties" ] : "Render to Cubemaps" : 0 : "If true, this geometry renders into baked cube maps"	
+	lightmapstatic(intchoices) [ group="Render Properties" ] : "Lightmap Static" : 0 : "Determines if this geometry be considered static & cast shadows/bounce light when baking lightmaps?" =
+	[
+		0 : "No"
+		1 : "Yes"
+		2 : "Bounce Only"
+	]
+]
+
+@BaseClass = Global 
+[ 
+	globalname(string) [ group="Misc" ] : "Global Entity Name" : "" : "Name by which this entity is linked to another entity in a different map. When the player transitions to a new map, entities in the new map with globalnames matching entities in the previous map will have the previous map's state copied over their state."
+]
+
+@BaseClass = DamageFilter
+[ 
+	damagefilter(target_destination) [ group="Misc" ] : "Damage Filter" : "" : "Name of the filter entity that controls which entities can damage us."
+	input SetDamageFilter(string) : "Sets the entity to use as damage filter. Pass in an empty string to clear the damage filter."
+]
+
+@BaseClass color(0 255 0) = PlayerClass []
+
+@SolidClass base(Targetname, RenderFields, Global, Shadow)  sphere(fademindist) sphere(fademaxdist) = func_wall : 
+	"Legacy support. Use func_brush instead." 
+[
+	_minlight(string) : "Minimum Light Level" : : "The minimum level of ambient light that hits this brush."
+]
+
+@PointClass base(Targetname, EnableDisable, PlayerClass) tags( Info, PlayerPosition ) editormodel("models/editor/playerstart.vmdl", fixedbounds) = info_player_start :
+	"This entity indicates the position and facing direction at which the player will spawn. Any number of "+
+	"info_player_start entities may be placed in a map for when working in cordoned-off portions of the map. "+
+	"When multiple info_player_start entities are present in a map, set the 'Master' spawnflag on one of them "+
+	"to indicate which one should be used when running the entire map."
+[
+	StartDisabled(boolean) : "Start Disabled" : 0
+	IsMaster(boolean) : "Master" : 0 : "Master has priority if multiple info_player_starts exist"
+	PawnSubclass( vdata_choice:scripts/player.vdata ) : "Pawn Subclass" : "" : "Subclass of the player pawn to spawn."
+
+	input Toggle(void) : "Toggle the enable/disable state of this player spawn position."
+]
+
+@BaseClass = Button
+[
+	// Inputs
+	input Lock(void) : "Lock the button, preventing it from functioning."
+	input Unlock(void) : "Unlock the button, allowing it to function."
+	input Disable(void) : "Disable the button, preventing entities from finding the button (removes all capabilities of the button)"
+	input Enable(void) : "Enable the button, allowing entities to find the button again"
+	input Press(void) : "Activate the button as if it was pressed."
+	input PressIn(void) : "Activate the button as if it was pressed, sending it to the bottom position."
+	input PressOut(void) : "Unpress the button, sending it to the top position."
+
+	// Outputs
+	output OnDamaged(void) : "Fired when the button is damaged."
+	output OnPressed(void) : "Fired when the button is pressed."
+	output OnUseLocked(void) : "Fired when the button is used while locked."
+	output OnIn(void) : "Fired when the button reaches the in/pressed position."
+	output OnOut(void) : "Fired when the button reaches the out/released position."
+
+    displaytext(string) : "Display Text" : : "Place localization text here and it will be displayed in tooltips, etc."
+]
+
+@BaseClass = ButtonSounds
+[
+	use_sound(sound) : "Use sound" : ""  : "Sound event played when the button is successfully used."
+	locked_sound(sound) : "Locked Sound" : "" : "Sound played when the player tries to use the button, and fails because it's locked."
+	unlocked_sound(sound) : "Unlocked Sound" : "" : "Sound played when the button is unlocked."
+]
+
+@BaseClass base(Targetname, Parentname, RenderFields,DamageFilter, Button, ButtonSounds) = BaseFuncButton
+[
+	movedir(angle) : "Move Direction (Pitch Yaw Roll)" : "0 0 0" : "Specifies the direction of motion to move when the button is used."
+	speed(integer) : "Speed" : 5 : "The speed that the button moves, in inches per second."
+	glow(target_destination) : "Glow Entity" : : "The name of an entity that will get the +use glow for this button."
+	wait(float) : "Delay Before Reset (-1 stay)" : 3 : "Amount of time, in seconds, after the button has been pressed before it returns to the starting position. Once it has returned, it can be used again. If the value is set to -1, the button never returns."
+	_minlight(string) : "Minimum Light Level" : : "The minimum level of ambient light that hits this brush."	
+]
+
+@SolidClass base(BaseFuncButton) drawangles_local{ angles_key = "movedir" } = func_button : 
+	"A brush entity that's designed to be used for a player-useable button. When used by the player, it moves to a pressed position."
+[
+	lip(integer) : "Lip" : 0 : "The amount, in inches, of the button to leave sticking out of the wall it recedes into when pressed. Negative values make the button recede even further into the wall."
+	master(string) : "Master (Obsolete)" : : "Legacy support: The name of a master entity. If the master hasn't been activated, this button cannot be pressed."
+	override_anticipation_name(string) : "Override Anticipation Action Name" : : "Specify an override for the GetUsePreviewAction for this button (the anticipation type)"
+	forcenpcexclude(boolean) : "Force NPC Exclude" : "0" : "NPC movement and collision will ignore this button"
+
+	spawnflags(flags) =
+	[
+		1: "Don't move" : 0
+		2: "Starts Disabled" : 0
+		32: "Toggle" : 0
+		256: "Touch Activates": 0
+		512: "Damage Activates": 0
+		1024: "Use Activates" : 1
+		2048: "Starts locked" : 0
+		4096: "Sparks" : 0
+		16384: "Non-solid" : 0
+		32768: "Skip Player Animation" : 0	
+	]
+]
+
+@SolidClass base( Targetname, EnableDisable ) tags( Lighting ) = fog_volume : "An entity to control the fog in the map."
+[
+	FogName(target_destination) : "Fog Name" : : "The name of the fog entity associated with this volume."
+	PostProcessName(target_destination) : "Postprocess Name" : : "The name of the postprocess entity associated with this volume."
+	ColorCorrectionName(target_destination) : "ColorCorrection Name" : : "The name of the color_correction entity associated with this volume."
+]
+
+@PointClass base(Targetname, Parentname, EnableDisable) iconsprite("editor/env_sky.vmat") skybox() 
+	metadata
+	{
+	entity_tool_name = "Skybox"
+	entity_tool_group = "Fog & Sky"
+	entity_tool_tip = "Adds a 2D skybox"
+	}
+= env_sky : 
+	"Controls the sky."
+[
+	skyname(resource:material) { report=true initial_filter_string="materials/skybox/" } : "Sky Material" : "materials/dev/default_sky.vmat"
+	tint_color(color255) : "Skybox Tint Color" : "255 255 255" : "Tint the skybox"
+	brightnessscale(float) : "Brightness Scale" : "1.0" : "Scale brightness by this amount"
+
+	fog_type(intchoices) : "Fog Type" : 1 =
+	[
+		0: "None"
+		1: "Distance Based"
+		2: "Angular"
+	]
+
+	angular_fog_max_end( float ) : "Fog Max Angle End" : "35.0"
+	angular_fog_max_start( float ) : "Fog Max Angle Start" : "25.0"
+	angular_fog_min_start( float ) : "Fog Min Angle Start" : "-25.0"
+	angular_fog_min_end( float ) : "Fog Min Angle End" : "-35.0"
+]
