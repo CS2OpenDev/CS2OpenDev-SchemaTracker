@@ -773,7 +773,7 @@ public class AcquireCommandArgsTest
     /// binary depot and (optionally) the Workshop Tools depot 2347779. The record — not file
     /// presence — is what the tools-aware cache-first HIT consults.
     /// </summary>
-    private static string SeedPopulatedCacheDir(bool recordListsTools)
+    private static string SeedPopulatedCacheDir(bool recordListsTools, bool toolsContentMarker = true)
     {
         var dir = Path.Combine(Path.GetTempPath(), "cs2-tools-retrofit-" + Guid.NewGuid().ToString("N"));
         Directory.CreateDirectory(dir);
@@ -784,6 +784,8 @@ public class AcquireCommandArgsTest
         File.WriteAllText(
             Path.Combine(dir, ManifestRecord.FileName),
             $$"""{"appId":730,"buildId":24134959,"depots":{{depots}}}""");
+        if (recordListsTools && toolsContentMarker)
+            Cs2SchemaTracker.Host.ToolsContent.ToolsContentMarker.Write(dir);
         return dir;
     }
 
@@ -848,6 +850,37 @@ public class AcquireCommandArgsTest
             Assert.Contains(fake.ToolsExplicitSpec.Depots,
                 d => d.DepotId == SteamAppIdMap.Cs2WorkshopToolsDepotId && d.ManifestId == 7895084913465193678UL);
             Assert.Equal(Path.GetFullPath(outDir), fake.LastOutDir); // merged into the SAME cached dir
+        }
+        finally
+        {
+            BestEffortDelete(outDir);
+            BestEffortDelete(inv);
+        }
+    }
+
+    [Fact]
+    public async Task Tools_cache_hit_with_tools_record_but_no_tools_content_marker_retrofits_tools_only()
+    {
+        // A cache written before the tools slice kept the FGDs / cs_script declaration file: its
+        // record lists 2347779 but there is no tools-content.json. That is NOT a complete tools leg
+        // (extract would have nothing to read), so the hit retrofits the tools leg exactly like a
+        // record without the depot — tools only, binaries and content untouched.
+        var outDir = SeedPopulatedCacheDir(recordListsTools: true, toolsContentMarker: false);
+        var inv = SeedInventory(withToolsGid: true);
+        var fake = new FakeAcquirer();
+        try
+        {
+            var args = new[]
+            {
+                "--tools", "--build", "24134959", "--platform", "windows-x86_64",
+                "--out", outDir, "--inventory", inv,
+            };
+            var code = await AcquireCommand.RunAsync(args, () => fake);
+            Assert.Equal(0, code);
+            Assert.Equal(1, fake.ToolsInvocationCount);
+            Assert.Equal(0, fake.InvocationCount);
+            Assert.Equal(0, fake.ContentInvocationCount);
+            Assert.Equal(Path.GetFullPath(outDir), fake.LastOutDir);
         }
         finally
         {

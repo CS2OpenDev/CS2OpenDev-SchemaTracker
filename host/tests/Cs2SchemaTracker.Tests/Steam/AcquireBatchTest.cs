@@ -457,7 +457,7 @@ public sealed class AcquireBatchTest
     /// (optionally) the Workshop Tools depot 2347779 — the AUTHORITATIVE tools-presence signal the
     /// retrofit decision reads (file presence is not consulted).
     /// </summary>
-    private static void SeedManifestRecord(string root, uint build, string platform, bool withTools)
+    private static void SeedManifestRecord(string root, uint build, string platform, bool withTools, bool toolsContentMarker = true)
     {
         var dir = Path.Combine(OutRoot(root), build.ToString(CultureInfo.InvariantCulture), platform);
         Directory.CreateDirectory(dir);
@@ -467,6 +467,8 @@ public sealed class AcquireBatchTest
         File.WriteAllText(
             Path.Combine(dir, ManifestRecord.FileName),
             $$"""{"appId":730,"buildId":{{build}},"depots":{{depots}}}""");
+        if (withTools && toolsContentMarker)
+            Cs2SchemaTracker.Host.ToolsContent.ToolsContentMarker.Write(dir);
     }
 
     [Fact]

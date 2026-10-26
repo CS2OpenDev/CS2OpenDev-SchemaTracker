@@ -779,28 +779,36 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
 
             log.WriteLine(
                 $"steam-acquire: tools acquire — fetching the editor-DLL slice (\".dll\" under \"game/\") " +
-                $"of depot {toolsDepotId} into staging '{stagingDir}'.");
+                $"plus the tools-content files (FGDs, cs_script declarations) of depot {toolsDepotId} " +
+                $"into staging '{stagingDir}'.");
             var staged = await AcquireResolvedAsync(
                 session, appId, resolvedBuild, resolved, stagingDir,
                 fileFilter: ToolsBinSelector.Predicate, ct).ConfigureAwait(false);
 
             // Fail-loud gate: a tools acquire that matched ZERO .dll files means the depot layout
-            // changed (or the wrong depot was named) — never lay down an empty tools slice. The
-            // shared download core already throws on a zero-match filter; this re-assertion keeps
-            // the invariant local and explicit.
-            if (staged.Files.Count == 0)
+            // changed (or the wrong depot was named) — never lay down an empty tools slice. Counted
+            // on the DLLs alone: the tools-content files ride the same filter, and a slice of only
+            // FGDs would still be a walker with no editor modules to load.
+            int dllCount = staged.Files.Count(f => ToolsBinSelector.IsToolsDll(f.RelativePath));
+            if (dllCount == 0)
             {
                 throw new InvalidOperationException(
                     $"tools depot {toolsDepotId} yielded ZERO '.dll' files under 'game/' — the " +
                     "depot layout may have changed; refusing to record an empty tools slice.");
             }
+            int contentCount = staged.Files.Count(f => ToolsBinSelector.IsToolsContentFile(f.RelativePath));
+            log.WriteLine(
+                $"steam-acquire: tools slice — {dllCount} editor DLL(s), {contentCount} tools-content file(s).");
 
             // Non-destructive merge into the binaries dir (see the block comment above: the
             // wipe-and-replace path would destroy the co-located base binaries), then accumulate
-            // the 2347779 identity into manifest-record.json (union by depotId).
+            // the 2347779 identity into manifest-record.json (union by depotId), and stamp the
+            // tools-content generation so extract and the cache-first acquire can tell this slice
+            // from one written before the tools-content files were selected.
             var merged = MergeStagedFiles(staged, outDir, log);
             ManifestRecord.FromAcquireResult(merged.ResolvedBuildId, merged.Depots)
                 .MergeIntoTupleDir(outDir);
+            ToolsContent.ToolsContentMarker.Write(outDir);
 
             // Staging is consumed; best-effort cleanup.
             try
