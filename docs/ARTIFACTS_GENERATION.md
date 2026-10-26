@@ -6,7 +6,7 @@ This is the operational guide to producing the `artifacts/<build_id>/<platform>/
 
 One build, one platform, in five stages:
 
-1. **Acquire** — fetch the build's inputs from Steam into the local binary cache: the per-OS binary depot and the `pak01` content slice. The host records the Steam identity and input hashes as it goes.
+1. **Acquire** — fetch the build's inputs from Steam into the local binary cache: the per-OS binary depot, the `pak01` content slice, and on Windows the Workshop Tools slice (editor DLLs plus the FGDs and cs_script declaration file). The host records the Steam identity and input hashes as it goes.
 2. **Walk** — the host picks the walker binary matched to this build's era and runs it once against the cached binaries. The walker loads the Source 2 DLLs into its own process, walks the schema system, console registry, and message registries, and writes a single intermediate file.
 3. **Merge + emit** — the host reads the walker's output, parses the content pack (VPK → KV1/KV3), round-trips the embedded protobuf descriptors, and writes every per-artifact JSON/proto file in canonical form.
 4. **Validate** — every emitted artifact is round-tripped through its proto3 schema; the set is checked for completeness (all-or-nothing); a build-to-build `changelog.json` is written against the previous committed build.
@@ -20,6 +20,7 @@ The host runs stages 1–4 in a single `extract` invocation, and `--commit` addi
 - **Fail-loud, never partial.** Any input failure — a corrupt binary, a missing module, a VPK or KV parse error, an unrecognized schema-system layout — aborts with a non-zero exit *before* any artifact bytes are written.
 - **All-or-nothing.** A commit is either one complete `(build, platform)` set or one complete build across both platforms. There is no partial set. Anything legitimately missing goes in the build-level `omissions.json` with a reason, never a silent skip.
 - **Content-gated artifacts.** The eight content artifacts are required only when the build's `provenance.json` lists the content depot (`2347770`) among its inputs. A build acquired binaries-only, or an era that never shipped a table, records the absence in `omissions.json`.
+- **Tools-depot artifacts.** The two Workshop Tools artifacts (`cs_script_api.json`, `entity_io.json`) come from loose files in depot `2347779`, which exists for `windows-x86_64` only. A linux set records both as `TOOLS_DEPOT_NOT_ON_PLATFORM` omissions. On windows they are required once the host has read the tools-content slice for a set (`provenance.inputs` lists an FGD or the declaration file); a tuple whose tools leg was not acquired, or was acquired before the slice included these files (no current `tools-content.json`), produces neither and records nothing.
 
 `verify-artifacts` re-checks these completeness rules over any committed set and is the gate to run before publishing.
 
