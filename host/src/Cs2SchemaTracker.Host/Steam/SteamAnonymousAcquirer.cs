@@ -777,30 +777,62 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
                 resolvedBuild = await session.ResolveBuildIdAsync(appId, buildId, ct).ConfigureAwait(false);
             }
 
-            log.WriteLine(
-                $"steam-acquire: tools acquire — fetching the editor-DLL slice (\".dll\" under \"game/\") " +
-                $"of depot {toolsDepotId} into staging '{stagingDir}'.");
-            var staged = await AcquireResolvedAsync(
-                session, appId, resolvedBuild, resolved, stagingDir,
-                fileFilter: ToolsBinSelector.Predicate, ct).ConfigureAwait(false);
+            // RETROFIT IN PLACE. When the tuple already records THIS tools manifest, its editor DLLs
+            // are on disk from an earlier tools acquire, and only the files the slice has since
+            // started selecting (the tools-content files) are missing. Downloading into a fresh
+            // staging dir would re-fetch ~200 MB of DLLs per build to add a few hundred KB, so fetch
+            // against outDir itself with reuseExisting: the resume probe SHA-1-verifies each on-disk
+            // chunk and skips it, and only missing or damaged files transfer. The end state matches
+            // the staged merge, which overwrites exactly the same paths. A different (or no)
+            // recorded tools GID keeps the staged path: on-disk DLLs from another manifest must not
+            // be treated as this one's.
+            bool retrofitInPlace = ToolsManifestRecorded(outDir, toolsDepotId, resolved[0].ManifestId);
+            AcquireResult staged;
+            if (retrofitInPlace)
+            {
+                log.WriteLine(
+                    $"steam-acquire: tools retrofit — '{outDir}' already records depot {toolsDepotId} manifest " +
+                    $"{resolved[0].ManifestId}; fetching the slice in place so cached files are reused.");
+                staged = await AcquireResolvedAsync(
+                    session, appId, resolvedBuild, resolved, outDir,
+                    fileFilter: ToolsBinSelector.Predicate, ct, reuseExisting: true).ConfigureAwait(false);
+            }
+            else
+            {
+                log.WriteLine(
+                    $"steam-acquire: tools acquire — fetching the editor-DLL slice (\".dll\" under \"game/\") " +
+                    $"plus the tools-content files (FGDs, cs_script declarations) of depot {toolsDepotId} " +
+                    $"into staging '{stagingDir}'.");
+                staged = await AcquireResolvedAsync(
+                    session, appId, resolvedBuild, resolved, stagingDir,
+                    fileFilter: ToolsBinSelector.Predicate, ct).ConfigureAwait(false);
+            }
 
             // Fail-loud gate: a tools acquire that matched ZERO .dll files means the depot layout
-            // changed (or the wrong depot was named) — never lay down an empty tools slice. The
-            // shared download core already throws on a zero-match filter; this re-assertion keeps
-            // the invariant local and explicit.
-            if (staged.Files.Count == 0)
+            // changed (or the wrong depot was named) — never lay down an empty tools slice. Counted
+            // on the DLLs alone: the tools-content files ride the same filter, and a slice of only
+            // FGDs would still be a walker with no editor modules to load.
+            int dllCount = staged.Files.Count(f => ToolsBinSelector.IsToolsDll(f.RelativePath));
+            if (dllCount == 0)
             {
                 throw new InvalidOperationException(
                     $"tools depot {toolsDepotId} yielded ZERO '.dll' files under 'game/' — the " +
                     "depot layout may have changed; refusing to record an empty tools slice.");
             }
+            int contentCount = staged.Files.Count(f => ToolsBinSelector.IsToolsContentFile(f.RelativePath));
+            log.WriteLine(
+                $"steam-acquire: tools slice — {dllCount} editor DLL(s), {contentCount} tools-content file(s).");
 
             // Non-destructive merge into the binaries dir (see the block comment above: the
             // wipe-and-replace path would destroy the co-located base binaries), then accumulate
-            // the 2347779 identity into manifest-record.json (union by depotId).
-            var merged = MergeStagedFiles(staged, outDir, log);
+            // the 2347779 identity into manifest-record.json (union by depotId), and stamp the
+            // tools-content generation so extract and the cache-first acquire can tell this slice
+            // from one written before the tools-content files were selected.
+            // In place, AcquireResolvedAsync has already written the files and merged the record.
+            var merged = retrofitInPlace ? staged : MergeStagedFiles(staged, outDir, log);
             ManifestRecord.FromAcquireResult(merged.ResolvedBuildId, merged.Depots)
                 .MergeIntoTupleDir(outDir);
+            ToolsContent.ToolsContentMarker.Write(outDir);
 
             // Staging is consumed; best-effort cleanup.
             try
@@ -812,6 +844,19 @@ internal sealed class SteamAnonymousAcquirer : ISteamAcquirer
 
             return merged;
         }
+    }
+
+    /// <summary>
+    /// True iff <paramref name="tupleDir"/>'s manifest-record.json lists
+    /// <paramref name="toolsDepotId"/> at exactly <paramref name="manifestId"/>. A corrupt record
+    /// fails loud (same as every other record read).
+    /// </summary>
+    internal static bool ToolsManifestRecorded(string tupleDir, uint toolsDepotId, ulong manifestId)
+    {
+        var recordPath = Path.Combine(tupleDir, ManifestRecord.FileName);
+        return File.Exists(recordPath)
+            && ManifestRecord.ReadFromFile(recordPath).Depots
+                .Any(d => d.DepotId == toolsDepotId && d.ManifestId == manifestId);
     }
 
     public async Task<AcquireResult> AcquireExplicitAsync(

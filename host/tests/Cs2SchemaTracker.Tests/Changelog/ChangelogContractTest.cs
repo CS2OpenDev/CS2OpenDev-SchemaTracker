@@ -413,4 +413,17 @@ public sealed class ChangelogContractTest
             Assert.Empty(consts.Changed);
         });
     }
+
+    // ---- Optional families: named, fixed relative order, after the binary five ----------------
+
+    [Fact]
+    public void Optional_families_are_appended_after_the_binary_five_in_a_fixed_order()
+    {
+        Assert.Equal(ExpectedFamilyOrder, Cs2SchemaTracker.Host.Changelog.BuildChangelogEmitter.FamilyOrder.ToArray());
+        Assert.Equal(
+            "localization,cs_script_api,entity_io",
+            string.Join(",", Cs2SchemaTracker.Host.Changelog.BuildChangelogEmitter.OptionalFamilyOrder));
+        Assert.Empty(Cs2SchemaTracker.Host.Changelog.BuildChangelogEmitter.OptionalFamilyOrder
+            .Intersect(Cs2SchemaTracker.Host.Changelog.BuildChangelogEmitter.FamilyOrder));
+    }
 }

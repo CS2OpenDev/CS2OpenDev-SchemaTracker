@@ -1,0 +1,49 @@
+//=== Trimmed excerpt of game/csgo/csgo.fgd (Workshop Tools depot 2347779, 2026-10-22) for the entity_io tests.
+//=== Directive and class blocks are verbatim (LF line endings); unrelated ones were removed and the include list cut to the fixture files.
+
+@include "base.fgd"
+@include "markup_volumes.fgd"
+
+@EntityGroup "Player" { start_expanded = true }
+@EntityGroup "Lighting" { start_expanded = true }
+@VisGroupFilter { filter_type = "toolsMaterial"		material = "toolsclip_concrete.vmat"			group = "Tool Brushes/Clip"				}
+
+@exclude env_sky
+@exclude func_wall
+@exclude fog_volume
+
+@OverrideClass 
+	metadata
+	{
+		entity_tool_name = "Player Start"
+		entity_tool_group = "Player"
+		entity_tool_tip = "Entity which specifies where the player will start."
+	}
+= info_player_start :
+[
+]
+
+@SolidClass base( Targetname, EnableDisable ) tags( Lighting ) = fog_volume : "An entity to control the fog in the map."
+[
+	FogName(target_destination) : "Fog Name" : : "The name of the fog entity associated with this volume."
+]
+
+@OverrideClass = func_button
+[
+	displaytext(string) : "Use Prompt Token" : : "Localization token prompt shown on-screen. Leave blank for no prompt."
+]
+
+@PointClass iconsprite("materials/editor/point_script.vmat") = point_script
+[
+	targetname(target_source) { sort_priority = 90 } : "Name" : : "The name that other entities refer to this entity by."
+	cs_script(resource:vjs) : "cs_script"
+	input RunScriptInput(string) : "Run callback registered using OnScriptInput."
+]
+
+@PointClass iconsprite("materials/editor/custom_hud_layout.vmat") = custom_hud_layout :
+	"Panorama UI that can be controlled by cs_script. See point_script."
+[
+	targetname(target_source) { sort_priority = 90 } : "Name" : : "The name that other entities refer to this entity by."
+	layout(resource:xml) : "Layout" : : "A panorama layout file. A limited set of panel types and attributes are supported."
+	observable(boolean) : "Observable" : : "Show each player's own version of this UI to whoever is spectating them."
+]

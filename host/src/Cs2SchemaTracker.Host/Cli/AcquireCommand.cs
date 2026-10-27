@@ -459,12 +459,12 @@ internal static class AcquireCommand
                     // request fails loud (never a silent tools-less "success"); the DEFAULT-implied
                     // want (toolsWanted, no explicit flag) is best-effort — --cache-only cannot fetch
                     // anything regardless, so a cache predating tools tracking is still a clean hit.
-                    bool cachedHasTools = RecordListsToolsDepot(steamFreeOutDir);
+                    bool cachedHasTools = ToolsLegComplete(steamFreeOutDir);
                     if (toolsWanted && !cachedHasTools && explicitTools)
                     {
                         Console.Error.WriteLine(
                             $"acquire --cache-only: cache '{steamFreeOutDir}' holds the binaries but its " +
-                            $"manifest-record.json lists NO tools depot {SteamAppIdMap.Cs2WorkshopToolsDepotId}; " +
+                            $"tools leg is incomplete (manifest-record.json lists no depot {SteamAppIdMap.Cs2WorkshopToolsDepotId}, or tools-content.json is missing or stale); " +
                             "fetching the missing tools slice needs Steam. Drop --cache-only.");
                         return 65;
                     }
@@ -493,13 +493,13 @@ internal static class AcquireCommand
             // share the same bin subtrees).
             if (!noCache && steamFreeOutDir is not null && CacheDirPopulated(steamFreeOutDir))
             {
-                bool cachedHasTools = RecordListsToolsDepot(steamFreeOutDir);
+                bool cachedHasTools = ToolsLegComplete(steamFreeOutDir);
                 if (toolsWanted && !cachedHasTools)
                 {
                     Console.Error.WriteLine(
                         $"acquire: cache-first HIT — build={buildArg} platform={platform} already in local cache " +
-                        $"'{steamFreeOutDir}', but its manifest-record.json lists NO tools depot " +
-                        $"{SteamAppIdMap.Cs2WorkshopToolsDepotId}; tools leg missing -> acquiring tools only " +
+                        $"'{steamFreeOutDir}', but its tools leg is incomplete (no depot " +
+                        $"{SteamAppIdMap.Cs2WorkshopToolsDepotId} in manifest-record.json, or tools-content.json missing or stale) -> acquiring tools only " +
                         "(binaries/content untouched).");
                     // EXPLICIT --tools retrofits fail-loud (unchanged); a DEFAULT-implied want is
                     // best-effort — the cache hit itself still succeeds (return 0) if the retrofit
@@ -554,12 +554,12 @@ internal static class AcquireCommand
             // so the missing tools leg resolves PICS-current — the cached build IS the current one.
             if (!noCache && steamFreeOutDir is null && CacheDirPopulated(outDir))
             {
-                bool cachedHasTools = RecordListsToolsDepot(outDir);
+                bool cachedHasTools = ToolsLegComplete(outDir);
                 if (toolsWanted && !cachedHasTools)
                 {
                     Console.Error.WriteLine(
                         $"acquire: cache-first HIT — resolved build already in local cache '{outDir}', but its " +
-                        $"manifest-record.json lists NO tools depot {SteamAppIdMap.Cs2WorkshopToolsDepotId}; " +
+                        $"tools leg is incomplete (manifest-record.json lists no depot {SteamAppIdMap.Cs2WorkshopToolsDepotId}, or tools-content.json is missing or stale); " +
                         "tools leg missing -> acquiring tools only (binaries/content untouched).");
                     if (explicitTools)
                     {
@@ -1689,7 +1689,7 @@ internal static class AcquireCommand
         // binaries-only batch re-acquires to ADD content). The TOOLS decision is deliberately NOT
         // marker-based: whether the tools slice is present is decided by the dir's
         // manifest-record.json (depot 2347779 — the AUTHORITATIVE record every tools acquire merges;
-        // see RecordListsToolsDepot), so a --tools re-run over an already-populated cache RETROFITS
+        // see ToolsLegComplete), so a --tools re-run over an already-populated cache RETROFITS
         // only the missing tools leg, leaving the verified binaries/content untouched.
         var marker = Path.Combine(outDir, AcqDoneMarker);
         bool baseLegsDone = !force && MarkerSatisfies(marker, needContentMarker);
@@ -1718,9 +1718,9 @@ internal static class AcquireCommand
                 }
 
                 // --tools over a completed base acquire: record-authoritative retrofit decision.
-                // RecordListsToolsDepot fails loud on a corrupt record — caught below as a per-build
+                // ToolsLegComplete fails loud on a corrupt record — caught below as a per-build
                 // hard failure (fail-isolated, never a silent skip).
-                if (RecordListsToolsDepot(outDir))
+                if (ToolsLegComplete(outDir))
                 {
                     Console.Error.WriteLine(
                         $"acquire (batch): build {buildId} {platform} cache HIT incl. tools — " +
@@ -1731,7 +1731,7 @@ internal static class AcquireCommand
 
                 Console.Error.WriteLine(
                     $"acquire (batch): build {buildId} {platform} cache HIT; tools leg missing " +
-                    "(manifest-record.json lists no depot 2347779) -> acquiring tools only " +
+                    "(manifest-record.json lists no depot 2347779, or tools-content.json is missing or stale) -> acquiring tools only " +
                     "(binaries/content untouched).");
                 var retrofitSpec = toolsTarget.ToManifestSpec(inventory.AppId);
                 // EXPLICIT --tools retrofits fail-loud (propagates to the catch below => Failed,
@@ -1920,7 +1920,7 @@ internal static class AcquireCommand
     /// ("acquired+content"), so a prior binaries-only run is correctly re-acquired to add content. A
     /// missing/unreadable marker is never satisfied (re-acquire). The TOOLS leg is deliberately NOT
     /// part of this check — tools presence is decided by manifest-record.json (depot 2347779; see
-    /// <see cref="RecordListsToolsDepot"/>), which enables the tools-only RETROFIT over a completed
+    /// <see cref="ToolsLegComplete"/>), which enables the tools-only RETROFIT over a completed
     /// base acquire.
     /// </summary>
     private static bool MarkerSatisfies(string marker, bool includeContent)
@@ -2185,14 +2185,22 @@ internal static class AcquireCommand
     /// record means no tools; a present-but-corrupt record fails loud via
     /// <see cref="ManifestRecord.ReadFromFile"/> (a real input problem, mapped to the caller's
     /// exit-code / fail-isolation handling).
+    ///
+    /// The record alone is not sufficient: a tools leg acquired before the slice included the loose
+    /// tools-content files (FGDs, the cs_script declaration file) lists the depot but holds none of
+    /// them. So the leg is complete only when the tuple ALSO carries a current tools-content.json
+    /// (<see cref="ToolsContent.ToolsContentMarker"/>); an older cache gets the tools-only retrofit,
+    /// which re-fetches the slice (DLLs included — it is one filter) and leaves binaries and content
+    /// untouched.
     /// </summary>
-    private static bool RecordListsToolsDepot(string tupleDir)
+    private static bool ToolsLegComplete(string tupleDir)
     {
         var path = Path.Combine(tupleDir, ManifestRecord.FileName);
         if (!File.Exists(path))
             return false;
         return ManifestRecord.ReadFromFile(path)
-            .Depots.Any(d => d.DepotId == SteamAppIdMap.Cs2WorkshopToolsDepotId);
+                .Depots.Any(d => d.DepotId == SteamAppIdMap.Cs2WorkshopToolsDepotId)
+            && ToolsContent.ToolsContentMarker.IsCurrent(tupleDir);
     }
 
     /// <summary>

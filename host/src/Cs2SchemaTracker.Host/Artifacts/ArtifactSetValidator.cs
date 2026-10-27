@@ -197,6 +197,11 @@ public sealed class ArtifactSetValidator
             if (o.Reason != PlatformOmission.Types.Reason.Unspecified)
             {
                 // WHOLESALE platform omission: the platform dir is absent and accounted-for.
+                if (o.Reason == PlatformOmission.Types.Reason.ToolsDepotNotOnPlatform)
+                {
+                    Violate($"build '{buildId}' omissions.json platform '{platform}' uses TOOLS_DEPOT_NOT_ON_PLATFORM " +
+                            "as a wholesale platform reason; it is valid only on a content omission");
+                }
                 omittedPlatforms.Add(platform);
                 continue;
             }
@@ -221,13 +226,22 @@ public sealed class ArtifactSetValidator
                 if (!ArtifactSet.OmittableContentArtifacts.Contains(artifact, StringComparer.Ordinal))
                 {
                     Violate($"build '{buildId}' omissions.json platform '{platform}' content omission names " +
-                            $"'{artifact}', which is not a content-depot-gated artifact");
+                            $"'{artifact}', which is not an omittable content artifact");
                     continue;
                 }
                 if (co.Reason == PlatformOmission.Types.Reason.Unspecified)
                 {
                     Violate($"build '{buildId}' omissions.json platform '{platform}' content omission for " +
-                            $"'{artifact}' has invalid/empty reason (expected CONTENT_NOT_SHIPPED_THIS_ERA)");
+                            $"'{artifact}' has invalid/empty reason (expected CONTENT_NOT_SHIPPED_THIS_ERA, or " +
+                            "TOOLS_DEPOT_NOT_ON_PLATFORM for a tools-depot artifact)");
+                }
+                else if (co.Reason == PlatformOmission.Types.Reason.ToolsDepotNotOnPlatform
+                         && (!ArtifactSet.ToolsDepotGatedFiles.Contains(artifact, StringComparer.Ordinal)
+                             || string.Equals(platform, ArtifactSet.ToolsPlatform, StringComparison.Ordinal)))
+                {
+                    Violate($"build '{buildId}' omissions.json platform '{platform}' content omission for " +
+                            $"'{artifact}' claims TOOLS_DEPOT_NOT_ON_PLATFORM, which applies only to a " +
+                            $"tools-depot artifact on a platform other than {ArtifactSet.ToolsPlatform}");
                 }
                 omittedArtifacts.Add(artifact);
             }
@@ -370,6 +384,45 @@ public sealed class ArtifactSetValidator
         return set;
     }
 
+    // --- tools-depot gating (cs_script_api.json, entity_io.json) ---
+    //
+    // See ArtifactSet.ToolsDepotGatedFiles for why the gate is "tools depot in provenance AND a
+    // tools-content file among provenance.inputs" rather than the depot alone. A non-windows set
+    // carrying one of these files is a violation outright: its source does not exist there.
+    private static void ValidateToolsDepotGating(
+        string buildId, string platform, string dir, Schemas.Provenance provenance,
+        HashSet<string> contentOmitted, Action<string> violate)
+    {
+        if (!string.Equals(platform, ArtifactSet.ToolsPlatform, StringComparison.Ordinal))
+        {
+            foreach (var tf in ArtifactSet.ToolsDepotGatedFiles)
+            {
+                if (File.Exists(Path.Combine(dir, tf)))
+                {
+                    violate($"build '{buildId}' platform '{platform}' carries '{tf}', which is built from the " +
+                            $"Workshop Tools depot {ArtifactSet.ToolsDepotId.ToString(CultureInfo.InvariantCulture)} " +
+                            $"({ArtifactSet.ToolsPlatform} only)");
+                }
+            }
+            return;
+        }
+
+        bool toolsDepotListed = provenance.Steam is { } steam
+            && steam.Depots.Any(d => d.DepotId == ArtifactSet.ToolsDepotId);
+        bool toolsContentRead = provenance.Inputs.Any(i => Steam.ToolsBinSelector.IsToolsContentFile(i.Path ?? ""));
+        if (!toolsDepotListed || !toolsContentRead)
+            return;
+
+        foreach (var tf in ArtifactSet.ToolsDepotGatedFiles)
+        {
+            if (File.Exists(Path.Combine(dir, tf)) || contentOmitted.Contains(tf))
+                continue;
+            violate($"build '{buildId}' platform '{platform}' is INCOMPLETE: the Workshop Tools content was " +
+                    "read for this set (tools depot in provenance.json steam.depots, tools-content files in " +
+                    $"provenance.inputs) but '{tf}' is missing and not recorded as an omission");
+        }
+    }
+
     // --- one platform directory completeness (README "What it produces") ---
     private static void ValidatePlatformComplete(
         string buildId, string platform, string buildPath,
@@ -416,6 +469,8 @@ public sealed class ArtifactSetValidator
                     $"(cannot evaluate content-depot gating): {ex.Message}");
             return;
         }
+
+        ValidateToolsDepotGating(buildId, platform, dir, provenance, contentOmitted, violate);
 
         var contentDepotAcquired = provenance.Steam is { } steam
             && steam.Depots.Any(d => d.DepotId == ArtifactSet.ContentDepotId);

@@ -34,6 +34,8 @@ public class ExtractCliParseTest
     [InlineData("extract --build 1 --platform windows-x86_64 --commit --allow-walker-change")]
     [InlineData("extract --all --platform windows-x86_64 --commit --allow-walker-change")]
     [InlineData("extract --era cs2-2026-04-21 --platform windows-x86_64 --commit --allow-walker-change --allow-mixed-walkers")]
+    [InlineData("extract --build 1 --platform windows-x86_64 --tools-content-root C:/cs2")]
+    [InlineData("emit-tools-content --build 1 --out x --tools-content-root C:/cs2")]
     public void Documented_Extract_Flags_Are_Accepted_By_The_Real_Parser(string commandLine)
     {
         Assert.Empty(ParseErrors(commandLine));
@@ -45,5 +47,22 @@ public class ExtractCliParseTest
         // Sanity: the parser DOES reject genuinely unknown options — so the accept-tests above are a
         // real guard (not vacuously passing because the parser ignores everything).
         Assert.NotEmpty(ParseErrors("extract --build 1 --platform windows-x86_64 --totally-unknown-flag"));
+    }
+}
+
+// --tools-content-root reads files from a local tree whose build is not the one being extracted,
+// so the extract parser refuses it anywhere that could put those files into the corpus.
+public class ExtractToolsContentRootGuardTest
+{
+    [Theory]
+    [InlineData("--build", "1", "--platform", "windows-x86_64", "--commit", "--tools-content-root", "C:/cs2")]
+    [InlineData("--build", "1", "--build", "2", "--platform", "windows-x86_64", "--tools-content-root", "C:/cs2")]
+    [InlineData("--all", "--platform", "windows-x86_64", "--tools-content-root", "C:/cs2")]
+    public void Tools_content_root_is_refused_with_commit_or_a_batch(params string[] args)
+    {
+        var fake = new FakeWalkerRunner(0, "", null);
+        var code = Cs2SchemaTracker.Host.Cli.ExtractCommand.Run(args, () => fake);
+        Assert.Equal(64, code);
+        Assert.Equal(0, fake.Calls);
     }
 }

@@ -1,0 +1,196 @@
+// The cs_script JavaScript API, parsed from Valve's own TypeScript declaration file.
+//
+// CS2 map scripts are JavaScript files attached to point_script entities (the
+// `cs_script` keyvalue, a vjs resource). They import "cs_script/point_script", whose
+// surface Valve documents in a TypeScript declaration file shipped with the Workshop
+// Tools (depot 2347779, Windows-only):
+//
+//   content/csgo_addons/cs_script_demo/maps/scripts/point_script.d.ts
+//   content/csgo_addons/cs_script_demo/maps/scripts/tsconfig.json   (the ES target)
+//
+// The declaration file is the only machine-readable description of that API. This
+// artifact is its structured form: every exported constant, interface, class, type alias
+// and enum, with every member's signature and JSDoc, so a consumer can render reference
+// pages, diff the API build over build, and cross-link the types it names.
+//
+// === The source (CONFIRMED against the 2026-10-22 Workshop Tools depot) ===
+// One ambient module block, `declare module "cs_script/point_script" { ... }`, holding:
+//   - 3 `export const` values: Instance: IPointScript, Console: IConsole,
+//     GameRules: IGameRules;
+//   - interfaces (IPointScript has ~40 On* callback registrations), classes with single
+//     `extends` (CSPlayerPawn extends BaseModelEntity extends Entity), type aliases
+//     (object literals, unions), and enums with implicit increments and `1 << n` flags;
+//   - JSDoc on most members, including @deprecated, @experimental, @param, @returns,
+//     @example and @default tags. Overloads appear as repeated member names.
+//
+// === SHAPE DECISIONS ===
+//   - Type expressions are kept as WHITESPACE-NORMALISED TEXT (type_text,
+//     return_type_text, signature_text), re-rendered from a parse rather than copied, so
+//     `{text:any,x:number}` and `{ text: any, x: number }` produce the same string.
+//     A full type AST would bloat the artifact for no consumer benefit; referenced_types
+//     carries the one structural fact consumers need (which declared names a type uses).
+//   - referenced_types lists only names declared in this module (types and enums), never
+//     builtins (number, string, Promise, ...). Sorted Ordinal, de-duplicated.
+//   - `exported` records the syntactic `export` keyword only. Inside an ambient module
+//     every declaration is visible to importers whether or not it carries `export`, so a
+//     false value does NOT mean the name is private.
+//   - Overloads are separate members sharing a name, numbered by overload_index in
+//     declaration order (0, 1, ...). The changelog keys members as
+//     "Type.member#overload_index".
+//   - Enum values are resolved to integers (implicit increments, negative literals, and
+//     the constant operators `<< >> | & ^ ~ + - *`); initializer_text keeps the source
+//     expression when there was one.
+//   - Ordering: types and enums sorted by name Ordinal; exports in declaration order;
+//     members, params and enum members in DECLARATION ORDER (that order is semantic:
+//     it is how Valve groups the API, and overload_index depends on it).
+//   - JSDoc: `doc` is the description text before the first tag; known tags are lifted
+//     into typed fields; any other tag lands in other_tags so nothing is dropped. Plain
+//     /* */ and // comments are not documentation (TypeScript ignores them) and are not
+//     carried.
+//
+// Determinism: canonical JSON (sorted keys, LF, UTF-8 no BOM); the orderings above.
+// Fail-loud: any construct outside the supported declaration subset, an unbalanced
+// bracket, an enum initializer that is not an integer constant expression, a duplicate
+// type name, or a malformed tsconfig.json aborts the emit before any bytes are written.
+
+syntax = "proto3";
+
+package cs2.schema_tracker.v0;
+
+option csharp_namespace = "Cs2SchemaTracker.Schemas";
+
+message CsScriptApi {
+  string schema_version = 1;       // schemas/ family version
+  string build_id       = 2;
+  string platform       = 3;       // "windows-x86_64" (the Workshop Tools depot is Windows-only)
+
+  // The depot-relative path of the declaration file and its SHA-256 (hex, lowercase).
+  string source_path    = 4;
+  string source_sha256  = 5;
+
+  // compilerOptions.target from the tsconfig.json shipped beside the declaration file
+  // ("es2022"), verbatim. Empty (with tsconfig_path empty) when no tsconfig.json shipped.
+  string es_target       = 6;
+  string tsconfig_path   = 7;
+  string tsconfig_sha256 = 8;
+
+  // The ambient module name ("cs_script/point_script") and the JSDoc directly above its
+  // `declare module` line. file_doc carries any earlier JSDoc block at the top of the
+  // file (Valve's header about the file itself).
+  string module         = 9;
+  string module_doc     = 10;
+  string file_doc       = 11;
+
+  repeated CsScriptExport exports = 100;   // declaration order
+  repeated CsScriptType   types   = 101;   // name Ordinal
+  repeated CsScriptEnum   enums   = 102;   // name Ordinal
+}
+
+// One `export const Name: Type;` value.
+message CsScriptExport {
+  string name = 1;                         // "Instance"
+  string type = 2;                         // "IPointScript"
+  string doc  = 3;
+  repeated string referenced_types = 4;
+  repeated CsScriptTag other_tags = 5;
+}
+
+// An interface, class or type alias.
+message CsScriptType {
+  string name     = 1;
+  string kind     = 2;                     // "interface" | "class" | "type_alias"
+  bool   exported = 3;
+
+  // `extends` targets as written (a class has at most one; an interface may list several).
+  repeated string extends = 4;
+  repeated string implements = 5;          // classes only
+  repeated string type_params = 6;         // "T", "T extends X", ...
+
+  string doc              = 7;
+  bool   deprecated       = 8;
+  string deprecation_note = 9;
+  bool   experimental     = 10;
+  string experimental_note = 11;
+  repeated string examples = 12;
+  repeated CsScriptTag other_tags = 13;
+
+  // Type aliases only: the aliased type, normalised, and the declared names it uses.
+  string type_text = 14;
+  repeated string referenced_types = 15;
+
+  repeated CsScriptMember members = 100;   // declaration order
+}
+
+// One interface/class member. Overloads are separate entries sharing `name`.
+message CsScriptMember {
+  string name           = 1;
+  string kind           = 2;               // "method" | "property"
+  uint32 overload_index = 3;               // 0-based, per name, declaration order
+
+  // The whole member as one normalised line, e.g.
+  //   "SetNextThink(time: number): void"
+  //   "hitEntity?: Entity"
+  string signature_text = 4;
+
+  bool optional = 5;                       // `name?` (property, or optional method)
+  repeated string modifiers = 6;           // "readonly", "static", ... as written
+
+  // Methods.
+  repeated string type_params = 7;
+  repeated CsScriptParam params = 8;
+  string return_type_text = 9;             // "" when the declaration omits it
+
+  // Properties.
+  string type_text = 10;
+
+  string doc              = 11;
+  map<string, string> param_docs = 12;     // @param name -> text
+  string returns_doc      = 13;            // @returns / @return
+  bool   deprecated       = 14;
+  string deprecation_note = 15;
+  bool   experimental     = 16;
+  string experimental_note = 17;
+  string default_value    = 18;            // @default
+  repeated string examples = 19;
+  repeated CsScriptTag other_tags = 20;
+
+  // Declared type/enum names used anywhere in the member's signature.
+  repeated string referenced_types = 21;
+}
+
+message CsScriptParam {
+  string name      = 1;
+  string type_text = 2;                    // "" when the declaration omits the annotation
+  bool   optional  = 3;
+  bool   rest      = 4;                    // `...name`
+}
+
+message CsScriptEnum {
+  string name     = 1;
+  bool   exported = 2;
+  string doc      = 3;
+  bool   deprecated       = 4;
+  string deprecation_note = 5;
+  bool   experimental     = 6;
+  string experimental_note = 7;
+  repeated CsScriptTag other_tags = 8;
+
+  repeated CsScriptEnumMember members = 100;   // declaration order
+}
+
+message CsScriptEnumMember {
+  string name  = 1;
+  int32  value = 2;                        // resolved constant
+  string doc   = 3;
+  // The initializer expression, normalised ("1 << 6", "-1"); "" for an implicit value.
+  string initializer_text = 4;
+  bool   deprecated       = 5;
+  string deprecation_note = 6;
+  repeated CsScriptTag other_tags = 7;
+}
+
+// A JSDoc tag with no dedicated field, kept verbatim.
+message CsScriptTag {
+  string tag  = 1;                         // without the '@'
+  string text = 2;
+}

@@ -241,11 +241,16 @@ internal static partial class ExtractCommand
     /// <paramref name="eraResolver"/> to resolve the band; a null resolver leaves the gate a no-op
     /// regardless of this flag (nothing to gate against).
     /// </param>
+    /// <param name="toolsContentRoot">
+    /// Development override (--tools-content-root): read the Workshop Tools loose files from this
+    /// tree instead of the tuple dir. Null on every production path. See ExtractCommand.ToolsContent.
+    /// </param>
     internal static int RunExtract(
         string build, string platform, string outDir,
         Func<IWalkerRunner>? runnerFactory, EraWalkerResolver? eraResolver, bool gateFromResolver,
         bool noAcquire = false, Func<string, string, int>? acquire = null, bool noChangelog = false,
-        bool noLocalizationChangelog = false, bool doubleWalk = false, bool classCountGate = true)
+        bool noLocalizationChangelog = false, bool doubleWalk = false, bool classCountGate = true,
+        string? toolsContentRoot = null)
     {
         outDir = Path.GetFullPath(outDir);
 
@@ -587,7 +592,8 @@ internal static partial class ExtractCommand
             }
             Directory.CreateDirectory(stagingDir);
 
-            var contentOmissions = EmitFullSet(build, platform, binariesDir, walk, stagingDir, walkerIdentity);
+            var contentOmissions = EmitFullSet(
+                build, platform, binariesDir, walk, stagingDir, walkerIdentity, toolsContentRoot);
 
             // BLOCKING CLASS-BAND GATE. Defense-in-depth alongside the layout-signature SECOND GATE
             // above: evaluate the resolved era's class-count band BEFORE the no-clobber check /
@@ -630,7 +636,7 @@ internal static partial class ExtractCommand
             //     existing set left intact) when staging would lose content.
             if (Directory.Exists(outDir))
             {
-                var clobbered = ContentArtifactNames
+                var clobbered = ContentArtifactNames.Concat(ToolsContentArtifactNames)
                     .Where(n => File.Exists(Path.Combine(outDir, n)) &&
                                 !File.Exists(Path.Combine(stagingDir, n)))
                     .OrderBy(n => n, StringComparer.Ordinal)
@@ -644,7 +650,8 @@ internal static partial class ExtractCommand
                     Console.Error.WriteLine(
                         "extract: the content depot was not co-located for this build, so the walk would " +
                         "DESTROY committed content. Acquire the content depot (pak01_dir.vpk + chunks) " +
-                        "alongside the binaries, then re-run. No artifacts written.");
+                        "alongside the binaries (for cs_script_api.json / entity_io.json: the Workshop Tools " +
+                        "slice, acquire --tools), then re-run. No artifacts written.");
                     return 65;   // EX_DATAERR — refuse the content-less clobber.
                 }
             }
@@ -922,7 +929,7 @@ internal static partial class ExtractCommand
     /// </summary>
     private static IReadOnlyList<ContentArtifactOmission> EmitFullSet(
         string build, string platform, string binariesDir, WalkerOutput walk, string stagingDir,
-        WalkerIdentity? walkerIdentity = null)
+        WalkerIdentity? walkerIdentity = null, string? toolsContentRoot = null)
     {
         // entity_schema.json. source_revision (Steam changelist) is left "" until the
         // provenance/acquire wiring threads it through (the emitter permits an empty changelist).
@@ -1073,7 +1080,14 @@ internal static partial class ExtractCommand
         // Emitted BEFORE provenance.json so the build-on-demand localization.json (staged here but
         // NOT promoted — see RunExtract) is on disk in time for provenance to fingerprint it.
         var contentResult = EmitContentArtifacts(build, platform, binariesDir, stagingDir);
-        var contentOmissions = contentResult.Omissions;
+
+        // Tools-content artifacts (cs_script_api.json, entity_io.json) — the Workshop Tools depot's
+        // loose files, resolved and gated separately from the content pak (ExtractCommand.ToolsContent).
+        var toolsResult = EmitToolsContentArtifacts(build, platform, binariesDir, stagingDir, toolsContentRoot);
+        IReadOnlyList<ContentArtifactOmission> contentOmissions = contentResult.Omissions
+            .Concat(toolsResult.Omissions)
+            .OrderBy(o => o.Artifact, StringComparer.Ordinal)
+            .ToList();
 
         // provenance.json. Steam identity is read from the acquire's manifest-record.json when
         // present (binariesDir is the acquire output dir); absent fields stay at defaults. git_commit
@@ -1082,7 +1096,7 @@ internal static partial class ExtractCommand
         // build-on-demand localization.json fingerprint (null when no localization was produced).
         var provenanceContext = BuildProvenanceContext(
             build, platform, binariesDir, walk, inputBinaries, contentResult.LocalizationFingerprint,
-            walkerIdentity);
+            walkerIdentity, toolsResult);
         ProvenanceEmitter.Emit(provenanceContext, Path.Combine(stagingDir, "provenance.json"));
         Console.Error.WriteLine("extract: wrote provenance.json");
 
@@ -1440,7 +1454,8 @@ internal static partial class ExtractCommand
     /// </summary>
     private static ProvenanceContext BuildProvenanceContext(
         string build, string platform, string binariesDir, WalkerOutput walk, List<string> inputBinaries,
-        LocalizationOutput? localizationFingerprint, WalkerIdentity? walkerIdentity = null)
+        LocalizationOutput? localizationFingerprint, WalkerIdentity? walkerIdentity = null,
+        ToolsEmitResult? tools = null)
     {
         var inputs = inputBinaries
             .Select(p => new ProvenanceInput(
@@ -1451,6 +1466,18 @@ internal static partial class ExtractCommand
                 // would be nondeterministic).
                 MtimeUtc: ""))
             .ToList();
+
+        // The loose tools-content files cs_script_api.json / entity_io.json were parsed from are
+        // inputs too: hashed under their depot-relative path, exactly like a binary.
+        if (tools?.Tree is { } tree)
+        {
+            var known = new HashSet<string>(inputs.Select(i => i.Path), StringComparer.Ordinal);
+            foreach (var rel in tools.InputsRead)
+            {
+                if (known.Add(rel))
+                    inputs.Add(new ProvenanceInput(Path: rel, LocalFilePath: tree.FullPath(rel), MtimeUtc: ""));
+            }
+        }
 
         // Steam identity. The acquire drops a manifest-record.json next to the binaries. When
         // present, populate provenance.steam from it. Absence is benign (a --binaries dev run has no

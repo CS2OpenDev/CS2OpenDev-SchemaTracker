@@ -71,11 +71,22 @@ These come from the shared content depot's `pak01` VPK and are present only when
 - It is regenerable on demand via the host `emit-localization` command against the same content input.
 - Every set's `provenance.json` records `provenance.localization` — the `sha256` (hex, lowercase), `size_bytes`, and `token_count` of the canonical `localization.json`. The hash is over the deterministic canonical JSON, so an `emit-localization` rebuild is **byte-verifiable** against what was dumped. A build/era whose content depot was never acquired has no `provenance.localization`.
 
+### Extracted from the Workshop Tools depot (windows-x86_64, present when the tools content was acquired)
+
+These come from **loose files** in the CS2 Workshop Tools depot (`2347779`, Windows-only), not from a VPK. A tools acquire keeps the editor DLLs the walker loads plus exactly these files, at their depot paths in the build's tuple dir, and stamps `tools-content.json` beside `manifest-record.json`. Every `linux-x86_64` set records both artifacts in `omissions.json` with reason `TOOLS_DEPOT_NOT_ON_PLATFORM`. A windows set whose tools slice was not acquired (the leg is best-effort; it needs an authenticated logon) simply lacks them, with no omission; an era that predates `cs_script` records `cs_script_api.json` as `CONTENT_NOT_SHIPPED_THIS_ERA`. The files they were parsed from are hashed into `provenance.inputs`.
+
+| Artifact | What it is | Sourced from |
+|---|---|---|
+| `cs_script_api.json` | The `cs_script` map-scripting API: the `cs_script/point_script` module's exports (`Instance`, `Console`, `GameRules`), every interface, class, type alias and enum, each member's normalised signature, parameters and return type, and the JSDoc lifted into fields (`deprecated`, `experimental`, `param_docs`, `examples`, `default_value`, ...). Enum values are resolved to integers; `referenced_types` lists the declared names a signature uses. Plus the ES target from the `tsconfig.json` beside it. | `content/csgo_addons/cs_script_demo/maps/scripts/point_script.d.ts` (Valve's TypeScript declaration file) + its `tsconfig.json`. |
+| `entity_io.json` | Every Hammer entity class (`func_button`, `point_script`, ...) with its keyvalues (type, default, choices, spawnflags), inputs and outputs, **resolved** through `base(...)` inheritance, with `declared_in` naming the class each item came from. Applies `@include`, `@exclude` and `@OverrideClass` the way Hammer does, and lists the classes `csgo.fgd` excludes. | `game/csgo/csgo.fgd` and the `game/csgo/` + `game/core/` FGDs it includes. |
+
+`changelog.json` gains a `cs_script_api` and an `entity_io` family once two consecutive windows sets carry the artifact. `emit-tools-content` produces both without a walk (for a set that predates them, or from a local CS2 install with `--tools-content-root`).
+
 ### Build-level (alongside the platform directories)
 
 | Artifact | What it is |
 |---|---|
-| `omissions.json` | Records anything legitimately absent — a platform not dumped, or a content table an era never shipped — with a reason. Present only when there *is* an omission; a clean build carries none, and an absent file reads as "nothing omitted". |
+| `omissions.json` | Records anything legitimately absent — a platform not dumped, a content table an era never shipped, or a Workshop Tools artifact a linux set cannot have — with a reason. Present only when there *is* an omission; a clean build carries none, and an absent file reads as "nothing omitted". |
 | `changelog.json` | The diff against the immediately preceding committed build, per platform. |
 | `schema_evolution/<platform>.json` | The cumulative, whole-history **schema-evolution graph** for a platform (every build-to-build structural delta + per-field history), at one fixed path under the artifacts root (not per build). Facts-only: field add/remove/retype/move, class reparent/resize, enum member churn, neutral rename *evidence* — no inferred renames or safety verdicts. Alongside the frozen 1:1 `paired_evidence`, three unselected N:M **candidate surfaces** carry wider provable relations for downstream curation: within-class remove/add pairs (type or offset equality), cross-module same-bare-name class pairs, and same-name/same-type field moves across classes, including a hoist into a base class the same transition interposed — each candidate listing exactly the signals that hold, never a selection among ties. |
 | `pics-appinfo.json` | The Steam PICS appinfo snapshot for the build. Optional — captured only for builds acquired while they were the live build, and never reproducible afterward. |
@@ -105,6 +116,7 @@ Everything is derived from a single CS2 build (identified by its Steam `build_id
 
 - **Game binaries** — the per-OS Steam binary depot (the Source 2 DLLs/SOs: `schemasystem`, `engine2`, `client`, `server`, and the rest). The source for every binary-derived artifact.
 - **Content** — the build's `pak01` VPK from the shared content depot (`2347770`). The source for the content artifacts.
+- **Workshop Tools** — on Windows, the editor DLLs from the Workshop Tools depot (`2347779`) the walker loads for schema coverage, plus the loose FGD files and `point_script.d.ts` the host parses into `entity_io.json` and `cs_script_api.json`.
 - **[`alliedmodders/hl2sdk`](https://github.com/alliedmodders/hl2sdk)** (cs2 branch, a pinned submodule) — the C++ struct layouts the walker uses to read the binaries, and the source for the engine wire-message protos CS2 embeds in no binary (compiled to `data/wire_descriptors.pb` via `scripts/gen-wire-descriptors.sh` and merged into `protos.descriptorset`). The only third-party CS2-domain build input; pinned per-build so the walker always matches the binary it reads.
 
 Inputs are fetched from Steam, hashed (SHA-256 / size / mtime), and recorded in `provenance.json` along with the Steam identity (appid / depot / manifest / build id) and the tool version. Any set can be re-acquired from its provenance and verified against the recorded hashes.

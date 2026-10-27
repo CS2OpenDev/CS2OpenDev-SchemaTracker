@@ -914,4 +914,144 @@ public sealed class ArtifactSetValidatorTest
             Assert.DoesNotContain(verdict.Violations, x => x.Message.Contains("pics-appinfo"));
         });
     }
+
+    // =====================================================================================
+    // Tools-depot gating (cs_script_api.json, entity_io.json).
+    // =====================================================================================
+
+    // Tools depot listed AND a tools-content file among the inputs: the host read the slice.
+    private const string ProvWindowsToolsContent =
+        """{"steam":{"depots":[{"depotId":2347771},{"depotId":2347779}]},"inputs":[{"path":"game/bin/win64/hammer.dll"},{"path":"game/csgo/csgo.fgd"}]}""";
+
+    // Tools depot listed but only DLL inputs: a set extracted before the tools-content slice existed.
+    private const string ProvWindowsToolsDllsOnly =
+        """{"steam":{"depots":[{"depotId":2347771},{"depotId":2347779}]},"inputs":[{"path":"game/bin/win64/hammer.dll"}]}""";
+
+    [Fact]
+    public void Tools_artifacts_are_omittable_content_names()
+    {
+        Assert.Contains("cs_script_api.json", ArtifactSet.OmittableContentArtifacts);
+        Assert.Contains("entity_io.json", ArtifactSet.OmittableContentArtifacts);
+        Assert.Equal("cs_script_api.json,entity_io.json", string.Join(",", ArtifactSet.ToolsDepotGatedFiles));
+        Assert.Equal(
+            ArtifactSet.OmittableContentArtifacts.OrderBy(n => n, StringComparer.Ordinal),
+            ArtifactSet.OmittableContentArtifacts);
+    }
+
+    [Fact]
+    public void Windows_set_predating_the_tools_content_slice_is_not_required_to_carry_them()
+    {
+        InRoot(root =>
+        {
+            var build = MakeBuild(root, "2001");
+            MakePlatform(build, WindowsPlatform, ProvWindowsToolsDllsOnly);
+            var verdict = Validate(root, "2001");
+            Assert.True(verdict.Passed, string.Join("; ", verdict.Violations.Select(x => x.Message)));
+        });
+    }
+
+    [Fact]
+    public void Windows_set_that_read_tools_content_must_carry_or_omit_each_artifact()
+    {
+        InRoot(root =>
+        {
+            var build = MakeBuild(root, "2002");
+            var plat = MakePlatform(build, WindowsPlatform, ProvWindowsToolsContent);
+            File.WriteAllText(Path.Combine(plat, "entity_io.json"), "{}");
+            var verdict = Validate(root, "2002");
+            Assert.False(verdict.Passed);
+            Assert.Contains(verdict.Violations, x => x.Message.Contains("cs_script_api.json"));
+            Assert.DoesNotContain(verdict.Violations, x => x.Message.Contains("entity_io.json"));
+        });
+    }
+
+    [Fact]
+    public void Windows_set_that_read_tools_content_passes_with_an_era_omission()
+    {
+        InRoot(root =>
+        {
+            var omissions =
+                """
+                {"build_id":"2003","omissions":[
+                  {"platform":"windows-x86_64","content_omissions":[
+                    {"artifact":"cs_script_api.json","reason":"CONTENT_NOT_SHIPPED_THIS_ERA","notes":"x"}]}]}
+                """;
+            var build = MakeBuild(root, "2003", omissions);
+            var plat = MakePlatform(build, WindowsPlatform, ProvWindowsToolsContent);
+            File.WriteAllText(Path.Combine(plat, "entity_io.json"), "{}");
+            var verdict = Validate(root, "2003");
+            Assert.True(verdict.Passed, string.Join("; ", verdict.Violations.Select(x => x.Message)));
+        });
+    }
+
+    [Fact]
+    public void Linux_set_records_tools_artifacts_as_not_on_platform()
+    {
+        InRoot(root =>
+        {
+            var omissions =
+                """
+                {"build_id":"2004","omissions":[
+                  {"platform":"linux-x86_64","content_omissions":[
+                    {"artifact":"cs_script_api.json","reason":"TOOLS_DEPOT_NOT_ON_PLATFORM","notes":"x"},
+                    {"artifact":"entity_io.json","reason":"TOOLS_DEPOT_NOT_ON_PLATFORM","notes":"x"}]}]}
+                """;
+            var build = MakeBuild(root, "2004", omissions);
+            MakePlatform(build, LinuxPlatform, ProvNoContent);
+            var verdict = Validate(root, "2004");
+            Assert.True(verdict.Passed, string.Join("; ", verdict.Violations.Select(x => x.Message)));
+        });
+    }
+
+    [Fact]
+    public void Linux_set_carrying_a_tools_artifact_fails()
+    {
+        InRoot(root =>
+        {
+            var build = MakeBuild(root, "2005");
+            var plat = MakePlatform(build, LinuxPlatform, ProvNoContent);
+            File.WriteAllText(Path.Combine(plat, "entity_io.json"), "{}");
+            var verdict = Validate(root, "2005");
+            Assert.False(verdict.Passed);
+            Assert.Contains(verdict.Violations, x => x.Message.Contains("entity_io.json"));
+        });
+    }
+
+    [Theory]
+    // TOOLS_DEPOT_NOT_ON_PLATFORM on the platform that HAS the tools depot.
+    [InlineData("windows-x86_64", "entity_io.json")]
+    // ...or on an artifact that does not come from the tools depot.
+    [InlineData("linux-x86_64", "prop_data.json")]
+    public void Tools_depot_not_on_platform_is_rejected_where_it_cannot_apply(string platform, string artifact)
+    {
+        InRoot(root =>
+        {
+            var omissions =
+                $$"""
+                {"build_id":"2006","omissions":[
+                  {"platform":"{{platform}}","content_omissions":[
+                    {"artifact":"{{artifact}}","reason":"TOOLS_DEPOT_NOT_ON_PLATFORM","notes":"x"}]}]}
+                """;
+            var build = MakeBuild(root, "2006", omissions);
+            MakePlatform(build, platform, ProvNoContent);
+            var verdict = Validate(root, "2006");
+            Assert.False(verdict.Passed);
+            Assert.Contains(verdict.Violations, x => x.Message.Contains("TOOLS_DEPOT_NOT_ON_PLATFORM"));
+        });
+    }
+
+    [Fact]
+    public void Tools_depot_not_on_platform_is_not_a_wholesale_reason()
+    {
+        InRoot(root =>
+        {
+            var omissions =
+                """{"build_id":"2007","omissions":[{"platform":"linux-x86_64","reason":"TOOLS_DEPOT_NOT_ON_PLATFORM"}]}""";
+            var build = MakeBuild(root, "2007", omissions);
+            MakePlatform(build, WindowsPlatform, ProvNoContent);
+            var verdict = Validate(root, "2007");
+            Assert.False(verdict.Passed);
+            Assert.Contains(verdict.Violations, x => x.Message.Contains("wholesale"));
+        });
+    }
 }

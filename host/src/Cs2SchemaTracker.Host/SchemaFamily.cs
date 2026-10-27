@@ -107,5 +107,19 @@ public static class SchemaFamily
     // full schema_evolution rebuild; 0.11.0 already owed that one. NOT a Docs event by the rule in
     // the header above: no field enters or leaves a re-published artifact, field_move_candidates
     // only gets a wider population, so no lockstep Docs change.
-    public const string Version = "0.12.0";
+    //
+    // 0.13.0: two NEW tools-content artifacts, the first read from the Workshop Tools depot's LOOSE
+    // files rather than from a binary or the content pak: cs_script_api.json (Valve's
+    // point_script.d.ts, parsed — the cs_script map-scripting API) and entity_io.json (the Hammer
+    // FGDs, parsed and inheritance-resolved — every entity class's keyvalues, inputs and outputs).
+    // windows-x86_64 only; a linux-x86_64 set records both as content omissions under the NEW
+    // omissions reason TOOLS_DEPOT_NOT_ON_PLATFORM. changelog.json gains two OPTIONAL families,
+    // cs_script_api and entity_io, appended after localization and emitted only when both sides of
+    // the diff carry the artifact. Additive throughout — no existing field moves — but a new
+    // artifact, a new enum value and new changelog families are a surface change, hence the minor
+    // bump; the EvolutionCommand version gate forces one full schema_evolution rebuild, as 0.11.0's
+    // did. Not a lockstep Docs event by the header's rule: no field enters or leaves an artifact
+    // Docs already re-publishes, and changelog consumers that key families by name see nothing new
+    // until two consecutive windows sets carry the artifacts.
+    public const string Version = "0.13.0";
 }
