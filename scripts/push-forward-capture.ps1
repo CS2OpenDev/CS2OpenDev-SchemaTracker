@@ -24,8 +24,9 @@
     1. push HEAD to an UNGATED staging branch (default capture/pending) -- always allowed,
     2. dispatch ci.yml on that ref (workflow_dispatch is the documented exception to the
        recursive-trigger guard; the same exception "Refresh latest-artifacts channel" relies on),
-    3. wait for a `ci gate` check run to conclude on that SHA -- check runs attach to the COMMIT,
-       so the status travels with the SHA when it is pushed on to main,
+    3. wait for the `ci gate` commit STATUS that a passing dispatched run posts on that SHA --
+       statuses attach to the COMMIT, so the status travels with the SHA when it is pushed on to
+       main. (The dispatched run's check run does not: GitHub ignores it for required checks.)
     4. push the SAME SHA to main, which now satisfies the rule.
 
   This satisfies the branch rule rather than bypassing it: a capture that breaks the repo is
@@ -80,20 +81,30 @@ if ($pending.Count -eq 0) {
 $plan = Get-Content $PlanPath -Raw | ConvertFrom-Json
 $sets = [bool]$plan.sets
 
-# The `ci gate` conclusion recorded against a commit, or $null when there is no completed run
-# for it yet. Check runs hang off the SHA, not the ref, which is what lets a status earned on the
-# staging branch satisfy the rule on main.
+# The `ci gate` verdict recorded against a commit, or $null when there is none yet.
+#
+# 'success' comes ONLY from a `ci gate` commit STATUS, which ci.yml posts when a dispatched run
+# passes. The check run that same run produces does not satisfy main's rule (GitHub ignores
+# dispatched check runs for required checks, on a direct push and on a PR merge alike), so a SHA
+# with a green check run but no status still has to be re-dispatched. Statuses hang off the SHA,
+# not the ref, which is what lets a status earned on the staging branch satisfy the rule on main.
+# Failures still come from the check runs, since nothing posts a failing status.
 function Get-GateConclusion([string]$sha) {
   $repo = $env:GITHUB_REPOSITORY
-  if (-not $repo) { Write-Error "GITHUB_REPOSITORY is not set; cannot query check runs"; exit 1 }
+  if (-not $repo) { Write-Error "GITHUB_REPOSITORY is not set; cannot query the gate"; exit 1 }
+
+  $statusJson = gh api "repos/$repo/commits/$sha/statuses" --paginate 2>$null
+  if ($LASTEXITCODE -eq 0 -and $statusJson) {
+    $passed = @(($statusJson | ConvertFrom-Json) |
+                Where-Object { $_.context -eq $GateCheckName -and $_.state -eq 'success' })
+    if ($passed.Count -gt 0) { return 'success' }
+  }
+
   $json = gh api "repos/$repo/commits/$sha/check-runs" --paginate 2>$null
   if ($LASTEXITCODE -ne 0 -or -not $json) { return $null }
   $runs = @(($json | ConvertFrom-Json).check_runs |
-            Where-Object { $_.name -eq $GateCheckName -and $_.status -eq 'completed' })
+            Where-Object { $_.name -eq $GateCheckName -and $_.status -eq 'completed' -and $_.conclusion -ne 'success' })
   if ($runs.Count -eq 0) { return $null }
-  # A success anywhere on this SHA is decisive: the gate passed on exactly these bytes, whatever
-  # else was cancelled or superseded around it. Otherwise report the newest completed verdict.
-  if (@($runs | Where-Object { $_.conclusion -eq 'success' }).Count -gt 0) { return 'success' }
   return (@($runs | Sort-Object -Property completed_at -Descending)[0]).conclusion
 }
 

@@ -582,6 +582,11 @@ jobs:
       - schemas-compile
       - artifacts-validation
     runs-on: ubuntu-24.04
+    # statuses: write is for the last step only (see there). Declaring a job block drops every
+    # scope not listed, so contents: read is restated.
+    permissions:
+      contents: read
+      statuses: write
     steps:
       - name: Job results
         # Printed unconditionally so a red gate says which job to look at without
@@ -602,3 +607,22 @@ jobs:
         run: |
           echo "::error::ci gate: a required CI job failed or was cancelled (see the results above)."
           exit 1
+
+      - name: Record the pass as a commit status (workflow_dispatch only)
+        # The forward-capture gate (scripts/push-forward-capture.ps1) dispatches this workflow on
+        # capture/pending and then pushes the same SHA to main. The `ci gate` CHECK RUN from a
+        # dispatched run does not satisfy main's required check: GitHub ignores it both for a
+        # direct push and for a PR merge (proven 2026-10-27 against a scratch ruleset; every
+        # capture from 2026-10-21 on was refused this way). A commit STATUS with the same context
+        # does satisfy it, because statuses attach to the SHA alone. Posted with GITHUB_TOKEN, so
+        # it comes from the GitHub Actions app the rule pins, and only after the step above has
+        # passed. push and pull_request runs already produce a check run the rule accepts.
+        if: github.event_name == 'workflow_dispatch'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api -X POST "repos/${{ github.repository }}/statuses/${{ github.sha }}" \
+            -f state=success -f context="ci gate" \
+            -f description="all CI jobs passed on a dispatched run" \
+            -f target_url="${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}" \
+            --jq '"posted \(.context)=\(.state) on ${{ github.sha }}"'

@@ -430,10 +430,12 @@ jobs:
       # contents-only without also removing the dispatch.
       contents: write
       actions: write
-      # checks: read is what `gh api repos/.../commits/<sha>/check-runs` needs in the push step's
-      # gate (see below). Declaring a permissions block drops every scope not listed, so without
-      # this the gate cannot read its own verdict and the push is refused rather than risked.
+      # checks: read and statuses: read are what `gh api repos/.../commits/<sha>/check-runs` and
+      # `.../statuses` need in the push step's gate (see below): the pass is a commit status, a
+      # failure is a check run. Declaring a permissions block drops every scope not listed, so
+      # without these the gate cannot read its own verdict and the push is refused rather than risked.
       checks: read
+      statuses: read
     steps:
       # Payloads FIRST, into the runner's temp dir (outside the workspace, so the checkout's
       # clean cannot delete them), before any checkout/.NET/bundle setup: on the common
@@ -531,9 +533,10 @@ jobs:
         # inert at `evaluate`. With -Gate the script parks HEAD on an ungated staging branch,
         # dispatches ci.yml against it (workflow_dispatch being the documented exception to the
         # recursive-trigger guard, same as the channel refresh below), waits for the `ci gate`
-        # check run on that SHA, and only then pushes the SAME SHA to main — where the status
-        # travels with it, because check runs attach to the commit and not the ref. The rule is
-        # satisfied, not bypassed.
+        # commit status a passing dispatched run posts on that SHA, and only then pushes the SAME
+        # SHA to main — where the status travels with it, because statuses attach to the commit and
+        # not the ref. (It has to be a status: the dispatched run's check run does not count for
+        # the rule.) The rule is satisfied, not bypassed.
         #
         # It is also safer than the direct push it replaced: the staging push happens FIRST, so a
         # refusal or a red gate leaves the capture sitting on the remote instead of dying with the
