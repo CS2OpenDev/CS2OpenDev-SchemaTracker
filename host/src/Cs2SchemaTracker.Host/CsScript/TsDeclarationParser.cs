@@ -897,12 +897,14 @@ internal sealed class TsDeclarationParser
             string s = t.Text.Replace("_", "", StringComparison.Ordinal);
             try
             {
+                // Radix literals are parsed unsigned: Convert.ToInt64 reads a 16-digit hex literal as
+                // two's complement, so 0xFFFFFFFFFFFFFFFF would come back as -1 and pass the range check.
                 if (s.StartsWith("0x", StringComparison.OrdinalIgnoreCase))
-                    return Convert.ToInt64(s[2..], 16);
+                    return checked((long)Convert.ToUInt64(s[2..], 16));
                 if (s.StartsWith("0b", StringComparison.OrdinalIgnoreCase))
-                    return Convert.ToInt64(s[2..], 2);
+                    return checked((long)Convert.ToUInt64(s[2..], 2));
                 if (s.StartsWith("0o", StringComparison.OrdinalIgnoreCase))
-                    return Convert.ToInt64(s[2..], 8);
+                    return checked((long)Convert.ToUInt64(s[2..], 8));
                 if (s.Contains('.', StringComparison.Ordinal) || s.Contains('e', StringComparison.OrdinalIgnoreCase))
                     throw _p.Fail(t, $"enum '{_enumName}' initializer '{t.Text}' is not an integer");
                 return long.Parse(s, NumberStyles.None, CultureInfo.InvariantCulture);

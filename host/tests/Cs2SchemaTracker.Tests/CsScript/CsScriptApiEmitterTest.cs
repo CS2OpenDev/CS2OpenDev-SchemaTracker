@@ -263,6 +263,8 @@ public sealed class CsScriptApiEmitterTest
     [InlineData("export const x: number;", "declare module")]
     [InlineData("declare module \"m\" { interface A {} class A {} }", "more than once")]
     [InlineData("declare module \"m\" { }", "no types or enums")]
+    [InlineData("declare module \"m\" { enum E { A = 0xFFFFFFFFFFFFFFFF } }", "not a representable integer")]
+    [InlineData("declare module \"m\" { enum E { A = 0x80000000 } }", "does not fit a 32-bit integer")]
     public void Unsupported_or_malformed_declarations_fail_loud(string dts, string expected)
     {
         var ex = Assert.Throws<InvalidDataException>(() => BuildInline(dts));
