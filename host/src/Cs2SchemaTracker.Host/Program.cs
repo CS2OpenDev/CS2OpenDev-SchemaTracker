@@ -598,7 +598,7 @@ internal static class Program
         var build = new Option<string?>("--build", "Steam build id.");
         var platform = new Option<string?>("--platform", "Target platform (windows-x86_64 only; the default).");
         var outOpt = new Option<string?>("--out", "Output directory (default: artifacts/<id>/<platform>/).");
-        var root = new Option<string?>("--tools-content-root", "Read the loose files from this tree (depot layout, e.g. a local CS2 install root) instead of the build's tuple dir.");
+        var root = new Option<string?>("--tools-content-root", "Read the loose files from this tree (depot layout, e.g. a local CS2 install root) instead of the build's tuple dir. Requires an explicit --out.");
 
         cmd.AddOption(build);
         cmd.AddOption(platform);

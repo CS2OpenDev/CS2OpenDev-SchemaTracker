@@ -7,10 +7,14 @@
 //   linux-x86_64       The tools depot does not exist for this platform. Both artifacts are
 //                      recorded as content omissions with reason TOOLS_DEPOT_NOT_ON_PLATFORM.
 //   windows, no tools  The tools leg is best-effort (DLC-gated, needs auth). A tuple whose
-//                      manifest-record.json does not list 2347779, or whose tools-content.json
-//                      marker is missing or stale (a cache from before the slice kept these files),
-//                      is a documented SKIP: no file and NO omission. Recording an omission there
-//                      would assert the build never shipped files it may well ship.
+//                      manifest-record.json does not list 2347779 is a documented SKIP: no file and
+//                      NO omission. Recording an omission there would assert the build never shipped
+//                      files it may well ship.
+//   windows, stale     The record lists 2347779 but tools-content.json is missing or stale: a cache
+//                      from before the slice kept these files. That FAILS LOUD. Skipping would land a
+//                      set with no tools artifacts and no omission, which verify-artifacts cannot
+//                      flag, and a rewalk over an old store would do that to every windows build.
+//                      The fix is a tools retrofit (acquire --tools) for the build.
 //   windows, tools     Each artifact is emitted when its source file is present; a genuinely absent
 //                      source (an era before cs_script) is a CONTENT_NOT_SHIPPED_THIS_ERA omission.
 //                      A present-but-malformed source fails loud inside the emitter.
@@ -53,8 +57,9 @@ internal static partial class ExtractCommand
 
     /// <summary>
     /// Resolve where (build, platform)'s tools-content files live. Returns null — with the reason in
-    /// <paramref name="note"/> — when there is no usable tree (see the file header's "windows, no
-    /// tools" case). An explicit <paramref name="overrideRoot"/> must exist.
+    /// <paramref name="note"/> — when the tools depot was not acquired (the file header's "windows,
+    /// no tools" case), and throws for a stale slice ("windows, stale"). An explicit
+    /// <paramref name="overrideRoot"/> must exist.
     /// </summary>
     internal static ToolsContentTree? ResolveToolsContent(string binariesDir, string? overrideRoot, out string note)
     {
@@ -79,10 +84,11 @@ internal static partial class ExtractCommand
         }
         if (!ToolsContentMarker.IsCurrent(binariesDir))
         {
-            note = $"the tools slice in '{binariesDir}' predates tools-content generation "
-                + $"{ToolsBinSelector.ToolsContentGeneration} ({ToolsBinSelector.ToolsContentMarkerFileName} missing or stale); "
-                + "re-run acquire for this build to retrofit the tools leg";
-            return null;
+            throw new InvalidDataException(
+                $"the tools slice in '{binariesDir}' predates tools-content generation "
+                + $"{ToolsBinSelector.ToolsContentGeneration} ({ToolsBinSelector.ToolsContentMarkerFileName} missing or stale), "
+                + "so cs_script_api.json and entity_io.json cannot be built and must not be silently left out. "
+                + "Retrofit the tools leg first: acquire --tools --build <id> --platform windows-x86_64 --auth.");
         }
         note = $"tools content from '{binariesDir}'";
         return new ToolsContentTree(binariesDir);

@@ -81,13 +81,14 @@ public sealed class ExtractToolsContentTest : IDisposable
     [Theory]
     [InlineData(false)]
     [InlineData(true)]
-    public void Windows_with_a_pre_slice_tools_cache_is_a_silent_skip(bool staleMarker)
+    public void Windows_with_a_pre_slice_tools_cache_fails_loud(bool staleMarker)
     {
         var (tuple, staging) = Seed(recordListsTools: true, marker: false, withFixtureFiles: true);
         if (staleMarker)
             ToolsContentMarker.Write(tuple, ToolsBinSelector.ToolsContentGeneration - 1);
-        var r = ExtractCommand.EmitToolsContentArtifacts("1", "windows-x86_64", tuple, staging, toolsContentRoot: null);
-        Assert.Empty(r.Omissions);
+        var ex = Assert.Throws<InvalidDataException>(() =>
+            ExtractCommand.EmitToolsContentArtifacts("1", "windows-x86_64", tuple, staging, toolsContentRoot: null));
+        Assert.Contains("acquire --tools", ex.Message, StringComparison.Ordinal);
         Assert.Empty(Directory.EnumerateFiles(staging));
     }
 
@@ -144,5 +145,11 @@ public sealed class ExtractToolsContentTest : IDisposable
         File.AppendAllText(Path.Combine(tuple, "game", "csgo", "csgo.fgd"), "\n@PointClass base(Missing) = broken []\n");
         Assert.Throws<InvalidDataException>(() =>
             ExtractCommand.EmitToolsContentArtifacts("1", "windows-x86_64", tuple, staging, toolsContentRoot: null));
+    }
+
+    [Fact]
+    public void Emit_command_refuses_an_override_root_without_an_explicit_out()
+    {
+        Assert.Equal(64, EmitToolsContentCommand.Run(["--build", "1", "--tools-content-root", FixtureRoot]));
     }
 }

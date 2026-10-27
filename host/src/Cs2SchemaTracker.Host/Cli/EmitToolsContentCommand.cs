@@ -14,6 +14,7 @@
 //   --tools-content-root
 //               read the loose files from this tree (depot layout). Default: the build's tuple
 //               dir, resolved like extract does, gated on its tools-content.json marker.
+//               Requires an explicit --out.
 //
 // Absence is reported, not recorded: this command writes no omissions.json and no provenance —
 // extract owns both. Exit 0 when every present source emitted, 65 when there is no usable tree
@@ -49,8 +50,17 @@ internal static class EmitToolsContentCommand
             return 64;
         }
         parsed.TryGetValue("out", out var outDir);
-        outDir = Path.GetFullPath(string.IsNullOrEmpty(outDir) ? ExtractCommand.DefaultOutDir(build, platform) : outDir);
         parsed.TryGetValue("tools-content-root", out var root);
+        // The override tree belongs to whatever build that install is on, so it must never default
+        // into the committed set for --build (extract refuses the same override under --commit).
+        if (!string.IsNullOrEmpty(root) && string.IsNullOrEmpty(outDir))
+        {
+            Console.Error.WriteLine(
+                "emit-tools-content: --tools-content-root needs an explicit --out <dir>; the default "
+                + "is the committed set for --build, and the override tree may be a different build.");
+            return 64;
+        }
+        outDir = Path.GetFullPath(string.IsNullOrEmpty(outDir) ? ExtractCommand.DefaultOutDir(build, platform) : outDir);
 
         try
         {
