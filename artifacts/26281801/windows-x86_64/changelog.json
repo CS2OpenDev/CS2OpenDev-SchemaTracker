@@ -1,0 +1,91 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "99",
+              "oldValue": "98"
+            }
+          ],
+          "name": "client.dll/C_CSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "190",
+              "oldValue": "189"
+            }
+          ],
+          "name": "server.dll/CCSGameRules"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "58",
+              "oldValue": "59"
+            }
+          ],
+          "name": "server.dll/CCSWeaponBase"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "member:WPN_ANIMSTATE_RELOAD_OUTRO_SILENT",
+              "newValue": "803",
+              "oldValue": ""
+            },
+            {
+              "field": "member:WPN_ANIMSTATE_RELOAD_SILENT",
+              "newValue": "802",
+              "oldValue": ""
+            }
+          ],
+          "name": "!GlobalTypes/WeaponGameplayAnimState"
+        }
+      ],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_weapon_stealth_reload_toggle",
+        "vulkan_pipeline_cache_max_size_mb"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [
+        "schema_enum:!GlobalTypes/WeaponGameplayAnimState/WeaponGameplayAnimState::WPN_ANIMSTATE_RELOAD_OUTRO_SILENT",
+        "schema_enum:!GlobalTypes/WeaponGameplayAnimState/WeaponGameplayAnimState::WPN_ANIMSTATE_RELOAD_SILENT"
+      ],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    }
+  ],
+  "fromBuild": "26144732",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.13.0",
+  "toBuild": "26281801"
+}
