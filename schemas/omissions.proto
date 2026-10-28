@@ -35,6 +35,11 @@ message PlatformOmission {
     BINARY_CORRUPT       = 3;
     OTHER                = 4;
     CONTENT_NOT_SHIPPED_THIS_ERA = 5; // source genuinely absent from this build's content depot
+    // The artifact's source ships only in a depot this platform does not have. The Workshop
+    // Tools depot (2347779) is Windows-only, so a linux-x86_64 set records its tools-derived
+    // artifacts (cs_script_api.json, entity_io.json) with this reason. Valid only as a
+    // ContentArtifactOmission reason, never as a wholesale platform omission.
+    TOOLS_DEPOT_NOT_ON_PLATFORM = 6;
   }
 }
 
