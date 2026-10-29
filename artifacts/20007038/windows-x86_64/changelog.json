@@ -3137,10 +3137,286 @@
         "FileOpenDialog_ToolTip_Up",
         "FileOpenDialog_Type"
       ]
+    },
+    {
+      "added": [
+        "point_script"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "BasePropDoorRotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "Studiomodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "csgo_item_previewmodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "dz_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:interactWith",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_brush"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:Disable",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:Enable",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_buyzone"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "phys_magnet"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:DamageTarget",
+              "newValue": "target_destination",
+              "oldValue": "string"
+            }
+          ],
+          "name": "point_hurt"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_ragdoll"
+        }
+      ],
+      "family": "entity_io",
+      "removed": [
+        "hegrenade_projectile",
+        "info_overlay",
+        "info_overlay_transition",
+        "info_projecteddecal",
+        "molotov_projectile",
+        "smokegrenade_projectile"
+      ]
     }
   ],
   "fromBuild": "19932965",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "20007038"
 }

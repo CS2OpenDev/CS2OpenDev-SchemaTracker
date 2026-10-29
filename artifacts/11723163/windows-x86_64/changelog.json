@@ -487,10 +487,89 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [
+        "env_player_visibility"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "input:Disabled",
+              "newValue": "",
+              "oldValue": "void"
+            }
+          ],
+          "name": "env_soundscape"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:Disabled",
+              "newValue": "",
+              "oldValue": "void"
+            }
+          ],
+          "name": "env_soundscape_triggerable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:Disable",
+              "newValue": "void",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "input:Enable",
+              "newValue": "void",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "env_volumetric_fog_controller"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:Disable",
+              "newValue": "void",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "input:Enable",
+              "newValue": "void",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "env_volumetric_fog_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:Disabled",
+              "newValue": "",
+              "oldValue": "void"
+            }
+          ],
+          "name": "snd_soundscape"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:Disabled",
+              "newValue": "",
+              "oldValue": "void"
+            }
+          ],
+          "name": "snd_soundscape_triggerable"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "11602641",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "11723163"
 }

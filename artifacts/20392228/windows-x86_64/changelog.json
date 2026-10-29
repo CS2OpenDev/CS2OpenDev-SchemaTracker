@@ -4072,10 +4072,515 @@
       ],
       "family": "localization",
       "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "BasePropDoorRotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "Studiomodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "TwoObjectPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "dz_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:sequence",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_decal"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:include_hierarchy",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_collision_pair"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_ballsocket"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_constraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_genericconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:TurnMotorOff",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_hinge"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:TurnMotorOff",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_hinge_local"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_lengthconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "phys_magnet"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_pulleyconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_ragdollconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_slideconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetTransitionTime",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attachment2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:transitiontime",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:treat_entity1_as_infinite_mass",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_splineconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:AddRestLength",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:RemoveRestLength",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_spring"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructiblePartDamageLevelChanged",
+              "newValue": "",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_ragdoll"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:soundscape",
+              "newValue": "target_destination",
+              "oldValue": "target_source"
+            }
+          ],
+          "name": "trigger_soundscape"
+        }
+      ],
+      "family": "entity_io",
+      "removed": [
+        "csgo_item_previewmodel",
+        "csgo_player_previewmodel"
+      ]
     }
   ],
   "fromBuild": "20278147",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "20392228"
 }

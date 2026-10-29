@@ -870,10 +870,32 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [
+        "snd_event_orientedbox"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "keyvalue:dampAllRotation",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_keepupright"
+        }
+      ],
+      "family": "entity_io",
+      "removed": [
+        "env_zoom",
+        "point_viewcontrol"
+      ]
     }
   ],
   "fromBuild": "11785765",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "11852153"
 }

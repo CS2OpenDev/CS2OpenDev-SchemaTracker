@@ -14090,10 +14090,520 @@
       ],
       "family": "localization",
       "removed": []
+    },
+    {
+      "added": [
+        "BaseAnimGraph2",
+        "snd_event_cone"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "BasePropDoorRotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Parentname,Targetname,Global,CanBeClientOnly,BaseAnimGraph2,BreakableProp,Glow",
+              "oldValue": "Parentname,Targetname,Global,CanBeClientOnly,Studiomodel,BreakableProp,Glow"
+            },
+            {
+              "field": "keyvalue:animgraph2_identifier",
+              "newValue": "animgraph2_identifier",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityUseFastRefreshRate",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "SndOpvarSetPointBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "Studiomodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "dz_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:AddFilter",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "input:RemoveFilter",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "filter_multi"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:fluiddragscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_physbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:CancelPending",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "input:Toggle",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "input:Trigger",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "output:OnSpawn",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "output:OnTrigger",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "logic_relay"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "TwoObjectPhysics,Parentname",
+              "oldValue": "TwoObjectPhysics"
+            },
+            {
+              "field": "input:ClearParent",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:FollowEntity",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParent",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachment",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachmentMaintainOffset",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.angles",
+              "newValue": "angle",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.origin",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.scales",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentAttachmentName",
+              "newValue": "parentAttachment",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentname",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:useLocalOffset",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_genericconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:enablecollision",
+              "newValue": "",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "phys_lengthconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "phys_magnet"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetSpinDownTime",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "input:SetSpinUpTime",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "input:SetSystemInertiaScale",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "phys_motor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:Teleport",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "input:TeleportEntity",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "input:TeleportEntityToCurrentPos",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "input:TeleportToCurrentPos",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "point_teleport"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DeleteCreatedSpawnGroups",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "input:ForceSpawn",
+              "newValue": "api",
+              "oldValue": "cpp"
+            },
+            {
+              "field": "output:OnEntitySpawned",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "point_template"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetBreakable",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetUnbreakable",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetAnimGraphParameter",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetRagdollProfile",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:animgraph2_identifier",
+              "newValue": "animgraph2_identifier",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Parentname,CanBeClientOnly,Global,BaseAnimGraph2,BreakableProp,RenderFields,Glow",
+              "oldValue": "Parentname,CanBeClientOnly,Global,Studiomodel,BreakableProp,RenderFields,Glow"
+            },
+            {
+              "field": "input:SetAnimGraphParameter",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetRagdollProfile",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:animgraph2_identifier",
+              "newValue": "animgraph2_identifier",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetAnimGraphParameter",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetRagdollProfile",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:animgraph2_identifier",
+              "newValue": "animgraph2_identifier",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetAnimGraphParameter",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetRagdollProfile",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:animgraph2_identifier",
+              "newValue": "animgraph2_identifier",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:animgraph2_identifier",
+              "newValue": "animgraph2_identifier",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:animgraph2_identifier",
+              "newValue": "animgraph2_identifier",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:animgraph2_identifier",
+              "newValue": "animgraph2_identifier",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructibleHitGroupDamageLevelChanged",
+              "newValue": "api",
+              "oldValue": "cpp"
+            }
+          ],
+          "name": "prop_ragdoll"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityUseFastRefreshRate",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_aabb"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityUseFastRefreshRate",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_auto_room"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityUseFastRefreshRate",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_obb"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityUseFastRefreshRate",
+              "newValue": "bool",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:useParentedPath",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_path_corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityUseFastRefreshRate",
+              "newValue": "bool",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_point"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "21529689",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "21593048"
 }

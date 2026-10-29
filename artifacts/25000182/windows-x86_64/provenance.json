@@ -7,6 +7,18 @@
   },
   "inputs": [
     {
+      "fileSize": "42338",
+      "mtimeUtc": "",
+      "path": "content/csgo_addons/cs_script_demo/maps/scripts/point_script.d.ts",
+      "sha256": "2da5d7d10ffcea1aac52e668cf153974a3d973aeb8e7dc9a15fb8a2227b50bf9"
+    },
+    {
+      "fileSize": "141",
+      "mtimeUtc": "",
+      "path": "content/csgo_addons/cs_script_demo/maps/scripts/tsconfig.json",
+      "sha256": "c923105c41bc5020828d32e60b9212a3d6c012e65f6aa8786d1ed72b11df718c"
+    },
+    {
       "fileSize": "177280",
       "mtimeUtc": "",
       "path": "game/bin/win64/OpenImageDenoise.dll",
@@ -763,6 +775,36 @@
       "sha256": "aad474ce6f0a255560ddd6c42bf5c1ed652e8fde97453ddf9369c947c9453ba4"
     },
     {
+      "fileSize": "409551",
+      "mtimeUtc": "",
+      "path": "game/core/base.fgd",
+      "sha256": "947b18056fe35ae9fcec93d22fe2b54597db45d798fd7d1f70b1900203cbee15"
+    },
+    {
+      "fileSize": "5115",
+      "mtimeUtc": "",
+      "path": "game/core/lights.fgd",
+      "sha256": "772c811c4ca6b0ec833b447422dc7118410c59a71989d21d307e262ddb78aec3"
+    },
+    {
+      "fileSize": "31313",
+      "mtimeUtc": "",
+      "path": "game/core/lights2.fgd",
+      "sha256": "2d619941835a4943fa7f8625af3ae073cee4a4c843c26b669138b5cc014718ab"
+    },
+    {
+      "fileSize": "10725",
+      "mtimeUtc": "",
+      "path": "game/core/lights_base.fgd",
+      "sha256": "2cf690d06aab74c137cdc87d87c5a0b3958ae6a6f7cfabf3344d7d38bb93aa2a"
+    },
+    {
+      "fileSize": "3630",
+      "mtimeUtc": "",
+      "path": "game/core/markup_volumes.fgd",
+      "sha256": "14c68fd85aa4dc9364ed08e212a8e81c5519811bfc81827751d00f577c4fba62"
+    },
+    {
       "fileSize": "37560472",
       "mtimeUtc": "",
       "path": "game/csgo/bin/win64/client.dll",
@@ -791,6 +833,12 @@
       "mtimeUtc": "",
       "path": "game/csgo/bin/win64/server.dll",
       "sha256": "9e5749d77dcb68883477feae751a3f28068d119ec145edcb0e4d48d15b538d36"
+    },
+    {
+      "fileSize": "82837",
+      "mtimeUtc": "",
+      "path": "game/csgo/csgo.fgd",
+      "sha256": "3b364a8bbb79bd83a297b0a2bb9700d05bf4464180c4bbd3c119ba9f9c4d8113"
     },
     {
       "fileSize": "434176",
@@ -839,15 +887,21 @@
       "mtimeUtc": "",
       "path": "game/csgo/import_scripts/bin/vstdlib.dll",
       "sha256": "59713f30d8faf61324bf631c3aaa52f18d1d4eca77f7d57e03280e277873bdc2"
+    },
+    {
+      "fileSize": "1559",
+      "mtimeUtc": "",
+      "path": "game/csgo/postprocessing.fgd",
+      "sha256": "9803b539a2f06c850eabdb73248d7cf0967de7b1d3a8bd68083ee931e918d61b"
     }
   ],
   "localization": {
-    "sha256": "6400b1c1faf33f2db8a10dca58376b334e614b0f88ebfae24a6aab345f795dd8",
+    "sha256": "ca2056a9a0d0af4b0b87475b8a885c1d64d68a5643f42ddfc2e7e3bdb3b23319",
     "sizeBytes": "201732205",
     "tokenCount": "44466"
   },
   "platform": "windows-x86_64",
-  "schemaVersion": "0.10.0",
+  "schemaVersion": "0.13.0",
   "steam": {
     "appId": 730,
     "depots": [
@@ -868,9 +922,9 @@
     "steamBuildId": "25000182"
   },
   "tool": {
-    "gitCommit": "5196045c92a2fa3b702867a9e1e3272ad6016e0d",
-    "semver": "0.10.0",
-    "walkerGitSha": "5196045c92a2fa3b702867a9e1e3272ad6016e0d",
-    "walkerSrcFingerprint": "5c71d980aa45c0413c64e29672670dbd70f03da3e87d74541625377d75a36c39"
+    "gitCommit": "91ddc22141b8c8ac1fc7efe687ebfaedefb9beb1",
+    "semver": "0.13.0",
+    "walkerGitSha": "91ddc22141b8c8ac1fc7efe687ebfaedefb9beb1",
+    "walkerSrcFingerprint": "a522c6adacec53fff64e83647bafa4f42f35623eef6ac9289521fe73d26342ca"
   }
 }

@@ -8340,10 +8340,4049 @@
         "SFUI_Settings_HudTelemetry_PacketMisdelivery_Info",
         "rankup_redemption_store_directive:p{redeemable_balance}"
       ]
+    },
+    {
+      "added": [
+        "point_scale_reference_human"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BaseEnvWind"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BaseFilter"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BaseFuncButton"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropDoorRotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsParticleOverride",
+              "newValue": "particlesystem",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsPropGroupOverride",
+              "newValue": "vdata_choice:scripts/misc.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsType",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass1",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass2",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass3",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass4",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount1",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount2",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount3",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount4",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ammobalancing_removable",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:forcenavcut",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:updatenavwhenmoving",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BaseSpeaker"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BaseTrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BaseVehicle"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "Breakable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "BreakableBrush"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsParticleOverride",
+              "newValue": "particlesystem",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsPropGroupOverride",
+              "newValue": "vdata_choice:scripts/misc.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsType",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "BreakableProp"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "Door"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "EnvGlobal"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "ForceController"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "GameEntity"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "PathParticleRopeBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "Targetname"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "Trackchange"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "Trigger"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "TriggerOnce"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "TwoObjectPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "VGUIScreenBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "ambient_generic"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "base_clientui_ent"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "cable_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "commentary_auto"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "counterterrorist_team_intro"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "counterterrorist_team_intro_variant2"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "counterterrorist_wingman_intro"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:reset_model_on_spawn",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "csgo_item_previewmodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "dz_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "end_of_match"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_blood"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_combined_light_probe_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_credits"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_cs_place"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_cubemap_box"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_cubemap_fog"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_decal"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_entity_igniter"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_entity_maker"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_explosion"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_fade"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_fire"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_firesensor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_firesource"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_fog_controller"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_gradient_fog"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_hudhint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_instructor_hint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_light_probe_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_message"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_microphone"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_particle_glow"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_particlescript"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_physexplosion"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_physimpact"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_player_visibility"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_shake"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_shooter"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_sky"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_soundscape"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_soundscape_proxy"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_soundscape_triggerable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_spark"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_tilt"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_viewpunch"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_wind"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_attribute_int"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_class"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_context"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_mass_greater"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_model"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_name"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_damage_type"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_enemy"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_los"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_modifier"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_multi"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_proximity"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "flashbang_projectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_bomb_target"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_breakable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_brush"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_buyzone"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_clip_interaction_layer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_clip_vphysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_conveyor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_guntarget"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_hostage_rescue"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:MoveWithoutPushingBlockers",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_movelinear"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_nav_blocker"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_nav_gen_proj"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_nav_markup"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_physbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_physical_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_platrot"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_rot_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:MoveWithoutPushingBlockers",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_tablet_blocker"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_tanktrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_timescale"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_trackautochange"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_trackchange"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_tracktrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_useableladder"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_water"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_end"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_gib_manager"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_money"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_player_equip"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_ragdoll_manager"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_text"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_weapon_manager"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_zone_player"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "gibshooter"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "gibshooterbase"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "hammer_updateignorelist"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "hegrenade_projectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "hostage_entity"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_armsrace_counterterrorist"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_armsrace_terrorist"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_constraint_anchor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_deathmatch_spawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_enemy_terrorist_spawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_hostage_spawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_map_parameters"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_map_region"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_null"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_offscreen_panorama_texture"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_paradrop_denial"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDataControlPointX",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDataControlPointY",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDataControlPointZ",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_particle_system"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_particle_target"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_player_counterterrorist"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:IsMaster",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:PawnSubclass",
+              "newValue": "vdata_choice:scripts/player.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:spawnflags",
+              "newValue": "",
+              "oldValue": "flags"
+            }
+          ],
+          "name": "info_player_start"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_player_terrorist"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_projecteddecal"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_spawngroup_landmark"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_spawngroup_load_unload"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_target"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_target_instructor_hint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_target_server_only"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_teleport_destination"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_visibility_box"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "item_defuser"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "keyframe_rope"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "keyframe_track"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:fogmixedshadows",
+              "newValue": "remove_key",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_barn"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_ambient_strength",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_cone_angle_0",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_cone_angle_1",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_cone_angle_2",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_cone_angle_3",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_override",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_position_0",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_position_1",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_position_2",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_position_3",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_strength_0",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_strength_1",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_strength_2",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ambient_occlusion_proxy_strength_3",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_environment"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:fogmixedshadows",
+              "newValue": "remove_key",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_omni2"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:fogmixedshadows",
+              "newValue": "remove_key",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_rect"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_active_autosave"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_auto"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_autosave"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_branch"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_branch_listener"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_case"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_collision_pair"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_compare"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_eventlistener"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_lineto"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_measure_movement"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_multicompare"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_navigation"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_npc_counter_aabb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_npc_counter_obb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_npc_counter_radius"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_playerproxy"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_relay"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_script"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_timer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "map_preview_camera_path"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "map_preview_camera_path_node"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "markup_group"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "markup_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "markup_volume_tagged"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "markup_volume_with_ref"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "math_colorblend"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "math_counter"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "math_remap"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "molotov_projectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "momentary_rot_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "move_keyframed"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "move_rope"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "move_track"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "path_corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:node_name",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "path_node_particle_rope"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "path_particle_rope_clientside"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "path_simple"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "path_track"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_ballsocket"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_constraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_genericconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_hinge"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_hinge_local"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_keepupright"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_lengthconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_magnet"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_motor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_pulleyconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_ragdollconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_ragdollmagnet"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_slideconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_splineconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_spring"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_thruster"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_torque"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_wheelconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_anglesensor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_angularvelocitysensor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_broadcastclientcommand"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_camera"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_camera_vertical_fov"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_clientcommand"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_clientui_dialog"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_clientui_world_panel"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_clientui_world_text_panel"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_commentary_node"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_dz_weaponspawn"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_dz_weaponspawn_group"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_entity_finder"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_gamestats_counter"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_hurt"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_instructor_event"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_message"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_nav_walkable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_proximity_sensor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_servercommand"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_soundevent"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_teleport"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_template"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_value_remapper"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_velocitysensor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_workplane"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:color",
+              "newValue": "color255alpha",
+              "oldValue": "color255"
+            }
+          ],
+          "name": "point_worldtext"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "post_processing_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsParticleOverride",
+              "newValue": "particlesystem",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsPropGroupOverride",
+              "newValue": "vdata_choice:scripts/misc.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsType",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsParticleOverride",
+              "newValue": "particlesystem",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsPropGroupOverride",
+              "newValue": "vdata_choice:scripts/misc.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsType",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsParticleOverride",
+              "newValue": "particlesystem",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsPropGroupOverride",
+              "newValue": "vdata_choice:scripts/misc.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsType",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsParticleOverride",
+              "newValue": "particlesystem",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsPropGroupOverride",
+              "newValue": "vdata_choice:scripts/misc.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsType",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsParticleOverride",
+              "newValue": "particlesystem",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsPropGroupOverride",
+              "newValue": "vdata_choice:scripts/misc.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsType",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass1",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass2",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass3",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass4",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount1",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount2",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount3",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount4",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ammobalancing_removable",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:forcenavcut",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:updatenavwhenmoving",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsParticleOverride",
+              "newValue": "particlesystem",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsPropGroupOverride",
+              "newValue": "vdata_choice:scripts/misc.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsType",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass1",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass2",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass3",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass4",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount1",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount2",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount3",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount4",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ammobalancing_removable",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:forcenavcut",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:updatenavwhenmoving",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsParticleOverride",
+              "newValue": "particlesystem",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsPropGroupOverride",
+              "newValue": "vdata_choice:scripts/misc.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:BreakableContentsType",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass1",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass2",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass3",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemClass4",
+              "newValue": "vdata_choice:scripts/misc.vdata&scripts/grenades.vdata",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount1",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount2",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount3",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ItemCount4",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:NoInterpolate",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ammobalancing_removable",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:forcenavcut",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:updatenavwhenmoving",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_ragdoll"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "skybox_reference"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "smokegrenade_projectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_alignedbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_orientedbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_param"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_path_corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_point"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_sphere"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_aabb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_auto_room"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_obb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_path_corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_point"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_wind_obb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_sound_area_obb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_sound_area_sphere"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_soundscape"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_soundscape_proxy"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_soundscape_triggerable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_stack_save"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "tanktrain_ai"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "tanktrain_aitarget"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "team_select"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "terrorist_team_intro"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "terrorist_team_intro_variant2"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "terrorist_wingman_intro"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "texture_based_animatable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_autosave"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_bomb_reset"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_gravity"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_hostage_reset"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_hurt"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_impact"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_look"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_multiple"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_once"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_proximity"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_push"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_remove"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_serverragdoll"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_snd_sos_opvar"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_soundscape"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_survival_playarea"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:check_if_dest_clear_for_player",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_teleport"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_transition"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_wind"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "vehicle_entityio"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "vgui_movie_display"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "vgui_slideshow_display"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "water_lod_control"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_ak47"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_aug"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_awp"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_bizon"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_c4"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_cz75a"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_deagle"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_decoy"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_elite"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_famas"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_fiveseven"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_flashbang"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_g3sg1"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_galilar"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_glock"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_healthshot"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_hegrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_hkp2000"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_incgrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_knife"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_m249"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_m4a1"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_m4a1_silencer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_mac10"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_mag7"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_molotov"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_mp5sd"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_mp7"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_mp9"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_negev"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_nova"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_p250"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_p90"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_revolver"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_sawedoff"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_scar20"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_sg556"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_smokegrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_ssg08"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_tagrenade"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_taser"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_tec9"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_ump45"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_usp_silencer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:KillConstrained",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "weapon_xm1014"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "15656858",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "15908369"
 }

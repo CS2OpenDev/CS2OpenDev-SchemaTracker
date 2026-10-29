@@ -752,10 +752,52 @@
       ],
       "family": "localization",
       "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "input:SetMaxPiecesDX8",
+              "newValue": "",
+              "oldValue": "integer"
+            },
+            {
+              "field": "keyvalue:maxpiecesdx8",
+              "newValue": "",
+              "oldValue": "integer"
+            }
+          ],
+          "name": "game_gib_manager"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetMaxRagdollCountDX8",
+              "newValue": "",
+              "oldValue": "integer"
+            },
+            {
+              "field": "keyvalue:CanTakeDamage",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:MaxRagdollCountDX8",
+              "newValue": "",
+              "oldValue": "integer"
+            }
+          ],
+          "name": "game_ragdoll_manager"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "16015437",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "16057663"
 }

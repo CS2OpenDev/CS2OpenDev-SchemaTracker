@@ -501,10 +501,45 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [
+        "counterterrorist_wingman_intro",
+        "terrorist_wingman_intro"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "keyvalue:bomb_site_designation",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_bomb_target"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:TeleportEntityToCurrentPos",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:teleport_use_current_angle",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_teleport"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "11979365",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "12083517"
 }

@@ -763,6 +763,36 @@
       "sha256": "08837067614d325503019834d5360dd5c0445afb4fc758f63c5d17d0e4baf0c0"
     },
     {
+      "fileSize": "409371",
+      "mtimeUtc": "",
+      "path": "game/core/base.fgd",
+      "sha256": "5005631120886077b8379a8f89814e75c0dd1cd7646afe459173231dcc2a0780"
+    },
+    {
+      "fileSize": "5079",
+      "mtimeUtc": "",
+      "path": "game/core/lights.fgd",
+      "sha256": "2488a7c31fbc4201be9d1139acd5a726a7e23bc7159b638243ffef10a6dc4668"
+    },
+    {
+      "fileSize": "30664",
+      "mtimeUtc": "",
+      "path": "game/core/lights2.fgd",
+      "sha256": "8f336e7396df5d1bee597c5731ab45c12ea389501ea1624ff7cfdda7a305bef2"
+    },
+    {
+      "fileSize": "12186",
+      "mtimeUtc": "",
+      "path": "game/core/lights_base.fgd",
+      "sha256": "9ad523452eea6b6f2225403bc033955985fc561b2ee6b211e1ea9e771f654b53"
+    },
+    {
+      "fileSize": "3532",
+      "mtimeUtc": "",
+      "path": "game/core/markup_volumes.fgd",
+      "sha256": "536b1a52815059bbb0c4c182ac426e7dc06ec64efec0ca03311b6121263110e3"
+    },
+    {
       "fileSize": "32129688",
       "mtimeUtc": "",
       "path": "game/csgo/bin/win64/client.dll",
@@ -791,6 +821,12 @@
       "mtimeUtc": "",
       "path": "game/csgo/bin/win64/server.dll",
       "sha256": "c3b29c3f56c594537737315732f80073a5996d23bdb390563da9ef94e37ea0c3"
+    },
+    {
+      "fileSize": "85421",
+      "mtimeUtc": "",
+      "path": "game/csgo/csgo.fgd",
+      "sha256": "efc284dcd69d978fd455fece089364357fc3e436f6a325595807953814e31318"
     },
     {
       "fileSize": "434176",
@@ -839,15 +875,21 @@
       "mtimeUtc": "",
       "path": "game/csgo/import_scripts/bin/vstdlib.dll",
       "sha256": "59713f30d8faf61324bf631c3aaa52f18d1d4eca77f7d57e03280e277873bdc2"
+    },
+    {
+      "fileSize": "1559",
+      "mtimeUtc": "",
+      "path": "game/csgo/postprocessing.fgd",
+      "sha256": "9803b539a2f06c850eabdb73248d7cf0967de7b1d3a8bd68083ee931e918d61b"
     }
   ],
   "localization": {
-    "sha256": "4d4071f79a68c400a73cf947d43afb8e7b14cde8d6a9bd7c2a67d403fb20231d",
-    "sizeBytes": "177532306",
+    "sha256": "9b54c8663ed657231f4d31e91345080f446d7efb6df158e25fffe4e1661e4efe",
+    "sizeBytes": "177532307",
     "tokenCount": "39902"
   },
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "steam": {
     "appId": 730,
     "depots": [
@@ -868,9 +910,9 @@
     "steamBuildId": "20007038"
   },
   "tool": {
-    "gitCommit": "2f8b36e3cd39182cb16dae60b4d78e4535c9d983",
-    "semver": "0.9.0",
-    "walkerGitSha": "a2a4359ec96c34465fb9477f084311fd2c285c9d",
-    "walkerSrcFingerprint": "e20615c988e979ec05020dccd52e59fc61ed10e6a586646b8acde17b096578ee"
+    "gitCommit": "91ddc22141b8c8ac1fc7efe687ebfaedefb9beb1",
+    "semver": "0.13.0",
+    "walkerGitSha": "91ddc22141b8c8ac1fc7efe687ebfaedefb9beb1",
+    "walkerSrcFingerprint": "a522c6adacec53fff64e83647bafa4f42f35623eef6ac9289521fe73d26342ca"
   }
 }

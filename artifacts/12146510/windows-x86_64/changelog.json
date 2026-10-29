@@ -60,10 +60,27 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "keyvalue:hltvUsable",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_camera"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "12136709",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "12146510"
 }

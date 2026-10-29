@@ -19079,10 +19079,2957 @@
       ],
       "family": "localization",
       "removed": []
+    },
+    {
+      "added": [
+        "logic_activityevent",
+        "logic_gamestate_report"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "BaseFuncButton"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropDoorRotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "BaseTrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "BreakableBrush"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "Door"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "Parentname"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "Trackchange"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "Trigger"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "TriggerOnce"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "VGUIScreenBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "ambient_generic"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "cable_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "dz_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_blood"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_combined_light_probe_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_cubemap_box"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_decal"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_entity_maker"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_explosion"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_fire"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_firesensor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_firesource"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_light_probe_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_particle_glow"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_particlescript"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_physexplosion"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_physimpact"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_shake"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_shooter"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_sky"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_soundscape"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_soundscape_proxy"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_soundscape_triggerable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_spark"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_tilt"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_viewpunch"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:bomb_damage_power",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_bomb_target"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_breakable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:AlwaysSolidIgnoreNav",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:vrad_brush_cast_shadows",
+              "newValue": "",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "func_brush"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_clip_interaction_layer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_conveyor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_guntarget"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_hostage_rescue"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_movelinear"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_nav_gen_proj"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_nav_markup"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:collisionGroup",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactsAs",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactsExclude",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactsWith",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_physbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_physical_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_platrot"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_rot_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_tanktrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_trackautochange"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_trackchange"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_tracktrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_traincontrols"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_useableladder"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_water"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_zone_player"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "gibshooter"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "gibshooterbase"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_constraint_anchor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetTextString",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_particle_system"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_particle_target"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_target"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_target_instructor_hint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_target_server_only"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_teleport_destination"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "keyframe_rope"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "keyframe_track"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_barn"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_omni2"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_rect"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "markup_group"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "markup_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "markup_volume_tagged"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "markup_volume_with_ref"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "momentary_rot_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "move_keyframed"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "move_rope"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "move_track"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:wait",
+              "newValue": "",
+              "oldValue": "integer"
+            }
+          ],
+          "name": "path_corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "path_track"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_genericconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_magnet"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_ragdollmagnet"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_anglesensor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_camera"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_camera_vertical_fov"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_clientui_world_panel"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_clientui_world_text_panel"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_commentary_node"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_enable_motion_fixup"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_message"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_orient"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_proximity_sensor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_soundevent"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_teleport"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_template"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetTextColor",
+              "newValue": "color255",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_worldtext"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "post_processing_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:forcenavcut",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:updatenavwhenmoving",
+              "newValue": "",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "prop_ragdoll"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_alignedbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_cone"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_orientedbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_param"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_path_corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_point"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_sphere"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_obb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_point"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_wind_obb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_soundscape"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_soundscape_proxy"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_soundscape_triggerable"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname,EnableDisable",
+              "oldValue": "Targetname"
+            },
+            {
+              "field": "input:Disable",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:Enable",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:RetriggerDelay",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:StartDisabled",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_autosave"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_bomb_reset"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_gravity"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_hostage_reset"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_hurt"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_look"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_multiple"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_once"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_proximity"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_push"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_remove"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_snd_sos_opvar"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_soundscape"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_teleport"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_wind"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "vgui_movie_display"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetParent",
+              "newValue": "api",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:SetParentMaintainOffset",
+              "newValue": "api",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentWithOffset",
+              "newValue": "api",
+              "oldValue": ""
+            }
+          ],
+          "name": "vgui_slideshow_display"
+        }
+      ],
+      "family": "entity_io",
+      "removed": [
+        "vehicle_entityio"
+      ]
     }
   ],
   "fromBuild": "24074625",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "24116939"
 }
