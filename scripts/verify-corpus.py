@@ -33,8 +33,9 @@ THE FOUR CHECK FAMILIES
                                    (a) no bare `-nan`/`nan` token anywhere inside a
                                        MGetKV3ClassDefaults value (walker read uninitialized
                                        memory and the non-determinism filter did not catch it);
-                                   (b) none of the 14 denylisted fields (see `_DENYLIST_FIELDS`)
-                                       carry a raw same-line value -- they must read
+                                   (b) none of the 14 denylisted fields (see `_DENYLIST_FIELDS`),
+                                       nor the class-scoped ones in `_CLASS_DENYLIST`, carry a
+                                       raw same-line value -- they must read
                                        `<HIDDEN FOR DIFF>` (mirrors
                                        walker/src/schema_walk.cpp::FilterKv3Nondeterminism's own
                                        per-field regex *exactly*, including which fields require a
@@ -128,6 +129,18 @@ _DENYLIST_FIELDS: Tuple[str, ...] = (
 _DENYLIST_RE = re.compile(
     r'"(' + "|".join(re.escape(f) for f in sorted(_DENYLIST_FIELDS, key=len, reverse=True)) + r')": (.*)'
 )
+
+# The class-scoped half of the walker filter (FilterKv3Nondeterminism's kClassFilters): fields that
+# leak only in the named class and carry a REAL default elsewhere, so they are audited per class.
+_CLASS_DENYLIST: Dict[str, Tuple[str, ...]] = {
+    "VMixPointerFixupEntry_t": ("m_nIndex",),
+    "dynpitchvol_base_t": ("vol",),
+    "dynpitchvol_t": ("vol",),
+}
+_CLASS_DENYLIST_RE: Dict[str, "re.Pattern[str]"] = {
+    cls: re.compile(r'"(' + "|".join(re.escape(f) for f in fields) + r')": (.*)')
+    for cls, fields in _CLASS_DENYLIST.items()
+}
 
 _HIDDEN_MARKER = "<HIDDEN FOR DIFF>"
 
@@ -278,7 +291,10 @@ def scan_kv3_file(path: Path, state: str) -> Dict[str, Any]:
                 has_hidden = True
             if _NAN_RE.search(value):
                 nan_hits.append((cls_name, _snippet(value)))
-            for mm in _DENYLIST_RE.finditer(value):
+            matches = list(_DENYLIST_RE.finditer(value))
+            if cls_name in _CLASS_DENYLIST_RE:
+                matches += _CLASS_DENYLIST_RE[cls_name].finditer(value)
+            for mm in matches:
                 field, rest = mm.group(1), mm.group(2)
                 if not rest.startswith(_HIDDEN_MARKER):
                     raw_hits.append((cls_name, field, _snippet(rest, 100)))

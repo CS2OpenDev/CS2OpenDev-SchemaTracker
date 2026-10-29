@@ -891,12 +891,22 @@ std::string FilterKv3Nondeterminism(const std::string& json, const char* class_n
   //     (value plus trailing comma); the greedy, comma-free `.*` form matches through that comma
   //     and the replacement re-appends exactly one, same as the kFilters entries above, so a
   //     mid-struct and a last-property hit come out identical.
+  //   * dynpitchvol_base_t::vol / dynpitchvol_t::vol — the same audio-params struct as pitchfrac.
+  //     On windows the accessor reads vol out of uninitialized memory: values in 32760..32767 that
+  //     differ run to run (32762 vs 32761 across the two walks of 24122613 and of 25175329, both
+  //     refused at exit 76) and drift between rewalks of identical binaries (19 builds changed
+  //     32760 -> 32761 between the v1.9 corpus and the v1.10.0 rewalk; earlier walks committed
+  //     32765..32767). Linux always reads 0. A full v1.10.0-vs-v1.9 audit of every KV3 default in
+  //     399 windows builds found no other drifting field. Class-scoped rather than global so a
+  //     future class with a real `vol` default keeps it. vol is mid-struct (trailing comma).
   struct Kv3ClassFilter {
     const char* class_name;
     std::regex pattern;
   };
   static const Kv3ClassFilter kClassFilters[] = {
       {"VMixPointerFixupEntry_t", std::regex(R"#(("m_nIndex":) .*)#")},
+      {"dynpitchvol_base_t", std::regex(R"#(("vol":) .*)#")},
+      {"dynpitchvol_t", std::regex(R"#(("vol":) .*)#")},
   };
   std::string out = json;
   for (const auto& re : kFilters) out = std::regex_replace(out, re, "$1 <HIDDEN FOR DIFF>,");
