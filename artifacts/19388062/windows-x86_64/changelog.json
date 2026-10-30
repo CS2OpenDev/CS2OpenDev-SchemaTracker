@@ -23497,10 +23497,1663 @@
         "CSGO_Recipe_TradeUp_Items_Inv:p{d:count}",
         "CSGO_Recipe_TradeUp_Items_Remain:p{d:count}"
       ]
+    },
+    {
+      "added": [
+        "cs_pet_placement",
+        "point_orient"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname,CanBeClientOnly",
+              "oldValue": "Targetname"
+            },
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "BaseFilter"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetNoNPCs",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:hardware",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "BasePropDoorRotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableFloating",
+              "newValue": "",
+              "oldValue": "void"
+            },
+            {
+              "field": "keyvalue:allowobstacleconvexhullmerging",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:dynamiccontinuouscontactbehavior",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "Breakable"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BreakableBrush"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BreakableProp"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetNoNPCs",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "Door"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetDistanceMapMax",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDistanceMapMin",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "SndOpvarSetPointBase"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetNoNPCs",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "dz_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:AffectInvulnerableEnts",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_physexplosion"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_attribute_int"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_class"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_context"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_mass_greater"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_model"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_activator_name"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_damage_type"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_enemy"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_los"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_modifier"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:AddFilter",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "input:RemoveFilter",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_multi"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:clientSideEntity",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "filter_proximity"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_breakable"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:add_attribute",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_brush"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname,Parentname,EnableDisable",
+              "oldValue": "Targetname,EnableDisable"
+            },
+            {
+              "field": "input:ClearParent",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:FollowEntity",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParent",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachment",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachmentMaintainOffset",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.angles",
+              "newValue": "angle",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.origin",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.scales",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentAttachmentName",
+              "newValue": "parentAttachment",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentname",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:useLocalOffset",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_clip_interaction_layer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetNoNPCs",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetNoNPCs",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:AllowMovableNavMeshDockingOnEntireEntity",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_movelinear"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:flags",
+              "newValue": "flags",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ref_position",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:use_ref_position",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_nav_gen_proj"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "markup_volume_with_ref",
+              "oldValue": "markup_volume_tagged"
+            },
+            {
+              "field": "keyvalue:flags",
+              "newValue": "flags",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ref_position",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:use_ref_position",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_nav_markup"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableFloating",
+              "newValue": "",
+              "oldValue": "void"
+            },
+            {
+              "field": "keyvalue:ExploitableByPlayer",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:add_modifier",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:buoyancyscale",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:gamemass",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:hoverposeangles",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:hoverposeflags",
+              "newValue": "flags",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:hoverposeposition",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:masscenteroffset",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:preferredcarryangles",
+              "newValue": "",
+              "oldValue": "vector"
+            },
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_physbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:Freeze",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:Thaw",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_particle_system"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:autoactivate",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_spawngroup_load_unload"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:forceshadowsenabled",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_barn"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:allow_sst_generation",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_environment"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:CancelPending",
+              "newValue": "cpp",
+              "oldValue": "void"
+            },
+            {
+              "field": "input:Toggle",
+              "newValue": "cpp",
+              "oldValue": "void"
+            },
+            {
+              "field": "input:Trigger",
+              "newValue": "cpp",
+              "oldValue": "void"
+            },
+            {
+              "field": "output:OnSpawn",
+              "newValue": "cpp",
+              "oldValue": "void"
+            },
+            {
+              "field": "output:OnTrigger",
+              "newValue": "cpp",
+              "oldValue": "void"
+            }
+          ],
+          "name": "logic_relay"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:dof_enabled",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:dof_far_blurry",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:dof_far_crisp",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:dof_near_blurry",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:dof_near_crisp",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:dof_tilt_to_ground",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "map_preview_camera_path"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname,Parentname",
+              "oldValue": "Targetname"
+            },
+            {
+              "field": "input:ClearParent",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:FollowEntity",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParent",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachment",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachmentMaintainOffset",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.angles",
+              "newValue": "angle",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.origin",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.scales",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentAttachmentName",
+              "newValue": "parentAttachment",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentname",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:useLocalOffset",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "path_corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:bonename1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:bonename2",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_constraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetAngularDampingRatioX",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetAngularDampingRatioY",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetAngularDampingRatioZ",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetAngularFrequencyX",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetAngularFrequencyY",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetAngularFrequencyZ",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetAngularMotionLockedX",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetAngularMotionLockedY",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetAngularMotionLockedZ",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetLinearDampingRatioX",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetLinearDampingRatioY",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetLinearDampingRatioZ",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetLinearFrequencyX",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetLinearFrequencyY",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetLinearFrequencyZ",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetLinearMotionLockedX",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetLinearMotionLockedY",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetLinearMotionLockedZ",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_genericconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetFriction",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetSpinDownTime",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetSpinUpTime",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetSystemInertiaScale",
+              "newValue": "cpp",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:attach2",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:friction",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:spindown",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_motor"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableLimit",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:EnableLimit",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetSplineEntity",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:enableangularconstraint",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:enablelimit",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:enablelinearconstraint",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:enableverticalconstraint",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:fireeventsonpath",
+              "newValue": "bool",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:lineardampingratio",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:linearfrequency",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_splineconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:Teleport",
+              "newValue": "cpp",
+              "oldValue": "void"
+            },
+            {
+              "field": "input:TeleportEntity",
+              "newValue": "cpp",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "input:TeleportEntityToCurrentPos",
+              "newValue": "cpp",
+              "oldValue": "void"
+            },
+            {
+              "field": "input:TeleportToCurrentPos",
+              "newValue": "cpp",
+              "oldValue": "void"
+            }
+          ],
+          "name": "point_teleport"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname,Parentname,CanBeClientOnly",
+              "oldValue": "Targetname,CanBeClientOnly"
+            },
+            {
+              "field": "input:ClearParent",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:DeleteCreatedSpawnGroups",
+              "newValue": "cpp",
+              "oldValue": "void"
+            },
+            {
+              "field": "input:FollowEntity",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:ForceSpawn",
+              "newValue": "cpp",
+              "oldValue": "void"
+            },
+            {
+              "field": "input:SetParent",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachment",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachmentMaintainOffset",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.angles",
+              "newValue": "angle",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.origin",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.scales",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentAttachmentName",
+              "newValue": "parentAttachment",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentname",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:useLocalOffset",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnEntitySpawned",
+              "newValue": "cpp",
+              "oldValue": "void"
+            }
+          ],
+          "name": "point_template"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetNoNPCs",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetRagdollProfile",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactAs",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactExclude",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactWith",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetRagdollProfile",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactAs",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactExclude",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactWith",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetRagdollProfile",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactAs",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactExclude",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactWith",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetRagdollProfile",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactAs",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactExclude",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:interactWith",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableFloating",
+              "newValue": "",
+              "oldValue": "void"
+            },
+            {
+              "field": "keyvalue:ExploitableByPlayer",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:SilentToZombies",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:allowobstacleconvexhullmerging",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:dynamiccontinuouscontactbehavior",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableFloating",
+              "newValue": "",
+              "oldValue": "void"
+            },
+            {
+              "field": "keyvalue:ExploitableByPlayer",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:SilentToZombies",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:allowobstacleconvexhullmerging",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:dynamiccontinuouscontactbehavior",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableFloating",
+              "newValue": "",
+              "oldValue": "void"
+            },
+            {
+              "field": "keyvalue:allowobstacleconvexhullmerging",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:dynamiccontinuouscontactbehavior",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStartDeath",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:allowStretch",
+              "newValue": "bool",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:buoyancyscale",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:massScale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_ragdoll"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:collision_override",
+              "newValue": "collision_property",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_static"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetDistanceMapMax",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDistanceMapMin",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_aabb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetDistanceMapMax",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDistanceMapMin",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_auto_room"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname,Parentname,snd_opvar_set_aabb",
+              "oldValue": "Targetname,snd_opvar_set_aabb"
+            },
+            {
+              "field": "input:ClearParent",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:FollowEntity",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDistanceMapMax",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDistanceMapMin",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParent",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachment",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachmentMaintainOffset",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.angles",
+              "newValue": "angle",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.origin",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.scales",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentAttachmentName",
+              "newValue": "parentAttachment",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentname",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:useLocalOffset",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_obb"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetDistanceMapMax",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDistanceMapMin",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_path_corner"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname,Parentname,SndOpvarSetPointBaseAddition1,SndOpvarSetPointBaseAddition2,SndOpvarSetPointBase",
+              "oldValue": "Targetname,SndOpvarSetPointBaseAddition1,SndOpvarSetPointBaseAddition2,SndOpvarSetPointBase"
+            },
+            {
+              "field": "input:ClearParent",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:FollowEntity",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDistanceMapMax",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetDistanceMapMin",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParent",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachment",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachmentMaintainOffset",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.angles",
+              "newValue": "angle",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.origin",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.scales",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentAttachmentName",
+              "newValue": "parentAttachment",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentname",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:useLocalOffset",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_point"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname,Parentname",
+              "oldValue": "Targetname"
+            },
+            {
+              "field": "input:ClearParent",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:FollowEntity",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParent",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachment",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetParentAttachmentMaintainOffset",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.angles",
+              "newValue": "angle",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.origin",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:local.scales",
+              "newValue": "vector",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentAttachmentName",
+              "newValue": "parentAttachment",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:parentname",
+              "newValue": "target_destination",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:useLocalOffset",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_opvar_set_wind_obb"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:test_visible_occlusion",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_look"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:vrchaperone",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:vrmovement",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "worldbase"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:steamaudio_customdata_bake_dimensions",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_bake_materials",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_bake_occlusion",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_filter_navmesh",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_filter_volumes",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_generation_type",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_grid_spacing",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_height_above_floor",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_occlusion_pathing",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_occlusion_reflection",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_occlusion_reflection_bounces",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_occlusion_reflection_rays",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_customdata_rebake_option",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_filter_navmesh",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_filter_volumes",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_generation_type",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_grid_type",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_clustering_cubemap_resolution",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_clustering_depth_threshold",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_clustering_enable",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_filter_navmesh",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_filter_volumes",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_generation_type",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_grid_type",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:vrchaperone",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:vrmovement",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "worldspawn"
+        }
+      ],
+      "family": "entity_io",
+      "removed": [
+        "env_microphone",
+        "phys_wheelconstraint"
+      ]
     }
   ],
   "fromBuild": "19251152",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "19388062"
 }

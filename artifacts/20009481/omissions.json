@@ -1,0 +1,35 @@
+{
+  "buildId": "20009481",
+  "omissions": [
+    {
+      "contentOmissions": [
+        {
+          "artifact": "cs_script_api.json",
+          "notes": "built from the Workshop Tools depot 2347779, which ships for windows-x86_64 only",
+          "reason": "TOOLS_DEPOT_NOT_ON_PLATFORM"
+        },
+        {
+          "artifact": "entity_io.json",
+          "notes": "built from the Workshop Tools depot 2347779, which ships for windows-x86_64 only",
+          "reason": "TOOLS_DEPOT_NOT_ON_PLATFORM"
+        }
+      ],
+      "notes": "",
+      "platform": "linux-x86_64",
+      "reason": "REASON_UNSPECIFIED"
+    },
+    {
+      "contentOmissions": [
+        {
+          "artifact": "cs_script_api.json",
+          "notes": "content/csgo_addons/cs_script_demo/maps/scripts/point_script.d.ts absent from this build's Workshop Tools depot",
+          "reason": "CONTENT_NOT_SHIPPED_THIS_ERA"
+        }
+      ],
+      "notes": "",
+      "platform": "windows-x86_64",
+      "reason": "REASON_UNSPECIFIED"
+    }
+  ],
+  "schemaVersion": "0.13.0"
+}

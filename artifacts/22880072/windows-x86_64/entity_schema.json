@@ -1953,6 +1953,11 @@
     {
       "alignment": 255,
       "cppName": "AmmoIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int8",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -2075,6 +2080,11 @@
     {
       "alignment": 4,
       "cppName": "AnimComponentID",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -2110,6 +2120,11 @@
     {
       "alignment": 4,
       "cppName": "AnimNodeID",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -2145,6 +2160,11 @@
     {
       "alignment": 4,
       "cppName": "AnimNodeOutputID",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -2180,6 +2200,11 @@
     {
       "alignment": 4,
       "cppName": "AnimParamID",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -2215,6 +2240,11 @@
     {
       "alignment": 4,
       "cppName": "AnimScriptHandle",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -2250,6 +2280,11 @@
     {
       "alignment": 4,
       "cppName": "AnimStateID",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -2285,6 +2320,11 @@
     {
       "alignment": 4,
       "cppName": "AnimTagID",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -2791,6 +2831,11 @@
     {
       "alignment": 255,
       "cppName": "AttachmentHandle_t",
+      "effectiveBuiltin": {
+        "builtin": "uint8",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -3224,6 +3269,11 @@
     {
       "alignment": 4,
       "cppName": "BaseSceneObjectOverride_t",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -4868,6 +4918,11 @@
     {
       "alignment": 4,
       "cppName": "CAnimCycle",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 296,
       "flags2": 0,
@@ -6244,6 +6299,11 @@
     {
       "alignment": 255,
       "cppName": "CAnimEnum",
+      "effectiveBuiltin": {
+        "builtin": "uint8",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -6681,6 +6741,11 @@
     {
       "alignment": 255,
       "cppName": "CAnimGraphControllerBase",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -8774,6 +8839,11 @@
     {
       "alignment": 8,
       "cppName": "CAnimGraphDoc_BlockSelectionMetric",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -10181,6 +10251,11 @@
     {
       "alignment": 8,
       "cppName": "CAnimGraphDoc_CurrentRotationVelocityMetric",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -10212,6 +10287,11 @@
     {
       "alignment": 8,
       "cppName": "CAnimGraphDoc_CurrentVelocityMetric",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -11331,6 +11411,11 @@
     {
       "alignment": 8,
       "cppName": "CAnimGraphDoc_EmitTagAction",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -16734,6 +16819,11 @@
     {
       "alignment": 255,
       "cppName": "CAnimGraphDoc_MotionMetric",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -24144,6 +24234,11 @@
     {
       "alignment": 8,
       "cppName": "CAnimGraphNetworkSettings",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [
@@ -25397,6 +25492,11 @@
     {
       "alignment": 255,
       "cppName": "CAnimScriptBase",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -26155,6 +26255,11 @@
     {
       "alignment": 8,
       "cppName": "CAnimUpdateNodeRef",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -26515,6 +26620,11 @@
     {
       "alignment": 255,
       "cppName": "CAnimationGraphInstance",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -28440,6 +28550,11 @@
     {
       "alignment": 8,
       "cppName": "CBaseAnimGraphDestructibleParts_GraphController",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -36171,6 +36286,11 @@
     {
       "alignment": 4,
       "cppName": "CCycleBase",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -40280,6 +40400,11 @@
     {
       "alignment": 8,
       "cppName": "CEmptyGraphController",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -40870,6 +40995,11 @@
     {
       "alignment": 8,
       "cppName": "CExampleSchemaVData_PolymorphicBase",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -42155,6 +42285,11 @@
     {
       "alignment": 255,
       "cppName": "CFiringModeFloat",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "2",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -42197,6 +42332,11 @@
     {
       "alignment": 255,
       "cppName": "CFiringModeInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "2",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -43562,6 +43702,11 @@
     {
       "alignment": 4,
       "cppName": "CFootCycle",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 296,
       "flags2": 0,
@@ -48169,6 +48314,11 @@
     {
       "alignment": 255,
       "cppName": "CInButtonState",
+      "effectiveBuiltin": {
+        "builtin": "uint64",
+        "elementCount": "3",
+        "elementWidth": 8
+      },
       "fields": [
         {
           "metadata": [],
@@ -62936,6 +63086,11 @@
     {
       "alignment": 255,
       "cppName": "CMovementStatsProperty",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -63910,6 +64065,11 @@
     {
       "alignment": 255,
       "cppName": "CNavVolumeAll",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [],
       "flags": 33,
       "flags2": 0,
@@ -64110,6 +64270,11 @@
     {
       "alignment": 255,
       "cppName": "CNavVolumeVector",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -64310,6 +64475,11 @@
     {
       "alignment": 255,
       "cppName": "CNetworkTransmitComponent",
+      "effectiveBuiltin": {
+        "builtin": "uint8",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -64340,6 +64510,11 @@
     {
       "alignment": 255,
       "cppName": "CNetworkVarChainer",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -65347,6 +65522,11 @@
     {
       "alignment": 255,
       "cppName": "CNmAnimDocument",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -65480,6 +65660,11 @@
     {
       "alignment": 4,
       "cppName": "CNmBitFlags",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -66382,6 +66567,11 @@
     {
       "alignment": 255,
       "cppName": "CNmBoneMaskValueNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 35,
       "flags2": 0,
@@ -66479,6 +66669,11 @@
     {
       "alignment": 255,
       "cppName": "CNmBoolValueNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 35,
       "flags2": 0,
@@ -69239,6 +69434,11 @@
     {
       "alignment": 255,
       "cppName": "CNmClipReferenceNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 262435,
       "flags2": 0,
@@ -69539,6 +69739,11 @@
     {
       "alignment": 8,
       "cppName": "CNmControlParameterBoolNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -69566,6 +69771,11 @@
     {
       "alignment": 8,
       "cppName": "CNmControlParameterFloatNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -69593,6 +69803,11 @@
     {
       "alignment": 8,
       "cppName": "CNmControlParameterIDNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -69620,6 +69835,11 @@
     {
       "alignment": 8,
       "cppName": "CNmControlParameterTargetNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -69647,6 +69867,11 @@
     {
       "alignment": 8,
       "cppName": "CNmControlParameterVectorNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -71267,6 +71492,11 @@
     {
       "alignment": 255,
       "cppName": "CNmFloatValueNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 35,
       "flags2": 0,
@@ -81334,6 +81564,11 @@
     {
       "alignment": 255,
       "cppName": "CNmGraphNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -82208,6 +82443,11 @@
     {
       "alignment": 255,
       "cppName": "CNmIDValueNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 35,
       "flags2": 0,
@@ -82312,6 +82552,11 @@
     {
       "alignment": 8,
       "cppName": "CNmIsInactiveBranchConditionNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -83681,6 +83926,11 @@
     {
       "alignment": 255,
       "cppName": "CNmPoseNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 35,
       "flags2": 0,
@@ -83936,6 +84186,11 @@
     {
       "alignment": 8,
       "cppName": "CNmReferencePoseNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -86452,6 +86707,11 @@
     {
       "alignment": 255,
       "cppName": "CNmTargetValueNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 35,
       "flags2": 0,
@@ -87369,6 +87629,11 @@
     {
       "alignment": 255,
       "cppName": "CNmValueNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 35,
       "flags2": 0,
@@ -87608,6 +87873,11 @@
     {
       "alignment": 255,
       "cppName": "CNmVectorValueNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 35,
       "flags2": 0,
@@ -87930,6 +88200,11 @@
     {
       "alignment": 8,
       "cppName": "CNmZeroPoseNode::CDefinition",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [],
       "flags": 262433,
       "flags2": 0,
@@ -94416,6 +94691,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayerControllerComponent",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -94564,6 +94844,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayerPawnComponent",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -98169,6 +98454,11 @@
     {
       "alignment": 255,
       "cppName": "CRangeFloat",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "2",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -98211,6 +98501,11 @@
     {
       "alignment": 255,
       "cppName": "CRangeInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "2",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -98477,6 +98772,11 @@
     {
       "alignment": 255,
       "cppName": "CRemapFloat",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "4",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -106223,6 +106523,11 @@
     {
       "alignment": 255,
       "cppName": "CSkillFloat",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "4",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -106265,6 +106570,11 @@
     {
       "alignment": 255,
       "cppName": "CSkillInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "4",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -115295,6 +115605,11 @@
     {
       "alignment": 255,
       "cppName": "CSmartPropParameter",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -120087,6 +120402,11 @@
     {
       "alignment": 8,
       "cppName": "CSosGroupActionTimeLimitSchema",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -123966,6 +124286,11 @@
     {
       "alignment": 8,
       "cppName": "CSubassetTypeInfo",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -193013,6 +193338,11 @@
     {
       "alignment": 255,
       "cppName": "ChangeAccessorFieldPathIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -194167,6 +194497,11 @@
     {
       "alignment": 8,
       "cppName": "CnmGraphDocVariationConstFloatNode::CData",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -194497,6 +194832,11 @@
     {
       "alignment": 4,
       "cppName": "CollisionGroupContext_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -198151,6 +198491,11 @@
     {
       "alignment": 4,
       "cppName": "Dop26_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "26",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -199994,6 +200339,11 @@
     {
       "alignment": 255,
       "cppName": "EventAppShutdown_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -200278,6 +200628,11 @@
     {
       "alignment": 255,
       "cppName": "EventClientPollNetworking_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -200698,6 +201053,11 @@
     {
       "alignment": 255,
       "cppName": "EventClientProcessNetworking_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -200728,6 +201088,11 @@
     {
       "alignment": 255,
       "cppName": "EventClientSceneSystemThreadStateChange_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -200780,6 +201145,11 @@
     {
       "alignment": 255,
       "cppName": "EventFrameBoundary_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -200901,6 +201271,11 @@
     {
       "alignment": 255,
       "cppName": "EventPostDataUpdate_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -200931,6 +201306,11 @@
     {
       "alignment": 255,
       "cppName": "EventPreDataUpdate_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -201013,6 +201393,11 @@
     {
       "alignment": 255,
       "cppName": "EventServerBeginAsyncPostTickWork_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -201081,6 +201466,11 @@
     {
       "alignment": 255,
       "cppName": "EventServerEndSimulate_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -201519,6 +201909,11 @@
     {
       "alignment": 255,
       "cppName": "ExternalAnimGraphHandle_t",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -205549,6 +205944,11 @@
     {
       "alignment": 2,
       "cppName": "FeSourceEdge_t",
+      "effectiveBuiltin": {
+        "builtin": "uint16",
+        "elementCount": "2",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -206047,6 +206447,11 @@
     {
       "alignment": 2,
       "cppName": "FeTreeChildren_t",
+      "effectiveBuiltin": {
+        "builtin": "uint16",
+        "elementCount": "2",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -208118,6 +208523,11 @@
     {
       "alignment": 255,
       "cppName": "FuseFunctionIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "uint16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -208153,6 +208563,11 @@
     {
       "alignment": 255,
       "cppName": "FuseVariableIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "uint16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -208316,6 +208731,11 @@
     {
       "alignment": 255,
       "cppName": "GameTick_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -208351,6 +208771,11 @@
     {
       "alignment": 255,
       "cppName": "GameTime_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -208783,6 +209208,11 @@
     {
       "alignment": 255,
       "cppName": "HSequence",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -209681,6 +210111,11 @@
     {
       "alignment": 255,
       "cppName": "INavObstacle",
+      "effectiveBuiltin": {
+        "builtin": "uint64",
+        "elementCount": "1",
+        "elementWidth": 8
+      },
       "fields": [
         {
           "metadata": [],
@@ -212851,6 +213286,11 @@
     {
       "alignment": 255,
       "cppName": "ModelConfigHandle_t",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -213853,6 +214293,11 @@
     {
       "alignment": 4,
       "cppName": "MotionDBIndex",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -214482,6 +214927,11 @@
     {
       "alignment": 255,
       "cppName": "NavHull_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -214949,6 +215399,11 @@
     {
       "alignment": 4,
       "cppName": "NmPercent_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -215480,6 +215935,11 @@
     {
       "alignment": 255,
       "cppName": "PARTICLE_EHANDLE__",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -215983,6 +216443,11 @@
     {
       "alignment": 255,
       "cppName": "ParticleAttributeIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -216305,6 +216770,11 @@
     {
       "alignment": 255,
       "cppName": "ParticleIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -220397,6 +220867,11 @@
     {
       "alignment": 255,
       "cppName": "PhysicsParticleId_t",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -221615,6 +222090,11 @@
     {
       "alignment": 4,
       "cppName": "PrecipitationFilter_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -221650,6 +222130,11 @@
     {
       "alignment": 255,
       "cppName": "PulseCursorID_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -221685,6 +222170,11 @@
     {
       "alignment": 255,
       "cppName": "PulseCursorYieldToken_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -221720,6 +222210,11 @@
     {
       "alignment": 255,
       "cppName": "PulseDocNodeID_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -221997,6 +222492,11 @@
     {
       "alignment": 255,
       "cppName": "PulseGraphInstanceID_t",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -222088,6 +222588,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeBlackboardReferenceIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -222123,6 +222628,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeCallInfoIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -222158,6 +222668,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeCellIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -222193,6 +222708,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeChunkIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -222228,6 +222748,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeConstantIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -222263,6 +222788,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeDomainValueIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -222298,6 +222828,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeEntrypointIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -222333,6 +222868,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeInvokeIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -222368,6 +222908,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeOutputIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -222403,6 +222948,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeRegisterIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -222438,6 +222988,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeStateOffset_t",
+      "effectiveBuiltin": {
+        "builtin": "uint16",
+        "elementCount": "1",
+        "elementWidth": 2
+      },
       "fields": [
         {
           "metadata": [],
@@ -222473,6 +223028,11 @@
     {
       "alignment": 255,
       "cppName": "PulseRuntimeVarIndex_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -223590,6 +224150,11 @@
     {
       "alignment": 255,
       "cppName": "ResourceId_t",
+      "effectiveBuiltin": {
+        "builtin": "uint64",
+        "elementCount": "1",
+        "elementWidth": 8
+      },
       "fields": [
         {
           "metadata": [],
@@ -224624,6 +225189,11 @@
     {
       "alignment": 1,
       "cppName": "RnFace_t",
+      "effectiveBuiltin": {
+        "builtin": "uint8",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -225558,6 +226128,11 @@
     {
       "alignment": 4,
       "cppName": "RnSoftbodyParticle_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -225696,6 +226271,11 @@
     {
       "alignment": 4,
       "cppName": "RnTriangle_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "3",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -225738,6 +226318,11 @@
     {
       "alignment": 1,
       "cppName": "RnVertex_t",
+      "effectiveBuiltin": {
+        "builtin": "uint8",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -225773,6 +226358,11 @@
     {
       "alignment": 4,
       "cppName": "RnWing_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "3",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -226598,6 +227188,11 @@
     {
       "alignment": 1,
       "cppName": "SampleCode",
+      "effectiveBuiltin": {
+        "builtin": "uint8",
+        "elementCount": "8",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -226640,6 +227235,11 @@
     {
       "alignment": 255,
       "cppName": "SamplerVoice_t",
+      "effectiveBuiltin": {
+        "builtin": "uint8",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -226670,6 +227270,11 @@
     {
       "alignment": 255,
       "cppName": "SceneEventId_t",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -227069,6 +227674,11 @@
     {
       "alignment": 255,
       "cppName": "SceneOpportunityHandle_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -227104,6 +227714,11 @@
     {
       "alignment": 255,
       "cppName": "SceneRequestHandle_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -227631,6 +228246,11 @@
     {
       "alignment": 255,
       "cppName": "SheetSequenceIntegerId_t",
+      "effectiveBuiltin": {
+        "builtin": "uint32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -239715,6 +240335,11 @@
     {
       "alignment": 255,
       "cppName": "physics_save_sphere_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -240822,6 +241447,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -240862,6 +241492,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -240978,6 +241613,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -241005,6 +241645,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -241036,6 +241681,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -241063,6 +241713,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -242053,6 +242708,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -242080,6 +242740,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -242164,6 +242829,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -242194,6 +242864,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -242277,6 +242952,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -242633,6 +243313,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -242962,6 +243647,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -243001,6 +243691,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -244412,6 +245107,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -244452,6 +245152,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -244568,6 +245273,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -244595,6 +245305,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -244626,6 +245341,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -244653,6 +245373,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -245643,6 +246368,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -245670,6 +246400,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -245754,6 +246489,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -245784,6 +246524,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -245867,6 +246612,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -246223,6 +246973,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -246552,6 +247307,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -246591,6 +247351,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -248002,6 +248767,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -248042,6 +248812,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -248158,6 +248933,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -248185,6 +248965,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -248216,6 +249001,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -248243,6 +249033,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -249233,6 +250028,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -249260,6 +250060,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -249344,6 +250149,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -249374,6 +250184,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -249457,6 +250272,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -249813,6 +250633,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -250142,6 +250967,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -250181,6 +251011,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -251313,6 +252148,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_BaseQueryableFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -251608,6 +252448,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_CriteriaPathPosition",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -252067,6 +252912,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -252102,6 +252952,11 @@
     {
       "alignment": 255,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -252137,6 +252992,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionEndCap",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -252225,6 +253085,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionLinearLength",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -253384,6 +254249,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -253424,6 +254294,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -253540,6 +254415,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -253567,6 +254447,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -253598,6 +254483,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -253625,6 +254515,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -254615,6 +255510,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -254642,6 +255542,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -254726,6 +255631,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -254756,6 +255666,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -254839,6 +255754,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -255195,6 +256115,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -255524,6 +256449,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -255563,6 +256493,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -256736,6 +257671,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_BaseQueryableFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -257031,6 +257971,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_CriteriaPathPosition",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -257490,6 +258435,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -257525,6 +258475,11 @@
     {
       "alignment": 255,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -257560,6 +258515,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionEndCap",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -257648,6 +258608,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionLinearLength",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -262509,6 +263474,11 @@
     {
       "alignment": 8,
       "cppName": "CCSGameModeRules",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -262649,6 +263619,11 @@
     {
       "alignment": 8,
       "cppName": "CCSGameModeRules_Noop",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 353,
       "flags2": 0,
@@ -262751,6 +263726,11 @@
     {
       "alignment": 255,
       "cppName": "CCSObserver_UseServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -264681,6 +265661,11 @@
     {
       "alignment": 255,
       "cppName": "CCSPlayer_DamageReactServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -264703,6 +265688,11 @@
     {
       "alignment": 255,
       "cppName": "CCSPlayer_GlowServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -265553,6 +266543,11 @@
     {
       "alignment": 255,
       "cppName": "CCSPlayer_UseServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -270326,6 +271321,11 @@
     {
       "alignment": 255,
       "cppName": "CHitboxComponent",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -273207,6 +274207,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_AutoaimServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 99,
       "flags2": 0,
@@ -273596,6 +274601,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_FlashlightServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -273618,6 +274628,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_ItemServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -274155,6 +275170,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_UseServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -274177,6 +275197,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_WaterServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -275170,6 +276195,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -275210,6 +276240,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -275326,6 +276361,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -275353,6 +276393,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -275384,6 +276429,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -275411,6 +276461,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -276401,6 +277456,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -276428,6 +277488,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -276653,6 +277718,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -276683,6 +277753,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -276766,6 +277841,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -277257,6 +278337,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -277627,6 +278712,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -277666,6 +278756,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -294308,6 +295403,11 @@
     {
       "alignment": 255,
       "cppName": "C_EconEntity::AttachedModelData_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -308824,6 +309924,11 @@
     {
       "alignment": 255,
       "cppName": "C_SceneEntity::QueuedEvents_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -315461,6 +316566,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -315501,6 +316611,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -315617,6 +316732,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -315644,6 +316764,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -315675,6 +316800,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -315702,6 +316832,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -316692,6 +317827,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -316719,6 +317859,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -316803,6 +317948,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -316833,6 +317983,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -316916,6 +318071,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -317272,6 +318432,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -317601,6 +318766,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -317640,6 +318810,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -318813,6 +319988,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_BaseQueryableFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -319108,6 +320288,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_CriteriaPathPosition",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -319567,6 +320752,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -319602,6 +320792,11 @@
     {
       "alignment": 255,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -319637,6 +320832,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionEndCap",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -319725,6 +320925,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionLinearLength",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -320303,6 +321508,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -320343,6 +321553,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -320459,6 +321674,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -320486,6 +321706,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -320517,6 +321742,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -320544,6 +321774,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -321534,6 +322769,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -321561,6 +322801,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -321645,6 +322890,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -321675,6 +322925,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -321758,6 +323013,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -322114,6 +323374,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -322443,6 +323708,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -322482,6 +323752,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -323893,6 +325168,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -323933,6 +325213,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -324049,6 +325334,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -324076,6 +325366,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -324107,6 +325402,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -324134,6 +325434,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -325124,6 +326429,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -325151,6 +326461,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -325235,6 +326550,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -325265,6 +326585,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -325348,6 +326673,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -325704,6 +327034,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -326033,6 +327368,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -326072,6 +327412,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -327527,6 +328872,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -327567,6 +328917,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -327683,6 +329038,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -327710,6 +329070,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -327741,6 +329106,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -327768,6 +329138,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -328758,6 +330133,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -328785,6 +330165,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -328869,6 +330254,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -328899,6 +330289,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -328982,6 +330377,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -329338,6 +330738,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -329667,6 +331072,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -329706,6 +331116,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -331161,6 +332576,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -331201,6 +332621,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -331317,6 +332742,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -331344,6 +332774,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -331375,6 +332810,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -331402,6 +332842,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -332392,6 +333837,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -332419,6 +333869,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -332503,6 +333958,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -332533,6 +333993,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -332616,6 +334081,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -332972,6 +334442,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -333301,6 +334776,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -333340,6 +334820,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -334795,6 +336280,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -334835,6 +336325,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -334951,6 +336446,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -334978,6 +336478,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -335009,6 +336514,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -335036,6 +336546,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -336026,6 +337541,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -336053,6 +337573,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -336137,6 +337662,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -336167,6 +337697,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -336250,6 +337785,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -336606,6 +338146,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -336935,6 +338480,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -336974,6 +338524,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -338385,6 +339940,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -338425,6 +339985,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -338541,6 +340106,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -338568,6 +340138,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -338599,6 +340174,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -338626,6 +340206,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -339616,6 +341201,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -339643,6 +341233,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -339727,6 +341322,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -339757,6 +341357,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -339840,6 +341445,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -340196,6 +341806,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -340525,6 +342140,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -340564,6 +342184,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -341975,6 +343600,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -342015,6 +343645,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -342131,6 +343766,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -342158,6 +343798,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -342189,6 +343834,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -342216,6 +343866,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -342417,6 +344072,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_ExampleCriteria",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -343354,6 +345014,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -343381,6 +345046,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -343465,6 +345135,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -343495,6 +345170,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -343578,6 +345258,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -344086,6 +345771,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -344154,6 +345844,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_TestDomainCreateFakeEntity",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -344185,6 +345880,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_TestDomainDestroyFakeEntity",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -344265,6 +345965,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_TestDomainTracepoint",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -344411,6 +346116,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Test_MultiInflow_NoDefault",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -344438,6 +346148,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Test_MultiInflow_WithDefault",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -344612,6 +346327,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Test_MultiOutflow_WithParams_Yielding::CursorState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -344647,6 +346367,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Test_NoInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -344845,6 +346570,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Val_TestDomainFindEntityByName",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -344876,6 +346606,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Val_TestDomainGetEntityName",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -344997,6 +346732,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -345036,6 +346776,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -345075,6 +346820,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_TestValue50",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -347521,6 +349271,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -347561,6 +349316,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -347677,6 +349437,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -347704,6 +349469,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -347735,6 +349505,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -347762,6 +349537,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -348752,6 +350532,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -348779,6 +350564,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -348863,6 +350653,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -348893,6 +350688,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -348976,6 +350776,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -349332,6 +351137,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -349661,6 +351471,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -349700,6 +351515,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -350873,6 +352693,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_BaseQueryableFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -351168,6 +352993,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_CriteriaPathPosition",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -351627,6 +353457,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -351662,6 +353497,11 @@
     {
       "alignment": 255,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -351697,6 +353537,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionEndCap",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -351785,6 +353630,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionLinearLength",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -364614,6 +366464,11 @@
     {
       "alignment": 255,
       "cppName": "CBtNodeCondition",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -368496,6 +370351,11 @@
     {
       "alignment": 8,
       "cppName": "CCSGameModeRules",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -368636,6 +370496,11 @@
     {
       "alignment": 8,
       "cppName": "CCSGameModeRules_Noop",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 353,
       "flags2": 0,
@@ -371501,6 +373366,11 @@
     {
       "alignment": 255,
       "cppName": "CCSObserver_UseServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -375865,6 +377735,11 @@
     {
       "alignment": 255,
       "cppName": "CCSPlayer_DamageReactServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -398515,6 +400390,11 @@
     {
       "alignment": 255,
       "cppName": "CHitboxComponent",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -415331,6 +417211,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_AutoaimServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 99,
       "flags2": 0,
@@ -415581,6 +417466,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_FlashlightServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -415603,6 +417493,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_ItemServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -416117,6 +418012,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_UseServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -416139,6 +418039,11 @@
     {
       "alignment": 255,
       "cppName": "CPlayer_WaterServices",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 97,
       "flags2": 0,
@@ -421407,6 +423312,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -421447,6 +423357,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -421563,6 +423478,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -421590,6 +423510,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -421621,6 +423546,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -421648,6 +423578,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -422638,6 +424573,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -422665,6 +424605,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -422890,6 +424835,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -422920,6 +424870,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -423003,6 +424958,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -424456,6 +426416,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -424921,6 +426886,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -424960,6 +426930,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -443000,6 +444975,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -443040,6 +445020,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -443156,6 +445141,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -443183,6 +445173,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -443214,6 +445209,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -443241,6 +445241,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -444231,6 +446236,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -444258,6 +446268,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -444342,6 +446357,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -444372,6 +446392,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -444455,6 +446480,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -444811,6 +446841,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -445140,6 +447175,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -445179,6 +447219,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -446975,6 +449020,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Base",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -447015,6 +449065,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -447131,6 +449186,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseRequirement",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -447158,6 +449218,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseState",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -447189,6 +449254,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_BaseValue",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -447216,6 +449286,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_BaseYieldingInflow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262499,
       "flags2": 0,
@@ -448206,6 +450281,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_IsRequirementValid",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -448233,6 +450313,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_IsRequirementValid::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -448317,6 +450402,11 @@
     {
       "alignment": 255,
       "cppName": "CPulseCell_LimitCount::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "bool",
+        "elementCount": "1",
+        "elementWidth": 1
+      },
       "fields": [
         {
           "metadata": [],
@@ -448347,6 +450437,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_LimitCount::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -448430,6 +450525,11 @@
     {
       "alignment": 4,
       "cppName": "CPulseCell_Outflow_CycleOrdered::InstanceState_t",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [],
@@ -448786,6 +450886,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Step_DebugLog",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -449115,6 +451220,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomFloat",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -449154,6 +451264,11 @@
     {
       "alignment": 8,
       "cppName": "CPulseCell_Value_RandomInt",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -450327,6 +452442,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_BaseQueryableFlow",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -450622,6 +452742,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_CriteriaPathPosition",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -451081,6 +453206,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -451116,6 +453246,11 @@
     {
       "alignment": 255,
       "cppName": "CSmartPropPulse_SelectionChoiceWeight::Criteria_t",
+      "effectiveBuiltin": {
+        "builtin": "float32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [
         {
           "metadata": [
@@ -451151,6 +453286,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionEndCap",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -451239,6 +453379,11 @@
     {
       "alignment": 8,
       "cppName": "CSmartPropPulse_SelectionLinearLength",
+      "effectiveBuiltin": {
+        "builtin": "int32",
+        "elementCount": "1",
+        "elementWidth": 4
+      },
       "fields": [],
       "flags": 262497,
       "flags2": 0,
@@ -482450,6 +484595,6 @@
     }
   ],
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "sourceRevision": ""
 }

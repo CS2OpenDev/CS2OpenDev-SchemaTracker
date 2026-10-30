@@ -58,10 +58,27 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7db003cd11ef19a9e2cf364c359995f7d945bc32e9e10114884883da3e005ba6",
+              "oldValue": "6bdc323a63f245e8c7951a9cc694f238808357fc30e5fa78440f6e4806a81c66"
+            }
+          ],
+          "name": "tooltip_navbar_vacnet"
+        }
+      ],
+      "family": "localization",
+      "removed": []
     }
   ],
   "fromBuild": "24828357",
   "platform": "linux-x86_64",
-  "schemaVersion": "0.10.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "24916958"
 }

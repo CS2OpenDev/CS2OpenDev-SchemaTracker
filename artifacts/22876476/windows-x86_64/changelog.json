@@ -5926,10 +5926,408 @@
         "quest_weapon_unique_pistol",
         "quest_weapon_var_desc"
       ]
+    },
+    {
+      "added": [
+        "filter_activator_team"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "Breakable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "BreakableBrush"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "BreakableProp"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:explosion_type",
+              "newValue": "vdata_choice:scripts/explosion_types.vdata",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "env_explosion"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:DisablePushClamp",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_physexplosion"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_breakable"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_physbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:bakespeculartocubemaps_scale",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:fogmixedshadows",
+              "newValue": "",
+              "oldValue": "remove_key"
+            },
+            {
+              "field": "keyvalue:transmit_always",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_barn"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "",
+              "oldValue": "light_base,light_base_legacy_params"
+            },
+            {
+              "field": "input:CallGlobalScriptFunction",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:CallPrivateScriptFunction",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:CallScriptFunction",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:FollowEntity",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:KillConstrained",
+              "newValue": "",
+              "oldValue": "void"
+            },
+            {
+              "field": "input:RunScriptCode",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:RunScriptFile",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:local.angles",
+              "newValue": "",
+              "oldValue": "angle"
+            },
+            {
+              "field": "keyvalue:local.origin",
+              "newValue": "",
+              "oldValue": "vector"
+            },
+            {
+              "field": "keyvalue:local.scales",
+              "newValue": "",
+              "oldValue": "vector"
+            },
+            {
+              "field": "keyvalue:parentAttachmentName",
+              "newValue": "",
+              "oldValue": "parentAttachment"
+            },
+            {
+              "field": "keyvalue:parentname",
+              "newValue": "",
+              "oldValue": "target_destination"
+            },
+            {
+              "field": "keyvalue:targetname",
+              "newValue": "",
+              "oldValue": "target_source"
+            },
+            {
+              "field": "keyvalue:useLocalOffset",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:vscripts",
+              "newValue": "",
+              "oldValue": "scriptlist"
+            }
+          ],
+          "name": "light_environment"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:bakespeculartocubemaps_scale",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:fogmixedshadows",
+              "newValue": "",
+              "oldValue": "remove_key"
+            },
+            {
+              "field": "keyvalue:transmit_always",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_omni2"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:bakespeculartocubemaps_scale",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:fogmixedshadows",
+              "newValue": "",
+              "oldValue": "remove_key"
+            },
+            {
+              "field": "keyvalue:transmit_always",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "light_rect"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:place_anchors_at_constraint_transform",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_genericconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetEnableBreaking",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetEnableCollisions",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:forcenavcut",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:updatenavwhenmoving",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_ragdoll"
+        }
+      ],
+      "family": "entity_io",
+      "removed": [
+        "light_base",
+        "light_base_attenuation_params",
+        "light_base_legacy_params"
+      ]
     }
   ],
   "fromBuild": "22627914",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "22876476"
 }

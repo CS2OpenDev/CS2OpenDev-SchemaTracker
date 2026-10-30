@@ -309,10 +309,50 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [
+        "counterterrorist_team_intro_variant2",
+        "terrorist_team_intro_variant2"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "keyvalue:ajardoorshouldntalwaysopen",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropDoorRotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:ajardoorshouldntalwaysopen",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "dz_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:ajardoorshouldntalwaysopen",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_door_rotating"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "11887584",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "11949605"
 }

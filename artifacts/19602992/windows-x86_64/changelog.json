@@ -12895,10 +12895,262 @@
       ],
       "family": "localization",
       "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropDoorRotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "Studiomodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "csgo_item_previewmodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "dz_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:envpuddlerippledirection",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:envpuddleripplestrength",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:envrainstrength",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:envwetnesscoverage",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:envwetnessdryingamount",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_map_parameters"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:material",
+              "newValue": "resource:material",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:not_in_multiplayer",
+              "newValue": "boolean",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:sequence_name",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:texture",
+              "newValue": "",
+              "oldValue": "decal"
+            }
+          ],
+          "name": "info_projecteddecal"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_magnet"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:jointfriction",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_splineconstraint"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lengthscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "phys_spring"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:css_class",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_clientui_world_panel"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:css_class",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_clientui_world_text_panel"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnDestructiblePartDestroyed",
+              "newValue": "cpp",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_ragdoll"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "19450283",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "19602992"
 }
