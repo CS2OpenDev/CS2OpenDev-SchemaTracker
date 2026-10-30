@@ -11276,10 +11276,481 @@
       ],
       "family": "localization",
       "removed": []
+    },
+    {
+      "added": [
+        "SndOpvarSetPointAutoRoomBase",
+        "filter_modifier",
+        "snd_opvar_set_auto_room"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "input:DisableGravity",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:EnableGravity",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableAccelDecel",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:EnableAccelDecel",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetSpeed",
+              "newValue": "float",
+              "oldValue": "integer"
+            },
+            {
+              "field": "output:OnReachedStart",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStarted",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnStopped",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetDefaultAnimationLooping",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetDefaultAnimationNotLooping",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetIdleAnimationLooping",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetIdleAnimationNotLooping",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:AnimationLoopMode",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:DefaultAnim",
+              "newValue": "",
+              "oldValue": "sequence"
+            },
+            {
+              "field": "keyvalue:IdleAnim",
+              "newValue": "sequence",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:IdleAnimationLoopMode",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ScriptedMovement",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:StartingAnim",
+              "newValue": "sequence",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:StartingAnimationLoopMode",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:avelocity",
+              "newValue": "",
+              "oldValue": "vector"
+            },
+            {
+              "field": "keyvalue:velocity",
+              "newValue": "",
+              "oldValue": "vector"
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetDefaultAnimationLooping",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetDefaultAnimationNotLooping",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetIdleAnimationLooping",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetIdleAnimationNotLooping",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:AnimationLoopMode",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:DefaultAnim",
+              "newValue": "",
+              "oldValue": "sequence"
+            },
+            {
+              "field": "keyvalue:IdleAnim",
+              "newValue": "sequence",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:IdleAnimationLoopMode",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ScriptedMovement",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:StartingAnim",
+              "newValue": "sequence",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:StartingAnimationLoopMode",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:avelocity",
+              "newValue": "",
+              "oldValue": "vector"
+            },
+            {
+              "field": "keyvalue:velocity",
+              "newValue": "",
+              "oldValue": "vector"
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetDefaultAnimationLooping",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetDefaultAnimationNotLooping",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetIdleAnimationLooping",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetIdleAnimationNotLooping",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:AnimationLoopMode",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:DefaultAnim",
+              "newValue": "",
+              "oldValue": "sequence"
+            },
+            {
+              "field": "keyvalue:IdleAnim",
+              "newValue": "sequence",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:IdleAnimationLoopMode",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ScriptedMovement",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:StartingAnim",
+              "newValue": "sequence",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:StartingAnimationLoopMode",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:avelocity",
+              "newValue": "",
+              "oldValue": "vector"
+            },
+            {
+              "field": "keyvalue:velocity",
+              "newValue": "",
+              "oldValue": "vector"
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetDefaultAnimationLooping",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetDefaultAnimationNotLooping",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetIdleAnimationLooping",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:SetIdleAnimationNotLooping",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:AnimationLoopMode",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:DefaultAnim",
+              "newValue": "",
+              "oldValue": "sequence"
+            },
+            {
+              "field": "keyvalue:IdleAnim",
+              "newValue": "sequence",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:IdleAnimationLoopMode",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:ScriptedMovement",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:StartingAnim",
+              "newValue": "sequence",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:StartingAnimationLoopMode",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:avelocity",
+              "newValue": "",
+              "oldValue": "vector"
+            },
+            {
+              "field": "keyvalue:velocity",
+              "newValue": "",
+              "oldValue": "vector"
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableGravity",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:EnableGravity",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableGravity",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:EnableGravity",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:DisableGravity",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:EnableGravity",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:alternateticksfix",
+              "newValue": "",
+              "oldValue": "float"
+            }
+          ],
+          "name": "trigger_push"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:steamaudio_pathing_grid_spacing",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_height_above_floor",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_rebake_option",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_visibility_pathrange",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_visibility_radius",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_visibility_samples",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_pathing_visibility_threshold",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_ambisonic_order",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_bounces",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_grid_spacing",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_height_above_floor",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_ir_duration",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_rays",
+              "newValue": "integer",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_rebake_option",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "worldspawn"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "13240071",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "13385739"
 }

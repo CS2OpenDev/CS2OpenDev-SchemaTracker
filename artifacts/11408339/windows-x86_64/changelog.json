@@ -1560,10 +1560,1763 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [
+        "PathParticleRopeBase",
+        "cs_minimap_boundary",
+        "csm_fov_override",
+        "func_water",
+        "info_target_server_only"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "BaseFuncButton"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Parentname,Targetname,Global,CanBeClientOnly,Studiomodel,BreakableProp,Glow",
+              "oldValue": "Parentname,Targetname,Global,CanBeClientOnly,Studiomodel,BreakableProp,SystemLevelChoice,Glow"
+            },
+            {
+              "field": "keyvalue:buoyancyScale",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "BaseTrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "Door"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "RenderFxChoices,RenderModeChoices",
+              "oldValue": "RenderFxChoices,RenderModeChoices,SystemLevelChoice"
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "RenderFields"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "",
+              "oldValue": "SystemLevelChoice"
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "RopeKeyFrame"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "Trackchange"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "beam_spotlight"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "cable_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "csgo_item_previewmodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "csgo_player_previewmodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname",
+              "oldValue": "Targetname,SystemLevelChoice"
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "env_fog_controller"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "env_rotorshooter"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "env_shooter"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "env_sprite"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "env_sprite_oriented"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_breakable"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:interactExclude",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_brush"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_conveyor"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_guntarget"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_movelinear"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_orator"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_physbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_physical_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_platrot"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:interactExclude",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_reflective_glass"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_tanktrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_trackautochange"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_trackchange"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_tracktrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_wall"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "func_wall_toggle"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "hegrenade_projectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "keyframe_rope"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:shear",
+              "newValue": "vector2d",
+              "oldValue": "vector"
+            }
+          ],
+          "name": "light_barn"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "molotov_projectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "momentary_rot_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "move_rope"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "PathParticleRopeBase",
+              "oldValue": "PathParticleRope"
+            }
+          ],
+          "name": "path_particle_rope_clientside"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "point_worldtext"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetAnimation",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetAnimationNoReset",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetDefaultAnimation",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Parentname,CanBeClientOnly,Global,Studiomodel,BreakableProp,RenderFields,Glow",
+              "oldValue": "Parentname,CanBeClientOnly,Global,Studiomodel,BreakableProp,SystemLevelChoice,RenderFields,Glow"
+            },
+            {
+              "field": "input:SetAnimation",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetAnimationNoReset",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetDefaultAnimation",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetAnimation",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetAnimationNoReset",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetDefaultAnimation",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:SetAnimation",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetAnimationNoReset",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "input:SetDefaultAnimation",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:buoyancyScale",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:buoyancyScale",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:buoyancyScale",
+              "newValue": "float",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname,Studiomodel,BaseFadeProp,EnableDisable,PosableSkeleton,BasePhysicsSimulated",
+              "oldValue": "Targetname,Studiomodel,SystemLevelChoice,BaseFadeProp,EnableDisable,PosableSkeleton,BasePhysicsSimulated"
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "prop_ragdoll"
+        },
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "",
+              "oldValue": "SystemLevelChoice"
+            },
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "prop_static_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:disableX360",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxcpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:maxgpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mincpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:mingpulevel",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "smokegrenade_projectile"
+        }
+      ],
+      "family": "entity_io",
+      "removed": [
+        "PathParticleRope",
+        "SystemLevelChoice",
+        "func_water_analog",
+        "trigger_buoyancy"
+      ]
     }
   ],
   "fromBuild": "11081546",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "11408339"
 }

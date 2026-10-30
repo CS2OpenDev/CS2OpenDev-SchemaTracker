@@ -163,10 +163,59 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [
+        "trigger_hostage_reset"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "bases",
+              "newValue": "Targetname",
+              "oldValue": "GameEntity"
+            },
+            {
+              "field": "input:Disable",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "input:Enable",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:IsEnabled",
+              "newValue": "choices",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:TeamNum",
+              "newValue": "choices",
+              "oldValue": "int"
+            },
+            {
+              "field": "keyvalue:targetname",
+              "newValue": "target_source",
+              "oldValue": ""
+            },
+            {
+              "field": "output:OnEventFired",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_eventlistener"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "12693482",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "12725887"
 }

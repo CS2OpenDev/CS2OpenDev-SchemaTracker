@@ -326721,10 +326721,261 @@
       "removed": [
         "digitpanel_digits_hudmoney"
       ]
+    },
+    {
+      "added": [
+        "chicken",
+        "path_simple",
+        "snd_event_sphere"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "keyvalue:burstlocation",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:burstscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "BasePropPhysics"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:burstlocation",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:burstscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "BreakableProp"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:SoundType",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "env_microphone"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:override_anticipation_name",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "func_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:support_multiple_entities_with_same_name",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "logic_collision_pair"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityIndexSelection",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "point_soundevent"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:burstlocation",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:burstscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:burstlocation",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:burstscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:burstlocation",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:burstscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:burstlocation",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:burstscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:burstlocation",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:burstscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:burstlocation",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:burstscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:burstlocation",
+              "newValue": "local_point",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:burstscale",
+              "newValue": "float",
+              "oldValue": ""
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:StartRagdollBoogie",
+              "newValue": "",
+              "oldValue": "void"
+            }
+          ],
+          "name": "prop_ragdoll"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityIndexSelection",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_alignedbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityIndexSelection",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_orientedbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:entityIndexSelection",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "snd_event_point"
+        },
+        {
+          "fields": [
+            {
+              "field": "output:OnTouchingEachEntity",
+              "newValue": "void",
+              "oldValue": ""
+            }
+          ],
+          "name": "trigger_multiple"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:steamaudio_pathing_grid_type",
+              "newValue": "choices",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:steamaudio_reverb_grid_type",
+              "newValue": "choices",
+              "oldValue": ""
+            }
+          ],
+          "name": "worldspawn"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "14446408",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "14470938"
 }

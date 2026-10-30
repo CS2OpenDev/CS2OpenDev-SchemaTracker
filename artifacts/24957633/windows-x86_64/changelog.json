@@ -31,10 +31,49 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "localization",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "doc",
+              "newValue": "Move this to control a player's view without moving their pawn.\nThere is at most one of these per CSPlayerPawn, created on demand when CSPlayerPawn.GetCamera is called.",
+              "oldValue": "Move this to control a player's view without moving their pawn."
+            }
+          ],
+          "name": "CSPlayerCamera"
+        },
+        {
+          "fields": [
+            {
+              "field": "doc",
+              "newValue": "CustomHudLayouts (custom_hud_layout) are the entry point for scripted maps to provide custom UI.\n* Supported panel types and attributes are:\n  * <Panel> with attributes id, class and hittest\n  * <Label> with attributes id, class, hittest, and text\n  * <Image> with attributes id, class, hittest, and src\n  * <Button> with attributes id and class\n* Styling with css is supported.\n* Events and client side scripting are not supported.\n\nTo use\n* Add a panorama layout .xml file under \"panorama/layout/custom_game\" in your addon\n* Add a custom_hud_layout point entity to your map and point its `layout` property at your .vxml asset.\n* See example addon cs_script_demo\n  * There is a custom_hud_layout entity in the cs_script_demo.vmap named \"welcome_layout\" that displays \"panorama/layouts/custom_game/welcome.vxml\".\n  * It also references css file `panorama/styles/custom_game/welcome.css`. (vcss is the asset extension)\n  * The layout begins with a \"Dismissed\" class on the Panel with id \"dialog\" which is then removed in cs_script file \"maps/scripts/setup.js\".",
+              "oldValue": "CustomHudLayouts (custom_hud_layout) are the entry point for scripted maps to provide custom UI.\nSupported panel types and attributes are:\n* <Panel> with attributes id, class and hittest\n* <Label> with attributes id, class, hittest, and text\n* <Image> with attributes id, class, hittest, and src\n* <Button> with attributes id and class\nStyling with css is supported.\nEvents and client side scripting are not supported."
+            }
+          ],
+          "name": "CustomHudLayout"
+        }
+      ],
+      "family": "cs_script_api",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "24934554",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.10.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "24957633"
 }

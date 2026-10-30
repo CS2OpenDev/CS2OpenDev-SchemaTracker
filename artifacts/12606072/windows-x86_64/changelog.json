@@ -365,10 +365,1126 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [
+        "game_money",
+        "item_defuser",
+        "weapon_ak47",
+        "weapon_aug",
+        "weapon_awp",
+        "weapon_bizon",
+        "weapon_c4",
+        "weapon_cz75a",
+        "weapon_deagle",
+        "weapon_decoy",
+        "weapon_elite",
+        "weapon_famas",
+        "weapon_fiveseven",
+        "weapon_flashbang",
+        "weapon_g3sg1",
+        "weapon_galilar",
+        "weapon_glock",
+        "weapon_healthshot",
+        "weapon_hegrenade",
+        "weapon_hkp2000",
+        "weapon_incgrenade",
+        "weapon_knife",
+        "weapon_m249",
+        "weapon_m4a1",
+        "weapon_m4a1_silencer",
+        "weapon_mac10",
+        "weapon_mag7",
+        "weapon_molotov",
+        "weapon_mp5sd",
+        "weapon_mp7",
+        "weapon_mp9",
+        "weapon_negev",
+        "weapon_nova",
+        "weapon_p250",
+        "weapon_p90",
+        "weapon_revolver",
+        "weapon_sawedoff",
+        "weapon_scar20",
+        "weapon_sg556",
+        "weapon_smokegrenade",
+        "weapon_ssg08",
+        "weapon_tagrenade",
+        "weapon_taser",
+        "weapon_tec9",
+        "weapon_ump45",
+        "weapon_usp_silencer",
+        "weapon_xm1014"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "keyvalue:bakenearz",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:moveable",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "BaseCubemap"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "BaseFuncButton"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:light_probe_volume_from_cubemap",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:lightprobetexture",
+              "newValue": "remove_key",
+              "oldValue": "resource:texture"
+            },
+            {
+              "field": "keyvalue:moveable",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:storage",
+              "newValue": "remove_key",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "BaseLightProbeVolume"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "BaseTrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "Door"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "RenderFields"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "Trackchange"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "cable_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "csgo_item_previewmodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "csgo_player_previewmodel"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:bakenearz",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:light_probe_volume_from_cubemap",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:lightprobetexture",
+              "newValue": "remove_key",
+              "oldValue": "resource:texture"
+            },
+            {
+              "field": "keyvalue:moveable",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:storage",
+              "newValue": "remove_key",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "env_combined_light_probe_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:bakenearz",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:moveable",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "env_cubemap_box"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:light_probe_volume_from_cubemap",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:lightprobetexture",
+              "newValue": "remove_key",
+              "oldValue": "resource:texture"
+            },
+            {
+              "field": "keyvalue:moveable",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:storage",
+              "newValue": "remove_key",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "env_light_probe_volume"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "env_shooter"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_breakable"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_brush"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_conveyor"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_door"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_door_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_guntarget"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_movelinear"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_physbox"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_physical_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_platrot"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_rotating"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_tanktrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_trackautochange"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_trackchange"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "func_tracktrain"
+        },
+        {
+          "fields": [
+            {
+              "field": "input:TriggerForActivatedPlayer",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "input:TriggerForAllPlayers",
+              "newValue": "void",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon0",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon1",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon10",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon11",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon12",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon13",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon14",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon15",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon16",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon17",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon18",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon19",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon2",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon20",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon21",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon3",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon4",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon5",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon6",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon7",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon8",
+              "newValue": "string",
+              "oldValue": ""
+            },
+            {
+              "field": "keyvalue:weapon9",
+              "newValue": "string",
+              "oldValue": ""
+            }
+          ],
+          "name": "game_player_equip"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "hegrenade_projectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:fog",
+              "newValue": "remove_key",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:fogshadows",
+              "newValue": "remove_key",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:fogstrength",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:light_style_radiance_var",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:light_style_var",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "light_barn"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:fademaxdist",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:fademindist",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:nearclipplane",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:priority",
+              "newValue": "",
+              "oldValue": "integer"
+            },
+            {
+              "field": "keyvalue:range",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            }
+          ],
+          "name": "light_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:indirectlight",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:renderdiffuse",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:renderspecular",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:rendertransmissive",
+              "newValue": "",
+              "oldValue": "choices"
+            }
+          ],
+          "name": "light_base_legacy_params"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:ambient_occlusion",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:cascadecrossfade",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:cascadedistancefade",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:fademaxdist",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:fademindist",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:fully_occluded_fraction",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:indirectlight",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:max_occlusion_distance",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:nearclipplane",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:occlusion_exponent",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:priority",
+              "newValue": "",
+              "oldValue": "integer"
+            },
+            {
+              "field": "keyvalue:range",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:renderdiffuse",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:renderspecular",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:rendertransmissive",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:skydirectlight",
+              "newValue": "",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:sunlightminbrightness",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            }
+          ],
+          "name": "light_environment"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:fog",
+              "newValue": "remove_key",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:fogshadows",
+              "newValue": "remove_key",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:fogstrength",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:light_style_radiance_var",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:light_style_var",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "light_omni2"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:fog",
+              "newValue": "remove_key",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:fogshadows",
+              "newValue": "remove_key",
+              "oldValue": "choices"
+            },
+            {
+              "field": "keyvalue:fogstrength",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:light_style_radiance_var",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:light_style_var",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "light_rect"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "molotov_projectile"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "momentary_rot_button"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "point_worldtext"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "prop_dynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "prop_dynamic_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "prop_dynamic_ornament"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "prop_dynamic_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "prop_physics"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "prop_physics_multiplayer"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "prop_physics_override"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:detailgeometry",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:disableinlowquality",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:fademaxdist",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:fademindist",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:precomputelightprobes",
+              "newValue": "",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:renderamt",
+              "newValue": "remove_key",
+              "oldValue": "integer"
+            },
+            {
+              "field": "keyvalue:renderwithdynamic",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "prop_static"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:detailgeometry",
+              "newValue": "",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "prop_static_base"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:HDRColorScale",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:SkyboxSlot",
+              "newValue": "remove_key",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:clip_3D_skybox_near_to_world_far",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:clip_3D_skybox_near_to_world_far_offset",
+              "newValue": "remove_key",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:fogblend",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:fogcolor",
+              "newValue": "remove_key",
+              "oldValue": "color255"
+            },
+            {
+              "field": "keyvalue:fogcolor2",
+              "newValue": "remove_key",
+              "oldValue": "color255"
+            },
+            {
+              "field": "keyvalue:fogdir",
+              "newValue": "remove_key",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:fogenable",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            },
+            {
+              "field": "keyvalue:fogend",
+              "newValue": "remove_key",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:fogmaxdensity",
+              "newValue": "remove_key",
+              "oldValue": "float"
+            },
+            {
+              "field": "keyvalue:fogstart",
+              "newValue": "remove_key",
+              "oldValue": "string"
+            },
+            {
+              "field": "keyvalue:use_angles",
+              "newValue": "remove_key",
+              "oldValue": "boolean"
+            }
+          ],
+          "name": "sky_camera"
+        },
+        {
+          "fields": [
+            {
+              "field": "keyvalue:lightgroup",
+              "newValue": "",
+              "oldValue": "string"
+            }
+          ],
+          "name": "smokegrenade_projectile"
+        }
+      ],
+      "family": "entity_io",
+      "removed": [
+        "beam_spotlight",
+        "color_correction",
+        "color_correction_volume",
+        "env_beam",
+        "env_beverage",
+        "env_bubbles",
+        "env_cubemap",
+        "env_detail_controller",
+        "env_funnel",
+        "env_instructor_vr_hint",
+        "env_laser",
+        "env_lightglow",
+        "env_projectedtexture",
+        "env_rotorshooter",
+        "env_rotorwash_emitter",
+        "env_screenoverlay",
+        "env_smokestack",
+        "env_smoketrail",
+        "env_splash",
+        "env_sprite",
+        "env_sprite_oriented",
+        "env_sun",
+        "env_texturetoggle",
+        "env_tonemap_controller",
+        "env_volumetric_fog_controller",
+        "env_volumetric_fog_volume",
+        "env_wind_clientside",
+        "fog_volume",
+        "func_detail_blocker",
+        "func_distance_occluder",
+        "func_fish_pool",
+        "func_instance",
+        "func_orator",
+        "func_precipitation",
+        "func_precipitation_blocker",
+        "func_reflective_glass",
+        "func_shatterglass",
+        "func_wall",
+        "func_wall_toggle",
+        "haptic_relay",
+        "info_ladder_dismount",
+        "info_landmark",
+        "info_lighting",
+        "info_world_layer",
+        "light_dynamic",
+        "light_omni",
+        "light_ortho",
+        "light_spot",
+        "postprocess_controller",
+        "trigger_tonemap"
+      ]
     }
   ],
   "fromBuild": "12547359",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "12606072"
 }

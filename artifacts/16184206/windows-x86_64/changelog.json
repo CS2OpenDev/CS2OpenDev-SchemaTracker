@@ -207,10 +207,32 @@
       ],
       "family": "localization",
       "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "keyvalue:baked_light_index_max",
+              "newValue": "",
+              "oldValue": "integer"
+            },
+            {
+              "field": "keyvalue:baked_light_index_min",
+              "newValue": "",
+              "oldValue": "integer"
+            }
+          ],
+          "name": "worldspawn"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
     }
   ],
   "fromBuild": "16172454",
   "platform": "windows-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "16184206"
 }
