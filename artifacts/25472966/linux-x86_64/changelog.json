@@ -6109,10 +6109,1001 @@
         "schema_enum:!GlobalTypes/VMixGraphCommandID_t/VMixGraphCommandID_t::CMD_PROCESSOR_SET_VSND_VALUE",
         "schema_enum:!GlobalTypes/VMixGraphCommandID_t/VMixGraphCommandID_t::CMD_PROCESSOR_STORE_CONTROL_VALUE"
       ]
+    },
+    {
+      "added": [
+        "Attrib_HatchDate",
+        "CSGO_official_leaderboard_rush_solo",
+        "ClanTag_Clear_ClanTag",
+        "ClanTag_Lister_Title",
+        "ClanTag_Manage_Groups",
+        "ClanTag_Updating",
+        "DecoratedPlayerName_ClanTag:f",
+        "DecoratedPlayerName_ControllerName:f",
+        "DecoratedPlayerName_Puppeteer:f",
+        "GameUI_CrosshairStyle0",
+        "GameUI_CrosshairStyle0_Tooltip",
+        "GameUI_CrosshairStyle1",
+        "GameUI_CrosshairStyle1_Tooltip",
+        "GameUI_CrosshairStyle2",
+        "GameUI_CrosshairStyle2_Tooltip",
+        "GameUI_CrosshairStyle3",
+        "GameUI_CrosshairStyle3_Tooltip",
+        "GameUI_CrosshairStyle4",
+        "GameUI_CrosshairStyle4_Tooltip",
+        "GameUI_CrosshairStyle5",
+        "GameUI_CrosshairStyle5_Tooltip",
+        "GameUI_CrosshairStyle6",
+        "GameUI_CrosshairStyle6_Tooltip",
+        "GameUI_CrosshairStyle7",
+        "GameUI_CrosshairStyle7_Tooltip",
+        "GameUI_CrosshairUpdated_Info",
+        "GameUI_CrosshairUpdated_Style",
+        "GameUI_DynamicSpreadDistanceLimit",
+        "GameUI_DynamicSpreadDistanceLimit_Tooltip",
+        "GameUI_Xhair_DynamicPreview_Disabled",
+        "GameUI_Xhair_DynamicPreview_Enabled",
+        "GameUI_Xhair_DynamicPreview_Tooltip",
+        "HUD_overhead_pet_quoted",
+        "HUD_overhead_pet_unquoted",
+        "SFUI_BuyMenu_CanOnlyPurchaseTotalXGrenades:f",
+        "SFUI_GameModeRush",
+        "SFUI_GameMode_rush",
+        "SFUI_Lobby_StatusRichPresence_rush_community",
+        "SFUI_Lobby_StatusRichPresence_rush_game",
+        "SFUI_Lobby_StatusRichPresence_rush_lobby",
+        "SFUI_Lobby_StatusRichPresence_rush_review",
+        "SFUI_Lobby_StatusRichPresence_rush_watch",
+        "SFUI_MAP_pet_photo_park",
+        "SFUI_MAP_pet_photo_studio",
+        "SFUI_MapGroup_Tooltip_Desc_rush",
+        "SFUI_Map_rush_001",
+        "SFUI_Mapgroup_rush",
+        "SFUI_Rules_Rush_Loading",
+        "SFUI_Settings_Action_Round_Music_Volume_Tip",
+        "SFUI_Settings_Death_Camera_Music_Volume_Tip",
+        "SFUI_Settings_End_Round_Music_Volume_Tip",
+        "SFUI_Settings_MVP_Music_Volume_Tip",
+        "SFUI_Settings_Map_Objective_Music_Volume_Tip",
+        "SFUI_Settings_Master_Music_Volume",
+        "SFUI_Settings_Master_Music_Volume_Tip",
+        "SFUI_Settings_Menu_Music_Volume_Tip",
+        "SFUI_Settings_Music_Apply_Competitive_To_All",
+        "SFUI_Settings_Music_Mode",
+        "SFUI_Settings_Music_Mode_Tip",
+        "SFUI_Settings_Start_Round_Music_Volume_Tip",
+        "SFUI_Settings_Ten_Second_Warning_Music_Volume_Tip",
+        "chicken_egg",
+        "chicken_egg_cannot_bid_own",
+        "chicken_egg_desc",
+        "chicken_feed",
+        "chicken_feed_desc",
+        "coupon_starjunk95_01",
+        "coupon_starjunk95_01_stattrak",
+        "expired_itemdef",
+        "expired_itemdef_desc",
+        "friends_name_from_steam",
+        "friends_name_generic",
+        "friends_name_in_accept",
+        "friends_name_in_draft",
+        "friends_name_in_party",
+        "friends_name_in_party_leaderboard",
+        "friends_name_playercard",
+        "matchdraft_phase_0_v2",
+        "matchdraft_phase_2_v2",
+        "matchdraft_phase_3_v2",
+        "matchdraft_phase_4_v2",
+        "matchdraft_phase_5_v2",
+        "matchdraft_phase_action_2_v2",
+        "matchdraft_phase_action_3_v2",
+        "matchdraft_phase_action_4_v2",
+        "matchdraft_phase_action_5_v2",
+        "matchdraft_phase_action_wait_0_v2",
+        "matchdraft_phase_action_wait_2_v2",
+        "matchdraft_phase_action_wait_3_v2",
+        "matchdraft_phase_action_wait_4_v2",
+        "matchdraft_phase_action_wait_5_v2",
+        "matchdraft_pick_their",
+        "matchdraft_pick_your",
+        "mission_directive_act_kill_human:f",
+        "mission_directive_act_win_match:f",
+        "mission_directive_act_win_round:f",
+        "musickit_starjunk95_01",
+        "musickit_starjunk95_01_desc",
+        "pet_book_chapter_chick",
+        "pet_book_chapter_hen",
+        "pet_book_chapter_pullet",
+        "pet_book_drag_hint",
+        "pet_book_hatch_due",
+        "pet_book_hint_adolescent_intro",
+        "pet_book_hint_adolescent_road_trip",
+        "pet_book_hint_adult_close",
+        "pet_book_hint_adult_close_pose",
+        "pet_book_hint_adult_perch",
+        "pet_book_hint_adult_perch_pose",
+        "pet_book_hint_adult_tricks",
+        "pet_book_hint_adult_tricks_activity",
+        "pet_book_hint_birthday",
+        "pet_book_hint_birthday_activity",
+        "pet_book_hint_birthday_headwear",
+        "pet_book_hint_chick_and_you",
+        "pet_book_hint_chick_and_you_pose",
+        "pet_book_hint_chick_feet",
+        "pet_book_hint_chick_feet_zoom",
+        "pet_book_hint_chick_intro",
+        "pet_book_hint_chick_intro_zoom",
+        "pet_book_hint_chick_park",
+        "pet_book_hint_free",
+        "pet_book_library",
+        "pet_book_menu_current",
+        "pet_book_menu_current_unnamed",
+        "pet_book_menu_numbered",
+        "pet_book_menu_recent",
+        "pet_book_name_placeholder",
+        "pet_book_open",
+        "pet_book_open_booth",
+        "pet_book_page_adolescent_intro_0",
+        "pet_book_page_adolescent_intro_1",
+        "pet_book_page_adolescent_intro_2",
+        "pet_book_page_adolescent_intro_3",
+        "pet_book_page_adolescent_intro_4",
+        "pet_book_page_adolescent_intro_5",
+        "pet_book_page_adolescent_intro_6",
+        "pet_book_page_adolescent_intro_7",
+        "pet_book_page_adolescent_road_trip_0",
+        "pet_book_page_adolescent_road_trip_1",
+        "pet_book_page_adolescent_road_trip_2",
+        "pet_book_page_adolescent_road_trip_3",
+        "pet_book_page_adolescent_road_trip_4",
+        "pet_book_page_adolescent_road_trip_5",
+        "pet_book_page_adolescent_road_trip_6",
+        "pet_book_page_adolescent_road_trip_7",
+        "pet_book_page_adult_close_0",
+        "pet_book_page_adult_close_1",
+        "pet_book_page_adult_close_2",
+        "pet_book_page_adult_close_3",
+        "pet_book_page_adult_close_4",
+        "pet_book_page_adult_close_5",
+        "pet_book_page_adult_close_6",
+        "pet_book_page_adult_close_7",
+        "pet_book_page_adult_perch_0",
+        "pet_book_page_adult_perch_1",
+        "pet_book_page_adult_perch_2",
+        "pet_book_page_adult_perch_3",
+        "pet_book_page_adult_perch_4",
+        "pet_book_page_adult_perch_5",
+        "pet_book_page_adult_perch_6",
+        "pet_book_page_adult_perch_7",
+        "pet_book_page_adult_tricks_0",
+        "pet_book_page_adult_tricks_1",
+        "pet_book_page_adult_tricks_2",
+        "pet_book_page_adult_tricks_3",
+        "pet_book_page_adult_tricks_4",
+        "pet_book_page_adult_tricks_5",
+        "pet_book_page_adult_tricks_6",
+        "pet_book_page_adult_tricks_7",
+        "pet_book_page_adult_tricks_billing_0",
+        "pet_book_page_adult_tricks_billing_1",
+        "pet_book_page_adult_tricks_billing_2",
+        "pet_book_page_adult_tricks_billing_3",
+        "pet_book_page_adult_tricks_credits_0",
+        "pet_book_page_adult_tricks_credits_1",
+        "pet_book_page_adult_tricks_credits_2",
+        "pet_book_page_adult_tricks_credits_3",
+        "pet_book_page_adult_tricks_disclaimer_0",
+        "pet_book_page_adult_tricks_tagline_0",
+        "pet_book_page_adult_tricks_tagline_1",
+        "pet_book_page_adult_tricks_tagline_2",
+        "pet_book_page_adult_tricks_tagline_3",
+        "pet_book_page_adult_tricks_tagline_4",
+        "pet_book_page_adult_tricks_tagline_5",
+        "pet_book_page_adult_tricks_tagline_6",
+        "pet_book_page_adult_tricks_tagline_7",
+        "pet_book_page_birthday_0",
+        "pet_book_page_birthday_1",
+        "pet_book_page_birthday_2",
+        "pet_book_page_birthday_3",
+        "pet_book_page_birthday_4",
+        "pet_book_page_birthday_5",
+        "pet_book_page_birthday_6",
+        "pet_book_page_birthday_7",
+        "pet_book_page_brave_c4_0",
+        "pet_book_page_brave_c4_casualties",
+        "pet_book_page_brave_c4_cause",
+        "pet_book_page_brave_c4_location",
+        "pet_book_page_brave_fire_casualties",
+        "pet_book_page_brave_fire_cause",
+        "pet_book_page_brave_fire_location",
+        "pet_book_page_brave_report_title_casualties",
+        "pet_book_page_brave_report_title_cause",
+        "pet_book_page_brave_report_title_location",
+        "pet_book_page_brave_report_title_status",
+        "pet_book_page_brave_taser_0",
+        "pet_book_page_brave_taser_casualties",
+        "pet_book_page_brave_taser_cause",
+        "pet_book_page_brave_taser_location",
+        "pet_book_page_chick_and_you_0",
+        "pet_book_page_chick_and_you_1",
+        "pet_book_page_chick_and_you_2",
+        "pet_book_page_chick_and_you_3",
+        "pet_book_page_chick_and_you_4",
+        "pet_book_page_chick_and_you_5",
+        "pet_book_page_chick_and_you_6",
+        "pet_book_page_chick_and_you_7",
+        "pet_book_page_chick_feet_0",
+        "pet_book_page_chick_feet_1",
+        "pet_book_page_chick_feet_2",
+        "pet_book_page_chick_feet_3",
+        "pet_book_page_chick_feet_4",
+        "pet_book_page_chick_feet_5",
+        "pet_book_page_chick_feet_6",
+        "pet_book_page_chick_feet_7",
+        "pet_book_page_chick_park_0",
+        "pet_book_page_chick_park_1",
+        "pet_book_page_chick_park_2",
+        "pet_book_page_chick_park_3",
+        "pet_book_page_chick_park_4",
+        "pet_book_page_chick_park_5",
+        "pet_book_page_chick_park_6",
+        "pet_book_page_chick_park_7",
+        "pet_book_page_counter",
+        "pet_book_subtitle",
+        "pet_book_the_end",
+        "pet_book_title",
+        "pet_chick",
+        "pet_chick_desc",
+        "pet_chicken",
+        "pet_chicken_desc",
+        "pet_expired_notification_msg_0",
+        "pet_expired_notification_msg_1",
+        "pet_expired_notification_msg_2",
+        "pet_expired_notification_msg_3",
+        "pet_expired_notification_msg_maxage",
+        "pet_expired_notification_msg_maxage_book",
+        "pet_expired_notification_msg_nofood_0",
+        "pet_expired_notification_msg_nofood_1",
+        "pet_expired_notification_msg_nofood_2",
+        "pet_expired_notification_msg_nofood_egg_0",
+        "pet_expired_notification_msg_nofood_egg_1",
+        "pet_expired_notification_msg_nofood_egg_2",
+        "pet_expired_notification_title",
+        "pet_expired_notification_title_nofood",
+        "pet_expired_notification_title_nofood_egg",
+        "pet_growth_adolescent",
+        "pet_growth_adolescent_inline",
+        "pet_growth_adult",
+        "pet_growth_adult_inline",
+        "pet_growth_chick",
+        "pet_growth_chick_inline",
+        "pet_growth_egg",
+        "pet_low_food_hint",
+        "pet_low_food_hint_name",
+        "pet_milestone_chick",
+        "pet_milestone_egg",
+        "pet_milestone_hen",
+        "pet_milestone_pullet",
+        "pet_needs_food_hint",
+        "pet_needs_food_hint_name",
+        "pet_photo_booth_activity_fly",
+        "pet_photo_booth_activity_jump",
+        "pet_photo_booth_activity_kick",
+        "pet_photo_booth_activity_moonwalk",
+        "pet_photo_booth_activity_panic",
+        "pet_photo_booth_activity_sit",
+        "pet_photo_booth_activity_wag",
+        "pet_photo_booth_adjust_bloom",
+        "pet_photo_booth_adjust_brightness",
+        "pet_photo_booth_adjust_contrast",
+        "pet_photo_booth_adjust_exposure",
+        "pet_photo_booth_adjust_filter-strength",
+        "pet_photo_booth_adjust_grain",
+        "pet_photo_booth_adjust_grid_opacity",
+        "pet_photo_booth_adjust_grime",
+        "pet_photo_booth_adjust_saturation",
+        "pet_photo_booth_adjust_vibrance",
+        "pet_photo_booth_adjust_vignette",
+        "pet_photo_booth_age_dangerous",
+        "pet_photo_booth_age_maturity",
+        "pet_photo_booth_age_outgrown",
+        "pet_photo_booth_age_scary",
+        "pet_photo_booth_age_scary_brave",
+        "pet_photo_booth_age_tricks",
+        "pet_photo_booth_aspect_16x9",
+        "pet_photo_booth_aspect_1x1",
+        "pet_photo_booth_aspect_3x4",
+        "pet_photo_booth_aspect_4x3",
+        "pet_photo_booth_aspect_4x5",
+        "pet_photo_booth_aspect_5x4",
+        "pet_photo_booth_aspect_9x16",
+        "pet_photo_booth_back_to_book",
+        "pet_photo_booth_effect_beam",
+        "pet_photo_booth_effect_bubbles",
+        "pet_photo_booth_effect_confetti",
+        "pet_photo_booth_effect_explosion",
+        "pet_photo_booth_effect_feathers",
+        "pet_photo_booth_effect_fire",
+        "pet_photo_booth_effect_laser",
+        "pet_photo_booth_effect_lightning",
+        "pet_photo_booth_effect_sparks",
+        "pet_photo_booth_filter_bw",
+        "pet_photo_booth_filter_cool",
+        "pet_photo_booth_filter_crisp",
+        "pet_photo_booth_filter_moonlight",
+        "pet_photo_booth_filter_normal",
+        "pet_photo_booth_filter_psychedelic",
+        "pet_photo_booth_filter_sepia",
+        "pet_photo_booth_filter_silvertone",
+        "pet_photo_booth_filter_warm",
+        "pet_photo_booth_headwear_alien",
+        "pet_photo_booth_headwear_armor",
+        "pet_photo_booth_headwear_banana",
+        "pet_photo_booth_headwear_glasses",
+        "pet_photo_booth_headwear_helmet",
+        "pet_photo_booth_headwear_none",
+        "pet_photo_booth_headwear_nose_glasses",
+        "pet_photo_booth_headwear_party",
+        "pet_photo_booth_headwear_sprout",
+        "pet_photo_booth_headwear_top_hat",
+        "pet_photo_booth_headwear_wizard_hat",
+        "pet_photo_booth_hint_orbit",
+        "pet_photo_booth_hint_pan",
+        "pet_photo_booth_hint_zoom",
+        "pet_photo_booth_map_locked_age",
+        "pet_photo_booth_map_locked_chick",
+        "pet_photo_booth_map_locked_teen",
+        "pet_photo_booth_no_stickers",
+        "pet_photo_booth_open_book",
+        "pet_photo_booth_pose_0",
+        "pet_photo_booth_pose_1",
+        "pet_photo_booth_pose_10",
+        "pet_photo_booth_pose_2",
+        "pet_photo_booth_pose_3",
+        "pet_photo_booth_pose_4",
+        "pet_photo_booth_pose_5",
+        "pet_photo_booth_pose_6",
+        "pet_photo_booth_pose_7",
+        "pet_photo_booth_pose_8",
+        "pet_photo_booth_pose_9",
+        "pet_photo_booth_reset",
+        "pet_photo_booth_setting_adjust",
+        "pet_photo_booth_setting_borders",
+        "pet_photo_booth_setting_filters",
+        "pet_photo_booth_setting_format",
+        "pet_photo_booth_setting_grid",
+        "pet_photo_booth_setting_headwear",
+        "pet_photo_booth_setting_light",
+        "pet_photo_booth_setting_poses",
+        "pet_photo_booth_setting_restriction_tooltip",
+        "pet_photo_booth_setting_stage",
+        "pet_photo_booth_setting_stickers",
+        "pet_photo_booth_setting_team",
+        "pet_photo_booth_team_ct",
+        "pet_photo_booth_team_t",
+        "pet_photo_booth_use",
+        "pet_photo_booth_zoom_closeup",
+        "pet_photo_booth_zoom_mid",
+        "pet_photo_booth_zoom_readout",
+        "pet_photo_booth_zoom_wide",
+        "pet_photo_caption_activity",
+        "pet_photo_caption_filter",
+        "pet_photo_caption_growth",
+        "pet_photo_caption_headwear",
+        "pet_photo_caption_pose",
+        "pet_photo_caption_stage",
+        "pet_photo_caption_zoom",
+        "pet_photo_library_delete_desc",
+        "pet_photo_library_delete_title",
+        "pet_photo_library_empty",
+        "pet_photo_library_empty_in_book",
+        "pet_photo_save_failed_desc",
+        "pet_photo_save_failed_leave",
+        "pet_photo_save_failed_title",
+        "pet_photo_viewer_copy",
+        "pet_photo_viewer_folder",
+        "pet_tooltip_book",
+        "pet_tooltip_inspect",
+        "pet_tooltip_name",
+        "pet_tooltip_name_back",
+        "pet_tooltip_name_cancel",
+        "pet_tooltip_name_submit",
+        "pet_tooltip_photo_booth",
+        "pet_tooltip_rename",
+        "pet_tooltip_zoom_in",
+        "pet_tooltip_zoom_out",
+        "pet_upgrade_notification_msg",
+        "pet_upgrade_notification_msg_1",
+        "pet_upgrade_notification_msg_2",
+        "pet_upgrade_notification_msg_3",
+        "pet_upgrade_notification_title",
+        "quest_11017_var_desc:f",
+        "quest_11017_var_ingame:f",
+        "quest_11017_var_partial:f",
+        "rankup_redemption_claim_cost_warning",
+        "rankup_redemption_store_expired",
+        "rush_countdown_capture",
+        "rush_countdown_capture_ct",
+        "rush_countdown_capture_enemy",
+        "rush_countdown_capture_t",
+        "rush_countdown_message",
+        "rush_hint_ct_tower",
+        "rush_hint_enemy_tower",
+        "rush_hint_t_tower",
+        "rush_hint_your_tower",
+        "rush_mainmenu_tagline",
+        "rush_use_prompt_tower",
+        "settings_crosshair_grenade",
+        "settings_crosshair_settings",
+        "settings_crosshair_sniper",
+        "settings_crosshair_style",
+        "settings_reset_confirm_crosshair_desc",
+        "settings_updated",
+        "take_picture",
+        "tooltip_changeclantag",
+        "tooltip_pet_egg",
+        "tooltip_petbook",
+        "tooltip_short_changeclantag",
+        "tooltip_short_petbook",
+        "tooltip_stickers_decoration",
+        "tooltip_xp_bonus_pet_feed"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1277fbec4cf2d68d8340193ce236f11b075bba559075d4c590a8b0b16d6cee28",
+              "oldValue": "0957dd6d54705b5c88bebeb07fa80b54ec04617a09177da6df3c2af13aad086b"
+            }
+          ],
+          "name": "CSGO_Overwatch_TheSuspect"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "{clantag} {original_controller} {puppeteer}",
+              "oldValue": "{clantag} {original_controller} ({puppeteer})"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "9c318d5b8b638ab1b5445e72be5b79f73e1cbb67e6acd67d6217012f3fe3d77c",
+              "oldValue": "092b9aa150ffab3d496865779bda4bf615ee0f5bd1c0272e1b9752d79266f054"
+            }
+          ],
+          "name": "FullPlayerNameOrder_Default:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "{playerslot}| {clantag} {original_controller} {puppeteer}",
+              "oldValue": "{playerslot}| {clantag} {original_controller} ({puppeteer})"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "57c1c35afff1fed848d140a1773fcffbc5ea0b1570d16d4c62e5e715aebaecd0",
+              "oldValue": "f0b3d4b82283e740b1ad72aa1f17a10ad06b85768b0e5916be6a4bb384df7500"
+            }
+          ],
+          "name": "FullPlayerNameOrder_PlayerSlot:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Crosshair Behavior"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "015ce2e9bf9cbbc0a5a4d5404d3c51115d8d955caf2a2c26c89c5e595e58e05f",
+              "oldValue": "c3b3cd8b89bd5f3d6e16187e1d2eeb3510d45a64bad3e2e653e9463fe5448e84"
+            }
+          ],
+          "name": "GameUI_CrosshairBehavior"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Dynamic"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d1462aaa1be89d50bd3f83a689c113edfb8d28ea679f057707cf9ef7590e408a",
+              "oldValue": "0266d7ad18c3826ea2c31bf8b1e295dd833712f743f65ef6d8eb25a3da51f1ef"
+            }
+          ],
+          "name": "GameUI_CrosshairBehaviorDynamic"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Static"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "6305ccfaa51f79390a1c57976eebb4f95b87804be143d13b1cd84eb386478bdd",
+              "oldValue": "590fed41aa32c386afb68ea2927963475cb8114cff954ed7f06cd564bb22033a"
+            }
+          ],
+          "name": "GameUI_CrosshairBehaviorStatic"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Color and Transparency",
+              "oldValue": "Crosshair Color"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b86e71d298c4c8f19c67bb7d958098d2b085309dbf546b94c3c223eec9d1f5b9",
+              "oldValue": "354330afc8bf66119afbc9337a2167e3f4e85f3229680175f4d4371ed1420cde"
+            }
+          ],
+          "name": "GameUI_CrosshairColor"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Style",
+              "oldValue": "Crosshair Style"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f35f0f4c2ae6e87f892173f36d335a3ad74f6bdcaa5857c4e6e789c2d3ef1e65",
+              "oldValue": "02b6b836b070eda301c66c1ce1b26b67f090c5b6337ac3c805326a71e34f4836"
+            }
+          ],
+          "name": "GameUI_CrosshairStyle"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Classic"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "16253ae482a01c54099e58a98e77e5c7b8c8edaa9b46069f8e0d4b6a21382a86",
+              "oldValue": "848992a5438f87f627a0a856bc8a84d1c8784fadbaa9e597b64644015a3bfd7b"
+            }
+          ],
+          "name": "GameUI_CrosshairStyleClassic"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Classic Dynamic"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "15140835b4950dba3e836b26fd3071f9f89eb23632d0a475448104e5bd80d334",
+              "oldValue": "2cf8349385d821ee70c45645d5ba2602d4a9edcb42653e654b6e817454eb921a"
+            }
+          ],
+          "name": "GameUI_CrosshairStyleClassicDyn"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Classic Static"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "04d0a9373abe0c52a6a55ecc47846be37c005dcc93b437d64a26f5da1f8aee4c",
+              "oldValue": "44ef0b60fd8b5ff6d57112e03a54b0685e3d898a40a09ad7c088f9f1a09aafd9"
+            }
+          ],
+          "name": "GameUI_CrosshairStyleClassicStatic"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Default"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "239e4d2a330866969128cff7aa3068cd43105ab315e254047aad5542c73344f8",
+              "oldValue": "12bbfecc08b1418b89e72530e37625de4415b3b47473f5b26cbf945ee0fa85fc"
+            }
+          ],
+          "name": "GameUI_CrosshairStyleDefault"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Default Static"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "7c1b1f6d2b7f5a051e2722412a87754496a82c3c445f0b944a47d8da87b65215",
+              "oldValue": "d301e222487e1d593aebcb5c14263296e5d51398507bf8a98ed60e8e10058a20"
+            }
+          ],
+          "name": "GameUI_CrosshairStyleDefaultStatic"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Legacy"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "249c883021da538cd78370798ca2837bee88f3d9964f425cd8176da355ea616d",
+              "oldValue": "5b5dfc3a4d1bb6d786b91336d3220e98686be1648020e536b501596ff206922b"
+            }
+          ],
+          "name": "GameUI_CrosshairStyleLegacy"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Deployed Weapon Gap"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "963954e28420c2e7bc93ed934cc75d5962f02e930f60d5d78563c149d67ca98a",
+              "oldValue": "662b3abd3a3ea6c019a646f3cbd198b7e587e3e46740f8e83f8f2f8d89e41360"
+            }
+          ],
+          "name": "GameUI_ShowWeaponGap"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Crosshair gap will update dynamically based on which weapon is currently equipped."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "2b28c9d8d739868122c9c6edb7547f4a61842e8791ca8c5ed9dd286d63208463",
+              "oldValue": "3ecd7c1276c812614eeae9eaf77bb9b954a8caeb8fdd0279f9efdbda514662c3"
+            }
+          ],
+          "name": "GameUI_ShowWeaponGap_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Import from CS:GO"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "4df1a4d41b1ff3e8c911f6939d5537a9ebce90dc53754be9b756e376e597ed5e",
+              "oldValue": "586c3fd9fb6367b7c87d7ebee5313389ac1843f66bd9402f8783c23aea1e58bf"
+            }
+          ],
+          "name": "GameUI_Xhair_ImportCSGO"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Import crosshair from last time you played CS:GO."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "7f592723687d43e307a4ba594aadbaf95fb76d64c3ea7e9d7adb11d207e387d4",
+              "oldValue": "dd00bbf54c6a399730023cf8cd18029d86406fa7956c5fc3f8a8915792d516f3"
+            }
+          ],
+          "name": "GameUI_Xhair_ImportCSGO_Tooltip"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2c019503230a6611ce30150bca6d8300a4a99692946271225d9ef73c440c800f",
+              "oldValue": "5e900598e7f02a798a8457fb4d23ba5359709f17e37ee8278e0956047e0c4b1f"
+            }
+          ],
+          "name": "SFUI_InvTooltip_SetTag"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "086800f09c705efe0b8f711ba96d9ecdc70072d01db629c84092d54726e8633e",
+              "oldValue": "0d7d772d6218da7d7cd9f2b8c931af39d527403e89ff0ea7ed384a649f4eff78"
+            }
+          ],
+          "name": "SFUI_InvTooltip_Wear_Amount_NA"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "540e986684b34fe3a2e682b5c1a9a35af8c1a1917dfffa656fd04b570309969a",
+              "oldValue": "e581abf0a92055b26daf38263d7a8a0733dd31e952d58be33dba6261ebf32387"
+            }
+          ],
+          "name": "SFUI_MedalCategory_CatTitle"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "%s1 and any party members have received VACNet cooldowns.",
+              "oldValue": "%s1 and any party members have received VACNET cooldowns."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "3002acb608bc8916f494d84094ac24231e43b2cb0332249ce1d91d6b097060ab",
+              "oldValue": "5cf66883a482cdac6f406e06e53dc715ca94e692eae0740d68b47f4b704a8fef"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "VACNet has detected irregular gameplay and has canceled the match.",
+              "oldValue": "VACNET has detected irregular gameplay and has canceled the match."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "95b042ae5c88419f48d57756cdee6d562a04369adf39fe1b2b298b3897858267",
+              "oldValue": "cfabc04a162cc096d5da41001e2729a22aa85f65e91dcf9b7ea174b1c4d1824e"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior_pano"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<span class=\"sb-player-name--\">{s:player_name}</span>"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "4def137917733ff94d663f10527dd645e29676796b9c30e77d418c46f7f212c7",
+              "oldValue": "46a104a2f1b84d80d4e67369d6b5cce21daefbf43018ab1f5f759c0c06516a08"
+            }
+          ],
+          "name": "Scoreboard_Player_Name"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "<span class=\"sb-clantag\">{s:player_clan}</span> <span class=\"sb-player-name--\">{s:player_name}</span>"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "963a0a56fdd55cd762589678ed0e2017a6d5c1bf1bed885093f7ac6179fe0161",
+              "oldValue": "ad4dd736a45fe0134a89d5d91264579dee731ce06e411ef42c2461ab6ccc3f14"
+            }
+          ],
+          "name": "Scoreboard_Player_Name_Clan"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "<b>{d:mission-points}</b> {s:action_directive}",
+              "oldValue": "<b>{d:mission-points}</b> {mission-points, plural, one{{s:action}} other{{s:actions}}}"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "313b795227b528323904e6c075994c876addb6cf92ab33a99efd651a0f24c908",
+              "oldValue": "ea1ba8e5a22fbddfcd168da2e25b185d963e2852d076194762bc75212f9a2f32"
+            }
+          ],
+          "name": "mission_directive:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "{d:mission-progress}/<b>{d:mission-points}</b> {s:action_directive}",
+              "oldValue": "{d:mission-progress}/<b>{d:mission-points}</b> {mission-points, plural, one{{s:action}} other{{s:actions}}}"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "faa714b0d8a2803b207e340fa48ed7fc667f97338571bb7d357ff9d1dbd5898f",
+              "oldValue": "93b787236979d6edaa7a5bb1762981147bcb1712f2d4808181bc9df9f0022a4f"
+            }
+          ],
+          "name": "mission_directive_progress:f"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "kills"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "b88c089266f15996d6097b0f4a2aa452ac939a64e428ab61c031a7081bee38e9",
+              "oldValue": "57d2fe386d0d766c0f66a474e5851844a16a7b1f464ab3c64cfff296b51fbb05"
+            }
+          ],
+          "name": "quest_action_plural_act_kill_human"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "round wins"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "a96459157f912cc0f4f45989ee35b0caefba79aa4a942795477a9bc3b27e1ae6",
+              "oldValue": "70896ffdb8082250bd3cd322b9560b3ed960aa63d65a817ff737bfc7d4eb8596"
+            }
+          ],
+          "name": "quest_action_plural_act_win_round"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "kill"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f4de691216e652bde2e637244c826f60e170bff629b0e7a054fc5532ec95d44f",
+              "oldValue": "a878f973c507009ea8be96a23f147d673266118d16462991407209e09a67eed4"
+            }
+          ],
+          "name": "quest_action_singular_act_kill_human"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "round win"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "535434cc233b51afc61ba17357a6b65eac3bd6bc7c0e2cb70e2077cf20807bba",
+              "oldValue": "12e07a1492ed07146081b9b80055a656c8108493f4e8d0edf62fbc03c5a7af24"
+            }
+          ],
+          "name": "quest_action_singular_act_win_round"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Crosshair / Scopes",
+              "oldValue": "Crosshair"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "d714e8b8e574882f13ebd94d4c3a2d0806d6376ecda667a577d65e654b36e18b",
+              "oldValue": "d336fff5fdd3070b249c7cca4041052f17b0edc81eda449546d2cccc103ca86b"
+            }
+          ],
+          "name": "settings_crosshair"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Customize your crosshair size, shape, and color. Share your crosshair code with friends or try someone else's settings.",
+              "oldValue": "Customize your reticle size, shape, and color. Share your crosshair code with friends or try someone else's settings."
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "f631793fd0129b73f6efb6e478bf1020f217a0698b4adead7706875cea406e49",
+              "oldValue": "0c749677594e72d1034a3b263f672f5ef4e5d4ad3bbb6f0ebd11762e1f8bc900"
+            }
+          ],
+          "name": "settings_crosshair_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Grenade Line-up Reticle"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "eb9e9efa7dd66758bf64e9598cb19d7584574ae0f5ed992b6be145095ab97674",
+              "oldValue": "736ac714cefb149d93906362ba6485f78c0e12df4b5f34848c8c3166f2367ebd"
+            }
+          ],
+          "name": "settings_grenadecrosshair"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "A helper crosshair for lining up grenade throws",
+              "oldValue": "A helper reticle for lining up grenade throws"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "c07521b813c3ad95ed95fba201373c282aec444a6add62ad7d9cdc8bee621992",
+              "oldValue": "952e395166256d400f965400c869aa2f7678823e2d9b159f478d8b893226937a"
+            }
+          ],
+          "name": "settings_grenadecrosshair_info"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Grenade Line-up"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "bab8456d84ccc549990759b9a80afe54eaa9012a17ca68fd5d8c57f451e39201",
+              "oldValue": "6eb3fa73a99e482fac5be8cccc119382088f9da4aa693103f64bdd575c06abf5"
+            }
+          ],
+          "name": "settings_grenadecrosshair_short"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "",
+              "oldValue": "Sniper Sights"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "0b30ca2d340c4badfa64c039b187ca789ae7f2344a29c6d765860bed1ffca4a4",
+              "oldValue": "104f428c660458b2e9fdff6f83a060ca637c4fa238f5860e85a1f3ace157a25d"
+            }
+          ],
+          "name": "settings_snipers_xhair"
+        },
+        {
+          "fields": [
+            {
+              "field": "englishValue",
+              "newValue": "Open the VACNet labeling portal",
+              "oldValue": "Open the VacNet labeling portal"
+            },
+            {
+              "field": "valuesHash",
+              "newValue": "222ddffd0bd281dae5a1eb685e4345a970f5e9ff054e11fd72926be3cd00ea8e",
+              "oldValue": "75d5e4b9db2eb3540f522ce72d39201c2436beaef2daa5059a47601fbc2a516d"
+            }
+          ],
+          "name": "tooltip_navbar_vacnet"
+        }
+      ],
+      "family": "localization",
+      "removed": []
     }
   ],
   "fromBuild": "25218825",
   "platform": "linux-x86_64",
-  "schemaVersion": "0.12.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "25472966"
 }

@@ -29,10 +29,587 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1dd28244f2e799d0cb52746cbb6b0b9605154d11e74e67939031d6d3ed6d92ab",
+              "oldValue": "979a250a320b7287c0752171ae36059420e555544e9c59802d37c85376bdd72f"
+            }
+          ],
+          "name": "CSGO_FilterRarity"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d4665bc64cd6c12ff8c6473cc09c6fcc387803d7887c22925b7fbbcc9a878b68",
+              "oldValue": "cab399b017f6a419633b5052e893fc3ee1eda77afbe3078c9afb02ed1a2c2ce6"
+            }
+          ],
+          "name": "CSGO_Type_Collectible"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f63281b7b0fe6c1d2057206e88220d5f91b735698820af4c31042821bcddaab3",
+              "oldValue": "6b738003577e277811c5a7b07f71cca6c79ab8789b9af5f4063ee373b5227572"
+            }
+          ],
+          "name": "FriendsList_nodata_friends"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c3d714639643fd2c7d1071a308aeadcf6463bf383732cc1aa4a761505f2499b1",
+              "oldValue": "3e6d548139437bb46efd60baddd28c41ae186fbde92a989f283f7bb0a91b8e87"
+            }
+          ],
+          "name": "FriendsList_nodata_recents"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ce8b53ab1b07ef47ddf4f715199086657f6c63c09af7b78badcfc84f46d0058b",
+              "oldValue": "ab3edac7383b69d097884ff0dbe26d9648811dbfbb2eb3f8921bb2018c1399e0"
+            }
+          ],
+          "name": "FriendsList_nodata_recents_title"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "35e134821ac4dc557d05fb6a7718f4ca067c56dfcb55bd759f910d55ed6e5c3e",
+              "oldValue": "98c6504ad05b4594b5ef57799ce7f0657d5e5e1da771f73f97ad57cf92511875"
+            }
+          ],
+          "name": "KILL_ENEMY_MOLOTOV_DESC"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "de39f72065d1fca355176622abc59008738401dcf2a92110d4e391384f5f2b46",
+              "oldValue": "944613cfb7b8eacecc66dc361b56b4400a041ab41ee26178993dd59d8aa7040a"
+            }
+          ],
+          "name": "LoadingProgress_CSFunLoading3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ec05efeaf8e22af83637fac31edf44600e7ca90b766c5e81f05bf5749f01429e",
+              "oldValue": "40b8ec997e94914271f4ce0c1e0e1a40d2f786928bd1e17dcbd78d8489f18a1e"
+            }
+          ],
+          "name": "PaintKit_cu_mp7_classified"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ff4378952734fd80225129501056cadc1d75badea78845559a262fa17a444260",
+              "oldValue": "caec28de7790ad99def4b8db417122e6f38ec002f23ab9c16e4c0f865ba5baff"
+            }
+          ],
+          "name": "PaintKit_hy_labrat_mp5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c2032c168dcb5cfb61fd73496edbb9a069caa4e7158cfcf56ac7fe7485eb6bb3",
+              "oldValue": "9a101593341bd405ab4f3f67a8303a357f7add209296991646a9357376b6cd26"
+            }
+          ],
+          "name": "RI_R1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "68bd913f21537045cf21f0734b9b694f6d1dc86855bcf4b0f8ac52dc24436987",
+              "oldValue": "369e722e8a6a725bdd568078057a2a477909dfd0a30726b3ed998bfe30665dfc"
+            }
+          ],
+          "name": "RI_R1p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a626934e399aaba10ac5303416d7c6c45c409956fa48d608ca459410c127c08c",
+              "oldValue": "e4193f28238c99c222faab41ab4eb62952e6ffa7833c4ee270e19b1cb4b1f660"
+            }
+          ],
+          "name": "RI_R2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "813f18646c0f91ef971d4bb284648cca8291404d69603e2c506180e4d22152c2",
+              "oldValue": "dee25ddcfb27ec3caa261b65f32034086ee152478e929c3327f0783b0edb0b27"
+            }
+          ],
+          "name": "RI_R2p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "275cba69c5876eff81686f3112ea7aa41d76b800ed6497e427ca5e3193c4db87",
+              "oldValue": "2acf25058e8143f4fd7ac7534abb17f0eb360ae5a247778e4c324b9a7465cf69"
+            }
+          ],
+          "name": "RI_R5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4f00d39b9dfc26948bb50b5f769c1655a5e590b96f2791d22ea4e73401d790b7",
+              "oldValue": "e8abdd15958f5deea70c809a8e655823d4f92c01b0cce233dcbd4da5736f05c6"
+            }
+          ],
+          "name": "RI_R5p"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6152e3d52d6e432179012c2aed552a78490d7197d7782e9e690351be3974723c",
+              "oldValue": "2ba9c00fbbfbcadd99b95e3395a739b45724cd91685a420f1746f5977d3f2ef5"
+            }
+          ],
+          "name": "Rarity_Ancient"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "cc706fed503cefaecd147803ef8db91692e30131287b3094d622dd1f6634658b",
+              "oldValue": "f9d5fbce0536d24c3bdc6e10207118a3ac815a978e1dbeee1ddbb62a9f471182"
+            }
+          ],
+          "name": "Rarity_Ancient_Character"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1f7517f4c826b7d1cf4c7d2d350c74ab74449861d949c461c76efd5d717bc399",
+              "oldValue": "c3f6c28905b2908feef51611338d62e9e56c89df84c32534cdcf874ee1206e94"
+            }
+          ],
+          "name": "Rarity_Ancient_Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f540c2ccc9a274eef70f8ee416fbcb91c397df93b21c3b8c2f4086bdc90f7330",
+              "oldValue": "992016ed675ee0661b2230a12578fb97c9978d0cbebeb6e1778146022431234f"
+            }
+          ],
+          "name": "Rarity_Arcana"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "34c5e5dd9e68a4fdb7ce52c9cb4d3f2d9166db5a8c742c2c6b5a5f141d23b25a",
+              "oldValue": "e52b630d8488be6bcb11693ff34b60e7570e6f0fabe74b1ac3841b9ad799b9b0"
+            }
+          ],
+          "name": "Rarity_Common"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8d6b1bdc11fb98f801c25c672e471f56b280d942448af47a82552b7e55922ac7",
+              "oldValue": "e15d23de2d00e5eeb8b1915ff4293570273831a4937f1d1d90e701a514bdf7c4"
+            }
+          ],
+          "name": "Rarity_Common_Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "27e8e8e7741f382375617672f3f9d15d0b23ce4af12cd44b4a18dab5ef100944",
+              "oldValue": "025c8bc7d518725ff17de19d6c3a1feb77c55d63fcf192b193f4758baa91a50b"
+            }
+          ],
+          "name": "Rarity_Contraband"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3143e05ba308684fa4c7e4a23e581dd856f89d56bbe02362279d25958d50291f",
+              "oldValue": "9fdb5d2cd25353205e1b63a2b60aafa7899ee5ac57797e1f8d2947fb003ce6e6"
+            }
+          ],
+          "name": "Rarity_Contraband_Character"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bef7d22a73d4f7bb972a246ac6d4d28ddf38d80f176f3f336a2a742a59c4141e",
+              "oldValue": "0c60f9d62f6c2d1803e99d65a173f67fa2b38c9162bd02a2de8fefce3c0d91e2"
+            }
+          ],
+          "name": "Rarity_Contraband_Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ef7da9e3b05ee9962799d0333d2657648132c541d7f687528f1402bf9c01ace1",
+              "oldValue": "4162f19ca4c62adc3de43d335e1dcbc7ad0ad5350e091295ccac4e1ee8871c07"
+            }
+          ],
+          "name": "Rarity_Default"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4348b4cc83c9f890523ed224fc07018b0fb0b3e6c8748f0e57b020da7413b49e",
+              "oldValue": "73ddb0fc5500854850b88338816f9325376acadd56c07e461340535c8fe8a103"
+            }
+          ],
+          "name": "Rarity_Default_Character"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "df77957cde4ddabfef82f04b5796d300c0bad76b8f8f979dd12c2658678f2d0d",
+              "oldValue": "9dcdf93e499465c3c95c0df90027bd8ea86bf99e3bb2d7228bba55f1a4b5db06"
+            }
+          ],
+          "name": "Rarity_Default_Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "af0114804588f52c63f44a3d4dacdd1d385270674ecadbfb0f915651d08120ad",
+              "oldValue": "c2f5620f52a5065f0e0f591c43ce970dbca7c4986ccb52a98585c4c5ffd141bb"
+            }
+          ],
+          "name": "Rarity_Legendary"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6af9afee7e642192a2ddbf493f6c872ddeb080e54355bd415c1707d3c5df8eef",
+              "oldValue": "4251fb776b4005e64c2fa6a8bcb0f23de1a280b3ab0f4d7088c81203d3decf4b"
+            }
+          ],
+          "name": "Rarity_Legendary_Character"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "427cd7ac78edca691a029ad3cc9f6fb6f0f226589d50dd8467639f44dda5b12c",
+              "oldValue": "05e6ebc499aabdd3f2e9b426d56812bd5ce941693f6a16e72c57c163f296e33e"
+            }
+          ],
+          "name": "Rarity_Legendary_Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "66f91f00560736e3ed8b31556a29c1ff9983677fe8a0898dd351a5283c4122b7",
+              "oldValue": "5c10bf47087162be4942bd3fb41f928bd2d3871b161509c69e578e21c6b906ff"
+            }
+          ],
+          "name": "Rarity_Mythical"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "f96b21f8fcb86bdb2af2059d2e8bddcf6dd6c4dae33f40d52599025de9cd90b1",
+              "oldValue": "5f2971ca494c666f3f0ae97d6a2e68236ea236af23e46851d110f151a45a8a8b"
+            }
+          ],
+          "name": "Rarity_Mythical_Character"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b17051972155bb07f0285a9807137c1d1ea0f11318ccc5b95c5ae4c567681bca",
+              "oldValue": "a55b876455dd676c30d6359b8833fb7151b2474eb383a80809638f72c3ae191b"
+            }
+          ],
+          "name": "Rarity_Mythical_Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "b5206690ba9bca6a457e06ee7d507bf40e3613819bb9da9f85391723c20a606f",
+              "oldValue": "994fac6776277260b56bcabade5b911b8a9205648c34f6d20bbffc9d0a343c3b"
+            }
+          ],
+          "name": "Rarity_Rare"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "53e889497bd35dac3e313ec682f37b3596dc0ea1311a07acf3e306ddbc5e0827",
+              "oldValue": "fd4c9e73e619648d06559b57b04e98040fe2f5a0e98c4ffe14ff767fcba4220f"
+            }
+          ],
+          "name": "Rarity_Rare_Character"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "c071f5b805ed2e207c8a27d44326fbbf9c74d6525e509d0e7b1476c6fb5d1568",
+              "oldValue": "132c61f2c40cd8b3c3ed194c0f85ff22b72cda26c5c0a6affd8063d2ef128da4"
+            }
+          ],
+          "name": "Rarity_Rare_Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "946d812b24bfc09b4299fe52ad05cfe8a3d2ccccdc8fef9f91c583bd6c58750c",
+              "oldValue": "a40ba64e93fd4fdce1429cf9b1e2054b660e31dc6819e6c99cd4c556dd75181e"
+            }
+          ],
+          "name": "Rarity_Uncommon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d2e96bb3066f7f328100f2a95f80ec4fb370e5887105d051176d731e269c0310",
+              "oldValue": "09c723739476eae9076673e3fc157501a1f41d0bf589b33e4acac37eef6bf176"
+            }
+          ],
+          "name": "Rarity_Uncommon_Weapon"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "5ed65ea701aa27d4746057080e52a0a53bb4076aeb1400d30dda028683f8b5aa",
+              "oldValue": "e3179fe3b535fef37cdc1d315055dcf8ffbfa0f219002c3b88ad0333fc552935"
+            }
+          ],
+          "name": "SFUI_Friends_Play"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2721b16d2a2783b7648502a02111633a48a9c136a5177304a3d3bac8f453f164",
+              "oldValue": "437ae031c315f23f0a62073ab22b027eb2120e7ef8e0997a6243ea7d701212ca"
+            }
+          ],
+          "name": "SFUI_Friends_Play_Comp"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1ba7ae4cbcc0207392849461c36303b36f2d6d9a45b7fe57ed098302fc2c9e45",
+              "oldValue": "6d1e0b129900e9d1491fa75febaf9c8fe28104eefa44abb01eb53d227349c122"
+            }
+          ],
+          "name": "SFUI_Friends_Recent"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "208392e99fecc67e389f2ca37917dc26bff678b86158c0e5bba3360672b25343",
+              "oldValue": "ae5f8d8fe0c61a7c9d360ba6698038cea37b352550f1754cc5619a762884dbf0"
+            }
+          ],
+          "name": "SFUI_Map_Tooltip_Desc_Hostage"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "945e2bc10838082ae67a1fd0cc4ad17e1e209b67b8622cd4ee6f62b793395a82",
+              "oldValue": "0f7d64a12ed559a2bd7bb4c677dea2b01e8ee8aa3e4769d157dcd9bc7d925176"
+            }
+          ],
+          "name": "SFUI_Map_Tooltip_Desc_Reserves"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ecd60984cff8ee01deec60b1519fe23524dc4c9ac5153b7cde3e657517e22717",
+              "oldValue": "f544f809cd9749df106b8f28459d83624cb529358f7aacd0f1892c65b755598b"
+            }
+          ],
+          "name": "SFUI_QMM_ERROR_X_InsecureBlocked"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "d5aa52a2961d80182b3da93edd497ecfefa24eed4b2afc14f4d63068e00aa76b",
+              "oldValue": "7dafaa6570876b25c32c950001b3544c3b7b6cc1266882f51b9ff19c3057fe2a"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "9e8425cf5580d428ff8c44aa97bde714fc01552665cd13693725adcfaa0440db",
+              "oldValue": "46bc73b88313a02b37a0fab0c15e50c3dd66b7401468b28f916e9dad69fb7529"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior_pano"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2c6c3356ee316200135ae1abb4cbaefd97e7eed8872a9e8f47f3c37c4b065986",
+              "oldValue": "57a21a16f2fbf4a5924230cff345e747cc6be13b52e478c1196e8cde52159bac"
+            }
+          ],
+          "name": "dealer_message_classified_0"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8b917cb73a4efd61e0061e0e2e1c207930183b4f7c4d904a6ce3c8efa4fc1bc6",
+              "oldValue": "dfe979b00d6c05ad39ac4ed20c8d133a2e059463ac7ff0ea31979e8fca2180c3"
+            }
+          ],
+          "name": "dealer_message_classified_1"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6dd4d247143f95f6f0da966c0bf33fee203330adec9764571c255e3f0c15f618",
+              "oldValue": "1499cfcbddda4765a8d7ec6d3abae16643366ef7b7bf2e3d4cf448477a12778d"
+            }
+          ],
+          "name": "dealer_message_classified_2"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3b510dfccd2cfe53b592ffd8c85cbe36823f3371460206c766712b16eb521a9e",
+              "oldValue": "a3ebd01ef8f5eadf867377be1b58e31b48728ca665cd0ce7feba46c5973adc78"
+            }
+          ],
+          "name": "dealer_message_classified_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "a9c552dd2861a61020d7805eac3957137caecef503485f09aaf241bd00bc5822",
+              "oldValue": "8b6edce4b7a2289b22198c7ea3b356bfdd1aa594e9ab1f3b76af5416bfa579c9"
+            }
+          ],
+          "name": "dealer_message_classified_4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1df44cfcb65d00dbc041c0d7604c18ba179984d73fce06b3c15604267d4d2bf3",
+              "oldValue": "907cf4ca972d1425cae925b991613f488c32bf14d8fa61cd2055bf2e63e2fbbc"
+            }
+          ],
+          "name": "dealer_message_classified_5"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ac7d3ac5cc939206dee9b399ce318cd5bd82f2836e94145531f04cd87ec86733",
+              "oldValue": "df59c7c5a2c7982f9755367cc4f257071fac50097eb89a6575c610cd5b3162c7"
+            }
+          ],
+          "name": "inv_empty_lister"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ef8a751e520e24872a189f6b0a697445e3ade8ff120eb6fa5d71a2dc61133fd6",
+              "oldValue": "f49334bf51efdfef44f1485f07f7d699ee8e2a6c6aa955f44a595b8214924671"
+            }
+          ],
+          "name": "inv_header_rarity"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "e7e4600d08e05a2784e23685a11030f7b6ac672767d0ddaad9bb74ff40a6633d",
+              "oldValue": "6d666f5b077517a98f137a40073f7acc30e92822d42d64bf4ea7767018dd7ef3"
+            }
+          ],
+          "name": "rarity3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "8ae2ef907cd4c31ab50e1f9ccabec319957a0d086f10a8c30bf2a2835323f7e7",
+              "oldValue": "a847e30cfebe0d06e12de0565f1e18839f8dc48d03f59e76ef628531b4a683d1"
+            }
+          ],
+          "name": "rarity4"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "6bdc323a63f245e8c7951a9cc694f238808357fc30e5fa78440f6e4806a81c66",
+              "oldValue": "879dfd84f23c2e72c95cf67ffd59700795a5f54a4ea7d91c31a7cd7005b3c39b"
+            }
+          ],
+          "name": "tooltip_navbar_vacnet"
+        }
+      ],
+      "family": "localization",
+      "removed": []
     }
   ],
   "fromBuild": "24701871",
   "platform": "linux-x86_64",
-  "schemaVersion": "0.10.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "24828357"
 }

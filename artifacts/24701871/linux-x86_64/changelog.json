@@ -29,10 +29,117 @@
       "changed": [],
       "family": "engine_constants",
       "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "ca230c9abd2ac97deac546f0ebf7daed39b00ee99ede5e0bbef32ce59f0005bc",
+              "oldValue": "14028a066f01af3e4ef0330c7432054e41717ffa21da1dc65866ee7af628caf5"
+            }
+          ],
+          "name": "CSGO_Notice_Alert_Match_Starting_In"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "4a729b2dc03c044e00df730cf8c57652f4d35c592f70ade055e43a0ea7027708",
+              "oldValue": "2f4782681a8a0786bf7a60f45675e55dbdebb8a60aa8ebb5984dec7f38bca53a"
+            }
+          ],
+          "name": "SFUI_Settings_Display"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "7dafaa6570876b25c32c950001b3544c3b7b6cc1266882f51b9ff19c3057fe2a",
+              "oldValue": "2107f6a6e4d588659320f606513baaea4a8bcfcf50763a715872c7638b63a5ea"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "46bc73b88313a02b37a0fab0c15e50c3dd66b7401468b28f916e9dad69fb7529",
+              "oldValue": "0b786ae72d4b0abb9b4b9161a259b1afe9b052ae385e1a7fb79973c74199c595"
+            }
+          ],
+          "name": "SFUI_match_abort_match_abnormal_behavior_pano"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "1f2ebdee4a8524dbf463022161419e8ac0cf4d6ebf8838bd5b9a897be2313385",
+              "oldValue": "7ea7f77248b352860ee6675537db05ed8f626d9470d9ed9058a4b5ea10d8070c"
+            }
+          ],
+          "name": "dealer_offer_attachment_final"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3f6a8d77a07971604decfb928385ceb3a45f7c5dbeb5b1744052ff44848902bd",
+              "oldValue": "7d6a71320bb8171c1207584cb14945877cd425412d858b85d3dfde885046e491"
+            }
+          ],
+          "name": "dealer_offer_received_count"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "3a16b8f34be13fac93201238b501c318ee69a42b39fc8c7f7e5577df24fbff99",
+              "oldValue": "527ce2642b26513247cc042917bf7420d2d110bb41e074852d74bb3d3fbe9bd2"
+            }
+          ],
+          "name": "mainmenu_major_hub_new_ranked"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "451a0d3d4b2b5d66f0b9c9ee5044e1afbbbcd7dad0778943c00887c8d5b34c65",
+              "oldValue": "5ac19984ad110afe565a1daaca7ce88964ec616961477d78b3059761e7d5820f"
+            }
+          ],
+          "name": "major_hub_store_desc_3"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "bb2f9c1488b0020d54dd2466a00715407d593f0dfcd22f3b3cb5e0939b66a9cc",
+              "oldValue": "07954bdb590df4d2b0df57cd4dc284462f13579230f9ce6af29612fac4b5b958"
+            }
+          ],
+          "name": "settings_voice_section"
+        },
+        {
+          "fields": [
+            {
+              "field": "valuesHash",
+              "newValue": "2eb3d0f3ec3001c5eda1cfc08199bc6de88a1f7f39396a407841e2d52526174e",
+              "oldValue": "35536f73d942ddd8c7e9692482bafd30c32cc076461ac49ed9aeac6832052ebc"
+            }
+          ],
+          "name": "tooltip_short_mute"
+        }
+      ],
+      "family": "localization",
+      "removed": []
     }
   ],
   "fromBuild": "24662694",
   "platform": "linux-x86_64",
-  "schemaVersion": "0.9.0",
+  "schemaVersion": "0.13.0",
   "toBuild": "24701871"
 }
