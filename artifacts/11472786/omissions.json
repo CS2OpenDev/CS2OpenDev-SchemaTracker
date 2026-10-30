@@ -4,6 +4,16 @@
     {
       "contentOmissions": [
         {
+          "artifact": "cs_script_api.json",
+          "notes": "built from the Workshop Tools depot 2347779, which ships for windows-x86_64 only",
+          "reason": "TOOLS_DEPOT_NOT_ON_PLATFORM"
+        },
+        {
+          "artifact": "entity_io.json",
+          "notes": "built from the Workshop Tools depot 2347779, which ships for windows-x86_64 only",
+          "reason": "TOOLS_DEPOT_NOT_ON_PLATFORM"
+        },
+        {
           "artifact": "localization.json",
           "notes": "resource/csgo_<lang>.txt token tables absent from this build's content depot",
           "reason": "CONTENT_NOT_SHIPPED_THIS_ERA"
@@ -26,5 +36,5 @@
       "reason": "REASON_UNSPECIFIED"
     }
   ],
-  "schemaVersion": "0.5.0"
+  "schemaVersion": "0.13.0"
 }
