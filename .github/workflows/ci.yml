@@ -259,28 +259,35 @@ jobs:
           sudo apt-get install -y protobuf-compiler libprotobuf-dev
           protoc --version
 
-      - name: Resolve vcpkg version (cache key)
+      - name: Pin vcpkg ports tree (Windows)
         if: runner.os == 'Windows'
+        # The image's vcpkg clone tracks upstream, so an image refresh can change which
+        # protobuf gets built: the 2026-10-30 image moved it to 7.36.2#0, whose x64-windows
+        # DLL does not link against C++20 consumers. scripts/pin-vcpkg-ports.sh checks the
+        # clone out at walker/vcpkg.pin so the whole closure stays fixed until the pin moves.
         shell: bash
-        run: echo "VCPKG_VERSION=$("$VCPKG_INSTALLATION_ROOT/vcpkg.exe" version | head -1 | tr -cd 'A-Za-z0-9._-')" >> "$GITHUB_ENV"
+        run: |
+          [ -d "$VCPKG_INSTALLATION_ROOT" ] || { echo "vcpkg not found on runner; image changed unexpectedly." >&2; exit 1; }
+          ./scripts/pin-vcpkg-ports.sh "$VCPKG_INSTALLATION_ROOT"
+          pin="$(grep -v '^[[:space:]]*#' walker/vcpkg.pin | tr -d '[:space:]')"
+          echo "VCPKG_CACHE_KEY=vcpkg-archives-x64-windows-protobuf-${pin:0:12}-${ImageVersion:-unknown}" >> "$GITHUB_ENV"
 
       - name: Cache vcpkg binary archives (Windows)
         if: runner.os == 'Windows'
-        # Persist vcpkg's built package archives across runs. Keyed on the vcpkg
-        # version so a toolchain bump re-populates it; the prefix restore-key lets an
-        # ABI-compatible archive be reused across unrelated ci.yml edits. On a hit the
-        # protobuf install below unpacks the prebuilt archive instead of recompiling.
+        # Persist vcpkg's built package archives across runs. The key carries the ports pin
+        # and the runner image version: a package ABI includes the compiler, so an archive
+        # built on one image is dead weight on the next, and an exact hit on a stale key
+        # stops actions/cache from ever saving a fresh one. On a hit the protobuf install
+        # below unpacks the prebuilt archive instead of recompiling.
         uses: actions/cache@v5
         with:
           path: ${{ github.workspace }}/vcpkg-archives
-          key: vcpkg-archives-x64-windows-protobuf-${{ env.VCPKG_VERSION }}
-          restore-keys: |
-            vcpkg-archives-x64-windows-protobuf-
+          key: ${{ env.VCPKG_CACHE_KEY }}
 
       - name: Install protobuf (Windows)
         if: runner.os == 'Windows'
-        # vcpkg ships with the windows-latest runner image. Use the bundled copy
-        # to install protobuf (libprotobuf C++ runtime + headers + CMake config +
+        # vcpkg ships with the windows-latest runner image. Use the bundled copy, pinned
+        # above, to install protobuf (libprotobuf C++ runtime + headers + CMake config +
         # a MATCHED protoc) in a CMake-discoverable way; CMake picks it up via
         # CMAKE_TOOLCHAIN_FILE + VCPKG_TARGET_TRIPLET. This mirrors the local
         # `scripts/bootstrap-windows.ps1 -Stage Protobuf` path so generated
