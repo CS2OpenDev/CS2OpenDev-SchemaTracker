@@ -121,10 +121,12 @@ message CsScriptType {
   repeated CsScriptMember members = 100;   // declaration order
 }
 
-// One interface/class member. Overloads are separate entries sharing `name`.
+// One interface/class member. Overloads are separate entries sharing `name`. An index signature
+// (`[k: string]: T`) is kind "index_signature", named by its key TYPE ("[string]"), with the value
+// type in type_text; the key's own name is only in signature_text.
 message CsScriptMember {
   string name           = 1;
-  string kind           = 2;               // "method" | "property"
+  string kind           = 2;               // "method" | "property" | "index_signature"
   uint32 overload_index = 3;               // 0-based, per name, declaration order
 
   // The whole member as one normalised line, e.g.
