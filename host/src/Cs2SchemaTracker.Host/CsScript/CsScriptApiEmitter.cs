@@ -18,6 +18,8 @@
 //     has no field for) -> other_tags, so no tag Valve writes is dropped.
 //   - referenced_types keeps only names this module declares, Ordinal-sorted and de-duplicated.
 //   - overload_index counts per member name within a type, in declaration order.
+//   - an index signature is a member of kind "index_signature" named by its KEY TYPE ("[string]"),
+//     with type_text the value type; the key's own name appears only in signature_text.
 //   - types/enums sorted by name Ordinal; exports, members, params and enum members keep
 //     declaration order (see schemas/cs_script_api.proto).
 //
@@ -252,7 +254,7 @@ internal sealed class CsScriptApiEmitter
         var member = new CsScriptMember
         {
             Name = sig.Name,
-            Kind = sig.IsMethod ? "method" : "property",
+            Kind = sig.IsIndexSignature ? "index_signature" : sig.IsMethod ? "method" : "property",
             OverloadIndex = index,
             SignatureText = sig.Render(),
             Optional = sig.Optional,

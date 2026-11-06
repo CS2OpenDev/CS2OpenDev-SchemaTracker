@@ -61,6 +61,16 @@
     </Content>
   </ItemGroup>
 
+  <!-- the complete point_script.d.ts as the Workshop Tools shipped it on 2026-11-05, the first copy
+       with an index signature (IEntities.Spawn). Untrimmed, so the parser is proven against the whole
+       current file rather than the declaration subset above. Copied unchanged (-text). -->
+  <ItemGroup>
+    <Content Include="CsScript\fixtures\*.d.ts">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Link>CsScript\fixtures\%(Filename)%(Extension)</Link>
+    </Content>
+  </ItemGroup>
+
   <!-- committed live-capture oracle for the NetworkMessageRttiScanner
        integration test. Copied verbatim to the test output dir so the scan-vs-live
        cross-validation reads the captured bytes from a stable, repo-relative path

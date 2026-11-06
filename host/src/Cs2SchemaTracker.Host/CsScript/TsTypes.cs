@@ -10,6 +10,7 @@
 //   generic        Name<A, B>       tuple          [A, B]
 //   function       (a: T, b?: U) => R     with type params: <T>(x: T) => T
 //   object         { a: T, b?: U, m(x: T): R }      empty: {}
+//   index sig      [k: string]: T    (readonly allowed; the member name is "[string]")
 //   operators      keyof T / typeof x / readonly T[] / unique symbol
 //   indexed        T["k"]
 //   literals       "text" (double-quoted), numbers as written, keywords as written
@@ -210,7 +211,10 @@ internal sealed record TsObjectType(IReadOnlyList<TsMemberSig> Members) : TsType
 /// <summary>
 /// One member signature — of an interface, a class, or an inline object type. A method has
 /// <see cref="Params"/> (possibly empty) and an optional <see cref="ReturnType"/>; a property has
-/// <see cref="PropertyType"/> and null <see cref="Params"/>.
+/// <see cref="PropertyType"/> and null <see cref="Params"/>. An index signature
+/// (<c>[k: string]: T</c>) has <see cref="IndexKey"/> (the key parameter), <see cref="PropertyType"/>
+/// as the value type, and the key TYPE as its <see cref="Name"/> ("[string]"): the key's name is
+/// not part of the signature's identity, so renaming it must not read as an API change.
 /// </summary>
 internal sealed record TsMemberSig(
     string Name,
@@ -219,14 +223,25 @@ internal sealed record TsMemberSig(
     IReadOnlyList<string> TypeParams,
     IReadOnlyList<TsParam>? Params,
     TsTypeNode? ReturnType,
-    TsTypeNode? PropertyType)
+    TsTypeNode? PropertyType,
+    TsParam? IndexKey = null)
 {
     public bool IsMethod => Params is not null;
+
+    public bool IsIndexSignature => IndexKey is not null;
 
     public void Render(StringBuilder sb)
     {
         foreach (var m in Modifiers)
             sb.Append(m).Append(' ');
+        if (IsIndexSignature)
+        {
+            sb.Append('[');
+            IndexKey!.Render(sb);
+            sb.Append("]: ");
+            PropertyType!.Render(sb);
+            return;
+        }
         sb.Append(Name);
         if (Optional)
             sb.Append('?');
