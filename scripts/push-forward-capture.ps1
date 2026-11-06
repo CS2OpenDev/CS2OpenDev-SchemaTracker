@@ -21,7 +21,8 @@
   carry one: GitHub suppresses push-event workflows for such pushes, so ci.yml never runs on the
   very commits this job lands. The sequence is
 
-    1. push HEAD to an UNGATED staging branch (default capture/pending) -- always allowed,
+    1. push HEAD to an UNGATED staging branch, capture/pending-<build> (one per build in the
+       plan, so a later capture never overwrites an earlier one still waiting on a fix),
     2. dispatch ci.yml on that ref (workflow_dispatch is the documented exception to the
        recursive-trigger guard; the same exception "Refresh latest-artifacts channel" relies on),
     3. wait for the `ci gate` commit STATUS that a passing dispatched run posts on that SHA --
@@ -40,6 +41,10 @@
   Without -Gate (an operator running this by hand) the behaviour is unchanged: a direct push,
   which an org-admin credential is allowed to make.
 
+  To land a parked capture by hand once the cause is fixed: `gh workflow run ci.yml --ref
+  capture/pending-<build>`, wait for the `ci gate` status on its SHA, push that SHA to main, and
+  delete the staging ref.
+
   Outputs appended to $GITHUB_OUTPUT when set: pushed, sets, tags_failed, gated.
   Exit: nonzero only when the push itself fails (a genuine rebase conflict fails loud; the
   payloads stay downloadable for 7 days and the next cron re-extracts while the build is
@@ -53,7 +58,10 @@ param(
   # Gate the push through a CI run on a staging ref (see .DESCRIPTION). CI passes this; an
   # operator pushing by hand does not, and gets the previous direct-push behaviour.
   [switch]$Gate,
-  [string]$StagingBranch = 'capture/pending',
+  # Staging ref for -Gate. Empty derives capture/pending-<build>[-<build>...] from the plan's
+  # builds; set it to force one name.
+  [string]$StagingBranch = '',
+  [string]$StagingBranchPrefix = 'capture/pending',
   [string]$GateWorkflow = 'ci.yml',
   [string]$GateCheckName = 'ci gate',
   [int]$GateTimeoutSeconds = 2400,
@@ -80,6 +88,13 @@ if ($pending.Count -eq 0) {
 # file here is a real fault and fails loud.
 $plan = Get-Content $PlanPath -Raw | ConvertFrom-Json
 $sets = [bool]$plan.sets
+
+if ($Gate -and -not $StagingBranch) {
+  $builds = @(@($plan.tags) | ForEach-Object { "$($_.build)" } | Where-Object { $_ } |
+             Sort-Object -Unique { [long]$_ })
+  $suffix = if ($builds.Count -gt 0) { $builds -join '-' } else { (git rev-parse --short HEAD).Trim() }
+  $StagingBranch = "$StagingBranchPrefix-$suffix"
+}
 
 # The `ci gate` verdict recorded against a commit, or $null when there is none yet.
 #
