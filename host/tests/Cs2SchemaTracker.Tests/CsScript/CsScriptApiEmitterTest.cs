@@ -253,8 +253,48 @@ public sealed class CsScriptApiEmitterTest
         Assert.Equal("", api.TsconfigPath);
     }
 
+    [Fact]
+    public void Index_signatures_are_members_named_by_key_type()
+    {
+        var api = BuildInline("""
+            declare module "m" {
+                export interface A { [k: string]: number; readonly [i: number]: B; x: { [key: string]: B }; }
+                interface B {}
+            }
+            """);
+        var a = Type(api, "A");
+        Assert.Equal("index_signature", a.Members[0].Kind);
+        Assert.Equal("[string]", a.Members[0].Name);
+        Assert.Equal("[k: string]: number", a.Members[0].SignatureText);
+        Assert.Equal("number", a.Members[0].TypeText);
+        Assert.False(a.Members[0].Optional);
+        Assert.Empty(a.Members[0].Params);
+        Assert.Equal("[number]", a.Members[1].Name);
+        Assert.Equal("readonly [i: number]: B", a.Members[1].SignatureText);
+        Assert.Equal("readonly", string.Join(",", a.Members[1].Modifiers));
+        Assert.Equal("B", string.Join(",", a.Members[1].ReferencedTypes));
+        Assert.Equal("x: { [key: string]: B }", a.Members[2].SignatureText);
+        Assert.Equal("B", string.Join(",", a.Members[2].ReferencedTypes));
+    }
+
+    [Fact]
+    public void Current_shipped_declaration_file_parses_whole()
+    {
+        // The complete file as shipped on 2026-11-05: the first copy with an index signature, inside
+        // the inline object type of IEntities.Spawn's parameter. Build 26445667 failed to extract on it.
+        var dts = File.ReadAllText(Path.Combine(AppContext.BaseDirectory, "CsScript", "fixtures", "point_script-2026-11-05.d.ts"));
+        var api = BuildInline(dts);
+        Assert.Equal("cs_script/point_script", api.Module);
+        var spawn = Assert.Single(Type(api, "IEntities").Members, m => m.Name == "Spawn");
+        Assert.Equal(
+            "Spawn(entities: ({ classname: string, origin?: Vector, angles?: QAngle } & { [key: string]: EntityKeyValue })[]): Entity[]",
+            spawn.SignatureText);
+        Assert.Equal("Entity,EntityKeyValue,QAngle,Vector", string.Join(",", spawn.ReferencedTypes));
+    }
+
     [Theory]
-    [InlineData("declare module \"m\" { interface A { [k: string]: number } }", "index signatures")]
+    [InlineData("declare module \"m\" { interface A { [Symbol.iterator](): number } }", "computed property names")]
+    [InlineData("declare module \"m\" { interface A { [k: string]?: number } }", "cannot be optional")]
     [InlineData("declare module \"m\" { enum E { A = \"a\" } }", "string initializer")]
     [InlineData("declare module \"m\" { enum E { A = B } }", "not an earlier member")]
     [InlineData("declare module \"m\" { function f(): void; }", "unsupported declaration")]
@@ -274,7 +314,7 @@ public sealed class CsScriptApiEmitterTest
     [Fact]
     public void Parse_failure_names_file_and_line()
     {
-        var ex = Assert.Throws<InvalidDataException>(() => BuildInline("declare module \"m\" {\n  interface A {\n    [k: string]: number\n  }\n}"));
+        var ex = Assert.Throws<InvalidDataException>(() => BuildInline("declare module \"m\" {\n  interface A {\n    [Symbol.iterator](): number\n  }\n}"));
         Assert.Contains(CsScriptApiEmitter.DeclarationPath + ":3:", ex.Message, StringComparison.Ordinal);
     }
 

@@ -5,13 +5,13 @@
 //   - inside it: `export const A: T;` (comma-separated declarators allowed), `type A<T> = T;`,
 //     `interface A<T> extends B, C { ... }`, `[abstract] class A<T> extends B implements C { ... }`,
 //     `[const] enum A { ... }`, each optionally `export` / `declare`;
-//   - members: methods (generics, optional `?`, rest and optional params, overloads by repetition)
-//     and properties, with readonly/static/public/... modifiers;
+//   - members: methods (generics, optional `?`, rest and optional params, overloads by repetition),
+//     properties, and index signatures (`[k: string]: T`), with readonly/static/public/... modifiers;
 //   - types: references with generic arguments, unions and intersections (leading `|` / `&`
 //     allowed), arrays, indexed access, parentheses, function and constructor types, inline object
 //     types, tuples, string/number/keyword literals, keyof / typeof / readonly / unique.
 //
-// Everything else — index signatures, call signatures, accessors, template literal types,
+// Everything else — call signatures, computed property names, accessors, template literal types,
 // conditional and mapped types, function / namespace declarations, string enums — is rejected with
 // file:line, because silently skipping an API declaration is the one outcome this artifact must not
 // have. When Valve's file outgrows the subset the emit stops and the parser gets extended.
@@ -420,7 +420,23 @@ internal sealed class TsDeclarationParser
 
         var t = Peek();
         if (t.IsPunct("["))
-            throw Fail(t, "index signatures are outside the supported subset");
+        {
+            // `[k: string]: T` is an index signature; `[Symbol.iterator]()` is a computed name.
+            if (PeekAt(1).Kind != TsTokenKind.Identifier || !PeekAt(2).IsPunct(":"))
+                throw Fail(t, "computed property names are outside the supported subset");
+            Next();
+            string keyName = Next().Text;
+            ExpectPunct(":");
+            var keyType = ParseType();
+            ExpectPunct("]");
+            if (Peek().IsPunct("?"))
+                throw Fail(Peek(), "an index signature cannot be optional");
+            ExpectPunct(":");
+            var valueType = ParseType();
+            TryMemberSeparator();
+            var key = new TsParam(keyName, keyType, Optional: false, Rest: false);
+            return new TsMemberSig($"[{keyType.Render()}]", false, modifiers, Array.Empty<string>(), null, null, valueType, key);
+        }
         if (t.IsPunct("(") || t.IsPunct("<"))
             throw Fail(t, "call signatures are outside the supported subset");
         if (t.IsIdent("new") && PeekAt(1).IsPunct("("))
