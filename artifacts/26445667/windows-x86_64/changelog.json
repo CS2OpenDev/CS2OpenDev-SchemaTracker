@@ -1,0 +1,201 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "convars",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [
+        "CSPlayerController.GetControlledBotPawn#0",
+        "CSPlayerController.IsControllingBot#0",
+        "CSPlayerPawn.Reset#0",
+        "Entity.FireInput#0",
+        "EntityKeyValue",
+        "IEntities",
+        "IEntities.ConnectOutput#0",
+        "IEntities.DisconnectOutput#0",
+        "IEntities.FindByClass#0",
+        "IEntities.FindByName#0",
+        "IEntities.FireInput#0",
+        "IEntities.Spawn#0",
+        "IPointScript.OnBotControl#0",
+        "export:Entities"
+      ],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "deprecated",
+              "newValue": "true",
+              "oldValue": "false"
+            },
+            {
+              "field": "doc",
+              "newValue": "",
+              "oldValue": "Connect the output of an entity to a callback. The return value is a connection id that can be used in `DisconnectOutput`"
+            }
+          ],
+          "name": "IPointScript.ConnectOutput#0"
+        },
+        {
+          "fields": [
+            {
+              "field": "deprecated",
+              "newValue": "true",
+              "oldValue": "false"
+            },
+            {
+              "field": "doc",
+              "newValue": "",
+              "oldValue": "Find entities by name."
+            }
+          ],
+          "name": "IPointScript.DisconnectOutput#0"
+        },
+        {
+          "fields": [
+            {
+              "field": "deprecated",
+              "newValue": "true",
+              "oldValue": "false"
+            },
+            {
+              "field": "doc",
+              "newValue": "",
+              "oldValue": "Fire the input on all targets matching the specified names."
+            }
+          ],
+          "name": "IPointScript.EntFireAtName#0"
+        },
+        {
+          "fields": [
+            {
+              "field": "deprecated",
+              "newValue": "true",
+              "oldValue": "false"
+            },
+            {
+              "field": "doc",
+              "newValue": "",
+              "oldValue": "Fire the input on the specified target."
+            }
+          ],
+          "name": "IPointScript.EntFireAtTarget#0"
+        },
+        {
+          "fields": [
+            {
+              "field": "deprecated",
+              "newValue": "true",
+              "oldValue": "false"
+            },
+            {
+              "field": "doc",
+              "newValue": "",
+              "oldValue": "Find entities of the specified class name."
+            }
+          ],
+          "name": "IPointScript.FindEntitiesByClass#0"
+        },
+        {
+          "fields": [
+            {
+              "field": "deprecated",
+              "newValue": "true",
+              "oldValue": "false"
+            },
+            {
+              "field": "doc",
+              "newValue": "",
+              "oldValue": "Find entities matching the specified name."
+            }
+          ],
+          "name": "IPointScript.FindEntitiesByName#0"
+        },
+        {
+          "fields": [
+            {
+              "field": "deprecated",
+              "newValue": "true",
+              "oldValue": "false"
+            },
+            {
+              "field": "doc",
+              "newValue": "",
+              "oldValue": "Find the first entity of the specified class name."
+            }
+          ],
+          "name": "IPointScript.FindEntityByClass#0"
+        },
+        {
+          "fields": [
+            {
+              "field": "deprecated",
+              "newValue": "true",
+              "oldValue": "false"
+            },
+            {
+              "field": "doc",
+              "newValue": "",
+              "oldValue": "Find the first entity matching the specified name."
+            }
+          ],
+          "name": "IPointScript.FindEntityByName#0"
+        },
+        {
+          "fields": [
+            {
+              "field": "doc",
+              "newValue": "Loads resources on the server and clients to avoid hitches when later referenced.\n`resources` supports .vmdl, .vpcf, .vmat, and .vsnd resources.\n`entities` takes entity class names or subclass names.",
+              "oldValue": "Loads resources on the server and clients to avoid hitches when later referenced.\nSupports .vmdl, .vpcf, .vmat, and .vsnd resources."
+            },
+            {
+              "field": "signature",
+              "newValue": "Precache(config: { resources?: string[], entities?: string[] }): CSPrecache | undefined",
+              "oldValue": "Precache(config: { resources: string[] }): CSPrecache | undefined"
+            }
+          ],
+          "name": "IPointScript.Precache#0"
+        }
+      ],
+      "family": "cs_script_api",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "entity_io",
+      "removed": []
+    }
+  ],
+  "fromBuild": "26393695",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.13.0",
+  "toBuild": "26445667"
+}
