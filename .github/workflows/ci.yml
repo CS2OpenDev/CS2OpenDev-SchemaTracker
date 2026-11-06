@@ -617,7 +617,7 @@ jobs:
 
       - name: Record the pass as a commit status (workflow_dispatch only)
         # The forward-capture gate (scripts/push-forward-capture.ps1) dispatches this workflow on
-        # capture/pending and then pushes the same SHA to main. The `ci gate` CHECK RUN from a
+        # a capture/pending-<build> staging ref and then pushes the same SHA to main. The `ci gate` CHECK RUN from a
         # dispatched run does not satisfy main's required check: GitHub ignores it both for a
         # direct push and for a PR merge (proven 2026-10-27 against a scratch ruleset; every
         # capture from 2026-10-21 on was refused this way). A commit STATUS with the same context

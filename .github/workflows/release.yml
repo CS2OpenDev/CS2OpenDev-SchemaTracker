@@ -315,7 +315,7 @@ jobs:
           echo "bundle smoke OK ($(basename "$tgz")): self-contained apphost runs, exec bit preserved, natives complete, inventory resolves standalone."
 
       - name: Upload bundle artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: bundle-${{ matrix.platform }}
           path: dist/cs2-schema-tracker-*
@@ -394,7 +394,7 @@ jobs:
       # them into dist/ so the release step sees both the .zip and the .tar.gz.
       - name: Download bundle artifacts
         if: steps.version.outputs.exists == 'false'
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           pattern: bundle-*
           path: dist

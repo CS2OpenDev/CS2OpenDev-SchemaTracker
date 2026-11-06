@@ -378,7 +378,7 @@ jobs:
 
       - name: Upload leg payload
         if: ${{ !cancelled() && steps.resolve.outputs.is_new == 'true' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: extract-${{ matrix.platform }}
           path: outgoing
@@ -394,7 +394,7 @@ jobs:
         # on exit. Picks up cache/determinism/<build>-<platform>/ once the host writes it
         # (PreserveDivergingWalks); inert until then, hence if-no-files-found: ignore.
         if: ${{ failure() && steps.extract.outcome == 'failure' }}
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: diverging-walks-${{ matrix.platform }}-${{ steps.resolve.outputs.build_id }}
           path: cache/determinism
@@ -442,7 +442,7 @@ jobs:
       # no-new-build cron tick neither leg uploads anything, and the job should discover that
       # for the cost of one download-artifact call, not a full multi-GB checkout.
       - name: Download leg payloads
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           pattern: extract-*
           path: ${{ runner.temp }}/incoming
