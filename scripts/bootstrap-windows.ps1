@@ -495,8 +495,16 @@ function Invoke-StageProtobuf {
     $vcpkgRoot = 'C:\tools\vcpkg'
     $vcpkgExe  = Join-Path $vcpkgRoot 'vcpkg.exe'
 
+    # walker/vcpkg.pin: the microsoft/vcpkg commit every vcpkg build of the walker uses (CI and
+    # release pin the runner's clone to the same commit), so a local build links the same
+    # protobuf the bundles ship.
+    $pinFile = Join-Path $PSScriptRoot '..\walker\vcpkg.pin'
+    $pin = (Get-Content $pinFile | Where-Object { $_ -notmatch '^\s*#' } | Select-Object -First 1).Trim()
+    if ($pin -notmatch '^[0-9a-f]{40}$') { Fail "walker/vcpkg.pin does not hold a 40-hex commit ($pinFile)" }
+
     # --- bootstrap vcpkg if absent --------------------------------------------------
-    if (Test-Path $vcpkgExe) {
+    $freshClone = -not (Test-Path $vcpkgExe)
+    if (-not $freshClone) {
         Write-Skip "vcpkg already bootstrapped at $vcpkgRoot"
     } else {
         # A $vcpkgRoot that exists WITHOUT vcpkg.exe is a partial/interrupted clone --
@@ -512,7 +520,21 @@ function Invoke-StageProtobuf {
         New-Item -ItemType Directory -Force -Path $toolsParent | Out-Null
         & git clone --depth 1 https://github.com/microsoft/vcpkg.git $vcpkgRoot
         if ($LASTEXITCODE -ne 0) { Fail "git clone of vcpkg exited with $LASTEXITCODE" }
+    }
 
+    # --- check the ports tree out at the pin ------------------------------------------
+    $head = (& git -C $vcpkgRoot rev-parse HEAD 2>$null)
+    if ("$head".Trim() -ne $pin) {
+        Write-Doing "Pinning vcpkg ports tree at $($pin.Substring(0, 12)) (walker/vcpkg.pin)"
+        & git -C $vcpkgRoot fetch --depth 1 origin $pin
+        if ($LASTEXITCODE -ne 0) { Fail "git fetch of vcpkg commit $pin exited with $LASTEXITCODE" }
+        & git -C $vcpkgRoot checkout --quiet --force --detach $pin
+        if ($LASTEXITCODE -ne 0) { Fail "git checkout of vcpkg commit $pin exited with $LASTEXITCODE" }
+    } else {
+        Write-Skip "vcpkg ports tree already at the pin $($pin.Substring(0, 12))"
+    }
+
+    if ($freshClone) {
         Write-Doing "Bootstrapping vcpkg (builds the vcpkg.exe tool, ~1-2 min)"
         $bootstrap = Join-Path $vcpkgRoot 'bootstrap-vcpkg.bat'
         & cmd.exe /c "`"$bootstrap`" -disableMetrics"
@@ -530,7 +552,11 @@ function Invoke-StageProtobuf {
     }
 
     if ($alreadyInstalled) {
-        Write-Skip "protobuf:x64-windows already installed in vcpkg"
+        # A tree that moved under an existing install leaves it at the old port version;
+        # upgrade is a no-op when it already matches.
+        Write-Doing "protobuf:x64-windows already installed; aligning it with the pinned ports tree"
+        & $vcpkgExe upgrade --no-dry-run
+        if ($LASTEXITCODE -ne 0) { Fail "vcpkg upgrade exited with $LASTEXITCODE" }
     } else {
         Write-Doing "vcpkg install protobuf:x64-windows (builds from source, ~15-30 min)"
         & $vcpkgExe install protobuf:x64-windows --triplet x64-windows

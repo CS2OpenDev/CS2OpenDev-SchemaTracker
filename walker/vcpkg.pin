@@ -1,0 +1,4 @@
+# microsoft/vcpkg commit the walker's protobuf closure is built from, on every platform that
+# uses vcpkg (CI, release bundles, scripts/bootstrap-windows.ps1). The runner images ship a
+# moving ports tree; this pins it. Bump deliberately, and watch the x64-windows link.
+d6eee3dba8766a176e08ee4c741ae0b166ebbfcd

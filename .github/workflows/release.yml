@@ -132,22 +132,26 @@ jobs:
       # ---------------------------------------------------------------------------
       # Windows toolchain + build (ONLY on a natives cache MISS)
       # ---------------------------------------------------------------------------
-      - name: Resolve vcpkg version (cache key) [Windows]
+      - name: Pin vcpkg ports tree [Windows]
         if: runner.os == 'Windows' && steps.cache-natives.outputs.cache-hit != 'true'
+        # Same pin as ci.yml's walker job (walker/vcpkg.pin): the image's vcpkg clone tracks
+        # upstream, and the bundle must not change protobuf because an image refreshed.
         shell: bash
-        run: echo "VCPKG_VERSION=$("$VCPKG_INSTALLATION_ROOT/vcpkg.exe" version | head -1 | tr -cd 'A-Za-z0-9._-')" >> "$GITHUB_ENV"
+        run: |
+          [ -d "$VCPKG_INSTALLATION_ROOT" ] || { echo "vcpkg not found on runner; image changed unexpectedly." >&2; exit 1; }
+          ./scripts/pin-vcpkg-ports.sh "$VCPKG_INSTALLATION_ROOT"
+          pin="$(grep -v '^[[:space:]]*#' walker/vcpkg.pin | tr -d '[:space:]')"
+          echo "VCPKG_CACHE_KEY=vcpkg-archives-x64-windows-protobuf-${pin:0:12}-${ImageVersion:-unknown}" >> "$GITHUB_ENV"
 
       - name: Cache vcpkg binary archives [Windows]
         if: runner.os == 'Windows' && steps.cache-natives.outputs.cache-hit != 'true'
-        # Same proven pattern + key as ci.yml's walker job, so the x64-windows protobuf
-        # archive built there is reused here (and vice versa). On a hit the vcpkg install
-        # below unpacks the prebuilt archive instead of recompiling protobuf.
+        # Same key as ci.yml's walker job (ports pin + runner image version), so the
+        # x64-windows protobuf archive built there is reused here (and vice versa). On a hit
+        # the vcpkg install below unpacks the prebuilt archive instead of recompiling protobuf.
         uses: actions/cache@v5
         with:
           path: ${{ github.workspace }}/vcpkg-archives
-          key: vcpkg-archives-x64-windows-protobuf-${{ env.VCPKG_VERSION }}
-          restore-keys: |
-            vcpkg-archives-x64-windows-protobuf-
+          key: ${{ env.VCPKG_CACHE_KEY }}
 
       - name: Install protobuf (vcpkg) [Windows]
         if: runner.os == 'Windows' && steps.cache-natives.outputs.cache-hit != 'true'
@@ -196,23 +200,25 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y g++ cmake make python3 curl zip unzip tar pkg-config
 
-      - name: Resolve vcpkg version (cache key) [Linux]
+      - name: Pin vcpkg ports tree [Linux]
         if: runner.os == 'Linux' && steps.cache-natives.outputs.cache-hit != 'true'
         shell: bash
-        run: echo "VCPKG_VERSION=$("$VCPKG_INSTALLATION_ROOT/vcpkg" version | head -1 | tr -cd 'A-Za-z0-9._-')" >> "$GITHUB_ENV"
+        run: |
+          [ -x "$VCPKG_INSTALLATION_ROOT/vcpkg" ] || { echo "vcpkg not found on runner; image changed unexpectedly." >&2; exit 1; }
+          ./scripts/pin-vcpkg-ports.sh "$VCPKG_INSTALLATION_ROOT"
+          pin="$(grep -v '^[[:space:]]*#' walker/vcpkg.pin | tr -d '[:space:]')"
+          echo "VCPKG_CACHE_KEY=vcpkg-archives-x64-linux-dynamic-protobuf-${pin:0:12}-${ImageVersion:-unknown}" >> "$GITHUB_ENV"
 
       - name: Cache vcpkg binary archives [Linux]
         if: runner.os == 'Linux' && steps.cache-natives.outputs.cache-hit != 'true'
-        # Mirror of the Windows vcpkg-archive cache, keyed on the vcpkg version + the
-        # x64-linux-dynamic triplet. NOTE: the FIRST x64-linux-dynamic protobuf build is heavy
-        # (~20-40 min); this archive cache makes every rerun (that still misses the natives
-        # cache) unpack the prebuilt archive instead of recompiling protobuf from source.
+        # Mirror of the Windows vcpkg-archive cache, keyed on the ports pin + runner image
+        # version for the x64-linux-dynamic triplet. NOTE: the FIRST x64-linux-dynamic protobuf
+        # build is heavy (~20-40 min); this archive cache makes every rerun (that still misses
+        # the natives cache) unpack the prebuilt archive instead of recompiling protobuf.
         uses: actions/cache@v5
         with:
           path: ${{ github.workspace }}/vcpkg-archives
-          key: vcpkg-archives-x64-linux-dynamic-protobuf-${{ env.VCPKG_VERSION }}
-          restore-keys: |
-            vcpkg-archives-x64-linux-dynamic-protobuf-
+          key: ${{ env.VCPKG_CACHE_KEY }}
 
       - name: Install protobuf (vcpkg, x64-linux-dynamic) [Linux]
         if: runner.os == 'Linux' && steps.cache-natives.outputs.cache-hit != 'true'

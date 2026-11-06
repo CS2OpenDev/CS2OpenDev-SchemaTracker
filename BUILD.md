@@ -18,6 +18,10 @@ The Docker image consumes the self-contained publish (2) and the Linux natives (
 - **.NET 10 SDK** — builds, tests, and publishes `host/` (pinned in `global.json`).
 - **CMake** + a C++ toolchain — builds `walker/`: MSVC (Visual Studio 2022) on Windows, `g++` on Linux/WSL.
 - **libprotobuf (C++)** — from vcpkg on Windows (`$VCPKG_ROOT`), from apt on Linux (`libprotobuf-dev protobuf-compiler`).
+  Every vcpkg build (CI, the release bundles, `bootstrap-windows.ps1`) checks the vcpkg clone out at the commit in
+  `walker/vcpkg.pin` (`scripts/pin-vcpkg-ports.sh <vcpkg-root>` does it for an existing clone), so the protobuf closure
+  does not move when a runner image does. To take a newer protobuf, change that one file and let the Windows walker job
+  prove the link.
 - **HL2SDK submodule** — `walker/third_party/hl2sdk` (cs2 branch), pinned. It is large; initialize it only when you actually build the walker:
   ```bash
   git submodule update --init walker/third_party/hl2sdk
