@@ -7,11 +7,11 @@
     ],
     "provenance": "Manifests are hand-extracted from SteamDB patch pages via the bookmarklet in temp/scripts/ (manual DOM read; -- no scraping); new builds are appended to this inventory by the host on a successful extract --commit (forward-capture), which is now the sole writer. Authoritative entries carry build_id+change_number; date-only entries predate extraction. Verified against committed provenance.json where available.",
     "counts": {
-      "builds": 405,
-      "builds_with_binaries": 405,
-      "builds_with_content": 405,
-      "builds_with_change_number": 405,
-      "builds_with_era": 405,
+      "builds": 406,
+      "builds_with_binaries": 406,
+      "builds_with_content": 406,
+      "builds_with_change_number": 406,
+      "builds_with_era": 406,
       "depots": 15
     },
     "era_note": "builds[].era = the id of the eras[] entry this build's schema-system layout belongs to (compile-pin or runtime-variant). eras[] defines each era's hl2sdk pin (or ridden pin), per-platform layout signature(s), and class-count band. Maintained by the host on forward-capture."
@@ -311,6 +311,12 @@
       "name": null,
       "role": "csgo-legacy",
       "history": [
+        {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "8073722154692832712"
+        },
         {
           "build_id": 26445667,
           "change_number": 40651235,
@@ -2499,6 +2505,12 @@
         "windows-x86_64"
       ],
       "history": [
+        {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "5904170204054152260"
+        },
         {
           "build_id": 26445667,
           "change_number": 40651235,
@@ -4694,6 +4706,12 @@
       ],
       "history": [
         {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "2562717112067419357"
+        },
+        {
           "build_id": 26445667,
           "change_number": 40651235,
           "date_utc": "2026-11-05T00:10:12Z",
@@ -6888,6 +6906,12 @@
       ],
       "history": [
         {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "5251243644879483699"
+        },
+        {
           "build_id": 26445667,
           "change_number": 40651235,
           "date_utc": "2026-11-05T00:10:12Z",
@@ -9073,6 +9097,12 @@
       "role": "csgo-legacy",
       "history": [
         {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "7510407930822605041"
+        },
+        {
           "build_id": 26445667,
           "change_number": 40651235,
           "date_utc": "2026-11-05T00:10:12Z",
@@ -11192,6 +11222,12 @@
       "role": "csgo-legacy",
       "history": [
         {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "7985112018484201087"
+        },
+        {
           "build_id": 26445667,
           "change_number": 40651235,
           "date_utc": "2026-11-05T00:10:12Z",
@@ -13305,6 +13341,12 @@
       "role": "csgo-legacy",
       "history": [
         {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "3775805138455816884"
+        },
+        {
           "build_id": 26445667,
           "change_number": 40651235,
           "date_utc": "2026-11-05T00:10:12Z",
@@ -15394,6 +15436,12 @@
       "role": "csgo-legacy",
       "history": [
         {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "758932825073056524"
+        },
+        {
           "build_id": 26445667,
           "change_number": 40651235,
           "date_utc": "2026-11-05T00:10:12Z",
@@ -17474,6 +17522,12 @@
         "linux-x86_64"
       ],
       "history": [
+        {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "6678473446694075055"
+        },
         {
           "build_id": 26445667,
           "change_number": 40651235,
@@ -19912,6 +19966,12 @@
         "windows-x86_64"
       ],
       "history": [
+        {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "5946971774180560324"
+        },
         {
           "build_id": 26445667,
           "change_number": 40651235,
@@ -22495,6 +22555,12 @@
       ],
       "history": [
         {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "3634295490837307276"
+        },
+        {
           "build_id": 26445667,
           "change_number": 40651235,
           "date_utc": "2026-11-05T00:10:12Z",
@@ -24969,6 +25035,12 @@
       "role": "cs2-other",
       "history": [
         {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "2133089457235490477"
+        },
+        {
           "build_id": 26445667,
           "change_number": 40651235,
           "date_utc": "2026-11-05T00:10:12Z",
@@ -25401,6 +25473,12 @@
       "name": "cs2 workshop tools binaries (win64 editor DLLs; free DLC 2279721)",
       "role": "tools",
       "history": [
+        {
+          "build_id": 26598758,
+          "change_number": 40852810,
+          "date_utc": "2026-11-11T18:33:14Z",
+          "manifest_id": "3182124947840740879"
+        },
         {
           "build_id": 26445667,
           "change_number": 40651235,
@@ -27814,6 +27892,20 @@
     }
   ],
   "builds": [
+    {
+      "build_id": 26598758,
+      "predecessor": 26445667,
+      "date_utc": "2026-11-11T18:33:14Z",
+      "change_number": 40852810,
+      "title": "Build 26598758 on 11 November 2026",
+      "era": "cs2-2026-07-09",
+      "content": "6678473446694075055",
+      "binaries": {
+        "linux-x86_64": "3634295490837307276",
+        "windows-x86_64": "5946971774180560324"
+      },
+      "tools": "3182124947840740879"
+    },
     {
       "build_id": 26445667,
       "predecessor": 26393695,
