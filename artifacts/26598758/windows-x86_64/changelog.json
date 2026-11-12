@@ -1,0 +1,145 @@
+{
+  "families": [
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "12",
+              "oldValue": "11"
+            }
+          ],
+          "name": "!GlobalTypes/CNmAimCSNode::CDefinition"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "4",
+              "oldValue": "3"
+            }
+          ],
+          "name": "!GlobalTypes/CNmGraphDocAimCSNode"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "2",
+              "oldValue": "1"
+            }
+          ],
+          "name": "!GlobalTypes/EventClientPollNetworking_t"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "16",
+              "oldValue": "15"
+            }
+          ],
+          "name": "client.dll/CMapInfo"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "22",
+              "oldValue": "23"
+            }
+          ],
+          "name": "client.dll/C_Hostage"
+        },
+        {
+          "fields": [
+            {
+              "field": "field_count",
+              "newValue": "16",
+              "oldValue": "15"
+            }
+          ],
+          "name": "server.dll/CMapInfo"
+        }
+      ],
+      "family": "classes",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "enums",
+      "removed": []
+    },
+    {
+      "added": [
+        "cl_clockdrift_max_secs",
+        "cl_packetentities_merge_before_decode",
+        "r_csgo_frost_dry_time",
+        "r_csgo_frost_force",
+        "r_csgo_frost_grow_time",
+        "r_csgo_frost_heat_barrel_position",
+        "r_csgo_frost_heat_cool_time",
+        "r_csgo_frost_heat_light_delay",
+        "r_csgo_frost_heat_light_time",
+        "r_csgo_frost_heat_per_shot",
+        "r_csgo_frost_indoor_distance",
+        "r_csgo_frost_melt_time",
+        "r_csgo_parallax",
+        "videocfg_parallax_detail",
+        "vprof_lite_auto"
+      ],
+      "changed": [],
+      "family": "convars",
+      "removed": [
+        "cl_clockdrift_max_ticks",
+        "sv_recvbuf_messages"
+      ]
+    },
+    {
+      "added": [
+        "vprof_lite_dump",
+        "vprof_lite_start",
+        "vprof_lite_stop"
+      ],
+      "changed": [],
+      "family": "commands",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "engine_constants",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [],
+      "family": "cs_script_api",
+      "removed": []
+    },
+    {
+      "added": [],
+      "changed": [
+        {
+          "fields": [
+            {
+              "field": "keyvalue:frostenabled",
+              "newValue": "boolean",
+              "oldValue": ""
+            }
+          ],
+          "name": "info_map_parameters"
+        }
+      ],
+      "family": "entity_io",
+      "removed": []
+    }
+  ],
+  "fromBuild": "26445667",
+  "platform": "windows-x86_64",
+  "schemaVersion": "0.13.0",
+  "toBuild": "26598758"
+}
